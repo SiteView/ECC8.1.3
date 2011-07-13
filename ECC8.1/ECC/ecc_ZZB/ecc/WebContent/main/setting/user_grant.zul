@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" ?>
+<?page id="eccGrantRight" title="SiteView Ecc 8.1.3"?>
+<?link  rel="stylesheet" type="text/css" href="~./zul/css/ext.css.dsp"?>
+<zk>
+<window use="com.siteview.actions.GrantRightWindow" id="grantWindow" title="用户授权" border="normal" width="600px" height="500px" closable="true" onClose="self.visible = false; event.stopPropagation();">
+<caption image="/main/images/user.gif" label="用户授权"/>
+	<borderlayout id="grantComposer" apply="com.siteview.actions.GrantLayoutComposer" style="border:none;margin:0">
+							<center id="titleWest" style="font-size:12px" flex="true" border="none">
+								<borderlayout style="border:none;">
+								<north border="none">
+								<div style="float:left;padding-left:20px"><checkbox id="checkLeftAll" label="全    选 "/><space width="60px"/><image align="absmiddle" src="/main/images/user.gif"/><space/><listbox onSelect="((com.siteview.actions.GrantRightWindow)grantWindow).setUserid(self.getSelectedItem().getValue().toString())" mold="select" rows="1" id="userSelect" use="com.siteview.actions.UserSelector"/></div>
+								</north>
+								<center border="none">
+									<tree zclass="z-dottree" Vflex="true" id="grantTree" use="com.siteview.actions.GrantRightTree" multiple="true" checkmark="false">
+									<treechildren/>
+									</tree>
+								</center>	
+								<south size="20" border="none">
+								<hbox align="center">
+								<button sclass="btnDefault" id="applyVisibleGrant" label="授予勾选节点" width="60px"/>
+								<button sclass="btnDefault" label="关    闭" width="60px" onClick="grantWindow.visible=false"/>
+								</hbox>
+								</south>
+								</borderlayout>
+							</center>
+							<east id="eastActionChosePanel" splittable="true" size="230px" minsize="370" maxsize="500"
+								collapsible="true" border="none">
+								<borderlayout style="border:none;">
+								<north size="22px" sclass="eccTitle" border="none">
+									<hbox valign="middle" style="padding-left:5px;height:20px" width="100%" >
+									<div>
+									<checkbox id="checkAll"/>
+									<image align="absmiddle" id="curNodeImg"/>
+									<label sclass="eccTitleFont" id="curNodeTitle" value="请选择节点"/>
+									</div>
+									</hbox>
+								</north>
+								<center flex="true" style="overflow-y:auto;" border="none">
+								<div id="actionDiv" style="height:100%"/>
+								</center>
+								<south size="20" border="none">
+								<hbox align="left">
+								<checkbox checked="true" id="applyToChildren" label="应用到子级"/><button sclass="btnDefault" id="applyActionGrant" label="授予勾选功能" width="60px"/>
+								</hbox>
+								</south>
+								</borderlayout>				
+							</east>
+	</borderlayout>
+</window>	
+</zk>

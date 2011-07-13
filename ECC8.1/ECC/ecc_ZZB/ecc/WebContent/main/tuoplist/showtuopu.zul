@@ -1,0 +1,16 @@
+<?page title="showtuopu.zul" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<!-- iframe id="iframe" width="100%" height="100%"
+		style="border: 1px solid gray" /-->
+<zscript><![CDATA[
+String strTuopuName = (String)Executions.getCurrent().getParameter("name");
+//new com.siteview.ecc.tuopu.MakeTuopuData(strTuopuName);
+javax.servlet.http.HttpServletResponse resp = (javax.servlet.http.HttpServletResponse)execution.getNativeResponse();
+javax.servlet.http.HttpServletRequest req = (javax.servlet.http.HttpServletRequest)execution.getNativeRequest();
+String username = req.getParameter("username");
+if (username == null){
+	username = req.getSession().getAttribute("Session_Username");
+}
+resp.sendRedirect("/ecc/main/tuoplist/"+ java.net.URLEncoder.encode(strTuopuName,"utf-8")+ ".files/main_2.htm?username=" + username);
+]]></zscript>
+</zk>

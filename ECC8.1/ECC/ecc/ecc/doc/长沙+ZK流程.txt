@@ -1,0 +1,182 @@
+长沙人员加入ZK流程：
+  
+     a、搭建开发环境、zk学习资料、及现有代码简单消化。
+     
+        --> 服务器端：本地一个mmc服务端， 一个7.0做参考， 一个sitescope9.5做参考。
+        
+        --> eclipes专用包。
+     
+     b、报警相关1人， 报告相关2人（先切入， 后边安排一个人做报告服务器）、基本设置2人。
+     
+     c、针对各部分的接口简约整理
+
+	总体要求:
+	
+	    需在com.siteview.base.data里按类似IniFileKeyValue等封装一些数据接口。
+	
+	    地址设置等应该都是类似MMC的弹出式窗口了。
+	
+	    是否可以按7.0的方式实现帮助显示及保存错误提示等?
+	    
+	    参考*.cs在也在doc下， 用ultralEdit等都能看的， java这边逻辑跟那边一样， 搞通一个其他
+	    就简单了（这一个可能要多花些精力）。
+	
+	具体数据结构
+	
+          邮件设置
+        
+               基础设置 
+            
+                   email.ini <--> IniFile
+             
+                E-mail测试
+                
+                   com.siteview.base.data EmailTest方法
+                   
+                   java方面可以参考IniFileKeyValue.load()和doc/scasvapi.txt里的dowhat= EmailTest等。
+                   
+                   可以参考mmc的SendTestImpl.cs实现其他接口。
+            
+            地址设置 
+            
+                 emailAdress.ini <--> IniFile	                 
+                   
+		 E-mail模板 <--> TextTemplate.ini的Email项
+		 
+		 任务计划 
+
+        	  java方面可以参考IniFileKeyValue.load()和doc/scasvapi.txt里的dowhat= GetAllTaskName等。
+        	  
+        	  可以参考mmc的TaskDaoImpl.cs实现其他接口。	        	  
+        	  
+        --> 短信设置
+        
+        	web方式发送短信
+        	   
+        	   smsconfig.ini <--> IniFile
+        	   
+        	   测试与E-mail测试处理一样
+        	   
+        	串口方式发送短信
+        	
+        	   smsconfig.ini <--> IniFile
+        	   
+        	   测试与E-mail测试处理一样
+        	
+        	调用动态库方式发送短信
+        	
+        	   暂时先放放
+        	
+        	手机号码设置
+         	    
+         	    smsphoneset.ini  <--> IniFile
+         	    
+         	    短信模板 <--> TxtTemplate.ini的SMS项
+         	    
+         	    任务计划与与邮件设置相同
+         	
+        --> 报警规则
+        
+            alert.ini
+            
+            参考AlertDaoImpl.cs实现接口, 里面用了IniFile， 还有一个QueueDaoImpl.cs需要封装一下，这个可以在
+            上边的SendTestImpl封装成功一个后总结一下再做， 这个相对复杂一些
+            
+        --> 统计报告
+        
+            报告设置
+            
+	            reportset.ini <--> IniFile
+	            
+	            了解一下需求， reportset.ini项的意义对应如下
+	        
+			//时间周期。时间周期包括日报，周报，月报三个定期报告，下面我们列出每个报告的详细解释：
+			
+			//    日报：用户可以根据自己需要方便设定每天生成报告的时间(Generate)自动生成报告。 <==>StartTime EndTime
+			
+			//    周报：用户可以根据自己需要方便设定生成报告的时间(Generate)自动生成报告。 <==> WeekEndTime
+			
+			//          例如，如果用户选择的是周三，则报告会在周三零点生成，生成报告的数据是00:00:00至周二23:59:59段的数据。
+			
+			//    月报：在每月的1号00：00：00分自动生成报告。
+			
+			//●禁止报告
+			
+			//如果您需要临时禁止报告的生成，则钩选上“禁止报告”，那么报告就会被禁止，如果您需要恢复报告定期生成的功能，只要取消“禁止报告”钩选即可。 <==> Deny
+			
+			//●报告生成时间
+			
+			//选择此项后，报告将在指定的时间生成报告。  <==> Generate
+			
+			//                        手动生成报告也需考虑一下参数的实现                    ///////
+			
+			//bListImage:是否列出图形           如果bListImage为TRUE则隐藏图片TABLE           <==> Graphic
+			
+			//●以E-mail方式发送报告
+			
+			//您可以设定把生成的报告自动发送到指定邮箱中，在E-mail地址栏中录入接收报告的E-mail地址，当报告产生，则所设定的邮箱就会接收到新产生的报告。 <==> EmailSend
+			
+			//●显示监测器详细参数
+			
+			//每个监测器监测指标（参数）可能不止一个，例如disk监测主要参数为“disk使用率”，但是全部参数中即包括了“disk使用率”也包括了“disk的剩余率”。<==> Parameter
+			//如果您在报告设置中构选上了“显示监测器详细信息”则报告中包括了每个监测器的全部监测参数指标，
+			//如果您在报告设置中没有构选“显示监测器详细信息”则报告中只列出每个监测器的主要参数指标。
+			
+			//●任务计划
+			
+			//统计报告可以把指定时间段和具体时间点的监测信息统计出来，任务计划的选择就是对一定时间段内的监测数据的统计。<==> Plan  --> 没有看到实现的代码
+			
+			//●列出错误
+			
+			//列出错误，即把发生错误的记录列出来。 <==> ListError
+			
+			//●列出危险
+			
+			// 列出危险，即把发生危险的记录列出来。 <==> ListDanger
+			
+			//●列出发送的报警
+			
+			//如果选中该项后，在报告中就会把指定监测和时间范围内的发生报警的情况统计出来。您通过察看该统计表， <==> ListAlert
+			//可以很清楚的知道哪个监测器在什么时间发生过什么类型的报警。
+			
+			//●列出 线状/柱形图
+			
+			//选择该项后，生成的报告中会有下图统计页面： <==> ComboGraphic ...
+			
+			//●列出阀值
+	
+			// 选中该选项后，报告中会列出下图统计图，系统会把指定监测器的阀值都统计出来。 <==> ListClicket
+			
+			//●列出状态总结
+			
+			//统计出监测范围内的机器运行情况。 <==> StatusResult
+        
+        报告数据接口
+        
+       com.siteview.base.data.Report
+       com.siteview.base.data.ReportManager
+       
+                   用法可以参考现在的小报告 
+                   
+        报告服务器相关
+        
+                统计报告日志列表的section格式：报告名$开始时间$截止时间$ = 键：监测器名$返回值名称$  + 值：最小值$平均值$最大值$ （mmcreportgenerate.ini）
+                统计报告日志列表要用zk复杂表头列表来实现。
+                
+      TopN报告日志列表的section格式：报告名$开始时间$截止时间$ = 键：$返回值名称$  + 值："" （mmctopnreportgenerate.ini）
+   
+                统计报告和TopN报告怎么组织数据等的逻辑在ReportToHTMLControl.cs里， 如果感兴趣可以参考
+      com.siteview.ecc.reportserver.StatsReport, 现在还在进行中。
+    
+            趋势报告、时段对比报告、对比报告
+             
+                   趋势报告、时段对比报告、对比报告的数据用    com.siteview.base.data.Report 应该够了
+            
+                  趋势报告是同一监测器不同时间段
+           
+                  时段对比报告也是同一监测器不同时间段， 同一指标的不同时段展现在同一张图上
+           
+                  对比报告是多个监测器的同一时间段， 循环调用  com.siteview.base.data.Report 应该够了
+                  同类监测器的同一指标展现在同一张图上
+       
+       

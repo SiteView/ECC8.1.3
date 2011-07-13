@@ -1,0 +1,207 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window use="com.siteview.ecc.report.MonitorImfoOfState" id="win"
+		border="normal" closable="true" width="100%" height="100%">
+		<borderlayout id="statusreport">
+			<west id="treeview" title="状态统计报告" size="250px" flex="true"
+				splittable="true" minsize="100" maxsize="500" collapsible="true">
+				<borderlayout>
+					<north size="93%" flex="true" style="border:none">
+						<tree zclass="z-dottree" id="tree"
+							fixedLayout="true" use="com.siteview.ecc.alert.SelectTree"
+							checkable="false" height="100%" vflex="true" width="180px">
+						</tree>
+					</north>
+					<center flex="true" style="border:none">
+						<hbox style="margin-top:1%" align="center">
+							<label style="margin-left:15px"
+								id="groupLink" onCreate="win.onCreate$groupLink(event)" onClick="win.onClick$groupLink(event)">
+								组名：
+							</label>
+							<combobox id="viewNamecombobox"
+								height="15px" width="100px" readonly="true"
+								use="com.siteview.ecc.alert.control.ViewNameCombobox" />
+						</hbox>
+					</center>
+				</borderlayout>
+			</west>
+			<center border="none" flex="true">
+				<tabbox>
+					<tabs>
+						<tab label="查询" />
+					</tabs>
+					<tabpanels>
+						<tabpanel>
+
+							<borderlayout>
+								<north border="none" splittable="true" size="28%" collapsible="true" id="north">
+									<div>
+										<panel collapsible="true" title="查询条件">
+											<panelchildren>
+												<groupbox closable="false"	open="true" style="margin-right:1px">
+													<vbox>
+														<space
+															height="1px" />
+														<grid
+															oddRowSclass="none" style="border:0">
+															<columns>
+																<column
+																	label="" width="10px" align="left" />
+																<column
+																	label="" width="70px" align="left" />
+																<column
+																	label="" align="left" />
+															</columns>
+															<rows
+																style="border:none">
+																<row
+																	zclass="none" height="27px">
+																	<label value=" "/>
+																	开始时间:
+																		<datebox
+																			 format="yyyy-MM-dd HH:mm" id="begin_date"
+																			height="18px" style="font-size:10pt;" />
+																</row>
+																<row
+																	zclass="none" height="27px">	
+																	<label value=" "/>															
+																	结束时间:
+																		<datebox
+																			 format="yyyy-MM-dd HH:mm" id="end_date"
+																			height="18px" style="font-size:10pt;" />
+																</row>
+																<row zclass="none" height="27px">
+																		<label value=" "/><label value=" "/>
+																		<hbox><button
+																			width="74px" height="23px" sclass="btnDefault"
+																			label="查询"
+																			image="/main/images/button/ico/query_bt.gif"
+																			id="query" />
+																		<button
+																			id="exportButton" image="/main/images/bakRestore.gif"
+																			label="导出报表" sclass="btnDefault" height="23px" />
+																		<button
+																			label="帮助" sclass="btnDefault" width="74px"
+																			height="23px" image="/main/images/action/help.gif"
+																			action="onclick:showHelp(23)" />
+																		</hbox>
+																</row>
+															</rows>
+														</grid>
+													</vbox>
+												</groupbox>
+											</panelchildren>
+										</panel>
+									</div>
+								</north>
+
+
+								<center  flex="true" border="none" style="overflow-y:auto">
+									<div width="98%">
+										<panel title="状态列表："
+											collapsible="true">
+											<panelchildren>
+												<grid
+													style="overflow-y:auto" mold="paging" pageSize="3">
+													<columns>
+														<column
+															align="center" label="时间" width="25%">
+														</column>
+														<column
+															align="center" label="状态" width="25%">
+														</column>
+														<column
+															align="center" label="持续次数" width="25%">
+														</column>
+														<column
+															align="center" label="持续时间" width="25%">
+														</column>
+													</columns>
+													<rows
+														id="state_generate_time">
+													</rows>
+												</grid>
+											</panelchildren>
+										</panel>
+										<separator height="5px"></separator>
+										<panel title="状态分布图"
+											collapsible="true">
+										  	<panelchildren>
+												<grid
+													oddRowSclass="none" width="100%">
+													<columns>
+														<column label=""
+															align="left" width="50%"/>
+														<column label=""
+															align="right" width="50%" />
+													</columns>
+													<rows>
+														<row>
+															<label
+																id="begin_date_label" />
+															<label
+																id="end_date_label"  />
+														</row>
+														<row spans="2">
+															<image
+																id="spectrumImage" width="100%" height="30px" />
+														</row>
+													</rows>
+												</grid>
+										  	</panelchildren>
+										  </panel>
+										<separator height="5px"></separator>
+										<panel title="状态统计列表"
+											collapsible="true">
+											<panelchildren
+												style="overflow-y:auto">
+												<grid width="100%"
+													id="state_statistic">
+													<columns>
+														<column
+															align="center" label="正常" width="20%"
+															image="/images/state_green.gif">
+														</column>
+														<column
+															align="center" label="危险" width="20%"
+															image="/images/state_yellow.gif">
+														</column>
+														<column
+															align="center" label="错误" width="20%"
+															image="/images/state_red.gif">
+														</column>
+														<column
+															align="center" label="禁止" width="20%"
+															image="/images/state_stop.gif">
+														</column>
+														<column
+															align="center" label="无监测数据" width="20%"
+															image="/images/state_grey.gif">
+														</column>
+													</columns>
+													<rows
+														id="state_statistic_row">
+													</rows>
+												</grid>
+											</panelchildren>
+										</panel>
+										<panel title="状态统计图"
+											collapsible="true">
+											<panelchildren 
+												style="overflow-y:auto">
+												<image id="statureport" width="100%">
+												</image>
+											</panelchildren>
+										</panel>
+									</div>
+								</center>
+								
+								<south size="none"></south>
+							</borderlayout>
+						</tabpanel>
+					</tabpanels>
+				</tabbox>
+			</center>
+		</borderlayout>
+	</window>
+</zk>

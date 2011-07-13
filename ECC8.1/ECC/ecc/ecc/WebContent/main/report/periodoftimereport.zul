@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zk>
+	<borderlayout id="periodReport"
+		apply="com.siteview.ecc.report.PeriodReport">
+		<west title="时段对比报告" size="250px" flex="true" splittable="true" id="treeview"
+			minsize="100" maxsize="500" collapsible="true" autoscroll="true">
+			<zscript><![CDATA[					                  
+				  Date stime=new Date();
+				  stime.setDate(stime.getDate()-1); 
+				  Date etime=new Date();		
+				  //checkmark="true" multiple="true"
+				  ]]></zscript>
+			<borderlayout>
+				<north size="93%" flex="true" style="border:none">
+					<tree zclass="z-dottree" id="tree"
+						fixedLayout="true" use="com.siteview.ecc.alert.SelectTree"
+						checkable="false" height="100%" vflex="true" width="180px">
+					</tree>
+				</north>
+				<center flex="true" style="border:none">
+					<hbox style="margin-top:1%" align="center">
+						<label value="组名：" style="margin-left:15px;" id="groupLink" forward="onCreate=onCreate$groupLink,onClick=onClick$groupLink"></label>
+						<combobox id="viewNamecombobox" height="15px"
+							width="100px" readonly="true"
+							use="com.siteview.ecc.alert.control.ViewNameCombobox" />
+					</hbox>
+				</center>
+			</borderlayout>
+		</west>
+		<center flex="true" style="border:none">
+			<tabbox>
+				<tabs>
+					<tab label="查询" />
+				</tabs>
+				<tabpanels>
+					<tabpanel>
+						<borderlayout>
+							<north border="none" flex="true"  splittable="true" id="north"
+								size="29%" collapsible="true" minsize="100" maxsize="900">
+								<div>
+									<panel title="查询条件"	collapsible="true">
+										<panelchildren>
+											<groupbox  closable="false"	open="true">
+												<grid
+													oddRowSclass="none" style="border:0">
+													<columns>
+														<column label=""
+															width="80px" align="center" />
+														<column label=""
+															align="left" />
+													</columns>
+													<rows
+														style="border:none">
+														<row
+															zclass="none" height="23px">
+															对比方式：
+															<listbox
+																mold="select" rows="1" id="comparetype" width="115px">
+																<listitem
+																	label="按天对比" selected="true" value="daymodel" />
+																<listitem
+																	label="按周对比" value="weekmodel" />
+																<listitem
+																	label="按月对比" value="monthmodel" />
+															</listbox>
+														</row>
+														<row
+															zclass="none" height="23px">
+															第一时间：
+															<datebox
+																id="starttime" format="yyyy-MM-dd HH:mm" value="${stime}"
+																readonly="true" compact="true" tooltiptext="${self.value}"/>
+														</row>
+														<row
+															zclass="none" height="23px">
+															第二时间：
+															<datebox
+																id="endtime" format="yyyy-MM-dd HH:mm" value="${etime}"
+																readonly="true"  tooltiptext="${self.value}"/>
+														</row>
+														<row
+															zclass="none" height="23px">
+															<label
+																value=" " />
+															<hbox>
+																<button
+																	id="seachButton"
+																	image="/main/images/button/ico/query_bt.gif" label="查询"
+																	sclass="btnDefault" width="74px" height="23px" />
+																<button
+																	id="exportButton" image="/main/images/bakRestore.gif"
+																	label="导出报表" sclass="btnDefault" height="23px" />
+																<button
+																	label="帮助" sclass="btnDefault" width="74px"
+																	height="23px" image="/main/images/action/help.gif"
+																	action="onclick:showHelp(23)" />
+															</hbox>
+														</row>
+													</rows>
+												</grid>
+											</groupbox>
+										</panelchildren>
+									</panel>
+								</div>
+							</north>
+							<center flex="true" border="none">
+								<panel title="图表" collapsible="true" border="none">
+									<panelchildren
+										style="overflow-y:auto">
+										<div id="maptable" height="100%" width="100%"/>
+									</panelchildren>
+								</panel>
+							</center>
+							<south border="none" size="none"></south>
+						</borderlayout>
+					</tabpanel>
+				</tabpanels>
+			</tabbox>
+		</center>
+	</borderlayout>
+</zk>

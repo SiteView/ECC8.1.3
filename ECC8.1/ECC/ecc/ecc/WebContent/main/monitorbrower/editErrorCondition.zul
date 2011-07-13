@@ -1,0 +1,49 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window id="editMonitor" title="编辑报警条件" border="normal" width="600px" position="center"
+	apply="com.siteview.ecc.monitorbrower.PublicOperate"	closable="true">
+		<hbox style="margin:5px 5px 5px 5px">
+			<label value="项目：" />
+			<combobox id="expr"  readonly="true" height="15px"  width="140px">
+				<comboitem label="是否已经启动" />
+				<comboitem label="运行状态" />
+				<comboitem label="服务状态" />
+				<comboitem label="对应进程名称" />
+				<comboitem label="运行实例个数（个）" />
+			</combobox>			
+			<label value="&#160;&#160;&#160;&#160;操作符：" />
+			<combobox id="fh"  readonly="true" height="15px" width="70px"  >						
+			</combobox>	
+			<label value="&#160;&#160;&#160;&#160;值：" />		
+			<textbox id="v1" height="15px" width="130px" />
+		</hbox>
+		<hbox style="margin:5px 5px 5px 5px">
+			<label value="关系：" />
+			<radiogroup>
+				<radio id="rdy" label="与" checked="true" />
+				<radio id="rdh" label="或" />
+			</radiogroup>
+			<space width="380px"/>
+			<button label="添加" id="btnadd" width="60px" />
+		</hbox>
+		<listbox id="lb1" style="margin:5px 5px 5px 5px" checkmark="true"
+			multiple="true">
+			<listhead sizable="true">
+				<listheader label="项目" width="35%" sort="none"></listheader>
+				<listheader label="操作符" width="20%" sort="none"></listheader>
+				<listheader label="值" sort="none"></listheader>
+				<listheader label="关系" width="15%" sort="none"></listheader>
+			</listhead>
+		</listbox>
+		<space orient="horizontal" height="30px"/>
+		<div style="float:right;margin-bottom:12px;margin-right:12px; " >
+			<button id="btndel" label="删除" sclass="btnDefault" width="60px" />
+			<button id="btnok" label="确定" sclass="btnDefault" width="60px"/>
+			<button id="btnclose"  label="取消" sclass="btnDefault" width="60px">
+				<attribute name="onClick">
+		       editMonitor.detach();
+	  	      </attribute>
+			</button>
+		</div>
+	</window>
+</zk>

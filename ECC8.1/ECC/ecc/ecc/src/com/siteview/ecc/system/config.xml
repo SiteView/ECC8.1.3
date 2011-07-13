@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<engine-config>
+	<diagnosises>
+	
+		<diagnosis>com.siteview.ecc.system.impl.HardwareDiagnosisImpl</diagnosis>
+		<diagnosis>com.siteview.ecc.system.impl.TomcatDiagnosisImpl</diagnosis>
+		<diagnosis>com.siteview.ecc.system.impl.SVDBDiagnosisImpl</diagnosis>
+		
+	</diagnosises>
+</engine-config> 

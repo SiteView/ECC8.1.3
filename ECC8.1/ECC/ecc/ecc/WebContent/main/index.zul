@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?page id="eccmain" title="SiteView Ecc 8.1.3"?>
+<?link  rel="stylesheet" type="text/css" href="css/main.css"?>
+<zk xmlns:h="http://www.w3.org/1999/xhtml">
+<h:div style="margin-top:-10px;height:1px;width:100%;position: absolute; z-index: 33;">
+<h:div class="eccHeaderStatics" style="width:550px;height:15px;margin-left: -491px; left:50%;margin: 20px auto 0px auto;">
+<div id="eccHeaderComposer" apply="com.siteview.ecc.treeview.EccHeaderComposer" >
+	<label sclass="ecc-header-label" height="15px"
+		value="欢迎您" />
+	<label id="loginName" sclass="ecc-header-label" height="15px"/>
+	<label sclass="ecc-header-label" height="15px"
+		value=",在线" visible="true"/>
+	<label id="onlineInfo" sclass="ecc-header-label" height="15px" visible="true"/>
+	<label sclass="ecc-header-label" height="15px"
+		value="人" visible="true"/>
+	<image src='/main/images/header.gif' />
+	 <label sclass="ecc-header-label" height="15px"
+		value="全部：" /><label id="total_monitor" sclass="ecc-header-label" height="15px"/>
+	<image src='/main/images/header1.gif' />
+	 <label sclass="ecc-header-label" height="15px"
+		value="正常：" /><label id="total_ok" sclass="ecc-header-label" height="15px"/>
+	<image src='/main/images/header3.gif' />
+	 <label sclass="ecc-header-label" height="15px"
+		value="错误：" /><label id="total_error" sclass="ecc-header-label" height="15px"	/>
+	<image src='/main/images/header2.gif' />
+	 <label sclass="ecc-header-label" height="15px"
+		value="危险：" /><label id="total_warning" sclass="ecc-header-label" height="15px"/>
+</div>	
+</h:div>
+</h:div>
+	<borderlayout id="main" apply="com.siteview.ecc.treeview.EccLayoutComposer" style="margin:0px;">
+		<north border="none" sclass="mainNorth">
+			<borderlayout style="margin:0px">
+				<west border="none" style="cursor:pointer" sclass="ecc-logo">
+						<timer id="header_timer" running="true" delay="30000" repeats="true" use="com.siteview.ecc.timer.EccTimer"/>
+				</west>
+				<center border="none" class="ecc-header">
+				<div height="30px" style="padding-top:5px">
+						<popup id="action_popup" use="com.siteview.actions.ActionPopup"/>
+						<popup id="nodeInfoTooltip"	use="com.siteview.ecc.util.TooltipPopup" />
+				</div>
+				</center>
+				<east border="none" sclass="ecc-top_right">
+				<div>
+				<image id="btnLogout" src="/main/images/none.gif" width="75px" height="40px" style="float:right;cursor:pointer"/>
+				<image action="onclick:showHelp(0)" id="btnHelp" src="/main/images/none.gif" width="75px" height="40px" style="float:right;cursor:pointer"/>
+				</div>
+				</east>
+			</borderlayout>
+		</north>
+		<center flex="true" border="none" sclass="ecc-top_middle2">
+			<tabbox  id="tabBox" sclass="ecc-top_right2" >
+				<tabs sclass="eccMainTabbox" style="background:transparent;">
+					<tab id="tab_monitor" label="监控器" closable="false" />
+					<tab id="tab_summaryview" label="Top10 报告" closable="false" />
+					<tab id="tab_view" label="视图" closable="false" />
+					<tab id="tab_css" label="主题" closable="false" />
+					<tab id="info_tab" label="系统信息" closable="false" use="com.siteview.ecc.timer.EccInfoTab"/>
+					<!-- tab id="bbs_tab" label="建议与BUG报告" closable="false"/-->
+				</tabs>
+				<tabpanels >
+					<tabpanel>
+						<borderlayout style="margin:0;">
+							<west use="com.siteview.ecc.controlpanel.EccLayoutWest" id="westTree" style="font-size:12px" size="195px" flex="true"
+								splittable="true" minsize="0" maxsize="500"
+								collapsible="true"  border="none">
+								<panel framable="false">
+									<toolbar style="padding-left:3px;font-size:12px">
+									<hbox><label pre="true" style="width:100px;font-size:12px;over-flow:hidden" value="视图："/><listbox mold="select" id="viewSelect" /><space width="1px"/>
+									<image id="btnEditView" hover="/main/images/trend.gif" tooltiptext="编辑视图" style="cursor:pointer" align="absmiddle" src="/main/images/virtualvieweditting.gif" onClick='tabBox.setSelectedPanel(virtualViewTab)'/><space width="1px"/>
+									<image id="btnRefreshTree" hover="/main/images/refresh_hover.gif" tooltiptext="刷新" style="cursor:pointer" align="absmiddle" src="/main/images/refresh.gif"/>
+									</hbox>
+									<hbox style="padding-top:3px;"><label pre="true" style="width:120px;font-size:12px;over-flow:hidden" value="设备："/>
+									<combobox id="locateEntityCombox" autodrop="true" buttonVisible="false"/><image tooltiptext="清空" id="imgClear" hover="/main/images/clear_hover.gif" visible="false" style="cursor:pointer" src="/main/images/clear.gif"/></hbox>
+									<!-- 注释掉页面上根据监测器ID查找并自动跳转到监测器显示界面的功能
+									<hbox style="padding-top:3px;"><label pre="true" style="width:120px;font-size:12px;over-flow:hidden" value=" ID： "/>
+									<combobox id="idCombox" autodrop="true" buttonVisible="false"/><image tooltiptext="清空" id="idImgClear" hover="/main/images/clear_hover.gif" visible="false" style="cursor:pointer" src="/main/images/clear.gif"/></hbox>
+									 -->
+									</toolbar>
+									<panelchildren>
+										
+										<borderlayout>
+											<center>
+												<tree zclass="z-dottree" Vflex="true" id="tree"/>
+											</center>
+											<south id="south" title="最近浏览的监测器" flex="true" maxsize="140" splittable="true" collapsible="true">
+												<panel title="">
+													<panelchildren style="overflow-y:auto;">
+														<listbox fixedLayout="true" mold="paging" multiple="true" vflex="true" id="recentlyViewMonitor" width="100%" rows="5" >
+															<listhead>
+																<listheader width="32px" label="状态" />
+																<listheader width="" label="名称" />
+															</listhead>
+														</listbox>
+													</panelchildren>
+												</panel>
+											</south>
+										</borderlayout>
+									</panelchildren>
+								</panel>
+							</west>
+							<center flex="true"  border="none">
+								<include mode="defer" progressing="false" id="eccBody"/>
+							</center>
+						</borderlayout>
+					</tabpanel>
+					<tabpanel fulfill="tab_summaryview.onSelect">
+					<borderlayout><center style="overflow-y:scroll;" >
+						<include src="/main/report/top10/summaryview.zul" id="include_summaryview"/>
+					</center></borderlayout>
+					</tabpanel>
+					<tabpanel id="virtualViewTab" fulfill="tab_view.onSelect">
+						<borderlayout apply="com.siteview.ecc.treeview.VirtualViewLayoutComposer">
+							<west title="默认视图" size="350px" flex="true"
+								splittable="true" minsize="100" maxsize="700"
+								collapsible="true"  border="none">
+								<panel framable="false">
+									<panelchildren>
+										<tree zclass="z-dottree" Vflex="true" id="treeOriginal"/>
+									</panelchildren>
+								</panel>
+							</west>
+							<center flex="true"  border="none">
+								<panel framable="false">
+									<toolbar>
+										<label style="font-size:12px" value="虚拟视图:" />
+										<combobox id="viewSelectEditting"/>
+									</toolbar>
+									<panelchildren>
+										<tree zclass="z-dottree" Vflex="true" id="treeEditting"/>
+									</panelchildren>
+								</panel>
+							</center>
+						</borderlayout>
+					</tabpanel>
+					<tabpanel fulfill="tab_css.onSelect">
+					<panel framable="false" border="none">
+					<panelchildren id="cssSelectDiv" use="com.siteview.ecc.css.CssSelectDiv">
+					</panelchildren>
+					</panel>
+					</tabpanel>
+					<tabpanel fulfill="info_tab.onSelect">
+					<borderlayout apply="com.siteview.ecc.timer.OnlineLayoutComposer">
+					<north size="90px"  border="none">
+					<vbox id="onlineInfoDiv"/>
+					</north>
+					<center id="chatCenter" style="overflow-y:auto;"  border="none">
+					<!-- <div id="chatContent" style="padding-left:5px;padding-right:5px;"/> -->
+					<grid id="chartGrid" mold="paging" pageSize="10" style="border:none" oddRowSclass="none" width="100%">
+						<rows id="chartRows"></rows>
+					</grid>
+					</center>
+					<south size="28px"  border="none">
+					<div><textbox height="19px" id="sendMsg" width="400px"/><button id="btnSend" src="/images/alarmstart.gif" label="发送" sclass="btnDefault"/></div>
+					</south>
+					</borderlayout>
+					</tabpanel>
+					<!-- tabpanel fulfill="bbs_tab.onSelect">
+					<iframe height="100%" width="100%" src="http://eccdemo.siteview.com/bbs/forumdisplay.php?fid=2"/>
+					</tabpanel-->
+				</tabpanels>
+			</tabbox>
+		</center>
+	</borderlayout>
+<script><![CDATA[
+mesg.FAILED_TO_RESPONSE="服务器连接出现问题，请检查服务端程序。\n\n";
+var newWin=null;
+function showHelp(id)
+{
+  if(newWin!=null)
+  {
+	  try{newWin.close();}catch(e){}
+  }
+  var url="/ecc/main/help/help/outline_"+id+".htm";
+  newWin=window.open("","helpWin");
+  newWin.document.write("<frameset cols='283,*' framespacing='0' border='0' frameborder='0'>");
+  newWin.document.write("<frame name='contents' target='main' src='/ecc/main/help/index.htm'/>");
+  newWin.document.write("<frame name='main' scrolling='yes' src='"+url+"'/>");
+  newWin.document.write("</frameset>");
+  newWin.document.close();
+  newWin.focus();
+}
+]]></script>
+</zk>

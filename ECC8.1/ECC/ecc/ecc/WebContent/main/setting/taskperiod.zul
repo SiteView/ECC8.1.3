@@ -1,0 +1,42 @@
+<?page id="perPage" title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window apply="com.siteview.ecc.tasks.TaskDaoImplPeriod"
+						border="normal" style="overflow-y:auto;"
+						forward="onCreate=onInitPer()" contentStyle="overflow:auto">
+			<panel title="时间段任务计划" collapsible="true">
+				<panelchildren>
+					
+						<style>
+							.profile { width:50px; height:50px; }
+							.p-data { padding-top:5px; }
+						</style>
+						<div height="27px">
+							<button label="添加" id="addButton1" style="font-size:12px" sclass="btnDefault" width="74px" height="23px" forward="onClick=onAddButton1"
+								image="/main/images/button/ico/add_bt.gif" /><space width="1px" />
+							<button label="删除" id="delButton" style="font-size:12px" sclass="btnDefault" width="74px"
+								height="23px" forward="onClick=onDelButton"
+								image="/main/images/button/ico/delete_bt.gif" /><space width="1px" />
+							<button label="刷新"
+								image="/main/images/button/ico/ref_bt.gif"
+								style="font-size:12px" sclass="btnDefault" width="74px"
+								height="23px" forward="onClick=onInitPer" id="refreshButton" />
+							<button label="帮助" sclass="btnDefault"
+							width="74px" height="23px" 
+							image="/main/images/action/help.gif" action="onclick:showHelp(32)"/>
+						</div>
+						<listbox id="Listbox" checkmark="true"  fixedLayout="true" 
+						multiple="true" mold="paging"  pageSize="10">
+							<listhead sizable="true">
+								<listheader label="名称" width="33%"
+									align="left" sort="auto(name)"/>
+								<listheader label="描述" width="34%"
+									align="left" sort="auto(description)"/>
+								<listheader label="编辑" width="33%"
+									align="left" />
+							</listhead>
+
+						</listbox>
+				</panelchildren>
+			</panel>
+	</window>
+</zk>

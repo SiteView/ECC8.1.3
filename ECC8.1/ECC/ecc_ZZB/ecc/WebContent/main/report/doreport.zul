@@ -1,0 +1,59 @@
+<?page style="height:100%" ?>
+<window width="100%" height="100%">
+<borderlayout height="100%">
+    <north maxsize="24" size="24" border="0">
+        <button label="Report!" onClick="doReport()"  sclass="btnDefault"  width="74px" height="23px"/>
+    </north>
+    <center border="none" flex="true">
+        <iframe id="report" />
+    </center>
+</borderlayout>
+<zscript><![CDATA[
+    import java.io.*;
+    import java.sql.*;
+    import org.zkoss.util.media.AMedia;
+    import net.sf.jasperreports.engine.JasperRunManager;
+    void doReport() {
+        InputStream is = null;
+        try {
+            //generate report pdf stream
+            is = Thread.currentThread().getContextClassLoader()
+                .getResourceAsStream("FirstJasper.jasper");
+ 
+            final Map params = new HashMap();
+            params.put("ReportTitle", "The First Jasper Report Ever");
+            params.put("MaxOrderID", new Integer(10500));
+ 
+            final byte[] buf = 
+                JasperRunManager.runReportToPdf(is, params, getConnection());
+            
+            //prepare the AMedia for iframe
+            final InputStream mediais = new ByteArrayInputStream(buf);
+            final AMedia amedia = 
+                new AMedia("FirstReport.pdf", "pdf", "application/pdf", mediais);
+ 
+            //set iframe content
+            report.setContent(amedia);
+        } catch (Exception ex) {
+            throw new RuntimeException(ex);
+        } finally {
+            if (is != null) {
+                is.close();
+            }
+        }
+    }
+    private static Connection getConnection() 
+    throws ClassNotFoundException, SQLException
+    {
+        //Change these settings according to your local configuration
+        String driver = "org.hsqldb.jdbcDriver";
+        String connectString = "jdbc:hsqldb:hsql://localhost";
+        String user = "sa";
+        String password = "";
+ 
+        Class.forName(driver);
+        Connection conn = DriverManager.getConnection(connectString, user, password);
+        return conn;
+    }
+]]></zscript>
+</window>

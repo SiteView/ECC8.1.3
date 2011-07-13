@@ -1,0 +1,37 @@
+<?page title="Test Mail" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window title="添加权限设置" border="normal"
+		mode="popup" width="370px" closable="true"
+		apply="com.siteview.ecc.userRole.AddRole">
+			<groupbox closable="false" style="margin-left:10px;margin-right:10px;margin-top:10px" >
+	 			 <caption  label="基础设置"/>	
+					<grid id="RoleGroupId" oddRowSclass="none"  style="margin-top:5px;border:none">
+						<columns>
+							<column label="" width="123px"/>
+							<column label="" width="123px"/>
+						</columns>
+						<rows >
+							<row zclass="none" height="23px">	
+									<label value="&#160;&#160;地&#160;&#160;区*：&#160;&#160;" />
+									<textbox id="areaAddress" height="15px" width="200px" tooltiptext="各个地级市"/>								
+							</row>												
+							<row zclass="none" height="23px">
+									<label value="&#160;&#160;设&#160;备&#160;数*：&#160;&#160;" />
+									<textbox id="entityNumber" height="15px" width="200px" tooltiptext="每个省(市)的设备数，不能为空"/>								
+							</row>
+							<row zclass="none" height="23px">
+									<label value="&#160;监&#160;测&#160;点&#160;数*：&#160;&#160;" />
+									<textbox id="monitorNumber" height="15px" width="200px" tooltiptext="每个省(市)的检测器点数，不能为空"/>
+							</row>		
+						</rows>
+					</grid>
+	 		</groupbox>	
+				<vbox style="margin-left:50px">
+					<hbox style="margin-top:10px;margin-bottom:10px">
+						<button id="RoleButton" label="保存" sclass="btnDefault" width="74px" height="23px" image="/main/images/button/ico/save_bt.gif"
+							forward="onClick=onAdd" />
+					</hbox>
+				</vbox>	 		
+
+	</window>
+</zk>

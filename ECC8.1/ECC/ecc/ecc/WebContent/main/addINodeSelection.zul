@@ -1,0 +1,22 @@
+<zk>
+<window id="winAddINodeSelection" title="子节点的添加选项" position="center" border="normal" width="330px" apply="com.siteview.ecc.treeview.AddINodeSelection" closable="true">
+<separator /> 
+<groupbox mold="3d">
+    <hbox>
+    <radiogroup orient="vertical">
+    	<radio label="添加自身" id="justAddSelf" />
+    	<radio label="添加自身，及子孙监测器" id="AddWithAllSubMonitor" />
+    	<radio label="添加自身，及下级递归结构" id="AddWithConstruction" />
+    	<textbox id="name" width="10px" visible="false"> </textbox>  
+    </radiogroup>
+    </hbox>
+</groupbox>    
+<separator />
+<groupbox mold="3d">
+  <hbox align="end">
+    <button label="添加" id="btnAdd" />
+    <button label="放弃" id="btnCancel" />
+   </hbox>   
+</groupbox>    
+</window>
+</zk>

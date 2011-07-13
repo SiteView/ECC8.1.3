@@ -1,0 +1,45 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window id="strategywin" title="新建策略" border="normal" width="510px" height="470px" closable="true"  use="com.siteview.ecc.alert.StrategyView">
+ <vbox>
+	<tabbox>
+		<tabs>
+			<tab label="类型设置"></tab>
+		</tabs>
+		<tabpanels>
+			<tabpanel  height="100%">
+				<div height="352px">
+					<hbox><label value="策略名称*："/><textbox id="strategyName" height="15px" width="400px"/></hbox>
+					<separator width="343px" height="5px"/>
+					<hbox width="100%" height="70%">
+						<groupbox  width="257px">
+						<caption></caption>
+							<hbox>
+							<space width="1px"/>
+							<vbox><tree id="tree" height="300px" width="250px"  zclass="z-dottree" multiple="true"  use="com.siteview.ecc.monitorbrower.EntitySelectTree" checkable="false" /><space height="1px"/></vbox>
+							<space width="1px"/>
+							</hbox>
+						</groupbox>
+						<space width="1px"/>
+						<groupbox width="212px">
+							<caption>监测器类型</caption>
+							<hbox>
+							<space width="1px"/>
+							<vbox><listbox id="typelist" height="302px" width="205px" multiple="true" checkmark="true"/><space height="1px"/></vbox>
+							<space width="1px"/>
+							</hbox>
+						</groupbox>
+					</hbox>
+				</div>
+			</tabpanel>
+		</tabpanels>
+	</tabbox>
+	<space height="1px"/>
+	<hbox>
+		<separator width="327px" height="4px"/>
+		<button label="保  存" id="button_ok" sclass="btnDefault" width="74px" height="23px"  image="/main/images/button/ico/save_bt.gif" onClick="strategywin.onSave()"/>
+		<button label="取  消" id="button_cancel" sclass="btnDefault" width="74px" height="23px" image="/main/images/button/ico/close_bt.gif" onClick="strategywin.detach()"/>
+	</hbox>
+	</vbox>
+</window>
+</zk>

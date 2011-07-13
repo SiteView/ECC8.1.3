@@ -1,0 +1,77 @@
+<borderlayout>
+	<center style="overflow:auto;border:none">
+		<panel title="值班表设置" collapsible="true">
+			<panelchildren>
+				<window apply="com.siteview.ecc.dutytable.DutytableSet"
+					border="normal" style="overflow-y:auto;" id="win" forward="onCreate=onInit()">
+
+					<div height="27px">
+						<button id="addDutyButton" sclass="btnDefault"
+							width="74px" height="23px" label="添  加"
+							image="/main/images/button/ico/add_bt.gif">
+							<attribute name="onClick">{
+									final Window win = (Window) Executions.createComponents(
+									"/main/setting/addDutySet.zul", null, null);
+									win.doModal();
+									}</attribute>
+						</button>
+						<space width="1px" />
+						<button sclass="btnDefault" width="74px"
+							height="23px" label="删  除" forward="onClick=onDel"
+							image="/main/images/button/ico/delete_bt.gif" />
+						<space width="1px" />
+						<button sclass="btnDefault" width="74px"
+							height="23px" label="刷  新" forward="onClick=onReFresh"
+							image="/main/images/button/ico/ref_bt.gif" />
+						<button label="帮助" sclass="btnDefault"
+							width="74px" height="23px" 
+							image="/main/images/action/help.gif" action="onclick:showHelp(30)"/>
+					</div>
+					<panel title="值班表设置详细信息" border="normal"
+						maximizable="" collapsible="true" maximized="">
+						<panelchildren style="left">
+							<listbox fixedLayout="true" mold="paging"
+								id="listbox_data" forward="onSelect=onShowMoreInfo"
+								multiple="true" checkmark="true" vflex="true" rows="8" pageSize="8" 
+								use="com.siteview.ecc.dutytable.DutySetListbox">
+<!-- 							<listhead sizable="true">
+									<listheader align="left" label="值班表"
+										sort="auto" width="25%" />
+									<listheader align="left" label="类型"
+										sort="auto" width="30%" />
+									<listheader align="left" label="描述"
+										sort="auto" />
+									<listheader align="left" label="编辑"
+										width="10%" />
+								</listhead>
+								 -->
+							</listbox>
+						</panelchildren>
+					</panel>
+					<separator />
+					<div height="30px">
+						<button id="addDutyInfoButton"
+							sclass="btnDefault" width="74px" height="23px" label="添  加"
+							image="/main/images/button/ico/add_bt.gif" disabled="true"
+							forward="onClick=onAddDutyInfo">
+						</button>
+						<space width="1px" />
+						<button id="delDutyInfoButton" disabled="true"
+							sclass="btnDefault" width="74px" height="23px" label="删  除"
+							forward="onClick=onDelInfo"
+							image="/main/images/button/ico/delete_bt.gif" />
+						<space width="1px" />
+					</div>
+					<panel title="值班信息" border="normal" id="moreInfo"
+						collapsible="true">
+						<panelchildren style="center" id="dutyInfoPanelChildren">
+							<listbox id="dutyInof" vflex="true"
+								fixedLayout="true" multiple="true" mold="paging" rows="6" pageSize="6">
+							</listbox>
+						</panelchildren>
+					</panel>
+				</window>
+			</panelchildren>
+		</panel>
+	</center>
+</borderlayout>

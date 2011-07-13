@@ -1,0 +1,13 @@
+<zk>
+<zscript>
+try{
+	String directory = java.net.URLDecoder.decode(Executions.getCurrent().getParameter("directory"), "UTF-8");
+	String filename = java.net.URLDecoder.decode(Executions.getCurrent().getParameter("filename"), "UTF-8");
+	String content = java.net.URLDecoder.decode(Executions.getCurrent().getParameter("content"), "UTF-8");
+	
+	com.siteview.ecc.tuopu.TuopulistModel.Uploader(directory, filename, content);
+}catch(Exception e){
+	e.printStackTrace();
+}
+</zscript>	
+</zk>

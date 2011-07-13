@@ -1,0 +1,145 @@
+<?page title="" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window id="wSimpleReport" title="简单报告" border="normal" 
+		apply="com.siteview.ecc.simplereport.SimpleReport">
+		<panel id="p2"  >
+		<panelchildren id="p1" style="margin:5px 5px 5px 5px;overflow-y:auto;">
+		<panel title="  ">
+			<panelchildren>
+				<vbox align="center" width="100%">
+					<label style="font:oblique small-caps 900 26pt 黑体;"
+						id="monitorname" value="LocalHost:Disk">
+					</label>
+					<label id="datefromto"
+						value="时段:2009-02-28 22:58:34~2009-03-02 14:58:34">
+					</label>
+				</vbox>
+			</panelchildren>
+		</panel>
+		<panel title="监测" collapsible="true">
+			<panelchildren>
+				<listbox id="mlist" fixedLayout="true">
+					<listhead>
+						<listheader width="30%" label="名称"
+							sort="none">
+						</listheader>
+						<listheader width="10%" label="正常(%)"
+							sort="none">
+						</listheader>
+						<listheader width="10%" label="危险(%)"
+							sort="none">
+						</listheader>
+						<listheader width="10%" label="错误(%)"
+							sort="none">
+						</listheader>
+						<listheader width="10%" label="禁止(%)"
+							sort="none">
+						</listheader>
+						<listheader width="30%" label="阀值"
+							sort="none">
+						</listheader>
+					</listhead>
+				</listbox>
+			</panelchildren>
+		</panel>
+
+		<panel title="统计" collapsible="true">
+			<panelchildren>
+				<listbox id="slist" fixedLayout="true" >
+					<listhead>
+						<listheader width="30%" label="名称"
+							sort="none">
+						</listheader>
+						<listheader width="25%" label="返回值"
+							sort="none">
+						</listheader>
+						<listheader width="15%" label="最大值"
+							sort="none">
+						</listheader>
+						<listheader width="15%" label="平均值"
+							sort="none">
+						</listheader>
+						<listheader width="15%" label="最新值"
+							sort="none">
+						</listheader>
+					</listhead>
+				</listbox>
+			</panelchildren>
+		</panel>
+		<panel title="图表" collapsible="true">
+			<panelchildren style="margin:0px">
+				<vbox id="maptable" align="center" width="100%"></vbox>
+			</panelchildren>
+		</panel>
+		<panel title="错误" collapsible="true">
+			<panelchildren>
+				<listbox id="errorlist" fixedLayout="true">
+					<listhead>
+						<listheader width="20%" label="时间"
+							sort="none">
+						</listheader>
+						<listheader width="40%" label="名称"
+							sort="none">
+						</listheader>
+						<listheader width="40%" label="描述"
+							sort="none">
+						</listheader>
+					</listhead>
+				</listbox>
+			</panelchildren>
+		</panel>
+		<panel title="危险" collapsible="true">
+			<panelchildren>
+				<listbox id="dangerlist" fixedLayout="true">
+					<listhead>
+						<listheader width="20%" label="时间"
+							sort="none">
+						</listheader>
+						<listheader width="40%" label="名称"
+							sort="none">
+						</listheader>
+						<listheader width="40%" label="描述"
+							sort="none">
+						</listheader>
+					</listhead>
+				</listbox>
+			</panelchildren>
+		</panel>
+		<panel title="正常" collapsible="true">
+			<panelchildren>
+				<listbox id="oklist" fixedLayout="true">
+					<listhead>
+						<listheader width="20%" label="时间"
+							sort="none">
+						</listheader>
+						<listheader width="40%" label="名称"
+							sort="none">
+						</listheader>
+						<listheader width="40%" label="描述"
+							sort="none">
+						</listheader>
+					</listhead>
+				</listbox>
+			</panelchildren>
+		</panel>
+		<panel title="禁止" collapsible="true">
+			<panelchildren>
+				<listbox id="disablelist" fixedLayout="true">
+					<listhead>
+						<listheader width="20%" label="时间"
+							sort="none">
+						</listheader>
+						<listheader width="40%" label="名称"
+							sort="none">
+						</listheader>
+						<listheader width="40%" label="描述"
+							sort="none">
+						</listheader>
+					</listhead>
+				</listbox>
+			</panelchildren>
+		</panel>
+		</panelchildren>
+		</panel>
+	</window>
+</zk>

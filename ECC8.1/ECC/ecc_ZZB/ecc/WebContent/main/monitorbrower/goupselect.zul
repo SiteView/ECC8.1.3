@@ -1,0 +1,28 @@
+<?page contentType="text/html;charset=UTF-8"?>
+<zk>
+<window id="groupselect" title="组名选择" height="320px" width="300px" border="normal">
+<tabbox>
+	<tabs>
+		<tab label="浏览" />
+	</tabs>
+	<tabpanels>
+		<tabpanel>
+			<tree id="monitortree" zclass="z-dottree" use="com.siteview.ecc.monitorbrower.GroupSelectTree" height="200px" vflex="true" width="250px"/>
+		</tabpanel>
+	</tabpanels>
+</tabbox>
+
+	<hbox style="margin-left:120px;margin-top:3px" align="end">
+		<button id="OK" label="保存"  sclass="btnDefault" width="74px" height="23px" image="/main/images/button/ico/save_bt.gif">
+			<attribute name="onClick">
+			Textbox t = (Textbox)groupselect.getAttribute("groupLabel");
+			com.siteview.ecc.monitorbrower.GroupSelectTree tree = (com.siteview.ecc.monitorbrower.GroupSelectTree)monitortree;
+			t.setValue(tree.getAllSelectedIds());
+			groupselect.detach();
+			</attribute>
+		</button>
+		<button id="Cancel" label="取消"  sclass="btnDefault" onClick="groupselect.detach()"  width="74px" height="23px" image="/main/images/button/ico/close_bt.gif"/>
+	</hbox>
+</window>
+
+</zk>

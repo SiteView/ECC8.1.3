@@ -1,0 +1,25 @@
+<?page contentType="text/html;charset=UTF-8"?>
+<zk>
+<window id="monitorselect" title="监测器选择" height="600px" width="600px"  border="normal" 
+	apply="com.siteview.ecc.treeview.windows.TeleBackup">
+	<tabbox>
+		<tabs>
+			<tab label="浏览" />
+		</tabs>
+		<tabpanels>
+			<tabpanel>
+				<tree id="monitorTree"
+						use="com.siteview.ecc.treeview.telebackup.MonitorSelectTree"
+						zclass="z-dottree"  checkable="true" vflex="true" 
+						width="565px" height="500px">
+				</tree>
+			</tabpanel>
+		</tabpanels>
+	</tabbox>
+	<hbox style="margin-left:360px;margin-top:3px" align="end">
+		<button id="OK" label="保存"  sclass="btnDefault" width="74px" height="23px" image="/main/images/button/ico/save_bt.gif"/>
+		<button id="Cancel" label="取消"  sclass="btnDefault" onClick="monitorselect.detach()"  width="74px" height="23px" image="/main/images/button/ico/close_bt.gif"/>
+	</hbox>
+</window>
+
+</zk>

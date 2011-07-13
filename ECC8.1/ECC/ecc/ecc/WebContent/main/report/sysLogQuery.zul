@@ -1,0 +1,286 @@
+<window id="sysLogWin" apply="com.siteview.ecc.report.SysLogQuery" border="none">
+	<panel sclass="ecc-panel" title="查询条件" width="100%"
+		collapsible="true" >
+		<panelchildren>
+			<groupbox closable="false" open="true">
+			<grid oddRowSclass="none" style="border:none">
+				<columns>
+				    <column label="" width="3px"/>
+					<column label="" width="100px"/>
+					<column label="" />
+					<column label="" width="3px"/>
+					<column label="" />
+					<column label="" />
+					<column label="" width="150px"/>
+				</columns>
+				<rows>
+					<row zclass="none" height="3px">
+						<separator/>						
+					</row>
+					<row zclass="none">
+						<separator/>
+						<label value="正则表达式：" />
+						<textbox id="biaodashi" width="190px"
+							height="15px" />
+						<separator/>
+						<label value="IP地址：" />
+						<textbox id="sourceIP" width="190px"
+							height="15px"  />
+						<separator/>
+					</row>
+					<row zclass="none" height="1px">
+						<separator/>
+					</row>
+					<row zclass="none">
+						<separator/>
+						<label value="开始时间：" />
+						<hbox>
+							<datebox id="startdate" width="90px"
+								format="yyyy-MM-dd" readonly="true" height="16px"/>
+							<timebox id="starttime" readonly="true" width="59px" height="16px" />
+						</hbox>
+						<separator/>
+						<label value="结束时间：" />
+						<hbox>
+							<datebox id="enddate" width="90px"
+								format="yyyy-MM-dd" readonly="true" height="16px"/>
+							<timebox id="endtime" readonly="true" width="59px" height="16px"/>
+						</hbox>
+						<separator/>
+					</row>
+					<row zclass="none" height="1px">
+						<separator/>						
+					</row>
+					<row zclass="none">
+						<label/>
+						<label
+							value="设备："  />
+						<listbox rows="5" width="193px" style="border: 1px solid #7F9DB9;"
+							id="facilityListbox">
+							<listitem>
+								<listcell label="" >
+									<checkbox label="Kernel" id="f0" tooltiptext=""/>
+								</listcell>
+							</listitem>
+							<listitem>
+								<listcell label="">
+									<checkbox label="User" id="f1" />
+								</listcell>
+							</listitem>
+							<listitem>
+								<listcell label="">
+									<checkbox label="Mail" id="f2" />
+								</listcell>
+							</listitem>
+							<listitem>
+								<listcell label="">
+									<checkbox label="Demon" id="f3" />
+								</listcell>
+							</listitem>
+							<listitem>
+								<listcell label="">
+									<checkbox label="Auth" id="f4" />
+								</listcell>
+							</listitem>
+							<listitem>
+								<listcell label="">
+									<checkbox label="Syslog" id="f5" />
+								</listcell>
+							</listitem>
+							<listitem>
+								<listcell label="">
+									<checkbox label="Lpr" id="f6" />
+								</listcell>
+							</listitem>
+							<listitem>
+								<listcell label="">
+									<checkbox label="News" id="f7" />
+								</listcell>
+							</listitem>
+							<listitem>
+								<listcell label="">
+									<checkbox label="UUCP" id="f8" />
+								</listcell>
+							</listitem>
+							<listitem>
+								<listcell label="">
+									<checkbox label="Cron" id="f9" />
+								</listcell>
+							</listitem>
+							<listitem>
+								<listcell label="">
+									<checkbox label="Security" id="f10" />
+								</listcell>
+							</listitem>
+							<listitem>
+								<listcell label="">
+									<checkbox label="FTP Demo" id="f11" />
+								</listcell>
+							</listitem>
+							<listitem>
+								<listcell label="">
+									<checkbox label="NTP" id="f12" />
+								</listcell>
+							</listitem>
+							<listitem>
+								<listcell label="">
+									<checkbox label="Log Audit" id="f13" />
+								</listcell>
+							</listitem>
+							<listitem>
+								<listcell label="">
+									<checkbox label="Log Alert" id="f14" />
+								</listcell>
+							</listitem>
+							<listitem>
+								<listcell label="">
+									<checkbox label="Clock Demo" id="f15"/>
+								</listcell>
+							</listitem>
+							<listitem>
+								<listcell label="">
+									<checkbox label="Local0" id="f16"/>
+								</listcell>
+							</listitem>
+							<listitem>
+								<listcell label="">
+									<checkbox label="Local1" id="f17"/>
+								</listcell>
+							</listitem>
+							<listitem>
+								<listcell label="">
+									<checkbox label="Local2" id="f18" />
+								</listcell>
+							</listitem>
+							<listitem>
+								<listcell label="">
+									<checkbox label="Local3" id="f19"/>
+								</listcell>
+							</listitem>
+							<listitem>
+								<listcell label="">
+									<checkbox label="Local4" id="f20" />
+								</listcell>
+							</listitem>
+							<listitem>
+								<listcell label="">
+									<checkbox label="Local5" id="f21" />
+								</listcell>
+							</listitem>
+							<listitem>
+								<listcell label="">
+									<checkbox label="Local6" id="f22" />
+								</listcell>
+							</listitem>
+							<listitem>
+								<listcell label="">
+									<checkbox label="Local7" id="f23" />
+								</listcell>
+							</listitem>
+
+						</listbox>
+						<separator/>
+						<label value="级别：" />
+
+						<listbox rows="5" width="193px" style="border: 1px solid #7F9DB9;" 
+							id="levelListbox">
+
+							<listitem>
+								<listcell label="">
+									<checkbox label="Emergency" id="l0" />
+								</listcell>
+							</listitem>
+							<listitem>
+								<listcell label="">
+									<checkbox label="Alert" id="l1" />
+								</listcell>
+							</listitem>
+							<listitem>
+								<listcell label="">
+									<checkbox label="Critical" id="l2" />
+								</listcell>
+							</listitem>
+							<listitem>
+								<listcell label="">
+									<checkbox label="Error" id="l3" />
+								</listcell>
+							</listitem>
+							<listitem>
+								<listcell label="">
+									<checkbox label="Warring" id="l4" />
+								</listcell>
+							</listitem>
+							<listitem>
+								<listcell label="">
+									<checkbox label="Notice" id="l5" />
+								</listcell>
+							</listitem>
+							<listitem>
+								<listcell label="">
+									<checkbox label="Informational" id="l6" />
+								</listcell>
+							</listitem>
+							<listitem>
+								<listcell label="">
+									<checkbox label="Debug" id="l7" />
+								</listcell>
+							</listitem>
+						</listbox>
+						<separator/>
+					</row>
+					<row zclass="none" height="1px">
+						<separator/>
+						<separator/>
+						<separator/>
+						<separator/>
+						<separator/>
+						<separator/>
+						<separator/>
+					</row>
+					<row zclass="none" align="left" >						
+						<separator/>
+						<separator/>	
+						<hbox>																																	
+							<button id="seachButton" label="查&#160;询"
+								sclass="btnDefault" width="74px" height="23px"
+								image="/main/images/button/ico/query_bt.gif"/>							
+							<button id="exportButton" label="导出报表"
+								sclass="btnDefault"   height="23px"
+								image="/main/images/bakRestore.gif"/>
+							<button label="帮助" sclass="btnDefault"
+							width="74px" height="23px" 
+							image="/main/images/action/help.gif" action="onclick:showHelp(25)"/>	
+						</hbox>
+						<separator/>
+						<separator/>
+						<separator/>
+						<separator/>
+													
+					</row>										
+				</rows>
+			</grid>
+			</groupbox>			
+		</panelchildren>
+	</panel>
+
+	<panel sclass="ecc-panel" title="SysLog" width="100%"
+		collapsible="true">
+		<panelchildren>
+			<listbox id="syslogListbox" vflex="true" mold="paging" pageSize="50"
+							height="275px"	 style="background: white; overflow: auto; width: 100%; position: relative;">
+			
+				<listhead sizable="true">
+					<listheader label="入库时间"  	sort="auto(inTime)" width="15%" />
+					<listheader label="IP地址"	  	sort="auto(sourceIP)"		 width="10%" />
+					<listheader label="设备" 	 	sort="auto(facility)"	 width="8%" />
+					<listheader label="级别" 	 	sort="auto(leave)"	 width="6%" />
+					<listheader label="系统日志信息"  sort="auto(sysLogmsg)"	 width="60%" />
+				</listhead>
+			</listbox>
+		</panelchildren>
+	</panel>
+	<zscript>
+	syslogListbox.pagingChild.mold ="os";
+</zscript>
+</window>
+

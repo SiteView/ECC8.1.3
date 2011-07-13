@@ -1,0 +1,78 @@
+<window>
+
+	<window id="reportwindow" apply="com.siteview.ecc.report.dao.ReportDaoImpl">
+		<zscript>
+	     com.siteview.ecc.report.dao.ReportDaoImpl rdi=new com.siteview.ecc.report.dao.ReportDaoImpl();
+		 List items = rdi.getReportList();
+	    </zscript>
+	    <panel title="统计报告">
+	    <panelchildren>
+		<div style="margin-left:3px;margin-top:3px;margin-bottom:3px">
+			<button width="85px" height="23px" sclass="btnDefault"
+				label="添加报告" forward="onClick=onAddReport"  image="/main/images/button/ico/add_bt.gif"/><space width="1px"/>
+			<button width="74px" height="23px" sclass="btnDefault"
+				label="删  除" forward="onDeleteReport"  image="/main/images/button/ico/delete_bt.gif"/><space width="1px"/>
+			<button width="85px" height="23px" sclass="btnDefault"
+				label="批量允许" forward="onAlloweport" image="/main/images/button/ico/enable_bt.gif"/><space width="1px"/>
+			<button width="85px" height="23px" sclass="btnDefault"
+				label="批量禁止" forward="onDenyeport" image="/main/images/button/ico/disable_bt.gif"/><space width="1px"/>
+			<button width="74px" height="23px" sclass="btnDefault"
+				label="刷  新" forward="onRefreshReport" image="/main/images/button/ico/ref_bt.gif"/><space width="1px"/>
+			<button width="85px" height="23px" sclass="btnDefault"
+				label="生成报告" forward="onClick=onCreateReport"  image="/main/images/bakRestore.gif"/><space width="1px"/>
+			<button width="74px" height="23px" sclass="btnDefault"
+				id="simpleMonitorButton" label="简单监测信息"
+				forward="onClick=onCreateSimpleInfo" visible="false" />
+		</div>
+		
+
+		<panel id="pa1" title="统计报告列表信息"
+			style="margin-left:3px">
+			<panelchildren>
+				<listbox id="direportlistbox" mold="paging" fixedLayout="true" checkmark="true" multiple="true">
+					<listhead sizable="true">
+						<listheader label="名称" sort="auto"  align="left" width="20%"/>
+						<listheader label="标题" sort="auto" align="left" width="20%"/>
+						<listheader label="时间段" sort="auto" align="center" width="20%"/>
+						<listheader label="格式" sort="auto" align="center" width="20%"/>
+						<listheader label="状态" sort="auto" align="center" width="20%"/>
+						<listheader label="编辑" align="center" width="20%"/>
+					</listhead>
+					<listitem  forEach="${items}" id="${each[6]}">
+						<listcell label="${each[0]}"  forward="onLookReports(${each[6]})"/>
+
+						<listcell label="${each[1]}" forward="onLookReports(${each[6]})" />
+						
+						<listcell label="${each[2]}" forward="onLookReports(${each[6]})" />
+						<listcell forward="onLookReports(${each[6]})"><image src="/main/images/filetype/${each[5]}.gif"/></listcell>
+						
+						<listcell label="${each[3]}"  forward="onLookReports(${each[6]})" if="${each[3]=='允许'}" image="/main/images/button/ico/enable_bt.gif"/>
+						<listcell label="${each[3]}" forward="onLookReports(${each[6]})" if="${each[3]=='禁止'}" image="/main/images/button/ico/disable_bt.gif"/>
+						<listcell>
+							<image src="/main/images/alert/edit.gif" forward="onModifyReport(${each[6]})" />
+						</listcell>
+					</listitem>
+				</listbox>
+			</panelchildren>
+		</panel>
+		<separator width="1px" />
+		<panel id="simplemonitorreports" border="none"
+			style="margin-left:3px" title="">
+			<panelchildren>
+				<div>
+					<listbox id="simplemonitorreportslistbox" rows="12" zclass="none"></listbox>
+					<iframe id="simplemonitorreportsinclude" src=""
+						style="height:250px;width:100%;">
+					</iframe>
+				</div>
+			</panelchildren>
+		</panel>
+		</panelchildren>
+	</panel>	
+	
+	<zscript>
+	direportlistbox.pagingChild.mold ="os";
+</zscript>
+	</window>
+</window>
+

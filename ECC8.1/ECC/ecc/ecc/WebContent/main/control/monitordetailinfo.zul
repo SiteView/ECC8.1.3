@@ -1,0 +1,340 @@
+<zk xmlns:h="http://www.w3.org/1999/xhtml">
+<window title="" border="normal" id="monitordetailwindow"
+	closable="true" apply="com.siteview.ecc.controlpanel.MonitorDetailInfo"
+	height="650px" width="1000px">
+	<zscript>
+			 String fontsize = "font-size:18px";
+			 String fontsize2 = "font-size:12px";
+			 void onChangeStyle(Toolbarbutton b){
+					for(Object o:toolbarbox.getChildren()){
+						if(o instanceof Toolbarbutton){
+						  ((Toolbarbutton)o).setStyle(fontsize2);
+						} 
+					}
+			 			b.setStyle(fontsize);
+			 }
+			 String nodeid = com.siteview.ecc.controlpanel.MonitorDetailInfo.getNodeId();
+			 String nowString = com.siteview.ecc.controlpanel.MonitorDetailInfo.getNow();
+	</zscript>
+	<tabbox id="box">
+		<tabs>
+			<tab label="图表"  id="tbmap"/>
+			<tab label="数据" id="tbdata"/>
+			<tab label="趋势报表" id="tbreport"/>
+			<!-- tab label="日历视图" id="tbfish"/-->
+			<tab label="鱼眼视图" id="tbfisheye"/>
+		</tabs>
+		<tabpanels>
+			<tabpanel>
+				<zscript><![CDATA[					                  
+				  Date stime=new Date();
+				  stime.setDate(stime.getDate()-1); 
+				  Date etime=new Date();	 
+				  //checkmark="true" multiple="true"
+				  ]]></zscript>
+				<panel border="none" title="" id="p1">
+					<panelchildren id="pc1">
+						<groupbox
+							style="margin-left:3px;margin-right:3px" id="g1">
+							<vbox>
+								<space height="1px" />
+								<grid oddRowSclass="none"
+									style="border:0">
+									<columns>
+										<column label="" width="" align="left" />
+										<column label="" align="left" />
+										<column label="" align="left" />
+										<column label="" align="left" />
+										<column label="" width="" align="left" />
+									</columns>
+									<rows style="border:none">
+										<row zclass="none" height="27px">
+											开始时间:
+											<hbox>
+												<datebox width="75px"
+													format="yyyy-MM-dd" value="${stime }" id="createBegin_Date"
+													height="18px" style="font-size:10pt;" />
+												<timebox width="75px"
+													id="createBegin_Time" height="18px"
+													style="font-size:10pt;vertical-align:text-bottom" />
+											</hbox>
+											<space width="50px" />
+											结束时间:
+											<hbox>
+												<datebox width="75px"
+													value="${etime}" format="yyyy-MM-dd" id="createEnd_Date"
+													height="18px" style="font-size:10pt;" />
+												<space width="1px" />
+												<timebox width="75px"
+													id="createEnd_Time" height="18px"
+													style="font-size:10pt;vertical-align:text-bottom" />
+											</hbox>
+											<space width="20px" />
+											<hbox>
+												<button width="74px"
+													height="23px" sclass="btnDefault" label="筛选"
+													id="filterdata" image="/main/images/settings.gif" />
+												<button width="74px"
+													height="23px" sclass="btnDefault" label="重新获取数据"
+													id="regetdata" />
+												<button width="74px"
+													height="23px" sclass="btnDefault" label="关闭"
+													image="/main/images/button/ico/close_bt.gif"
+													id="regetclose" />
+											</hbox>
+										</row>
+									</rows>
+								</grid>
+								<space height="1px" />
+							</vbox>
+							<zscript><![CDATA[		 
+									createBegin_Time.setText("0:00");
+									createEnd_Time.setText("0:00");
+								  ]]></zscript>
+						</groupbox>
+						<separator width="1px" />
+						<groupbox
+							style="margin-left:3px;margin-right:3px" id="g2">
+							<radiogroup id="theradiogroup"></radiogroup>
+						</groupbox>
+						<separator width="1px" />
+						<hbox style="margin-left:3px;margin-right:3px" id="imagetable"></hbox>
+					</panelchildren>
+				</panel>
+				<panel id="datapaneldiv" style="margin-left:5px">
+					<panelchildren>
+						<div id="datapanel"></div>
+					</panelchildren>
+				</panel>
+			</tabpanel>
+
+			<tabpanel>
+				<groupbox style="margin-left:5px;margin-right:5px"
+					id="g3">
+					<caption label="数据状态"></caption>
+					<vbox>
+						<hbox align="center">
+							<radiogroup id="dataToShow"
+								draggable="true">
+								<radio label="全部" value="all" id="r1"
+									 checked="true" />
+								<space width="10px" />
+								<radio label="错误" value="bad" id="r2" />
+								<space width="10px" />
+								<radio label="危险" value="warning"
+									id="r3" />
+								<space width="10px" />
+								<radio label="正常" value="ok" id="r4" />
+								<space width="10px" />
+								<radio label="禁止" value="disable"
+									id="r5" />
+							</radiogroup>
+							<space width="40px" />
+							<button width="74px" height="23px"
+								sclass="btnDefault" label="关闭"
+								image="/main/images/button/ico/close_bt.gif"
+								id="dataclose" style="margin-left:10px" />
+						</hbox>
+						<space height="1px" />
+					</vbox>
+				</groupbox>
+				<separator width="1px" />
+
+				<groupbox style="margin-left:5px;margin-right:5px"
+					id="g4">
+					<caption label="数据"></caption>
+					<listbox id="datalistbox"
+						style="background: white; border: 0; overflow: auto; width: 100%; position: relative;">
+					</listbox>
+				</groupbox>
+			</tabpanel>
+			<tabpanel>
+				<groupbox closable="false" open="true"
+					style="margin-left:3px;margin-right:3px">
+					<caption label="查询条件" />
+
+					<grid oddRowSclass="none" style="border:0">
+						<columns>
+							<column label="" />
+							<column label="" align="left" />
+						</columns>
+						<rows>
+							<row zclass="none" height="20px">
+								<hbox id="toolbarbox">
+									<toolbarbutton label="2小时" id="tbbt1"
+										onFocus="onChangeStyle(self)"
+										style="line-height:18px;vertical-align:bottom" />
+									<space width="10px" />
+									<toolbarbutton label="4小时" id="tbbt2"
+										onFocus="onChangeStyle(self)"
+										style="line-height:18px;vertical-align:bottom" />
+									<space width="10px" />
+									<toolbarbutton label="8小时" id="tbbt3"
+										onFocus="onChangeStyle(self)"
+										style="line-height:18px;vertical-align:bottom" />
+									<space width="10px" />
+									<toolbarbutton label="1天" id="tbbt4"
+										onFocus="onChangeStyle(self)"
+										style="line-height:18px;vertical-align:bottom" />
+									<space width="10px" />
+									<toolbarbutton label="2天" id="tbbt5"
+										onFocus="onChangeStyle(self)"
+										style="line-height:18px;vertical-align:bottom" />
+									<space width="10px" />
+									<toolbarbutton label="3天" id="tbbt6"
+										onFocus="onChangeStyle(self)"
+										style="line-height:18px;vertical-align:bottom" />
+									<space width="10px" />
+									<toolbarbutton label="5天" id="tbbt7"
+										onFocus="onChangeStyle(self)"
+										style="line-height:18px;vertical-align:bottom" />
+									<space width="10px" />
+									<toolbarbutton label="本周" id="tbbt8"
+										onFocus="onChangeStyle(self)"
+										style="line-height:18px;vertical-align:bottom" />
+									<space width="10px" />
+									<toolbarbutton label="1周" id="tbbt9"
+										onFocus="onChangeStyle(self)"
+										style="line-height:18px;vertical-align:bottom" />
+									<space width="10px" />
+									<toolbarbutton label="1个月"
+										id="tbbt10" onFocus="onChangeStyle(self)"
+										style="line-height:18px;vertical-align:bottom" />
+									<space width="10px" />
+									<toolbarbutton label="2个月"
+										id="tbbt11" onFocus="onChangeStyle(self)"
+										style="line-height:18px;vertical-align:bottom" />
+									<space width="10px" />
+									<toolbarbutton label="6个月"
+										id="tbbt12" onFocus="onChangeStyle(self)"
+										style="line-height:18px;vertical-align:bottom" />
+									<space width="10px" />
+									<toolbarbutton label="当天"
+										id="tbbt13" onFocus="onChangeStyle(self)"
+										style="line-height:18px;vertical-align:bottom" />
+								</hbox>
+								<label value="" />
+							</row>
+						  <zscript>
+						    Date d = new Date();
+						    java.util.Calendar c2 = java.util.Calendar.getInstance();
+						    c2.setTime(d);
+						    c2.add(java.util.Calendar.DAY_OF_MONTH,-1);
+						  </zscript>
+							<row zclass="none" height="35px">
+								<hbox>
+									<grid oddRowSclass="none"
+										style="border:0">
+										<columns>
+											<column label=""
+												align="right" />
+											<column label=""
+												align="left" />
+											<column label=""
+												align="left" />
+										</columns>
+										<rows>
+											<row zclass="none"
+												height="35px">
+												开始时间：
+												<datebox width="75px"
+													format="yyyy-MM-dd" id="start" height="18px" value="${c2.time}"
+													style="font-size:10pt;" />
+												<timebox width="40px"
+													height="18px" id="begin_Time" value="${d }"
+													style="font-size:10pt;vertical-align:text-bottom" />
+											</row>
+										</rows>
+									</grid>
+									<space width="50px" />
+									<grid oddRowSclass="none"
+										style="border:0">
+										<columns>
+											<column label=""
+												align="right" />
+											<column label=""
+												align="left" />
+											<column label=""
+												align="left" />
+										</columns>
+										<rows>
+											<row zclass="none"
+												height="35px">
+												结束时间：
+												<datebox width="75px"
+													format="yyyy-MM-dd" id="end" height="18px"
+													style="font-size:10pt;" />
+												<timebox width="40px"
+													id="end_Time" height="18px"
+													style="font-size:10pt;vertical-align:text-bottom" />
+											</row>
+										</rows>
+									</grid>
+									<space width="20px" />
+									<grid oddRowSclass="none"
+										style="border:0">
+										<columns>
+											<column label=""
+												align="left" />
+											<column label=""
+												align="left" />
+										</columns>
+										<rows>
+											<row zclass="none"
+												height="35px">
+												<button id="searchBtn"
+													label="查询" image="/main/images/button/ico/query_bt.gif"
+													sclass="btnDefault" width="74px" height="23px" />
+												<button width="74px"
+													height="23px" sclass="btnDefault" label="关闭"
+													id="trendcyclose"
+													image="/main/images/button/ico/close_bt.gif"
+													style="margin-left:10px" />
+											</row>
+										</rows>
+									</grid>
+								</hbox>
+							</row>
+						</rows>
+					</grid>
+				</groupbox>
+
+
+				<separator width="1px" height="12px" />
+				<panel sclass="ecc-panel" title="运行情况表" 
+					style="margin-left:3px;margin-right:3px">
+					<panelchildren>
+						<listbox id="runtimeReport"
+							style="background: white; border: 0; overflow: auto; width: 100%; position: relative;">					
+						</listbox>
+					</panelchildren>
+				</panel>
+				<panel sclass="ecc-panel" title="监测数据统计表" 
+					style="margin-left:3px;margin-right:3px">
+					<panelchildren>
+						<listbox id="checkDataReport" fixedLayout="true"
+							style="background: white; border: 0; overflow: auto; width: 100%; position: relative;">
+							
+						</listbox>
+					</panelchildren>
+				</panel>
+				<hbox style="margin-left:3px;margin-right:3px" id="imagehbox"></hbox>			
+			</tabpanel>
+
+			<tabpanel>
+
+			<div style="margin-left:3px;margin-right:3px" >
+				<hbox>
+					<space width="400px"/>
+					<button width="74px" height="18px" sclass="btnDefault" label="关闭"
+					image="/main/images/button/ico/close_bt.gif"
+					id="fisheyeclose" style="margin-right:50px;" visible="false"/>
+				</hbox>
+			<applet id="fisheyeapplet" codebase="/ecc/main/applet" archive="fisheye.jar,piccolox.jar,piccolo.jar"  sessionid="${sessionScope.usersessionid}" nodeid="${nodeid}" date="${nowString}"  width="100%" height="560px" />
+			<label>如果想使用该功能，请在客户端安装　</label><h:a style="font-size:9pt;"  href="http://www.java.com/en/download/manual.jsp" target="_blank">Java Runtime Environment 1.6.0_04  以上版本</h:a>
+			</div>
+			</tabpanel>
+		</tabpanels>
+	</tabbox>
+</window>
+</zk>

@@ -1,0 +1,265 @@
+<zk>
+<zscript><![CDATA[
+tree=(org.zkoss.zul.Tree)desktop.getPage("eccmain").getFellow("tree");
+treeModel=(com.siteview.ecc.treeview.EccTreeModel)tree.getModel();
+eccView=(com.siteview.base.manage.View)treeModel.getView();
+if(tree.getSelectedItem()==null)
+{
+	topNode=(org.zkoss.zul.Treeitem)tree.getTreechildren().getVisibleChildrenIterator().next();
+	tree.selectItem(topNode);
+	topNode.setOpen(true);
+}
+eccTreeItem = (com.siteview.ecc.treeview.EccTreeItem)tree.getSelectedItem().getValue();
+
+String type=eccTreeItem.getType();
+String id=eccTreeItem.getId();
+String name=eccTreeItem.getTitle();
+
+tabTitleMap=new LinkedHashMap();
+tabUrlMap=new LinkedHashMap();
+
+if(type.equals(""))
+{
+	tabTitleMap.put("welcome","欢迎");
+	
+	tabUrlMap.put("control","/main/welcome/index.zul");
+}   
+else if(type.equals("Set") || type.equals("Alert") || type.equals("Report") || type.equals("Task"))
+{
+	//报警、报表、设置、任务计划  --> 可以用相同的页面来 + 不同的参数方式展示
+	tabTitleMap.put("content",name);
+	
+	tabUrlMap.put("content","/main/content/index.zul");
+}
+else if(type.equals("WholeView"))
+{
+	//整体视图
+	tabTitleMap.put("content",name);
+	
+	tabUrlMap.put("content","/main/control/index.zul");
+}
+else if(type.equals("TopoView"))  
+{
+	//拓扑视图
+	tabTitleMap.put("content",name);
+	
+//	tabUrlMap.put("content","/main/tuoplist/tuoplisttest.zul?type="+type+"&amp;id="+id);
+	tabUrlMap.put("content","/main/tuoplist/tuoplist.zul");
+}
+else if(type.equals("MonitorBrower"))  
+{
+	//监测器浏览
+	tabTitleMap.put("content",name);
+	
+//	tabUrlMap.put("content","/main/tuoplist/tuoplisttest.zul?type="+type+"&amp;id="+id);
+	tabUrlMap.put("content","/main/monitorbrower/monitorbrower.zul");
+}
+else if(type.equals("SetMonitor"))  
+{
+	//监测器浏览
+	tabTitleMap.put("content",name);
+	
+//	tabUrlMap.put("content","/main/tuoplist/tuoplisttest.zul?type="+type+"&amp;id="+id);
+	tabUrlMap.put("content","/main/setmonitor/setmonitor.zul");
+}
+else if(type.equals("AlertRule"))  
+{
+	//报警规则
+	tabTitleMap.put("content",name);
+	
+	tabUrlMap.put("content","/main/control/index.zul");	
+}
+else if(type.equals("AlertLog"))  
+{
+    //报警日志
+	tabTitleMap.put("content",name);
+	
+	tabUrlMap.put("content","/main/control/index.zul");
+}
+else if(type.equals("AlertStrategy"))  
+{
+    //报警策略
+	tabTitleMap.put("content",name);
+	
+	tabUrlMap.put("content","/main/control/index.zul");
+}
+else if(type.equals("ReportStatistic"))  
+{
+	//统计报告
+	tabTitleMap.put("content",name);
+	
+	tabUrlMap.put("content","/main/report/statisticalreport.zul");
+}
+else if(type.equals("ReportTrend"))  
+{
+	//趋势报告
+	tabTitleMap.put("content",name);
+	
+	tabUrlMap.put("content","/main/report/trendreport.zul");
+}
+else if(type.equals("ReportTopN"))  
+{
+	//TopN报告
+	tabTitleMap.put("content",name);
+	
+	tabUrlMap.put("content","/main/control/index.zul");
+}
+else if(type.equals("ReportContrast"))  
+{
+	//对比报告
+	tabTitleMap.put("content",name);
+	
+	tabUrlMap.put("content","/main/control/index.zul");
+}
+else if(type.equals("ReportTimeContrast"))  
+{
+	//时段对比报告
+	tabTitleMap.put("content",name);
+	
+	tabUrlMap.put("content","/main/report/periodoftimereport.zul");
+}
+else if(type.equals("MonitorInfo"))  
+{
+	//监测器信息
+	tabTitleMap.put("content",name);
+	
+	tabUrlMap.put("content","/main/report/index.zul");
+}
+else if(type.equals("SysLogQuery"))  
+{
+	//基本设置
+	tabTitleMap.put("content",name);
+	
+	tabUrlMap.put("content","/main/control/index.zul");
+}
+else if(type.equals("SetGeneral"))  
+{
+	//邮件设置
+	tabTitleMap.put("content",name);
+	
+	tabUrlMap.put("content","/main/control/index.zul");
+}
+else if(type.equals("SetMail"))  
+{
+	//邮件设置
+	tabTitleMap.put("content",name);
+	
+	tabUrlMap.put("content","/main/control/index.zul");
+}
+else if(type.equals("SetMaintain"))  
+{
+	//值班表设置
+	tabTitleMap.put("content",name);
+	
+	tabUrlMap.put("content","/main/control/index.zul");
+}
+else if(type.equals("SetSms"))  
+{
+	//短信设置
+	tabTitleMap.put("content",name);
+	
+	tabUrlMap.put("content","/main/control/index.zul");
+}
+else if(type.equals("UserManager"))  
+{
+	//用户管理
+	tabTitleMap.put("content",name);
+	
+	tabUrlMap.put("content","/main/control/index.zul");
+}
+else if(type.equals("importDataBase"))  
+{
+	//数据库
+	tabTitleMap.put("content",name);
+	
+	tabUrlMap.put("content","/main/mysql/index.zul");
+}
+else if(type.equals("TaskAbsolute"))  
+{
+	//绝对时间任务计划
+	tabTitleMap.put("content",name);
+	
+	tabUrlMap.put("content","/main/control/index.zul");
+}   		   		   		   		   		   
+else if(type.equals("TaskPeriod"))  
+{
+	//时间段任务计划
+	tabTitleMap.put("content",name);
+	
+	tabUrlMap.put("content","/main/control/index.zul");
+}
+else if(type.equals("SysLogSet"))  
+{
+	//SysLog设置
+	tabTitleMap.put("content",name);
+	
+	tabUrlMap.put("content","/main/control/index.zul");
+}
+else if(type.equals("BackupRestore"))  
+{
+    //备份和恢复
+	tabTitleMap.put("content",name);
+	
+	tabUrlMap.put("content","/main/control/index.zul");
+}
+else if(type.equals("SetMaintain"))  
+{
+	//值班表设置
+	tabTitleMap.put("content",name);
+	
+	tabUrlMap.put("content","/main/control/index.zul");
+}
+else if(type.equals("OperateLog"))  
+{
+	//用户操作日志
+	tabTitleMap.put("content",name);
+	
+	tabUrlMap.put("content","/main/control/index.zul");
+}
+else if(type.equals("m_userOtherPublic"))  
+{
+	//其他产品的URL地址
+	tabTitleMap.put("content",name);
+	
+	tabUrlMap.put("content","/main/control/index.zul");
+}
+else if(type.equals("SystemDiagnosis"))  
+{
+	//系统诊断
+	tabTitleMap.put("content",name);
+	
+	tabUrlMap.put("content","/main/control/index.zul");
+}
+else if(type.equals("License"))  
+{
+	//软件许可
+	tabTitleMap.put("content",name);
+	
+	tabUrlMap.put("content","/main/control/index.zul");
+}
+else if(type.equals("About"))  
+{
+	//关于我们
+	tabTitleMap.put("content",name);
+	
+	tabUrlMap.put("content","/main/control/index.zul");
+}  		   		   		   		   		   
+else
+{
+   
+}
+]]></zscript>
+			<tabbox>
+			<tabs align="end">
+						<tab id="tab_${each.key}" label="${each.value}" closable="false" forEach="${tabTitleMap}"/>
+			</tabs>
+			<tabpanels>
+						<!--fulfill can not work,why?tabpanel forEach="${tabUrlMap}" fulfill="self.getLinkedTab().onSelect"-->
+						<tabpanel forEach="${tabUrlMap}">
+						<include mode="defer" progressing="false" id="tabpan_${each.key}" src="${each.value}"/>
+						</tabpanel>
+			</tabpanels>
+					
+			</tabbox>
+			
+</zk>

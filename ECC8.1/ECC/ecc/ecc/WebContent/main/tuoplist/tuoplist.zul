@@ -1,0 +1,80 @@
+<zk xmlns:h="http://www.w3.org/1999/xhtml"
+	xmlns:zk="http://www.zkoss.org/2005/zk">
+
+	<?page id="tuopulist"?>
+	<window id="winTuopulist" height="100%" use="com.siteview.ecc.tuopu.TuopListWindow" border="normal" style="overflow:auto;border:none">
+	<zscript>
+	tree=(org.zkoss.zul.Tree)desktop.getPage("eccmain").getFellow("tree");
+	treeModel=(com.siteview.ecc.treeview.EccTreeModel)tree.getModel();
+	eccView=(com.siteview.base.manage.View)treeModel.getView();
+	eccTreeItem = (com.siteview.ecc.treeview.EccTreeItem)tree.getSelectedItem().getValue();
+	
+	String type=eccTreeItem.getType();
+	String id=eccTreeItem.getId();
+	String name=eccTreeItem.getTitle();
+	
+	tuopulistModel   = new com.siteview.ecc.tuopu.TuopulistModel(eccView, eccTreeItem);
+	
+	asc = com.siteview.ecc.controlpanel.EccRowComparator.createComparator(tuopulistModel, 0, false, true);
+	dsc = com.siteview.ecc.controlpanel.EccRowComparator.createComparator(tuopulistModel, 0, false, false);
+	url = java.net.URLEncoder.encode("main/tuoplist/TieTongJF.files/gif_1.gif","utf-8");
+	</zscript>
+			<style>
+				.btndiv .z-button-cr, .btndiv .z-button-cl, 
+				.btndiv .z-button-bl, .btndiv .z-button-bm,
+				.btndiv .z-button-br, .btndiv .z-button-tl,
+				.btndiv .z-button-tm, .btndiv .z-button-tr {
+						background-image:none;
+					}
+					.btndiv .z-button-cm {
+						background : transparent url('') no-repeat 0 0 ;
+					}
+				.myBlack .z-button-cm { 
+					background-image : url(/ecc/img/button.gif);
+				}
+				.myBlue .z-button-cm { 
+					background-image : url(/ecc/img/b-button.gif); 
+				}
+				.myRed .z-button-cm { 
+					background-image : url(/ecc/img/r-button.gif);
+				}
+				.z-button-focus .z-button-cm {
+					background-position: 0 -62px					
+				}
+				.z-button-over .z-button-cm {
+					background-position: 0 -30px
+				}				
+				.z-button-clk .z-button-cm {
+					background-position: 0 -93px					
+				} 				
+			</style>
+	<groupbox mold="3d">
+			   <hbox>
+			      <button sclass="btnDefault" image="/main/images/button/ico/ref_bt.gif" id="btnRefresh"  label="刷新列表"/>
+			      <button label="帮助" sclass="btnDefault"
+							width="74px" height="23px" 
+							image="/main/images/action/help.gif" action="onclick:showHelp(15)"/>
+			    </hbox>  
+	</groupbox>
+	<groupbox mold="3d" style="overflow-y:auto;" >	
+	   <grid id="tuopList" style="border:none;overflow:auto;" height="400px" oddRowSclass="none">
+	   	 <columns sizable="true">
+	       <column width="20%" label="" align="center"/>
+	       <column width="20%" label="" align="center"/>
+	       <column width="20%" label="" align="center"/>
+	       <column width="20%" label="" align="center"/>
+	       <column width="20%" label="" align="center"/>
+	     </columns>
+	   </grid>	
+	</groupbox>
+	   <space height="1px"/>
+
+				<div style="float:right;padding-right:15px">			      
+			      <label style="font:11pt;color:#0000ff;line-height:25px;text-align:left" value="原拓扑图发布插件"/><h:a href="/ecc/main/tuoplist/TuopoClient.exe"  target="_blank"><image align="absmiddle" border="0px" src="/main/images/down.gif"/></h:a>
+			      <label style="padding-left:5px;font:11pt;color:#0000ff;line-height:25px;text-align:left" value="新拓扑图发布插件"/><h:a href="/ecc/main/tuoplist/Siteview.vsl"  target="_blank"><image align="absmiddle" border="0px" src="/main/images/down.gif"/></h:a>
+			    </div>
+
+	</window>
+
+	</zk>
+	

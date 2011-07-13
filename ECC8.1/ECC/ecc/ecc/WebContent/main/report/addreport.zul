@@ -1,0 +1,248 @@
+<window id="addreportwindow" closable="true" height="550px"
+	width="543px" border="normal" position="center" title="添加报告"
+	apply="com.siteview.ecc.report.dao.ReportDaoImpl">
+	<vbox>
+		<space height="1px" />
+		<hbox>
+			<space width="1px" />
+			<groupbox closable="false" width="200" height="450px"
+				style="padding-left:5px;">
+				<caption label="监测器" />
+				<tree id="monitortree" zclass="z-dottree"
+					use="com.siteview.ecc.alert.SelectTree" vflex="true" height="400px"
+					width="185px" />
+				<separator width="1px" />
+				<div height="23px">
+					<span>
+						<label id="groupLink" forward="onCreate=onCreate$groupLink,onClick=onClick$groupLink">组名：</label>
+					</span>
+					<combobox id="viewNamecombobox"
+						forward="onSelect=onSelectGroupName" height="15px" width="117px"
+						readonly="true"
+						use="com.siteview.ecc.alert.control.ViewNameCombobox" />
+					<separator width="1px" />
+				</div>
+			</groupbox>
+
+			<vbox>
+				<groupbox closable="false" width="280px" height="450px"
+					style="padding-left:15px">
+					<caption label="报告设置" />
+					<grid style="border:0:margin-left:15px"
+						oddRowSclass="none">
+						<rows>
+							<row zclass="none" style="border:none"
+								height="30px">
+								报告标题*:
+								<textbox width="140px" height="15px"   
+									id="Title"
+									tooltiptext="显示在报告的上方或报告列表中的标题" />
+							</row>
+							<row zclass="none" style="border:none"
+								height="30px">
+								报告描述:
+								<textbox width="140px" height="15px"
+									id="Descript" tooltiptext="输入报告备注信息" />
+							</row>
+							<row zclass="none" style="border:none"
+								height="30px">
+								报告类型:
+								<listbox rows="1" mold="select"
+									id="Period" width="144px" height="" style="font-size:8pt"
+									tooltiptext="请指定生成报告的时间周期">
+									<attribute name="onSelect">{
+										if(self.getSelectedItem().getLabel().equals("周报")){
+										Begin_Date.setDisabled(true);
+<!-- 									Begin_Time.setDisabled(true);
+										End_Time.setDisabled(true);
+										 -->
+										End_Date.setDisabled(true);
+										WeekEndTime.setDisabled(false);
+										}else if(self.getSelectedItem().getLabel().equals("其他")){
+										Begin_Date.setDisabled(false);
+									<!--Begin_Time.setDisabled(false);
+										End_Time.setDisabled(false); -->
+										End_Date.setDisabled(false);
+										WeekEndTime.setDisabled(true);
+										}else{
+										Begin_Date.setDisabled(true);
+<!-- 									Begin_Time.setDisabled(true);
+										End_Time.setDisabled(true);
+										 -->
+										End_Date.setDisabled(true);
+										WeekEndTime.setDisabled(true);
+										}
+										} </attribute>
+									<listitem label="日报" selected="true" value="Day"		height="" />
+									<listitem label="周报" height="" value="Week"/>
+									<listitem label="月报" height="" value="Month"/>
+									<listitem label="其他" height="" value="Other" />
+								</listbox>
+							</row>
+							<row zclass="none" style="border:none"
+								height="30px">
+								<label />
+								<hbox>
+									<checkbox id="Graphic"
+										tooltiptext="请指定生成报告要显示的项目" />
+									<label value="生成图形" />
+									<listbox rows="1" mold="select"
+										width="60px" id="ComboGraphic" height=""
+										style="font-size:8pt">
+										<listitem label="线状图"
+											selected="true" />
+										<listitem label="柱状图" />
+									</listbox>
+								</hbox>
+							</row>
+							<row zclass="none" style="border:none"
+								height="30px">
+								<label value="报告选项:" />
+								<checkbox label="列出错误" id="ListError"
+									tooltiptext="请指定生成报告要显示的项目" />
+							</row>
+							<row zclass="none" style="border:none"
+								height="30px">
+								<label />
+								<checkbox label="列出危险" id="ListDanger"
+									tooltiptext="请指定生成报告要显示的项目" />
+							</row>
+							<row zclass="none" style="border:none"
+								height="30px">
+								<label value="报告文件格式:" />
+								<listbox rows="1" mold="select"
+									id="fileType" width="144px" style="font-size:8pt">
+									<listitem label="html"
+										selected="true" value="html" />
+									<listitem label="pdf" value="pdf" />
+									<listitem label="Excel" value="xls" />
+								</listbox>
+							</row>
+							<row zclass="none" style="border:none"
+								height="30px">
+								E-MAIL方式发送:
+								<textbox width="140px" height="15px"
+									id="EmailSend"
+									tooltiptext="输入接收报告的E-mail地址，可以录入多个地址，多个地址之间用英文的逗号分隔，当报告产生，所设定的邮箱就会接收到新产生的报告" />
+							</row>
+							<row zclass="none" style="border:none"
+								height="30px">
+								详细参数:
+								<vbox><checkbox label="显示监测的详细信息"
+									id="Parameter" forward="onCheckThisBox"
+									tooltiptext="如果您选择了此项，监测器所有返回值的监测情况都都会显示在报告里，否则只列出每个监测器的主要参数指标">
+								</checkbox>
+								<checkbox label="禁止报告" id="Deny"
+									tooltiptext="勾选此项后，报告将停止自动生成" />
+								</vbox>
+							</row>
+							<row zclass="none" style="border:none"
+								height="30px">
+								生成时间:
+								<hbox>
+									<zscript><![CDATA[
+											String[] ctime=new String[24];
+											for(int a=0;a<24;a++){
+												ctime[a]=a+"";
+											}
+											]]></zscript>
+									<listbox rows="1" mold="select"
+										width="125px" id="Generate" height="" style="font-size:8pt"
+										tooltiptext="选择此项后，报告将在指定的时间生成报告">
+										<listitem label="${each}"
+											forEach="${ctime}" />
+									</listbox>
+									时
+								</hbox>
+							</row>
+							<row zclass="none" style="border:none"
+								height="30px">
+								截止时间:
+								<hbox>
+									<listbox rows="1" mold="select"
+										width="64px" id="EndTime1" height="" style="font-size:8pt"
+										tooltiptext="设置报告生成截止时间，用户可以根据需要自己定义">
+										<listitem label="${each }"
+											forEach="${ctime}" />
+									</listbox>
+									:
+									<listbox rows="1" mold="select"
+										width="64px" id="EndTime2" height="" style="font-size:8pt"
+										tooltiptext="设置报告生成截止时间，用户可以根据需要自己定义">
+										<listitem label="00"
+											selected="true" />
+										<listitem label="30" />
+									</listbox>
+								</hbox>
+							</row>
+							<row zclass="none" style="border:none"
+								height="30px">
+								周报截止时间:
+								<listbox rows="1" mold="select"
+									width="144px" id="WeekEndTime" disabled="true" height=""
+									tooltiptext="周报截止时间，用户可以根据需要自己定义">
+									<listitem label="星期一" value="1" />
+									<listitem label="星期二" value="2" />
+									<listitem label="星期三" value="3" />
+									<listitem label="星期四" value="4" />
+									<listitem label="星期五" value="5" />
+									<listitem label="星期六" value="6" />
+									<listitem label="星期日" value="0"
+										selected="true" />
+								</listbox>
+							</row>
+							
+							<row zclass="none" height="23px">
+								<label>　开始时间：</label>
+								<hbox>
+									<datebox format="yyyy-MM-dd"
+										id="Begin_Date" height="20px" disabled="true" style="valign:center" />
+									<label width="1px" />
+									<!-- 
+									<timebox id="Begin_Time"
+										height="20px" disabled="true" style="valign:center" />
+										 -->
+								</hbox>
+							</row>
+							<row zclass="none" height="23px">
+								<label>　结束时间：</label>
+								<hbox>
+									<datebox format="yyyy-MM-dd"
+										id="End_Date" height="20px" disabled="true" />
+									<label width="1px" />
+									<!-- 
+									<timebox id="End_Time"
+										height="20px" disabled="true"/>
+										 -->
+								</hbox>
+							</row>
+
+						</rows>
+					</grid>
+					<separator height="30px" />
+				</groupbox>
+				<grid style="border:0"
+						oddRowSclass="none">
+					<columns>
+						<column label="" align="right"/>
+					</columns>
+					<rows>
+						<row zclass="none" style="border:none">
+							<hbox>
+							<button label="保  存" id="button_ok"
+								sclass="btnDefault" width="74px" height="23px"
+								image="/main/images/button/ico/save_bt.gif"
+								forward="onSaveReport" />
+							<button label="取  消" id="button_cancel"
+								sclass="btnDefault" width="74px" height="23px"
+								image="/main/images/button/ico/close_bt.gif"
+								onClick="addreportwindow.detach()" />
+							</hbox>
+						</row>
+					</rows>
+				</grid>
+			</vbox>
+		</hbox>
+	</vbox>
+
+</window>

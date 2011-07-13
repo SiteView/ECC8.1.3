@@ -1,0 +1,231 @@
+<zk>
+
+	<window border="none" id="setBatchWin" position="center" closable="true"
+		apply="com.siteview.ecc.setmonitor.SetBatch" title="批量修改监测器"
+		forward="onCreate=onInit;onCheckItem=onCheckItem" height="500px"
+		width="700px">
+		<borderlayout>
+			<west title="监测器" size="25%" flex="true" splittable="true"
+				minsize="100" maxsize="500" collapsible="true" autoscroll="true">
+				<tree id="monitorTree"
+					use="com.siteview.ecc.setmonitor.MonitorSelectTree"
+					zclass="z-dottree"  checkable="true" vflex="true" rows="20"
+					width="300px" height="529px">
+				</tree>
+			</west>
+			<center flex="true">
+				<borderlayout>
+					<north border="none">
+						<panel border="none">
+							<panelchildren>
+								<listbox id="monitor" height="200px"
+									fixedLayout="true" multiple="false" vflex="true" mold="paging"
+									pageSize="15" 
+									style="background: white; border: 0; overflow: auto;  position: relative;">
+
+									<listhead sizable="true">
+										<listheader label="名称"
+											sort="auto(monitorName)" width="40px" />
+										<listheader label="监测频率"
+											sort="auto(frequency)" width="50px" />
+										<listheader label="阀值"
+											sort="auto(keyValue)" width="40px" />
+										<listheader label="状态"
+											sort="auto(status)" width="40px" />
+									</listhead>
+
+								</listbox>
+
+							</panelchildren>
+						</panel>
+					</north>
+					<center flex="true" border="0">
+						<borderlayout>
+							<north style="border:none;overflow-y:auto"
+								size="85%">
+								<tabbox style="border-bottom-style:none"
+									id="tabbox">
+									<tabs>
+										<tab label="基础信息" />
+										<tab label="报警条件" />
+										<tab label="错误校检" />
+									</tabs>
+									<tabpanels
+										style="border-style :hidden ">
+										<tabpanel
+											style="border-bottom-style:none" id="p1">
+											<hbox align="center"
+												style="margin-left:20px;margin-top:20px">
+												<label value="监测器频率 *："
+													width="70px" />
+												<intbox height="15px"
+													id="ibFrequency"
+													onChanging="applyButton.setDisabled(false)" width="120px" tooltiptext="监测器的监测频率"/>
+												<combobox height="15px"
+													id="cbFrequencyUnit"
+													onChange="applyButton.setDisabled(false)" width="100px"
+													value="小时" readonly="true">
+													<comboitem
+														label="分钟" />
+													<comboitem
+														label="小时" />
+												</combobox>
+											</hbox>
+										</tabpanel>
+										<tabpanel id="p2"
+											style="border-bottom-style:none">
+											<grid oddRowSclass="none"
+												style="margin-left:20px;" zclass="none">
+												<columns>
+													<column label=""
+														width="100px" />
+													<column label="" />
+
+												</columns>
+												<rows>
+													<row
+														zclass="none">
+														<label
+															value="监测器类型：" />
+														<combobox
+															height="15px" forward="onChange=onChangeMonitorType"
+															width="220px" id="monitorType" readonly="true" tooltiptext="监测器的监测类型">
+															<comboitem
+																label="" />
+															<comboitem
+																label="" />
+														</combobox>
+
+													</row>
+													<row
+														zclass="none">
+														<label
+															value="错误：" />
+														<hbox
+															align="end">
+															<textbox
+																height="35px" width="238px" readonly="true" id="tberror"
+																multiline="true"
+																onChanging="applyButton.setDisabled(false)" tooltiptext="请输入附加的描述信息，此描述信息将显示在基础信息表内"/>
+															<button
+																label="..." forward="onClick=onErrorButton"
+																id="errorButton" />
+														</hbox>
+													</row>
+													<row
+														zclass="none">
+														<label
+															value="警告：" />
+														<hbox
+															align="end">
+															<textbox
+																height="35px" width="238px" readonly="true"
+																id="tbdanger" multiline="true"
+																onChanging="applyButton.setDisabled(false)" tooltiptext="请输入附加的描述信息，此描述信息将显示在基础信息表内"/>
+															<button
+																label="..." forward="onClick=onAlertButton"
+																id="alertButton" />
+														</hbox>
+													</row>
+													<row
+														zclass="none">
+														<label
+															value="正常：" />
+														<hbox
+															align="end">
+															<textbox
+																height="35px" width="238px" readonly="true"
+																id="tbnormal" multiline="true"
+																onChanging="applyButton.setDisabled(false)" tooltiptext="请输入附加的描述信息，此描述信息将显示在基础信息表内"/>
+															<button
+																label="..." forward="onClick=onNomalButton"
+																id="nomalButton" />
+														</hbox>
+													</row>
+												</rows>
+											</grid>
+										</tabpanel>
+										<tabpanel id="p3"
+											style="border-bottom-style:none">
+											<grid oddRowSclass="none"
+												style="margin-left:20px;" zclass="none">
+												<columns>
+													<column label=""
+														width="100px" />
+													<column label="" />
+												</columns>
+												<rows>
+													<row zclass="none"
+														height="20px">
+														<label
+															value="错误效验：" />
+														<checkbox
+															label="监测器错误效验" id="chCheckError"
+															onChange="applyButton.setDisabled(false)" tooltiptext="发生错误后立即再次执行监测器以校验错误"/>
+													</row>
+													<row zclass="none"
+														height="60px">
+														<label
+															value="错误效验频率：" />
+														<hbox>
+															<intbox
+																height="15px" width="120px" id="ibErrorFrequency"
+																onChanging="applyButton.setDisabled(false)" tooltiptext="当发生错误后，监测器的监测频率"/>
+															<combobox
+																height="15px" value="小时" id="cbErrorFrequencyUnit"
+																onChange="applyButton.setDisabled(false)"
+																readonly="true" width="100px">
+																<comboitem
+																	label="分钟" />
+																<comboitem
+																	label="小时" />
+															</combobox>
+														</hbox>
+													</row>
+												</rows>
+											</grid>
+										</tabpanel>
+									</tabpanels>
+								</tabbox>
+							</north>
+							<center style="border:none;">
+								<grid style="border:0"
+									oddRowSclass="none">
+									<columns>
+										<column label="" align="right" />
+									</columns>
+									<rows>
+										<row zclass="none"
+											style="border:none">
+											<hbox>
+												<button label="确  定"
+													image="/main/images/button/ico/save_bt.gif"
+													sclass="btnDefault" width="74px" height="23px" id="okButton"
+													forward="onClick=onOk" />
+												<button label="取  消"
+													sclass="btnDefault" height="23px"
+													image="/main/images/button/ico/reload_bt.gif"
+													forward="onClick=onCancel" />
+												<button label="应  用"
+													image="/main/images/button/ico/save_bt.gif"
+													sclass="btnDefault" width="74px" height="23px"
+													id="applyButton" forward="onClick=onApply" />
+												<button label="帮助"
+													sclass="btnDefault" width="74px" height="23px"
+													image="/main/images/action/help.gif"
+													action="onclick:showHelp(14)" />
+												<space width="1px" />
+											</hbox>
+										</row>
+									</rows>
+								</grid>
+							</center>
+
+						</borderlayout>
+					</center>
+				</borderlayout>
+			</center>
+		</borderlayout>
+	</window>
+
+</zk>

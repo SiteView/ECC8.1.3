@@ -1,0 +1,98 @@
+<?page title="template" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window title="Email模板设置" border="normal" id="template"
+		contentStyle="overflow:auto" width="595px" closable="true"
+		height="285px" apply="com.siteview.ecc.email.EmailTemplate"
+		forward="onCreate=onInit">
+			<vbox>
+				<hbox style="margin-top:10px;margin-left:2px;margin-right:2px;">
+				<groupbox width="85px"  closable="false" >
+		 			 <caption  label="Email模板列表"/>
+					<listbox id="templateList" rows="8">
+						<listhead sizable="true">
+							<listheader label="" sort="auto" />
+							<listheader label="" sort="auto" />
+						</listhead>
+					</listbox>
+				</groupbox>
+
+				<groupbox   closable="false">
+		 			 <caption  label="Email模板设置"/>
+						<hbox style="margin-top:10px" align="start">
+							<vbox style="margin-left:1px"  >
+								<hbox align="center"  >
+									<label value="邮件标题*：" id="nameLabel" />
+									<textbox id="nameTextbox"
+										width="250px" height="15px"/>
+								</hbox>
+								<hbox >
+									<label value="邮件内容&#160;：" id="contentLabel" />
+									<textbox id="contentTextbox"
+										height="112px" width="250px" multiline="true" />
+								</hbox>
+								<hbox align="center"  >
+									<label value="邮件模板*："
+										id="templateLabel" />
+									<textbox id="templateTextbox" style="margin-bottom:5px"
+										width="250px" height="15px"/>
+								</hbox>
+							</vbox>
+							<vbox style="margin-left:1px">
+								<button label="添加" sclass="btnDefault"
+							width="74px" height="23px"
+							image="/main/images/button/ico/add_bt.gif" forward="onClick=onAdd"
+									id="addButton" />
+								<button label="删除" width="74px" height="23px" sclass="btnDefault"
+							image="/main/images/button/ico/delete_bt.gif" forward="onClick=onDel"
+									id="delButton" />									
+								<button label="更新"  sclass="btnDefault"
+							width="74px" height="23px"
+							image="/main/images/button/ico/ref_bt.gif" forward="onClick=onEdit"
+									id="refreshButton" />
+								<button label="关闭" sclass="btnDefault" width="74px" height="23px" image="/main/images/button/ico/close_bt.gif" 
+								onClick="template.detach()" />
+
+								<button label="系统变量说明"  sclass="btnDefault" width="74px" height="23px">
+									<attribute name="onClick">{
+									if(!showMore.isVisible()){
+										template.setHeight("470px");
+										template.setWidth("595px");				
+										showMore.setVisible(true);
+										self.setLabel("隐藏");	
+									}
+									else{
+									template.setHeight("285px");
+									template.setWidth("595px");	
+									showMore.setVisible(false);									
+									self.setLabel("系统变量说明");
+									}
+									
+									}</attribute>
+								</button>
+
+							</vbox>
+						</hbox>
+					</groupbox>
+			</hbox>
+
+				<groupbox closable="false" style="margin-left:10px;margin-right:10px;margin-bottom:10px" id="showMore" visible="false" >
+					<caption label="说明列表" />
+					<label id="intro"  
+								height="170px" width="540px" multiline="true">
+								<attribute name="value">注意：
+系统模板不可以删除和修改你可以拷贝参数，请不要随意输入“@”和两个“@”间的参数变量,可以参考系统模板进行添加。
+参数变量如下： @FullPathGroup@ :监测点所在设备所在组的全部路径名称
+@Status@监测器点的状态 
+@AllGroup@ :监测点所在设备所在组名称
+@Group@监测点所在组下 
+@Device@ :监测点所在设备的名称
+@Monitor@ :监测点名称
+@MonitorDstr@ :监测器描述
+@MonitorAlertDes@ :监测点报警描述，在监测点高级设置中设置 
+@Time@ : 报警时间</attribute>
+							</label>
+				</groupbox>
+			</vbox>
+
+	</window>
+</zk>

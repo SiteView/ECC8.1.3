@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tns="http://com.siteview.cxf" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://cxf.apache.org/bindings/xformat" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="StatisticsStatusImplService" targetNamespace="http://com.siteview.cxf" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://com.siteview.cxf">
+      <xsd:complexType name="string2intMap">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="entry">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element minOccurs="0" name="key" type="xsd:string" />
+                <xsd:element minOccurs="0" name="value" type="xsd:int" />
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="getStatisticsStatus" type="tns:getStatisticsStatus" />
+      <xsd:complexType name="getStatisticsStatus">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="arg0" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="arg1" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="arg2" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="getStatisticsStatusResponse" type="tns:getStatisticsStatusResponse" />
+      <xsd:complexType name="getStatisticsStatusResponse">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="return" nillable="true" type="tns:string2intMap" />
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="getStatisticsStatusResponse">
+    <wsdl:part name="parameters" element="tns:getStatisticsStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="getStatisticsStatus">
+    <wsdl:part name="parameters" element="tns:getStatisticsStatus" />
+  </wsdl:message>
+  <wsdl:portType name="eccstatapi">
+    <wsdl:operation name="getStatisticsStatus">
+      <wsdl:input name="getStatisticsStatus" message="tns:getStatisticsStatus" />
+      <wsdl:output name="getStatisticsStatusResponse" message="tns:getStatisticsStatusResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="StatisticsStatusImplServiceSoapBinding" type="tns:eccstatapi">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getStatisticsStatus">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="getStatisticsStatus">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getStatisticsStatusResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="StatisticsStatusImplService">
+    <wsdl:port name="eccstatapiPort" binding="tns:StatisticsStatusImplServiceSoapBinding">
+      <soap:address location="http://localhost/ecc/eccservices/eccstatapi" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?component name="monitorselect" macro-uri="/main/report/control/monitorselect.zul"?>
+<zk>
+	<style>
+		.z-button-cm { width:74px; background-image: none;
+		background-color: #c1c2c3; }
+	</style>
+	<window apply="com.siteview.ecc.report.CompareReport" id="compareReport" visible="true" height="100%" width="100%">
+	<borderlayout>
+		<west size="250px" flex="true" title="对比报告 " splittable="true"
+			minsize="100" maxsize="500" collapsible="true" style="font:12pt"
+			autoscroll="true" border="none" id="treeview">
+			<borderlayout>
+				<north size="93%" flex="true" style="border:none">
+					<tree id="monitortree" zclass="z-dottree"
+						use="com.siteview.ecc.alert.SelectTree" height="${arg.treeheight}"
+						vflex="true" width="180px" />
+				</north>
+				<center flex="true" style="border:none">
+					<hbox style="margin-top:1%" align="center">
+						<label style="margin-left:15px" id="groupLink" forward="onCreate=onCreate$groupLink,onClick=onClick$groupLink">组名：</label>
+						<combobox id="viewNamecombobox" height="15px"
+							width="100px" readonly="true"
+							use="com.siteview.ecc.alert.control.ViewNameCombobox" />
+					</hbox>
+				</center>
+			</borderlayout>
+		</west>
+
+		<center flex="true" style="border:none">
+			<tabbox>
+				<tabs>
+					<tab label="查询" />
+				</tabs>
+				<tabpanels>
+					<tabpanel>
+						<borderlayout>
+						<north border="none" splittable="true" size="51%" collapsible="true" id="north">
+						<div>
+						<panel title="查询条件" collapsible="true">
+							<panelchildren>
+								<groupbox closable="false"
+									open="true">
+									<grid oddRowSclass="none"
+										style="border:0">
+										<columns>
+											<column width="80px" />
+											<column width="*" />
+										</columns>
+										<rows>
+											<row zclass="none"
+												height="25px" align="left">
+												<label value="开始时间："
+													style="margin-left:6px" tooltiptext="${self.value}" />
+												<datebox id="starttime"
+													compact="true" format="yyyy-MM-dd HH:mm:ss" readonly="true"
+													tooltiptext="${self.value}" />
+
+											</row>
+											<row zclass="none"
+												height="25px">
+												<label value="结束时间："
+													style="margin-left:6px" />
+												<datebox id="endtime"
+													compact="true" format="yyyy-MM-dd HH:mm:ss"
+													readonly="true" />
+											</row>
+											<row zclass="none"
+												height="29px" valign="middle">
+												<label />
+												<hbox>
+													<button
+														id="seachButton" label="查询" sclass="btnDefault"
+														image="/main/images/button/ico/query_bt.gif" width="74px"
+														height="23px" >
+													</button>
+													<button
+														id="exportButton" label="导出报表" sclass="btnDefault"
+														height="23px" image="/main/images/bakRestore.gif" />
+													<button label="帮助"
+														sclass="btnDefault" width="74px" height="23px"
+														image="/main/images/action/help.gif"
+														action="onclick:showHelp(22)" />
+												</hbox>
+											</row>
+										</rows>
+									</grid>
+								</groupbox>
+							</panelchildren>
+						</panel>
+						<div id="runtimeDiv">
+							<panel id="centerPanel" title="运行报表情况"
+								collapsible="true">
+								<panelchildren visible="true"
+									id="centerPanelChildren">
+									<listbox id="runtimeState"  fixedLayout="true" width="100%"  height="100px" style="overflow-y:auto">
+										<listhead sizable="true">
+											<listheader label="名称"  sort="auto(name)"	width="20%" tooltiptext="${self.label}"/>
+											<listheader label="返回值名称" sort="auto(returnName)" width="10%" tooltiptext="${self.label}"/>
+											<listheader width="20%" label="最大值" sort="auto(max)" tooltiptext="${self.label}"/>
+											<listheader width="10%" label="平均值" sort="auto(average)" tooltiptext="${self.label}"/>
+											<listheader width="10%" label="最小值" sort="auto(min)" tooltiptext="${self.label}"/>
+											<listheader  width="10%" label="最近一次" sort="auto(lastest)" tooltiptext="${self.label}"/>
+											<listheader  width="20%" label="最近一次时间" sort="auto(lasttime)" tooltiptext="${self.label}"/>
+										</listhead>
+									</listbox>
+								</panelchildren>
+							</panel>
+							
+						</div>
+						</div>
+						</north><center flex="true" border="none">
+						<panel title="图表" collapsible="true" id="chartPanel" border="none">
+							<panelchildren
+								style="overflow-y:auto">
+								<div align="start"	id="maptable" width="100%" height="100%"/>
+							</panelchildren>
+						</panel>
+						</center><south size="none"></south></borderlayout>
+					</tabpanel>
+				</tabpanels>
+			</tabbox>
+		</center>
+	</borderlayout>
+</window>
+</zk>
+
+

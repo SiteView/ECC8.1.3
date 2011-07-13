@@ -1,0 +1,146 @@
+<?page contentType="text/html;charset=UTF-8"?>
+<zk>
+	<borderlayout id="monitorBrower"
+		apply="com.siteview.ecc.monitorbrower.MonitorBrowseComposer">
+		<north border="none">
+
+			<toolbar sclass="eccBottom">
+				<grid oddRowSclass="none" width="100%"
+					sclass="eccBottom" style="border:none">
+					<columns>
+						<column label="" width="120px" align="left" />
+						<column label="" align="right" />
+					</columns>
+					<rows>
+						<row zclass="none">
+							<div>
+								<label value="监测器浏览"
+									style="height:25px;font-weight:bold;color:#18599C"
+									sclass="eccBottom" width="50px" />
+							</div>
+							<div>
+								<image align="absmiddle"
+									src="/main/control/images/state_grey.gif" />
+								<label value="定义错误：" />
+								<label id="bad" value="0" width="10px" />
+								<space width="1px" />
+								<image align="absmiddle"
+									src="/main/control/images/state_dark.gif" />
+								<label value="无监测数据：" />
+								<label id="nullspecial" value="0" width="10px" />
+								<space width="1px" />
+								<image align="absmiddle"
+									src="/main/control/images/state_green.gif" />
+								<label value="正常：" />
+								<label id="ok" value="0" width="10px" />
+								<space width="1px" />
+								<image align="absmiddle"
+									src="/main/control/images/state_red.gif" />
+								<label value="错误：" />
+								<label id="error" value="0"
+									width="10px" />
+								<space width="1px" />
+								<image align="absmiddle"
+									src="/main/control/images/state_yellow.gif" />
+								<label value="危险：" />
+								<label id="warn" value="0" width="10px" />
+								<space width="1px" />
+								<image align="absmiddle"
+									src="/main/control/images/state_stop.gif" />
+								<label value="禁止：" />
+								<label id="forbid" value="0"
+									width="10px" />
+								<space width="1px" />
+							</div>
+						</row>
+					</rows>
+				</grid>
+			</toolbar>
+		</north>
+		<center border="none">
+			<div>
+				<panel title="">
+					<panelchildren>
+						<hbox
+							style="margin-left:3px;margin-top:3px;margin-bottom:3px">
+							<button id="filter" label="创建筛选条件"
+								sclass="btnDefault" width="74px" height="23px"
+								image="/main/images/button/ico/add_bt.gif" />
+							<button id="editFilter" label="编  辑"
+								sclass="btnDefault" width="74px" height="23px"
+								image="/main/images/alert/edit.gif" />
+							<button id="refresh" label="刷新"
+                sclass="btnDefault" width="74px" height="23px"
+                image="/main/images/refresh.gif" />
+							<button id="delete" label="删  除"
+								sclass="btnDefault" width="74px" height="23px"
+								image="/main/images/button/ico/delete_bt.gif" />
+							<button id="excel" label="生成Excel"
+								sclass="btnDefault" width="74px" height="23px"
+								image="/main/images/bakRestore.gif" />
+							<button id="count" label="设置显示条目" visible="false"
+								sclass="btnDefault" width="74px" height="23px"
+								image="/main/images/settings.gif" />
+							<button label="帮助" sclass="btnDefault"
+								width="74px" height="23px" image="/main/images/action/help.gif"
+								action="onclick:showHelp(13)" />
+						</hbox>
+						<listbox id="showMonitorFilter"
+							fixedLayout="true" multiple="false" vflex="true" mold="paging"
+							pageSize="6">
+							<listhead sizable="true">
+								<listheader label="名称" sort="auto"
+									width="120px" align="left" />
+								<listheader label="组" sort="auto"
+									width="100px" align="left" />
+								<listheader label="设备" sort="auto"
+									width="100px" align="left" />
+								<listheader label="名称" sort="auto"
+									width="100px" align="left" />
+								<listheader label="监测器类型" sort="auto"
+									width="100px" align="left" />
+								<listheader label="显示/隐藏" sort="auto"
+									width="100px" align="left" />
+								<listheader label="描述" sort="auto"
+									width="50px" align="left" />
+								<listheader label="排序" sort="auto"
+									width="50px" align="left" />
+							</listhead>
+						</listbox>
+
+						<panel id="showMonitorData" title="浏览次数最多的监测器"
+							style="margin-left:3px;margin-top:3px;margin-bottom:3px">
+							<panelchildren>
+								<listbox id="monitorInfo"
+									style="background: white; overflow: auto; width: 100%; position: relative;"
+									mold="paging" pageSize="20" height="270px" use="com.siteview.ecc.monitorbrower.MonitorInfoListbox">
+									<!-- 
+									<listhead sizable="true">
+										<listheader label="状态"
+											sort="auto" width="30px" />
+										<listheader label="组"
+											sort="auto" width="200px" />
+										<listheader label="设备"
+											sort="auto" width="100px" />
+										<listheader label="名称"
+											sort="auto" width="100px" />
+										<listheader label="编辑"
+											width="30px" />
+										<listheader label="刷新"
+											width="30px" />
+										<listheader label="更新时间"
+											sort="auto" width="80px" />
+										<listheader label="描述"
+											sort="auto" width="150px" />
+									</listhead>
+									 -->
+								</listbox>
+							</panelchildren>
+						</panel>
+
+					</panelchildren>
+				</panel>
+			</div>
+		</center>
+	</borderlayout>
+</zk>

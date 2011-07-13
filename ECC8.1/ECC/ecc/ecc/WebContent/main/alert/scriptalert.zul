@@ -1,0 +1,59 @@
+﻿<?page id="alertrule"?>
+<?component name="monitorselect" macro-uri="/main/alert/control/monitorselect.zul"?>
+<window id="mainwin" title="添加 脚本报警"  border="normal" position="center" use="com.siteview.ecc.alert.ScriptAlertView" closable="true" width="660px">
+	<vbox>
+		<space height="3px"/>
+		<hbox>
+			<space width="3px"/>
+			<monitorselect treeheight="275px"/>
+			<vbox>
+				<groupbox closable="false" width="406px">
+					<caption label="设置 脚本报警"/>
+					<grid style="border:0" oddRowSclass="none" width="100%">
+						<columns>
+							<column width="6px"/>
+							<column width="123px"/>
+							<column width="248px"/>
+							<column width="6px"/>
+						</columns>
+						<rows>
+							<row zclass="none" height="6px"><separator/>
+							</row>
+							<row zclass="none" height="23px"><space width="1px"/><label>报警名称*：</label><textbox width="267px" height="15px"  id="alertName" tooltiptext="报警名称"/>
+								<space width="1px"/>
+							</row>
+							<row zclass="none" height="23px"><space width="1px"/><label>选择服务器*：</label>
+								<combobox width="250px" height="15px" id="scriptServer" readonly="true" use="com.siteview.ecc.alert.control.ScriptCombobox" tooltiptext="选择服务器"/>
+								<space width="1px"/>
+							</row>
+							<row zclass="none" height="23px"><space width="1px"/><label>选择脚本*：</label>
+								<combobox width="250px" height="15px" id="scriptTemplate" readonly="true" use="com.siteview.ecc.alert.control.ScriptTemplateCombobox" tooltiptext="选择脚本"/>
+								<space width="1px"/>
+							</row>
+							<row zclass="none" height="23px"><space width="1px"/><label>附加参数：</label><textbox width="267px" height="15px" id="scriptParam" tooltiptext="附加参数"/>
+								<space width="1px"/>
+							</row>
+							<row zclass="none" height="23px"><space width="1px"/><label>报警策略：</label>
+								<combobox id="alertPloy" width="250px" height="15px" readonly="true" use="com.siteview.ecc.alert.control.AlertPloyCombobox" tooltiptext="报警策略">
+									<comboitem label="空" value="空"/>
+								</combobox>
+								<space width="1px"/>
+							</row>
+							<row zclass="none" height="6px"><separator/>
+							</row>
+						</rows>
+					</grid>
+	
+				</groupbox>
+				<include src="/main/alert/alertcondition.zul"/>
+			</vbox>
+			<space width="3px"/>
+		</hbox>
+		<hbox>
+			<separator width="470px"/>
+			<button label="保  存" id="button_ok" sclass="btnDefault" width="74px" height="23px" image="/main/images/button/ico/save_bt.gif"/>
+			<button label="取  消" id="button_cancel" sclass="btnDefault" width="74px" height="23px" image="/main/images/button/ico/close_bt.gif" onClick="mainwin.doCancel()"/>
+		</hbox>
+		<space height="3px"/>
+	</vbox>
+</window>

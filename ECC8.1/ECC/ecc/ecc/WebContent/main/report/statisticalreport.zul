@@ -1,0 +1,38 @@
+<zk>
+
+	<borderlayout apply="com.siteview.ecc.report.statisticalreport.ReportComposer" forward="onCreate=onInit" >
+	<north size="55px">
+			<panel title="统计报告" style="margin-left:3px;margin-top:3px;margin-bottom:3px">
+			<panelchildren>
+				<button width="85px" height="23px" sclass="btnDefault" id="addStatisticButton"
+					label="添加报告" forward="onClick=onAddReport"  image="/main/images/button/ico/add_bt.gif"/><space width="1px"/>
+				<button width="74px" height="23px" sclass="btnDefault" id="deleStatisticButton"
+					label="批量删除" forward="onDeleteReport"  image="/main/images/button/ico/delete_bt.gif"/><space width="1px"/>
+				<button width="85px" height="23px" sclass="btnDefault"
+					label="批量允许" forward="onAlloweport" image="/main/images/button/ico/enable_bt.gif"/><space width="1px"/>
+				<button width="85px" height="23px" sclass="btnDefault"
+					label="批量禁止" forward="onDenyeport" image="/main/images/button/ico/disable_bt.gif"/><space width="1px"/>
+				<button width="74px" height="23px" sclass="btnDefault"
+					label="刷  新" forward="onRefreshReport" image="/main/images/button/ico/ref_bt.gif"/><space width="1px"/>
+				<button width="85px" height="23px" sclass="btnDefault"
+					label="生成报告" forward="onClick=onCreateReport"  image="/main/images/bakRestore.gif"/><space width="1px"/>
+				<button width="74px" height="23px" sclass="btnDefault"
+					id="simpleMonitorButton" label="简单监测信息" visible="false" />
+										<button label="帮助" sclass="btnDefault"
+							width="74px" height="23px" 
+							image="/main/images/action/help.gif" action="onclick:showHelp(19)"/>
+				</panelchildren>	
+				</panel>	
+	</north>
+	<center style="overflow-y:scroll;">
+	<vbox spacing="0" width="100%" style="padding-right:18px">
+		<listbox id="direportlistbox" multiple="true" checkmark="true" mold="paging" fixedLayout="true" pageSize="6"/>
+		<splitter collapse="before" />
+		<div style="hrioght:30px;text-align:right;padding-right:5px">
+		<button id="btnBatchDeleteGen" sclass="btnDefault" label="批量删除日志"/><space/>日志每页<combobox width="20px" id="genlistboxPageSize" value="10" use="com.siteview.ecc.treeview.controls.ListboxPageSize" readonly="true"/>条
+		</div>
+		<listbox id="genlistbox" multiple="true" checkmark="true"  mold="paging" fixedLayout="true" pageSize="10"/>
+	</vbox>
+	</center>	
+	</borderlayout>
+</zk>

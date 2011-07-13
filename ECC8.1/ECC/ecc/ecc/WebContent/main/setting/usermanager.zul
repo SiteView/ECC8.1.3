@@ -1,0 +1,65 @@
+<borderlayout>
+	<center style="overflow:auto;border:none">
+		<panel title="用户管理" collapsible="true">
+			<panelchildren>
+				<window id="setUser"
+					apply="com.siteview.ecc.usermanager.SetUser" border="normal"
+					style="overflow-y:auto;" forward="onCreate=onInit">
+					
+					<div height="27px">
+						<button id="addUserButton" label="添加"
+							sclass="btnDefault" width="74px" height="23px" 
+							forward="onClick=onAdd"
+							image="/main/images/button/ico/add_bt.gif">
+						</button>
+						<space width="1px" />
+
+						<button id="deleteUserButton" label="删除" sclass="btnDefault"
+							width="74px" height="23px" forward="onClick=onDel"
+							image="/main/images/button/ico/delete_bt.gif" />
+						<space width="1px" />
+						<button id="permiteUserButton" label="允许" sclass="btnDefault"
+							width="74px" height="23px" forward="onClick=onPermite"
+							image="/main/images/button/ico/enable_bt.gif" />
+						<space width="1px" />
+						<button id="holdUserButton" label="禁止" sclass="btnDefault"
+							width="74px" height="23px" forward="onClick=onHold"
+							image="/main/images/button/ico/disable_bt.gif" />
+						<space width="1px" />
+						<button label="刷新" sclass="btnDefault"
+							width="74px" height="23px" forward="onClick=onInit"
+							image="/main/images/button/ico/ref_bt.gif" />
+						<button label="帮助" sclass="btnDefault"
+							width="74px" height="23px" 
+							image="/main/images/action/help.gif" action="onclick:showHelp(31)"/>
+					</div>
+					<panel border="normal" collapsible="true"
+						title="用户管理详细信息">
+						<panelchildren style="center">
+							<listbox fixedLayout="true" mold="paging" pageSize="10"
+								id="listbox_data" checkmark="true"  multiple="true" 
+								use="com.siteview.ecc.usermanager.UserListbox">
+								<!--  
+								<listhead sizable="true">
+									<listheader align="left" label="用户名" 
+										sort="auto" />
+									<listheader align="left" label="登录名"
+										sort="auto" />
+									<listheader align="left" label="状态"
+										sort="auto" />
+									<listheader align="left"
+										label="用户类型" sort="auto" />
+									<listheader align="center"
+										label="编辑" />
+									<listheader align="center"
+										label="授权" />	
+								</listhead>
+								-->
+							</listbox>
+						</panelchildren>
+					</panel>
+				</window>
+			</panelchildren>
+		</panel>
+	</center>
+</borderlayout>

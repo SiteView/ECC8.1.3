@@ -1,0 +1,92 @@
+<?page id="alertRuleLogPage" ?>
+<zk>
+<borderlayout>
+	<center style="overflow:auto;border:none">
+	<panel title="报警日志" collapsible="true"><panelchildren>
+	<window use="com.siteview.ecc.alert.AlertRuleLogView" id="win" border="normal" style="overflow-y:auto;">
+		<panel title="查询条件" collapsible="true"><panelchildren>
+		<window border="none" id="alertLogQuery" height="142px">
+				<grid style="border:0" oddRowSclass="none">
+					<columns>
+						<column label="" width="120px"/>
+						<column label=""/>
+					</columns>
+					<rows>
+						<row zclass="none" height="23px"><hbox><space width="7px"/><toolbarbutton id="alertNameLink" label="报警名称："></toolbarbutton></hbox>
+							<bandbox width="250px" height="15px" id="alertName" tooltiptext="请选择报警名称">
+								<bandpopup><vbox width="267px">
+									<listbox id="alertName_list" rows="5" onSelect="alertName.value=self.selectedItem.label; alertName.closeDropdown();" tooltiptext="">
+										<listitem label="${win.allText}" value="0" onCreate="alertName.value=self.label;"/>
+									</listbox>
+									</vbox>
+								</bandpopup>
+							</bandbox>
+						</row>
+						<row zclass="none" height="23px"><hbox><space width="7px"/><toolbarbutton id="alertReceiverLink" label="  报警接收人："></toolbarbutton></hbox>
+							<bandbox width="250px" height="15px"  id="alertReceiver" tooltiptext="请选择报警接收人">
+								<bandpopup><vbox width="267px">
+									<listbox id="alertReceiver_list" rows="5" onSelect="alertReceiver.value=self.selectedItem.label; alertReceiver.closeDropdown();" tooltiptext="">
+									<listitem label="${win.allText}" value="0" onCreate="alertReceiver.value=self.label;"/>
+									</listbox>
+									</vbox>
+								</bandpopup>
+							</bandbox>
+
+						</row>
+						<row zclass="none" height="23px"><label>　报警开始时间：</label>
+							<hbox>
+								<datebox width="75px" format="yyyy-MM-dd" id="alertBegin_Date" height="15px" style="valign:center"/><label width="1px"/>
+								<timebox width="40px" id="alertBegin_Time" height="15px" style="valign:center"/>
+							</hbox>
+						</row>
+						<row zclass="none" height="23px"><label>　报警结束时间：</label>
+							<hbox>
+								<datebox width="75px" format="yyyy-MM-dd" id="alertEnd_Date" height="15px"/><label width="1px"/>
+								<timebox width="40px" id="alertEnd_Time" height="15px"/>
+							</hbox>
+						</row>
+						<row zclass="none" height="23px"><label>　报警类型：</label>
+							<combobox width="250px" height="15px" readonly="true" id="alertType_list" tooltiptext="请选择报警类型">
+								<comboitem label="${win.allText}" value="0" onCreate="alertType_list.value=self.label;" width="250px" height="15px"/>
+							</combobox>
+						</row>
+						<row zclass="none" height="23px"><label/>
+						<div><button label="查  询" id="alertQuery_Button" sclass="btnDefault" width="74px" height="23px" image="/main/images/button/ico/query_bt.gif" onClick="win.doQuery()"/>
+						<button label="帮助" sclass="btnDefault"
+							width="74px" height="23px" 
+							image="/main/images/action/help.gif" action="onclick:showHelp(17)"/></div>
+						</row>
+					</rows>
+				</grid>
+			
+		</window>
+		</panelchildren></panel>
+		<panel title="报警日志列表" collapsible="true">
+			<panelchildren>
+				<window border="none" id="alertRuleTest">
+				<div id="lidiv"/>
+				</window>
+			</panelchildren>
+	    </panel>
+	</window>
+	</panelchildren></panel>
+	</center>
+	<south size="27px" sclass="eccBottom"
+		style="padding-top:4px;" border="none">
+				<div sclass="eccBottom"
+					style="border:none;border-style:outset;border-width:0px">
+					<div style="float:left">
+					<image
+						src="/main/images/none.gif" width="10px" />
+					<label value="日志状态: " />
+					<image align="absmiddle"
+						src="/main/images/alert/fail.gif" />
+					<label value="失败; " />
+					<image align="absmiddle"
+						src="/main/images/alert/success.gif" />
+					<label value="成功 " />
+					</div>
+				</div>
+	</south>	
+</borderlayout>
+</zk>

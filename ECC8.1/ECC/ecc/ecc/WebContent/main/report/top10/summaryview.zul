@@ -1,0 +1,19 @@
+<?component name="top10" macroURI="/main/report/top10/top10.zul" class="com.siteview.ecc.report.top10.DisplayComponent"?>
+<portallayout >
+	<portalchildren style="padding: 5px" width="49%">
+		<panel border="normal" collapsible="true" style="margin-bottom:5px">
+			<panelchildren>
+				<top10 impl="com.siteview.ecc.report.top10.TopTenErrorImpl" />
+			</panelchildren>
+		</panel>
+	</portalchildren>
+	
+	<portalchildren style="padding: 5px" width="49%">
+		<panel border="normal" collapsible="true" style="margin-bottom:5px">
+			<panelchildren>
+				<top10 impl="com.siteview.ecc.report.top10.TopTenBrowseImpl" />
+			</panelchildren>
+		</panel>
+	</portalchildren>
+</portallayout>
+			

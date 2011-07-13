@@ -1,0 +1,57 @@
+﻿<?page id="alertrule"?>
+<?component name="monitorselect" macro-uri="/main/alert/control/monitorselect.zul"?>
+
+<window id="mainwin" title="添加声音报警"  border="normal" position="center" use="com.siteview.ecc.alert.SoundAlertView" closable="true" width="660px">
+	<vbox>
+		<space height="3px"/>
+		<hbox>
+			<space width="3px"/>
+			<monitorselect treeheight="275px"/>
+			<vbox>
+				<groupbox closable="false" width="406px">
+					<caption label="设置 声音报警"/>
+					<grid style="border:0" oddRowSclass="none" width="100%">
+						<columns>
+							<column width="6px"/>
+							<column width="123px"/>
+							<column width="248px"/>
+							<column width="6px"/>
+						</columns>
+						<rows>
+							<row zclass="none" height="6px"><separator/>
+							</row>
+							<row zclass="none" height="23px"><separator width="1px"/><label>报警名称*：</label><textbox width="267px" height="15px" id="alertName" tooltiptext="报警名称"/>
+								<separator width="1px"/>
+							</row>
+							<row zclass="none" height="23px"><separator width="1px"/><label>服务器名*：</label><textbox width="267px" height="15px" id="alertServerName" value="127.0.0.1" tooltiptext="服务器名"/>
+								<separator width="1px"/>
+							</row>
+							<row zclass="none" height="23px"><separator width="1px"/><label>登录名*：</label><textbox width="267px" height="15px" id="alertLoginName" value="Administrator" tooltiptext="登录名"/>
+								<separator width="1px"/>
+							</row>
+							<row zclass="none" height="23px"><separator width="1px"/><label>登录密码：</label><textbox type="password" width="267px" height="15px" id="alertPassword" tooltiptext="登录密码"/>
+								<separator width="1px"/>
+							</row>
+							<row zclass="none" height="23px"><separator width="1px"/><label>报警策略：</label>
+								<combobox id="alertPloy" width="250px" height="15px" readonly="true" use="com.siteview.ecc.alert.control.AlertPloyCombobox" tooltiptext="报警策略">
+									<comboitem label="空" value="空"/>
+								</combobox>
+								<separator width="1px"/>
+							</row>
+							<row zclass="none" height="6px"><separator/>
+							</row>
+						</rows>
+					</grid>
+				</groupbox>
+				<include src="/main/alert/alertcondition.zul"/>
+			</vbox>
+			<space width="3px"/>
+		</hbox>
+		<hbox>
+			<separator width="470px"/>
+			<button label="保  存" id="button_ok" sclass="btnDefault" width="74px" height="23px" image="/main/images/button/ico/save_bt.gif"/>
+			<button label="取  消" id="button_cancel" sclass="btnDefault" width="74px" height="23px" image="/main/images/button/ico/close_bt.gif" onClick="mainwin.doCancel()"/>
+		</hbox>
+		<space height="3px"/>
+	</vbox>
+</window>

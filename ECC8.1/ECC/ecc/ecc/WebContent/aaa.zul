@@ -1,0 +1,206 @@
+<zk>
+<window title="Test of JavaScript Utilities">
+   <html onClick='l.value = "onClick "+event.area'
+      onUser='l.value ="onUser " +org.zkoss.lang.Objects.toString(event.data)'><![CDATA[
+      <a href="javascript:;" onclick="comm.sendClick(this, 'Hi')">onClick with Hi</a>
+      <a href="javascript:;" onclick="comm.sendClick(this)">onClick with null</a>
+      <a href="javascript:;" onclick="comm.sendUser(this)">onUser with null</a>
+      <a href="javascript:;" onclick="comm.sendUser(this, 'One')">onUser with One</a>
+      <a href="javascript:;" onclick="comm.sendUser(this, 'One', 'Two')">onUser with [One, Two]</a>
+      <a href="javascript:;" onclick="comm.sendEvent(this, 'onUser', 'XYZ')">onUser with XYZ</a>
+   ]]></html>
+   <separator/>
+   <label id="l"/>
+</window>
+</zk>
+<!-- zk>
+	<listbox fixedLayout="true" mold="paging" pageSize="2">
+		<listhead sizable="true">
+			<listheader align="center" width="40px"
+				image="/img/Centigrade-Widget-Icons/ArrowsUpDown-16x16.png" />
+			<listheader align="center" width="40px" image="/img/Centigrade-Widget-Icons/Envelope-16x16.png" />
+			<listheader align="center" width="40px"
+				image="/img/Centigrade-Widget-Icons/PaperClip-16x16.png" />
+			<listheader label="Subject" sort="auto"/>
+			<listheader label="Received" sort="auto"/>
+		</listhead>
+		<listitem height="28px">
+			<listcell image="/img/Centigrade-Widget-Icons/ArrowUpOrange-16x16.png" />
+			<listcell image="/img/Centigrade-Widget-Icons/EnvelopeOpen-16x16.png" />
+			<listcell image="/img/Centigrade-Widget-Icons/PaperClip-16x16.png" />
+			<listcell label="ZK Jet 0.8.0 is released" />
+			<listcell label="2008/11/17 17:41:29" />
+		</listitem>
+		<listitem height="28px">
+			<listcell image="/img/Centigrade-Widget-Icons/ArrowDown-16x16.png" />
+			<listcell image="/img/Centigrade-Widget-Icons/Envelope-16x16.png" />
+			<listcell image="/img/Centigrade-Widget-Icons/PaperClip-16x16.png" />
+			<listcell label="URLs for iPhone-Optimized Google Sites" />
+			<listcell label="2008/11/17 15:56:37" />
+		</listitem>
+		<listitem height="28px">
+			<listcell label="&#160;" />
+			<listcell image="/img/Centigrade-Widget-Icons/EnvelopeOpen-16x16.png" />
+			<listcell label="&#160;" />
+			<listcell label="Style Guide for ZK 3.5 released" />
+			<listcell label="2008/11/14 13:23:07" />
+		</listitem>
+		<listitem height="28px">
+			<listcell image="/img/Centigrade-Widget-Icons/ArrowUpOrange-16x16.png" />
+			<listcell image="/img/Centigrade-Widget-Icons/EnvelopeOpen-16x16.png" />
+			<listcell label="&#160;" />
+			<listcell label="ZK Studio 0.9.0 released." />
+			<listcell label="2008/11/16 10:26:37" />
+		</listitem>
+	</listbox>
+
+
+</zk-->			
+<!-- zk>
+<style>
+.z-tab
+{
+  height:30px;
+}
+.z-tabs .z-tabs-header{
+  background-repeat: no-repeat; background-position: right top;
+  background-image :url('header-right2.gif');
+  background-color:#c0c0c0;
+  height:30px;
+}
+.z-tabs .z-tabs-cnt 
+{
+  background: transparent;
+  background-repeat: no-repeat; 
+  background-position: left top;
+  background-image :url('left2.gif');
+  border-bottom: 0px solid #c0c0c0;
+  height:39px;
+}
+
+</style>
+<div style="height:1024px;height:768px;background-color:#ffffff">
+<tabbox mold="">
+				<tabs align="end">
+					<tab id="tab_monitor" label="监控器" closable="false" />
+					<tab id="tab_view" label="视图" closable="false" />
+					<tab id="tab_css" label="主题" closable="false" />
+					<tab id="info_tab" label="系统信息" closable="false" />
+				</tabs>
+				<tabpanels>
+					<tabpanel>
+						<borderlayout style="margin:0;">
+							<west id="westTree" style="font-size:12px" size="195px" flex="true"
+								splittable="true" minsize="0" maxsize="500"
+								collapsible="true"  border="none">
+								<panel framable="false">
+									<toolbar style="padding-left:3px;font-size:12px">
+									<hbox><label pre="true" style="width:100px;font-size:12px;over-flow:hidden" value="视图："/><listbox mold="select" id="viewSelect" /><space width="1px"/>
+									<image id="btnRefreshTree" hover="/main/images/refresh_hover.gif" tooltiptext="刷新" style="cursor:pointer" align="absmiddle" src="/main/images/refresh.png"/>
+									</hbox>
+									<hbox style="padding-top:3px;"><label pre="true" style="width:120px;font-size:12px;over-flow:hidden" value="设备："/>
+									<combobox id="locateEntityCombox" autodrop="true" buttonVisible="false"/><image tooltiptext="清空" id="imgClear" hover="/main/images/clear_hover.gif" visible="false" style="cursor:pointer" src="/main/images/clear.png"/></hbox>
+									</toolbar>
+									<panelchildren>
+										<tree zclass="z-dottree" Vflex="true" id="tree"/>
+									</panelchildren>
+								</panel>
+							</west>
+							<center flex="true"  border="none">
+								<include progressing="false" id="eccBody" src="/main/control/eccbody.zul"/>
+							</center>
+						</borderlayout>
+					</tabpanel>
+					<tabpanel fulfill="tab_view.onSelect">
+						<borderlayout >
+							<west title="默认视图" size="350px" flex="true"
+								splittable="true" minsize="100" maxsize="700"
+								collapsible="true"  border="none">
+								<panel framable="false">
+									<panelchildren>
+										<tree zclass="z-dottree" Vflex="true" id="treeOriginal"/>
+									</panelchildren>
+								</panel>
+							</west>
+							<center flex="true"  border="none">
+								<panel framable="false">
+									<toolbar>
+										<label style="font-size:12px" value="编辑视图:" />
+										<combobox id="viewSelectEditting"/>
+									</toolbar>
+									<panelchildren>
+										<tree zclass="z-dottree" Vflex="true" id="treeEditting"/>
+									</panelchildren>
+								</panel>
+							</center>
+						</borderlayout>
+					</tabpanel>
+</tabpanels>
+</tabbox>	
+</div>				
+</zk-->
+
+<!--zk>
+<style>
+.z-toolbar  
+{
+ border: 0px;
+}
+</style>
+
+<div style="height:1024px;height:768px;background-color:#ffffff">
+dsadsasd
+								<panel framable="false">
+									<toolbar style="padding-left:3px;font-size:12px">
+									aaaaaaaaa
+									</toolbar>
+									<panelchildren>
+										aaaaaaaaaaaaaaaaaaaaaaa
+									</panelchildren>
+								</panel>
+dsadsa								
+</div>								
+</zk-->
+
+
+<!-- zk>
+	<borderlayout id="main" style="border:none;margin:0">
+		<north border="none" size="30px" collapsible="true" style="border:none;">
+		<label value="1111"/>
+		</north>
+		<center border="none" >
+		<label value="2222"/>
+		</center>
+	</borderlayout>	
+</zk-->
+<!-- zk>
+<hbox>
+	<groupbox mold="3d" width="150px">
+		<caption label="Use Style Tag" />
+		<button src="/main/images/action/addevice.gif" id="btn" label="增加一个" sclass="btnDefault" width="100px" height="30px"/>
+		<button id="btn2" label="修改一个" sclass="btnDefault" width="100px" height="130px"/>
+		<button id="btn3" label="立刻保存" sclass="btnDefault" width="100px" height="30px"/>
+	</groupbox>
+	
+	<groupbox mold="3d" width="150px">
+		<caption label="Use style attribute" />
+		<hbox>
+			<radiogroup
+				onCheck='msg.style = "color:white;background:" + self.selectedItem.label;
+				btn.sclass = "my" + self.SelectedItem.label;'>
+				<vbox>
+					<radio label="Black" checked="true" />
+					<radio label="Blue" />
+					<radio label="Red" />
+				</vbox>
+			</radiogroup>
+			<label id="msg" value="Hello, ZK"
+				style="color:white;background:black" />
+		</hbox>
+	</groupbox>
+</hbox>
+<space/><space/><space/><space/><space/><space/><space/><space/><space/><space/><space/><space/><space/><space/><space/><space/><space/><space/><space/><space/><space/><space/><space/><space/><space/><space/><space/><space/>
+				<image src="/main/images/btnhelp.gif" hover="/main/images/btnhelp_hover.png" use="com.siteview.actions.ImageButton"/>
+</zk-->
+			
+			

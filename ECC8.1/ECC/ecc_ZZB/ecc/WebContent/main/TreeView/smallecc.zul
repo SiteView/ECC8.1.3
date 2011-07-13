@@ -1,0 +1,37 @@
+<?page contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window id="smallEccUrl" title="输入小猫的URL" border="normal"
+		mode="popup" width="300px" closable="true"
+		apply="com.siteview.ecc.treeview.windows.LoadSmallEcc" >
+
+			<groupbox closable="false" style="margin-left:10px;margin-right:10px;margin-top:10px" >
+	 			 <caption  label="设置"/>	
+					<grid id="urlid" oddRowSclass="none"  style="margin-top:5px;border:none">
+						<columns>
+							<column label="" width=""/>
+							<column label="" width=""/>
+						</columns>
+						<rows >												
+							<row zclass="none" height="23px">
+									<label value="&#160;&#160;小猫URL*:" />
+									<textbox id="smallUrlValue" value="http://" height="15px" width="180px" tooltiptext="示例:http://192.168.3.4:8080/ecc"/>								
+							</row>
+							<row zclass="none" height="5px">
+									<label/>
+									<label/>								
+							</row>
+						</rows>
+					</grid>	 			 	
+	 		</groupbox>	
+				<vbox style="margin-left:100px">
+					<hbox style="margin-top:10px;margin-bottom:10px">
+						<button id="urlButton" label="确定" sclass="btnDefault" width="74px" height="23px" 
+						    image="/main/images/button/ico/save_bt.gif"/>
+						   
+						<button label="取消" width="74px" height="23px" image="/main/images/button/ico/close_bt.gif"  sclass="btnDefault"
+							onClick="smallEccUrl.detach()" />
+					</hbox>
+				</vbox>	 		
+
+	</window>
+</zk>

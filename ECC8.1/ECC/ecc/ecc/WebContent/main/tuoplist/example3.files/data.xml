@@ -1,0 +1,856 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VisioDocument>
+	<DocumentProperties>
+		<Title/>
+		<HyperlinkBase href=""/>
+	</DocumentProperties>
+	<Pages>
+		<Page ID="0" Name="页-1" NameU="Page-1">
+			<Layer IX="0">
+				<Name>连接线</Name>
+				<NameUniv>Connector</NameUniv>
+				<Visible>1</Visible>
+			</Layer>
+			<Shapes>
+				<Shape ID="96" Master="15" Name="WS-C2912-LRE-XL With Ports" NameU="WS-C2912-LRE-XL With Ports" UniqueID="{3E0BB71C-915D-4794-A004-91D5657389B0}">
+					<XForm>
+						<PinX Unit="MM">2.863188976377953</PinX>
+						<PinY Unit="MM">10.157480314960630</PinY>
+					</XForm>
+					<Prop ID="2" Name="Product_Part_Number" NameU="Product_Part_Number">
+						<Value Unit="STR">WS-C2912-LRE-XL</Value>
+						<Label>Product Part Number</Label>
+					</Prop>
+					<Prop ID="3" Name="Product_Short_Description" NameU="Product_Short_Description">
+						<Value Unit="STR">Catalyst 2900 12-port LRE Switches </Value>
+						<Label>Product Short Description</Label>
+					</Prop>
+					<Prop ID="4" Name="Product_Long_Description" NameU="Product_Long_Description">
+						<Value Unit="STR">12-port Catalyst Long Reach Ethernet switch</Value>
+						<Label>Product Long Description</Label>
+					</Prop>
+					<Prop ID="5" Name="Service_Category" NameU="Service_Category">
+						<Value/>
+						<Label>Service Category</Label>
+					</Prop>
+					<Prop ID="21" Name="Comments" NameU="Comments">
+						<Value/>
+						<Label>Comments</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="128" Master="19" Name="PS-1M-LRE-48" NameU="PS-1M-LRE-48" UniqueID="{9DCF76C8-BB72-4301-86D0-0D1FA26F9F86}">
+					<XForm>
+						<PinX Unit="MM">2.075787401574804</PinX>
+						<PinY Unit="MM">9.015748031496063</PinY>
+					</XForm>
+					<Prop ID="2" Name="Product_Part_Number" NameU="Product_Part_Number">
+						<Value Unit="STR">PS-1M-LRE-48</Value>
+						<Label>Product Part Number</Label>
+					</Prop>
+					<Prop ID="3" Name="Product_Short_Description" NameU="Product_Short_Description">
+						<Value Unit="STR">Cisco LRE POTS Splitter</Value>
+						<Label>Product Short Description</Label>
+					</Prop>
+					<Prop ID="4" Name="Product_Long_Description" NameU="Product_Long_Description">
+						<Value Unit="STR">Cisco LRE POTS Splitter</Value>
+						<Label>Product Long Description</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="121" Master="14" Name="WS-C2950ST-24-LRE.121" NameU="WS-C2950ST-24-LRE.121" UniqueID="{C1E0D1A8-FEA5-48CC-9B5E-063B98ED0E60}">
+					<XForm>
+						<PinX Unit="MM">3.650590551181101</PinX>
+						<PinY Unit="MM">10.236220472440944</PinY>
+					</XForm>
+					<Prop ID="2" Name="Product_Part_Number" NameU="Product_Part_Number">
+						<Value Unit="STR">WS-C2950ST-24-LRE</Value>
+						<Label>Product Part Number</Label>
+					</Prop>
+					<Prop ID="3" Name="Product_Short_Description" NameU="Product_Short_Description">
+						<Value Unit="STR">Cisco Catalyst 2950ST-24-LRE (Long Reach Ethernet) Switch</Value>
+						<Label>Product Short Description</Label>
+					</Prop>
+					<Prop ID="4" Name="Product_Long_Description" NameU="Product_Long_Description">
+						<Value Unit="STR">Cisco Catalyst 2950ST-24-LRE (Long Reach Ethernet) Switch</Value>
+						<Label>Product Long Description</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="122" Master="21" Name="2950SX-48-SI-(back)" NameU="2950SX-48-SI-(back)" UniqueID="{1C0DE2CD-656E-486E-ACD5-05B7B45B588F}">
+					<XForm>
+						<PinX Unit="MM">2.469488188976378</PinX>
+						<PinY Unit="MM">8.740157480314959</PinY>
+					</XForm>
+					<Prop ID="2" Name="Product_Part_Number" NameU="Product_Part_Number">
+						<Value Unit="STR">2950SX-48-SI-(back)</Value>
+						<Label>Product Part Number</Label>
+					</Prop>
+					<Prop ID="3" Name="Product_Short_Description" NameU="Product_Short_Description">
+						<Value Unit="STR">Cisco Catalyst 2950SX-48 Switch</Value>
+						<Label>Product Short Description</Label>
+					</Prop>
+					<Prop ID="4" Name="Product_Long_Description" NameU="Product_Long_Description">
+						<Value Unit="STR">Cisco Catalyst 2950SX-48 Switch</Value>
+						<Label>Product Long Description</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="123" Master="22" Name="2950T-48-SI-(front)" NameU="2950T-48-SI-(front)" UniqueID="{15DB6360-CF19-436B-A0D5-3C0330253203}">
+					<XForm>
+						<PinX Unit="MM">2.666338582677165</PinX>
+						<PinY Unit="MM">9.409448818897637</PinY>
+					</XForm>
+					<Prop ID="2" Name="Product_Part_Number" NameU="Product_Part_Number">
+						<Value Unit="STR">2950T-48-SI-(front)</Value>
+						<Label>Product Part Number</Label>
+					</Prop>
+					<Prop ID="3" Name="Product_Short_Description" NameU="Product_Short_Description">
+						<Value Unit="STR">Cisco Catalyst 2950T-48-SI Switch</Value>
+						<Label>Product Short Description</Label>
+					</Prop>
+					<Prop ID="4" Name="Product_Long_Description" NameU="Product_Long_Description">
+						<Value Unit="STR">Cisco Catalyst 2950T-48-SI Switch</Value>
+						<Label>Product Long Description</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="131" Master="26" Name="WS-C2970G-24TS-E" NameU="WS-C2970G-24TS-E" UniqueID="{44F05D0A-3E48-40F8-A2BE-864ADFC6DB30}">
+					<XForm>
+						<PinX Unit="MM">5.225393700787400</PinX>
+						<PinY Unit="MM">9.960629921259841</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="134" Master="23" Name="WS-C2948G-GE-TX-B.134" NameU="WS-C2948G-GE-TX-B.134" UniqueID="{E98125AE-62AA-4728-B63D-68960275DE47}">
+					<XForm>
+						<PinX Unit="MM">3.374999999999999</PinX>
+						<PinY Unit="MM">7.440944881889763</PinY>
+					</XForm>
+					<Prop ID="2" Name="Product_Part_Number" NameU="Product_Part_Number">
+						<Value Unit="STR">WS-C2948G-GE-TX-B</Value>
+						<Label>Product Part Number</Label>
+					</Prop>
+					<Prop ID="3" Name="Product_Short_Description" NameU="Product_Short_Description">
+						<Value Unit="STR">Cisco Catalyst 2948G-GE-TX Gigabit Ethernet Switch</Value>
+						<Label>Product Short Description</Label>
+					</Prop>
+					<Prop ID="4" Name="Product_Long_Description" NameU="Product_Long_Description">
+						<Value Unit="STR">Cisco Catalyst 2948G-GE-TX Gigabit Ethernet Switch</Value>
+						<Label>Product Long Description</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="125" Master="28" Name="WS-C2960-48TT-L" NameU="WS-C2960-48TT-L" UniqueID="{50EB3057-36C7-4833-87FE-1B523F0EF3A6}">
+					<XForm>
+						<PinX Unit="MM">4.831692913385826</PinX>
+						<PinY Unit="MM">7.440944881889763</PinY>
+					</XForm>
+					<Prop ID="2" Name="Product_Part_Number" NameU="Product_Part_Number">
+						<Value Unit="STR">WS-C2960-48TT-L</Value>
+						<Label>Product Part Number</Label>
+					</Prop>
+					<Prop ID="3" Name="Product_Short_Description" NameU="Product_Short_Description">
+						<Value Unit="STR">Cisco Catalyst 2960-48TT</Value>
+						<Label>Product Short Description</Label>
+					</Prop>
+					<Prop ID="4" Name="Product_Long_Description" NameU="Product_Long_Description">
+						<Value Unit="STR">Cisco Catalyst 2960-48TT</Value>
+						<Label>Product Long Description</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="152" Master="33" Name="ONS 15310-CE-100T-8" NameU="ONS 15310-CE-100T-8" UniqueID="{0741B82F-7B66-4C29-B3E2-842875337DDC}">
+					<XForm>
+						<PinX Unit="MM">4.409448818897637</PinX>
+						<PinY Unit="MM">9.212598425196848</PinY>
+					</XForm>
+					<Prop ID="2" Name="Product_Part_Number" NameU="Product_Part_Number">
+						<Value Unit="STR">ONS 15310-CE-100T-8</Value>
+						<Label>Product Part Number</Label>
+					</Prop>
+					<Prop ID="3" Name="Product_Short_Description" NameU="Product_Short_Description">
+						<Value Unit="STR">CE series 8-port 10/100 Carrier Ethernet Card</Value>
+						<Label>Product Short Description</Label>
+					</Prop>
+					<Prop ID="4" Name="Product_Long_Description" NameU="Product_Long_Description">
+						<Value Unit="STR">CE series 8-port 10/100 Carrier Ethernet Card</Value>
+						<Label>Product Long Description</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="153" Master="34" Name="VG248 (Rear)" NameU="VG248 (Rear)" UniqueID="{991C22BF-BF57-417B-ADE6-620C867D2E5E}">
+					<XForm>
+						<PinX Unit="MM">2.929429133858267</PinX>
+						<PinY Unit="MM">10.039370078740156</PinY>
+					</XForm>
+					<Prop ID="2" Name="Product_Part_Number" NameU="Product_Part_Number">
+						<Value Unit="STR">VG248</Value>
+						<Label>Product Part Number</Label>
+					</Prop>
+					<Prop ID="3" Name="Product_Short_Description" NameU="Product_Short_Description">
+						<Value Unit="STR">VG248 Analog Phone Gateway</Value>
+						<Label>Product Short Description</Label>
+					</Prop>
+					<Prop ID="4" Name="Product_Long_Description" NameU="Product_Long_Description">
+						<Value Unit="STR">VG248 Analog Phone Gateway</Value>
+						<Label>Product Long Description</Label>
+					</Prop>
+					<Prop ID="5" Name="Service_Category" NameU="Service_Category">
+						<Value/>
+						<Label>Service Category</Label>
+					</Prop>
+					<Prop ID="21" Name="Comments" NameU="Comments">
+						<Value/>
+						<Label>Comments</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="154" Master="35" Name="MDS 9140 (Rear)" NameU="MDS 9140 (Rear)" UniqueID="{D10E6D35-9BD0-43F9-939B-3FE14CEEF79C}">
+					<XForm>
+						<PinX Unit="MM">3.438740157480314</PinX>
+						<PinY Unit="MM">10.039370078740156</PinY>
+					</XForm>
+					<Prop ID="2" Name="Product_Part_Number" NameU="Product_Part_Number">
+						<Value Unit="STR">MDS 9140</Value>
+						<Label>Product Part Number</Label>
+					</Prop>
+					<Prop ID="3" Name="Product_Short_Description" NameU="Product_Short_Description">
+						<Value Unit="STR">MDS 9140 Multilayer Fabric Switch</Value>
+						<Label>Product Short Description</Label>
+					</Prop>
+					<Prop ID="4" Name="Product_Long_Description" NameU="Product_Long_Description">
+						<Value Unit="STR">MDS 9140 Multilayer Fabric Switch</Value>
+						<Label>Product Long Description</Label>
+					</Prop>
+					<Prop ID="5" Name="Service_Category" NameU="Service_Category">
+						<Value/>
+						<Label>Service Category</Label>
+					</Prop>
+					<Prop ID="21" Name="Comments" NameU="Comments">
+						<Value/>
+						<Label>Comments</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="156" Master="37" Name="DS-X9302-14K9" NameU="DS-X9302-14K9" UniqueID="{B06ED04F-2E91-4FEC-B6E4-1A3894AF984C}">
+					<XForm>
+						<PinX Unit="MM">4.259251968503937</PinX>
+						<PinY Unit="MM">9.015748031496063</PinY>
+					</XForm>
+					<Prop ID="2" Name="Product_Part_Number" NameU="Product_Part_Number">
+						<Value Unit="STR">DS-X9302-14K9</Value>
+						<Label>Product Part Number</Label>
+					</Prop>
+					<Prop ID="3" Name="Product_Short_Description" NameU="Product_Short_Description">
+						<Value Unit="STR">Cisco MDS 9000 Family Multiprotocol Services Module</Value>
+						<Label>Product Short Description</Label>
+					</Prop>
+					<Prop ID="4" Name="Product_Long_Description" NameU="Product_Long_Description">
+						<Value Unit="STR">Cisco MDS 9000 Family Multiprotocol Services Module</Value>
+						<Label>Product Long Description</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="158" Master="6" Name="MDS 9140 (Front).158" NameU="MDS 9140 (Front).158" UniqueID="{1D73BA46-1C00-4D12-A382-A6CCE1AFB9EF}">
+					<XForm>
+						<PinX Unit="MM">4.029291338582676</PinX>
+						<PinY Unit="MM">9.015748031496063</PinY>
+					</XForm>
+					<Prop ID="2" Name="Product_Part_Number" NameU="Product_Part_Number">
+						<Value Unit="STR">MDS 9140</Value>
+						<Label>Product Part Number</Label>
+					</Prop>
+					<Prop ID="3" Name="Product_Short_Description" NameU="Product_Short_Description">
+						<Value Unit="STR">MDS 9140 Multilayer Fabric Switch</Value>
+						<Label>Product Short Description</Label>
+					</Prop>
+					<Prop ID="4" Name="Product_Long_Description" NameU="Product_Long_Description">
+						<Value Unit="STR">MDS 9140 Multilayer Fabric Switch</Value>
+						<Label>Product Long Description</Label>
+					</Prop>
+					<Prop ID="5" Name="Service_Category" NameU="Service_Category">
+						<Value/>
+						<Label>Service Category</Label>
+					</Prop>
+					<Prop ID="21" Name="Comments" NameU="Comments">
+						<Value/>
+						<Label>Comments</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="163" Master="41" Name="UBR10-1OC12/P-SMI" NameU="UBR10-1OC12/P-SMI" UniqueID="{302B4B69-858B-4B33-8A4E-FB0F53109B30}">
+					<XForm>
+						<PinX Unit="MM">3.300000000000000</PinX>
+						<PinY Unit="MM">10.039370078740156</PinY>
+					</XForm>
+					<Prop ID="2" Name="Product_Part_Number" NameU="Product_Part_Number">
+						<Value Unit="STR">UBR10-1OC12/P-SMI</Value>
+						<Label>Product Part Number</Label>
+					</Prop>
+					<Prop ID="3" Name="Product_Short_Description" NameU="Product_Short_Description">
+						<Value Unit="STR">1 Port OC12/STS12c/STM4 POS, single mode, int reach</Value>
+						<Label>Product Short Description</Label>
+					</Prop>
+					<Prop ID="4" Name="Product_Long_Description" NameU="Product_Long_Description">
+						<Value Unit="STR">1 Port OC12/STS12c/STM4 POS, single mode, int reach</Value>
+						<Label>Product Long Description</Label>
+					</Prop>
+					<Prop ID="5" Name="Service_Category" NameU="Service_Category">
+						<Value/>
+						<Label>Service Category</Label>
+					</Prop>
+					<Prop ID="21" Name="Comments" NameU="Comments">
+						<Value/>
+						<Label>Comments</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="161" Master="45" Name="UBR10-5X20S-D" NameU="UBR10-5X20S-D" UniqueID="{003E3238-E7C7-4BEA-80C5-EB86C2287251}">
+					<XForm>
+						<PinX Unit="MM">3.996062992125983</PinX>
+						<PinY Unit="MM">10.433070866141732</PinY>
+					</XForm>
+					<Prop ID="2" Name="Product_Part_Number" NameU="Product_Part_Number">
+						<Value Unit="STR">UBR10-5X20S-D</Value>
+						<Label>Product Part Number</Label>
+					</Prop>
+					<Prop ID="3" Name="Product_Short_Description" NameU="Product_Short_Description">
+						<Value Unit="STR">Cisco 5x2S Broadband Processing Engine (BPE) for the  Cisco uBR10012 Universal Broadband Router </Value>
+						<Label>Product Short Description</Label>
+					</Prop>
+					<Prop ID="4" Name="Product_Long_Description" NameU="Product_Long_Description">
+						<Value Unit="STR">Cisco 5x2S Broadband Processing Engine (BPE) for the  Cisco uBR10012 Universal Broadband Router </Value>
+						<Label>Product Long Description</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="151" Master="8" Name="IDS-4215-K9-Back.151" NameU="IADBack.151" UniqueID="{1A9F74E9-F585-4305-84C4-8B25B4AF3248}">
+					<XForm>
+						<PinX Unit="MM">3.562992125984252</PinX>
+						<PinY Unit="MM">9.921259842519683</PinY>
+					</XForm>
+					<Prop ID="2" Name="Product_Part_Number" NameU="Product_Part_Number">
+						<Value Unit="STR">IDS-4215-K9-Back</Value>
+						<Label>Product Part Number</Label>
+					</Prop>
+					<Prop ID="3" Name="Product_Short_Description" NameU="Product_Short_Description">
+						<Value Unit="STR">Cisco IDS 4215 Sensor, 80-Mbps</Value>
+						<Label>Product Short Description</Label>
+					</Prop>
+					<Prop ID="4" Name="Product_Long_Description" NameU="Product_Long_Description">
+						<Value Unit="STR">Cisco IDS 4215 Sensor, 80-Mbps</Value>
+						<Label>Product Long Description</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="155" Name="Sheet.155" NameU="Sheet.155" UniqueID="{8AF03A0B-FFED-4AFB-845A-D4A6893B1602}">
+					<XForm>
+						<PinX Unit="MM">3.562992125984253</PinX>
+						<PinY Unit="MM">10.117187851518558</PinY>
+					</XForm>
+					<Prop ID="1" Name="Row_1" NameU="Row_1">
+						<Value Unit="STR">10.1.254.197</Value>
+						<Label>SV_IP</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="181" Name="WS-C6509-NEB (Front).180" NameU="WS-C6509-NEB (Front).180" UniqueID="{27B141C1-0EAD-4067-B6DA-F3DFB5EA9106}">
+					<XForm>
+						<PinX Unit="MM">2.578740157480315</PinX>
+						<PinY Unit="MM">8.070866141732282</PinY>
+					</XForm>
+					<Prop ID="1" Name="Row_1" NameU="Row_1">
+						<Value Unit="STR">10.2.32.2</Value>
+						<Label>SV_IP</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="179" Master="29" Name="动态连接线.179" NameU="Dynamic connector.179" UniqueID="{7431DC39-C0CA-4CC5-B5E1-5742CF62F595}">
+					<XForm>
+						<PinX Unit="MM">2.539370078740158</PinX>
+						<PinY Unit="MM">8.718832020997375</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember>0</LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="183" Master="52" Name="Firewall.96" NameU="Firewall.96" UniqueID="{C04B59E2-57FD-41B8-8E93-C2522B128CC1}">
+					<XForm>
+						<PinX Unit="MM">2.491437007874017</PinX>
+						<PinY Unit="MM">8.972293880936775</PinY>
+					</XForm>
+					<Prop ID="1" Name="Row_1" NameU="Row_1">
+						<Value Unit="STR">10.2.38.4</Value>
+						<Label>SV_IP</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="160" Master="52" Name="Firewall.160" NameU="Firewall.160" UniqueID="{E0A76160-5A84-4AEB-B81C-6F80595CD1A8}">
+					<XForm>
+						<PinX Unit="MM">4.429133858267715</PinX>
+						<PinY Unit="MM">8.986467109283232</PinY>
+					</XForm>
+					<Prop ID="1" Name="Row_1" NameU="Row_1">
+						<Value Unit="STR">10.2.32.4</Value>
+						<Label>SV_IP</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="162" Master="29" Name="动态连接线.162" NameU="Dynamic connector.162" UniqueID="{85B956E3-9F18-4AEB-BF56-4EE30DACD36D}">
+					<XForm>
+						<PinX Unit="MM">2.578740157480315</PinX>
+						<PinY Unit="MM">9.392766321881659</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember>0</LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="164" Name="Sheet.164" NameU="Sheet.164" UniqueID="{04E4DC14-5478-4443-9D49-0A48ACEC0EF5}">
+					<XForm>
+						<PinX Unit="MM">6.456692913385828</PinX>
+						<PinY Unit="MM">9.074803149606298</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="167" Master="53" Name="Workgroup Switch" NameU="Workgroup Switch" UniqueID="{AE834947-F5CF-4E34-852A-318ECAA8275A}">
+					<XForm>
+						<PinX Unit="MM">6.062681960493254</PinX>
+						<PinY Unit="MM">9.140892127938102</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="168" Master="29" Name="动态连接线.31" NameU="Dynamic connector.31" UniqueID="{E63B5ACB-C9EA-4615-B5B4-C90BC12EBD8F}">
+					<XForm>
+						<PinX Unit="MM">6.552057832669991</PinX>
+						<PinY Unit="MM">9.082777417472901</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember>0</LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="169" Master="29" Name="动态连接线.32" NameU="Dynamic connector.32" UniqueID="{6AADF390-D4A2-4DE6-95D6-2643BD9BA9D7}">
+					<XForm>
+						<PinX Unit="MM">6.536060014190204</PinX>
+						<PinY Unit="MM">8.939140013085742</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember>0</LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="170" Master="29" Name="动态连接线.30" NameU="Dynamic connector.30" UniqueID="{8F4FB667-1275-46B2-8380-554B8D7F9981}">
+					<XForm>
+						<PinX Unit="MM">6.564574562830321</PinX>
+						<PinY Unit="MM">9.285630520067187</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember>0</LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="171" Master="54" Name="服务器.122" NameU="Server.122" UniqueID="{4B08C22B-3395-4E68-B40C-313523A2AFBD}">
+					<XForm>
+						<PinX Unit="MM">6.831018826908313</PinX>
+						<PinY Unit="MM">9.362469099068132</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember/>
+					</LayerMem>
+					<Prop ID="10" Name="Department" NameU="Department">
+						<Value/>
+						<Label>部门</Label>
+					</Prop>
+					<Prop ID="5" Name="AssetNumber" NameU="AssetNumber">
+						<Value/>
+						<Label>资产号</Label>
+					</Prop>
+					<Prop ID="6" Name="SerialNumber" NameU="SerialNumber">
+						<Value/>
+						<Label>序列号</Label>
+					</Prop>
+					<Prop ID="7" Name="Location" NameU="Location">
+						<Value/>
+						<Label>位置</Label>
+					</Prop>
+					<Prop ID="8" Name="Building" NameU="Building">
+						<Value/>
+						<Label>建筑物</Label>
+					</Prop>
+					<Prop ID="9" Name="Room" NameU="Room">
+						<Value/>
+						<Label>房间</Label>
+					</Prop>
+					<Prop ID="1" Name="Manufacturer" NameU="Manufacturer">
+						<Value/>
+						<Label>制造商</Label>
+					</Prop>
+					<Prop ID="2" Name="ProductNumber" NameU="ProductNumber">
+						<Value/>
+						<Label>产品编号</Label>
+					</Prop>
+					<Prop ID="3" Name="PartNumber" NameU="PartNumber">
+						<Value/>
+						<Label>部件号</Label>
+					</Prop>
+					<Prop ID="4" Name="ProductDescription" NameU="ProductDescription">
+						<Value/>
+						<Label>产品说明</Label>
+					</Prop>
+					<Prop ID="11" Name="NetworkName" NameU="NetworkName">
+						<Value/>
+						<Label>网络名称</Label>
+					</Prop>
+					<Prop ID="12" Name="IPAddress" NameU="IPAddress">
+						<Value/>
+						<Label>IP 地址</Label>
+					</Prop>
+					<Prop ID="13" Name="SubnetMask" NameU="SubnetMask">
+						<Value/>
+						<Label>子网掩码</Label>
+					</Prop>
+					<Prop ID="14" Name="AdminInterface" NameU="AdminInterface">
+						<Value/>
+						<Label>管理接口</Label>
+					</Prop>
+					<Prop ID="15" Name="NumberofPorts" NameU="NumberofPorts">
+						<Value/>
+						<Label>端口数目</Label>
+					</Prop>
+					<Prop ID="16" Name="CommunityString" NameU="CommunityString">
+						<Value/>
+						<Label>团体字符串</Label>
+					</Prop>
+					<Prop ID="17" Name="NetworkDescription" NameU="NetworkDescription">
+						<Value/>
+						<Label>网络说明</Label>
+					</Prop>
+					<Prop ID="24" Name="MACAddress" NameU="MACAddress">
+						<Value/>
+						<Label>MAC 地址</Label>
+					</Prop>
+					<Prop ID="18" Name="CPU" NameU="CPU">
+						<Value/>
+						<Label>CPU</Label>
+					</Prop>
+					<Prop ID="19" Name="Memory" NameU="Memory">
+						<Value/>
+						<Label>内存</Label>
+					</Prop>
+					<Prop ID="20" Name="OperatingSystem" NameU="OperatingSystem">
+						<Value/>
+						<Label>操作系统</Label>
+					</Prop>
+					<Prop ID="25" Name="HardDriveSize" NameU="HardDriveSize">
+						<Value/>
+						<Label>硬盘容量</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="192" Master="54" Name="服务器.70" NameU="Server.70" UniqueID="{BB51F791-73A5-4C13-A4E7-07A40A90F87D}">
+					<XForm>
+						<PinX Unit="MM">6.831018826908313</PinX>
+						<PinY Unit="MM">9.049650043744531</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember/>
+					</LayerMem>
+					<Prop ID="10" Name="Department" NameU="Department">
+						<Value/>
+						<Label>部门</Label>
+					</Prop>
+					<Prop ID="5" Name="AssetNumber" NameU="AssetNumber">
+						<Value/>
+						<Label>资产号</Label>
+					</Prop>
+					<Prop ID="6" Name="SerialNumber" NameU="SerialNumber">
+						<Value/>
+						<Label>序列号</Label>
+					</Prop>
+					<Prop ID="7" Name="Location" NameU="Location">
+						<Value/>
+						<Label>位置</Label>
+					</Prop>
+					<Prop ID="8" Name="Building" NameU="Building">
+						<Value/>
+						<Label>建筑物</Label>
+					</Prop>
+					<Prop ID="9" Name="Room" NameU="Room">
+						<Value/>
+						<Label>房间</Label>
+					</Prop>
+					<Prop ID="1" Name="Manufacturer" NameU="Manufacturer">
+						<Value/>
+						<Label>制造商</Label>
+					</Prop>
+					<Prop ID="2" Name="ProductNumber" NameU="ProductNumber">
+						<Value/>
+						<Label>产品编号</Label>
+					</Prop>
+					<Prop ID="3" Name="PartNumber" NameU="PartNumber">
+						<Value/>
+						<Label>部件号</Label>
+					</Prop>
+					<Prop ID="4" Name="ProductDescription" NameU="ProductDescription">
+						<Value/>
+						<Label>产品说明</Label>
+					</Prop>
+					<Prop ID="11" Name="NetworkName" NameU="NetworkName">
+						<Value/>
+						<Label>网络名称</Label>
+					</Prop>
+					<Prop ID="12" Name="IPAddress" NameU="IPAddress">
+						<Value/>
+						<Label>IP 地址</Label>
+					</Prop>
+					<Prop ID="13" Name="SubnetMask" NameU="SubnetMask">
+						<Value/>
+						<Label>子网掩码</Label>
+					</Prop>
+					<Prop ID="14" Name="AdminInterface" NameU="AdminInterface">
+						<Value/>
+						<Label>管理接口</Label>
+					</Prop>
+					<Prop ID="15" Name="NumberofPorts" NameU="NumberofPorts">
+						<Value/>
+						<Label>端口数目</Label>
+					</Prop>
+					<Prop ID="16" Name="CommunityString" NameU="CommunityString">
+						<Value/>
+						<Label>团体字符串</Label>
+					</Prop>
+					<Prop ID="17" Name="NetworkDescription" NameU="NetworkDescription">
+						<Value/>
+						<Label>网络说明</Label>
+					</Prop>
+					<Prop ID="24" Name="MACAddress" NameU="MACAddress">
+						<Value/>
+						<Label>MAC 地址</Label>
+					</Prop>
+					<Prop ID="18" Name="CPU" NameU="CPU">
+						<Value/>
+						<Label>CPU</Label>
+					</Prop>
+					<Prop ID="19" Name="Memory" NameU="Memory">
+						<Value/>
+						<Label>内存</Label>
+					</Prop>
+					<Prop ID="20" Name="OperatingSystem" NameU="OperatingSystem">
+						<Value/>
+						<Label>操作系统</Label>
+					</Prop>
+					<Prop ID="25" Name="HardDriveSize" NameU="HardDriveSize">
+						<Value/>
+						<Label>硬盘容量</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="207" Master="54" Name="服务器.85" NameU="Server.85" UniqueID="{5FD3FB5C-9A1D-499E-9237-335C17D375EB}">
+					<XForm>
+						<PinX Unit="MM">6.831018826908316</PinX>
+						<PinY Unit="MM">8.813429571303587</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember/>
+					</LayerMem>
+					<Prop ID="10" Name="Department" NameU="Department">
+						<Value/>
+						<Label>部门</Label>
+					</Prop>
+					<Prop ID="5" Name="AssetNumber" NameU="AssetNumber">
+						<Value/>
+						<Label>资产号</Label>
+					</Prop>
+					<Prop ID="6" Name="SerialNumber" NameU="SerialNumber">
+						<Value/>
+						<Label>序列号</Label>
+					</Prop>
+					<Prop ID="7" Name="Location" NameU="Location">
+						<Value/>
+						<Label>位置</Label>
+					</Prop>
+					<Prop ID="8" Name="Building" NameU="Building">
+						<Value/>
+						<Label>建筑物</Label>
+					</Prop>
+					<Prop ID="9" Name="Room" NameU="Room">
+						<Value/>
+						<Label>房间</Label>
+					</Prop>
+					<Prop ID="1" Name="Manufacturer" NameU="Manufacturer">
+						<Value/>
+						<Label>制造商</Label>
+					</Prop>
+					<Prop ID="2" Name="ProductNumber" NameU="ProductNumber">
+						<Value/>
+						<Label>产品编号</Label>
+					</Prop>
+					<Prop ID="3" Name="PartNumber" NameU="PartNumber">
+						<Value/>
+						<Label>部件号</Label>
+					</Prop>
+					<Prop ID="4" Name="ProductDescription" NameU="ProductDescription">
+						<Value/>
+						<Label>产品说明</Label>
+					</Prop>
+					<Prop ID="11" Name="NetworkName" NameU="NetworkName">
+						<Value/>
+						<Label>网络名称</Label>
+					</Prop>
+					<Prop ID="12" Name="IPAddress" NameU="IPAddress">
+						<Value/>
+						<Label>IP 地址</Label>
+					</Prop>
+					<Prop ID="13" Name="SubnetMask" NameU="SubnetMask">
+						<Value/>
+						<Label>子网掩码</Label>
+					</Prop>
+					<Prop ID="14" Name="AdminInterface" NameU="AdminInterface">
+						<Value/>
+						<Label>管理接口</Label>
+					</Prop>
+					<Prop ID="15" Name="NumberofPorts" NameU="NumberofPorts">
+						<Value/>
+						<Label>端口数目</Label>
+					</Prop>
+					<Prop ID="16" Name="CommunityString" NameU="CommunityString">
+						<Value/>
+						<Label>团体字符串</Label>
+					</Prop>
+					<Prop ID="17" Name="NetworkDescription" NameU="NetworkDescription">
+						<Value/>
+						<Label>网络说明</Label>
+					</Prop>
+					<Prop ID="24" Name="MACAddress" NameU="MACAddress">
+						<Value/>
+						<Label>MAC 地址</Label>
+					</Prop>
+					<Prop ID="18" Name="CPU" NameU="CPU">
+						<Value/>
+						<Label>CPU</Label>
+					</Prop>
+					<Prop ID="19" Name="Memory" NameU="Memory">
+						<Value/>
+						<Label>内存</Label>
+					</Prop>
+					<Prop ID="20" Name="OperatingSystem" NameU="OperatingSystem">
+						<Value/>
+						<Label>操作系统</Label>
+					</Prop>
+					<Prop ID="25" Name="HardDriveSize" NameU="HardDriveSize">
+						<Value/>
+						<Label>硬盘容量</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="146" Master="29" Name="动态连接线.146" NameU="Dynamic connector.146" UniqueID="{1092E001-50FE-4980-898F-04C4B7F1EF87}">
+					<XForm>
+						<PinX Unit="MM">5.274382126941147</PinX>
+						<PinY Unit="MM">8.986467109283232</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember>0</LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="147" Master="29" Name="动态连接线.147" NameU="Dynamic connector.147" UniqueID="{C913C82F-DE40-420E-9E41-20B714902A68}">
+					<XForm>
+						<PinX Unit="MM">4.251968503937007</PinX>
+						<PinY Unit="MM">9.274656085661185</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember>0</LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="250" Master="56" Name="CISCO585-LRE (Top)" NameU="CISCO585-LRE (Top)" UniqueID="{2C06F59E-DD97-48C5-A38E-E189DF3C8030}">
+					<XForm>
+						<PinX Unit="MM">1.564685039370079</PinX>
+						<PinY Unit="MM">4.527559055118110</PinY>
+					</XForm>
+					<Prop ID="2" Name="Product_Part_Number" NameU="Product_Part_Number">
+						<Value Unit="STR">CISCO585-LRE</Value>
+						<Label>Product Part Number</Label>
+					</Prop>
+					<Prop ID="3" Name="Product_Short_Description" NameU="Product_Short_Description">
+						<Value Unit="STR">Cisco585-LRE CPE</Value>
+						<Label>Product Short Description</Label>
+					</Prop>
+					<Prop ID="4" Name="Product_Long_Description" NameU="Product_Long_Description">
+						<Value Unit="STR">Cisco585-LRE CPE</Value>
+						<Label>Product Long Description</Label>
+					</Prop>
+					<Prop ID="5" Name="Service_Category" NameU="Service_Category">
+						<Value/>
+						<Label>Service Category</Label>
+					</Prop>
+					<Prop ID="21" Name="Comments" NameU="Comments">
+						<Value/>
+						<Label>Comments</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="252" Master="29" Name="动态连接线.252" NameU="Dynamic connector.252" UniqueID="{535DA388-C9EC-4BF8-864C-5E9899E80729}">
+					<XForm>
+						<PinX Unit="MM">3.460285433070866</PinX>
+						<PinY Unit="MM">9.015748031496063</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember>0</LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="177" Master="29" Name="动态连接线.177" NameU="Dynamic connector.177" UniqueID="{5B7EA5F4-3209-4818-A273-EE4C35B70DC5}">
+					<XForm>
+						<PinX Unit="MM">4.542322834645669</PinX>
+						<PinY Unit="MM">9.399852936054884</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember>0</LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="245" Name="Sheet.245" NameU="Sheet.245" UniqueID="{5B7DFEB0-0D0F-4B66-87B6-318B954D854B}">
+					<XForm>
+						<PinX Unit="MM">2.568897637795275</PinX>
+						<PinY Unit="MM">9.732169291338582</PinY>
+					</XForm>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									
+									
+								<HLURL:Hyperlink ID="0"><HLURL:Description>SV_Entity:192.168.0.43(Unix)</HLURL:Description><HLURL:Address>#</HLURL:Address><HLURL:SubAddress/><HLURL:AbsoluteURL>#</HLURL:AbsoluteURL><HLURL:ExtraInfo/><HLURL:Default/><HLURL:Status>-100</HLURL:Status><HLURL:NewWindow>0</HLURL:NewWindow></HLURL:Hyperlink></HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+					<Prop ID="1" Name="SV_Entity" NameU="SV_Entity">
+						<Value Unit="STR">192.168.0.43(Unix)</Value>
+						<Label>实体IP</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="253" Name="WS-C2960G-24TC-L.253" NameU="WS-C2960G-24TC-L.253" UniqueID="{FFA4589B-A421-4967-A765-E9AA2AC8DFE7}">
+					<XForm>
+						<PinX Unit="MM">4.635826771653542</PinX>
+						<PinY Unit="MM">9.732169291338582</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="254" Master="29" Name="动态连接线.254" NameU="Dynamic connector.254" UniqueID="{1E60FAFF-9D55-4C25-AFCD-582FC5675582}">
+					<XForm>
+						<PinX Unit="MM">2.573818897637795</PinX>
+						<PinY Unit="MM">9.988074803149607</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember>0</LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="255" Master="29" Name="动态连接线.255" NameU="Dynamic connector.255" UniqueID="{76A9A63E-A2BE-48F3-B764-968A75A583CE}">
+					<XForm>
+						<PinX Unit="MM">4.576771653543307</PinX>
+						<PinY Unit="MM">9.929019685039368</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember>0</LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="260" Name="Sheet.260" NameU="Sheet.260" UniqueID="{DEB6B304-2DD8-47B2-B1D0-FCFEA929CDC3}">
+					<Text>Sv</Text>
+					<XForm>
+						<PinX Unit="MM">2.312992125984251</PinX>
+						<PinY Unit="MM">9.724409448818896</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="261" Name="Sheet.261" NameU="Sheet.261" UniqueID="{064D99E3-57C3-4A7B-9BA1-91C66F957F77}">
+					<Text>Sv</Text>
+					<XForm>
+						<PinX Unit="MM">4.379921259842520</PinX>
+						<PinY Unit="MM">9.724409448818896</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="265" Name="Sheet.265" NameU="Sheet.265" UniqueID="{FC676E59-3941-4383-83C3-FB6555202308}">
+					<Text>监测口2</Text>
+					<XForm>
+						<PinX Unit="MM">5.324803149606298</PinX>
+						<PinY Unit="MM">9.527559055118109</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="267" Name="Sheet.267" NameU="Sheet.267" UniqueID="{D353F230-22E3-4F33-B721-F9306967DE68}">
+					<Text>监测口1</Text>
+					<XForm>
+						<PinX Unit="MM">2.057086614173228</PinX>
+						<PinY Unit="MM">9.448818897637795</PinY>
+					</XForm>
+				</Shape>
+			</Shapes>
+		</Page>
+	</Pages>
+</VisioDocument>

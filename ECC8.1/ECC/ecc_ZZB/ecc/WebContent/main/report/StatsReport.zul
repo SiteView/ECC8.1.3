@@ -1,0 +1,16 @@
+<?page title="统计报告" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window id="wreport" height="100%" title="统计报告" border="normal">
+	    <iframe id="report" width="100%" height="100%" />
+	</window>
+<zscript><![CDATA[
+//System.out.println("requestscope:" + this.requestScope.toString());
+//Messagebox.show(this.requestScope.toString(), "Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+//this.iframe.setSrc(this.requestScope.get("name"));
+String strReportName = Executions.getCurrent().getParameter("name").toString();
+//this.iframe.setSrc("./"+ strTuopuName + ".htm");
+//this.execution.sendRedirect("./"+ strTuopuName + ".files/main_2.htm");
+this.report.setSrc(strReportName);
+//Executions.sendRedirect("./"+ strTuopuName + ".files/main_2.htm");
+]]></zscript>	
+</zk>

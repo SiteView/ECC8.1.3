@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?page id="controlPage"?>
+<zk>
+	<borderlayout id="controlLayout"
+		apply="com.siteview.ecc.controlpanel.ControlLayoutComposer"
+		use="com.siteview.ecc.controlpanel.EccLayout">
+		<center border="none">
+			<borderlayout>
+				<center flex="true" border="none">
+					<borderlayout>
+						<north size="47px" border="none">
+							<borderlayout>
+								<north size="22px" sclass="eccTitle" border="none">
+									<div width="100%"
+										style="background: transparent">
+										<div
+											style="background: transparent ;float:left;">
+											<image align="absbottom"
+												id="curNodeImg" style="padding-left:5px;" />
+											<label sclass="eccTitleFont"
+												style="text-decoration: underline;cursor:pointer"
+												id="curNodeTitle" value="" />
+											<image class="pointer"
+												align="absbottom" id="homeImg"
+												src="/main/images/home.gif"
+												hover="/main/images/home_hover.gif" tooltiptext="设置当前节点在登录后自动显示"/>
+										</div>
+										<div sclass="eccTitleFont"
+											style="padding-top:2px;background: transparent;cursor:pointer;float:right;padding-right:10px;"
+											id="curNodeInfo" />
+									</div>
+								</north>
+								<center border="none">
+									<div style="padding-top:2px">
+										<div
+											style="padding-left:10px;float:left;">
+											<image width="21px"
+												height="19px" id="btnListView"
+												use="com.siteview.actions.ImageButton"
+												src="/main/control/images/listview.gif"
+												hover="/main/control/images/listview_hover.gif"
+												tooltiptext="列表视图" />
+											<image width="21px"
+												height="19px" id="btnIconView"
+												use="com.siteview.actions.ImageButton"
+												src="/main/control/images/icoview.gif"
+												hover="/main/control/images/icoview_hover.gif"
+												tooltiptext="图标视图" />
+											<image width="21px"
+												height="19px" id="btnTreeView"
+												use="com.siteview.actions.ImageButton"
+												src="/main/control/images/treeview.gif"
+												hover="/main/control/images/treeview_hover.gif"
+												tooltiptext="树状视图" />
+											<image
+												src="/main/control/images/split.gif" />
+											<image width="21px"
+												height="19px" id="btnHiddenInherit"
+												use="com.siteview.actions.ImageButton"
+												src="/main/control/images/subgroup.gif"
+												hover="/main/control/images/subgroup_hover.gif"
+												tooltiptext="显示缩略 " />
+											<image width="21px"
+												height="19px" id="btnDisplayInherit"
+												use="com.siteview.actions.ImageButton"
+												src="/main/control/images/showchildren.gif"
+												hover="/main/control/images/showchildren_hover.gif"
+												tooltiptext="显示细节" />
+											<image
+												src="/main/control/images/split.gif" />
+											<image width="21px"
+												height="19px" id="btnLeftTreeVisible"
+												use="com.siteview.actions.ImageButton"
+												src="/main/control/images/leftdoor.gif"
+												hover="/main/control/images/leftdoor_hover.gif"
+												tooltiptext="显示/隐藏整体树 " />
+											<image width="21px"
+												height="19px" id="btnRightActionVisible"
+												use="com.siteview.actions.ImageButton"
+												src="/main/control/images/rightdoor.gif"
+												hover="/main/control/images/rightdoor_hover.gif"
+												tooltiptext="显示/隐藏操作面板" />
+										</div>
+										<div 
+											style="text-align:bottom;float:right;padding-right:15px;padding-bottom:2px">
+											<combobox id="favSelect" readonly="true"
+												rows="1"
+												use="com.siteview.ecc.util.FavouriteSelect" /><image src="/main/images/none.gif" width="3px" height="19px"/>
+												列表每页<combobox width="20px" readonly="true" id="boxPageSize" value="15" use="com.siteview.ecc.treeview.controls.ListboxPageSize"/>条
+											
+										</div>
+									</div>
+								</center>
+							</borderlayout>
+						</north>
+						<center border="none">
+							<borderlayout>
+
+								<center border="none" style="overflow-y:auto">
+									<div id="controlDiv" />
+								</center>
+								<south id="southid" size="0px"
+									flex="true" splittable="true" minsize="0" maxsize="500"
+									collapsible="true" visible="true" border="none">
+									<panel 
+										border="none" use="com.siteview.ecc.util.TitleChangedPanel"
+										id="propPanel" framable="false">
+										<panelchildren>
+											<borderlayout
+												id="WMonitorInfo"
+												apply="com.siteview.ecc.controlpanel.MonitorReport">
+												<north size="160px"
+													border="none">
+													<borderlayout>
+														<center
+															border="none" sclass="eccBottom"
+															style="border-style:outset;" >
+															<image
+																id="imagetable" width="100%" height="100%" />
+														</center>
+														<east
+															size="350px" splittable="false" sclass="eccBottom"
+															style="border-style:outset;" border="none">
+															<div  align="left" style="margin-left:10px;" height="98%" width="98%"><button
+																		id="btndetail" sclass="btn" height="23px"
+																		label="详细信息">
+																	</button>
+																	<groupbox  height="85%" closable="false"
+																		width="98%"  style="margin-left:0px;margin:0px 0px 0px 0px;padding: 0px 0 0px 0">
+																		<caption label="数据记录"/>
+																			<grid height="100%" 
+																			style="overflow-y:auto;margin-left:0px;">
+																				<columns>
+																					<column
+																						width="20%" label="" />
+																					<column
+																						width="30%" label="" />
+																					<column
+																						width="20%" label="" />
+																					<column
+																						label="" />
+																				</columns>
+																				<rows>
+																					<row>
+																						<label
+																							value="正常：" />
+																						<label
+																							id="lbok" style="background-color:#00FF00;" />
+																						<label
+																							value="危险：" />
+																						<label
+																							id="lbdanger" style="background-color:#FFFF00;"
+																							value="" />
+																					</row>
+																					<row>
+																						<label
+																							value="错误：" />
+																						<label
+																							id="lberror" style="background-color:#FF0000;"
+																							value="" />
+																						<label
+																							value="禁止：" />
+																						<label
+																							id="lbdisable" style="background-color:#FFA500;" />
+																					</row>
+																					<row 
+																						spans="1,3">
+																						<label  
+																							value="阀值：" />
+																						<label   maxlength="34" multiline="false"
+													
+																							id="lbfz" value="" />
+																					</row>
+																					<row
+																						spans="1,3">
+																						<label
+																							value="时间段：" />
+																						<label />
+																					</row>
+																					<row 
+																						spans="1,3">
+																						<label
+																							value="从" />
+																						<label
+																							id="datefrom" value="" />
+																					</row>
+																					<row
+																						spans="1,3">
+																						<label
+																							value="到" />
+																						<label
+																							id="dateto" value="" />
+																					</row>
+																				</rows>
+																			</grid>
+																		
+																	</groupbox>
+																	</div>
+														</east>
+													</borderlayout>
+												</north>
+												<center
+													autoscroll="true" border="none">
+													<listbox id="listtj"
+														fixedLayout="true">
+														<listhead>
+															<listheader align="left"
+																label="返回值" sort="none">
+															</listheader>
+															<listheader align="center"
+																label="最大值" width="120px" sort="none">
+															</listheader>
+															<listheader align="center"
+																label="平均值" width="120px" sort="none">
+															</listheader>
+															<listheader align="center"
+																label="最新值" width="120px" sort="none">
+															</listheader>
+														</listhead>
+													</listbox>
+												</center>
+											</borderlayout>
+										</panelchildren>
+									</panel>
+								</south>
+							</borderlayout>
+						</center>
+						<south size="27px" sclass="eccBottom"
+							style="padding-top:4px;" border="none">
+									<div sclass="eccBottom"
+										style="border:none;border-style:outset;border-width:0px">
+										<div style="float:left">
+										<image
+											src="/main/images/none.gif" width="10px" />
+										<label value="状态: " />
+										<image align="absmiddle"
+											src="/main/control/images/state_grey.gif" />
+										<label value="定义错误; " />
+										<image align="absmiddle"
+											src="/main/control/images/state_dark.gif" />
+										<label value="无监测数据; " />
+										<image align="absmiddle"
+											src="/main/control/images/state_green.gif" />
+										<label value="正常; " />
+										<image align="absmiddle"
+											src="/main/control/images/state_yellow.gif" />
+										<label value="危险; " />
+										<image align="absmiddle"
+											src="/main/control/images/state_red.gif" />
+										<label value="错误; " />
+										<image align="absmiddle"
+											src="/main/control/images/state_stop.gif" />
+										<label value="禁止" />
+										</div>
+										<div style="float:right">
+										<listbox  id="slider_timer" 
+											mold="select" rows="1">
+											<listitem label="每1秒获取更新"
+												value="1" />
+											<listitem label="每2秒获取更新"
+												value="2" />
+											<listitem label="每3秒获取更新"
+												value="3" />
+											<listitem label="每5秒获取更新"
+												value="5" />
+											<listitem label="每10秒获取更新"
+												value="10" />
+											<listitem label="每15秒获取更新"
+												value="15" />
+											<listitem label="每20秒获取更新"
+												value="20" />
+											<listitem label="每30秒获取更新"
+												value="30" selected="true" />
+											<listitem label="每40秒获取更新"
+												value="40" />
+											<listitem label="每50秒获取更新"
+												value="50" />
+											<listitem label="每60秒获取更新"
+												value="60" />
+											<listitem label="每70秒获取更新"
+												value="70" />
+											<listitem label="每80秒获取更新"
+												value="80" />
+											<listitem label="每90秒获取更新"
+												value="90" />
+											<listitem label="每100秒获取更新"
+												value="100" />
+										</listbox>
+										</div>
+									</div>
+
+						</south>
+					</borderlayout>
+				</center>
+			</borderlayout>
+		</center>
+		<east use="com.siteview.ecc.controlpanel.EccLayoutEast"
+			id="actionEast"
+			style="padding-left:2px;background-color:white;" border="none" 
+			size="140px" flex="true" splittable="true" minsize="0" maxsize="180"
+			collapsible="true">
+			<div id="actionMenuDiv"
+				use="com.siteview.actions.ActionMenuDiv" />
+		</east>
+	</borderlayout>
+</zk>

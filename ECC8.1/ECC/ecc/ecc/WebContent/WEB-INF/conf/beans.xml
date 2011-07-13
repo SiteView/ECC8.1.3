@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"   
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"   
+    xmlns:jaxws="http://cxf.apache.org/jaxws"   
+    xsi:schemaLocation="    
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd    
+http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
+
+	<import resource="classpath:META-INF/cxf/cxf.xml" />
+	<import resource="classpath:META-INF/cxf/cxf-extension-soap.xml" />
+	<import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
+
+	<bean id="jaxWsServiceFactoryBean" class="org.apache.cxf.jaxws.support.JaxWsServiceFactoryBean">
+		<property name="wrapped" value="true" />
+		<property name="dataBinding" ref="aegisBean" />
+	</bean>
+
+	<bean id="aegisBean" class="org.apache.cxf.aegis.databinding.AegisDatabinding" />
+
+	<jaxws:endpoint id="EccServices" implementor="com.siteview.cxf.EccServiceImpl"
+		address="/eccapi">
+		<jaxws:serviceFactory>
+			<ref bean="jaxWsServiceFactoryBean" />
+		</jaxws:serviceFactory>
+	</jaxws:endpoint>
+
+	<bean id="jaxWsStatServiceFactoryBean" class="org.apache.cxf.jaxws.support.JaxWsServiceFactoryBean">
+		<property name="wrapped" value="true" />
+		<property name="dataBinding" ref="aegisBean" />
+	</bean>
+
+
+	<jaxws:endpoint id="EccStatServices" implementor="com.siteview.svdb.StatisticsStatusImpl"
+		address="/eccstatapi">
+		<jaxws:serviceFactory>
+			<ref bean="jaxWsStatServiceFactoryBean" />
+		</jaxws:serviceFactory>
+	</jaxws:endpoint>
+
+</beans>   

@@ -1,0 +1,76 @@
+﻿<?page id="alertrule"?>
+<?component name="monitorselect" macro-uri="/main/alert/control/monitorselect.zul"?>
+
+<window id="mainwin" title="添加 Email报警" border="normal" position="center" use="com.siteview.ecc.alert.EmailAlertView" closable="true" width="660px">
+	<vbox>
+		<space height="3px"/>
+		<hbox>
+			<space width="3px"/>
+			<monitorselect treeheight="367px"/>
+			<vbox>
+				<groupbox closable="false" width="406px">
+					<caption label="设置 Email报警"/>
+					<grid style="border:0" oddRowSclass="none" width="100%">
+						<columns>
+							<column width="6px"/>
+							<column width="123px"/>
+							<column width="248px"/>
+							<column width="6px"/>
+						</columns>
+						<rows>
+							<row zclass="none" height="6px"><separator/>
+							</row>
+							<row zclass="none" height="23px"><space width="1px"/><label>报警名称*：</label><textbox width="267px" id="alertName" height="15px" tooltiptext="定义邮件报警规则名称"/>
+								<space width="1px"/>
+							</row>
+							<row zclass="none" height="23px"><space width="1px"/><label id="emailReceiveLink" >邮件接收地址*：</label>
+								<bandbox width="250px"  height="15px" id="alertReceiver" use="com.siteview.ecc.alert.control.AlertMailReceiveAddressBandBox" readonly="true" tooltiptext="可以在下拉框中选择已设置好的地址，也支持选择其他，从其他邮件地址中进行设置（例如: support@test.com.cn,sales@test.com.cn）"/>
+								<space width="1px"/>
+							</row>
+							<row zclass="none" height="23px"><space width="1px"/><label>其它邮件地址：</label><textbox width="267px" height="15px" id="otherEmailAddress" tooltiptext="在文本框中输入具体接收报警的地址，多个接收地址之间用英文的逗号分隔" />
+								<space width="1px"/>
+							</row>
+							<row zclass="none" height="23px"><space width="1px"/><label id="emailTemplateLink">Email模板*：</label>
+								<combobox width="250px" height="15px" id="emailTemplate" readonly="true" use="com.siteview.ecc.alert.control.EmailTemplateCombobox" tooltiptext="Email内容的模板，包括Default、LogTemplate、SelfDefine。用户可以根据需要进行选定"/>
+								<space width="1px"/>
+							</row>
+							<row zclass="none" height="23px"><space width="1px"/><label>升级次数：</label><intbox id="updateCount" width="267px" height="15px" maxlength="4" value="0" tooltiptext="当事件达到设置次数后，报警将自动升级的次数"/>
+								<space width="1px"/>
+							</row>
+							<row zclass="none" height="23px"><space width="1px"/><label>升级接收人地址：</label><textbox width="267px" height="15px" id="updateReceiver" tooltiptext="定义报警升级后，报警接收人的邮件地址"/>
+								<space width="1px"/>
+							</row>
+							<row zclass="none" height="23px"><space width="1px"/><label>停止次数：</label><intbox id="stopCount" width="267px" height="15px" maxlength="4" value="0" tooltiptext="当报警达到设定的范围时，停止报警的次数"/>
+								<space width="1px"/>
+							</row>
+							<row zclass="none" height="23px"><space width="1px"/><label id="wacthSheetLink">值班报警列表：</label>
+								<combobox id="watchSheet" width="250px" height="15px"  use="com.siteview.ecc.alert.control.WatchSheetsCombobox" tooltiptext="值班报警接收的用户信息，此信息从设置模块的值班表设置中读得">
+									<comboitem label="空" value="空"/>
+								</combobox>
+								<space width="1px"/>
+							</row>
+							
+							<row zclass="none" height="23px"><space width="1px"/><label>报警策略：</label>
+								<combobox id="alertPloy" width="250px" height="15px" readonly="true" use="com.siteview.ecc.alert.control.AlertPloyCombobox" tooltiptext="选择设置的报警策略，应用到报警规则中。新增加的组或设备，自动继承父节点的策略">
+									<comboitem label="空" value="空"/>
+								</combobox>
+								<space width="1px"/>
+							</row>
+							
+							<row zclass="none" height="6px"><separator/>
+							</row>
+						</rows>
+					</grid>
+				</groupbox>
+				<include src="/main/alert/alertcondition.zul"/>
+			</vbox>
+			<space width="3px"/>
+		</hbox>
+		<hbox>
+			<separator width="470px"/>
+			<button label="保  存" id="button_ok" sclass="btnDefault" width="74px" height="23px" image="/main/images/button/ico/save_bt.gif"/>
+			<button label="取  消" id="button_cancel" sclass="btnDefault" width="74px" height="23px" image="/main/images/button/ico/close_bt.gif"  onClick="mainwin.doCancel()"/>
+		</hbox>
+		<space height="3px"/>
+	</vbox>
+</window>

@@ -1,0 +1,87 @@
+<?page id="monitorImfoPage" title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<borderlayout apply="com.siteview.ecc.report.MonitorImfoComposer"
+		id="monitorInfo">
+		<north border="none" flex="true" id="north"
+								size="62%" collapsible="true" minsize="100" maxsize="900">
+			<div>
+				<panel title="监测器信息报告" style="border:none" width="100%"
+					collapsible="true">
+					<panelchildren>
+						<hbox
+							style="margin-left:3px;margin-top:3px;margin-bottom:3px">
+							<button id="filterMonitor"
+								image="/main/images/button/ico/query_bt.gif" label="筛选"
+								height="23px" width="74px" sclass="btnDefault" />
+
+							<button id="reflesh"
+								image="/main/images/button/ico/ref_bt.gif" label="刷新"
+								height="23px" width="74px" sclass="btnDefault" />
+
+							<button id="createExcel" label="导出报表"
+								height="23px" image="/main/images/bakRestore.gif" width="100px"
+								sclass="btnDefault" />
+							<button label="帮助" sclass="btnDefault"
+								width="74px" height="23px" image="/main/images/action/help.gif"
+								action="onclick:showHelp(24)" />
+						</hbox>
+					</panelchildren>
+				</panel>
+				<panel title="监测器列表信息" width="99%"  collapsible="true" height="80%">
+					<panelchildren>
+						<listbox id="listbox" fixedLayout="true" mold="paging"   height="200px" style="overflow-y:auto"
+							use="com.siteview.ecc.report.MonitorImfoListbox">
+						</listbox>
+					</panelchildren>
+				</panel>
+			</div>
+		</north>
+		<center border="none" >
+			<panel id="moreInfo" collapsible="true" title="监测器详细信息"
+				width="99%" style="margin-left:3px">
+				<panelchildren>
+					<grid id="mygrid">
+						<columns sizable="true">
+							<column label="" width="100px" />
+							<column label="" width="*" />
+						</columns>
+						<rows id="rs1">
+							<row>
+								<label value="组名称" />
+								<label value="               "
+									id="groupName" />
+							</row>
+							<row>
+								<label value="设备名" />
+								<label value="               "
+									id="entityName" />
+							</row>
+							<row>
+								<label value="类型" />
+								<label value="                  "
+									id="type" />
+							</row>
+							<row>
+								<label value="监测频率" />
+								<label value="                  	"
+									id="frequency" />
+							</row>
+							<row height="50px">
+								<label value="阀值" />
+								<vbox>
+									<label value="             "
+										id="okCondition" />
+									<label value="              "
+										id="warnCondition" />
+									<label
+										value="                      " id="errorCondition" />
+								</vbox>
+							</row>
+						</rows>
+					</grid>
+				</panelchildren>
+			</panel>
+		</center>
+		<south size="0"  border="none"></south>
+	</borderlayout>
+</zk>

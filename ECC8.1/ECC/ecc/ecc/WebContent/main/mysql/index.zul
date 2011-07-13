@@ -1,0 +1,103 @@
+<zk>
+<panel width="100%" open="true" collapsible="false"><caption image="/main/images/database.gif" label="数据库设置" /></panel>
+<borderlayout apply="com.siteview.ecc.report.mysql.SqlSetting">
+<north size="25px" style="padding-left:8px;border:0">
+<hbox width="100%">
+	<div>
+	 <checkbox id="importToSQLDB" label="启用database模块" checked="false"/>
+	 <label id="hlp0" value="建议开启此项,开启后报表将通过数据库处理."/>
+	</div>
+	<div style="float:right" >
+	<image width="21px"	height="19px" id="btnHlpShow"
+												use="com.siteview.actions.ImageButton"
+												src="/main/images/btnhelp.gif"
+												hover="/main/images/btnhelp_hover.gif"
+												tooltiptext="显示/隐藏帮助信息" />
+	</div>											
+</hbox>
+</north>	
+<center>
+<div width="100%" height="100%" style="overflow:auto">
+	<panel id="baseSetting" width="100%" collapsible="true" open="true" title="基本设置">
+	  <panelchildren >
+	  <grid style="margin-left:8px;border:0" oddRowSclass="none">
+			<columns sizable="false">
+					<column label="" width="150px"/>
+					<column label="" />
+					
+			</columns>
+			<rows>
+			<row zclass="none" style="border:none"	height="30px">数据库连接:<vbox><textbox id="siteviewDS" width="600px" value="com.mysql.jdbc.Driver,jdbc:mysql://localhost:6066/svecc,root,,false,mysql"/><label id="hlp1" value="格式为:java驱动,联结URL,用户名,密码,是否字符集转换,数据库类型(目前只支持mysql)"/></vbox></row>
+			<row zclass="none" style="border:none"	height="30px">历史数据读入间隔(天):<vbox><textbox width="600px" id="svdbHistoryReadDay" value="1"/><label id="hlp2" value="历史数据循环导入mysql,逐个监测器导入,每次导出数据天数太多,内存不够,太少,速度慢,最小1天,最大34天,默认为1天."/></vbox></row>
+			<row zclass="none" style="border:none"	height="30px">历史数据读入最早日期:<vbox><textbox width="600px" id="svdbDataStart" value="2009-01-01 00:00:00"/><label id="hlp3" value="超过此日期的数据,将不再导出到数据库."/></vbox></row>
+			<row zclass="none" style="border:none"	height="30px">历史数据反向读入时间:<vbox><textbox width="600px" id="svdbDataInit" value="2009-06-01 00:00:00"/><label id="hlp4" value="将从该时间向前导出历史数据,历史数据导出完毕,再从该时间往后导出最新数据到数据库"/></vbox></row>
+			<row zclass="none" style="border:none"	height="30px">新数据同步时间(分钟):<vbox><textbox width="600px" id="svdbDateReadMinute" value="15"/><label id="hlp5" value="导出最新数据到数据库后,将每隔一段时间检查新数据,并导出到数据库,这个时间间隔决定了数据库数据最新程度,最小1分钟"/></vbox></row>
+			</rows>
+	  </grid>
+	  </panelchildren>							
+	</panel>
+	<panel id="importSetting" width="100%" open="false"  collapsible="true" title="导出规则">
+	  <panelchildren>
+	  <grid style="margin-left:8px;border:0" oddRowSclass="none">
+			<columns sizable="false">
+					<column label="" width="150px"/>
+					<column label="" />
+					
+			</columns>
+			<rows>
+			<row zclass="none" style="border:none"	height="30px">Int类型:<vbox><textbox width="600px" id="import_int" value="int"/><label id="hlp6" value="svdb中数据为Int,导出到数据库后的数据类型,默认为int"/></vbox></row>
+			<row zclass="none" style="border:none"	height="30px">Float类型:<vbox><textbox width="600px" id="import_float" value="float"/><label id="hlp7" value="svdb中数据为Float,导出到数据库后的数据类型,默认为float"/></vbox></row>
+			<row zclass="none" style="border:none"	height="30px">String类型:<vbox><textbox width="600px" id="import_string" value="varchar(250) CHARACTER SET UTF8"/><label id="hlp8" value="svdb中数据为String,导出到数据库后的数据类型,默认为varchar(250)"/></vbox></row>
+			<row zclass="none" style="border:none"	height="30px">String长度:<vbox><textbox width="600px" id="import_string_len" value="250"/><label id="hlp9" value="svdb中数据为String,导出到数据库后的数据长度,默认为250"/></vbox></row>
+			</rows>
+	  </grid>	
+	  </panelchildren>
+	</panel>
+	<panel id="sqlSetting" width="100%" open="false"  collapsible="true" title="建表SQL">
+	  <panelchildren>
+	  	  <grid style="margin-left:8px;border:0" oddRowSclass="none">
+			<columns sizable="false">
+					<column label="" width="150px"/>
+					<column label="" />
+					
+			</columns>
+			<rows>
+			<row zclass="none" style="border:none"	height="30px">创建表:<vbox><textbox width="600px" id="import_table" value="create table IF NOT EXISTS :tableName(datatime char(19),monitorid varchar(30),status smallint,dstr text CHARACTER SET UTF8"/><label id="hlp10" value="根据svdb中模板创建数据库表,只记录监测器返回数据,以及非正常状态记录dstr数据"/></vbox></row>
+			<row zclass="none" style="border:none"	height="30px">创建表结束修饰:<vbox><textbox width="600px" id="import_table_end" value="ENGINE = MYISAM"/><label id="hlp11" value="创建表,结尾允许附加修饰,满足特殊数据库SQL的要求,默认为Mysql数据库指定MYISM结构高速数据表"/></vbox></row>
+			<row zclass="none" style="border:none"	height="30px">创建表索引:<vbox><textbox width="600px" id="import_index" value="CREATE INDEX :indexName ON :tableName(datatime,monitorid)"/><label id="hlp12" value="当历史数据导出结束,就会自动创建索引,该语句将被执行"/></vbox></row>
+			<row zclass="none" style="border:none"	height="30px">插入表:<vbox><textbox width="600px" id="import_insert" value="insert into :tableName(datatime,monitorid,status,dstr"/><label id="hlp13" value="插入监测器返回值的SQL命令,在Mysql里面将采用更高效的批量导入语句,该SQL不被使用"/></vbox></row>
+			</rows>
+	  </grid>	
+	  </panelchildren>
+	</panel>
+	<panel id="otherSetting" width="100%" open="false"  collapsible="true" title="其他">
+	  <panelchildren>
+	  	  <grid style="margin-left:8px;border:0" oddRowSclass="none">
+			<columns sizable="false">
+					<column label="" width="150px"/>
+					<column label="" />
+					
+			</columns>
+			<rows>
+			<row zclass="none" style="border:none"	height="30px">数据导出临时目录:<vbox><textbox width="600px" id="mysql_tmp" value="c:/tomysql.tmp/"/><label id="hlp14" value="在Mysql里面采高效的批量导入语句,需要指定一个临时数据文件目录,该目录应该是mysql和java都可访问的本地目录"/></vbox></row>
+			<row zclass="none" style="border:none"	height="30px">导数线程优先级:<vbox>
+			<listbox mold="select" width="600px" id="thread_PRIORITY">
+			<listitem label="最低" value="0" />
+			<listitem label="普通" value="1" />
+			<listitem label="最高" value="2" />
+			</listbox><label id="hlp15" value="导数据,可能是长时间的工作,由后台线程自动完成,可指定优先级,默认为普通"/></vbox>
+			</row>
+			</rows>
+	  </grid>
+	  </panelchildren>	
+	</panel>
+</div>	
+</center>	
+<south size="50px">	
+	<div>
+	<button id="btnApplySetting" style="margin-left:100px" sclass="btnDefault" label="应用设置"/>
+	<button id="btnRestoreSetting" style="margin-left:5px" sclass="btnDefault" label="恢复默认"/>
+	</div>
+</south>
+</borderlayout>	
+</zk>

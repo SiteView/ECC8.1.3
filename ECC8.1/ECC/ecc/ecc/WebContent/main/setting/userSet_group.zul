@@ -1,0 +1,33 @@
+<window id="groupboxC" height="250px" contentStyle="overflow:auto" width="160px" style="margin-left:10px">
+<vbox >
+								<groupbox id="manageGroup" width="115px">
+								  <caption  label="管理组"/>
+							      <vbox>
+							      <checkbox id="addSubGroup" label="添加监测子组"   />
+							      <checkbox id="editGroup" label="编辑组"   />
+							      <checkbox id="delGroup" label="删除组"   />
+							      <checkbox id="refashGroup" label="刷新组"   />
+							      </vbox>
+							   </groupbox>
+							  <groupbox id="manageDevice" width="115px">
+								  <caption  label="管理设备"/>
+							      <vbox>
+							      <checkbox id="addDevice" label="添加设备"   />
+							      <checkbox id="delDevice" label="删除设备"   />
+							      <checkbox id="editDevice" label="编辑设备"   />
+							      <checkbox id="refrashDevice" label="刷新设备"   />
+							      <checkbox id="testDevice" label="设备测试"   />
+							      <checkbox id="CPdevice" label="复制粘贴设备"   />							
+							     </vbox>
+							   </groupbox>	
+							  <groupbox id="manageMonitor" width="115px">
+								  <caption  label="管理监测器"/>
+								  <vbox>
+							      <checkbox id="editMonitor" label="编辑监测器;" />
+							      <checkbox id="refrashMonitor" label="刷新监测器"  />
+							      <checkbox id="delMonitor" label="删除监测器"  />
+							      <checkbox id="addMonitor" label="添加监测器"  />
+							      </vbox>
+							   </groupbox>		
+</vbox>	
+</window>

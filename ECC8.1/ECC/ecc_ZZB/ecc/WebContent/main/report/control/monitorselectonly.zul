@@ -1,0 +1,39 @@
+<div use="com.siteview.ecc.report.common.MonitorSelectDiv" id="selectmonitorgroup">
+	<grid style="border:0" oddRowSclass="none" width="100%">
+		<columns>
+			<column width="6px"/>
+			<column/>
+			<column width="6px"/>
+		</columns>
+		<rows>
+			<row zclass="none" height="3px">
+				<separator/>
+				<separator/>
+				<separator/>
+			</row>
+			<row zclass="none" height="278px">
+				<separator width="1px" height="100%"/>
+			    <tree id="monitortree" use="com.siteview.ecc.alert.SelectTree" checkable="false" height="${arg.treeheight}" vflex="true" width="180px"/>
+				<separator width="1px"/>
+			</row>
+			<row zclass="none" height="1px">
+				<separator/>
+				<separator/>
+				<separator/>
+			</row>
+			<row zclass="none">
+				<separator width="1px"/>
+				<hbox>
+					<label>组名：</label>
+					<combobox id="viewNamecombobox" height="15px" width="120px" readonly="true" use="com.siteview.ecc.alert.control.ViewNameCombobox" onChange="selectmonitorgroup.doViewNameChange()"/>
+				</hbox>
+				<separator width="1px"/>
+			</row>
+			<row zclass="none" height="3px">
+				<separator/>
+				<separator/>
+				<separator/>
+			</row>
+		</rows>
+	</grid>
+</div>

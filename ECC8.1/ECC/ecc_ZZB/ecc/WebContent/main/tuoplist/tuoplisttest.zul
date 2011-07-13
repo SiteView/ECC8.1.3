@@ -1,0 +1,24 @@
+<zk>
+<zscript><![CDATA[
+
+tree=(org.zkoss.zul.Tree)desktop.getPage("eccmain").getFellow("tree");
+treeModel=(com.siteview.ecc.treeview.EccTreeModel)tree.getModel();
+eccView=(com.siteview.base.manage.View)treeModel.getView();
+eccTreeItem = (com.siteview.ecc.treeview.EccTreeItem)tree.getSelectedItem().getValue();
+
+String type=eccTreeItem.getType();
+String id=eccTreeItem.getId();
+String name=eccTreeItem.getTitle();
+
+tuopulistModel   = new com.siteview.ecc.tuopu.TuopulistModel(eccView,eccTreeItem);
+
+]]></zscript>
+   <grid mold="paging" fixedLayout="true" paginal="${pg}" pageSize="10" model="${tuopulistModel}" rowRenderer="${tuopulistModel}">
+      <columns sizable="true">
+         <column label="" style="width:40px"/>
+         <column label="名称"/>
+         <column label="拓扑图"/>
+         <column label="编辑"/>
+    </columns>         
+   </grid>
+</zk>

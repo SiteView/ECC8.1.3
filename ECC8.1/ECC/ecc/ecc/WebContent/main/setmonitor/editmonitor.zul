@@ -1,0 +1,29 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window title="new page title" border="normal" width="450"
+		height="250" closable="true" id="editMonitorWin">
+		<listbox checkmark="true" multiple="true">
+			<listhead sizable="true">
+				<listheader label="项目" sort="auto" />
+				<listheader label="操作符" sort="auto" />
+				<listheader label="值" sort="auto" />
+				<listheader label="关系" sort="auto" />
+			</listhead>
+
+		</listbox>
+		<hbox style="margin-bottom:10px">
+			<button label="删除" style="margin-left:150px;"
+				image="/main/images/button/ico/save_bt.gif" sclass="btnDefault"
+				width="74px" height="23px" id="delButton"
+				forward="onClick=onDel" />
+			<button label="确  定" style="margin-left:10px;"
+				image="/main/images/button/ico/save_bt.gif" sclass="btnDefault"
+				width="74px" height="23px" id="applyButton" forward="onClick=onApply" />
+			<button label="取  消" style="margin-left:10px;"
+				sclass="btnDefault" height="23px"
+				image="/main/images/button/ico/reload_bt.gif"
+				onClick="editMonitorWin.detach()" />
+
+		</hbox>
+	</window>
+</zk>

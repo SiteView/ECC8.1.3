@@ -1,0 +1,38 @@
+<zk>
+<window id="winEditTuopu" title="编辑拓扑图名称" position="center" apply="com.siteview.ecc.tuopu.TuopuList" border="normal" width="300px" closable="true">
+			<groupbox  closable="false" style="margin-left:10px;margin-right:10px;margin-top:10px;">
+				<caption  label="编辑拓扑图名称"/>
+					<grid oddRowSclass="none" style="margin-top:5px;border:none">
+						<columns>
+							<column label=""  width=""/>
+							<column label=""  width=""/>
+							<column label=""  width=""/>
+							<column label=""  width=""/>
+						</columns>
+						<rows>
+							<row zclass="none" height="23px">
+								<space width="20px"/>
+								<label value="发布名称:" />													
+								<textbox id="name"  readonly="true" disabled="true"> </textbox>
+								<label value="" />
+							</row>
+							<row zclass="none" height="23px">
+								<space width="20px"/>
+ 								<label value="显示名称 *:" />	
+  								<textbox id="showname"> </textbox>
+  								<label value="" />
+    						</row>		
+						</rows>
+					</grid>
+			</groupbox>
+	<vbox >
+		<hbox style="margin-top:10px;margin-bottom:10px"  >
+		<space width="100px"/>
+			<button id="btnUpdateName"  sclass="btnDefault" width="74px" height="23px" image="/main/images/button/ico/save_bt.gif"
+				label="保存"/>
+			<button label="取消" sclass="btnDefault" width="74px" height="23px" image="/main/images/button/ico/close_bt.gif"
+				onClick="winEditTuopu.detach()"/>
+		</hbox>
+	</vbox>	  
+</window>
+</zk>

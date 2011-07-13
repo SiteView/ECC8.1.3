@@ -1,0 +1,24 @@
+<?page title="快速添加监测器" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window id="WFastAdd" title="快速添加监测器" border="normal" width="650px"
+		apply="com.siteview.ecc.treeview.windows.MonitorsFastAdd"
+		position="center" closable="true">
+		<panel border="normal">
+		<!-- style="margin:5px 5px 5px 5px;padding-left:10px;overflow-y:auto;max-height:400px;" -->
+			<panelchildren id="pc"
+				>
+				<vbox id="parentcontainers" height="400px"></vbox>
+			</panelchildren>
+		</panel>
+		<div style="float:right;margin-bottom:12px;margin-right:12px; " >
+		<button id="btnadd" label="保存" width="74px" height="23px"
+			image="/main/images/button/ico/save_bt.gif" 
+			sclass="btnDefault">
+		</button>
+		<button id="btnclose" label="取消" width="74px"
+			height="23px" image="/main/images/button/ico/close_bt.gif"
+			sclass="btnDefault">
+		</button>
+		</div>
+	</window>
+</zk>

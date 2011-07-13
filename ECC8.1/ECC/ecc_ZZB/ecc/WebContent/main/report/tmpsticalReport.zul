@@ -1,0 +1,9 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window id="simplemonitorreportwindow"
+		apply="com.siteview.ecc.report.dao.ReportDaoImpl"
+		forward="onCreate=onCreate$simplemonitorreportwindow" border="normal"
+		closable="true" height="400px" width="600px">
+		<iframe  height="365px" width="580px" id="simplemonitorreportsinclude" scrolling="auto"/>
+	</window>
+</zk>

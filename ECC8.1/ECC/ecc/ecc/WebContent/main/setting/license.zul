@@ -1,0 +1,77 @@
+<?page title="license" contentType="text/html;charset=UTF-8"?>
+<zk><borderlayout><center style="overflow:auto;border:none">
+<panel title="软件许可"  collapsible="true"><panelchildren> 
+<window apply="com.siteview.ecc.general.License" border="normal" style="overflow-y:auto;"
+		forward="onCreate=onRefresh">
+
+
+	<button label="帮助" sclass="btnDefault" 
+							width="74px" height="23px"
+							image="/main/images/action/help.gif" action="onclick:showHelp(35)"/> 
+
+	<grid  width="100%" >
+		<columns >
+			<column label="许可"  align="left"/>
+			<column label="状态"  align="left"/>
+		</columns>
+		<rows>
+			<row zclass="none" height="2px">
+
+			</row>		
+			<row  zclass="none" height="23px">
+
+					<hbox align="center">
+					<image src="/main/images/se_.gif"/>
+					<label value="购买点数" />
+					</hbox>
+					<label id="pointLabel"/>
+			</row>
+			<row zclass="none" height="23px">
+
+					<hbox align="center">
+					<image src="/main/images/se_.gif"/>
+					<label value="购买网络设备数" />
+					</hbox>
+					<label id="deviceLabel"/>
+			</row>		
+			<row zclass="none" height="23px">
+	
+					<hbox align="center">
+					<image src="/main/images/se_.gif"/>
+					<label value="已使用点数" />
+					</hbox>
+					<label id="pointUsedLabel"/>
+			</row>	
+			<row zclass="none" height="23px">
+	
+					<hbox align="center">
+					<image src="/main/images/se_.gif"/>
+					<label value="已使用网络设备数" />
+					</hbox>
+					<label id="deviceUsedLabel"/>
+			</row>	
+			<row zclass="none" height="23px">
+
+					<hbox align="center">
+					<image src="/main/images/se_.gif"/>
+					<label value="失效日期" />
+					</hbox>
+					<label id="endTimeLabel" />
+			</row>	
+			<row zclass="none" height="23px">
+	
+					<hbox align="center">
+					<image src="/main/images/se_.gif"/>
+					<label value="当前版本" />
+					</hbox>
+					<label  id="versionLabel" />
+			</row>														
+		</rows>
+	</grid>
+
+</window>
+</panelchildren>
+</panel>
+
+</center></borderlayout>
+</zk>

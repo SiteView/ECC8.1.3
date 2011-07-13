@@ -1,0 +1,76 @@
+﻿<?page id="alertRulePage" ?>
+<zk>
+<borderlayout>
+	<center style="overflow:auto;border:none">
+	<panel title="报警规则" collapsible="true"><panelchildren>
+	<window use="com.siteview.ecc.alert.AlertRuleView" border="normal" style="overflow-y:auto;" id="win">
+		<div height="27px" >
+			<div id="AddAlertDiv">
+			<menupopup id="AddAlertPopup">
+			   <menuitem label="Email报警" id="addEmailAlert"/>
+			   <menuitem label="短信报警" id="addSmsAlert"/>
+			   <menuitem label="脚本报警" id="addScriptAlert"/>
+			   <menuitem label="声音报警" id="addSoundAlert"/>
+			</menupopup>
+			</div>
+			<button label="添  加" id="add"    sclass="btnDefault" popup="AddAlertPopup" width="74px" height="23px" image="/main/images/button/ico/add_bt.gif"/><space width="1px"/>
+			<button label="删  除" id="delete" sclass="btnDefault" width="74px" height="23px" image="/main/images/button/ico/delete_bt.gif"/><space width="1px"/>
+			<button label="允  许" id="enable" sclass="btnDefault" width="74px" height="23px" image="/main/images/button/ico/enable_bt.gif"/><space width="1px"/>
+			<button label="禁  止" id="disable" sclass="btnDefault" width="74px" height="23px" image="/main/images/button/ico/disable_bt.gif"/><space width="1px"/>
+			<button label="刷  新" id="reflash" sclass="btnDefault" onClick="win.refresh();"  width="74px" height="23px" image="/main/images/button/ico/ref_bt.gif"/>
+			<button label="帮助" sclass="btnDefault"
+							width="74px" height="23px" 
+							image="/main/images/action/help.gif" action="onclick:showHelp(16)"/>
+		</div>
+		<panel title="报警规则列表" collapsible="true"><panelchildren>
+		 <window border="none" id="alertRule" >
+			<listbox fixedLayout="true" multiple="true" checkmark="true"  mold="paging" id="alert_rule_list" pageSize="6">
+				<listhead sizable="true">
+					<listheader label="名称" width="45%" sort="auto"/>
+					<listheader label="报警类型" width="15%" sort="auto" id="alerttype_header"/>
+					<listheader label="报警状态" width="15%" sort="auto" id="alertstate_header"/>
+					<listheader label="启动/禁止" width="15%" sort="auto" id="alertenable_header"/>
+					<listheader label="编辑" width="10%" sort="auto"/>
+				</listhead>
+			</listbox>
+		</window>
+		</panelchildren></panel><separator/>
+		<panel title="报警日志列表" collapsible="true"><panelchildren>
+		<window border="none" id="alertRuleTest">
+			<div id="lidiv"/>
+			</window>
+		</panelchildren></panel>
+	</window>
+	
+	</panelchildren></panel>
+	</center>
+	<south size="27px" sclass="eccBottom"
+		style="padding-top:4px;" border="none">
+				<div sclass="eccBottom"
+					style="border:none;border-style:outset;border-width:0px">
+					<div style="float:left">
+					<image
+						src="/main/images/none.gif" width="10px" />
+					<label value="规则状态: " />
+					<image align="absmiddle"
+						src="/main/images/alert/disable.gif" />
+					<label value="禁止; " />
+					<image align="absmiddle"
+						src="/main/images/alert/enable.gif" />
+					<label value="启动中 " />
+					</div>
+					<div style="float:left">
+					<image
+						src="/main/images/none.gif" width="10px" />
+					<label value="日志状态: " />
+					<image align="absmiddle"
+						src="/main/images/alert/fail.gif" />
+					<label value="失败; " />
+					<image align="absmiddle"
+						src="/main/images/alert/success.gif" />
+					<label value="成功 " />
+					</div>
+				</div>
+	</south>	
+</borderlayout>
+</zk>

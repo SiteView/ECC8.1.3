@@ -1,0 +1,141 @@
+<?page title="" contentType="text/html;charset=UTF-8"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+<zk>
+<borderlayout>
+<center style="overflow:auto;border:none" autoscroll="true">
+<window id="monitorwinsystem" apply="org.zkoss.zkdemo.MonitorCtrl" width="100%">
+	<vbox width="100%">
+		<tabbox>
+			<tabs>
+				<tab label="${c:l('SystemDiagnosis') }" />
+				<!-- 
+				<tab label="性能分析" />
+				 -->
+			</tabs>
+			<tabpanels>
+				<tabpanel>
+					<panel title="${c:l('SystemDiagnosis') }" collapsible="true">
+						<panelchildren>
+							<window use="com.siteview.ecc.system.DiagnosisUI" border="normal" style="overflow-y:auto;" id="win">
+								<hbox>
+									<button sclass="btnDefault" width="74px" height="23px" label="${c:l('.diagnosis') }" onClick="win.onExcute();"
+										image="/main/images/button/ico/delete_bt.gif" />
+									<space width="1px" />
+									<button label="${c:l('help') }" sclass="btnDefault" width="74px" height="23px" 
+										image="/main/images/action/help.gif">
+										<attribute name="onClick">
+											Executions.getCurrent().sendRedirect("/help.zul?id=3.11.93.11.9","newtarget");								
+										</attribute>
+									</button>
+								</hbox>
+								<panel title="${c:l('.systemdiagnosisMessage') }" border="normal" maximizable="" collapsible="true" maximized="">
+									<panelchildren style="left">
+										<listbox fixedLayout="true" id="listbox_data" checkmark="true" vflex="true" multiple="true" mold="paging"
+											rows="10" disabled="true" pageSize="8" use="com.siteview.ecc.componse.EccListbox">
+											<listhead sizable="true">
+											<listheader align="left" label="${c:l('name') }" sort="auto" width="20%" />
+											<listheader align="left" label="${c:l('.description') }" sort="auto" width="40%" />
+											<listheader align="left" label="${c:l('.diagnosisresult') }" sort="auto" />
+											</listhead>
+										</listbox>
+									</panelchildren>
+								</panel>
+							</window>
+						</panelchildren>
+					</panel>
+				</tabpanel>
+				<!-- 
+				<tabpanel>
+					<panel title="性能分析" collapsible="true">
+						<panelchildren>
+							<window id="performanceWin" border="none" apply="org.zkoss.zkdemo.PerformanceCtrl" width="100%">
+							<zscript><![CDATA[
+								import org.zkoss.zkdemo.RequestComparator;
+								Comparator timeStamp = RequestComparator.timeStamp;
+								Comparator _timestamp = RequestComparator._timeStamp;
+								Comparator serverExecution = RequestComparator.serverExecution;
+								Comparator _serverExecution = RequestComparator._serverExecution;
+								Comparator clientExecution = RequestComparator.clientExecution;
+								Comparator _clientExecution = RequestComparator._clientExecution;
+								]]>
+							</zscript>
+								<div>
+									<grid oddRowSclass="none">
+										<columns>
+											<column label="" width="85%"/>
+											<column label="" width="15%"/>
+										</columns>						
+										<rows>
+											<row zclass="none" height="35px" width="100%" >
+												<div align="left">
+													<button sclass="btnDefault" id="status" label="Start" image="/img/play.png" height="30px"></button>
+													<button sclass="btnDefault" id="refresh" label="刷新" height="30px"></button>
+													<button sclass="btnDefault" id="clear" label="清除" height="30px"></button>
+													<button sclass="btnDefault" id="barChart" label="阶段比较图" height="30px"></button>
+													<button sclass="btnDefault" id="pieChart" label="时间百分比图" height="30px"></button>
+												</div>
+												<div align="right">
+													<label value="列表每页"/>
+													<listbox mold="select" rows="1" id="pageindex">
+														<listitem label="15" value="15" selected="true"/>
+														<listitem label="3" value="3" />
+														<listitem label="10" value="10" />
+														<listitem label="30" value="30"/>
+														<listitem label="35" value="35" />
+														<listitem label="40" value="40" />
+														<listitem label="45" value="45" />
+														<listitem label="50" value="50" />
+														<listitem label="80" value="80" />
+														<listitem label="100" value="100" />
+														<listitem label="120" value="120" />
+													</listbox>					
+													<label value="条"/>
+												</div>
+											</row>
+										</rows>
+									</grid>																		
+								</div>											
+								<div width="100%">
+									<separator height="10px"/>
+									<panel title="最新的数据分析" border="normal" maximizable="" collapsible="true" maximized="">
+										<panelchildren style="left">
+											<listbox id="summaryLBox">
+												<listhead>
+													<listheader label="服务器消耗时间(ms)"/>
+													<listheader label="客户端消耗时间(ms)"/>
+													<listheader label="互联网消耗时间(ms)"/>
+													<listheader label="总消耗时间(ms)"/>
+												</listhead>
+												<listitem>
+													<listcell id="serverLCell" />
+													<listcell id="clientLCell" />
+													<listcell id="networkCell" />
+													<listcell id="totalLCell" />
+												</listitem>
+											</listbox>
+										</panelchildren>
+									</panel>
+								</div>
+								<separator height="10px"/>
+								<listbox id="monitorLBox" checkmark="true" multiple="true" fixedLayout="true"  mold="paging">
+									<listhead>
+									<listheader label="标识ID" width="12%"/>
+									<listheader label="客户端访问时间" width="17%" sortAscending="${timeStamp}" sortDescending="${_timestamp}"/>
+									<listheader label="服务端消耗时间(ms)" width="17%" sortAscending="${serverExecution}" sortDescending="${_serverExecution}"/>
+									<listheader label="客户端消耗时间 (ms)" width="18%" sortAscending="${clientExecution}" sortDescending="${_clientExecution}"/>
+									<listheader label="互联网消耗时间(ms)" width="18%"/>
+									<listheader label="总消耗时间(ms)"  width="18%"/>
+									</listhead>
+								</listbox>
+							</window>
+						</panelchildren>
+					</panel>
+				</tabpanel>
+				 -->
+			</tabpanels>
+		</tabbox>		
+	</vbox>
+</window>
+</center>
+</borderlayout>
+</zk>

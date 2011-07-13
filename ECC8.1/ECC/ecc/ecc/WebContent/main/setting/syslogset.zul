@@ -1,0 +1,238 @@
+<?page title="SysLogSet" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<borderlayout>
+		<center style="overflow:auto;border:none">
+			<panel title="SysLog设置" collapsible="true">
+				<panelchildren>
+					<window apply="com.siteview.ecc.log.SysLogSet"
+						border="normal" style="overflow-y:auto;"
+						forward="onCreate=onInit">
+
+						<tabbox>
+							<tabs>
+								<tab label="设备参数设置" />
+								<tab label="级别参数设置" />
+								<tab label="系统日志删除设置" />
+							</tabs>
+							<tabpanels>
+								<tabpanel>
+									<panel id="facility" >
+										<panelchildren>
+											<hbox
+												style="margin-top:30px">
+												<vbox align="start"
+													style="margin-left:40px">
+													<checkbox
+														label="Kernel" onCheck="applyButton.setDisabled(false)"
+														id="cb1_0" />
+													<checkbox
+														label="Mail" onCheck="applyButton.setDisabled(false)"
+														id="cb1_2" />
+													<checkbox
+														label="Auth" onCheck="applyButton.setDisabled(false)"
+														id="cb1_4" />
+													<checkbox
+														label="Lpr" onCheck="applyButton.setDisabled(false)"
+														id="cb1_6" />
+													<checkbox
+														label="UUCP" onCheck="applyButton.setDisabled(false)"
+														id="cb1_8" />
+													<checkbox
+														label="Security" onCheck="applyButton.setDisabled(false)"
+														id="cb1_10" />
+													<checkbox
+														label="NTP" onCheck="applyButton.setDisabled(false)"
+														id="cb1_12" />
+													<checkbox
+														label="Log alert" onCheck="applyButton.setDisabled(false)"
+														id="cb1_14" />
+													<checkbox
+														label="local0" onCheck="applyButton.setDisabled(false)"
+														id="cb1_16" />
+													<checkbox
+														label="local2" onCheck="applyButton.setDisabled(false)"
+														id="cb1_18" />
+													<checkbox
+														label="local4" onCheck="applyButton.setDisabled(false)"
+														id="cb1_20" />
+													<checkbox
+														label="local6" onCheck="applyButton.setDisabled(false)"
+														id="cb1_22" />
+
+												</vbox>
+												<vbox
+													style="margin-left:280px" align="start">
+
+													<checkbox
+														label="User" onCheck="applyButton.setDisabled(false)"
+														id="cb1_1" />
+													<checkbox
+														label="Daemon" onCheck="applyButton.setDisabled(false)"
+														id="cb1_3" />
+													<checkbox
+														label="Syslog" onCheck="applyButton.setDisabled(false)"
+														id="cb1_5" />
+													<checkbox
+														label="News" onCheck="applyButton.setDisabled(false)"
+														id="cb1_7" />
+													<checkbox
+														label="Cron" onCheck="applyButton.setDisabled(false)"
+														id="cb1_9" />
+													<checkbox
+														label="FTP Daemon"
+														onCheck="applyButton.setDisabled(false)" id="cb1_11" />
+													<checkbox
+														label="Log audit" onCheck="applyButton.setDisabled(false)"
+														id="cb1_13" />
+													<checkbox
+														label="Clock Daemon" id="cb1_15"
+														onCheck="applyButton.setDisabled(false)" />
+													<checkbox
+														label="local1" onCheck="applyButton.setDisabled(false)"
+														id="cb1_17" />
+													<checkbox
+														label="local3" onCheck="applyButton.setDisabled(false)"
+														id="cb1_19" />
+													<checkbox
+														label="local5" onCheck="applyButton.setDisabled(false)"
+														id="cb1_21" />
+													<checkbox
+														label="local7" onCheck="applyButton.setDisabled(false)"
+														id="cb1_23" />
+
+												</vbox>
+
+											</hbox>
+											<vbox
+												style="margin-left:500px">
+												<hbox
+													style="margin-top:50px">
+													<button
+														sclass="btnDefault" width="74px" height="23px"
+														id="applyButton" label="应  用" forward="onClick=onApply"
+														image="/main/images/button/ico/save_bt.gif" />
+													<button
+														sclass="btnDefault" height="23px"
+														image="/main/images/button/ico/reload_bt.gif" label="重新获得"
+														style="margin-left:10px" forward="onClick=onRefresh()" />
+													<button label="帮助" sclass="btnDefault"
+							width="74px" height="23px" 
+							image="/main/images/action/help.gif" action="onclick:showHelp(33)"/>
+												</hbox>
+											</vbox>
+											<panel></panel>
+										</panelchildren>
+
+									</panel>
+								</tabpanel>
+								<tabpanel>
+									<panel id="level"  >
+										<panelchildren>
+											<hbox
+												style="margin-top:30px">
+												<vbox align="start"
+													style="margin-left:40px">
+													<checkbox
+														label="Emergency" id="cb2_0"
+														onCheck="applyButton2.setDisabled(false)" />
+													<checkbox
+														label="Critical" id="cb2_2"
+														onCheck="applyButton2.setDisabled(false)" />
+													<checkbox
+														label="Warning" id="cb2_4"
+														onCheck="applyButton2.setDisabled(false)" />
+													<checkbox
+														label="Informational" id="cb2_6"
+														onCheck="applyButton2.setDisabled(false)" />
+
+
+												</vbox>
+												<vbox style="margin-left:270px" align="start">
+
+													<checkbox
+														label="Alert" id="cb2_1"
+														onCheck="applyButton2.setDisabled(false)" />
+													<checkbox
+														label="Error" id="cb2_3"
+														onCheck="applyButton2.setDisabled(false)" />
+													<checkbox
+														label="Notice" id="cb2_5"
+														onCheck="applyButton2.setDisabled(false)" />
+													<checkbox
+														label="Debug" id="cb2_7"
+														onCheck="applyButton2.setDisabled(false)" />
+
+												</vbox>
+
+											</hbox>
+											<vbox
+												style="margin-left:500px">
+												<hbox
+													style="margin-top:50px">
+													<button
+														id="applyButton2"
+														image="/main/images/button/ico/save_bt.gif" width="74px"
+														height="23px" label="应  用" forward="onClick=onApply2"
+														sclass="btnDefault" />
+													<button label="重新获得"
+														image="/main/images/button/ico/reload_bt.gif"
+														height="23px" style="margin-left:10px"
+														forward="onClick=onRefresh()" sclass="btnDefault" />
+												</hbox>
+											</vbox>
+											<panel></panel>
+										</panelchildren>
+
+									</panel>
+								</tabpanel>
+								<tabpanel height="150px">
+									<panel id="sysLog"  >
+										<panelchildren>
+											<vbox
+												style="margin-left:10px" align="start">
+												<hbox
+													style="margin-top:30px" align="center">
+													<label
+														value="删除此时间以前的记录：" />
+													<datebox
+														lenient="true" buttonVisible="true" compact="false"
+														id="delDatebox" width="98px" />
+													<timebox
+														id="delTimebox" width="60px" height="17px" />
+													<button label="删除日志"
+														image="/main/images/button/ico/delete_bt.gif"
+														style="margin-left:10px" sclass="btnDefault" height="23px"
+														id="applyDelButton" forward="onClick=onDelLog"
+														width="90px" />
+												</hbox>
+												<hbox align="center">
+													<label
+														value="记录保持天数&#160;&#160;*&#160;&#160;&#160;&#160;&#160;："
+														height="17px" />
+													<intbox
+														id="dateTextbox" width="200px" maxlength="4"
+														onChanging="applyDateButton.setDisabled(false)"
+														height="17px" />
+													<button
+														label="应   用" style="margin-left:9px"
+														image="/main/images/button/ico/save_bt.gif"
+														id="applyDateButton" sclass="btnDefault" width="90px"
+														height="23px" forward="onClick=onApplyDate" />
+												</hbox>
+
+											</vbox>
+											<panel></panel>
+										</panelchildren>
+
+									</panel>
+								</tabpanel>
+
+							</tabpanels>
+						</tabbox>
+					</window>
+				</panelchildren>
+			</panel>
+		</center>
+	</borderlayout>
+
+</zk>

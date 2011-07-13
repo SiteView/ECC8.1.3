@@ -1,0 +1,35 @@
+<window id="alertStrategyWin" use="com.siteview.ecc.alert.AlertStrategyView"  context="addPopup">
+	<panel title="告警策略" collapsible="true">
+		<panelchildren>
+		<space height="2px"/>
+		<div  height="27px" >
+			<button label="添  加" id="add" onClick="alertStrategyWin.onAdd(event)" sclass="btnDefault" width="74px" height="23px" image="/main/images/button/ico/add_bt.gif"/><space width="1px"/>
+			<button label="编 辑" id="edit" onClick="alertStrategyWin.onAdd(event)" sclass="btnDefault" width="74px" height="23px" image="/main/images/alert/edit.gif"/><space width="1px"/>
+			<button label="删  除" id="delete" onClick="alertStrategyWin.onDelete()" sclass="btnDefault" width="74px" height="23px" image="/main/images/button/ico/delete_bt.gif"/><space width="1px"/>
+			<button label="刷新" id="refresh" onClick="alertStrategyWin.onRefresh()" sclass="btnDefault" width="74px" height="23px" image="/main/images/button/ico/ref_bt.gif"/><space width="1px"/>
+		</div>
+		
+		<panel title="告警策略列表" collapsible="true">
+			<panelchildren>
+				<listbox id="alertStrategyList"  fixedLayout="true" mold="paging"  pageSize="10" context="editPopup">
+					<listhead>
+						<listheader>名称</listheader>
+					</listhead>
+				</listbox>
+			</panelchildren>
+		</panel>
+		</panelchildren>
+	</panel>
+	
+	<menupopup id="editPopup">
+		<menuitem id="edit_2" label="编 辑" onClick="alertStrategyWin.onAdd(event)"/>
+		<menuitem label="删 除" onClick="alertStrategyWin.onDelete()"/>
+		<menuitem label="帮 助" />
+	</menupopup>
+	
+	<menupopup id="addPopup">
+		<menuitem id="add_2" label="新建策略" onClick="alertStrategyWin.onAdd(event)"/>
+		<menuitem label="刷 新" onClick="alertStrategyWin.onRefresh()"/>
+		<menuitem label="帮 助" />
+	</menupopup>
+</window>

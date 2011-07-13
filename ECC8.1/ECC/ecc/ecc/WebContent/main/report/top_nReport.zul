@@ -1,0 +1,94 @@
+<borderlayout>
+	<north size="55px">
+		<panel title="TopN报告"
+			style="margin-left:3px;margin-top:3px;margin-bottom:3px">
+			<panelchildren>
+			   <hbox height="27px">
+					<button id="addTopN" label="添加报告"
+						sclass="btnDefault" width="74px" height="23px"
+						image="/main/images/button/ico/add_bt.gif" />
+					<button id="delete" label="批量删除" sclass="btnDefault"
+						image="/main/images/button/ico/delete_bt.gif" width="74px"
+						height="23px" />
+					<button width="74px" height="23px"
+						sclass="btnDefault" image="/main/images/button/ico/enable_bt.gif"
+						label="批量允许" id="batchAllow" />
+					<button width="74px" height="23px"
+						sclass="btnDefault" image="/main/images/button/ico/disable_bt.gif"
+						label="批量禁止" id="batchForbid" />
+					<button width="74px" height="23px"
+						sclass="btnDefault" image="/main/images/button/ico/ref_bt.gif"
+						label="刷  新" id="refresh" />
+					<button width="74px" height="23px"
+						sclass="btnDefault" image="/main/images/bakRestore.gif"
+						label="生成报告" id="CreateReportBtn" />
+					<button label="帮助" sclass="btnDefault"
+							width="74px" height="23px" 
+							image="/main/images/action/help.gif" action="onclick:showHelp(21)"/>	
+				</hbox>
+			</panelchildren>
+		</panel>
+	</north>
+	<center style="overflow-y:scroll;">
+		<window apply="com.siteview.ecc.report.TopNReportComposer" forward="onCreate=onInit"
+			border="normal"  id="topNReport" style="margin-right:15px;"
+			onClientInfo="onClientInfo(event)">
+			<panel title="TopN报告列表信息" collapsible="true" id="pa1">
+				<panelchildren>
+					<panel collapsible="true">
+						<panelchildren>
+							<listbox id="topNList" fixedLayout="true"  
+								checkmark="true" mold="paging" pageSize="6" multiple="true">
+								<listhead sizable="true">
+									<listheader label="名称" width="200px"
+										sort="auto" />
+									<listheader label="描述"
+										sort="auto" />
+									<listheader label="时间段" width="80px"
+										sort="auto" />
+									<listheader label="格式"
+										align="center" width="60px" sort="auto" />
+									<listheader label="状态"
+										align="center" width="60px" sort="auto" />
+									<listheader label="编辑"
+										align="center" width="80px" sort="auto"/>
+								</listhead>
+							</listbox>
+						</panelchildren>
+					</panel>
+				</panelchildren>
+			</panel>
+			<separator width="1px" />
+			<div id="topn_time"
+				style="hrioght:30px;text-align:right;padding-right:5px">
+				<button id="btnBatchDeleteGen" sclass="btnDefault"
+					label="批量删除日志" />
+				<space />
+				日志每页
+				<combobox width="20px" id="genlistboxPageSize"
+					value="10"  readonly="true"
+					use="com.siteview.ecc.treeview.controls.ListboxPageSize" />
+				<listbox id="topNGenerateTime" fixedLayout="true"
+					checkmark="true" mold="paging" pageSize="10" multiple="true"
+					style="margin-left:5px">
+					<listhead sizable="true">
+						<listheader label="格式" align="center" sort="auto(filetype)"
+							width="80px" />
+						<listheader label="文件名" align="left" sort="auto(title)"/>
+						<listheader label="生成日期" align="center" sort="auto(generateDate)"
+							width="120px" />
+						<listheader label="创建者" align="center" sort="auto(author)"
+							width="100px" />
+						<listheader label="有效性" align="center" sort="auto(enabled)"
+							width="80px" />
+						<listheader label="操作" align="center" sort="auto(filetype)"
+							width="80px" />
+					</listhead>
+				</listbox>
+			</div>
+			<zscript>
+	topNGenerateTime.pagingChild.mold ="os";
+</zscript>
+		</window>
+	</center>
+</borderlayout>

@@ -1,0 +1,248 @@
+<?page title="Test Mail" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window id="editRelativeTask" width="700px" border="normal" style="overflow-y:auto;" apply="com.siteview.ecc.tasks.EditRelTask"
+forward="onCreate=onInit" closable="true" maximized="false">
+<panel	title=""  id="editRelativeTaskPlain"  >
+			<panelchildren>
+				<vbox>
+
+					<hbox style="margin-top:10px;margin-left:5px;">
+					  <label value="任务计划名称 *：" />
+					  <textbox height="15px" width="250px" id="nameTextbox" />
+					</hbox>
+							<listbox fixedLayout="true" id="listbox_data" 
+							 style="margin-top:10px;"
+								 mold="paging"  pageSize="10">
+								<listhead sizable="true">
+									<listheader align="left" label="星期"  width="80px"/>
+									<listheader align="center" label="0" />
+									<listheader align="center" label="1" />
+									<listheader align="center" label="2" />
+									<listheader align="center" label="3" />
+									<listheader align="center" label="4" />
+									<listheader align="center" label="5" />
+									<listheader align="center" label="6" />
+									<listheader align="center" label="7" />
+									<listheader align="center" label="8" />
+									<listheader align="center" label="9" />
+									<listheader align="center" label="10" />
+									<listheader align="center" label="11" />
+									<listheader align="center" label="12" />
+									<listheader align="center" label="13" />
+									<listheader align="center" label="14" />
+									<listheader align="center" label="15" />
+									<listheader align="center" label="16" />
+									<listheader align="center" label="17" />
+									<listheader align="center" label="18" />
+									<listheader align="center" label="19" />
+									<listheader align="center" label="20" />
+									<listheader align="center" label="21" />
+									<listheader align="center" label="22" />
+									<listheader align="center" label="23" />
+								</listhead>
+								<listitem height="28px">
+									<listcell><checkbox id="flag1" forward="onCheck=onShowCheckTime1"/><label value="星期日"/> </listcell>
+									<listcell ><checkbox id="m0"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="m1"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="m2"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="m3"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="m4"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="m5"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="m6"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="m7"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="m8"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="m9"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="m10"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="m11"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="m12"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="m13"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="m14"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="m15"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="m16"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="m17"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="m18"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="m19"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="m20"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="m21"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="m22"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="m23"   forward="onCheck=onShowCheckTime"/> </listcell>
+								</listitem>
+									<listitem height="28px">
+									<listcell><checkbox id="flag2" forward="onCheck=onShowCheckTite2"/><label value="星期一"/> </listcell>
+									<listcell ><checkbox id="t0"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="t1"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="t2"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="t3"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="t4"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="t5"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="t6"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="t7"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="t8"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="t9"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="t10"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="t11"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="t12"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="t13"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="t14"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="t15"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="t16"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="t17"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="t18"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="t19"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="t20"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="t21"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="t22"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="t23"   forward="onCheck=onShowCheckTime"/> </listcell>
+								</listitem>
+								<listitem height="28px">
+									<listcell><checkbox id="flag3" forward="onCheck=onShowCheckTime3"/><label value="星期二"/> </listcell>
+									<listcell ><checkbox id="w0"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="w1"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="w2"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="w3"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="w4"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="w5"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="w6"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="w7"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="w8"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="w9"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="w10"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="w11"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="w12"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="w13"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="w14"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="w15"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="w16"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="w17"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="w18"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="w19"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="w20"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="w21"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="w22"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="w23"   forward="onCheck=onShowCheckTime"/> </listcell>
+								</listitem>
+								<listitem height="28px">
+									<listcell><checkbox id="flag4" forward="onCheck=onShowCheckTime4"/><label value="星期三"/> </listcell>
+									<listcell ><checkbox id="s0"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="s1"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="s2"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="s3"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="s4"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="s5"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="s6"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="s7"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="s8"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="s9"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="s10"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="s11"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="s12"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="s13"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="s14"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="s15"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="s16"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="s17"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="s18"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="s19"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="s20"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="s21"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="s22"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="s23"   forward="onCheck=onShowCheckTime"/> </listcell>
+								</listitem>
+								<listitem height="28px">
+									<listcell><checkbox id="flag5" forward="onCheck=onShowCheckTime5"/><label value="星期四"/> </listcell>
+									<listcell ><checkbox id="f0"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="f1"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="f2"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="f3"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="f4"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="f5"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="f6"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="f7"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="f8"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="f9"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="f10"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="f11"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="f12"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="f13"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="f14"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="f15"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="f16"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="f17"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="f18"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="f19"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="f20"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="f21"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="f22"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="f23"   forward="onCheck=onShowCheckTime"/> </listcell>
+								</listitem>
+								<listitem height="28px">
+									<listcell><checkbox id="flag6" forward="onCheck=onShowCheckTime6"/><label value="星期五"/> </listcell>
+									<listcell ><checkbox id="sa0"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="sa1"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="sa2"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="sa3"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="sa4"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="sa5"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="sa6"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="sa7"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="sa8"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="sa9"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="sa10"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="sa11"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="sa12"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="sa13"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="sa14"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="sa15"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="sa16"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="sa17"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="sa18"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="sa19"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="sa20"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="sa21"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="sa22"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="sa23"   forward="onCheck=onShowCheckTime"/> </listcell>
+								</listitem>	
+								<listitem height="28px">
+									<listcell><checkbox id="flag7" forward="onCheck=onShowCheckTime7"/><label value="星期六"/> </listcell>
+									<listcell ><checkbox id="su0"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="su1"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="su2"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="su3"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="su4"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="su5"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="su6"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="su7"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="su8"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="su9"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="su10"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="su11"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="su12"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="su13"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="su14"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="su15"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="su16"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="su17"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="su18"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="su19"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="su20"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="su21"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="su22"   forward="onCheck=onShowCheckTime"/> </listcell>
+									<listcell ><checkbox id="su23"   forward="onCheck=onShowCheckTime"/> </listcell>
+								</listitem>																																															
+							</listbox>
+
+					<hbox style="margin-top:10px;margin-left:5px;">
+					  <label value="备注：" />
+					  <textbox  id="description"  width="310px" multiline="true" rows="4"/>
+					</hbox>				
+					<hbox	style="margin-left:530px;;margin-top:3px;margin-bottom:3px"> 
+						<button sclass="btnDefault" width="74px" height="23px"  label="确定"	forward="onClick=onApply" />		
+						 					
+						<button sclass="btnDefault" width="74px" height="23px" image="/main/images/button/ico/close_bt.gif" label="取消"		onClick="editRelativeTask.detach()" />
+
+					</hbox>						
+				</vbox>
+			</panelchildren>		
+			</panel>
+</window>					   						   
+</zk>

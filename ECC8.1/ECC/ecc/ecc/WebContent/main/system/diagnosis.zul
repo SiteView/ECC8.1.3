@@ -1,0 +1,38 @@
+<borderlayout>
+	<center style="overflow:auto;border:none">
+		<panel title="系统诊断" collapsible="true">
+			<panelchildren>
+				<window use="com.siteview.ecc.system.DiagnosisUI"
+					border="normal" style="overflow-y:auto;" id="win">
+
+					<div height="27px">
+						<button sclass="btnDefault" width="74px"
+							height="23px" label="诊  断" onClick="win.onExcute();"
+							image="/main/images/button/ico/delete_bt.gif" />
+						<space width="1px" />
+						<button label="帮  助" sclass="btnDefault"
+							width="74px" height="23px" 
+							image="/main/images/action/help.gif" /><!-- action="onclick:showHelp(30)"/-->
+					</div>
+					<panel title="系统诊断信息" border="normal"
+						maximizable="" collapsible="true" maximized="">
+						<panelchildren style="left">
+							<listbox fixedLayout="true"
+								id="listbox_data" checkmark="true" vflex="true" multiple="true" mold="paging"
+								rows="8" disabled="true" pageSize="8">
+								<listhead sizable="true">
+									<listheader align="left" label="名称"
+										sort="auto" width="20%" />
+									<listheader align="left" label="描述"
+										sort="auto" width="40%" />
+									<listheader align="left" label="诊断结果"
+										sort="auto" />
+								</listhead>
+							</listbox>
+						</panelchildren>
+					</panel>
+				</window>
+			</panelchildren>
+		</panel>
+	</center>
+</borderlayout>

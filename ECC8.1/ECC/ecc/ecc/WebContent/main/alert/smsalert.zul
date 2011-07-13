@@ -1,0 +1,80 @@
+﻿<?page id="alertrule"?>
+<?component name="monitorselect" macro-uri="/main/alert/control/monitorselect.zul"?>
+<window id="mainwin" title="添加短信报警"  border="normal" position="center" use="com.siteview.ecc.alert.SmsAlertView" closable="true" width="660px">
+	<vbox>
+		<space height="3px"/>
+		<hbox>
+			<space width="3px"/>
+			<monitorselect treeheight="390px"/>
+			<vbox>
+				<groupbox closable="false" width="406px">
+					<caption label="设置 短信报警"/>
+					<grid style="border:0" oddRowSclass="none" width="100%">
+						<columns>
+							<column width="6px"/>
+							<column width="123px"/>
+							<column width="248px"/>
+							<column width="6px"/>
+						</columns>
+						<rows>
+							<row zclass="none" height="6px"><separator/>
+							</row>
+							<row zclass="none" height="23px"><space width="1px"/><label>报警名称*：</label><textbox width="267px" height="15px" id="alertName"  tooltiptext="报警名称"/>
+								<space width="1px"/>
+							</row>
+							<row zclass="none" height="23px"><space width="1px"/><label id="alerReceiverSmsLink">报警接收手机号*：</label>
+								<bandbox width="250px" height="15px" id="alertReceiver" use="com.siteview.ecc.alert.control.AlertSmsReceiveTelNoBandBox" readonly="true" tooltiptext="请点击从而选择报警接收人的手机号码，您既可以选择预定好的号码设置（可多选），也可以直接输入接收人的手机号码，输入多个手机号码时\r\n请用逗号分隔（例如: 13521451245,13269853214）"/>
+								<space width="1px"/>
+							</row>
+							<row zclass="none" height="23px"><space width="1px"/><label>其它手机号：</label><textbox width="267px" height="15px" id="otherTelNo" tooltiptext="其它手机号码"/>
+								<space width="1px"/>
+							</row>
+							<row zclass="none" height="23px"><space width="1px"/><label>发送方式*：</label>
+								<combobox width="250px" height="15px" id="smsModes" readonly="true" use="com.siteview.ecc.alert.control.SmsSendModesCombobox" tooltiptext="发送方式"/>
+								<space width="1px"/>
+							</row>
+							<row zclass="none" height="23px"><space width="1px"/><label id="smsTemplateLink">短信模板*：</label>
+								<div id="smsTemplateDiv">
+								<combobox width="250px" height="15px" id="smsTemplateWeb" readonly="true" use="com.siteview.ecc.alert.control.WebSmsTemplateCombobox" visible="true" tooltiptext="请从下拉框选择短信报警的模板"/>
+								<combobox width="250px" height="15px" id="smsTemplate" readonly="true" use="com.siteview.ecc.alert.control.SmsTemplateCombobox" visible="false" tooltiptext="请从下拉框选择短信报警的模板"/>
+								</div>
+								<space width="1px"/>
+							</row>
+							<row zclass="none" height="23px"><space width="1px"/><label>升级次数：</label><intbox id="updateCount" maxlength="4" value="0" width="267px" height="15px" tooltiptext="升级次数"/>
+								<space width="1px"/>
+							</row>
+							<row zclass="none" height="23px"><space width="1px"/><label>升级接收人地址：</label><textbox width="267px" height="15px" id="updateReceiver" tooltiptext="升级接受人地址"/>
+								<space width="1px"/>
+							</row>
+							<row zclass="none" height="23px"><space width="1px"/><label>停止次数：</label><intbox id="stopCount" maxlength="4" value="0" width="267px" height="15px" tooltiptext="停止次数"/>
+								<space width="1px"/>
+							</row>
+							<row zclass="none" height="23px"><space width="1px"/><label id="watchSheetLink">值班报警列表：</label>
+								<combobox id="watchSheet" width="250px" height="15px"  use="com.siteview.ecc.alert.control.WatchSheetsCombobox" tooltiptext="请选择值班报警列表 。">
+									<comboitem label="空" value="空"/>
+								</combobox>
+								<space width="1px"/>
+							</row>
+							<row zclass="none" height="23px"><space width="1px"/><label>报警策略：</label>
+								<combobox id="alertPloy" width="250px" height="15px" readonly="true" use="com.siteview.ecc.alert.control.AlertPloyCombobox" tooltiptext="报警策略">
+									<comboitem label="空" value="空"/>
+								</combobox>
+								<space width="1px"/>
+							</row>
+							<row zclass="none" height="6px"><separator/>
+							</row>
+						</rows>
+					</grid>
+				</groupbox>
+				<include src="/main/alert/alertcondition.zul"/>
+			</vbox>
+			<space width="3px"/>
+		</hbox>
+		<hbox>
+			<separator width="470px"/>
+			<button label="保  存" id="button_ok" sclass="btnDefault" width="74px" height="23px" image="/main/images/button/ico/save_bt.gif"/>
+			<button label="取  消" id="button_cancel" sclass="btnDefault" width="74px" height="23px" image="/main/images/button/ico/close_bt.gif" onClick="mainwin.doCancel()"/>
+		</hbox>
+		<space height="3px"/>
+	</vbox>
+</window>

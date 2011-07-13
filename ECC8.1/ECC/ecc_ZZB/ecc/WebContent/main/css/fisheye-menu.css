@@ -1,0 +1,46 @@
+/* Fisheye Menu Styles */
+.z-fisheye-text {
+	font-size: 30px;
+	font-weight: bold;
+	height:35px;
+	font-family: Arial, Helvetica, sans-serif;
+	
+	border: 1px;
+	padding: -10px;
+	text-align: right;
+	/*position: absolute;*/
+	background-color: #aa7700;
+	display: "";
+}
+
+#fisheye_menu {
+	list-style: none;
+	padding: 0;
+	margin: 10px;
+}
+
+#fisheye_menu li {
+	position: relative;
+	display: block;
+	float: left;
+}
+
+#fisheye_menu span {
+	top: 1px;
+	left: 10%;
+	text-align: left;
+	padding: 1px;
+	margin: 0;
+	border: solid 1px #bbb;
+	color: #333;
+	background: #eee;
+}
+
+#fisheye_menu a {
+	text-decoration: none;
+}
+
+#fisheye_menu img {
+	border: 0;
+	vertical-align: top;
+}

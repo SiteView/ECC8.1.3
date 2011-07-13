@@ -1,0 +1,1424 @@
+<?xml version="1.0" encoding="utf-8"?>
+<VisioDocument>
+	<DocumentProperties>
+		<Title></Title>
+		<HyperlinkBase href=""></HyperlinkBase>
+	</DocumentProperties>
+	<Pages>
+		<Page ID="0" Name="页-1" NameU="Page-1">
+			<Layer IX="0">
+				<Name>陆标</Name>
+				<NameUniv>Landmark</NameUniv>
+				<Visible>1</Visible>
+			</Layer>
+			<Layer IX="1">
+				<Name></Name>
+				<NameUniv></NameUniv>
+				<Visible>0</Visible>
+			</Layer>
+			<Layer IX="2">
+				<Name>连接线</Name>
+				<NameUniv>Connector</NameUniv>
+				<Visible>1</Visible>
+			</Layer>
+			<Shapes>
+				<Shape ID="1" UniqueID="{22A99C14-209D-4F10-AB6C-4D2EC8848CDD}" Name="Sheet.1" NameU="Sheet.1">
+					<XForm>
+						<PinX Unit="MM">-0.070188101487313</PinX>
+						<PinY Unit="MM">3.952152230971129</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="2" UniqueID="{E215AF69-2B4F-402E-B18F-81FFD2DCFA3F}" Name="椭圆" NameU="Ellipse" Master="4">
+					<XForm>
+						<PinX Unit="MM">10.205402449693787</PinX>
+						<PinY Unit="MM">1.550577427821523</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="3" UniqueID="{6D419C40-68F9-41D8-9C69-6C62186E28BE}" Name="网桥" NameU="Bridge" Master="5">
+					<XForm>
+						<PinX Unit="MM">2.252646544181978</PinX>
+						<PinY Unit="MM">3.952152230971129</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									<HLURL:Hyperlink ID="1">
+										<HLURL:Description></HLURL:Description>
+										<HLURL:Address>SV_IP:10.10.254.1+color</HLURL:Address>
+										<HLURL:SubAddress></HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+										<HLURL:AbsoluteURL>SV_IP:10.10.254.1+color</HLURL:AbsoluteURL>
+									</HLURL:Hyperlink>
+									<HLURL:Hyperlink ID="2">
+										<HLURL:Description>SiteView</HLURL:Description>
+										<HLURL:Address>http://www.siteview.com</HLURL:Address>
+										<HLURL:SubAddress></HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+										<HLURL:AbsoluteURL>http://www.siteview.com</HLURL:AbsoluteURL>
+									</HLURL:Hyperlink>
+								</HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+					<Prop ID="1" Name="SV_IP" NameU="SV_IP">
+						<Value Unit="STR">10.10.254.1</Value>
+						<Label>属性1</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="18" UniqueID="{523FB5B6-C11F-4A5C-9790-F142CA0A92B0}" Name="调制解调器" NameU="Modem" Master="6">
+					<XForm>
+						<PinX Unit="MM">2.803827646544183</PinX>
+						<PinY Unit="MM">3.046640419947508</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									<HLURL:Hyperlink ID="1">
+										<HLURL:Description></HLURL:Description>
+										<HLURL:Address>SV_IP:192.168.10.2+color</HLURL:Address>
+										<HLURL:SubAddress></HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+										<HLURL:AbsoluteURL>SV_IP:192.168.10.2+color</HLURL:AbsoluteURL>
+									</HLURL:Hyperlink>
+									<HLURL:Hyperlink ID="2">
+										<HLURL:Description>SiteView</HLURL:Description>
+										<HLURL:Address>http://www.siteview.com</HLURL:Address>
+										<HLURL:SubAddress></HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+										<HLURL:AbsoluteURL>http://www.siteview.com</HLURL:AbsoluteURL>
+									</HLURL:Hyperlink>
+								</HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+					<Prop ID="1" Name="SV_IP" NameU="SV_IP">
+						<Value Unit="STR">192.168.10.2</Value>
+						<Label>属性1</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="27" UniqueID="{4B06AA86-1756-4BC6-B3DA-FFD62873FF53}" Name="Sheet.27" NameU="Sheet.27">
+					<XForm>
+						<PinX Unit="MM">3.394378827646545</PinX>
+						<PinY Unit="MM">3.755301837270342</PinY>
+					</XForm>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									<HLURL:Hyperlink ID="1">
+										<HLURL:Description></HLURL:Description>
+										<HLURL:Address>SV_IP:10.10.254.10+color</HLURL:Address>
+										<HLURL:SubAddress></HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+										<HLURL:AbsoluteURL>SV_IP:10.10.254.10+color</HLURL:AbsoluteURL>
+									</HLURL:Hyperlink>
+									<HLURL:Hyperlink ID="2">
+										<HLURL:Description>SiteView</HLURL:Description>
+										<HLURL:Address>http://www.siteview.com</HLURL:Address>
+										<HLURL:SubAddress></HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+										<HLURL:AbsoluteURL>http://www.siteview.com</HLURL:AbsoluteURL>
+									</HLURL:Hyperlink>
+								</HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+					<Prop ID="1" Name="SV_IP" NameU="SV_IP">
+						<Value Unit="STR">10.10.254.10</Value>
+						<Label>属性1</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="28" UniqueID="{D4D574C9-5555-49C5-A58C-2C7156AB6F43}" Name="Sheet.28" NameU="Sheet.28">
+					<XForm>
+						<PinX Unit="MM">4.181780402449695</PinX>
+						<PinY Unit="MM">4.576805192256658</PinY>
+					</XForm>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									<HLURL:Hyperlink ID="1">
+										<HLURL:Description></HLURL:Description>
+										<HLURL:Address>SV_IP:192.168.10.10+color</HLURL:Address>
+										<HLURL:SubAddress></HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+										<HLURL:AbsoluteURL>SV_IP:192.168.10.10+color</HLURL:AbsoluteURL>
+									</HLURL:Hyperlink>
+									<HLURL:Hyperlink ID="2">
+										<HLURL:Description>SiteView</HLURL:Description>
+										<HLURL:Address>http://www.siteview.com</HLURL:Address>
+										<HLURL:SubAddress></HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+										<HLURL:AbsoluteURL>http://www.siteview.com</HLURL:AbsoluteURL>
+									</HLURL:Hyperlink>
+								</HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+					<Prop ID="1" Name="SV_IP" NameU="SV_IP">
+						<Value Unit="STR">192.168.10.10</Value>
+						<Label>IP地址</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="29" UniqueID="{610DF25D-B3B7-4A33-8561-F0ACAAF550EB}" Name="Sheet.29" NameU="Sheet.29">
+					<XForm>
+						<PinX Unit="MM">4.181780402449695</PinX>
+						<PinY Unit="MM">2.618837852362765</PinY>
+					</XForm>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									<HLURL:Hyperlink ID="1">
+										<HLURL:Description></HLURL:Description>
+										<HLURL:Address>SV_IP:192.168.10.9+color</HLURL:Address>
+										<HLURL:SubAddress></HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+										<HLURL:AbsoluteURL>SV_IP:192.168.10.9+color</HLURL:AbsoluteURL>
+									</HLURL:Hyperlink>
+									<HLURL:Hyperlink ID="2">
+										<HLURL:Description>SiteView</HLURL:Description>
+										<HLURL:Address>http://www.siteview.com</HLURL:Address>
+										<HLURL:SubAddress></HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+										<HLURL:AbsoluteURL>http://www.siteview.com</HLURL:AbsoluteURL>
+									</HLURL:Hyperlink>
+								</HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+					<Prop ID="1" Name="SV_IP" NameU="SV_IP">
+						<Value Unit="STR">192.168.10.9</Value>
+						<Label>IP地址</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="30" UniqueID="{AB6AB7FD-C10A-4EB2-98B9-DBD010C8ADD3}" Name="Sheet.30" NameU="Sheet.30">
+					<XForm>
+						<PinX Unit="MM">5.076301399825024</PinX>
+						<PinY Unit="MM">3.755301837270342</PinY>
+					</XForm>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									<HLURL:Hyperlink ID="1">
+										<HLURL:Description></HLURL:Description>
+										<HLURL:Address>SV_IP:192.168.10.14+color</HLURL:Address>
+										<HLURL:SubAddress></HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+										<HLURL:AbsoluteURL>SV_IP:192.168.10.14+color</HLURL:AbsoluteURL>
+									</HLURL:Hyperlink>
+									<HLURL:Hyperlink ID="2">
+										<HLURL:Description>SiteView</HLURL:Description>
+										<HLURL:Address>http://www.siteview.com</HLURL:Address>
+										<HLURL:SubAddress></HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+										<HLURL:AbsoluteURL>http://www.siteview.com</HLURL:AbsoluteURL>
+									</HLURL:Hyperlink>
+								</HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+					<Prop ID="1" Name="SV_IP" NameU="SV_IP">
+						<Value Unit="STR">192.168.10.14</Value>
+						<Label>属性1</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="31" UniqueID="{22F78379-9855-438D-AD87-79B64762D6B7}" Name="Sheet.31" NameU="Sheet.31">
+					<XForm>
+						<PinX Unit="MM">9.595166229221348</PinX>
+						<PinY Unit="MM">2.724161825097254</PinY>
+					</XForm>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									<HLURL:Hyperlink ID="1">
+										<HLURL:Description></HLURL:Description>
+										<HLURL:Address>SVIP:192.168.111.254+color</HLURL:Address>
+										<HLURL:SubAddress></HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+										<HLURL:AbsoluteURL>SVIP:192.168.111.254+color</HLURL:AbsoluteURL>
+									</HLURL:Hyperlink>
+									<HLURL:Hyperlink ID="2">
+										<HLURL:Description>SiteView</HLURL:Description>
+										<HLURL:Address>http://www.siteview.com</HLURL:Address>
+										<HLURL:SubAddress></HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+										<HLURL:AbsoluteURL>http://www.siteview.com</HLURL:AbsoluteURL>
+									</HLURL:Hyperlink>
+								</HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+					<Prop ID="1" Name="SVIP" NameU="SVIP">
+						<Value Unit="STR">192.168.111.254</Value>
+						<Label>IP</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="32" UniqueID="{4F09D64E-164D-4B26-963C-44CE09C99CA2}" Name="Sheet.32" NameU="Sheet.32">
+					<XForm>
+						<PinX Unit="MM">9.278040244969379</PinX>
+						<PinY Unit="MM">3.735616797900264</PinY>
+					</XForm>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									<HLURL:Hyperlink ID="1">
+										<HLURL:Description></HLURL:Description>
+										<HLURL:Address>SV_IP:192.168.111.1+color</HLURL:Address>
+										<HLURL:SubAddress></HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+										<HLURL:AbsoluteURL>SV_IP:192.168.111.1+color</HLURL:AbsoluteURL>
+									</HLURL:Hyperlink>
+									<HLURL:Hyperlink ID="2">
+										<HLURL:Description>SiteView</HLURL:Description>
+										<HLURL:Address>http://www.siteview.com</HLURL:Address>
+										<HLURL:SubAddress></HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+										<HLURL:AbsoluteURL>http://www.siteview.com</HLURL:AbsoluteURL>
+									</HLURL:Hyperlink>
+								</HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+					<Prop ID="1" Name="SV_IP" NameU="SV_IP">
+						<Value Unit="STR">192.168.111.1</Value>
+						<Label>属性1</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="33" UniqueID="{91414297-DAE0-40FF-BFEC-D98278C63721}" Name="Sheet.33" NameU="Sheet.33">
+					<XForm>
+						<PinX Unit="MM">7.224267279090113</PinX>
+						<PinY Unit="MM">3.755301837270342</PinY>
+					</XForm>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									<HLURL:Hyperlink ID="1">
+										<HLURL:Description></HLURL:Description>
+										<HLURL:Address>SV_IP:192.168.10.13+color</HLURL:Address>
+										<HLURL:SubAddress></HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+										<HLURL:AbsoluteURL>SV_IP:192.168.10.13+color</HLURL:AbsoluteURL>
+									</HLURL:Hyperlink>
+									<HLURL:Hyperlink ID="2">
+										<HLURL:Description>SiteView</HLURL:Description>
+										<HLURL:Address>http://www.siteview.com</HLURL:Address>
+										<HLURL:SubAddress></HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+										<HLURL:AbsoluteURL>http://www.siteview.com</HLURL:AbsoluteURL>
+									</HLURL:Hyperlink>
+								</HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+					<Prop ID="1" Name="SV_IP" NameU="SV_IP">
+						<Value Unit="STR">192.168.10.13</Value>
+						<Label>属性1</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="34" UniqueID="{6BF74DB4-CCA8-4347-8ADF-2DE1B4CD4AA3}" Name="Sheet.34" NameU="Sheet.34">
+					<XForm>
+						<PinX Unit="MM">6.110914260717409</PinX>
+						<PinY Unit="MM">3.755301837270341</PinY>
+					</XForm>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									<HLURL:Hyperlink ID="1">
+										<HLURL:Description></HLURL:Description>
+										<HLURL:Address>SV_IP:192.168.10.7+color</HLURL:Address>
+										<HLURL:SubAddress></HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+										<HLURL:AbsoluteURL>SV_IP:192.168.10.7+color</HLURL:AbsoluteURL>
+									</HLURL:Hyperlink>
+									<HLURL:Hyperlink ID="2">
+										<HLURL:Description>SiteView</HLURL:Description>
+										<HLURL:Address>http://www.siteview.com</HLURL:Address>
+										<HLURL:SubAddress></HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+										<HLURL:AbsoluteURL>http://www.siteview.com</HLURL:AbsoluteURL>
+									</HLURL:Hyperlink>
+								</HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+					<Prop ID="1" Name="SV_IP" NameU="SV_IP">
+						<Value Unit="STR">192.168.10.7</Value>
+						<Label>属性1</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="35" UniqueID="{60BF5412-8E11-406A-B6CE-7B4B8823E4D1}" Name="交换机" NameU="Switch" Master="7">
+					<XForm>
+						<PinX Unit="MM">8.118788276465443</PinX>
+						<PinY Unit="MM">4.173608923884515</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									<HLURL:Hyperlink ID="1">
+										<HLURL:Description></HLURL:Description>
+										<HLURL:Address>SV_IP:192.168.10.5+color</HLURL:Address>
+										<HLURL:SubAddress></HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+										<HLURL:AbsoluteURL>SV_IP:192.168.10.5+color</HLURL:AbsoluteURL>
+									</HLURL:Hyperlink>
+									<HLURL:Hyperlink ID="2">
+										<HLURL:Description>SiteView</HLURL:Description>
+										<HLURL:Address>http://www.siteview.com</HLURL:Address>
+										<HLURL:SubAddress></HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+										<HLURL:AbsoluteURL>http://www.siteview.com</HLURL:AbsoluteURL>
+									</HLURL:Hyperlink>
+								</HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+					<Prop ID="1" Name="SV_IP" NameU="SV_IP">
+						<Value Unit="STR">192.168.10.5</Value>
+						<Label>属性1</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="60" UniqueID="{745E05A3-80D2-46EE-866E-322156F22D5E}" Name="交换机.60" NameU="Switch.60" Master="7">
+					<XForm>
+						<PinX Unit="MM">8.118788276465443</PinX>
+						<PinY Unit="MM">3.533845144356956</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									<HLURL:Hyperlink ID="1">
+										<HLURL:Description></HLURL:Description>
+										<HLURL:Address>SV_IP:192.168.10.6+color</HLURL:Address>
+										<HLURL:SubAddress></HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+										<HLURL:AbsoluteURL>SV_IP:192.168.10.6+color</HLURL:AbsoluteURL>
+									</HLURL:Hyperlink>
+									<HLURL:Hyperlink ID="2">
+										<HLURL:Description>SiteView</HLURL:Description>
+										<HLURL:Address>http://www.siteview.com</HLURL:Address>
+										<HLURL:SubAddress></HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+										<HLURL:AbsoluteURL>http://www.siteview.com</HLURL:AbsoluteURL>
+									</HLURL:Hyperlink>
+								</HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+					<Prop ID="1" Name="SV_IP" NameU="SV_IP">
+						<Value Unit="STR">192.168.10.6</Value>
+						<Label>属性1</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="85" UniqueID="{3A5EE724-F1BA-4000-91E4-CC00AA863B09}" Name="动态连接线" NameU="Dynamic connector" Master="8">
+					<XForm>
+						<PinX Unit="MM">8.569428827646544</PinX>
+						<PinY Unit="MM">4.003346531903203</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember>2</LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="86" UniqueID="{E9363559-ADA1-4A5B-95B4-2ED384A75556}" Name="动态连接线.86" NameU="Dynamic connector.86" Master="8">
+					<XForm>
+						<PinX Unit="MM">7.780647622489935</PinX>
+						<PinY Unit="MM">3.617558675049590</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember>2</LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="87" UniqueID="{DC17291D-457A-4732-BF07-A25F552C90EC}" Name="动态连接线.87" NameU="Dynamic connector.87" Master="8">
+					<XForm>
+						<PinX Unit="MM">7.802678336222121</PinX>
+						<PinY Unit="MM">4.025785643558003</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember>2</LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="88" UniqueID="{813A5057-3B0C-4850-B605-0FBE1B150240}" Name="动态连接线.88" NameU="Dynamic connector.88" Master="8">
+					<XForm>
+						<PinX Unit="MM">8.571376199746563</PinX>
+						<PinY Unit="MM">3.612619574882198</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember>2</LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="89" UniqueID="{6A346D77-3326-4D97-BA5C-D76B34BD917B}" Name="动态连接线.89" NameU="Dynamic connector.89" Master="8">
+					<XForm>
+						<PinX Unit="MM">2.528237095363080</PinX>
+						<PinY Unit="MM">3.499396325459319</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember>2</LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="90" UniqueID="{B0BFBF6E-C370-45D0-9F5F-6DAAFA2C4D35}" Name="动态连接线.90" NameU="Dynamic connector.90" Master="8">
+					<XForm>
+						<PinX Unit="MM">3.049633152466216</PinX>
+						<PinY Unit="MM">3.341607027053948</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember>2</LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="91" UniqueID="{AEC272B9-87BF-4B5B-ADF7-52430A03DF3A}" Name="动态连接线.91" NameU="Dynamic connector.91" Master="8">
+					<XForm>
+						<PinX Unit="MM">3.778231028277453</PinX>
+						<PinY Unit="MM">3.201284401308771</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember>2</LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="92" UniqueID="{BEF38D0B-D173-4A2B-9365-487F6FD331F5}" Name="动态连接线.92" NameU="Dynamic connector.92" Master="8">
+					<XForm>
+						<PinX Unit="MM">3.795884835750989</PinX>
+						<PinY Unit="MM">4.174196773805647</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember>2</LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="93" UniqueID="{E2489884-1AE0-49AE-9E9A-C64E17A0CF3F}" Name="动态连接线.93" NameU="Dynamic connector.93" Master="8">
+					<XForm>
+						<PinX Unit="MM">4.611655047501237</PinX>
+						<PinY Unit="MM">4.182020202111570</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember>2</LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="94" UniqueID="{96507D6C-2810-46E4-ACCD-F6FC80236B8D}" Name="动态连接线.94" NameU="Dynamic connector.94" Master="8">
+					<XForm>
+						<PinX Unit="MM">4.631710508366487</PinX>
+						<PinY Unit="MM">3.190461506363520</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember>2</LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="95" UniqueID="{75049F2C-6AFC-4BE0-9139-8BC42EA2F017}" Name="动态连接线.95" NameU="Dynamic connector.95" Master="8">
+					<XForm>
+						<PinX Unit="MM">5.514008990104452</PinX>
+						<PinY Unit="MM">3.755301837270342</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember>2</LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="96" UniqueID="{7E9C98AC-FE62-4A48-A030-44CEED60FF71}" Name="动态连接线.96" NameU="Dynamic connector.96" Master="8">
+					<XForm>
+						<PinX Unit="MM">6.746655447129131</PinX>
+						<PinY Unit="MM">3.755301837270342</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember>2</LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="97" UniqueID="{6976DB14-C371-4F1F-BC49-0F97FEF96579}" Name="动态连接线.97" NameU="Dynamic connector.97" Master="8">
+					<XForm>
+						<PinX Unit="MM">9.471344628255256</PinX>
+						<PinY Unit="MM">3.119083655085416</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember>2</LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="98" UniqueID="{312D1D79-563F-45E8-AE76-CA8545ECD2F9}" Name="Sheet.98" NameU="Sheet.98">
+					<Text>联通20M</Text>
+					<XForm>
+						<PinX Unit="MM">0.599103237095365</PinX>
+						<PinY Unit="MM">4.936404199475066</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="99" UniqueID="{7DCD3338-3B26-47DF-9AD6-992F461C3B7E}" Name="Sheet.99" NameU="Sheet.99">
+					<Text>电信10M</Text>
+					<XForm>
+						<PinX Unit="MM">0.599103237095364</PinX>
+						<PinY Unit="MM">4.149002624671917</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="100" UniqueID="{B97CE523-7D6B-47F9-838F-1747B00D9F83}" Name="Sheet.100" NameU="Sheet.100">
+					<Text>清华4M</Text>
+					<XForm>
+						<PinX Unit="MM">0.559733158355207</PinX>
+						<PinY Unit="MM">3.302545931758532</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="101" UniqueID="{0C41C857-8F87-410A-973E-37AB5DAF7E5B}" Name="Sheet.101" NameU="Sheet.101">
+					<Text>国际互联2M</Text>
+					<XForm>
+						<PinX Unit="MM">0.736898512685915</PinX>
+						<PinY Unit="MM">2.534829396325460</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="102" UniqueID="{4D250E68-B656-491E-BC4F-24E59C475BAF}" Name="Sheet.102" NameU="Sheet.102">
+					<Text>负载均衡</Text>
+					<XForm>
+						<PinX Unit="MM">2.488867016622923</PinX>
+						<PinY Unit="MM">4.149002624671917</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="103" UniqueID="{40DC11E8-3750-4E31-A61D-39CD8ABD0331}" Name="Sheet.103" NameU="Sheet.103">
+					<Text>流量控制</Text>
+					<XForm>
+						<PinX Unit="MM">3.177843394575679</PinX>
+						<PinY Unit="MM">2.802545931758532</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="104" UniqueID="{B9458887-A2E8-4070-B026-3259BC317074}" Name="Sheet.104" NameU="Sheet.104">
+					<XForm>
+						<PinX Unit="MM">2.666032370953631</PinX>
+						<PinY Unit="MM">5.452865512837790</PinY>
+					</XForm>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									<HLURL:Hyperlink ID="1">
+										<HLURL:Description></HLURL:Description>
+										<HLURL:Address>SV_IP:172.16.254.125+color</HLURL:Address>
+										<HLURL:SubAddress></HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+										<HLURL:AbsoluteURL>SV_IP:172.16.254.125+color</HLURL:AbsoluteURL>
+									</HLURL:Hyperlink>
+									<HLURL:Hyperlink ID="2">
+										<HLURL:Description>SiteView</HLURL:Description>
+										<HLURL:Address>http://www.siteview.com</HLURL:Address>
+										<HLURL:SubAddress></HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+										<HLURL:AbsoluteURL>http://www.siteview.com</HLURL:AbsoluteURL>
+									</HLURL:Hyperlink>
+								</HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+					<Prop ID="1" Name="SV_IP" NameU="SV_IP">
+						<Value Unit="STR">172.16.254.125</Value>
+						<Label>属性1</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="105" UniqueID="{2EB24E5F-4A90-4A4D-AB3D-1786574982AE}" Name="动态连接线.113" NameU="Dynamic connector.113" Master="8">
+					<XForm>
+						<PinX Unit="MM">3.458800197462141</PinX>
+						<PinY Unit="MM">4.994667697761654</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember>2</LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="106" UniqueID="{25CE5E10-3392-46F4-9012-68EE075DE34D}" Name="动态连接线.114" NameU="Dynamic connector.114" Master="8">
+					<XForm>
+						<PinX Unit="MM">2.666032370953632</PinX>
+						<PinY Unit="MM">5.800992646749128</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember>2</LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="107" UniqueID="{F474C672-C897-4D20-9E18-97E7D16CD1DE}" Name="Sheet.107" NameU="Sheet.107">
+					<XForm>
+						<PinX Unit="MM">9.901432633420821</PinX>
+						<PinY Unit="MM">1.865538057742783</PinY>
+					</XForm>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									<HLURL:Hyperlink ID="1">
+										<HLURL:Description></HLURL:Description>
+										<HLURL:Address>SV_IP:192.168.52.2+color</HLURL:Address>
+										<HLURL:SubAddress></HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+										<HLURL:AbsoluteURL>SV_IP:192.168.52.2+color</HLURL:AbsoluteURL>
+									</HLURL:Hyperlink>
+									<HLURL:Hyperlink ID="2">
+										<HLURL:Description>SiteView</HLURL:Description>
+										<HLURL:Address>http://www.siteview.com</HLURL:Address>
+										<HLURL:SubAddress></HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+										<HLURL:AbsoluteURL>http://www.siteview.com</HLURL:AbsoluteURL>
+									</HLURL:Hyperlink>
+								</HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+					<Prop ID="1" Name="SV_IP" NameU="SV_IP">
+						<Value Unit="STR">192.168.52.2</Value>
+						<Label>属性1</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="108" UniqueID="{7FCAD1CD-65CB-4831-881E-62403F001973}" Name="Sheet.108" NameU="Sheet.108">
+					<Text>清华小楼</Text>
+					<XForm>
+						<PinX Unit="MM">9.673906386701660</PinX>
+						<PinY Unit="MM">1.235616797900263</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="109" UniqueID="{83E6CF64-30FB-4F7F-8BAF-91443AD8EB24}" Name="动态连接线.174" NameU="Dynamic connector.174" Master="8">
+					<XForm>
+						<PinX Unit="MM">9.752959814967198</PinX>
+						<PinY Unit="MM">2.281784466040819</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember>2</LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="110" UniqueID="{98B9D1F6-87B6-4A17-AC69-6A6D382B18D2}" Name="椭圆.175" NameU="Ellipse.175" Master="4">
+					<XForm>
+						<PinX Unit="MM">6.583355205599300</PinX>
+						<PinY Unit="MM">1.629317585301839</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="111" UniqueID="{F7A97E9F-7C68-49C9-AA31-E69D91945A66}" Name="Sheet.111" NameU="Sheet.111">
+					<Text>深圳</Text>
+					<XForm>
+						<PinX Unit="MM">6.918000874890643</PinX>
+						<PinY Unit="MM">1.196246719160106</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="112" UniqueID="{DD9545FB-A093-4552-8F0B-3586ABDC74B0}" Name="椭圆.192" NameU="Ellipse.192" Master="4">
+					<XForm>
+						<PinX Unit="MM">3.000678040244970</PinX>
+						<PinY Unit="MM">1.629317585301839</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="113" UniqueID="{85D8C841-DA2F-4096-A86D-DE2EBB7AE40E}" Name="Sheet.113" NameU="Sheet.113">
+					<Text>上海</Text>
+					<XForm>
+						<PinX Unit="MM">3.453433945756779</PinX>
+						<PinY Unit="MM">1.156876640419948</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="114" UniqueID="{82320E23-1566-45F1-BC5E-1EFF59C2FD7B}" Name="Sheet.114" NameU="Sheet.114">
+					<XForm>
+						<PinX Unit="MM">3.622432312075477</PinX>
+						<PinY Unit="MM">1.775618600361221</PinY>
+					</XForm>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									<HLURL:Hyperlink ID="1">
+										<HLURL:Description></HLURL:Description>
+										<HLURL:Address>SV_IP:10.20.20.2+color</HLURL:Address>
+										<HLURL:SubAddress></HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+										<HLURL:AbsoluteURL>SV_IP:10.20.20.2+color</HLURL:AbsoluteURL>
+									</HLURL:Hyperlink>
+									<HLURL:Hyperlink ID="2">
+										<HLURL:Description>SiteView</HLURL:Description>
+										<HLURL:Address>http://www.siteview.com</HLURL:Address>
+										<HLURL:SubAddress></HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+										<HLURL:AbsoluteURL>http://www.siteview.com</HLURL:AbsoluteURL>
+									</HLURL:Hyperlink>
+								</HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+					<Prop ID="1" Name="SV_IP" NameU="SV_IP">
+						<Value Unit="STR">10.20.20.2</Value>
+						<Label>属性1</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="156" UniqueID="{F71905E7-9F97-4866-AC7E-4C860601CEBD}" Name="Sheet.156" NameU="Sheet.156">
+					<XForm>
+						<PinX Unit="MM">7.095166229221348</PinX>
+						<PinY Unit="MM">1.775618600361221</PinY>
+					</XForm>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									<HLURL:Hyperlink ID="1">
+										<HLURL:Description></HLURL:Description>
+										<HLURL:Address>SV_IP:10.0.3.1+color</HLURL:Address>
+										<HLURL:SubAddress></HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+										<HLURL:AbsoluteURL>SV_IP:10.0.3.1+color</HLURL:AbsoluteURL>
+									</HLURL:Hyperlink>
+									<HLURL:Hyperlink ID="2">
+										<HLURL:Description>SiteView</HLURL:Description>
+										<HLURL:Address>http://www.siteview.com</HLURL:Address>
+										<HLURL:SubAddress></HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+										<HLURL:AbsoluteURL>http://www.siteview.com</HLURL:AbsoluteURL>
+									</HLURL:Hyperlink>
+								</HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+					<Prop ID="1" Name="SV_IP" NameU="SV_IP">
+						<Value Unit="STR">10.0.3.1</Value>
+						<Label>属性1</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="198" UniqueID="{25F1370E-34FC-4ECD-86D0-1EA8F94EF022}" Name="动态连接线.251" NameU="Dynamic connector.251" Master="8">
+					<XForm>
+						<PinX Unit="MM">8.173591918338982</PinX>
+						<PinY Unit="MM">2.743934862134135</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember>2</LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="199" UniqueID="{16F2D29C-8517-417F-B746-6D74B658A79A}" Name="动态连接线.252" NameU="Dynamic connector.252" Master="8">
+					<XForm>
+						<PinX Unit="MM">6.411476985717618</PinX>
+						<PinY Unit="MM">2.734588430786000</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember>2</LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="200" UniqueID="{4CC41655-72A0-4E4D-94AA-44B02A9E3B44}" Name="动态连接线.256" NameU="Dynamic connector.256" Master="8">
+					<XForm>
+						<PinX Unit="MM">9.837088045226924</PinX>
+						<PinY Unit="MM">3.275392811398303</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember>2</LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="201" UniqueID="{C2B42F3B-3A0F-4320-BC63-76801510EC05}" Name="Sheet.201" NameU="Sheet.201">
+					<Text>防火墙A</Text>
+					<XForm>
+						<PinX Unit="MM">4.764285730508681</PinX>
+						<PinY Unit="MM">2.538748488752847</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="202" UniqueID="{0C4C418D-6DAC-4A00-A431-FAB8E5B7C150}" Name="Sheet.202" NameU="Sheet.202">
+					<Text>防火墙B</Text>
+					<XForm>
+						<PinX Unit="MM">4.764285730508681</PinX>
+						<PinY Unit="MM">4.578154398386262</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="203" UniqueID="{6F808F5B-67D6-461D-A2D5-2927E15CC849}" Name="Sheet.203" NameU="Sheet.203">
+					<Text>Outside-Switch</Text>
+					<XForm>
+						<PinX Unit="MM">3.512489063867018</PinX>
+						<PinY Unit="MM">4.011207349081365</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="204" UniqueID="{0AAAA75D-3F05-429B-A263-2B16E7DB60AD}" Name="Sheet.204" NameU="Sheet.204">
+					<Text>Inside-Switch</Text>
+					<XForm>
+						<PinX Unit="MM">4.969181977252845</PinX>
+						<PinY Unit="MM">3.499396325459319</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="205" UniqueID="{1306D371-E131-4250-98FA-8AA815E2A567}" Name="Sheet.205" NameU="Sheet.205">
+					<Text>防毒墙
+（IWSA趋势）</Text>
+					<XForm>
+						<PinX Unit="MM">6.150284339457569</PinX>
+						<PinY Unit="MM">4.001364829396326</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="206" UniqueID="{686634A5-A476-492D-B50C-AC48197D6910}" Name="Sheet.206" NameU="Sheet.206">
+					<Text>Sygate-Switch</Text>
+					<XForm>
+						<PinX Unit="MM">7.370756780402452</PinX>
+						<PinY Unit="MM">3.991522309711288</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="207" UniqueID="{A9D6C243-0633-4405-84E8-E43DA19E5860}" Name="Sheet.207" NameU="Sheet.207">
+					<Text>GWEnforcer1</Text>
+					<XForm>
+						<PinX Unit="MM">8.512489063867017</PinX>
+						<PinY Unit="MM">4.404908136482940</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="208" UniqueID="{5CE692FF-78A4-4AEB-A7E3-4CCC08BBAA30}" Name="Sheet.208" NameU="Sheet.208">
+					<Text>GWEnforcer2</Text>
+					<XForm>
+						<PinX Unit="MM">8.414063867016624</PinX>
+						<PinY Unit="MM">3.755301837270342</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="209" UniqueID="{65D261F6-5605-46CB-BB24-570458047C58}" Name="椭圆.265" NameU="Ellipse.265" Master="4">
+					<XForm>
+						<PinX Unit="MM">7.528237095363078</PinX>
+						<PinY Unit="MM">5.920656167979003</PinY>
+					</XForm>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									<HLURL:Hyperlink ID="1">
+										<HLURL:Description></HLURL:Description>
+										<HLURL:Address>SV_Link:tfkjgc+color</HLURL:Address>
+										<HLURL:SubAddress></HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+										<HLURL:AbsoluteURL>SV_Link:tfkjgc+color</HLURL:AbsoluteURL>
+									</HLURL:Hyperlink>
+									<HLURL:Hyperlink ID="2">
+										<HLURL:Description>SiteView</HLURL:Description>
+										<HLURL:Address>http://www.siteview.com</HLURL:Address>
+										<HLURL:SubAddress></HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+										<HLURL:AbsoluteURL>http://www.siteview.com</HLURL:AbsoluteURL>
+									</HLURL:Hyperlink>
+								</HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+					<Prop ID="1" Name="SV_Link" NameU="SV_Link">
+						<Value Unit="STR">tfkjgc</Value>
+						<Label>属性1</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="210" UniqueID="{29EDCAFC-70FF-4A76-BE39-3C7142BE8CA0}" Name="Sheet.210" NameU="Sheet.210">
+					<XForm>
+						<PinX Unit="MM">8.011668853893262</PinX>
+						<PinY Unit="MM">5.601045248317067</PinY>
+					</XForm>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									<HLURL:Hyperlink ID="1">
+										<HLURL:Description></HLURL:Description>
+										<HLURL:Address>SV_IP:10.10.10.37+color</HLURL:Address>
+										<HLURL:SubAddress></HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+										<HLURL:AbsoluteURL>SV_IP:10.10.10.37+color</HLURL:AbsoluteURL>
+									</HLURL:Hyperlink>
+									<HLURL:Hyperlink ID="2">
+										<HLURL:Description>SiteView</HLURL:Description>
+										<HLURL:Address>http://www.siteview.com</HLURL:Address>
+										<HLURL:SubAddress></HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+										<HLURL:AbsoluteURL>http://www.siteview.com</HLURL:AbsoluteURL>
+									</HLURL:Hyperlink>
+								</HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+					<Prop ID="1" Name="SV_IP" NameU="SV_IP">
+						<Value Unit="STR">10.10.10.37</Value>
+						<Label>属性1</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="211" UniqueID="{BBED8434-4F3D-46CA-BE5F-7003616275DF}" Name="Sheet.211" NameU="Sheet.211">
+					<Text>同方科技广场</Text>
+					<XForm>
+						<PinX Unit="MM">8.079418197725284</PinX>
+						<PinY Unit="MM">6.137191601049872</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="212" UniqueID="{1439F9E0-DEE1-4EA4-9EEB-7E738ACA0E0B}" Name="椭圆.283" NameU="Ellipse.283" Master="4">
+					<XForm>
+						<PinX Unit="MM">4.772331583552057</PinX>
+						<PinY Unit="MM">5.920656167979003</PinY>
+					</XForm>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									<HLURL:Hyperlink ID="1">
+										<HLURL:Description></HLURL:Description>
+										<HLURL:Address>SV_Link:my+color</HLURL:Address>
+										<HLURL:SubAddress></HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+										<HLURL:AbsoluteURL>SV_Link:my+color</HLURL:AbsoluteURL>
+									</HLURL:Hyperlink>
+									<HLURL:Hyperlink ID="2">
+										<HLURL:Description>SiteView</HLURL:Description>
+										<HLURL:Address>http://www.siteview.com</HLURL:Address>
+										<HLURL:SubAddress></HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+										<HLURL:AbsoluteURL>http://www.siteview.com</HLURL:AbsoluteURL>
+									</HLURL:Hyperlink>
+								</HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+					<Prop ID="1" Name="SV_Link" NameU="SV_Link">
+						<Value Unit="STR">my</Value>
+						<Label>属性1</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="213" UniqueID="{802DC191-2ADF-4300-8F8B-93833D9566DB}" Name="Sheet.213" NameU="Sheet.213">
+					<Text>密云</Text>
+					<XForm>
+						<PinX Unit="MM">5.244772528433947</PinX>
+						<PinY Unit="MM">6.235616797900264</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="214" UniqueID="{2CB78763-3442-491D-ADE9-ED821B36161D}" Name="椭圆.300" NameU="Ellipse.300" Master="4">
+					<XForm>
+						<PinX Unit="MM">10.284142607174104</PinX>
+						<PinY Unit="MM">5.920656167979002</PinY>
+					</XForm>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									<HLURL:Hyperlink ID="1">
+										<HLURL:Description></HLURL:Description>
+										<HLURL:Address>SV_Link:qhgwx+color</HLURL:Address>
+										<HLURL:SubAddress></HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+										<HLURL:AbsoluteURL>SV_Link:qhgwx+color</HLURL:AbsoluteURL>
+									</HLURL:Hyperlink>
+									<HLURL:Hyperlink ID="2">
+										<HLURL:Description>SiteView</HLURL:Description>
+										<HLURL:Address>http://www.siteview.com</HLURL:Address>
+										<HLURL:SubAddress></HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+										<HLURL:AbsoluteURL>http://www.siteview.com</HLURL:AbsoluteURL>
+									</HLURL:Hyperlink>
+								</HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+					<Prop ID="1" Name="SV_Link" NameU="SV_Link">
+						<Value Unit="STR">qhgwx</Value>
+						<Label>属性1</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="215" UniqueID="{84774180-5661-4CA2-9FC9-8BE79B0107EF}" Name="Sheet.215" NameU="Sheet.215">
+					<Text>清华工物系</Text>
+					<XForm>
+						<PinX Unit="MM">9.969181977252845</PinX>
+						<PinY Unit="MM">6.117506561679791</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="216" UniqueID="{969F985D-4D82-48E6-BF1E-0AC6438558B3}" Name="Sheet.216" NameU="Sheet.216">
+					<XForm>
+						<PinX Unit="MM">5.244772528433947</PinX>
+						<PinY Unit="MM">5.695614995439305</PinY>
+					</XForm>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									<HLURL:Hyperlink ID="1">
+										<HLURL:Description></HLURL:Description>
+										<HLURL:Address>SV_IP:192.168.114.2+color</HLURL:Address>
+										<HLURL:SubAddress></HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+										<HLURL:AbsoluteURL>SV_IP:192.168.114.2+color</HLURL:AbsoluteURL>
+									</HLURL:Hyperlink>
+									<HLURL:Hyperlink ID="2">
+										<HLURL:Description>SiteView</HLURL:Description>
+										<HLURL:Address>http://www.siteview.com</HLURL:Address>
+										<HLURL:SubAddress></HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+										<HLURL:AbsoluteURL>http://www.siteview.com</HLURL:AbsoluteURL>
+									</HLURL:Hyperlink>
+								</HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+					<Prop ID="1" Name="SV_IP" NameU="SV_IP">
+						<Value Unit="STR">192.168.114.2</Value>
+						<Label>属性1</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="258" UniqueID="{222F376A-93E5-4897-8B3A-7A2B8D570B21}" Name="Sheet.258" NameU="Sheet.258">
+					<XForm>
+						<PinX Unit="MM">9.800710848643922</PinX>
+						<PinY Unit="MM">5.601045248317067</PinY>
+					</XForm>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									<HLURL:Hyperlink ID="1">
+										<HLURL:Description></HLURL:Description>
+										<HLURL:Address>SV_IP:10.10.10.87+color</HLURL:Address>
+										<HLURL:SubAddress></HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+										<HLURL:AbsoluteURL>SV_IP:10.10.10.87+color</HLURL:AbsoluteURL>
+									</HLURL:Hyperlink>
+									<HLURL:Hyperlink ID="2">
+										<HLURL:Description>SiteView</HLURL:Description>
+										<HLURL:Address>http://www.siteview.com</HLURL:Address>
+										<HLURL:SubAddress></HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+										<HLURL:AbsoluteURL>http://www.siteview.com</HLURL:AbsoluteURL>
+									</HLURL:Hyperlink>
+								</HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+					<Prop ID="1" Name="SV_IP" NameU="SV_IP">
+						<Value Unit="STR">10.10.10.87</Value>
+						<Label>属性1</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="259" UniqueID="{19B0D303-DC6B-4869-8FEF-3633B06394CC}" Name="动态连接线.318" NameU="Dynamic connector.318" Master="8">
+					<XForm>
+						<PinX Unit="MM">7.246447695845262</PinX>
+						<PinY Unit="MM">4.722885190249253</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember>2</LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="260" UniqueID="{D93DB67A-565E-45BE-BEDF-F98A68590CBD}" Name="动态连接线.319" NameU="Dynamic connector.319" Master="8">
+					<XForm>
+						<PinX Unit="MM">8.570190271053949</PinX>
+						<PinY Unit="MM">4.778315242664220</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember>2</LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="261" UniqueID="{62AFFC51-E05E-4094-8A07-12E1E06C147E}" Name="动态连接线.320" NameU="Dynamic connector.320" Master="8">
+					<XForm>
+						<PinX Unit="MM">9.574473391527269</PinX>
+						<PinY Unit="MM">4.793596376908667</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember>2</LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="262" UniqueID="{B19059B6-B3D5-4602-972A-DB6446A6012D}" Name="建筑物 1" NameU="Building 1" Master="9">
+					<Text>A座</Text>
+					<XForm>
+						<PinX Unit="MM">10.303827646544184</PinX>
+						<PinY Unit="MM">4.247427821522311</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember>0</LayerMember>
+					</LayerMem>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									<HLURL:Hyperlink ID="1">
+										<HLURL:Description></HLURL:Description>
+										<HLURL:Address>SV_Link:BuildA+color</HLURL:Address>
+										<HLURL:SubAddress></HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+										<HLURL:AbsoluteURL>SV_Link:BuildA+color</HLURL:AbsoluteURL>
+									</HLURL:Hyperlink>
+									<HLURL:Hyperlink ID="2">
+										<HLURL:Description>SiteView</HLURL:Description>
+										<HLURL:Address>http://www.siteview.com</HLURL:Address>
+										<HLURL:SubAddress></HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+										<HLURL:AbsoluteURL>http://www.siteview.com</HLURL:AbsoluteURL>
+									</HLURL:Hyperlink>
+								</HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+					<Prop ID="1" Name="SV_Link" NameU="SV_Link">
+						<Value Unit="STR">BuildA</Value>
+						<Label>属性1</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="266" UniqueID="{5F628BFB-F67F-4A96-91B9-41F1D55CE7A5}" Name="建筑物 1.325" NameU="Building 1.325" Master="9">
+					<Text>B座</Text>
+					<XForm>
+						<PinX Unit="MM">11.091229221347332</PinX>
+						<PinY Unit="MM">4.247427821522311</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember>0</LayerMember>
+					</LayerMem>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									<HLURL:Hyperlink ID="1">
+										<HLURL:Description></HLURL:Description>
+										<HLURL:Address>SV_Link:BuildB+color</HLURL:Address>
+										<HLURL:SubAddress></HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+										<HLURL:AbsoluteURL>SV_Link:BuildB+color</HLURL:AbsoluteURL>
+									</HLURL:Hyperlink>
+									<HLURL:Hyperlink ID="2">
+										<HLURL:Description>SiteView</HLURL:Description>
+										<HLURL:Address>http://www.siteview.com</HLURL:Address>
+										<HLURL:SubAddress></HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+										<HLURL:AbsoluteURL>http://www.siteview.com</HLURL:AbsoluteURL>
+									</HLURL:Hyperlink>
+								</HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+					<Prop ID="1" Name="SV_Link" NameU="SV_Link">
+						<Value Unit="STR">BuildB</Value>
+						<Label>属性1</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="270" UniqueID="{F812C8C0-2E80-4BE5-BFF8-CF9CBA2E4813}" Name="动态连接线.329" NameU="Dynamic connector.329" Master="8">
+					<XForm>
+						<PinX Unit="MM">9.772281583552058</PinX>
+						<PinY Unit="MM">3.982215815423764</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember>2</LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="271" UniqueID="{5282FFD4-0531-488A-830F-661D484FF5EC}" Name="动态连接线.330" NameU="Dynamic connector.330" Master="8">
+					<XForm>
+						<PinX Unit="MM">10.164751998945050</PinX>
+						<PinY Unit="MM">3.985909986515695</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember>2</LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="272" UniqueID="{298E5718-2022-4C29-A009-01A8F600E5BF}" Name="Sheet.272" NameU="Sheet.272">
+					<Text>同方威视网络结构图</Text>
+					<XForm>
+						<PinX Unit="MM">5.815638670166230</PinX>
+						<PinY Unit="MM">7.200183727034121</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="273" UniqueID="{DCADF55A-72D9-436D-9BA7-4B7EB11CBF71}" Name="Sheet.273" NameU="Sheet.273">
+					<XForm>
+						<PinX Unit="MM">6.436865704286964</PinX>
+						<PinY Unit="MM">1.270336586899744</PinY>
+					</XForm>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									<HLURL:Hyperlink ID="1">
+										<HLURL:Description></HLURL:Description>
+										<HLURL:Address>SV_IP:10.10.13.2+color</HLURL:Address>
+										<HLURL:SubAddress></HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+										<HLURL:AbsoluteURL>SV_IP:10.10.13.2+color</HLURL:AbsoluteURL>
+									</HLURL:Hyperlink>
+									<HLURL:Hyperlink ID="2">
+										<HLURL:Description>SiteView</HLURL:Description>
+										<HLURL:Address>http://www.siteview.com</HLURL:Address>
+										<HLURL:SubAddress></HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+										<HLURL:AbsoluteURL>http://www.siteview.com</HLURL:AbsoluteURL>
+									</HLURL:Hyperlink>
+								</HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+					<Prop ID="1" Name="SV_IP" NameU="SV_IP">
+						<Value Unit="STR">10.10.13.2</Value>
+						<Label>属性1</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="274" UniqueID="{456AF60D-3437-41FB-82A8-89B7B08833DE}" Name="动态连接线.403" NameU="Dynamic connector.403" Master="8">
+					<XForm>
+						<PinX Unit="MM">6.732592664486514</PinX>
+						<PinY Unit="MM">1.495351949165298</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember>2</LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="275" UniqueID="{A8B09305-89D4-49D7-90CF-D9945012FCF7}" Name="房屋.13" NameU="House.13" Master="10">
+					<XForm>
+						<PinX Unit="MM">2.606977252843396</PinX>
+						<PinY Unit="MM">1.688372703412075</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember>0</LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="290" UniqueID="{02B97007-47FC-4D7C-8179-44513203CC60}" Name="房屋.176" NameU="House.176" Master="10">
+					<XForm>
+						<PinX Unit="MM">6.150284339457569</PinX>
+						<PinY Unit="MM">1.885223097112862</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember>0</LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="305" UniqueID="{61A344B4-52A8-4D31-9A90-16D64D9EE02F}" Name="房屋.193" NameU="House.193" Master="10">
+					<XForm>
+						<PinX Unit="MM">10.677843394575678</PinX>
+						<PinY Unit="MM">1.491522309711287</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember>0</LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="320" UniqueID="{D5BED91B-4E60-453D-97A7-EC185412116E}" Name="房屋.267" NameU="House.267" Master="10">
+					<XForm>
+						<PinX Unit="MM">10.677843394575678</PinX>
+						<PinY Unit="MM">5.822230971128610</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember>0</LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="335" UniqueID="{F123FFC5-6045-4F0E-9EA6-2DF075D992E7}" Name="房屋.284" NameU="House.284" Master="10">
+					<XForm>
+						<PinX Unit="MM">7.173906386701663</PinX>
+						<PinY Unit="MM">6.019081364829398</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember>0</LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="350" UniqueID="{D5F569EC-0DF7-4F4C-ADE2-4DCC3B291C8E}" Name="房屋.301" NameU="House.301" Master="10">
+					<XForm>
+						<PinX Unit="MM">4.378630796150482</PinX>
+						<PinY Unit="MM">6.019081364829398</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember>0</LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="365" UniqueID="{139E897E-7562-4E66-A7CD-51CEDDB6525C}" Name="圆角矩形" NameU="Rounded rectangle" Master="11">
+					<Text>DMZ区</Text>
+					<XForm>
+						<PinX Unit="MM">2.666032370953632</PinX>
+						<PinY Unit="MM">6.367258498740735</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="366" UniqueID="{1F5A565A-11AC-4E6B-AEBA-3CCB88EB5249}" Name="圆角矩形.111" NameU="Rounded rectangle.111" Master="11">
+					<Text>应用服务器区</Text>
+					<XForm>
+						<PinX Unit="MM">10.677843394575678</PinX>
+						<PinY Unit="MM">3.020801805827348</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="367" UniqueID="{8B7C5272-1F8F-4F5C-B978-37B6A5623730}" Name="以太网" NameU="Ethernet" Master="12">
+					<Text>
+					</Text>
+					<XForm>
+						<PinX Unit="MM">1.425874890638671</PinX>
+						<PinY Unit="MM">3.715931758530186</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+				</Shape>
+			</Shapes>
+		</Page>
+	</Pages>
+</VisioDocument>

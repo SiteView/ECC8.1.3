@@ -1,0 +1,64 @@
+<?page title="Test Mail" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window id="editDutySetting" title="编辑值班表信息设置" border="normal" mode="popup"
+	width="360px"	height="" closable="true"  
+	apply="com.siteview.ecc.dutytable.EditDutySet" forward="onCreate=onInit">
+
+			<groupbox closable="false" style="margin-left:10px;margin-right:10px;margin-top:10px">
+	 			 <caption  label="值班表"/>		
+						<grid oddRowSclass="none" style="margin-top:5px;border:none">
+							<columns>
+								<column label="" />
+								<column label="" />
+							</columns>
+							<rows >
+								<row zclass="none" height="23px">
+								    <label   value="&#160;原值班表名称 &#160;：" />
+									<textbox id="oldTableName"  readonly="true" width="190px" height="15px" />
+								</row>
+								<row zclass="none" height="23px">
+									<label   value="&#160;新值班表名称* ：" />
+									<textbox id="newTableName" width="190px" height="15px" tooltiptext="输入新值班表名称"/>
+								</row>
+								<row zclass="none" height="23px">
+									<label   value="&#160;原值班表描述 &#160;：" />
+									<textbox id="oldDescription"  readonly="true" width="190px" height="15px" />
+								</row>
+								<row zclass="none" height="23px">
+									<label   value="&#160;新值班表描述* ：" />
+									<textbox id="newDescription" width="190px"  height="15px" tooltiptext="输入新值班表描述"/>
+								</row>		
+								<row zclass="none" height="23px">
+									<label   value="&#160;值班类型&#160;&#160;&#160;&#160;&#160;&#160;：" />
+									<combobox id="dutyType" 
+										width="173px" height="15px" readonly="true" tooltiptext="选择值班表类型">
+										<comboitem label="day" />
+										<comboitem label="day of week" />
+										<comboitem label="day of month" />
+									</combobox>
+								</row>											
+							</rows>
+						</grid>
+	 		</groupbox>	
+		<vbox style="margin-left:20px ">
+			<hbox style="margin-top:10px;margin-bottom:10px" >
+			<space width="145px"/>
+				<button sclass="btnDefault" width="74px" height="23px" image="/main/images/button/ico/save_bt.gif" id="userButton" label="保存" forward="onSaveDutySet"/>
+				<button sclass="btnDefault" width="74px" height="23px" image="/main/images/button/ico/close_bt.gif" label="取消" forward="onClick=onRefresh"/>
+			</hbox>
+		</vbox>
+	</window>
+
+	<popup id="mymail" width="200px">
+		<html>
+			(&lt;font color="#FFA500" &gt; 电话号码格式：139-88888888&lt;/font&gt;)
+		</html>
+	</popup>
+	
+	<popup id="mydate" width="200px">
+		<html>
+			(&lt;font color="#FFA500" &gt; 日期必须从右边图标选取&lt;/font&gt;)
+		</html>
+	</popup>	
+	
+</zk>

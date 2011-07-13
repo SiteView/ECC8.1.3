@@ -1,0 +1,26 @@
+<?page title="showtuopu.zul" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<!-- iframe id="iframe" width="100%" height="100%"
+		style="border: 1px solid gray" /-->
+<zscript><![CDATA[
+//System.out.println("requestscope:" + this.requestScope.toString());
+//Messagebox.show(this.requestScope.toString(), "Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+//this.iframe.setSrc(this.requestScope.get("name"));
+String strTuopuName = (String)Executions.getCurrent().getParameter("name");
+//try{
+//byte[] strByte = strTuopuName.getBytes("iso8859-1");
+//strTuopuName = new String(strByte,"utf-8");
+//}catch(Exception e){
+//	e.printStackTrace();
+//}
+new com.siteview.ecc.tuopu.MakeTuopuData(desktop, strTuopuName);
+//this.iframe.setSrc("./"+ strTuopuName + ".htm");
+//this.execution.sendRedirect("./"+ strTuopuName + ".files/main_2.htm");
+//this.iframe.setSrc("./"+ strTuopuName + ".files/main_2.htm");
+System.out.println("./"+ strTuopuName+ ".files/main_2.htm");
+//Executions.sendRedirect("./"+ java.net.URLDecoder.decode(strTuopuName,"utf-8") + ".files/main_2.htm");
+javax.servlet.http.HttpServletResponse resp = (javax.servlet.http.HttpServletResponse)execution.getNativeResponse();
+resp.sendRedirect("./"+ java.net.URLEncoder.encode(strTuopuName,"utf-8")+ ".files/main_2.htm");
+//Executions.sendRedirect(java.net.URLEncoder.encode("./"+ strTuopuName + ".files/main_2.htm","UTF-8"));
+]]></zscript>
+</zk>

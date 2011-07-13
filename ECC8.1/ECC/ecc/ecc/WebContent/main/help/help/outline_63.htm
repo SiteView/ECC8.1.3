@@ -1,0 +1,673 @@
+<html>
+
+<head>
+<meta name=Generator content="Microsoft Office HTML Filter 2.0">
+<meta http-equiv=Content-Type content="text/html; charset=gb2312">
+<meta name=Originator content="Microsoft Word 11">
+<title>8</title>
+<style>
+<!--
+ 
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	font-size:10.5pt;
+	font-family:"Times New Roman";}
+h3
+	{
+	margin-top:13.0pt;
+	margin-right:0cm;
+	margin-bottom:13.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	line-height:173%;
+	page-break-after:avoid;
+	font-size:16.0pt;
+	font-family:Calibri;}
+span.CharChar13
+	{
+	font-family:Calibri;
+	font-weight:bold;}
+-->
+</style>
+</head>
+
+<body lang=ZH-CN style='text-justify-trim:punctuation'>
+
+<div class=Section1 style='layout-grid:15.6pt'>
+
+<h3 style='margin-top:6.0pt;margin-right:0cm;margin-bottom:6.0pt;margin-left:
+0cm;line-height:120%'><span lang=EN-US style='font-size:14.0pt;line-height:
+120%;font-family:宋体'>8.5.4 Weblogic</span></h3>
+
+<p class=MsoNormal style='margin-top:7.8pt;margin-right:0cm;margin-bottom:7.8pt;
+margin-left:0cm;line-height:120%'><b><span lang=EN-US style='line-height:120%;
+font-family:宋体'>Weblogic</span></b><b><span
+style='line-height:120%;font-family:宋体'>添加方式</span></b></p>
+
+<p class=MsoNormal style='margin-top:7.8pt;margin-right:0cm;margin-bottom:7.8pt;
+margin-left:0cm;text-indent:21.1pt;
+line-height:120%'><span lang=EN-US style='line-height:
+120%;font-family:宋体'>SiteView ECC8.1</span><span style='line-height:120%;font-family:宋体'>可以监测<span lang=EN-US>Weblogic7.x</span>、<span
+lang=EN-US>Weblogic8.x</span>、<span lang=EN-US>Weblogic9.x</span>、<span
+lang=EN-US>Weblogic10.x</span>等版本，安装好<span lang=EN-US>Weblogic</span>的服务器，开启<span
+lang=EN-US>Weblogic</span>服务，在<span lang=EN-US>SiteView ECC8.1</span>的<span
+lang=EN-US>Weblogic</span>设备的添加页面中输入相应的信息，包括主机名、端口号、用户名、密码、<span lang=EN-US>Weblogic</span>的版本信息、标题等信息。<span
+style='color:black'>下面以添加</span><span lang=EN-US>Weblogic8.x</span><span
+style='color:black'>设备为例，</span>如图<span lang=EN-US>8.5.4-1</span>。</span></p>
+
+<p class=MsoNormal style='margin-top:7.8pt;margin-right:0cm;margin-bottom:7.8pt;
+margin-left:0cm;text-indent:21.1pt;
+line-height:120%'><span style='line-height:120%;
+font-family:宋体'>在<span lang=EN-US>SiteView ECC8.1</span>监测<span lang=EN-US>Weblogic</span>时需在<span
+lang=EN-US>SiteView ECC8.1</span>的服务器上安装<span lang=EN-US>JDK</span>，不同的版本安装的<span
+lang=EN-US>JDK</span>是不一样的。如果监测<span lang=EN-US>Weblogic8.x</span>及以下版本需安装<span
+lang=EN-US>JDK1.4</span>，<span lang=EN-US>Weblogic9.X</span>及以上版本需安装<span
+lang=EN-US>JDK1.5</span>，并在<span lang=EN-US>SiteView ECC8.1</span>的服务器上设置环境变量。</span></p>
+
+<p class=MsoNormal align=center style='margin-top:7.8pt;margin-right:0cm;
+margin-bottom:7.8pt;margin-left:0cm;text-align:center;
+line-height:120%'><span lang=EN-US style='line-height:
+120%;font-family:宋体;'>&nbsp;<img width=510 height=539
+src="outline_63.files/image001.gif" alt=weblogic1.gif></span></p>
+
+<p class=MsoNormal align=center style='margin-top:7.8pt;margin-right:0cm;
+margin-bottom:7.8pt;margin-left:0cm;text-align:center;
+line-height:120%'><span style='font-size:9.0pt;line-height:120%;font-family:
+宋体;'>图<span lang=EN-US>8.5.4-1</span></span></p>
+
+<p class=MsoNormal style='margin-top:7.8pt;margin-right:0cm;margin-bottom:7.8pt;
+margin-left:0cm;text-indent:18.0pt;line-height:120%;layout-grid-mode:
+char'><span style='line-height:120%;font-family:宋体;
+color:black'>单击［确定］按钮，成功的添加</span><span lang=EN-US style='line-height:120%;font-family:宋体'>Weblogic</span><span style='line-height:120%;font-family:宋体;color:black'>设备。下面介绍</span><span
+lang=EN-US style='line-height:120%;font-family:宋体'>Weblogic</span><span
+style='line-height:120%;font-family:宋体'>的<span
+style='color:black'>监测指标。</span></span></p>
+
+<p class=MsoNormal style='margin-top:7.8pt;margin-right:0cm;margin-bottom:7.8pt;
+margin-left:0cm;line-height:120%'><b><span lang=EN-US style='line-height:120%;
+font-family:宋体'>WebLogic</span></b><b><span
+style='line-height:120%;font-family:宋体'>的监测器的指标</span></b></p>
+
+<div align=center>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0 width=528
+ style='width:396.0pt;margin-left:14.4pt;border-collapse:collapse;border:none;'>
+ <tr style='height:20.15pt'>
+  <td width=528 colspan=4 style='width:396.0pt;border:solid windowtext 1.5pt;
+  border-bottom:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:20.15pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span style='line-height:120%;font-family:宋体;'>中间件</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=72 style='width:54.0pt;border-top:none;border-left:solid windowtext 1.5pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:12.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span style='line-height:120%;font-family:宋体;'>设备</span></p>
+  </td>
+  <td width=96 style='width:72.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span style='line-height:120%;font-family:宋体;'>监测器</span></p>
+  </td>
+  <td width=164 style='width:123.25pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+  12.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span style='line-height:120%;font-family:宋体;'>描述</span></p>
+  </td>
+  <td width=196 style='width:146.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span style='line-height:120%;font-family:宋体;'>监测参数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=72 rowspan=58 style='width:54.0pt;border-top:none;border-left:solid windowtext 1.5pt;
+  border-bottom:solid windowtext 1.5pt;border-right:solid windowtext 1.0pt;padding:
+  0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span lang=EN-US style='line-height:120%;font-family:宋体;'>Weblogic</span></p>
+  </td>
+  <td width=96 style='width:72.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span lang=EN-US style='line-height:120%;font-family:宋体;'>WebLogic
+  Status</span></p>
+  </td>
+  <td width=164 style='width:123.25pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+  12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>监测<span lang=EN-US>BEA WebLogic </span>是否运行</span></p>
+  </td>
+  <td width=196 style='width:146.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span style='line-height:120%;font-family:宋体;'>应用服务器的运行状态</span></p>
+  </td>
+ </tr>
+ <tr style='height:14.8pt'>
+  <td width=96 rowspan=19 style='width:72.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+  14.8pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span lang=EN-US style='line-height:120%;font-family:宋体;'>WebLogic
+  Application Server ConnectionPool</span></p>
+  </td>
+  <td width=164 rowspan=19 style='width:123.25pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+  14.8pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>监测<span lang=EN-US>WebLogic
+  ConnectionPool</span>连接池</span></p>
+  </td>
+  <td width=196 style='width:146.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:14.8pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span style='line-height:120%;font-family:宋体;'>连接池的状态</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=196 style='width:146.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span lang=EN-US style='line-height:120%;font-family:宋体;'>server</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=196 style='width:146.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span style='line-height:120%;font-family:宋体;'>连接池的名称</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=196 style='width:146.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span style='line-height:120%;font-family:宋体;'>连接总数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=196 style='width:146.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span style='line-height:120%;font-family:宋体;'>当前连接池容量</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=196 style='width:146.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span style='line-height:120%;font-family:宋体;'>历史最大连接池容量</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=196 style='width:146.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span style='line-height:120%;font-family:宋体;'>当前活动连接数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=196 style='width:146.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span style='line-height:120%;font-family:宋体;'>历史平均活动连接数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=196 style='width:146.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span style='line-height:120%;font-family:宋体;'>历史最大活动连接数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=196 style='width:146.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span style='line-height:120%;font-family:宋体;'>当前可利用的连接数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=196 style='width:146.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span style='line-height:120%;font-family:宋体;'>历史最大可利用的连接数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=196 style='width:146.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span style='line-height:120%;font-family:宋体;'>当前不可利用的连接数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=196 style='width:146.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span style='line-height:120%;font-family:宋体;'>历史最大不可利用的连接数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=196 style='width:146.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span style='line-height:120%;font-family:宋体;'>当前等待连接数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=196 style='width:146.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span style='line-height:120%;font-family:宋体;'>历史最大等待连接数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=196 style='width:146.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span style='line-height:120%;font-family:宋体;'>历史最长等待连接时间（秒）</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=196 style='width:146.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span style='line-height:120%;font-family:宋体;'>二次连接失败的次数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=196 style='width:146.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span style='line-height:120%;font-family:宋体;'>连接平均耗时（毫秒）</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=196 style='width:146.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span lang=EN-US style='line-height:120%;font-family:宋体;'>JDBC</span><span
+  style='line-height:120%;font-family:宋体;'>驱动版本</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=96 rowspan=12 style='width:72.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+  12.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span lang=EN-US style='line-height:120%;font-family:宋体;'>WebLogic Jms</span></p>
+  </td>
+  <td width=164 rowspan=12 style='width:123.25pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+  12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>监测<span lang=EN-US>WebLogic Jms</span>消息传递</span></p>
+  </td>
+  <td width=196 style='width:146.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span lang=EN-US style='line-height:120%;font-family:宋体;'>JMS</span><span
+  style='line-height:120%;font-family:宋体;'>的连接总数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=196 style='width:146.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span lang=EN-US style='line-height:120%;font-family:宋体;'>JMS</span><span
+  style='line-height:120%;font-family:宋体;'>当前的连接总数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=196 style='width:146.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span lang=EN-US style='line-height:120%;font-family:宋体;'>JMS</span><span
+  style='line-height:120%;font-family:宋体;'>的最高连接数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=196 style='width:146.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span lang=EN-US style='line-height:120%;font-family:宋体;'>JMS Server</span><span
+  style='line-height:120%;font-family:宋体;'>总数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=196 style='width:146.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span style='line-height:120%;font-family:宋体;'>当前<span
+  lang=EN-US>JMS Server</span>总数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=196 style='width:146.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span lang=EN-US style='line-height:120%;font-family:宋体;'>JMS Server</span><span
+  style='line-height:120%;font-family:宋体;'>历史中最高总数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=196 style='width:146.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span lang=EN-US style='line-height:120%;font-family:宋体;'>JMS Session</span><span
+  style='line-height:120%;font-family:宋体;'>的总数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=196 style='width:146.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span style='line-height:120%;font-family:宋体;'>当前的<span
+  lang=EN-US>JMS Session</span>数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=196 style='width:146.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span style='line-height:120%;font-family:宋体;'>最高的<span
+  lang=EN-US>JMS Session</span>数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=196 style='width:146.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span style='line-height:120%;font-family:宋体;'>已接收的<span
+  lang=EN-US>JMS</span>消息数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=196 style='width:146.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span style='line-height:120%;font-family:宋体;'>未处理的<span
+  lang=EN-US>JMS</span>消息数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=196 style='width:146.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span lang=EN-US style='line-height:120%;font-family:宋体;'>JMS</span><span
+  style='line-height:120%;font-family:宋体;'>发送的消息数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.35pt'>
+  <td width=96 rowspan=6 style='width:72.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+  12.35pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span lang=EN-US style='line-height:120%;font-family:宋体;'>WebLogic
+  ExecuteQueue</span></p>
+  </td>
+  <td width=164 rowspan=6 style='width:123.25pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+  12.35pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>监测<span lang=EN-US>BEA WebLogic </span>执行队列</span></p>
+  </td>
+  <td width=196 style='width:146.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.35pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span style='line-height:120%;font-family:宋体;'>执行线程的总数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=196 style='width:146.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span lang=EN-US style='line-height:120%;font-family:宋体;'>executeQueueName</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=196 style='width:146.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span style='line-height:120%;font-family:宋体;'>当前空闲的执行线程数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=196 style='width:146.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span lang=EN-US style='line-height:120%;font-family:宋体;'>PendingRequestOldestTime</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=196 style='width:146.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span style='line-height:120%;font-family:宋体;'>队列中未处理的请求数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=196 style='width:146.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span style='line-height:120%;font-family:宋体;'>队列已经处理的请求数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=96 rowspan=4 style='width:72.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+  12.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span lang=EN-US style='line-height:120%;font-family:宋体;'>WebLogic
+  WebApp</span></p>
+  </td>
+  <td width=164 rowspan=4 style='width:123.25pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+  12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>监测<span lang=EN-US>BEA WebLogic
+  WebApp</span></span></p>
+  </td>
+  <td width=196 style='width:146.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span style='line-height:120%;font-family:宋体;'>当前打开的<span
+  lang=EN-US>Session</span>数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=196 style='width:146.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span lang=EN-US style='line-height:120%;font-family:宋体;'>WebAppName</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=196 style='width:146.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span style='line-height:120%;font-family:宋体;'>打开的<span
+  lang=EN-US>Session</span>最高数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=196 style='width:146.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span style='line-height:120%;font-family:宋体;'>打开的<span
+  lang=EN-US>Session</span>的总数</span></p>
+  </td>
+ </tr>
+ <tr style='height:14.45pt'>
+  <td width=96 rowspan=3 style='width:72.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+  14.45pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span lang=EN-US style='line-height:120%;font-family:宋体;'>WebLogic
+  Cluster</span></p>
+  </td>
+  <td width=164 rowspan=3 style='width:123.25pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+  14.45pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>监测<span lang=EN-US>BEA WebLogic
+  Cluster</span></span></p>
+  </td>
+  <td width=196 style='width:146.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:14.45pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span style='line-height:120%;font-family:宋体;'>激活服务器的数量</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=196 style='width:146.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span lang=EN-US style='line-height:120%;font-family:宋体;'>ClusterName</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=196 style='width:146.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span style='line-height:120%;font-family:宋体;'>丢失的消息数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=96 rowspan=3 style='width:72.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+  12.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span lang=EN-US style='line-height:120%;font-family:宋体;'>WebLogic Heap</span></p>
+  </td>
+  <td width=164 rowspan=3 style='width:123.25pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+  12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>监测<span lang=EN-US>BEA WebLogic Heap</span></span></p>
+  </td>
+  <td width=196 style='width:146.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span style='line-height:120%;font-family:宋体;'>当前堆的总空间</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=196 style='width:146.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span style='line-height:120%;font-family:宋体;'>当前堆已使用的空间</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=196 style='width:146.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span lang=EN-US style='line-height:120%;font-family:宋体;'>Name</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=96 rowspan=10 style='width:72.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.5pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span lang=EN-US style='line-height:120%;font-family:宋体;'>WebLogic
+  Server</span></p>
+  </td>
+  <td width=164 rowspan=10 style='width:123.25pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.5pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>监测<span lang=EN-US>BEA WebLogic
+  Server</span></span></p>
+  </td>
+  <td width=196 style='width:146.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span style='line-height:120%;font-family:宋体;'>当前打开的<span
+  lang=EN-US>Socket</span>数量</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=196 style='width:146.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span style='line-height:120%;font-family:宋体;'>打开的<span
+  lang=EN-US>Socket</span>的总数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=196 style='width:146.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span style='line-height:120%;font-family:宋体;'>当前连接数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=196 style='width:146.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span lang=EN-US style='line-height:120%;font-family:宋体;'>RestartsTotalCount</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=196 style='width:146.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span style='line-height:120%;font-family:宋体;'>监听端口</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=196 style='width:146.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span lang=EN-US style='line-height:120%;font-family:宋体;'>SSL</span><span
+  style='line-height:120%;font-family:宋体;'>监听端口</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=196 style='width:146.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span style='line-height:120%;font-family:宋体;'>管理端口</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=196 style='width:146.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span style='line-height:120%;font-family:宋体;'>管理服务监听端口</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=196 style='width:146.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span lang=EN-US style='line-height:120%;font-family:宋体;'>ListenAddress</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=196 style='width:146.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.5pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span lang=EN-US style='line-height:120%;font-family:宋体;'>Name</span></p>
+  </td>
+ </tr>
+</table>
+
+</div>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>

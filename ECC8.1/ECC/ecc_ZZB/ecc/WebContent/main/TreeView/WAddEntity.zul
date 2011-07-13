@@ -1,0 +1,117 @@
+<?page title="添加设备" contentType="text/html;charset=UTF-8"?>
+<zk>
+
+	<window id="WAddEntity" title="添加设备" width="600px" closable="true"
+		position="center" apply="com.siteview.ecc.treeview.windows.addEntity"
+		border="normal">
+		<vbox width="100%">
+			<div style="float:right;margin-right:10px">
+				<image id="btnhelp" tooltiptext="展示输入框的辅助提示信息"
+					src="/main/images/btnhelp.gif"
+					hover="/main/images/btnhelp_hover.gif"
+					use="com.siteview.actions.HelpImageButton" />
+			</div>
+		</vbox>
+		<!-- style="margin:5px 5px 5px 5px;overflow-y:auto;max-height:480px;" -->
+		<panel id="p1">
+			<panelchildren id="pc"
+				>
+				<panel title="基本信息" collapsible="true">
+					<panelchildren>
+						<grid>
+							<columns>
+								<column width="20%" label=""></column>
+								<column label=""></column>
+							</columns>
+							<rows id="baserow"></rows>
+						</grid>
+					</panelchildren>
+				</panel>
+				<panel title="高级选项" collapsible="true">
+					<panelchildren>
+						<grid>
+							<columns>
+								<column width="20%" label=""></column>
+								<column label=""></column>
+							</columns>
+							<rows>
+								<row>
+									<label value="描述:"></label>
+									<box>
+										<textbox id="tbDescription"
+											rows="6" width="350px" multiline="true">
+										</textbox>
+										<label id="lbp1" visible="false"
+											sclass="helplabel" value="请输入附加的描述信息，此描述信息将显示在基础信息表内">
+										</label>
+									</box>
+								</row>
+								<row>
+									<label value="依赖:"></label>
+									<box>
+										<hbox>
+											<textbox id="tbDepends"
+												width="320px" height="15px" readonly="true">
+											</textbox>
+											<button id="btnDepends"
+												width="25px" height="15px" label="..." />
+										</hbox>
+										<label id="lbp2" visible="false"
+											sclass="helplabel"
+											value="选择一个依靠监测或监测组，则本组内各监测是否运行将依靠于选定监测或监测组的状态">
+										</label>
+									</box>
+								</row>
+								<row>
+									<label value="依靠条件:"></label>
+									<box>
+										<radiogroup>
+											<radio id="rdGood"
+												label="正常">
+											</radio>
+											<radio id="rdWarning"
+												label="危险">
+											</radio>
+											<radio id="rdError"
+												label="错误" checked="true">
+											</radio>
+										</radiogroup>
+										<label id="lbp3" visible="false"
+											sclass="helplabel" style="margin-left:8px;"
+											value="如果选择正常，则只有当依靠监测的状态是正常时本组内各监测才会运行" />
+										<label id="lbp4" visible="false"
+											sclass="helplabel" value="如果选择危险，则只有当依靠监测的状态是危险时本组内各监测才会运行" />
+										<label id="lbp5" visible="false"
+											sclass="helplabel" value="如果选择错误，则只有当依靠监测的状态是错误时本组内各监测才会运行" />
+									</box>
+								</row>
+							</rows>
+						</grid>
+					</panelchildren>
+				</panel>
+			</panelchildren>
+		</panel>
+		<div
+			style="float:right;margin-bottom:12px;margin-right:12px; ">
+			<hbox>
+				<button id="btnok" sclass="btnDefault" width="74px"
+					height="23px" image="/main/images/button/ico/save_bt.gif"
+					label="保存" tooltiptext="保存对当前设备的修改并选中所修改的树节点">
+				</button>
+				<button id="btncancel" sclass="btnDefault" width="74px"
+					height="23px" image="/main/images/button/ico/close_bt.gif"
+					label="取消" tooltiptext="放弃所做的编辑并关闭窗体">
+				</button>
+				<button id="btnadd" sclass="btnDefault" width="90px"
+					height="23px" image="/main/images/button/ico/reload_bt.gif"
+					label="继续添加" tooltiptext="保存对当前设备的修改不关闭设备列表">
+				</button>
+				<button id="btntest" sclass="btnDefault" width="74px"
+					height="23px" disabled="true"
+					image="/main/images/button/ico/test_bt.gif" label="测试">
+				</button>
+			</hbox>
+		</div>
+
+	</window>
+</zk>

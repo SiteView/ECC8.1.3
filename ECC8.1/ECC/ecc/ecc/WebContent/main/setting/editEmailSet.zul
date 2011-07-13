@@ -1,0 +1,101 @@
+<?page title="editEmailSet" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window id="editEmailSetting" title="编辑邮件地址设置" border="normal"
+		mode="popup" width="460px" closable="true"
+		apply="com.siteview.ecc.email.Email_edit" height=""
+		forward="onCreate=onInit">
+			
+			<groupbox id="manageGroup" closable="false" style="margin-left:10px;margin-right:10px;margin-top:10px">
+	 			 <caption  label="基本选项"/>		
+					<grid id="manageGroupId" oddRowSclass="none" style="margin-top:5px;border:none">
+						<columns>
+						    <column label="" width="6px"/>
+							<column label="" width="123px"/>
+							<column label="" width="123px"/>
+							<column label="" width="6px"/>
+						</columns>
+						<rows>
+							<row zclass="none" height="2px">
+							</row>
+							<row zclass="none" height="23px">
+							<space width="1px"/>
+								<label value="名称 *：" />
+								<textbox style="margin-left:5px" width="285px" id="emailName"  height="15px" />
+							    <space width="6px"/>
+							</row>
+							<row zclass="none" height="23px">
+							    <space width="1px"/>
+								<label value="接收Email地址 * ：" />
+								<textbox style="margin-left:5px" width="285px" id="emailAddress"  height="15px" />
+								<space width="6px"/>
+							</row>		
+							<row zclass="none" height="23px">
+								<space width="1px"/>
+								<label value="" />
+								<checkbox label="禁止" id="emailHold" style="margin-right:5px"/>
+								<space width="6px"/>
+							</row>													
+						</rows>
+					</grid>	
+	 		</groupbox>	 
+
+
+			<groupbox id="manageDevice" style="margin-left:10px;margin-right:10px;margin-top:10px" closable="false">
+	 			 <caption  label="高级选项"/>		
+					<grid id="manageDeviceId" oddRowSclass="none" style="border:none">
+						<columns>
+						    <column label="" width="6px"/>
+							<column label="" width="123px"/>
+							<column label="" width="123px"/>
+							<column label="" width="6px"/>
+						</columns>
+						<rows>
+							<row zclass="none" height="2px">
+							</row>	
+											
+							<row zclass="none" height="23px">
+								<space width="1px"/>
+								<label value="Email模板：" id="emailTemplateLink"/>	
+								<combobox id="emailTemplate"   width="272px" readonly="true" height="15px" >
+								</combobox>
+								<space width="6px"/>								
+							</row>
+							<row zclass="none" height="23px">
+								<space width="1px"/>
+								<label value="任务计划类型：" />
+								<combobox id="taskType" width="272px" forward="onSelect=onGetTaskvalue"  readonly="true" height="15px">
+									<comboitem label="绝对时间任务计划"  value="1"/>
+									<comboitem label="时间段任务计划"  value="2"/>
+									<comboitem label="相对时间任务计划"  value="3"/>
+								</combobox>
+								<space width="6px"/>
+							</row>								
+							<row zclass="none" height="23px">
+								<space width="1px"/>
+								<label value="任务计划：" id="taskLink" />
+								<combobox id="taskPlain"   width="272px"  readonly="true" height="15px">
+								</combobox>
+								<space width="6px"/>
+							</row>		
+							<row zclass="none" height="23px">
+							<space width="1px"/>
+								<label value="描述：" />
+								<textbox id="emailDescription"   rows="7" width="290px" />
+								<space width="6px"/>
+							</row>													
+						</rows>
+					</grid>		
+	 		</groupbox>	
+	 		
+			<vbox style="margin-top:10px;margin-bottom:10px">
+				<hbox style="margin-top:5px">
+				<space width="260px"/>
+					<button   id="userButton" sclass="btnDefault" width="74px" height="23px" image="/main/images/button/ico/save_bt.gif" label="保存" forward="onClick=onSave()" />
+					<button  sclass="btnDefault" width="74px" height="23px" image="/main/images/button/ico/close_bt.gif" label="取消" forward="onClick=onFresh" />
+				</hbox>
+			</vbox>
+
+	</window>
+</zk>
+
+

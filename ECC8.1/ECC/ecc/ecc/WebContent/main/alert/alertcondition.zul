@@ -1,0 +1,76 @@
+<?page id="alertcodition"?>
+<radiogroup id="selectradio" height="200px">
+	<groupbox use="com.siteview.ecc.alert.AlertConditionGroupbox"
+		closable="false" width="406px">
+		<caption label="发送条件" />
+		<grid style="border:0" oddRowSclass="none" width="100%">
+			<columns>
+				<column label="" />
+			</columns>
+			<rows>
+				<row zclass="none" height="6px">
+					<separator />
+				</row>
+				<row zclass="none" height="23px">
+					<hbox>
+						<space width="6px" />
+						<label>报警事件：</label>
+						<combobox id="alertEvent" width="60px"
+							height="15px" readonly="true"
+							use="com.siteview.ecc.alert.control.AlertEventCombobox"
+							tooltiptext="您可以设定状态级别来控制报警。两种状态，分别是“危险”，“错误”，当条件满足设定的状态时，发出警报" />
+					</hbox>
+				</row>
+				<row zclass="none" height="23px" tooltiptext="发送条件">
+					<radio label="连续不断发送警告" id="selectradio1"
+						height="10px" tooltiptext="" />
+				</row>
+				<row zclass="none" height="23px">
+					<div>
+						<space width="20px" />
+						总是发送，从第
+						<intbox width="30px" height="15px" maxlength="4"
+							value="1" id="awayCount"
+							tooltiptext="总是发送，从第1次符合警报发送条件开始。说明如果该警报符合您在状态级别选择的设置的条件，那么该警报将每隔1分钟就发送1次报警" />
+						次符合报警发送条件开始发送报警
+					</div>
+				</row>
+				<row zclass="none" height="23px" tooltiptext="发送条件">
+					<radio label="报警只发送一次" id="selectradio2"
+						height="15px" />
+				</row>
+				<row zclass="none" height="23px">
+					<div>
+						<space width="20px" />
+						发送一次，当第
+						<intbox width="30px" height="15px" maxlength="4"
+							value="1" id="onlyOne"
+							tooltiptext="发送一次，当第1次符合警报发送条件时发送警报。说明如果该警报符合您在状态级别选择的设置条件，那么该警报将会发送并且只发送1次" />
+						次符合报警发送条件时发送报警
+					</div>
+				</row>
+				<row zclass="none" height="23px" tooltiptext="发送条件">
+					<radio label="选择性发送警报" id="selectradio3"
+						selected="true" height="15px" />
+				</row>
+				<row zclass="none" height="23px">
+					<div>
+						<space width="20px" />
+						当第
+						<intbox width="30px" height="15px" maxlength="4"
+							value="2" id="select1"
+							tooltiptext="当第2次符合警报发送条件时及其以后每重复3次时发送警报。说明当第1次符合警报发送条件时，不发送警报，从第2次开始如果有警报开始发送，并且有3次同样的时候发送警报，然后系统再重新计算，以此类推" />
+						次符合报警发送条件时及其以后每重复
+						<intbox width="30px" height="15px" maxlength="4"
+							value="3" id="select2"
+							tooltiptext="当第2次符合警报发送条件时及其以后每重复3次时发送警报。说明当第1次符合警报发送条件时，不发送警报，从第2次开始如果有警报开始发送，并且有3次同样的时候发送警报，然后系统再重新计算，以此类推" />
+						次时发送报警
+					</div>
+				</row>
+				<row zclass="none" height="6px">
+					<separator />
+				</row>
+			</rows>
+		</grid>
+	</groupbox>
+</radiogroup>

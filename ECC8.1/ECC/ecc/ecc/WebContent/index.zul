@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?page title="SiteView Ecc"?>
+<borderlayout style="border:none">
+<center flex="true">
+	<include src="index.jsp"/>
+</center>
+<south size="0" style="border:none">
+</south>	
+</borderlayout>	

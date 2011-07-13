@@ -1,0 +1,188 @@
+<window id="edittopn" closable="true" height="493px" width="563px"
+	border="normal" position="center" title="添加topn报告"
+	apply="com.siteview.ecc.report.EditTopNReport">
+	<vbox>
+		<space height="1px" />
+		<hbox>
+			<space width="1px" />
+			<groupbox closable="false" width="188px" height="404px">
+				<caption label="监测器" />
+				<hbox>
+					<space width="1px" />
+					<vbox>
+						<tree id="monitortree" zclass="z-dottree"
+							use="com.siteview.ecc.report.topnreport.TopnSelectTree" height="360px"
+							width="178px" />
+
+						<div height="23px">
+							<span>
+								<label id="groupLink" forward="onCreate=onCreate$groupLink">组名：</label>
+							</span>
+							<combobox id="viewNamecombobox"
+								forward="onSelect=onSelectGroupName" height="15px" width="117px"
+								readonly="true"
+								use="com.siteview.ecc.alert.control.ViewNameCombobox" />
+							<separator width="1px" />
+						</div>
+					</vbox>
+				</hbox>
+			</groupbox>
+
+			<vbox>
+				<groupbox closable="false" width="305px" height="404px"
+					style="padding-left:2px">
+					<caption label="报告设置" />
+					<grid style="border:0" oddRowSclass="none">
+						<columns>
+							<column label="" align="left" />
+							<column label="" align="left" />
+						</columns>
+						<rows>
+							<row zclass="none" style="border:none"
+								height="30px">
+								报告标题*:
+								<textbox id="title" width="140px"
+									height="15px"
+									tooltiptext="显示在报告的上方或报告列表中的标题" />
+							</row>
+							<row zclass="none" style="border:none"
+								height="30px">
+								报告描述:
+								<textbox width="140px" id="descript"
+									height="15px" tooltiptext="输入报告备注信息" />
+							</row>
+							<row zclass="none" style="border:none"
+								height="30px">
+								监测器类型:
+								<listbox rows="1" mold="select"
+									id="monitorType" width="146px" style="font-size:8pt"
+									tooltiptext="选择要统计的监测器类型">
+								</listbox>
+							</row>
+							<row zclass="none" style="border:none"
+								height="30px">
+								选择指标:
+								<listbox rows="1" mold="select"
+									id="target" width="146px" style="font-size:8pt"
+									tooltiptext="选择要统计的监测器指标">
+								</listbox>
+							</row>
+							<row zclass="none" style="border:none"
+								height="30px">
+								<label value="排序方式：" />
+								<hbox>
+									<radiogroup id="orderby"
+										tooltiptext="选择排序方式">
+										<radio label="升序"
+											id="orderbyAsc" />
+										<radio label="降序"
+											selected="true" id="orderbyDesc" />
+									</radiogroup>
+								</hbox>
+							</row>
+							<row zclass="none" style="border:none"
+								height="30px">
+								<label value="数量：" />
+								<spinner id="count" height="17px"
+									value="10" width="125px" constraint="min 1 max 100"
+									tooltiptext="输入要统计的监测器数量" />
+							</row>
+							<row zclass="none" style="border:none"
+								height="30px">
+								<label value="报告类型：" />
+								<listbox rows="1" mold="select"
+									id="reportType" width="146px" style="font-size:8pt"
+									tooltiptext="请指定生成报告的时间周期">
+									<listitem label="日报" value="Day"
+										selected="true" />
+									<listitem label="周报" value="Week" />
+									<listitem label="月报" value="Month" />
+								</listbox>
+							</row>
+							<row zclass="none" style="border:none"
+								height="30px">
+								<label value="报告文件格式:" />
+								<listbox rows="1" mold="select"
+									id="lfileType" width="146px" style="font-size:8pt">
+									<listitem label="html"
+										selected="true" value="html" />
+									<listitem label="pdf" value="pdf" />
+									<listitem label="Excel" value="xls" />
+								</listbox>
+							</row>
+							<row zclass="none" style="border:none"
+								height="30px">
+								<label value="取值方式:" />
+								<listbox rows="1" mold="select"
+									id="lgetValue" width="146px" style="font-size:8pt">
+									<listitem label="平均" selected="true"
+										value="平均" />
+									<listitem label="最新" value="最新" />
+								</listbox>
+							</row>
+							<zscript>String[] arr = {"0","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23"};</zscript>
+							<row zclass="none" style="border:none"
+								height="30px">
+								<label value="报告生成时间：" />
+								<listbox rows="1" mold="select"
+									id="reportTime" width="146px"
+									tooltiptext="当选择某项后，报告将在指定时间后生成，单位：时">
+									<listitem forEach="${arr}"
+										label="${each}" value="${each}" />
+								</listbox>
+							</row>
+							<row zclass="none" style="border:none"
+								height="30px">
+								以E-MAIL方式发送报告:
+								<textbox width="140px" id="emailSend"
+									height="15px"
+									tooltiptext="输入接收报告的E-mail地址，可以录入多个地址，多个地址之间用英文的逗号分隔，当报告产生，所设定的邮箱就会接收到新产生的报告" />
+							</row>
+							<row zclass="none" style="border:none"
+								height="30px">
+								<label value="禁止报告" />
+								<checkbox label="" id="Deny"
+									tooltiptext="勾选此项后，报告将停止自动生成" />
+							</row>
+							<row zclass="none" style="border:none"
+								height="30px">
+								周报截止时间:
+								<listbox rows="1" mold="select"
+									id="weekEndTime" width="146px" disabled="true"
+									style="font-size:8pt"
+									tooltiptext="设置周报生产时间，如设置周一，周报生产范围为 本周日0点到上周日0点">
+									<listitem label="星期日" value="0"
+										selected="true" />
+									<listitem label="星期一" value="1" />
+									<listitem label="星期二" value="2" />
+									<listitem label="星期三" value="3" />
+									<listitem label="星期四" value="4" />
+									<listitem label="星期五" value="5" />
+									<listitem label="星期六" value="6" />
+								</listbox>
+							</row>
+						</rows>
+					</grid>
+				</groupbox>
+				<grid style="border:0" oddRowSclass="none">
+					<columns>
+						<column label="" align="right" />
+					</columns>
+					<rows>
+						<row zclass="none" style="border:none" height="28px">
+							<hbox>
+								<button id="OK" label="保存"
+									sclass="btnDefault" width="74px" height="23px"
+									image="/main/images/button/ico/save_bt.gif" />
+								<button id="Cancel" label="取消"
+									sclass="btnDefault" width="74px" height="23px"
+									image="/main/images/button/ico/close_bt.gif" />
+							</hbox>
+						</row>
+					</rows>
+				</grid>
+			</vbox>
+		</hbox>
+	</vbox>
+
+</window>

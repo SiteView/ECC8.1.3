@@ -1,0 +1,1711 @@
+<html>
+
+<head>
+<meta name=Generator content="Microsoft Office HTML Filter 2.0">
+<meta http-equiv=Content-Type content="text/html; charset=gb2312">
+<meta name=Originator content="Microsoft Word 11">
+<title>8</title>
+<style>
+<!--
+ 
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	font-size:10.5pt;
+	font-family:"Times New Roman";}
+h3
+	{
+	margin-top:13.0pt;
+	margin-right:0cm;
+	margin-bottom:13.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	line-height:173%;
+	page-break-after:avoid;
+	font-size:16.0pt;
+	font-family:Calibri;}
+span.CharChar13
+	{
+	font-family:Calibri;
+	font-weight:bold;}
+-->
+</style>
+</head>
+
+<body lang=ZH-CN style='text-justify-trim:punctuation'>
+
+<div class=Section1 style='layout-grid:15.6pt'>
+
+<h3 style='margin-top:6.0pt;margin-right:0cm;margin-bottom:6.0pt;margin-left:
+0cm;line-height:120%'><span lang=EN-US style='font-size:14.0pt;line-height:
+120%;font-family:宋体'>8.5.3 WebSphere 5.x </span><span style='font-size:14.0pt;
+line-height:120%;font-family:宋体'>与<span lang=EN-US>WebSphere 6.x</span></span></h3>
+
+<p class=MsoNormal style='margin-top:7.8pt;margin-right:0cm;margin-bottom:7.8pt;
+margin-left:0cm;line-height:120%'><b><span lang=EN-US style='line-height:120%;
+font-family:宋体'>WebSphere </span></b><b><span
+style='line-height:120%;font-family:宋体'>添加方式</span></b></p>
+
+<p class=MsoNormal style='margin-top:7.8pt;margin-right:0cm;margin-bottom:7.8pt;
+margin-left:0cm;text-indent:21.0pt;line-height:120%'><span
+lang=EN-US style='line-height:120%;font-family:宋体'>SiteView
+ECC8.1</span><span style='line-height:120%;
+font-family:宋体'>可以监测<span lang=EN-US>WebSphere5.x</span>、<span lang=EN-US>WebSphere6.x</span>等版本，安装<span
+lang=EN-US>WebSphere</span>的服务器，开启<span lang=EN-US>WebSphere</span>的各项服务。在<span
+lang=EN-US>SiteView ECC8.1</span>的<span lang=EN-US>WebSphere</span>设备的添加页面中输入相应的信息，包括服务器名称、<span
+lang=EN-US>URL</span>、标题等信息<span style='color:black'>。下面以添加<span lang=EN-US>WebSphere6.x</span>设备为例，</span>如图<span
+lang=EN-US>8.5.3-1</span>。</span></p>
+
+<p class=MsoNormal style='margin-top:7.8pt;margin-right:0cm;margin-bottom:7.8pt;
+margin-left:151.4pt;text-indent:-131.25pt;line-height:120%;layout-grid-mode:char'><span
+lang=EN-US style='line-height:120%;font-family:宋体'>URL</span><span
+style='line-height:120%;font-family:宋体'>：<span
+lang=EN-US>http://WebSphere</span>的<span lang=EN-US>IP</span>地址<span
+lang=EN-US>:9080/wasPerfTool/servlet/perfservlet</span>。</span></p>
+
+<p class=MsoNormal align=center style='margin-top:7.8pt;margin-right:0cm;
+margin-bottom:7.8pt;margin-left:0cm;text-align:center;
+line-height:120%'><span lang=EN-US style='line-height:
+120%;font-family:宋体;'><img width=510 height=459
+src="outline_62.files/image001.gif" alt=weblogic.gif></span></p>
+
+<p class=MsoNormal align=center style='margin-top:7.8pt;margin-right:0cm;
+margin-bottom:7.8pt;margin-left:0cm;text-align:center;
+line-height:120%'><span style='font-size:9.0pt;
+line-height:120%;font-family:宋体;'>图<span lang=EN-US>8.5.3-1</span></span></p>
+
+<p class=MsoNormal style='margin-top:7.8pt;margin-right:0cm;margin-bottom:7.8pt;
+margin-left:0cm;text-indent:18.0pt;line-height:120%;layout-grid-mode:
+char'><span style='line-height:120%;font-family:宋体;
+color:black'>单击［确定］按钮，成功的添加</span><span lang=EN-US style='line-height:120%;font-family:宋体'>WebSphere</span><span style='line-height:120%;font-family:宋体;color:black'>设备。下面分别介绍</span><span
+lang=EN-US style='line-height:120%;font-family:宋体'>WebSphere6.x</span><span
+style='line-height:120%;font-family:宋体'>与<span
+lang=EN-US>WebSphere5.x</span>的<span style='color:black'>监测指标。</span></span></p>
+
+<p class=MsoNormal style='margin-top:7.8pt;margin-right:0cm;margin-bottom:7.8pt;
+margin-left:0cm;line-height:120%;layout-grid-mode:char'><b><span lang=EN-US style='line-height:120%;font-family:宋体'>WebSphere6.x</span></b><b><span style='
+line-height:120%;font-family:宋体;'>监测指标</span></b><b><span style='font-size:9.0pt;line-height:120%;font-family:宋体'>与</span></b><b><span lang=EN-US style='line-height:120%;
+font-family:宋体'>WebSphere5.x</span></b><b><span
+style='line-height:120%;font-family:宋体;'>监测指标</span></b></p>
+
+<div align=center>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0 width=529
+ style='width:14.0cm;border-collapse:collapse;border:none;'>
+ <tr style='height:13.45pt'>
+  <td width=552 colspan=4 style='width:414.0pt;border:solid windowtext 1.5pt;
+  border-bottom:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:13.45pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span style='line-height:120%;font-family:宋体;'>中间件</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=72 style='width:54.0pt;border-top:none;border-left:solid windowtext 1.5pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:12.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span style='line-height:120%;font-family:宋体;'>设备</span></p>
+  </td>
+  <td width=96 style='width:72.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span style='line-height:120%;font-family:宋体;'>监测器</span></p>
+  </td>
+  <td width=164 style='width:123.25pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+  12.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span style='line-height:120%;font-family:宋体;'>描述</span></p>
+  </td>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:120%'><span style='line-height:120%;font-family:宋体;'>监测参数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=72 rowspan=71 style='width:54.0pt;border-top:none;border-left:solid windowtext 1.5pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span lang=EN-US style='
+  line-height:120%;font-family:宋体;'>WebSphere6.x</span></p>
+  </td>
+  <td width=96 rowspan=4 style='width:72.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+  12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span lang=EN-US style='
+  line-height:120%;font-family:宋体;'>WebSphere JVM</span><span
+  style='line-height:120%;font-family:宋体;'>检测</span></p>
+  </td>
+  <td width=164 rowspan=4 style='width:123.25pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+  12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>监测<span lang=EN-US>WebSphere JVM</span></span></p>
+  </td>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>总内存</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>剩余内存</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>已用内存</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>使用率</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=96 rowspan=5 style='width:72.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+  12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span lang=EN-US style='
+  line-height:120%;font-family:宋体;'>WebShpere</span><span
+  style='line-height:120%;font-family:宋体;'>线程池检测</span></p>
+  </td>
+  <td width=164 rowspan=5 style='width:123.25pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+  12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>监测<span lang=EN-US>WebSphere </span>线程池</span></p>
+  </td>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>创建的线程数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>销毁的线程数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>活动线程数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>池大小</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span lang=EN-US style='
+  line-height:120%;font-family:宋体;'>percentMaxed</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=96 rowspan=10 style='width:72.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+  12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span lang=EN-US style='
+  line-height:120%;font-family:宋体;'>WebSphere</span><span
+  style='line-height:120%;font-family:宋体;'>连接池检测</span></p>
+  </td>
+  <td width=164 rowspan=10 style='width:123.25pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+  12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>监测<span lang=EN-US>WebSphere </span>连接池</span></p>
+  </td>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>创建的连接数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>销毁的线程数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>分派的连接数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>返回的连接数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>池大小</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>等待数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>平均等待时间</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>占用率</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>最大占用率</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span lang=EN-US style='
+  line-height:120%;font-family:宋体;'>prepStmtCacheDiscards</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=96 rowspan=6 style='width:72.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+  12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span lang=EN-US style='
+  line-height:120%;font-family:宋体;'>WebSpere WebApp</span><span
+  style='line-height:120%;font-family:宋体;'>检测</span></p>
+  </td>
+  <td width=164 rowspan=6 style='width:123.25pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+  12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>监测<span lang=EN-US>WebSphere </span>连接池</span></p>
+  </td>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>加载的<span lang=EN-US>Servlets</span>数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>重载数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>总请求数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>当前请求数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>响应时间</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>错误数</span></p>
+  </td>
+ </tr>
+ <tr style='height:10.45pt'>
+  <td width=96 rowspan=5 style='width:72.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+  10.45pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span lang=EN-US style='
+  line-height:120%;font-family:宋体;'>WebSpere
+  ServletSessions</span><span style='line-height:
+  120%;font-family:宋体;'>检测</span></p>
+  </td>
+  <td width=164 rowspan=5 style='width:123.25pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+  10.45pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>监测<span lang=EN-US>WebSphere ServletSessions</span></span></p>
+  </td>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:10.45pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>开户的对话</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>无效的对话</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>对话活动时间</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>激活对话数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>存活对话数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=96 rowspan=19 style='width:72.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+  12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span lang=EN-US style='
+  line-height:120%;font-family:宋体;'>WebSphere
+  Transaction</span><span style='line-height:120%;
+  font-family:宋体;'>检测</span></p>
+  </td>
+  <td width=164 rowspan=19 style='width:123.25pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+  12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>监测<span lang=EN-US>WebSphere
+  Transaction</span></span></p>
+  </td>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>全局开始事务数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>有关全局事务数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>本地开始事务数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>激活全局事务数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>激活本地事务数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>持续全局事务数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>持续本地事务数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>全局持续完成之前的事务数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>持续等待的全局事务数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>持续提交的全局事务数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>本地持续完成之前的事务数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>持续提交的本地事务数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>最佳事务数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>提交的最佳本地事务数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>提交的全局事务数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>回滚的最佳全局事务数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>回滚的最佳本地事务数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>全局超时事务数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>本地超时事务数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=96 rowspan=22 style='width:72.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+  12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span lang=EN-US style='
+  line-height:120%;font-family:宋体;'>WebSphere Bean</span><span
+  style='line-height:120%;font-family:宋体;'>检测</span></p>
+  </td>
+  <td width=164 rowspan=22 style='width:123.25pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+  12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>监测<span lang=EN-US>WebSphereBean</span></span></p>
+  </td>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>创建数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>移走数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>活动数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>停顿数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>示例数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>破坏数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>装载数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>存储数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>并发激活数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>并发活动数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>总的调用方法</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span lang=EN-US style='
+  line-height:120%;font-family:宋体;'>avgMethodRt</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>平均创建时间</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>平均的移走时间</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>激活的方法</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>从池中获取数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>取回数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>缓冲池返回数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>丢弃的返回数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span lang=EN-US style='
+  line-height:120%;font-family:宋体;'>drainsFromPool</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span lang=EN-US style='
+  line-height:120%;font-family:宋体;'>avgDrainSize</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>缓冲池大小</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=72 rowspan=73 style='width:54.0pt;border-top:none;border-left:solid windowtext 1.5pt;
+  border-bottom:solid windowtext 1.5pt;border-right:solid windowtext 1.0pt;padding:
+  0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span lang=EN-US style='
+  line-height:120%;font-family:宋体;'>websphere5</span></p>
+  </td>
+  <td width=96 rowspan=15 style='width:72.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+  12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span lang=EN-US style='
+  line-height:120%;font-family:宋体;'>websphere5.x</span><span
+  style='line-height:120%;font-family:宋体;'>的<span lang=EN-US>Bean</span>监测</span></p>
+  </td>
+  <td width=164 rowspan=15 style='width:123.25pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+  12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>监测<span lang=EN-US>WebSphere5.x</span>的<span
+  lang=EN-US>Bean</span></span></p>
+  </td>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span lang=EN-US style='
+  line-height:120%;font-family:宋体;'>bean</span><span
+  style='line-height:120%;font-family:宋体;'>创建的次数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span lang=EN-US style='
+  line-height:120%;font-family:宋体;'>bean</span><span
+  style='line-height:120%;font-family:宋体;'>去除次数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span lang=EN-US style='
+  line-height:120%;font-family:宋体;'>bean</span><span
+  style='line-height:120%;font-family:宋体;'>激活次数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span lang=EN-US style='
+  line-height:120%;font-family:宋体;'>bean</span><span
+  style='line-height:120%;font-family:宋体;'>钝化次数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span lang=EN-US style='
+  line-height:120%;font-family:宋体;'>bean</span><span
+  style='line-height:120%;font-family:宋体;'>实例化次数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span lang=EN-US style='
+  line-height:120%;font-family:宋体;'>bean</span><span
+  style='line-height:120%;font-family:宋体;'>释放次数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>处于就绪状态的<span lang=EN-US>bean</span>实例个数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>并发存活<span lang=EN-US>bean</span>平均数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>调用<span lang=EN-US>bean</span>远程方法的次数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span lang=EN-US style='
+  line-height:120%;font-family:宋体;'>bean</span><span
+  style='line-height:120%;font-family:宋体;'>远程方法的平均响应时间（<span lang=EN-US>ms</span>）</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span lang=EN-US style='
+  line-height:120%;font-family:宋体;'>bean</span><span
+  style='line-height:120%;font-family:宋体;'>创建调用所用的平均时间（<span lang=EN-US>ms</span>）</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span lang=EN-US style='
+  line-height:120%;font-family:宋体;'>beanRemove</span><span
+  style='line-height:120%;font-family:宋体;'>调用所用的平均时间（<span lang=EN-US>ms</span>）</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>并发活动方法的平均数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>激活<span lang=EN-US>bean</span>对象的平均时间</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>钝化<span lang=EN-US>bean</span>对象的平均时间</span></p>
+  </td>
+ </tr>
+ <tr style='height:11.85pt'>
+  <td width=96 rowspan=3 style='width:72.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+  11.85pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span lang=EN-US style='
+  line-height:120%;font-family:宋体;'>websphere5.x</span><span
+  style='line-height:120%;font-family:宋体;'>的<span lang=EN-US>cache</span>监测</span></p>
+  </td>
+  <td width=164 rowspan=3 style='width:123.25pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+  11.85pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>监测<span lang=EN-US>WebSphere5.x</span>的动态高速缓存</span></p>
+  </td>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:11.85pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>内存高速缓存条目中的最大尺寸</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>内存高速缓存条目中的当前条目数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>模板超时和磁盘超时的聚集</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=96 rowspan=4 style='width:72.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+  12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span lang=EN-US style='
+  line-height:120%;font-family:宋体;'>websphere5.x</span><span
+  style='line-height:120%;font-family:宋体;'>的<span lang=EN-US>jvmRumtime</span></span></p>
+  </td>
+  <td width=164 rowspan=4 style='width:123.25pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+  12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>监测<span lang=EN-US>WebSphere5.x</span>的<span
+  lang=EN-US>JVM</span>运行时</span></p>
+  </td>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span lang=EN-US style='
+  line-height:120%;font-family:宋体;'>JVM</span><span
+  style='line-height:120%;font-family:宋体;'>运行时中的空闲内存（<span lang=EN-US>KB</span>）</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span lang=EN-US style='
+  line-height:120%;font-family:宋体;'>jvm</span><span
+  style='line-height:120%;font-family:宋体;'>运行时中使用的内存（<span lang=EN-US>KB</span>）</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span lang=EN-US style='
+  line-height:120%;font-family:宋体;'>jvm</span><span
+  style='line-height:120%;font-family:宋体;'>运行时中的总内存（<span lang=EN-US>KB</span>）</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span lang=EN-US style='
+  line-height:120%;font-family:宋体;'>jvm</span><span
+  style='line-height:120%;font-family:宋体;'>运行时中内存使用率（<span lang=EN-US>%</span>）</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=96 rowspan=3 style='width:72.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+  12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span lang=EN-US style='
+  line-height:120%;font-family:宋体;'>WebSphere5.x</span><span
+  style='line-height:120%;font-family:宋体;'>的<span lang=EN-US>orbPerf</span>监测</span></p>
+  </td>
+  <td width=164 rowspan=3 style='width:123.25pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+  12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>监测<span lang=EN-US>WebSphere5.x</span>的<span
+  lang=EN-US>ORB</span></span></p>
+  </td>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>查找时间</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>总请求时间</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>并发请求</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.05pt'>
+  <td width=96 rowspan=15 style='width:72.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+  12.05pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span lang=EN-US style='
+  line-height:120%;font-family:宋体;'>WebSphere5.x</span><span
+  style='line-height:120%;font-family:宋体;'>的<span lang=EN-US>servletSession</span>监测</span></p>
+  </td>
+  <td width=164 rowspan=15 style='width:123.25pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+  12.05pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>监测<span lang=EN-US>WebSphere5.x</span>的<span
+  lang=EN-US>servlet</span>会话管理器</span></p>
+  </td>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.05pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>创建的会话</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>失效的会话</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>会话生命周期（<span lang=EN-US>ms</span>）</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>活动会话</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>活的会话</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>没有空闲可用于新会话</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>高速缓存放弃</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>外部读时间（<span lang=EN-US>ms</span>）</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>外部读大小</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>外部写时间</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>外部写大小</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>断开的亲缘性</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>最后一次激活以来的时间</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>通过超时失效</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>激活不存在的会话</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=96 rowspan=3 style='width:72.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+  12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span lang=EN-US style='
+  line-height:120%;font-family:宋体;'>webSphere5.x</span><span
+  style='line-height:120%;font-family:宋体;'>的<span lang=EN-US>system</span>监测</span></p>
+  </td>
+  <td width=164 rowspan=3 style='width:123.25pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+  12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>监测<span lang=EN-US>WebSphere5.x</span>的<span
+  lang=EN-US>system</span></span></p>
+  </td>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span lang=EN-US style='
+  line-height:120%;font-family:宋体;'>CPU</span><span
+  style='line-height:120%;font-family:宋体;'>使用率</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>平均<span lang=EN-US>CPU</span>使用率</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>空闲内存（<span lang=EN-US>KB</span>）</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=96 rowspan=5 style='width:72.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+  12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span lang=EN-US style='
+  line-height:120%;font-family:宋体;'>WebSphere5.X</span><span
+  style='line-height:120%;font-family:宋体;'>的<span lang=EN-US>threadPool</span>监测</span></p>
+  </td>
+  <td width=164 rowspan=5 style='width:123.25pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+  12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>监测<span lang=EN-US>WebSphere5.x</span>的线程池</span></p>
+  </td>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>创建的线程总数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>破坏的线程总数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>并发活动的线程数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>池大小</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>最大百分率</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=96 rowspan=19 style='width:72.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+  12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span lang=EN-US style='
+  line-height:120%;font-family:宋体;'>WebSphere5.x</span><span
+  style='line-height:120%;font-family:宋体;'>的<span lang=EN-US>transaction</span>监测</span></p>
+  </td>
+  <td width=164 rowspan=19 style='width:123.25pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+  12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>监测<span lang=EN-US>WebSphere5.x</span>的事务管理器</span></p>
+  </td>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>开始的全局事务数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>所包含的全局事务数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>开始的本地事务数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>活动全局事务数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>活动本地事务数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>全局事务持续时间</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>本地事务持续时间</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>完成前全局持续时间</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>全局准备持续时间</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>全局提交持续时间</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>完成前本地持续时间</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>本地提交持续时间</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>优化数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>提交的全局事务数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>提交的本地事务数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>回滚的全局事务数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>回滚的本事务数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>超时的全局事务数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>超时的本地事务数</span></p>
+  </td>
+ </tr>
+ <tr style='height:11.25pt'>
+  <td width=96 rowspan=6 style='width:72.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.5pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:11.25pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span lang=EN-US style='
+  line-height:120%;font-family:宋体;'>WebSphere5.x</span><span
+  style='line-height:120%;font-family:宋体;'>的<span lang=EN-US>webApp</span>监测</span></p>
+  </td>
+  <td width=164 rowspan=6 style='width:123.25pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.5pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:11.25pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>监测<span lang=EN-US>WebSphere5.x</span>的<span
+  lang=EN-US>Web</span>应用程序</span></p>
+  </td>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:11.25pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span lang=EN-US style='
+  line-height:120%;font-family:宋体;'>servlet</span><span
+  style='line-height:120%;font-family:宋体;'>装入数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>重新装入数</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>总计请求</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>并发请求</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>平均响应时间</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.0pt'>
+  <td width=220 style='width:164.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.5pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='
+  line-height:120%'><span style='line-height:120%;
+  font-family:宋体;'>错误数</span></p>
+  </td>
+ </tr>
+</table>
+
+</div>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>

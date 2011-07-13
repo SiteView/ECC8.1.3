@@ -1,0 +1,7 @@
+<groupbox id="gb" mold="3d">
+	<caption id="caption"/>
+	<listbox id="listbox">
+		<listhead sizable="true" id="listhead">
+		</listhead>
+	</listbox>
+</groupbox>

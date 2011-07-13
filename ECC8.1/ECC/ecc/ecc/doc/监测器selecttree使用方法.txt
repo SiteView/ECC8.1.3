@@ -1,0 +1,27 @@
+在zul文件中定义如下：
+
+ <tree id="monitortree" use="com.siteview.ecc.alert.SelectTree" checkable="true" vflex="true" rows="18" width="180px"/>
+
+
+在Java中，取得该Component的对象后，使用下面方法取得设置的值
+
+	public List<String> getSelectedIds()
+	public String getAllSelectedIds()
+
+方法说明看源代码文档
+
+设置值使用下面方法：
+
+      this.getDesktop().getExecution().setAttribute("all_selected_ids", ids);
+
+      ids 为形如：monitorid,monitorid,monitorid,...的字符串
+
+
+
+
+
+设置视图属性
+      public void setViewName(String viewName) ；
+
+设置检测器类型属性
+	public void setMonitorType(String monitorType；

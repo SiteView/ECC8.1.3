@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?page title="upgrade from mmc" ?>
+<zk xmlns:h="http://www.w3.org/1999/xhtml" >
+<window id="upgradeFromMMC" title="配置数据升级" position="center" apply="com.siteview.ecc.util.UpgradeFromMMC" border="normal" width="430px" style="color: white">
+<separator /> 
+<groupbox mold="3d">
+    <hbox>
+    <label value="管理员用户名:" id="label"/>
+    <textbox id="name" width="310px"> </textbox> 
+    </hbox>
+    <hbox>
+    <label value="  管理员密码:" id="label2"  pre="true"/>
+    <textbox id="pwd" width="310px"> </textbox>    
+    </hbox>    
+</groupbox>    
+<separator />
+<groupbox mold="3d" >
+  <hbox align="end">
+    <button label="升级" id="btnUpgrade" />
+   </hbox>   
+</groupbox>  
+<separator />
+<groupbox mold="3d">
+    <hbox height="30px" >
+    <label value="将 mmc 版本的相关数据向上升级到   8.1.3 web 版本，相关信息:" id="message2" width="370px" />
+    </hbox>
+    <hbox height="200px" >
+    <label value="提示信息" id="message" width="370px" height="100px" multiline="true"  pre="true" />
+    </hbox>
+</groupbox>      
+</window>
+</zk>

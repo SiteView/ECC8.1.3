@@ -1,0 +1,36 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window title="添加URL地址" width="530px" height="" id="messageWin"  
+apply="com.siteview.ecc.setOther.SetOtherAdd" closable="true" border="normal" style="overflow-x:hidden">
+<groupbox id="addsyspas" closable="false" width="465px" style="margin-left:10px;margin-right:10px;margin-top:10px;margin-right:10px;overflow-x:hidden">
+	 			 <caption  label="基本选项"/>		
+					<grid id="manageGroupId" oddRowSclass="none"  style="margin-top:5px;border:none">
+						<columns>
+						    <column label="" width="6px"/>
+							<column label="" width="134px"/>
+							<column label="" width="314px"/>
+							<column label="" width="6px"/>
+						</columns>
+						<rows>												
+							<row zclass="none" height="23px">
+								<space width="1px"/>
+								<label value="网址名称" />
+								<textbox  width="240px" id="sysName"  height="15px" tooltiptext="${c:l('InputServerPasswordName') }"/>
+								<space width="6px"/>
+							</row>
+							<row zclass="none" height="23px">
+							    <space width="1px"/>
+								<label value="网址URL" />
+								<textbox type="text" width="240px" id="syspass"  height="15px" tooltiptext="${c:l('PleaseInputServerPassword') }"/>
+							    <space width="6px"/>
+							</row>	
+						</rows>
+					</grid>	
+	 		</groupbox>
+	 		<hbox   style="margin-top:10px;margin-bottom:10px">
+					<space width="240px"/>
+							<button sclass="btnDefault" width="74px" height="23px" image="/main/images/button/ico/save_bt.gif"  label="保存"		forward="onClick=onSave" />
+							<button sclass="btnDefault" width="74px" height="23px" image="/main/images/button/ico/close_bt.gif" label="取消"		onClick="messageWin.detach()"/>
+			</hbox>	
+</window>
+</zk>

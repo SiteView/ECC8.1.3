@@ -1,0 +1,73 @@
+<window width="800px" height="600px" border="normal" title="统计报告"
+	apply="com.siteview.ecc.report.statisticalreport.StatisticalReportGenericForwardComposer"
+	id="createReportWindow">
+	<zscript><![CDATA[					                  
+				   Date stime=new Date();
+				  stime.setDate(stime.getDate()-1); 
+				  Date etime=new Date();					  
+				  //checkmark="true" multiple="true"
+				  ]]></zscript>
+	<panel border="none" title="查询条件" id="p1" collapsible="true">
+		<panelchildren id="pc1">
+			<groupbox width="768px" id="g1">
+				<vbox>
+					<space height="1px" />
+					<grid oddRowSclass="none" style="border:0">
+						<columns>
+							<column label="" width="80px"
+								align="center" />
+							<column label="" align="left" />
+							<column label="" width="80px"
+								align="center" />
+							<column label="" align="left" />
+							<column label="" width="200px"
+								align="right" />
+						</columns>
+						<rows style="border:none">
+							<row zclass="none" height="27px">
+								开始时间：
+								<hbox>
+									<datebox width="75px"
+										format="yyyy-MM-dd" value="${stime }" id="createBegin_Date"
+										height="18px" style="font-size:10pt" />
+									<timebox width="75px"
+										id="createBegin_Time" height="18px"
+										style="font-size:10pt;vertical-align:text-bottom" />
+								</hbox>
+								结束时间：
+								<hbox>
+									<datebox width="75px"
+										value="${etime}" height="18px" format="yyyy-MM-dd"
+										id="createEnd_Date" style="font-size:10pt" />
+									<timebox width="75px"
+										id="createEnd_Time" height="18px"
+										style="font-size:10pt;vertical-align:text-bottom" />
+								</hbox>
+								<hbox>
+									<button width="74px" height="23px"
+										sclass="btnDefault" label="重新获取数据" forward="onRegetdata" />
+									<button width="74px" height="23px"
+										sclass="btnDefault" label="导出" forward="onExportReport" image="/main/images/bakRestore.gif" />
+									<button width="74px" height="23px"
+										sclass="btnDefault" label="关闭"
+										onClick="createReportWindow.detach()" image="/main/images/button/ico/close_bt.gif"/>
+								</hbox>
+							</row>
+						</rows>
+					</grid>
+				</vbox>
+				<zscript><![CDATA[		 
+				createBegin_Time.setValue(new Date());
+				createEnd_Time.setValue(new Date());
+
+				  ]]></zscript>
+			</groupbox>
+
+		</panelchildren>
+	</panel>
+	<panel collapsible="true" id="datapaneldiv" height="490px" border="normal">
+		<panelchildren id="datapanel"
+			style="overflow-x:auto;overflow-y:auto">
+		</panelchildren>
+	</panel>
+</window>

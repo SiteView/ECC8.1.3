@@ -1,0 +1,157 @@
+<window  border="normal" id="hellowindow" 
+					action="onclick:chgsmall()">
+	<script type="text/javascript">
+		function test(obj){
+
+		var dd=document.getElementsByTagName("tr"); var le=dd.length;
+		for(var i=0;i&lt;le;i++){ dd[i].style.height="30px"; }
+		obj.style.height="600px"; }
+		
+		 function chgsmall(obj){
+
+		var dd=document.getElementsByTagName("tr"); var le=dd.length;
+		for(var i=0;i&lt;le;i++){ dd[i].style.height="30px"; }
+		  }
+
+	</script>
+
+	<?link  rel="stylesheet" type="text/css" href="css/fisheye-menu.css"?>
+	<script src="main/script/fisheye.js" type="text/javascript" />
+	<tabbox>
+		<tabs>
+			<tab label="图表" />
+		</tabs>
+		<tabpanels>
+			<tabpanel>
+				<grid style="border:none;">
+					<rows>
+						<row id="row1"
+							action="onmouseover:test(this);">
+							<fisheyebar style="margin:-10px;"
+								attachEdge="middle" itemHeight="100" itemWidth="100"
+								itemMaxHeight="600" itemMaxWidth="600" labelEdge="top">
+								<fisheye id="fe1"
+									image="/img/icon_browser.gif" label="Web Browser" />
+								<fisheye id="fe2"
+									image="/img/icon_calendar.gif" label="Calendar" />
+								<fisheye image="/img/icon_email.gif"
+									label="Email" />
+								<fisheye tooltiptext="aaaaaa"
+									image="/img/icon_texteditor.gif" label="Text Editor" />
+								<fisheye image="/img/icon_update.gif"
+									label="Software Update" onClick="alert(self.label)" />
+								<fisheye
+									image="/main/images/fisheye/icon1.gif" label="Users" />
+								<fisheye
+									image="/main/images/fisheye/icon1.gif" label="Users" />
+							</fisheyebar>
+						</row>
+						<row action="onmouseover:test(this);">
+							<fisheyebar style="margin:-10px;"
+								attachEdge="middle" itemHeight="100" itemWidth="100"
+								itemMaxHeight="600" itemMaxWidth="600" labelEdge="top">
+								<fisheye image="/img/icon_browser.gif"
+									label="Web Browser" />
+								<fisheye image="/img/icon_calendar.gif"
+									label="Calendar" />
+								<fisheye image="/img/icon_email.gif"
+									label="Email" />
+								<fisheye tooltiptext="aaaaaa"
+									image="/img/icon_texteditor.gif" label="Text Editor" />
+								<fisheye image="/img/icon_update.gif"
+									label="Software Update" onClick="alert(self.label)" />
+								<fisheye
+									image="/main/images/fisheye/icon1.gif" label="Users" />
+								<fisheye
+									image="/main/images/fisheye/icon1.gif" label="Users" />
+							</fisheyebar>
+						</row>
+						<row action="onmouseover:test(this);">
+							<fisheyebar style="margin:0px;"
+								attachEdge="middle" itemHeight="100" itemWidth="100"
+								itemMaxHeight="600" itemMaxWidth="600" labelEdge="top">
+								<fisheye image="/img/icon_browser.gif"
+									label="Web Browser" />
+								<fisheye image="/img/icon_calendar.gif"
+									label="Calendar" />
+								<fisheye image="/img/icon_email.gif"
+									label="Email" />
+								<fisheye tooltiptext="aaaaaa"
+									image="/img/icon_texteditor.gif" label="Text Editor" />
+								<fisheye image="/img/icon_update.gif"
+									label="Software Update" onClick="alert(self.label)" />
+								<fisheye
+									image="/main/images/fisheye/icon1.gif" label="Users" />
+								<fisheye
+									image="/main/images/fisheye/icon1.gif" label="Users" />
+							</fisheyebar>
+						</row>
+						<row action="onmouseover:test(this);">
+							<fisheyebar style="margin:0px;"
+								attachEdge="middle" itemHeight="100" itemWidth="100"
+								itemMaxHeight="600" itemMaxWidth="600" labelEdge="top">
+								<fisheye image="/img/icon_browser.gif"
+									label="Web Browser" />
+								<fisheye image="/img/icon_calendar.gif"
+									label="Calendar" />
+								<fisheye image="/img/icon_email.gif"
+									label="Email" />
+								<fisheye tooltiptext="aaaaaa"
+									image="/img/icon_texteditor.gif" label="Text Editor" />
+								<fisheye image="/img/icon_update.gif"
+									label="Software Update" onClick="alert(self.label)" />
+								<fisheye
+									image="/main/images/fisheye/icon1.gif" label="Users" />
+								<fisheye
+									image="/main/images/fisheye/icon1.gif" label="Users" />
+							</fisheyebar>
+						</row>
+						<row action="onmouseover:test(this);">
+							<fisheyebar style="margin:0px;"
+								attachEdge="middle" itemHeight="100" itemWidth="100"
+								itemMaxHeight="600" itemMaxWidth="600" labelEdge="top">
+								<fisheye image="/img/icon_browser.gif"
+									label="Web Browser" />
+								<fisheye image="/img/icon_calendar.gif"
+									label="Calendar" />
+								<fisheye image="/img/icon_email.gif"
+									label="Email" />
+								<fisheye tooltiptext="aaaaaa"
+									image="/img/icon_texteditor.gif" label="Text Editor" />
+								<fisheye image="/img/icon_update.gif"
+									label="Software Update" onClick="alert(self.label)" />
+								<fisheye
+									image="/main/images/fisheye/icon1.gif" label="Users" />
+								<fisheye
+									image="/main/images/fisheye/icon1.gif" label="Users" />
+							</fisheyebar>
+						</row>
+						<row action="onmouseover:test(this);">
+							<fisheyebar style="margin:0px;"
+								attachEdge="middle" itemHeight="100" itemWidth="100"
+								itemMaxHeight="600" itemMaxWidth="600" labelEdge="top">
+								<fisheye
+									image="/main/images/fisheye/icon1.gif" label="Users" />
+								<fisheye
+									image="/main/images/fisheye/icon1.gif" label="Users" />
+								<fisheye
+									image="/main/images/fisheye/icon1.gif" label="Users" />
+								<fisheye
+									image="/main/images/fisheye/icon1.gif" label="Users" />
+								<fisheye
+									image="/main/images/fisheye/icon1.gif" label="Users" />
+								<fisheye
+									image="/main/images/fisheye/icon1.gif" label="Users" />
+								<fisheye
+									image="/main/images/fisheye/icon1.gif" label="Users" />
+								<fisheye
+									image="/main/images/fisheye/icon1.gif" label="Users" />
+							</fisheyebar>
+						</row>
+					</rows>
+				</grid>
+
+			</tabpanel>
+		</tabpanels>
+	</tabbox>
+</window>

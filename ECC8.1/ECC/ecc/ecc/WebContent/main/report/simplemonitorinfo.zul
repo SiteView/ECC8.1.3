@@ -1,0 +1,36 @@
+<window id="simplemonitorinfowindow"
+	title="${ requestScope.simpletitle}" border="normal" position="center"
+	apply="com.siteview.ecc.report.statisticalreport.SimpleMonitorInfoComposer"
+	closable="true" width="640px">
+	<vbox>
+		<separator width="1px" />
+		<groupbox>
+		<separator width="1px" />
+			<hbox align="center">
+				已定制的监测器:
+				<listbox rows="1" mold="select" id="allmonitors"
+					width="410px" forward="onSelect=onGetSimpleMonitorInfo">
+				</listbox>
+				<space width="10px"/>
+				<button width="74px" height="23px"
+								sclass="btnDefault" label="关闭"
+								onClick="simplemonitorinfowindow.detach()"/>
+			</hbox>
+		</groupbox>
+		<panel>
+			<panelchildren>
+				<listbox id="simplemonitorinfolistbox" mold="paging"
+					fixedLayout="true" rows="15" pageSize="15">
+					<listhead sizable="true">
+						<listheader label="时间段" />
+						<listheader label="最小值" />
+						<listheader label="平均值" />
+						<listheader label="最大值" />
+					</listhead>
+				</listbox>
+			</panelchildren>
+		</panel>
+
+	</vbox>
+
+</window>

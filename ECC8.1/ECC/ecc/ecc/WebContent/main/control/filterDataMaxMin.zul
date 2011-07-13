@@ -1,0 +1,37 @@
+<?page id="setCountPage" title="" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window id="setcount"
+		apply="com.siteview.ecc.controlpanel.SetFilterDataMaxMin"
+		title="设置要筛选数据的上限值 和 下限值  " border="normal" height="200px" width="400px">
+		<tabbox>
+			<tabs>
+				<tab label="设置" />
+			</tabs>
+			<tabpanels>
+				<tabpanel>
+					<hbox>
+						<vbox>
+							<label value="上限值"/>
+							<spinner id="max" style="margin-left:20px" step="1"
+						value="10" width="120px" constraint="min 0 max 1000000" />
+						</vbox>
+						<vbox>
+							<label value="下限值"/>
+							<spinner id="min" style="margin-left:20px" step="1"
+						value="10" width="120px" constraint="min 0 max 1000000" />
+						</vbox>
+					</hbox>
+				</tabpanel>
+			</tabpanels>
+		</tabbox>
+		<hbox style="margin-top:4px;border:none;margin-left:30px">
+			<button label="确定" id="okBtn" sclass="btnDefault"
+				width="74px" height="23px"
+				image="/main/images/button/ico/save_bt.gif">
+			</button>
+			<button label="取消" sclass="btnDefault" id="cancelBtn" 
+				onClick="setcount.detach()" width="74px" height="23px"
+				image="/main/images/button/ico/close_bt.gif" />
+		</hbox>
+	</window>
+</zk>

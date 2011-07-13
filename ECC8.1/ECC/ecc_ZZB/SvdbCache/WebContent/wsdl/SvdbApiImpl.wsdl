@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://svdb.siteview.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://svdb.siteview.com" xmlns:intf="http://svdb.siteview.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://svdb.siteview.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="appendRecord">
+    <complexType>
+     <sequence>
+      <element name="id" type="xsd:string"/>
+      <element name="text" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="appendRecordResponse">
+    <complexType/>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="appendRecordResponse">
+
+      <wsdl:part element="impl:appendRecordResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="appendRecordRequest">
+
+      <wsdl:part element="impl:appendRecord" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:portType name="SvdbApiImpl">
+
+      <wsdl:operation name="appendRecord">
+
+         <wsdl:input message="impl:appendRecordRequest" name="appendRecordRequest"/>
+
+         <wsdl:output message="impl:appendRecordResponse" name="appendRecordResponse"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="SvdbApiImplSoapBinding" type="impl:SvdbApiImpl">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="appendRecord">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="appendRecordRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="appendRecordResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="SvdbApiImplService">
+
+      <wsdl:port binding="impl:SvdbApiImplSoapBinding" name="SvdbApiImpl">
+
+         <wsdlsoap:address location="http://localhost/SvdbCache/services/SvdbApiImpl"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

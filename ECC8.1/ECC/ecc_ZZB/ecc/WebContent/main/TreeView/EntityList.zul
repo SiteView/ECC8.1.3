@@ -1,0 +1,7 @@
+<window apply="com.siteview.ecc.treeview.windows.EntityList" height="100%"
+	id="entityList" title="设备列表" border="normal"  closable="true">
+	<panel id="p2"  >
+		<panelchildren id="p1" style="margin:5px 5px 5px 5px;overflow-y:auto;">
+		</panelchildren>
+	</panel>
+</window>

@@ -1,0 +1,142 @@
+﻿<?page title="OperateLog" contentType="text/html;charset=UTF-8"?>
+<zk><borderlayout><center style="overflow:auto;border:none">
+<panel title="用户操作日志" collapsible="true"><panelchildren>
+	<window apply="com.siteview.ecc.log.TableDaoImpl" border="normal" style="overflow-y:auto;"
+		forward="onCreate=onInit">
+
+<zscript>
+ArrayList user= com.siteview.ecc.log.TableDaoImpl.getUserNameList();
+</zscript>
+
+				<panel id="userOperateLog" title="用户操作日志查询"
+					collapsible="true" style="overflow-y:auto;">
+					<panelchildren>
+
+						<grid oddRowSclass="none">
+							<columns>
+								<column label="" />
+								<column label="" />
+								<column label="" />
+								<column label="" />
+								<column label="" />
+							</columns>
+							<rows>
+							<row zclass="none" height="2px">
+							</row>							
+								<row zclass="none" height="23px" >
+									<label value="用户名称：" id ="userLink" width="50px" style="margin-left:10%" />
+									<listbox width="237px" mold="select"
+										 id="logUserName">
+										<listitem forEach="${user}"
+											label="${each}" value="${each}" />
+										<listitem label="全部"
+											id="cbiUser0" value="null" />
+									</listbox>
+									<space visible="true" width="5%"/>
+									<label value="操作对象：" width="50px" style="margin-left:10%" />
+									<listbox id="logOperateObj" mold="select"
+										width="237px" >
+										<listitem label="全部"
+											id="cbiObj25" value="null" />
+									</listbox>
+								</row>
+								<row zclass="none" height="23px">
+									<label value="开始时间：" width="50px" style="margin-left:10%"/>
+									<hbox align="center">
+										<datebox id="logBeginDate" 
+											lenient="true" buttonVisible="true" width="121px"/>
+										<timebox id="logBeginTime" width="70px" height="15px"/>
+									</hbox>
+									<space visible="true" width="5%"/>
+									<label value="结束时间：" width="50px" style="margin-left:10%"/>
+									<hbox align="center">
+										<datebox id="logEndDate"
+											lenient="true" buttonVisible="true" width="121px"/>
+										<timebox id="logEndTime" width="70px" height="15px"/>
+									</hbox>
+
+								</row>
+								<row zclass="none" height="23px">
+									<label value="操作类型：" width="50px" style="margin-left:10%"/>
+									<listbox width="237px" mold="select"
+										id="logOperateType">
+										<listitem label="登录"
+											id="cbiType0" value="0" />
+										<listitem label="添加"
+											id="cbiType1" value="1" />
+										<listitem label="编辑"
+											id="cbiType2" value="2" />
+										<listitem label="删除"
+											id="cbiType3" value="3" />
+										<listitem label="允许"
+											id="cbiType4" value="4" />
+										<listitem label="禁止"
+											id="cbiType5" value="5" />
+										<listitem label="批量添加"
+											id="cbiType6" value="6" />
+										<listitem label="快速添加"
+											id="cbiType7" value="7" />
+										<listitem label="粘贴"
+											id="cbiType8" value="8" />
+										<listitem label="事件确认"
+											id="cbiType9" value="9" />
+										<listitem label="全部"
+											id="cbiType10" value="null" />
+						
+
+									</listbox>
+									<space visible="true" width="5%"/>
+									<div>
+									<button sclass="btnDefault" image="/main/images/button/ico/query_bt.gif"
+										label="查  询"  width="74px" height="23px"
+										forward="onClick=onQueryByCondition" />
+									<button sclass="btnDefault"  height="23px"
+										label="查看所有日志" forward="onClick=onShowAllLog" />
+									
+									</div>
+									<div>
+									<button label="帮助" sclass="btnDefault" width="74px" height="23px" 
+										image="/main/images/action/help.gif" action="onclick:showHelp(34)"/>
+									</div>
+								</row>
+							<row zclass="none" height="2px">
+							</row>
+							</rows>
+						</grid>
+					</panelchildren>
+
+				</panel>
+				<separator/>
+				<panel id="OperateLog" title="用户操作日志"
+					collapsible="true">
+					<panelchildren>
+<zscript>
+       Comparator asc = new com.siteview.ecc.log.TimeItemComparator(true);        
+       Comparator dsc = new com.siteview.ecc.log.TimeItemComparator(false);
+</zscript>
+
+						<listbox id="logListbox" fixedLayout="true"
+							vflex="true"  mold="paging" multiple="false"  pageSize="17" use="com.siteview.ecc.log.UserOperateLogListbox">
+							<!-- 
+							<listhead sizable="true">
+								<listheader align="left" label="用户名称"
+									width="15%" sort="auto(userId)" />
+								<listheader align="left" label="操作对象"
+									width="15%" sort="auto(operateObjName)" />
+								<listheader align="left" label="操作类型"
+									width="15%" sort="auto(operateType)" />
+								<listheader align="left" label="操作时间"
+									width="18%" sortAscending="${asc}" sortDescending="${dsc}"/>
+								<listheader align="left" label="描述信息"
+									sort="auto(operateObjInfo)" />
+							</listhead>
+							 -->
+						</listbox>
+
+					</panelchildren>
+				</panel>
+	</window>
+</panelchildren>
+</panel>	
+</center></borderlayout>
+</zk>

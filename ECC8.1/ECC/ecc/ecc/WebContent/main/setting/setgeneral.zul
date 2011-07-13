@@ -1,0 +1,99 @@
+<zk>
+	<borderlayout>
+		<center style="overflow:auto;border:none">
+			<panel title="基本设置" collapsible="true">
+				<panelchildren>
+					<window id="generalSet"
+						apply="com.siteview.ecc.general.GeneralSet" border="normal"
+						style="overflow-y:auto;" forward="onCreate=onInit">
+
+						<panel title="基本设置详细信息" border="normal"
+							collapsible="true">
+							<panelchildren style="center">
+								<hbox style="margin-top:20px">
+									<checkbox id="ipCheckbox"
+										style="margin-left:5px" label="是否需要IP验证"
+										onCheck="applyButton.setDisabled(false)" />
+								</hbox>
+								<vbox align="end"
+									style="margin-left:10px">
+									<hbox style="margin-top:10px"
+										align="center">
+										<label value="允许访问IP地址：" />
+										<textbox id="ip"
+											onChanging="applyButton.setDisabled(false)" width="300px"
+											height="15px" tooltiptext="请输入允许访问的IP地址" />
+									</hbox>
+									<hbox style="margin-top:10px"
+										align="center">
+
+										<button sclass="btnDefault"
+											width="74px" height="23px" label="应   用" id="applyButton"
+											forward="onClick=onApply"
+											image="/main/images/button/ico/save_bt.gif" />
+
+										<button sclass="btnDefault"
+											height="23px" label="重新获得" forward="onClick=onRecover"
+											style="margin-left:10px"
+											image="/main/images/button/ico/reload_bt.gif"
+											id="recoverButton" />
+										<button label="帮助"
+											sclass="btnDefault" width="74px" height="23px"
+											image="/main/images/action/help.gif"
+											action="onclick:showHelp(27)" />
+									</hbox>
+									<panel></panel>
+								</vbox>
+							</panelchildren>
+						</panel>
+						<div id="setTuopuId" visible="false">
+						<panel title="拓扑设置" border="normal" 
+							collapsible="true">
+							<panelchildren id="pc"  apply="com.siteview.ecc.tuopu.tuopuset">
+								<listbox width="" >
+									<listhead>
+										<listheader width="60px" label="状态">
+										</listheader>
+										<listheader label="边框颜色">
+										</listheader>
+										<listheader label="边框宽度">
+										</listheader>
+									</listhead>
+									<listitem>
+										<listcell  label="错误"></listcell>
+										<listcell><hbox> <textbox id="c1"  readonly="true" ></textbox>  <toolbarbutton id="b1" height="18px"  label=". . ."/></hbox> </listcell>
+										<listcell ><spinner id="w1" readonly="true" constraint="min 0 max 6"/> </listcell>
+									</listitem>
+									<listitem>
+										<listcell label="危险">
+										</listcell>
+										<listcell><hbox> <textbox id="c2"  readonly="true" ></textbox> <toolbarbutton id="b2" label=". . ."/></hbox></listcell>
+										<listcell ><spinner id="w2" readonly="true" constraint="min 0 max 6"/> </listcell>
+									</listitem>
+									<listitem>
+										<listcell label="正常">
+										</listcell>
+										<listcell><hbox> <textbox id="c3"  readonly="true" ></textbox> <toolbarbutton id="b3"  label=". . ."/></hbox> </listcell>
+										<listcell ><spinner id="w3" readonly="true" constraint="min 0 max 6"/> </listcell>
+									</listitem>
+								</listbox>
+								<hbox align="center"><space width="150px"></space> 	<button sclass="btnDefault"
+											width="74px" height="23px" label="应   用" id="btntuopu"
+											image="/main/images/button/ico/save_bt.gif" />  <button sclass="btnDefault"
+											width="74px" height="23px" label="预览" id="btnlook"
+											image="/main/images/button/ico/query_bt.gif" /> 
+											<button sclass="btnDefault"
+											width="74px" height="23px" label="恢复默认" id="btnreturn"
+											image="/main/images/button/ico/reload_bt.gif" /> 
+											</hbox>
+							</panelchildren>
+						</panel>
+						</div>
+					</window>
+				</panelchildren>
+			</panel>
+		</center>
+	</borderlayout>
+</zk>
+
+

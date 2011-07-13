@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?page id="setMail"?>
+<zk>
+<borderlayout>
+	<center style="overflow:auto;border:none">
+	
+<panel title="邮件设置" collapsible="true">	
+<panelchildren>
+<window id="setMail" apply="com.siteview.ecc.email.SetMail"  border="normal" style="overflow-y:auto;"
+	forward="onCreate=onInit" >
+			<div height="27px" >						
+				<button label="添加" sclass="btnDefault" width="74px" height="23px" image="/main/images/button/ico/add_bt.gif">
+					<attribute name="onClick">{
+							final Window win = (Window) Executions.createComponents(
+							"/main/setting/addEmailSet.zul", null, null);							
+							win.doModal();									
+							}</attribute>
+				</button><space width="1px" />
+				<button label="删除" sclass="btnDefault" width="74px" height="23px" image="/main/images/button/ico/delete_bt.gif" forward="onClick=onDel" id="delButton" /><space width="1px"/>
+				<button label="允许" sclass="btnDefault" width="74px" height="23px" image="/main/images/button/ico/enable_bt.gif" forward="onClick=onPermiter" id="permiterButton" /><space width="1px"/>
+				<button label="禁止" sclass="btnDefault" width="74px" height="23px" image="/main/images/button/ico/disable_bt.gif" forward="onClick=onHold" id="holdButton" /><space width="1px"/>				
+				<button label="刷新" sclass="btnDefault" width="74px" height="23px" image="/main/images/button/ico/ref_bt.gif" forward="onClick=onMessageRefrash" id="refreshButton" /><space width="1px"/>
+				<button label="模板设置" sclass="btnDefault" id="templateSetBtn"
+					height="23px" image="/main/images/button/ico/template_bt.gif">
+					<attribute name="onClick">{
+							final Window win = (Window) Executions.createComponents(
+							"/main/setting/template/emailTemplateSet.zul", null, null);
+							win.doModal();									
+							}</attribute>
+				</button>
+				<button label="帮助" sclass="btnDefault"
+							width="74px" height="23px" 
+							image="/main/images/action/help.gif" action="onclick:showHelp(28)"/>
+			</div>
+	
+			<panel title="邮件设置详细信息" border="normal"  
+				collapsible="true">
+				<panelchildren>
+
+					<listbox fixedLayout="true" mold="paging" 
+						id="listbox_data" forward="onSelect=onShowMoreImfo"
+						multiple="true" checkmark="true" vflex="true" rows="10" pageSize="10" 
+						use="com.siteview.ecc.email.EmailModelListbox">
+					<!-- 
+						<listhead sizable="true">
+							<listheader align="left" label="名称" 
+								width="35%" sort="auto" />
+							<listheader align="left" label="状态"
+								width="15%" sort="auto" />
+							<listheader align="left" label="电子邮件地址"
+								width="35%" sort="auto" />
+							<listheader align="left" label="编辑" />
+						</listhead>
+ 					-->
+					</listbox>
+
+				</panelchildren>
+			</panel>
+			<separator/>
+			<panel title="基础设置" border="normal" id="setPanel" 
+				collapsible="true">
+				<panelchildren>
+
+					<vbox align="right" style="margin-left:10px">
+						<hbox style="margin-top:20px" align="center">
+							<label value="发送服务器SMTP&#160;：" />
+							<textbox id="strMailServer" height="15px" onChanging='applyButton.setDisabled(false)' width="200px" tooltiptext="填写发送邮件使用的服务器域名或IP地址"/>
+						</hbox>
+						<hbox align="center">
+							<label value="发送方Email地址：" />
+							<textbox id="strMailFrom" height="15px" onChanging='applyButton.setDisabled(false)' width="200px" tooltiptext="请输入发送方邮件地址，此地址是报警发送时的发件人地址"/>
+						</hbox>
+						<hbox align="center">
+							<label value="备份发送服务器 	：" />
+							<textbox id="strBackupServer" height="15px" onChanging='applyButton.setDisabled(false)' width="200px" tooltiptext="请输入备份服务器的email地址"/>
+						</hbox>
+						<hbox align="center">
+							<label value="身份验证用户名	：" />
+							<textbox id="strUser" height="15px" onChanging='applyButton.setDisabled(false)' width="200px" tooltiptext="如果您的发件服务器要求身份验证，请在此输入身份验证用户名"/>
+						</hbox>
+						<hbox align="center">
+							<label value="身份验证密码 &#160;&#160;：" />
+							<textbox id="strPassword" type="password" height="15px" onChanging='applyButton.setDisabled(false)' width="200px" tooltiptext="如果您的发件服务器要求身份验证，请在此输入身份验证密码"/>
+						</hbox>
+						<hbox style="margin-top:10px">
+							<button sclass="btnDefault" width="74px"
+								height="23px" id="applyButton" label="应  用"
+								forward="onClick=onApply"
+								image="/main/images/button/ico/save_bt.gif" />
+							<button sclass="btnDefault" height="23px"
+								label="重新获得" forward="onClick=onRefresh"
+								style="margin-left:10px"
+								image="/main/images/button/ico/reload_bt.gif" />
+							<button sclass="btnDefault" width="74px"
+								height="23px"  label="测  试"
+								style="margin-left:10px"
+								image="/main/images/button/ico/test_bt.gif" id="testButton" forward="onClick=onTestButton"/>
+						</hbox>
+
+					</vbox>
+					</panelchildren>
+				</panel>
+</window>
+</panelchildren>
+</panel>	
+</center>
+</borderlayout>
+</zk>

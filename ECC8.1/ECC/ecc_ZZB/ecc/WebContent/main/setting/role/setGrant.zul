@@ -1,0 +1,46 @@
+<?page title="选中用户授权" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window title="选中用户授权" border="normal" id="setgrant"
+		apply="com.siteview.ecc.userRole.GrantEdit" width="500px"
+		forward="onCreate=onInit">
+		<grid>
+			<rows>
+				<row zclass="none" height="23px">
+					<label id="ruleAddres" value="授权中心地址："></label>
+					<combobox width="230px" height="15px"
+						id="ruleaddressOption" readonly="true"
+						use="com.siteview.ecc.userRole.RuleaddressOption"
+						tooltiptext="用户各个地区中心地址配对" />
+				</row>
+				<row zclass="none" height="23px" > 
+				<checkbox id="manage" label="省管理员"	 tooltiptext="勾选表示表示选中的用户是省管理员,不选表示市管理员"/>		
+				<checkbox id="manager" label="审计员"	 tooltiptext="勾选表示表示选中的用户是省审计员,不选表示市管理员"/>	
+									
+				</row>	
+				<row zclass="none" height="23px">
+					<label
+						value="&#160;&#160;设&#160;备&#160;数*：&#160;&#160;" />
+					<textbox id="entityNumber" height="15px"
+						width="230px" tooltiptext="每个省(市)的设备数，不能为空" />
+				</row>
+				<row zclass="none" height="23px">
+					<label
+						value="&#160;监&#160;测&#160;点&#160;数*：&#160;&#160;" />
+					<textbox id="monitorNumber" height="15px"
+						width="230px" tooltiptext="每个省(市)的检测器点数，不能为空" />
+				</row>
+			</rows>
+		</grid>
+		<vbox style="margin-left:170px">
+			<hbox style="margin-top:10px;margin-bottom:10px">
+				<button id="editButton" label="保存" sclass="btnDefault"
+					width="74px" height="23px"
+					image="/main/images/button/ico/save_bt.gif"
+					forward="onClick=onSave" />
+				<button label="取消" width="74px" height="23px"
+					image="/main/images/button/ico/close_bt.gif" sclass="btnDefault"
+					onClick="setgrant.detach()" />
+			</hbox>
+		</vbox>
+	</window>
+</zk>

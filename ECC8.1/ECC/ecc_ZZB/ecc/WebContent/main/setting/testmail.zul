@@ -1,0 +1,32 @@
+<?page title="Test Mail" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window id="testMailWin" title="邮件测试" border="normal" mode="popup"
+		width="300px" closable="true" height="290px"
+		apply="com.siteview.ecc.email.SendTestImpl">
+
+
+		<groupbox>
+			<caption label="email测试" />
+			<vbox style="margin-left:10px">
+				<label value="邮件接收地址：(填写多个地址时以逗号分开)" />
+				<textbox id="mailTo" width="220px" height="15px"/>
+				<label value="邮件内容：" />
+				<textbox id="content" width="220px" multiline="true"
+					height="115px" style="margin-bottom:10px" />
+			</vbox>
+
+		</groupbox>
+
+			<hbox  style="margin-top:5px;"
+				align="center"><hbox width="50px">
+				<label id="messageLabel"  multiline="false" /></hbox>
+				<hbox  style="margin-left:20%;">
+					<button sclass="btnDefault" id="testMailButton" width="74px" height="23px"
+						label="确定" forward="onClick=onApply" />
+					<button sclass="btnDefault" label="关闭" width="74px" height="23px"
+						onClick="testMailWin.detach()" />
+				</hbox>
+			</hbox>
+	
+	</window>
+</zk>

@@ -1,0 +1,108 @@
+<?page title="template" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window title="Web短信模板设置" border="normal" id="template"
+		contentStyle="overflow:auto" width="502px" closable="true"
+		height="280px"  apply="com.siteview.ecc.message.WebTemplateSet" forward="onCreate=onInit">
+		<vbox>
+		  <hbox style="margin-top:10px;margin-left:10px;;margin-right:10px;">
+			<groupbox   closable="false" >
+		 	 <caption  label="Web模板列表"/>
+				<listbox id="templateList"  rows="8" style="margin-top:10px">
+					<listhead sizable="true">
+						<listheader label="" sort="auto" />
+						<listheader label="" sort="auto" />
+					</listhead>
+					<listitem>
+						<listcell label="" />
+						<listcell label="" />
+					</listitem>
+					<listitem>
+						<listcell label="" />
+						<listcell label="" />
+					</listitem>
+				</listbox>
+			</groupbox>
+
+			<groupbox    closable="false">
+		 		 <caption  label="Web模板设置"/>
+						<hbox  style="margin-top:10px" align="start">
+							<vbox style="margin-left:6px"
+								align="start">
+								
+									<label value="Web发送模板*：" id="nameLabel" />
+									<textbox id="messageTitle"
+										width="230px"  rows="3" value=""/>
+								
+									<label value="短信内容：" id="contentLabel" />
+									<textbox id="contentTextbox"
+										 width="230px"  height="50px" rows="5" value="警报来自SiteView。监测器:@AllGroup@:@Group@:@monitor@ 状态: @Status@  时间: @Time@"/>
+								
+									<label value="模板标题*："
+										id="templateLabel" />
+									<textbox id="templateTextbox"
+										width="230px" height="15px" />
+								
+							</vbox>
+							<vbox style="margin-left:10px">
+								<button label="添加" forward="onClick=onAdd" sclass="btnDefault"
+							width="74px" height="23px"
+							image="/main/images/button/ico/add_bt.gif"
+									id="addButton" />
+									
+								<button label="删除" forward="onClick=onDel" width="74px" height="23px" sclass="btnDefault"
+							image="/main/images/button/ico/delete_bt.gif"
+									id="delButton" />									
+								<button label="更新" forward="onClick=onEdit" sclass="btnDefault"
+							width="74px" height="23px"
+							image="/main/images/button/ico/ref_bt.gif"
+									id="refreshButton" />
+
+								<button label="  关  闭  " sclass="btnDefault" width="74px" height="23px" image="/main/images/button/ico/close_bt.gif" 
+									onClick="template.detach()" />
+
+								<button label="系统变量说明" sclass="btnDefault" width="74px" height="23px">
+									<attribute name="onClick">{
+									if(!showMore.isVisible()){
+										template.setHeight("505px");				
+										showMore.setVisible(true);
+										self.setLabel("隐   藏");	 
+									}
+									else{
+									template.setHeight("275px");
+									showMore.setVisible(false);									
+									self.setLabel("系统变量说明");
+									}
+									
+									}</attribute>
+								</button>
+							</vbox>
+						</hbox>
+				</groupbox>
+				</hbox>
+		
+
+				<groupbox  closable="false" id="showMore" visible="false" style="margin-left:10px;margin-right:10px;margin-bottom:10px">
+					<caption label="说明列表" />
+					<label id="intro"  
+								height="220px" width="485px" multiline="true">
+								<attribute name="value">注意：
+系统模板不可以删除和修改你可以拷贝参数，请不要随意输入“@”和两个“@”间的参数变量,可以参考系统模板进行添加。
+Web模板参数变量如下：
+@UserName@ : 表示用户名  @Pwd@ : 表示密码 @Phone@ : 表示电话号码 @Content@ ： 短信表示内容 
+短信内容参数如下：
+@FullPathGroup@ :监测点所在设备所在组的全部路径名称
+@Status@监测器点的状态
+@AllGroup@ :监测点所在设备所在组名称
+@Group@监测点所在组下
+@Device@ :监测点所在设备的名称
+@monitor@ :监测点名称
+@MonitorDes@ :监测点报警描述，在监测点高级设置中设置
+@Time@ : 报警时间
+@Status@ :监测点状态 : 危险、正常、错误
+@Log@ :日志内容
+</attribute>
+							</label>
+				</groupbox>
+		</vbox>
+	</window>
+</zk>

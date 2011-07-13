@@ -1,0 +1,79 @@
+<?page id="MonitorReport" contentType="text/html;charset=UTF-8"?>
+<zk>
+		<borderlayout id="WMonitorInfo" apply="com.siteview.ecc.controlpanel.MonitorReport" >
+			<center border="none" >
+				<borderlayout>
+					<center border="none" id="imagetable">
+					
+					</center>
+					<east size="350px" splittable="false" style="background:#F0FAFF;border-style:outset;border-width:0px">  
+						<vbox align="left" width="98%" style="margin-left:10px;margin-right:10px;">
+							<button id="btndetail"  sclass="btnDefault" label="详细信息"></button>
+							<groupbox width="320px"  >
+								<caption label="数据记录"></caption>
+								<grid>
+									<columns>
+										<column width="20%" label="" />
+										<column width="30%" label="" />
+										<column width="20%" label="" />
+										<column label="" />
+									</columns>
+									<rows>
+										<row>
+											<label value="正常：" />
+											<label id="lbok" />
+											<label value="危险：" />
+											<label id="lbdanger"
+												value="" />
+										</row>
+										<row>
+											<label value="错误：" />
+											<label id="lberror"
+												value="" />
+											<label value="禁止：" />
+											<label id="lbdisable" />
+										</row>
+									</rows>
+								</grid>
+								<grid>
+									<columns>
+										<column width="20%" label=""></column>
+										<column label=""></column>
+									</columns>
+									<rows>
+										<row>
+											<label value="阀值：" />
+											<label id="lbfz" value="" />
+										</row>
+										<row>
+											<label value="时间段：" />
+											<label />
+										</row>
+										<row>
+											<label value="从" />
+											<label id="datefrom"
+												value="" />
+										</row>
+										<row>
+											<label value="到" />
+											<label id="dateto" value="" />
+										</row>
+									</rows>
+								</grid>
+							</groupbox>
+						</vbox>
+					</east>
+				</borderlayout>
+			</center>
+			<south size="60px" autoscroll="true" border="none">
+				<listbox id="listtj" fixedLayout="true"  >
+					<listhead>
+						<listheader label="返回值" sort="none"></listheader>
+						<listheader label="最大值" sort="none"></listheader>
+						<listheader label="平均值" sort="none"></listheader>
+						<listheader label="最新值" sort="none"></listheader>
+					</listhead>
+				</listbox>
+			</south>
+		</borderlayout>
+</zk>
