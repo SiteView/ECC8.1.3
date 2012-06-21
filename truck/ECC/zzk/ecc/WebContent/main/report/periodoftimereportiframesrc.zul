@@ -1,0 +1,11 @@
+<?page title="" contentType="text/html;charset=UTF-8"?>
+<zk>
+
+	<window id="periodoftimewidow" border="normal" apply="com.siteview.ecc.report.PeriodofTimeReport">
+		<panel collapsible="true">
+			<panelchildren>
+				<vbox id="maptable" align="start"></vbox>
+			</panelchildren>
+		</panel>
+	</window>
+</zk>

@@ -1,0 +1,13 @@
+<?page title="简单报表" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window id="wreport" height="100%" apply="com.siteview.ecc.simplereport.report"
+		title="简单报表" border="normal">
+		请选择文件类型：
+		<listbox id="format" mold="select" >
+		<listitem label="PDF" value="pdf" />
+		<listitem label="HTML" value="html" selected="true"  />
+		<listitem label="Excel" value="xls" />
+	</listbox>
+		<jasperreport  height="100%" id="jreport"></jasperreport>
+	</window>
+</zk>

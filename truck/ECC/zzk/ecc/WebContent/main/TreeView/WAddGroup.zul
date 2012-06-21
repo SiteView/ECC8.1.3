@@ -1,0 +1,114 @@
+<window id="WAddGroup" title="添加组" border="normal" width="600px"
+	position="center" apply="com.siteview.ecc.treeview.windows.AddGroup"
+	closable="true">
+	<vbox width="100%" >
+		<div style="float:right;margin-right:10px">
+			<image id="btnhelp" tooltiptext="展示输入框的辅助提示信息"
+				src="/main/images/btnhelp.gif"
+				hover="/main/images/btnhelp_hover.gif"
+				use="com.siteview.actions.HelpImageButton" />
+		</div>
+	</vbox>
+	<panel id="p1">
+		<panelchildren
+			style="margin:5px 5px 5px 5px;overflow-y:auto;max-height:500px;">
+			<panel title="基础信息 " collapsible="true">
+				<panelchildren>
+					<grid>
+						<columns>
+							<column width="20%" label=""></column>
+							<column label=""></column>
+						</columns>
+						<rows>
+							<row>
+								<label value="组名称*:"></label>
+								<box>
+									<textbox id="tbname" width="350px"
+										height="15px" value="">
+									</textbox>
+									<label id="lbp1" visible="false"
+										sclass="helplabel" value="组的显示名称">
+									</label>
+								</box>
+							</row>
+						</rows>
+					</grid>
+				</panelchildren>
+			</panel>
+			<panel title="高级选项" collapsible="true">
+				<panelchildren>
+					<grid>
+						<columns>
+							<column width="20%" label=""></column>
+							<column label=""></column>
+						</columns>
+						<rows>
+							<row>
+								<label value="描述:"></label>
+								<box>
+									<textbox id="tbDescription" rows="6"
+										width="350px" multiline="true">
+									</textbox>
+									<label id="lbp2" visible="false"
+										sclass="helplabel" value="  请输入附加的描述信息，此描述信息将显示在基础信息表内">
+									</label>
+								</box>
+							</row>
+							<row>
+								<label value="依赖:"></label>
+								<box>
+									<hbox>
+										<textbox id="tbDepends"
+											width="320px" height="15px" readonly="true">
+										</textbox>
+										<button id="btnDepends"
+											width="25px" height="15px" label="..." />
+									</hbox>
+									<label id="lbp3" visible="false"
+										sclass="helplabel"
+										value="选择一个依靠监测或监测组，则本组内各监测是否运行将依靠于选定监测或监测组的状态">
+									</label>
+								</box>
+							</row>
+							<row>
+								<label value="依靠条件:"></label>
+								<box>
+									<radiogroup>
+										<radio id="rdGood" label="正常"></radio>
+										<radio id="rdWarning"
+											label="危险">
+										</radio>
+										<radio id="rdError" label="错误"
+											checked="true">
+										</radio>
+									</radiogroup>
+									<label id="lbp4" visible="false"
+										style="margin-left:8px;" sclass="helplabel"
+										value="如果选择正常，则只有当依靠监测的状态是正常时本组内各监测才会运行" />
+									<label id="lbp5" visible="false"
+										sclass="helplabel" value="如果选择危险，则只有当依靠监测的状态是危险时本组内各监测才会运行" />
+									<label id="lbp6" visible="false"
+										sclass="helplabel" value="如果选择错误，则只有当依靠监测的状态是错误时本组内各监测才会运行" />
+
+								</box>
+							</row>
+						</rows>
+					</grid>
+				</panelchildren>
+			</panel>
+		</panelchildren>
+	</panel>
+	<div style="float:right;margin-bottom:12px;margin-right:12px; ">
+		<hbox>
+
+			<button id="btnok" tooltiptext="保存对当前组的修改"
+				sclass="btnDefault" width="74px" height="23px"
+				image="/main/images/button/ico/save_bt.gif" label="保存">
+			</button>
+			<button id="btncancel" sclass="btnDefault" width="74px"
+				tooltiptext="放弃所做的编辑并关闭窗体" height="23px"
+				image="/main/images/button/ico/close_bt.gif" label="取消">
+			</button>
+		</hbox>
+	</div>
+</window>

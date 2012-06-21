@@ -1,0 +1,7 @@
+<zk>
+欢迎使用SiteView Ecc IT运维管理系统
+<zscript>
+c=desktop.getPage("eccmain").getFellow("tree").getItemCount();
+</zscript>
+<label value="${c}"/>
+</zk>

@@ -1,0 +1,83 @@
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/svDCM/!svn/ver/4418/trunk/zk.ecc_zhongzubu/ecc/src/com/siteview/base/data
+END
+IniFile.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/src/com/siteview/base/data/IniFile.java
+END
+QueryInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/src/com/siteview/base/data/QueryInfo.java
+END
+VirtualManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/src/com/siteview/base/data/VirtualManager.java
+END
+VirtualView.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/svDCM/!svn/ver/4195/trunk/zk.ecc_zhongzubu/ecc/src/com/siteview/base/data/VirtualView.java
+END
+UserEdit.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/src/com/siteview/base/data/UserEdit.java
+END
+IniFileKeyValue.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/src/com/siteview/base/data/IniFileKeyValue.java
+END
+VirtualItem.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/src/com/siteview/base/data/VirtualItem.java
+END
+ReportManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/src/com/siteview/base/data/ReportManager.java
+END
+ReportDate.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/svDCM/!svn/ver/4418/trunk/zk.ecc_zhongzubu/ecc/src/com/siteview/base/data/ReportDate.java
+END
+UserManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/src/com/siteview/base/data/UserManager.java
+END
+UserRightId.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/src/com/siteview/base/data/UserRightId.java
+END
+ZulItem.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/src/com/siteview/base/data/ZulItem.java
+END
+Report.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/src/com/siteview/base/data/Report.java
+END

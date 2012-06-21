@@ -1,0 +1,37 @@
+<?page title="license" contentType="text/html;charset=UTF-8"?>
+<zk>
+<!--这项功能无法实现，不用做了 tabbox>
+	<tabs>
+		<tab label="备份与恢复" />
+		
+	
+	</tabs>
+	<tabpanels>
+		<tabpanel>
+         	<panel id="dataBackup" title="备份数据" collapsible="true">
+         		<panelchildren style="margin-top:1%">
+		       <vbox style="margin-lift:3%" width="100%">               <hbox>备份名称     <textbox /></hbox>
+		         <hbox style="margin-top:1%" align="">
+		         <button sclass="btnDefault" label="备份配置文件" onClick=""/>
+		         <button sclass="btnDefault" label="备份监测数据" onClick="" />
+		         </hbox> 
+		         </vbox>            
+				</panelchildren>
+				
+			</panel>
+			<panel id="dataRecover" title="恢复数据" collapsible="true">
+         		<panelchildren>
+		            <image id="img"/>
+				数据文件 	:
+					<fileupload onUpload="img.setContent(event.media)"/>
+
+					<vbox id="pics" />
+				</panelchildren>
+			</panel>
+		</tabpanel>
+		
+	</tabpanels>
+</tabbox-->
+
+
+</zk>

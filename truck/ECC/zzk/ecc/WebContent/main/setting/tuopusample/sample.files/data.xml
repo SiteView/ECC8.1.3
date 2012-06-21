@@ -1,0 +1,949 @@
+<?xml version="1.0" encoding="utf-8"?>
+<VisioDocument>
+	<DocumentProperties>
+		<Title></Title>
+		<HyperlinkBase href=""></HyperlinkBase>
+	</DocumentProperties>
+	<Pages>
+		<Page ID="4" Name="背景" NameU="背景">
+			<Layer IX="0">
+				<Name>Network</Name>
+				<NameUniv>Network</NameUniv>
+				<Visible>1</Visible>
+			</Layer>
+			<Shapes>
+				<Shape ID="193" UniqueID="{94725CE8-D479-4CF1-8E13-A42954D16884}" Name="框" NameU="Box" Master="62">
+					<XForm>
+						<PinX Unit="MM">5.905511811023620</PinX>
+						<PinY Unit="MM">4.133858267716537</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="173" UniqueID="{31312662-557A-4311-B3A4-42DE77823D95}" Name="无背景" NameU="Background none" Master="10">
+					<XForm>
+						<PinX Unit="MM">5.846456692913385</PinX>
+						<PinY Unit="MM">4.133858267716536</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="174" UniqueID="{D45CBB61-290F-4419-BAD3-401F678062D9}" Name="无背景.174" NameU="Background none.174" Master="10">
+					<XForm>
+						<PinX Unit="MM">5.846456692913385</PinX>
+						<PinY Unit="MM">4.133858267716536</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="175" UniqueID="{B4F01630-3D62-47B7-84AE-943BF24488AA}" Name="无背景.175" NameU="Background none.175" Master="10">
+					<XForm>
+						<PinX Unit="MM">5.846456692913385</PinX>
+						<PinY Unit="MM">4.133858267716536</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="833" UniqueID="{5EE40DF8-1EF0-48F9-934E-C46F21D04F84}" Name="键盘托架.833" NameU="Keyboard tray.833" Master="39">
+					<XForm>
+						<PinX Unit="CM">7.402299506087688</PinX>
+						<PinY Unit="MM">4.636220472440945</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+					<Prop ID="1" Name="UCount" NameU="UCount">
+						<Value Unit="STR">1</Value>
+						<Label>单元高度</Label>
+					</Prop>
+					<Prop ID="2" Name="Height" NameU="Height">
+						<Value Unit="STR">44.45 mm</Value>
+						<Label>高</Label>
+					</Prop>
+					<Prop ID="9" Name="AssetNumber" NameU="AssetNumber">
+						<Value></Value>
+						<Label>资产号</Label>
+					</Prop>
+					<Prop ID="10" Name="SerialNumber" NameU="SerialNumber">
+						<Value></Value>
+						<Label>序列号</Label>
+					</Prop>
+					<Prop ID="11" Name="Location" NameU="Location">
+						<Value></Value>
+						<Label>位置</Label>
+					</Prop>
+					<Prop ID="12" Name="Building" NameU="Building">
+						<Value></Value>
+						<Label>建筑物</Label>
+					</Prop>
+					<Prop ID="13" Name="Room" NameU="Room">
+						<Value></Value>
+						<Label>房间</Label>
+					</Prop>
+					<Prop ID="5" Name="Manufacturer" NameU="Manufacturer">
+						<Value></Value>
+						<Label>制造商</Label>
+					</Prop>
+					<Prop ID="6" Name="ProductNumber" NameU="ProductNumber">
+						<Value></Value>
+						<Label>产品编号</Label>
+					</Prop>
+					<Prop ID="7" Name="PartNumber" NameU="PartNumber">
+						<Value></Value>
+						<Label>部件号</Label>
+					</Prop>
+					<Prop ID="8" Name="ProductDescription" NameU="ProductDescription">
+						<Value></Value>
+						<Label>产品说明</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="1123" UniqueID="{73E064A8-66DD-4BD9-8D80-A96BF6C2AB8D}" Name="服务器.1123" NameU="Server.1123" Master="27">
+					<XForm>
+						<PinX Unit="MM">7.402299506087688</PinX>
+						<PinY Unit="MM">3.149606299212598</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									<HLURL:Hyperlink ID="1">
+										<HLURL:Description></HLURL:Description>
+										<HLURL:Address>SV_IP:127.0.0.3+color</HLURL:Address>
+										<HLURL:SubAddress></HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+										<HLURL:AbsoluteURL>SV_IP:127.0.0.3+color</HLURL:AbsoluteURL>
+									</HLURL:Hyperlink>
+									<HLURL:Hyperlink ID="2">
+										<HLURL:Description>SiteView</HLURL:Description>
+										<HLURL:Address>http://www.siteview.com</HLURL:Address>
+										<HLURL:SubAddress></HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+										<HLURL:AbsoluteURL>http://www.siteview.com</HLURL:AbsoluteURL>
+									</HLURL:Hyperlink>
+								</HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+					<Prop ID="1" Name="SV_IP" NameU="SV_IP">
+						<Value Unit="STR">127.0.0.3</Value>
+						<Label>SV_IP</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="1147" UniqueID="{4CEA625B-B0B5-48EB-B7CE-96782DFDF92A}" Name="服务器.1147" NameU="Server.1147" Master="27">
+					<XForm>
+						<PinX Unit="MM">7.402299506087688</PinX>
+						<PinY Unit="MM">2.598425196850394</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="856" UniqueID="{020A5937-D61A-4CA4-935A-BFD2BAB91B29}" Name="服务器.856" NameU="Server.856" Master="27">
+					<XForm>
+						<PinX Unit="MM">7.402299506087688</PinX>
+						<PinY Unit="MM">6.364073860126597</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									<HLURL:Hyperlink ID="1">
+										<HLURL:Description></HLURL:Description>
+										<HLURL:Address>SV_IP:192.168.1.14+color</HLURL:Address>
+										<HLURL:SubAddress></HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+										<HLURL:AbsoluteURL>SV_IP:192.168.1.14+color</HLURL:AbsoluteURL>
+									</HLURL:Hyperlink>
+									<HLURL:Hyperlink ID="2">
+										<HLURL:Description>SiteView</HLURL:Description>
+										<HLURL:Address>http://www.siteview.com</HLURL:Address>
+										<HLURL:SubAddress></HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+										<HLURL:AbsoluteURL>http://www.siteview.com</HLURL:AbsoluteURL>
+									</HLURL:Hyperlink>
+								</HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+					<Prop ID="1" Name="SV_IP" NameU="SV_IP">
+						<Value Unit="STR">192.168.1.14</Value>
+						<Label>SV_IP</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="54" UniqueID="{90C7844E-E01E-466C-9C92-2D4C5948E8C9}" Name="Sheet.54" NameU="Sheet.54">
+					<Text>57 U</Text>
+					<XForm>
+						<PinX Unit="MM">2.116866435221548</PinX>
+						<PinY Unit="MM">6.888237533453294</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="118" UniqueID="{E2B3ACA4-D6DC-4EC4-8582-09786BF80CDB}" Name="显示器.118" NameU="Monitor.118" Master="40">
+					<XForm>
+						<PinX Unit="MM">7.381889763779528</PinX>
+						<PinY Unit="MM">4.724409448818897</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+					<Prop ID="8" Name="AssetNumber" NameU="AssetNumber">
+						<Value></Value>
+						<Label>资产号</Label>
+					</Prop>
+					<Prop ID="9" Name="SerialNumber" NameU="SerialNumber">
+						<Value></Value>
+						<Label>序列号</Label>
+					</Prop>
+					<Prop ID="10" Name="Location" NameU="Location">
+						<Value></Value>
+						<Label>位置</Label>
+					</Prop>
+					<Prop ID="11" Name="Building" NameU="Building">
+						<Value></Value>
+						<Label>建筑物</Label>
+					</Prop>
+					<Prop ID="12" Name="Room" NameU="Room">
+						<Value></Value>
+						<Label>房间</Label>
+					</Prop>
+					<Prop ID="4" Name="Manufacturer" NameU="Manufacturer">
+						<Value></Value>
+						<Label>制造商</Label>
+					</Prop>
+					<Prop ID="5" Name="ProductNumber" NameU="ProductNumber">
+						<Value></Value>
+						<Label>产品编号</Label>
+					</Prop>
+					<Prop ID="6" Name="PartNumber" NameU="PartNumber">
+						<Value></Value>
+						<Label>部件号</Label>
+					</Prop>
+					<Prop ID="7" Name="ProductDescription" NameU="ProductDescription">
+						<Value></Value>
+						<Label>产品说明</Label>
+					</Prop>
+					<Prop ID="21" Name="Power" NameU="Power">
+						<Value></Value>
+						<Label>电源使用</Label>
+					</Prop>
+					<Prop ID="13" Name="NetworkName" NameU="NetworkName">
+						<Value></Value>
+						<Label>网络名称</Label>
+					</Prop>
+					<Prop ID="14" Name="IPAddress" NameU="IPAddress">
+						<Value></Value>
+						<Label>IP 地址</Label>
+					</Prop>
+					<Prop ID="15" Name="SubnetMask" NameU="SubnetMask">
+						<Value></Value>
+						<Label>子网掩码</Label>
+					</Prop>
+					<Prop ID="16" Name="AdminInterface" NameU="AdminInterface">
+						<Value></Value>
+						<Label>管理接口</Label>
+					</Prop>
+					<Prop ID="17" Name="NumberOfPorts" NameU="NumberOfPorts">
+						<Value></Value>
+						<Label>端口数目</Label>
+					</Prop>
+					<Prop ID="18" Name="MACAddress" NameU="MACAddress">
+						<Value></Value>
+						<Label>MAC 地址</Label>
+					</Prop>
+					<Prop ID="19" Name="CommunityString" NameU="CommunityString">
+						<Value></Value>
+						<Label>团体字符串</Label>
+					</Prop>
+					<Prop ID="20" Name="NetworkDescription" NameU="NetworkDescription">
+						<Value></Value>
+						<Label>网络说明</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="74" UniqueID="{77A507D7-25F6-4BD3-B45C-07A2325EC613}" Name="架.74" NameU="Shelf.74" Master="42">
+					<XForm>
+						<PinX Unit="CM">7.402299506087688</PinX>
+						<PinY Unit="MM">2.273720472440945</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+					<Prop ID="1" Name="UCount" NameU="UCount">
+						<Value Unit="STR">1</Value>
+						<Label>单元高度</Label>
+					</Prop>
+					<Prop ID="2" Name="Height" NameU="Height">
+						<Value Unit="STR">24.45 mm</Value>
+						<Label>高</Label>
+					</Prop>
+					<Prop ID="9" Name="AssetNumber" NameU="AssetNumber">
+						<Value></Value>
+						<Label>资产号</Label>
+					</Prop>
+					<Prop ID="10" Name="SerialNumber" NameU="SerialNumber">
+						<Value></Value>
+						<Label>序列号</Label>
+					</Prop>
+					<Prop ID="11" Name="Location" NameU="Location">
+						<Value></Value>
+						<Label>位置</Label>
+					</Prop>
+					<Prop ID="12" Name="Building" NameU="Building">
+						<Value></Value>
+						<Label>建筑物</Label>
+					</Prop>
+					<Prop ID="13" Name="Room" NameU="Room">
+						<Value></Value>
+						<Label>房间</Label>
+					</Prop>
+					<Prop ID="5" Name="Manufacturer" NameU="Manufacturer">
+						<Value></Value>
+						<Label>制造商</Label>
+					</Prop>
+					<Prop ID="6" Name="ProductNumber" NameU="ProductNumber">
+						<Value></Value>
+						<Label>产品编号</Label>
+					</Prop>
+					<Prop ID="7" Name="PartNumber" NameU="PartNumber">
+						<Value></Value>
+						<Label>部件号</Label>
+					</Prop>
+					<Prop ID="8" Name="ProductDescription" NameU="ProductDescription">
+						<Value></Value>
+						<Label>产品说明</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="85" UniqueID="{E31469D3-70CB-4E05-B0C8-4EBA6D6A32AA}" Name="机柜.85" NameU="Cabinet.85" Master="37">
+					<Text>          网管
+         服务器</Text>
+					<XForm>
+						<PinX Unit="MM">2.692291485327309</PinX>
+						<PinY Unit="MM">4.153543307086612</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+					<Prop ID="1" Name="UCount" NameU="UCount">
+						<Value Unit="STR">62</Value>
+						<Label>单元高度</Label>
+					</Prop>
+					<Prop ID="3" Name="Height" NameU="Height">
+						<Value Unit="STR">2860 mm</Value>
+						<Label>高</Label>
+					</Prop>
+					<Prop ID="2" Name="HoleSpacing" NameU="HoleSpacing">
+						<Value Unit="STR">105cm</Value>
+						<Label>孔间宽度</Label>
+					</Prop>
+					<Prop ID="10" Name="AssetNumber" NameU="AssetNumber">
+						<Value></Value>
+						<Label>资产号</Label>
+					</Prop>
+					<Prop ID="11" Name="SerialNumber" NameU="SerialNumber">
+						<Value></Value>
+						<Label>序列号</Label>
+					</Prop>
+					<Prop ID="12" Name="Location" NameU="Location">
+						<Value></Value>
+						<Label>位置</Label>
+					</Prop>
+					<Prop ID="13" Name="Building" NameU="Building">
+						<Value></Value>
+						<Label>建筑物</Label>
+					</Prop>
+					<Prop ID="14" Name="Room" NameU="Room">
+						<Value></Value>
+						<Label>房间</Label>
+					</Prop>
+					<Prop ID="6" Name="Manufacturer" NameU="Manufacturer">
+						<Value></Value>
+						<Label>制造商</Label>
+					</Prop>
+					<Prop ID="7" Name="ProductNumber" NameU="ProductNumber">
+						<Value></Value>
+						<Label>产品编号</Label>
+					</Prop>
+					<Prop ID="8" Name="PartNumber" NameU="PartNumber">
+						<Value></Value>
+						<Label>部件号</Label>
+					</Prop>
+					<Prop ID="9" Name="ProductDescription" NameU="ProductDescription">
+						<Value></Value>
+						<Label>产品说明</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="91" UniqueID="{E1F368BC-8E1B-4695-8172-98FA75678A1F}" Name="键盘托架.91" NameU="Keyboard tray.91" Master="39">
+					<XForm>
+						<PinX Unit="CM">2.692291485327309</PinX>
+						<PinY Unit="MM">4.636220472440946</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+					<Prop ID="1" Name="UCount" NameU="UCount">
+						<Value Unit="STR">1</Value>
+						<Label>单元高度</Label>
+					</Prop>
+					<Prop ID="2" Name="Height" NameU="Height">
+						<Value Unit="STR">44.45 mm</Value>
+						<Label>高</Label>
+					</Prop>
+					<Prop ID="9" Name="AssetNumber" NameU="AssetNumber">
+						<Value></Value>
+						<Label>资产号</Label>
+					</Prop>
+					<Prop ID="10" Name="SerialNumber" NameU="SerialNumber">
+						<Value></Value>
+						<Label>序列号</Label>
+					</Prop>
+					<Prop ID="11" Name="Location" NameU="Location">
+						<Value></Value>
+						<Label>位置</Label>
+					</Prop>
+					<Prop ID="12" Name="Building" NameU="Building">
+						<Value></Value>
+						<Label>建筑物</Label>
+					</Prop>
+					<Prop ID="13" Name="Room" NameU="Room">
+						<Value></Value>
+						<Label>房间</Label>
+					</Prop>
+					<Prop ID="5" Name="Manufacturer" NameU="Manufacturer">
+						<Value></Value>
+						<Label>制造商</Label>
+					</Prop>
+					<Prop ID="6" Name="ProductNumber" NameU="ProductNumber">
+						<Value></Value>
+						<Label>产品编号</Label>
+					</Prop>
+					<Prop ID="7" Name="PartNumber" NameU="PartNumber">
+						<Value></Value>
+						<Label>部件号</Label>
+					</Prop>
+					<Prop ID="8" Name="ProductDescription" NameU="ProductDescription">
+						<Value></Value>
+						<Label>产品说明</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="103" UniqueID="{C5F5EAA0-3E1F-400C-94DC-5F388B201745}" Name="架.103" NameU="Shelf.103" Master="42">
+					<XForm>
+						<PinX Unit="CM">2.692291485327309</PinX>
+						<PinY Unit="MM">2.273720472440945</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+					<Prop ID="1" Name="UCount" NameU="UCount">
+						<Value Unit="STR">1</Value>
+						<Label>单元高度</Label>
+					</Prop>
+					<Prop ID="2" Name="Height" NameU="Height">
+						<Value Unit="STR">24.45 mm</Value>
+						<Label>高</Label>
+					</Prop>
+					<Prop ID="9" Name="AssetNumber" NameU="AssetNumber">
+						<Value></Value>
+						<Label>资产号</Label>
+					</Prop>
+					<Prop ID="10" Name="SerialNumber" NameU="SerialNumber">
+						<Value></Value>
+						<Label>序列号</Label>
+					</Prop>
+					<Prop ID="11" Name="Location" NameU="Location">
+						<Value></Value>
+						<Label>位置</Label>
+					</Prop>
+					<Prop ID="12" Name="Building" NameU="Building">
+						<Value></Value>
+						<Label>建筑物</Label>
+					</Prop>
+					<Prop ID="13" Name="Room" NameU="Room">
+						<Value></Value>
+						<Label>房间</Label>
+					</Prop>
+					<Prop ID="5" Name="Manufacturer" NameU="Manufacturer">
+						<Value></Value>
+						<Label>制造商</Label>
+					</Prop>
+					<Prop ID="6" Name="ProductNumber" NameU="ProductNumber">
+						<Value></Value>
+						<Label>产品编号</Label>
+					</Prop>
+					<Prop ID="7" Name="PartNumber" NameU="PartNumber">
+						<Value></Value>
+						<Label>部件号</Label>
+					</Prop>
+					<Prop ID="8" Name="ProductDescription" NameU="ProductDescription">
+						<Value></Value>
+						<Label>产品说明</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="126" UniqueID="{CF4C22F7-E821-43E9-80F3-138C6FC69547}" Name="显示器.126" NameU="Monitor.126" Master="40">
+					<XForm>
+						<PinX Unit="MM">2.677165354330709</PinX>
+						<PinY Unit="MM">4.724409448818897</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+					<Prop ID="8" Name="AssetNumber" NameU="AssetNumber">
+						<Value></Value>
+						<Label>资产号</Label>
+					</Prop>
+					<Prop ID="9" Name="SerialNumber" NameU="SerialNumber">
+						<Value></Value>
+						<Label>序列号</Label>
+					</Prop>
+					<Prop ID="10" Name="Location" NameU="Location">
+						<Value></Value>
+						<Label>位置</Label>
+					</Prop>
+					<Prop ID="11" Name="Building" NameU="Building">
+						<Value></Value>
+						<Label>建筑物</Label>
+					</Prop>
+					<Prop ID="12" Name="Room" NameU="Room">
+						<Value></Value>
+						<Label>房间</Label>
+					</Prop>
+					<Prop ID="4" Name="Manufacturer" NameU="Manufacturer">
+						<Value></Value>
+						<Label>制造商</Label>
+					</Prop>
+					<Prop ID="5" Name="ProductNumber" NameU="ProductNumber">
+						<Value></Value>
+						<Label>产品编号</Label>
+					</Prop>
+					<Prop ID="6" Name="PartNumber" NameU="PartNumber">
+						<Value></Value>
+						<Label>部件号</Label>
+					</Prop>
+					<Prop ID="7" Name="ProductDescription" NameU="ProductDescription">
+						<Value></Value>
+						<Label>产品说明</Label>
+					</Prop>
+					<Prop ID="21" Name="Power" NameU="Power">
+						<Value></Value>
+						<Label>电源使用</Label>
+					</Prop>
+					<Prop ID="13" Name="NetworkName" NameU="NetworkName">
+						<Value></Value>
+						<Label>网络名称</Label>
+					</Prop>
+					<Prop ID="14" Name="IPAddress" NameU="IPAddress">
+						<Value></Value>
+						<Label>IP 地址</Label>
+					</Prop>
+					<Prop ID="15" Name="SubnetMask" NameU="SubnetMask">
+						<Value></Value>
+						<Label>子网掩码</Label>
+					</Prop>
+					<Prop ID="16" Name="AdminInterface" NameU="AdminInterface">
+						<Value></Value>
+						<Label>管理接口</Label>
+					</Prop>
+					<Prop ID="17" Name="NumberOfPorts" NameU="NumberOfPorts">
+						<Value></Value>
+						<Label>端口数目</Label>
+					</Prop>
+					<Prop ID="18" Name="MACAddress" NameU="MACAddress">
+						<Value></Value>
+						<Label>MAC 地址</Label>
+					</Prop>
+					<Prop ID="19" Name="CommunityString" NameU="CommunityString">
+						<Value></Value>
+						<Label>团体字符串</Label>
+					</Prop>
+					<Prop ID="20" Name="NetworkDescription" NameU="NetworkDescription">
+						<Value></Value>
+						<Label>网络说明</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="132" UniqueID="{C2AE5C3F-C17F-49A0-ADAC-C8638B197C5D}" Name="IBM 43P.132" NameU="IBM 43P.132" Master="55">
+					<XForm>
+						<PinX Unit="MM">2.656746591804268</PinX>
+						<PinY Unit="MM">3.326771653543307</PinY>
+					</XForm>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									<HLURL:Hyperlink ID="1">
+										<HLURL:Description></HLURL:Description>
+										<HLURL:Address>SV_IP:127.0.0.1+color</HLURL:Address>
+										<HLURL:SubAddress></HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+										<HLURL:AbsoluteURL>SV_IP:127.0.0.1+color</HLURL:AbsoluteURL>
+									</HLURL:Hyperlink>
+									<HLURL:Hyperlink ID="2">
+										<HLURL:Description>SiteView</HLURL:Description>
+										<HLURL:Address>http://www.siteview.com</HLURL:Address>
+										<HLURL:SubAddress></HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+										<HLURL:AbsoluteURL>http://www.siteview.com</HLURL:AbsoluteURL>
+									</HLURL:Hyperlink>
+								</HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+					<Prop ID="1" Name="SV_IP" NameU="SV_IP">
+						<Value Unit="STR">127.0.0.1</Value>
+						<Label>SV_IP</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="148" UniqueID="{F9F3E1F3-E05F-4EFE-81C5-5F1AA328AC6E}" Name="机柜.148" NameU="Cabinet.148" Master="37">
+					<Text>           财务
+          服务器</Text>
+					<XForm>
+						<PinX Unit="MM">5.049212598425196</PinX>
+						<PinY Unit="MM">4.153543307086615</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+					<Prop ID="1" Name="UCount" NameU="UCount">
+						<Value Unit="STR">62</Value>
+						<Label>单元高度</Label>
+					</Prop>
+					<Prop ID="3" Name="Height" NameU="Height">
+						<Value Unit="STR">2860 mm</Value>
+						<Label>高</Label>
+					</Prop>
+					<Prop ID="2" Name="HoleSpacing" NameU="HoleSpacing">
+						<Value Unit="STR">105cm</Value>
+						<Label>孔间宽度</Label>
+					</Prop>
+					<Prop ID="10" Name="AssetNumber" NameU="AssetNumber">
+						<Value></Value>
+						<Label>资产号</Label>
+					</Prop>
+					<Prop ID="11" Name="SerialNumber" NameU="SerialNumber">
+						<Value></Value>
+						<Label>序列号</Label>
+					</Prop>
+					<Prop ID="12" Name="Location" NameU="Location">
+						<Value></Value>
+						<Label>位置</Label>
+					</Prop>
+					<Prop ID="13" Name="Building" NameU="Building">
+						<Value></Value>
+						<Label>建筑物</Label>
+					</Prop>
+					<Prop ID="14" Name="Room" NameU="Room">
+						<Value></Value>
+						<Label>房间</Label>
+					</Prop>
+					<Prop ID="6" Name="Manufacturer" NameU="Manufacturer">
+						<Value></Value>
+						<Label>制造商</Label>
+					</Prop>
+					<Prop ID="7" Name="ProductNumber" NameU="ProductNumber">
+						<Value></Value>
+						<Label>产品编号</Label>
+					</Prop>
+					<Prop ID="8" Name="PartNumber" NameU="PartNumber">
+						<Value></Value>
+						<Label>部件号</Label>
+					</Prop>
+					<Prop ID="9" Name="ProductDescription" NameU="ProductDescription">
+						<Value></Value>
+						<Label>产品说明</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="154" UniqueID="{4F058EDA-5F6B-40F2-A5AC-AF44C02D51EA}" Name="键盘托架.154" NameU="Keyboard tray.154" Master="39">
+					<XForm>
+						<PinX Unit="CM">5.049212598425196</PinX>
+						<PinY Unit="MM">4.636220472440947</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+					<Prop ID="1" Name="UCount" NameU="UCount">
+						<Value Unit="STR">1</Value>
+						<Label>单元高度</Label>
+					</Prop>
+					<Prop ID="2" Name="Height" NameU="Height">
+						<Value Unit="STR">44.45 mm</Value>
+						<Label>高</Label>
+					</Prop>
+					<Prop ID="9" Name="AssetNumber" NameU="AssetNumber">
+						<Value></Value>
+						<Label>资产号</Label>
+					</Prop>
+					<Prop ID="10" Name="SerialNumber" NameU="SerialNumber">
+						<Value></Value>
+						<Label>序列号</Label>
+					</Prop>
+					<Prop ID="11" Name="Location" NameU="Location">
+						<Value></Value>
+						<Label>位置</Label>
+					</Prop>
+					<Prop ID="12" Name="Building" NameU="Building">
+						<Value></Value>
+						<Label>建筑物</Label>
+					</Prop>
+					<Prop ID="13" Name="Room" NameU="Room">
+						<Value></Value>
+						<Label>房间</Label>
+					</Prop>
+					<Prop ID="5" Name="Manufacturer" NameU="Manufacturer">
+						<Value></Value>
+						<Label>制造商</Label>
+					</Prop>
+					<Prop ID="6" Name="ProductNumber" NameU="ProductNumber">
+						<Value></Value>
+						<Label>产品编号</Label>
+					</Prop>
+					<Prop ID="7" Name="PartNumber" NameU="PartNumber">
+						<Value></Value>
+						<Label>部件号</Label>
+					</Prop>
+					<Prop ID="8" Name="ProductDescription" NameU="ProductDescription">
+						<Value></Value>
+						<Label>产品说明</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="192" UniqueID="{90F4DA0B-1BCB-4ADF-BB42-3656A0F7FCBB}" Name="架.192" NameU="Shelf.192" Master="42">
+					<XForm>
+						<PinX Unit="CM">5.049212598425196</PinX>
+						<PinY Unit="MM">2.273720472440946</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+					<Prop ID="1" Name="UCount" NameU="UCount">
+						<Value Unit="STR">1</Value>
+						<Label>单元高度</Label>
+					</Prop>
+					<Prop ID="2" Name="Height" NameU="Height">
+						<Value Unit="STR">24.45 mm</Value>
+						<Label>高</Label>
+					</Prop>
+					<Prop ID="9" Name="AssetNumber" NameU="AssetNumber">
+						<Value></Value>
+						<Label>资产号</Label>
+					</Prop>
+					<Prop ID="10" Name="SerialNumber" NameU="SerialNumber">
+						<Value></Value>
+						<Label>序列号</Label>
+					</Prop>
+					<Prop ID="11" Name="Location" NameU="Location">
+						<Value></Value>
+						<Label>位置</Label>
+					</Prop>
+					<Prop ID="12" Name="Building" NameU="Building">
+						<Value></Value>
+						<Label>建筑物</Label>
+					</Prop>
+					<Prop ID="13" Name="Room" NameU="Room">
+						<Value></Value>
+						<Label>房间</Label>
+					</Prop>
+					<Prop ID="5" Name="Manufacturer" NameU="Manufacturer">
+						<Value></Value>
+						<Label>制造商</Label>
+					</Prop>
+					<Prop ID="6" Name="ProductNumber" NameU="ProductNumber">
+						<Value></Value>
+						<Label>产品编号</Label>
+					</Prop>
+					<Prop ID="7" Name="PartNumber" NameU="PartNumber">
+						<Value></Value>
+						<Label>部件号</Label>
+					</Prop>
+					<Prop ID="8" Name="ProductDescription" NameU="ProductDescription">
+						<Value></Value>
+						<Label>产品说明</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="204" UniqueID="{D83568A5-6A8C-4284-9AE0-F3EEE384CD30}" Name="显示器.204" NameU="Monitor.204" Master="40">
+					<XForm>
+						<PinX Unit="MM">5.039370078740157</PinX>
+						<PinY Unit="MM">4.739490149722884</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+					<Prop ID="8" Name="AssetNumber" NameU="AssetNumber">
+						<Value></Value>
+						<Label>资产号</Label>
+					</Prop>
+					<Prop ID="9" Name="SerialNumber" NameU="SerialNumber">
+						<Value></Value>
+						<Label>序列号</Label>
+					</Prop>
+					<Prop ID="10" Name="Location" NameU="Location">
+						<Value></Value>
+						<Label>位置</Label>
+					</Prop>
+					<Prop ID="11" Name="Building" NameU="Building">
+						<Value></Value>
+						<Label>建筑物</Label>
+					</Prop>
+					<Prop ID="12" Name="Room" NameU="Room">
+						<Value></Value>
+						<Label>房间</Label>
+					</Prop>
+					<Prop ID="4" Name="Manufacturer" NameU="Manufacturer">
+						<Value></Value>
+						<Label>制造商</Label>
+					</Prop>
+					<Prop ID="5" Name="ProductNumber" NameU="ProductNumber">
+						<Value></Value>
+						<Label>产品编号</Label>
+					</Prop>
+					<Prop ID="6" Name="PartNumber" NameU="PartNumber">
+						<Value></Value>
+						<Label>部件号</Label>
+					</Prop>
+					<Prop ID="7" Name="ProductDescription" NameU="ProductDescription">
+						<Value></Value>
+						<Label>产品说明</Label>
+					</Prop>
+					<Prop ID="21" Name="Power" NameU="Power">
+						<Value></Value>
+						<Label>电源使用</Label>
+					</Prop>
+					<Prop ID="13" Name="NetworkName" NameU="NetworkName">
+						<Value></Value>
+						<Label>网络名称</Label>
+					</Prop>
+					<Prop ID="14" Name="IPAddress" NameU="IPAddress">
+						<Value></Value>
+						<Label>IP 地址</Label>
+					</Prop>
+					<Prop ID="15" Name="SubnetMask" NameU="SubnetMask">
+						<Value></Value>
+						<Label>子网掩码</Label>
+					</Prop>
+					<Prop ID="16" Name="AdminInterface" NameU="AdminInterface">
+						<Value></Value>
+						<Label>管理接口</Label>
+					</Prop>
+					<Prop ID="17" Name="NumberOfPorts" NameU="NumberOfPorts">
+						<Value></Value>
+						<Label>端口数目</Label>
+					</Prop>
+					<Prop ID="18" Name="MACAddress" NameU="MACAddress">
+						<Value></Value>
+						<Label>MAC 地址</Label>
+					</Prop>
+					<Prop ID="19" Name="CommunityString" NameU="CommunityString">
+						<Value></Value>
+						<Label>团体字符串</Label>
+					</Prop>
+					<Prop ID="20" Name="NetworkDescription" NameU="NetworkDescription">
+						<Value></Value>
+						<Label>网络说明</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="210" UniqueID="{F5B6D475-EC00-46E2-980C-1CDF8DE6EF5A}" Name="IBM 43P.210" NameU="IBM 43P.210" Master="55">
+					<XForm>
+						<PinX Unit="MM">5.019685039370078</PinX>
+						<PinY Unit="MM">3.326771653543307</PinY>
+					</XForm>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									<HLURL:Hyperlink ID="1">
+										<HLURL:Description></HLURL:Description>
+										<HLURL:Address>SV_IP:127.0.0.2+color</HLURL:Address>
+										<HLURL:SubAddress></HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+										<HLURL:AbsoluteURL>SV_IP:127.0.0.2+color</HLURL:AbsoluteURL>
+									</HLURL:Hyperlink>
+									<HLURL:Hyperlink ID="2">
+										<HLURL:Description>SiteView</HLURL:Description>
+										<HLURL:Address>http://www.siteview.com</HLURL:Address>
+										<HLURL:SubAddress></HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+										<HLURL:AbsoluteURL>http://www.siteview.com</HLURL:AbsoluteURL>
+									</HLURL:Hyperlink>
+								</HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+					<Prop ID="1" Name="SV_IP" NameU="SV_IP">
+						<Value Unit="STR">127.0.0.2</Value>
+						<Label>SV_IP</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="265" UniqueID="{3103E611-7370-446C-AA38-F98D3B07D822}" Name="机柜.265" NameU="Cabinet.265" Master="37">
+					<Text>             远程访问服务器
+              资源共享服务器</Text>
+					<XForm>
+						<PinX Unit="MM">7.402299506087688</PinX>
+						<PinY Unit="MM">4.153543307086614</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+					<Prop ID="1" Name="UCount" NameU="UCount">
+						<Value Unit="STR">62</Value>
+						<Label>单元高度</Label>
+					</Prop>
+					<Prop ID="3" Name="Height" NameU="Height">
+						<Value Unit="STR">2860 mm</Value>
+						<Label>高</Label>
+					</Prop>
+					<Prop ID="2" Name="HoleSpacing" NameU="HoleSpacing">
+						<Value Unit="STR">105cm</Value>
+						<Label>孔间宽度</Label>
+					</Prop>
+					<Prop ID="10" Name="AssetNumber" NameU="AssetNumber">
+						<Value></Value>
+						<Label>资产号</Label>
+					</Prop>
+					<Prop ID="11" Name="SerialNumber" NameU="SerialNumber">
+						<Value></Value>
+						<Label>序列号</Label>
+					</Prop>
+					<Prop ID="12" Name="Location" NameU="Location">
+						<Value></Value>
+						<Label>位置</Label>
+					</Prop>
+					<Prop ID="13" Name="Building" NameU="Building">
+						<Value></Value>
+						<Label>建筑物</Label>
+					</Prop>
+					<Prop ID="14" Name="Room" NameU="Room">
+						<Value></Value>
+						<Label>房间</Label>
+					</Prop>
+					<Prop ID="6" Name="Manufacturer" NameU="Manufacturer">
+						<Value></Value>
+						<Label>制造商</Label>
+					</Prop>
+					<Prop ID="7" Name="ProductNumber" NameU="ProductNumber">
+						<Value></Value>
+						<Label>产品编号</Label>
+					</Prop>
+					<Prop ID="8" Name="PartNumber" NameU="PartNumber">
+						<Value></Value>
+						<Label>部件号</Label>
+					</Prop>
+					<Prop ID="9" Name="ProductDescription" NameU="ProductDescription">
+						<Value></Value>
+						<Label>产品说明</Label>
+					</Prop>
+				</Shape>
+			</Shapes>
+		</Page>
+	</Pages>
+</VisioDocument>

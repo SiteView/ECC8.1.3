@@ -1,0 +1,7 @@
+<zk>
+<zscript>
+tree=(org.zkoss.zul.Tree)desktop.getPage("eccmain").getFellow("tree");
+
+</zscript>
+</zk>
+			

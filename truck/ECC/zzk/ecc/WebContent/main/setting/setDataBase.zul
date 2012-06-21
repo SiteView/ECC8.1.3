@@ -1,0 +1,112 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8" id="setDbPage"?>
+<window apply="com.siteview.ecc.message.SetDataBase" id="setDbWin" 
+	forward="onCreate=onInit" width="700px"  style="overflow-y:auto;" >
+	<panel  collapsible="true">
+		<panelchildren>
+			<groupbox>
+				<caption label="插入方式" />
+
+				<radiogroup orient="horizontal" onCheck="applyButton.setDisabled(false)">
+					<radio id="nomalInsert" label="常规插入"
+						onCheck="row1.setVisible(false);row2.setVisible(false);hbox1.setVisible(true)" checked="true"/>
+					<radio id="storedInsert" style="margin-left:250px"
+						label="存储过程插入"
+						onCheck="row1.setVisible(true);row2.setVisible(true);hbox1.setVisible(false)" />
+				</radiogroup>
+
+			</groupbox>
+			<groupbox style="margin-top:10px" >
+				<caption label="参数" />
+				<grid oddRowSclass="none" zclass="none">
+					<columns>
+						<column label="" width="100px" />
+						<column label="" />
+					</columns>
+					<rows>
+						<row zclass="none" height="20px">
+
+							<label value="数据库类型 * ：" />
+							<hbox align="center">
+								<combobox height="15px"
+									id="dbTypeCombobox" readonly="true" onChange="applyButton.setDisabled(false);" tooltiptext="选择数据库类型">
+									<comboitem label="Oracle" />
+									<comboitem label="Mysql" />
+									<comboitem label="SqlServer" />
+									<comboitem label="Sybase" />
+									<comboitem label="DB2" />
+								</combobox>
+								<hbox align="center" id="hbox1">
+									<label value="数据库表名 * ："
+										style="margin-left:30px" />
+									<textbox height="15px" onChanging="applyButton.setDisabled(false);"
+										id="dbTableName" tooltiptext="输入动态库的参数"/>
+								</hbox>
+							</hbox>
+						</row>
+						<row zclass="none" height="30px">
+							<label value="连接字符串 * ：" />
+							<textbox height="15px" width="450px"
+								id="connectString" onChanging="applyButton.setDisabled(false);" tooltiptext="输入动态库的参数"/>
+						</row>
+						<row zclass="none">
+							<label value="参数列表 * ：" />
+							<hbox align="start">
+								<listbox width="453px" height="90px" 
+									id="param" checkmark="true" multiple="true" onSelect="applyButton.setDisabled(false);">
+									<listhead sizable="true">
+										<listheader label="参数名称" 
+											sort="auto" />
+										<listheader label="参数类型"
+											sort="auto" />
+										<listheader label="长度 "
+											sort="auto" />
+										<listheader label="参数含义"
+											sort="auto" />
+									</listhead>
+
+								</listbox><vbox><button label="添加" sclass="btnDefault"
+							width="74px" height="23px"
+							image="/main/images/button/ico/add_bt.gif"
+							forward="onClick=onAdd" id="addButton" />
+								<button label="删除" sclass="btnDefault"
+							width="74px" height="23px"
+							image="/main/images/button/ico/delete_bt.gif"
+							forward="onClick=onDel" id="delButton" /></vbox>
+							</hbox>
+						</row>
+						<row zclass="none" height="30px" id="row1">
+							<label value="存储过程名称 * ：" />
+							<textbox height="15px" id="storedName" onChanging="applyButton.setDisabled(false);" tooltiptext="输入存储过程名称"/>
+						</row>
+						<row zclass="none" height="30px" id="row2">
+							<label value="返回值：" />
+							<hbox align="center">
+								<textbox id="returnValue" height="15px"
+									readonly="true" width="450px" onChanging="applyButton.setDisabled(false);"/>
+								<button label=".." image="" width="35px" id="onMoreButton"
+									height="15px" style="margin-left:10px"
+									forward="onClick=onMore" >
+								</button>
+							</hbox>
+						</row>
+
+					</rows>
+				</grid>
+
+			</groupbox>
+
+			<div >
+				<button label="应  用"
+					style="margin-left:450px;margin-top:10px"
+					image="/main/images/button/ico/save_bt.gif" sclass="btnDefault"
+					width="74px" height="23px" id="applyButton"
+					forward="onClick=onApply" />
+				<button label="重新获得" style="margin-left:10px"
+					sclass="btnDefault" height="23px"
+					image="/main/images/button/ico/reload_bt.gif"
+					id="recoverButton"
+					forward="onClick=onRecover()" />
+			</div>
+		</panelchildren>
+	</panel>
+</window>

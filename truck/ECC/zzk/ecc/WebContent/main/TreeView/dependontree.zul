@@ -1,0 +1,31 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window id="wdependon" title="依赖关系" border="normal" width="500px"
+		position="center" closable="true"
+		apply="com.siteview.ecc.treeview.windows.DependonTree">
+		<panel>
+		<!-- style="margin:5px 5px 5px 5px;overflow-y:auto;max-height:400px;" -->
+			<panelchildren id="pc"
+				>
+				<tree id="dependtree" zclass="z-dottree"></tree>
+			</panelchildren>
+		</panel>
+		<div style="float:right;margin-bottom:12px;margin-right:12px; " >
+			<button label="确定" sclass="btnDefault" width="74px"
+				height="23px" image="/main/images/button/ico/save_bt.gif"
+				id="btnok">
+			</button>
+			<button label="取消" sclass="btnDefault" width="74px"
+				height="23px" image="/main/images/button/ico/close_bt.gif"
+				id="btclose">
+				<attribute name="onClick">
+			    wdependon.detach();
+			    </attribute>
+			</button>
+			<button label="无依靠" sclass="btnDefault" width="74px"
+				height="23px" id="btnno">
+			</button>
+		</div>
+
+	</window>
+</zk>

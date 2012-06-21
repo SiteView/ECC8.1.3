@@ -1,0 +1,201 @@
+<?page title="new page title" contentType="text/html;charset=gb2312"?>
+
+<zk>
+	<window id="monitorFilter" border="normal" closable="true"
+		height="405px" width="395px"
+		apply="com.siteview.ecc.report.MonitorFilterComposer">
+		<hbox>
+			<space width="1px" />
+			<vbox>
+				<space height="1px" />
+				<groupbox width="360px">
+					<caption label="筛选条件" />
+					<hbox>
+					<space width="1px"/>
+					<grid style="border:0" oddRowSclass="none">
+						<columns>
+							<column label="" align="left" />
+							<column label="" width="120px" />
+							<column label="" align="left" />
+						</columns>
+						<rows>
+							<row zclass="none" height="40px">
+								<label value="监测器名称：" />
+								<listbox id="nameListbox" rows="1"
+									mold="select" width="100px">
+									<listitem selected="true">
+										<listcell label="like" />
+									</listitem>
+									<listitem>
+										<listcell label="=" />
+									</listitem>
+									<listitem>
+										<listcell label="&lt;&gt;" />
+									</listitem>
+								</listbox>
+								<textbox id="nameTextbox" width="147px"
+									height="18px" tooltiptext="按条件筛选的监测器名称" />
+							</row>
+							<row zclass="none" spans="3"></row>
+							<row zclass="none" height="70px">
+								<vbox>
+									<label value="组名称    ：" />
+									<space height="18px" />
+									<label value="逻辑组合：" />
+								</vbox>
+								<vbox>
+									<listbox id="groupListbox" rows="1"
+										mold="select" width="100px">
+										<listitem selected="true">
+											<listcell label="like" />
+										</listitem>
+										<listitem sclass="none">
+											<listcell label="=" />
+										</listitem>
+										<listitem>
+											<listcell label="&lt;&gt;" />
+										</listitem>
+									</listbox>
+									<space height="7px" />
+									<listbox id="groupConditionListbox"
+										mold="select" width="100px">
+										<listitem>
+											<listcell label="and" />
+										</listitem>
+										<listitem selected="true">
+											<listcell label="or" />
+										</listitem>
+									</listbox>
+								</vbox>
+								<listbox id="groupData"
+									style="border: 1px solid #7F9DB9;align:left" width="150px"
+									checkmark="true" multiple="true" rows="3"
+									tooltiptext="按条件筛选的组名">
+								</listbox>
+							</row>
+							<row zclass="none" spans="3"
+								height="10px">
+							</row>
+							<row zclass="none" height="70px">
+								<vbox>
+									<label value="类型：" />
+									<space height="15px" />
+									<label value="逻辑组合：" visible="true" />
+								</vbox>
+
+								<vbox>
+									<listbox id="typeListbox" rows="1"
+										mold="select" width="100px">
+										<listitem selected="true">
+											<listcell label="like" />
+										</listitem>
+										<listitem>
+											<listcell label="=" />
+										</listitem>
+										<listitem>
+											<listcell label="&lt;&gt;" />
+										</listitem>
+									</listbox>
+									<space height="8px" />
+									<listbox id="typeConditionListbox"
+										mold="select" width="100px">
+										<listitem>
+											<listcell label="and" />
+										</listitem>
+										<listitem selected="true">
+											<listcell label="or" />
+										</listitem>
+									</listbox>
+								</vbox>
+								<listbox id="typeData" checkmark="true"
+									style="border: 1px solid #7F9DB9;align:left" multiple="true" rows="3"
+									width="150px" tooltiptext="按条件筛选的类型">
+								</listbox>
+							</row>
+							<row zclass="none" spans="3"
+								height="10px">
+							</row>
+							<row zclass="none" height="30px">
+								<label value="监测频率：" />
+								<listbox id="frequencyListbox" rows="1"
+									mold="select" width="100px">
+									<listitem selected="true">
+										<listcell label="like" />
+									</listitem>
+									<listitem>
+										<listcell label="&gt;=" />
+									</listitem>
+									<listitem>
+										<listcell label="&gt;" />
+									</listitem>
+									<listitem>
+										<listcell label="=" />
+									</listitem>
+									<listitem>
+										<listcell label="&lt;=" />
+									</listitem>
+									<listitem>
+										<listcell label="&lt;" />
+									</listitem>
+									<listitem>
+										<listcell label="&lt;&gt;" />
+									</listitem>
+								</listbox>
+								<listbox id="frequencyListboxData"
+									rows="1" mold="select" width="153px" tooltiptext="按条件筛选的时间">
+								</listbox>
+							</row>
+							<row zclass="none" spans="3"
+								height="10px">
+							</row>
+							<row zclass="none" height="40px">
+								<vbox>
+									<label value="阀值：" />
+									<space height="20px" />
+								</vbox>
+								<vbox>
+									<listbox id="keybox" rows="1"
+										mold="select" width="100px">
+										<listitem selected="true">
+											<listcell label="like" />
+										</listitem>
+										<listitem>
+											<listcell label="=" />
+										</listitem>
+										<listitem>
+											<listcell label="&lt;&gt;" />
+										</listitem>
+									</listbox>
+									<space height="18px" />
+								</vbox>
+								<textbox id="keyvalue" rows="3"
+									width="150px" tooltiptext="按条件筛选的阀值" />
+							</row>
+						</rows>
+					</grid>
+					</hbox>
+				</groupbox>
+				
+				<grid style="border:0" oddRowSclass="none">
+					<columns>
+						<column label="" align="right" />
+					</columns>
+					<rows>
+						<row zclass="none">
+							<hbox>
+								<button label="确 定" id="ok"
+									image="/main/images/button/ico/save_bt.gif" sclass="btnDefault"
+									width="74px" height="23px">
+								</button>
+								<button label="取消" id="cancel"
+									image="/main/images/button/ico/close_bt.gif"
+									sclass="btnDefault" width="74px" height="23px" />
+							</hbox>
+
+						</row>
+					</rows>
+				</grid>
+			</vbox>
+		</hbox>
+	</window>
+</zk>

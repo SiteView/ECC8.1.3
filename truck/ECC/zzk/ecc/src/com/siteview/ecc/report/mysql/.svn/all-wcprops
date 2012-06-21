@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/src/com/siteview/ecc/report/mysql
+END
+WriteToDataBase.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/src/com/siteview/ecc/report/mysql/WriteToDataBase.java
+END
+InitInfoBean.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/src/com/siteview/ecc/report/mysql/InitInfoBean.java
+END
+ImportIni.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/src/com/siteview/ecc/report/mysql/ImportIni.java
+END
+ImportTask.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/src/com/siteview/ecc/report/mysql/ImportTask.java
+END
+SqlSetting.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/src/com/siteview/ecc/report/mysql/SqlSetting.java
+END
+ReadDataToMysql.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/src/com/siteview/ecc/report/mysql/ReadDataToMysql.java
+END

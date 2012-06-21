@@ -1,0 +1,618 @@
+2011-3-10 10:20:35 org.apache.tomcat.util.digester.SetPropertiesRule begin
+警告: [SetPropertiesRule]{Server/Service/Engine/Host/Context} Setting property 'source' to 'org.eclipse.jst.jee.server:ecc' did not find a matching property.
+2011-3-10 10:20:35 org.apache.catalina.core.AprLifecycleListener init
+信息: The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: C:\Program Files\Java\jdk1.6.0_10\bin;.;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:/Program Files/Java/jdk1.6.0_10/bin/../jre/bin/client;C:/Program Files/Java/jdk1.6.0_10/bin/../jre/bin;E:\Program Files\erl5.7.4\bin;E:\Program Files\erl5.7.4\bin;C:\Qt\4.6.0\bin;E:\oracle\ora90\bin;E:\oracle\ora90\Apache\Perl\5.00503\bin\mswin32-x86;C:\Program Files\Oracle\jre\1.1.8\bin;E:\oracle\product\10.2.0\db_1\bin;E:\OraHome_1\bin;%E:\jboss-5.0.0.GA%\bin;C:\Program Files\Java\jdk1.6.0_10\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\Program Files\TortoiseSVN\bin;C:\Program Files\Common Files\Thunder Network\KanKan\Codecs;C:\Program Files\Microsoft SQL Server\80\Tools\Binn\;E:\Ice-3.3.1-VC90\bin;
+2011-3-10 10:20:35 org.apache.coyote.http11.Http11Protocol init
+信息: Initializing Coyote HTTP/1.1 on http-8080
+2011-3-10 10:20:35 org.apache.catalina.startup.Catalina load
+信息: Initialization processed in 861 ms
+2011-3-10 10:20:35 org.apache.catalina.core.StandardService start
+信息: Starting service Catalina
+2011-3-10 10:20:35 org.apache.catalina.core.StandardEngine start
+信息: Starting Servlet Engine: Apache Tomcat/6.0.20
+创建 TuopuThread对象.................
+开始启动TuopuThread线程.................
+结束启动 TuopuThread线程.................
+TuopuThread starting.......................
+TuopuThread 11111111.......................
+TuopuThread 222222.......................
+刷新............1............Thu Mar 10 10:20:44 CST 2011
+java.io.FileNotFoundException: D:\workspace_home\workspace_zzb20110126\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ecc\main\tuoplist\1.files\data.xml (系统找不到指定的路径。)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:106)
+	at java.io.FileInputStream.<init>(FileInputStream.java:66)
+	at sun.net.www.protocol.file.FileURLConnection.connect(FileURLConnection.java:70)
+	at sun.net.www.protocol.file.FileURLConnection.getInputStream(FileURLConnection.java:161)
+	at com.sun.org.apache.xerces.internal.impl.XMLEntityManager.setupCurrentEntity(XMLEntityManager.java:653)
+	at com.sun.org.apache.xerces.internal.impl.XMLVersionDetector.determineDocVersion(XMLVersionDetector.java:186)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:771)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:737)
+	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:107)
+	at com.sun.org.apache.xerces.internal.parsers.DOMParser.parse(DOMParser.java:225)
+	at com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:283)
+	at javax.xml.parsers.DocumentBuilder.parse(DocumentBuilder.java:208)
+	at com.siteview.ecc.tuopu.MakeTuopuData.ReadXml(MakeTuopuData.java:736)
+	at com.siteview.ecc.tuopu.MakeTuopuData.<init>(MakeTuopuData.java:178)
+	at com.siteview.base.manage.Manager$TuopuThread.run(Manager.java:591)
+end  1     .............Thu Mar 10 10:20:44 CST 2011
+刷新............anhui............Thu Mar 10 10:20:44 CST 2011
+java.io.FileNotFoundException: D:\workspace_home\workspace_zzb20110126\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ecc\main\tuoplist\anhui.files\data.xml (系统找不到指定的路径。)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:106)
+	at java.io.FileInputStream.<init>(FileInputStream.java:66)
+	at sun.net.www.protocol.file.FileURLConnection.connect(FileURLConnection.java:70)
+	at sun.net.www.protocol.file.FileURLConnection.getInputStream(FileURLConnection.java:161)
+	at com.sun.org.apache.xerces.internal.impl.XMLEntityManager.setupCurrentEntity(XMLEntityManager.java:653)
+	at com.sun.org.apache.xerces.internal.impl.XMLVersionDetector.determineDocVersion(XMLVersionDetector.java:186)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:771)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:737)
+	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:107)
+	at com.sun.org.apache.xerces.internal.parsers.DOMParser.parse(DOMParser.java:225)
+	at com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:283)
+	at javax.xml.parsers.DocumentBuilder.parse(DocumentBuilder.java:208)
+	at com.siteview.ecc.tuopu.MakeTuopuData.ReadXml(MakeTuopuData.java:736)
+	at com.siteview.ecc.tuopu.MakeTuopuData.<init>(MakeTuopuData.java:178)
+	at com.siteview.base.manage.Manager$TuopuThread.run(Manager.java:591)
+end  anhui     .............Thu Mar 10 10:20:44 CST 2011
+刷新............beijing............Thu Mar 10 10:20:44 CST 2011
+java.io.FileNotFoundException: D:\workspace_home\workspace_zzb20110126\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ecc\main\tuoplist\beijing.files\data.xml (系统找不到指定的路径。)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:106)
+	at java.io.FileInputStream.<init>(FileInputStream.java:66)
+	at sun.net.www.protocol.file.FileURLConnection.connect(FileURLConnection.java:70)
+	at sun.net.www.protocol.file.FileURLConnection.getInputStream(FileURLConnection.java:161)
+	at com.sun.org.apache.xerces.internal.impl.XMLEntityManager.setupCurrentEntity(XMLEntityManager.java:653)
+	at com.sun.org.apache.xerces.internal.impl.XMLVersionDetector.determineDocVersion(XMLVersionDetector.java:186)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:771)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:737)
+	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:107)
+	at com.sun.org.apache.xerces.internal.parsers.DOMParser.parse(DOMParser.java:225)
+	at com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:283)
+	at javax.xml.parsers.DocumentBuilder.parse(DocumentBuilder.java:208)
+	at com.siteview.ecc.tuopu.MakeTuopuData.ReadXml(MakeTuopuData.java:736)
+	at com.siteview.ecc.tuopu.MakeTuopuData.<init>(MakeTuopuData.java:178)
+	at com.siteview.base.manage.Manager$TuopuThread.run(Manager.java:591)
+end  beijing     .............Thu Mar 10 10:20:44 CST 2011
+刷新............chongqing............Thu Mar 10 10:20:44 CST 2011
+java.io.FileNotFoundException: D:\workspace_home\workspace_zzb20110126\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ecc\main\tuoplist\chongqing.files\data.xml (系统找不到指定的路径。)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:106)
+	at java.io.FileInputStream.<init>(FileInputStream.java:66)
+	at sun.net.www.protocol.file.FileURLConnection.connect(FileURLConnection.java:70)
+	at sun.net.www.protocol.file.FileURLConnection.getInputStream(FileURLConnection.java:161)
+	at com.sun.org.apache.xerces.internal.impl.XMLEntityManager.setupCurrentEntity(XMLEntityManager.java:653)
+	at com.sun.org.apache.xerces.internal.impl.XMLVersionDetector.determineDocVersion(XMLVersionDetector.java:186)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:771)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:737)
+	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:107)
+	at com.sun.org.apache.xerces.internal.parsers.DOMParser.parse(DOMParser.java:225)
+	at com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:283)
+	at javax.xml.parsers.DocumentBuilder.parse(DocumentBuilder.java:208)
+	at com.siteview.ecc.tuopu.MakeTuopuData.ReadXml(MakeTuopuData.java:736)
+	at com.siteview.ecc.tuopu.MakeTuopuData.<init>(MakeTuopuData.java:178)
+	at com.siteview.base.manage.Manager$TuopuThread.run(Manager.java:591)
+2011-3-10 10:20:44 com.siteview.ecc.reportserver.ReportServer$ScheduleThread run
+信息: 下一次报告服务启动时间：Thu Mar 10 11:00:00 CST 2011
+end  chongqing     .............Thu Mar 10 10:20:44 CST 2011
+刷新............example4............Thu Mar 10 10:20:44 CST 2011
+java.io.FileNotFoundException: D:\workspace_home\workspace_zzb20110126\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ecc\main\tuoplist\example4.files\data.xml (系统找不到指定的路径。)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:106)
+	at java.io.FileInputStream.<init>(FileInputStream.java:66)
+	at sun.net.www.protocol.file.FileURLConnection.connect(FileURLConnection.java:70)2011-3-10 10:20:45 org.apache.coyote.http11.Http11Protocol start
+信息: Starting Coyote HTTP/1.1 on http-8080
+2011-3-10 10:20:45 org.apache.jk.common.ChannelSocket init
+信息: JK: ajp13 listening on /0.0.0.0:8009
+2011-3-10 10:20:45 org.apache.jk.server.JkMain start
+信息: Jk running ID=0 time=0/62  config=null
+2011-3-10 10:20:45 org.apache.catalina.startup.Catalina start
+信息: Server startup in 9819 ms
+
+	at sun.net.www.protocol.file.FileURLConnection.getInputStream(FileURLConnection.java:161)
+	at com.sun.org.apache.xerces.internal.impl.XMLEntityManager.setupCurrentEntity(XMLEntityManager.java:653)
+	at com.sun.org.apache.xerces.internal.impl.XMLVersionDetector.determineDocVersion(XMLVersionDetector.java:186)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:771)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:737)
+	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:107)
+	at com.sun.org.apache.xerces.internal.parsers.DOMParser.parse(DOMParser.java:225)
+	at com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:283)
+	at javax.xml.parsers.DocumentBuilder.parse(DocumentBuilder.java:208)
+	at com.siteview.ecc.tuopu.MakeTuopuData.ReadXml(MakeTuopuData.java:736)
+	at com.siteview.ecc.tuopu.MakeTuopuData.<init>(MakeTuopuData.java:178)
+	at com.siteview.base.manage.Manager$TuopuThread.run(Manager.java:591)
+end  example4     .............Thu Mar 10 10:20:45 CST 2011
+刷新............fujian............Thu Mar 10 10:20:45 CST 2011
+java.io.FileNotFoundException: D:\workspace_home\workspace_zzb20110126\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ecc\main\tuoplist\fujian.files\data.xml (系统找不到指定的路径。)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:106)
+	at java.io.FileInputStream.<init>(FileInputStream.java:66)
+	at sun.net.www.protocol.file.FileURLConnection.connect(FileURLConnection.java:70)
+	at sun.net.www.protocol.file.FileURLConnection.getInputStream(FileURLConnection.java:161)
+	at com.sun.org.apache.xerces.internal.impl.XMLEntityManager.setupCurrentEntity(XMLEntityManager.java:653)
+	at com.sun.org.apache.xerces.internal.impl.XMLVersionDetector.determineDocVersion(XMLVersionDetector.java:186)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:771)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:737)
+	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:107)
+	at com.sun.org.apache.xerces.internal.parsers.DOMParser.parse(DOMParser.java:225)
+	at com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:283)
+	at javax.xml.parsers.DocumentBuilder.parse(DocumentBuilder.java:208)
+	at com.siteview.ecc.tuopu.MakeTuopuData.ReadXml(MakeTuopuData.java:736)
+	at com.siteview.ecc.tuopu.MakeTuopuData.<init>(MakeTuopuData.java:178)
+	at com.siteview.base.manage.Manager$TuopuThread.run(Manager.java:591)
+end  fujian     .............Thu Mar 10 10:20:45 CST 2011
+刷新............guangdong............Thu Mar 10 10:20:45 CST 2011
+java.io.FileNotFoundException: D:\workspace_home\workspace_zzb20110126\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ecc\main\tuoplist\guangdong.files\data.xml (系统找不到指定的路径。)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:106)
+	at java.io.FileInputStream.<init>(FileInputStream.java:66)
+	at sun.net.www.protocol.file.FileURLConnection.connect(FileURLConnection.java:70)
+	at sun.net.www.protocol.file.FileURLConnection.getInputStream(FileURLConnection.java:161)
+	at com.sun.org.apache.xerces.internal.impl.XMLEntityManager.setupCurrentEntity(XMLEntityManager.java:653)
+	at com.sun.org.apache.xerces.internal.impl.XMLVersionDetector.determineDocVersion(XMLVersionDetector.java:186)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:771)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:737)
+	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:107)
+	at com.sun.org.apache.xerces.internal.parsers.DOMParser.parse(DOMParser.java:225)
+	at com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:283)
+	at javax.xml.parsers.DocumentBuilder.parse(DocumentBuilder.java:208)
+	at com.siteview.ecc.tuopu.MakeTuopuData.ReadXml(MakeTuopuData.java:736)
+	at com.siteview.ecc.tuopu.MakeTuopuData.<init>(MakeTuopuData.java:178)
+	at com.siteview.base.manage.Manager$TuopuThread.run(Manager.java:591)
+end  guangdong     .............Thu Mar 10 10:20:45 CST 2011
+刷新............guangxi............Thu Mar 10 10:20:45 CST 2011
+java.io.FileNotFoundException: D:\workspace_home\workspace_zzb20110126\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ecc\main\tuoplist\guangxi.files\data.xml (系统找不到指定的路径。)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:106)
+	at java.io.FileInputStream.<init>(FileInputStream.java:66)
+	at sun.net.www.protocol.file.FileURLConnection.connect(FileURLConnection.java:70)
+	at sun.net.www.protocol.file.FileURLConnection.getInputStream(FileURLConnection.java:161)
+	at com.sun.org.apache.xerces.internal.impl.XMLEntityManager.setupCurrentEntity(XMLEntityManager.java:653)
+	at com.sun.org.apache.xerces.internal.impl.XMLVersionDetector.determineDocVersion(XMLVersionDetector.java:186)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:771)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:737)
+	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:107)
+	at com.sun.org.apache.xerces.internal.parsers.DOMParser.parse(DOMParser.java:225)
+	at com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:283)
+	at javax.xml.parsers.DocumentBuilder.parse(DocumentBuilder.java:208)
+	at com.siteview.ecc.tuopu.MakeTuopuData.ReadXml(MakeTuopuData.java:736)
+	at com.siteview.ecc.tuopu.MakeTuopuData.<init>(MakeTuopuData.java:178)
+	at com.siteview.base.manage.Manager$TuopuThread.run(Manager.java:591)
+end  guangxi     .............Thu Mar 10 10:20:45 CST 2011
+刷新............guizhou............Thu Mar 10 10:20:45 CST 2011
+java.io.FileNotFoundException: D:\workspace_home\workspace_zzb20110126\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ecc\main\tuoplist\guizhou.files\data.xml (系统找不到指定的路径。)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:106)
+	at java.io.FileInputStream.<init>(FileInputStream.java:66)
+	at sun.net.www.protocol.file.FileURLConnection.connect(FileURLConnection.java:70)
+	at sun.net.www.protocol.file.FileURLConnection.getInputStream(FileURLConnection.java:161)
+	at com.sun.org.apache.xerces.internal.impl.XMLEntityManager.setupCurrentEntity(XMLEntityManager.java:653)
+	at com.sun.org.apache.xerces.internal.impl.XMLVersionDetector.determineDocVersion(XMLVersionDetector.java:186)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:771)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:737)
+	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:107)
+	at com.sun.org.apache.xerces.internal.parsers.DOMParser.parse(DOMParser.java:225)
+	at com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:283)
+	at javax.xml.parsers.DocumentBuilder.parse(DocumentBuilder.java:208)
+	at com.siteview.ecc.tuopu.MakeTuopuData.ReadXml(MakeTuopuData.java:736)
+	at com.siteview.ecc.tuopu.MakeTuopuData.<init>(MakeTuopuData.java:178)
+	at com.siteview.base.manage.Manager$TuopuThread.run(Manager.java:591)
+end  guizhou     .............Thu Mar 10 10:20:45 CST 2011
+刷新............hainan............Thu Mar 10 10:20:45 CST 2011
+java.io.FileNotFoundException: D:\workspace_home\workspace_zzb20110126\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ecc\main\tuoplist\hainan.files\data.xml (系统找不到指定的路径。)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:106)
+	at java.io.FileInputStream.<init>(FileInputStream.java:66)
+	at sun.net.www.protocol.file.FileURLConnection.connect(FileURLConnection.java:70)
+	at sun.net.www.protocol.file.FileURLConnection.getInputStream(FileURLConnection.java:161)
+	at com.sun.org.apache.xerces.internal.impl.XMLEntityManager.setupCurrentEntity(XMLEntityManager.java:653)
+	at com.sun.org.apache.xerces.internal.impl.XMLVersionDetector.determineDocVersion(XMLVersionDetector.java:186)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:771)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:737)
+	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:107)
+	at com.sun.org.apache.xerces.internal.parsers.DOMParser.parse(DOMParser.java:225)
+	at com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:283)
+	at javax.xml.parsers.DocumentBuilder.parse(DocumentBuilder.java:208)
+	at com.siteview.ecc.tuopu.MakeTuopuData.ReadXml(MakeTuopuData.java:736)
+	at com.siteview.ecc.tuopu.MakeTuopuData.<init>(MakeTuopuData.java:178)
+	at com.siteview.base.manage.Manager$TuopuThread.run(Manager.java:591)
+end  hainan     .............Thu Mar 10 10:20:45 CST 2011
+刷新............hebei............Thu Mar 10 10:20:45 CST 2011
+java.io.FileNotFoundException: D:\workspace_home\workspace_zzb20110126\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ecc\main\tuoplist\hebei.files\data.xml (系统找不到指定的路径。)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:106)
+	at java.io.FileInputStream.<init>(FileInputStream.java:66)
+	at sun.net.www.protocol.file.FileURLConnection.connect(FileURLConnection.java:70)
+	at sun.net.www.protocol.file.FileURLConnection.getInputStream(FileURLConnection.java:161)
+	at com.sun.org.apache.xerces.internal.impl.XMLEntityManager.setupCurrentEntity(XMLEntityManager.java:653)
+	at com.sun.org.apache.xerces.internal.impl.XMLVersionDetector.determineDocVersion(XMLVersionDetector.java:186)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:771)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:737)
+	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:107)
+	at com.sun.org.apache.xerces.internal.parsers.DOMParser.parse(DOMParser.java:225)
+	at com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:283)
+	at javax.xml.parsers.DocumentBuilder.parse(DocumentBuilder.java:208)
+	at com.siteview.ecc.tuopu.MakeTuopuData.ReadXml(MakeTuopuData.java:736)
+	at com.siteview.ecc.tuopu.MakeTuopuData.<init>(MakeTuopuData.java:178)
+	at com.siteview.base.manage.Manager$TuopuThread.run(Manager.java:591)
+end  hebei     .............Thu Mar 10 10:20:45 CST 2011
+刷新............heilongjiang............Thu Mar 10 10:20:45 CST 2011
+java.io.FileNotFoundException: D:\workspace_home\workspace_zzb20110126\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ecc\main\tuoplist\heilongjiang.files\data.xml (系统找不到指定的路径。)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:106)
+	at java.io.FileInputStream.<init>(FileInputStream.java:66)
+	at sun.net.www.protocol.file.FileURLConnection.connect(FileURLConnection.java:70)
+	at sun.net.www.protocol.file.FileURLConnection.getInputStream(FileURLConnection.java:161)
+	at com.sun.org.apache.xerces.internal.impl.XMLEntityManager.setupCurrentEntity(XMLEntityManager.java:653)
+	at com.sun.org.apache.xerces.internal.impl.XMLVersionDetector.determineDocVersion(XMLVersionDetector.java:186)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:771)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:737)
+	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:107)
+	at com.sun.org.apache.xerces.internal.parsers.DOMParser.parse(DOMParser.java:225)
+	at com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:283)
+	at javax.xml.parsers.DocumentBuilder.parse(DocumentBuilder.java:208)
+	at com.siteview.ecc.tuopu.MakeTuopuData.ReadXml(MakeTuopuData.java:736)
+	at com.siteview.ecc.tuopu.MakeTuopuData.<init>(MakeTuopuData.java:178)
+	at com.siteview.base.manage.Manager$TuopuThread.run(Manager.java:591)
+end  heilongjiang     .............Thu Mar 10 10:20:45 CST 2011
+刷新............henan............Thu Mar 10 10:20:45 CST 2011
+QueryNameInfo.......................
+QueryMachineNameInfo.......................
+java.lang.NullPointerException
+	at com.siteview.ecc.tuopu.MakeTuopuData.GetTuopuDataFromServer(MakeTuopuData.java:1665)
+	at com.siteview.ecc.tuopu.MakeTuopuData.<init>(MakeTuopuData.java:229)
+	at com.siteview.base.manage.Manager$TuopuThread.run(Manager.java:591)
+end  henan     .............Thu Mar 10 10:20:46 CST 2011
+刷新............hubei............Thu Mar 10 10:20:46 CST 2011
+QueryNameInfo.......................
+QueryMachineNameInfo.......................
+java.lang.NullPointerException
+	at com.siteview.ecc.tuopu.MakeTuopuData.GetTuopuDataFromServer(MakeTuopuData.java:1665)
+	at com.siteview.ecc.tuopu.MakeTuopuData.<init>(MakeTuopuData.java:229)
+	at com.siteview.base.manage.Manager$TuopuThread.run(Manager.java:591)
+end  hubei     .............Thu Mar 10 10:20:48 CST 2011
+刷新............hunan............Thu Mar 10 10:20:48 CST 2011
+QueryNameInfo.......................
+QueryMachineNameInfo.......................
+end  hunan     .............Thu Mar 10 10:20:48 CST 2011
+刷新............jiangsu............Thu Mar 10 10:20:48 CST 2011
+java.io.FileNotFoundException: D:\workspace_home\workspace_zzb20110126\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ecc\main\tuoplist\jiangsu.files\data.xml (系统找不到指定的路径。)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:106)
+	at java.io.FileInputStream.<init>(FileInputStream.java:66)
+	at sun.net.www.protocol.file.FileURLConnection.connect(FileURLConnection.java:70)
+	at sun.net.www.protocol.file.FileURLConnection.getInputStream(FileURLConnection.java:161)
+	at com.sun.org.apache.xerces.internal.impl.XMLEntityManager.setupCurrentEntity(XMLEntityManager.java:653)
+	at com.sun.org.apache.xerces.internal.impl.XMLVersionDetector.determineDocVersion(XMLVersionDetector.java:186)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:771)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:737)
+	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:107)
+	at com.sun.org.apache.xerces.internal.parsers.DOMParser.parse(DOMParser.java:225)
+	at com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:283)
+	at javax.xml.parsers.DocumentBuilder.parse(DocumentBuilder.java:208)
+	at com.siteview.ecc.tuopu.MakeTuopuData.ReadXml(MakeTuopuData.java:736)
+	at com.siteview.ecc.tuopu.MakeTuopuData.<init>(MakeTuopuData.java:178)
+	at com.siteview.base.manage.Manager$TuopuThread.run(Manager.java:591)
+end  jiangsu     .............Thu Mar 10 10:20:48 CST 2011
+刷新............jiangxi............Thu Mar 10 10:20:48 CST 2011
+java.io.FileNotFoundException: D:\workspace_home\workspace_zzb20110126\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ecc\main\tuoplist\jiangxi.files\data.xml (系统找不到指定的路径。)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:106)
+	at java.io.FileInputStream.<init>(FileInputStream.java:66)
+	at sun.net.www.protocol.file.FileURLConnection.connect(FileURLConnection.java:70)
+	at sun.net.www.protocol.file.FileURLConnection.getInputStream(FileURLConnection.java:161)
+	at com.sun.org.apache.xerces.internal.impl.XMLEntityManager.setupCurrentEntity(XMLEntityManager.java:653)
+	at com.sun.org.apache.xerces.internal.impl.XMLVersionDetector.determineDocVersion(XMLVersionDetector.java:186)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:771)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:737)
+	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:107)
+	at com.sun.org.apache.xerces.internal.parsers.DOMParser.parse(DOMParser.java:225)
+	at com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:283)
+	at javax.xml.parsers.DocumentBuilder.parse(DocumentBuilder.java:208)
+	at com.siteview.ecc.tuopu.MakeTuopuData.ReadXml(MakeTuopuData.java:736)
+	at com.siteview.ecc.tuopu.MakeTuopuData.<init>(MakeTuopuData.java:178)
+	at com.siteview.base.manage.Manager$TuopuThread.run(Manager.java:591)
+end  jiangxi     .............Thu Mar 10 10:20:48 CST 2011
+刷新............jilin............Thu Mar 10 10:20:48 CST 2011
+java.io.FileNotFoundException: D:\workspace_home\workspace_zzb20110126\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ecc\main\tuoplist\jilin.files\data.xml (系统找不到指定的路径。)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:106)
+	at java.io.FileInputStream.<init>(FileInputStream.java:66)
+	at sun.net.www.protocol.file.FileURLConnection.connect(FileURLConnection.java:70)
+	at sun.net.www.protocol.file.FileURLConnection.getInputStream(FileURLConnection.java:161)
+	at com.sun.org.apache.xerces.internal.impl.XMLEntityManager.setupCurrentEntity(XMLEntityManager.java:653)
+	at com.sun.org.apache.xerces.internal.impl.XMLVersionDetector.determineDocVersion(XMLVersionDetector.java:186)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:771)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:737)
+	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:107)
+	at com.sun.org.apache.xerces.internal.parsers.DOMParser.parse(DOMParser.java:225)
+	at com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:283)
+	at javax.xml.parsers.DocumentBuilder.parse(DocumentBuilder.java:208)
+	at com.siteview.ecc.tuopu.MakeTuopuData.ReadXml(MakeTuopuData.java:736)
+	at com.siteview.ecc.tuopu.MakeTuopuData.<init>(MakeTuopuData.java:178)
+	at com.siteview.base.manage.Manager$TuopuThread.run(Manager.java:591)
+end  jilin     .............Thu Mar 10 10:20:48 CST 2011
+刷新............liaoning............Thu Mar 10 10:20:48 CST 2011
+java.io.FileNotFoundException: D:\workspace_home\workspace_zzb20110126\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ecc\main\tuoplist\liaoning.files\data.xml (系统找不到指定的路径。)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:106)
+	at java.io.FileInputStream.<init>(FileInputStream.java:66)
+	at sun.net.www.protocol.file.FileURLConnection.connect(FileURLConnection.java:70)
+	at sun.net.www.protocol.file.FileURLConnection.getInputStream(FileURLConnection.java:161)
+	at com.sun.org.apache.xerces.internal.impl.XMLEntityManager.setupCurrentEntity(XMLEntityManager.java:653)
+	at com.sun.org.apache.xerces.internal.impl.XMLVersionDetector.determineDocVersion(XMLVersionDetector.java:186)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:771)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:737)
+	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:107)
+	at com.sun.org.apache.xerces.internal.parsers.DOMParser.parse(DOMParser.java:225)
+	at com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:283)
+	at javax.xml.parsers.DocumentBuilder.parse(DocumentBuilder.java:208)
+	at com.siteview.ecc.tuopu.MakeTuopuData.ReadXml(MakeTuopuData.java:736)
+	at com.siteview.ecc.tuopu.MakeTuopuData.<init>(MakeTuopuData.java:178)
+	at com.siteview.base.manage.Manager$TuopuThread.run(Manager.java:591)
+end  liaoning     .............Thu Mar 10 10:20:48 CST 2011
+刷新............neimeng............Thu Mar 10 10:20:48 CST 2011
+java.io.FileNotFoundException: D:\workspace_home\workspace_zzb20110126\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ecc\main\tuoplist\neimeng.files\data.xml (系统找不到指定的路径。)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:106)
+	at java.io.FileInputStream.<init>(FileInputStream.java:66)
+	at sun.net.www.protocol.file.FileURLConnection.connect(FileURLConnection.java:70)
+	at sun.net.www.protocol.file.FileURLConnection.getInputStream(FileURLConnection.java:161)
+	at com.sun.org.apache.xerces.internal.impl.XMLEntityManager.setupCurrentEntity(XMLEntityManager.java:653)
+	at com.sun.org.apache.xerces.internal.impl.XMLVersionDetector.determineDocVersion(XMLVersionDetector.java:186)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:771)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:737)
+	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:107)
+	at com.sun.org.apache.xerces.internal.parsers.DOMParser.parse(DOMParser.java:225)
+	at com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:283)
+	at javax.xml.parsers.DocumentBuilder.parse(DocumentBuilder.java:208)
+	at com.siteview.ecc.tuopu.MakeTuopuData.ReadXml(MakeTuopuData.java:736)
+	at com.siteview.ecc.tuopu.MakeTuopuData.<init>(MakeTuopuData.java:178)
+	at com.siteview.base.manage.Manager$TuopuThread.run(Manager.java:591)
+end  neimeng     .............Thu Mar 10 10:20:48 CST 2011
+刷新............ningxia............Thu Mar 10 10:20:48 CST 2011
+java.io.FileNotFoundException: D:\workspace_home\workspace_zzb20110126\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ecc\main\tuoplist\ningxia.files\data.xml (系统找不到指定的路径。)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:106)
+	at java.io.FileInputStream.<init>(FileInputStream.java:66)
+	at sun.net.www.protocol.file.FileURLConnection.connect(FileURLConnection.java:70)
+	at sun.net.www.protocol.file.FileURLConnection.getInputStream(FileURLConnection.java:161)
+	at com.sun.org.apache.xerces.internal.impl.XMLEntityManager.setupCurrentEntity(XMLEntityManager.java:653)
+	at com.sun.org.apache.xerces.internal.impl.XMLVersionDetector.determineDocVersion(XMLVersionDetector.java:186)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:771)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:737)
+	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:107)
+	at com.sun.org.apache.xerces.internal.parsers.DOMParser.parse(DOMParser.java:225)
+	at com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:283)
+	at javax.xml.parsers.DocumentBuilder.parse(DocumentBuilder.java:208)
+	at com.siteview.ecc.tuopu.MakeTuopuData.ReadXml(MakeTuopuData.java:736)
+	at com.siteview.ecc.tuopu.MakeTuopuData.<init>(MakeTuopuData.java:178)
+	at com.siteview.base.manage.Manager$TuopuThread.run(Manager.java:591)
+end  ningxia     .............Thu Mar 10 10:20:48 CST 2011
+刷新............qinghai............Thu Mar 10 10:20:48 CST 2011
+java.io.FileNotFoundException: D:\workspace_home\workspace_zzb20110126\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ecc\main\tuoplist\qinghai.files\data.xml (系统找不到指定的路径。)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:106)
+	at java.io.FileInputStream.<init>(FileInputStream.java:66)
+	at sun.net.www.protocol.file.FileURLConnection.connect(FileURLConnection.java:70)
+	at sun.net.www.protocol.file.FileURLConnection.getInputStream(FileURLConnection.java:161)
+	at com.sun.org.apache.xerces.internal.impl.XMLEntityManager.setupCurrentEntity(XMLEntityManager.java:653)
+	at com.sun.org.apache.xerces.internal.impl.XMLVersionDetector.determineDocVersion(XMLVersionDetector.java:186)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:771)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:737)
+	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:107)
+	at com.sun.org.apache.xerces.internal.parsers.DOMParser.parse(DOMParser.java:225)
+	at com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:283)
+	at javax.xml.parsers.DocumentBuilder.parse(DocumentBuilder.java:208)
+	at com.siteview.ecc.tuopu.MakeTuopuData.ReadXml(MakeTuopuData.java:736)
+	at com.siteview.ecc.tuopu.MakeTuopuData.<init>(MakeTuopuData.java:178)
+	at com.siteview.base.manage.Manager$TuopuThread.run(Manager.java:591)
+end  qinghai     .............Thu Mar 10 10:20:48 CST 2011
+刷新............sanxi............Thu Mar 10 10:20:48 CST 2011
+java.io.FileNotFoundException: D:\workspace_home\workspace_zzb20110126\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ecc\main\tuoplist\sanxi.files\data.xml (系统找不到指定的路径。)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:106)
+	at java.io.FileInputStream.<init>(FileInputStream.java:66)
+	at sun.net.www.protocol.file.FileURLConnection.connect(FileURLConnection.java:70)
+	at sun.net.www.protocol.file.FileURLConnection.getInputStream(FileURLConnection.java:161)
+	at com.sun.org.apache.xerces.internal.impl.XMLEntityManager.setupCurrentEntity(XMLEntityManager.java:653)
+	at com.sun.org.apache.xerces.internal.impl.XMLVersionDetector.determineDocVersion(XMLVersionDetector.java:186)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:771)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:737)
+	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:107)
+	at com.sun.org.apache.xerces.internal.parsers.DOMParser.parse(DOMParser.java:225)
+	at com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:283)
+	at javax.xml.parsers.DocumentBuilder.parse(DocumentBuilder.java:208)
+	at com.siteview.ecc.tuopu.MakeTuopuData.ReadXml(MakeTuopuData.java:736)
+	at com.siteview.ecc.tuopu.MakeTuopuData.<init>(MakeTuopuData.java:178)
+	at com.siteview.base.manage.Manager$TuopuThread.run(Manager.java:591)
+end  sanxi     .............Thu Mar 10 10:20:48 CST 2011
+刷新............shandong............Thu Mar 10 10:20:48 CST 2011
+java.io.FileNotFoundException: D:\workspace_home\workspace_zzb20110126\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ecc\main\tuoplist\shandong.files\data.xml (系统找不到指定的路径。)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:106)
+	at java.io.FileInputStream.<init>(FileInputStream.java:66)
+	at sun.net.www.protocol.file.FileURLConnection.connect(FileURLConnection.java:70)
+	at sun.net.www.protocol.file.FileURLConnection.getInputStream(FileURLConnection.java:161)
+	at com.sun.org.apache.xerces.internal.impl.XMLEntityManager.setupCurrentEntity(XMLEntityManager.java:653)
+	at com.sun.org.apache.xerces.internal.impl.XMLVersionDetector.determineDocVersion(XMLVersionDetector.java:186)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:771)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:737)
+	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:107)
+	at com.sun.org.apache.xerces.internal.parsers.DOMParser.parse(DOMParser.java:225)
+	at com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:283)
+	at javax.xml.parsers.DocumentBuilder.parse(DocumentBuilder.java:208)
+	at com.siteview.ecc.tuopu.MakeTuopuData.ReadXml(MakeTuopuData.java:736)
+	at com.siteview.ecc.tuopu.MakeTuopuData.<init>(MakeTuopuData.java:178)
+	at com.siteview.base.manage.Manager$TuopuThread.run(Manager.java:591)
+end  shandong     .............Thu Mar 10 10:20:48 CST 2011
+刷新............test_zhuan............Thu Mar 10 10:20:48 CST 2011
+QueryNameInfo.......................
+QueryMachineNameInfo.......................
+QueryNameInfo.......................
+QueryMachineNameInfo.......................
+QueryNameInfo.......................
+QueryMachineNameInfo.......................
+QueryNameInfo.......................
+QueryMachineNameInfo.......................
+end  test_zhuan     .............Thu Mar 10 10:20:50 CST 2011
+TuopuThread 4444444..................结束循环Thu Mar 10 10:20:50 CST 2011
+ ---------- 用户 F5 刷新页面 ! ----------- 
+
+Wrote 50 string, 0 int into file/section: tuopfile.ini/filename
+
+Wrote 1 string, 0 int into file/section: tuopfile.ini/sort
+
+Wrote 50 string, 0 int into file/section: tuopfile.ini/filename
+
+Wrote 1 string, 0 int into file/section: tuopfile.ini/sort
+D:\workspace_home\workspace_zzb20110126\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ecc\main\tuoplist\henan.files\gif_1.gif
+D:\workspace_home\workspace_zzb20110126\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ecc\main\tuoplist\hubei.files\gif_1.gif
+D:\workspace_home\workspace_zzb20110126\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ecc\main\tuoplist\hunan.files\gif_1.gif
+D:\workspace_home\workspace_zzb20110126\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ecc\main\tuoplist\test_zhuan.files\gif_1.gif
+main\tuoplist\henan.files\gif_1.gif
+main\tuoplist\hubei.files\gif_1.gif
+main\tuoplist\test_zhuan.files\gif_1.gif
+main\tuoplist\hunan.files\gif_1.gif
+刷新............test_zhuan............Thu Mar 10 10:23:22 CST 2011
+QueryNameInfo.......................
+QueryMachineNameInfo.......................
+QueryNameInfo.......................
+QueryMachineNameInfo.......................
+QueryNameInfo.......................
+QueryMachineNameInfo.......................
+QueryNameInfo.......................
+QueryMachineNameInfo.......................
+
+Wrote 50 string, 0 int into file/section: tuopfile.ini/filename
+
+Wrote 1 string, 0 int into file/section: tuopfile.ini/sort
+D:\workspace_home\workspace_zzb20110126\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ecc\main\tuoplist\henan.files\gif_1.gif
+D:\workspace_home\workspace_zzb20110126\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ecc\main\tuoplist\hubei.files\gif_1.gif
+D:\workspace_home\workspace_zzb20110126\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ecc\main\tuoplist\hunan.files\gif_1.gif
+D:\workspace_home\workspace_zzb20110126\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ecc\main\tuoplist\test_zhuan.files\gif_1.gif
+main\tuoplist\henan.files\gif_1.gif
+main\tuoplist\hubei.files\gif_1.gif
+main\tuoplist\hunan.files\gif_1.gif
+
+Wrote 50 string, 0 int into file/section: tuopfile.ini/filename
+
+Wrote 1 string, 0 int into file/section: tuopfile.ini/sort
+D:\workspace_home\workspace_zzb20110126\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ecc\main\tuoplist\henan.files\gif_1.gif
+D:\workspace_home\workspace_zzb20110126\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ecc\main\tuoplist\hubei.files\gif_1.gif
+D:\workspace_home\workspace_zzb20110126\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ecc\main\tuoplist\hunan.files\gif_1.gif
+D:\workspace_home\workspace_zzb20110126\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ecc\main\tuoplist\test_zhuan.files\gif_1.gif
+main\tuoplist\henan.files\gif_1.gif
+main\tuoplist\hubei.files\gif_1.gif
+main\tuoplist\hunan.files\gif_1.gif
+刷新............hunan............Thu Mar 10 10:24:50 CST 2011
+QueryNameInfo.......................
+QueryMachineNameInfo.......................
+
+Wrote 50 string, 0 int into file/section: tuopfile.ini/filename
+
+Wrote 1 string, 0 int into file/section: tuopfile.ini/sort
+D:\workspace_home\workspace_zzb20110126\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ecc\main\tuoplist\henan.files\gif_1.gif
+D:\workspace_home\workspace_zzb20110126\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ecc\main\tuoplist\hubei.files\gif_1.gif
+D:\workspace_home\workspace_zzb20110126\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ecc\main\tuoplist\hunan.files\gif_1.gif
+D:\workspace_home\workspace_zzb20110126\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ecc\main\tuoplist\test_zhuan.files\gif_1.gif
+main\tuoplist\henan.files\gif_1.gif
+main\tuoplist\hubei.files\gif_1.gif
+main\tuoplist\hunan.files\gif_1.gif
+
+Wrote 50 string, 0 int into file/section: tuopfile.ini/filename
+
+Wrote 1 string, 0 int into file/section: tuopfile.ini/sort
+D:\workspace_home\workspace_zzb20110126\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ecc\main\tuoplist\henan.files\gif_1.gif
+D:\workspace_home\workspace_zzb20110126\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ecc\main\tuoplist\hubei.files\gif_1.gif
+D:\workspace_home\workspace_zzb20110126\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ecc\main\tuoplist\hunan.files\gif_1.gif
+D:\workspace_home\workspace_zzb20110126\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ecc\main\tuoplist\test_zhuan.files\gif_1.gif
+main\tuoplist\henan.files\gif_1.gif
+main\tuoplist\hubei.files\gif_1.gif
+main\tuoplist\hunan.files\gif_1.gif
+
+Wrote 50 string, 0 int into file/section: tuopfile.ini/filename
+
+Wrote 1 string, 0 int into file/section: tuopfile.ini/sort
+D:\workspace_home\workspace_zzb20110126\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ecc\main\tuoplist\henan.files\gif_1.gif
+D:\workspace_home\workspace_zzb20110126\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ecc\main\tuoplist\hubei.files\gif_1.gif
+D:\workspace_home\workspace_zzb20110126\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ecc\main\tuoplist\hunan.files\gif_1.gif
+D:\workspace_home\workspace_zzb20110126\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ecc\main\tuoplist\test_zhuan.files\gif_1.gif
+main\tuoplist\henan.files\gif_1.gif
+main\tuoplist\hubei.files\gif_1.gif
+main\tuoplist\hunan.files\gif_1.gif
+刷新............hunan............Thu Mar 10 10:27:52 CST 2011
+QueryNameInfo.......................
+QueryMachineNameInfo.......................
+
+Wrote 50 string, 0 int into file/section: tuopfile.ini/filename
+
+Wrote 1 string, 0 int into file/section: tuopfile.ini/sort
+D:\workspace_home\workspace_zzb20110126\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ecc\main\tuoplist\henan.files\gif_1.gif
+D:\workspace_home\workspace_zzb20110126\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ecc\main\tuoplist\hubei.files\gif_1.gif
+D:\workspace_home\workspace_zzb20110126\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ecc\main\tuoplist\hunan.files\gif_1.gif
+D:\workspace_home\workspace_zzb20110126\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ecc\main\tuoplist\test_zhuan.files\gif_1.gif
+main\tuoplist\henan.files\gif_1.gif
+main\tuoplist\hubei.files\gif_1.gif
+main\tuoplist\hunan.files\gif_1.gif
+
+Wrote 50 string, 0 int into file/section: tuopfile.ini/filename
+
+Wrote 1 string, 0 int into file/section: tuopfile.ini/sort
+D:\workspace_home\workspace_zzb20110126\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ecc\main\tuoplist\henan.files\gif_1.gif
+D:\workspace_home\workspace_zzb20110126\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ecc\main\tuoplist\hubei.files\gif_1.gif
+D:\workspace_home\workspace_zzb20110126\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ecc\main\tuoplist\hunan.files\gif_1.gif
+D:\workspace_home\workspace_zzb20110126\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ecc\main\tuoplist\test_zhuan.files\gif_1.gif
+main\tuoplist\henan.files\gif_1.gif
+main\tuoplist\hubei.files\gif_1.gif
+main\tuoplist\hunan.files\gif_1.gif
+
+Wrote 50 string, 0 int into file/section: tuopfile.ini/filename
+
+Wrote 1 string, 0 int into file/section: tuopfile.ini/sort
+D:\workspace_home\workspace_zzb20110126\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ecc\main\tuoplist\henan.files\gif_1.gif
+D:\workspace_home\workspace_zzb20110126\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ecc\main\tuoplist\hubei.files\gif_1.gif
+D:\workspace_home\workspace_zzb20110126\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ecc\main\tuoplist\hunan.files\gif_1.gif
+D:\workspace_home\workspace_zzb20110126\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ecc\main\tuoplist\test_zhuan.files\gif_1.gif
+main\tuoplist\henan.files\gif_1.gif
+main\tuoplist\hubei.files\gif_1.gif
+main\tuoplist\hunan.files\gif_1.gif
+TuopuThread 5555555..................结束循环Thu Mar 10 10:30:50 CST 2011
+TuopuThread 11111111.......................
+TuopuThread 3333333.......................
+刷新............henan............Thu Mar 10 10:30:50 CST 2011
+QueryNameInfo.......................
+QueryMachineNameInfo.......................
+end  henan     .............Thu Mar 10 10:30:51 CST 2011
+刷新............hubei............Thu Mar 10 10:30:51 CST 2011
+QueryNameInfo.......................
+QueryMachineNameInfo.......................
+end  hubei     .............Thu Mar 10 10:30:52 CST 2011
+刷新............hunan............Thu Mar 10 10:30:52 CST 2011
+QueryNameInfo.......................
+QueryMachineNameInfo.......................
+end  hunan     .............Thu Mar 10 10:30:52 CST 2011
+刷新............test_zhuan............Thu Mar 10 10:30:52 CST 2011
+QueryNameInfo.......................
+QueryMachineNameInfo.......................
+QueryNameInfo.......................
+QueryMachineNameInfo.......................
+QueryNameInfo.......................
+QueryMachineNameInfo.......................
+刷新............hunan............Thu Mar 10 10:30:55 CST 2011
+QueryNameInfo.......................
+QueryMachineNameInfo.......................
+QueryNameInfo.......................
+QueryMachineNameInfo.......................
+end  test_zhuan     .............Thu Mar 10 10:30:56 CST 2011
+TuopuThread 4444444..................结束循环Thu Mar 10 10:30:56 CST 2011
+
+Wrote 50 string, 0 int into file/section: tuopfile.ini/filename
+
+Wrote 1 string, 0 int into file/section: tuopfile.ini/sort
+D:\workspace_home\workspace_zzb20110126\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ecc\main\tuoplist\henan.files\gif_1.gif
+D:\workspace_home\workspace_zzb20110126\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ecc\main\tuoplist\hubei.files\gif_1.gif
+D:\workspace_home\workspace_zzb20110126\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ecc\main\tuoplist\hunan.files\gif_1.gif
+D:\workspace_home\workspace_zzb20110126\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ecc\main\tuoplist\test_zhuan.files\gif_1.gif
+main\tuoplist\henan.files\gif_1.gif
+main\tuoplist\hubei.files\gif_1.gif
+main\tuoplist\hunan.files\gif_1.gif

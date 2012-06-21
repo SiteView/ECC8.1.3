@@ -1,0 +1,597 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VisioDocument>
+	<DocumentProperties>
+		<Title/>
+		<HyperlinkBase href=""/>
+	</DocumentProperties>
+	<Pages>
+		<Page ID="0" Name="页-1" NameU="Page-1">
+			<Layer IX="0">
+				<Name/>
+				<NameUniv/>
+				<Visible>0</Visible>
+			</Layer>
+			<Layer IX="1">
+				<Name/>
+				<NameUniv/>
+				<Visible>0</Visible>
+			</Layer>
+			<Layer IX="2">
+				<Name>连接线</Name>
+				<NameUniv>Connector</NameUniv>
+				<Visible>1</Visible>
+			</Layer>
+			<Layer IX="3">
+				<Name>批注</Name>
+				<NameUniv>Annotations</NameUniv>
+				<Visible>1</Visible>
+			</Layer>
+			<Shapes>
+				<Shape ID="1" Master="4" Name="以太网" NameU="Ethernet" UniqueID="{FDBA4962-1EBE-4A94-B40C-5E3A83A8AA46}">
+					<Text>
+					</Text>
+					<XForm>
+						<PinX Unit="MM">4.704724409448819</PinX>
+						<PinY Unit="MM">6.397637795275589</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember/>
+					</LayerMem>
+					<Prop ID="10" Name="Department" NameU="Department">
+						<Value/>
+						<Label>部门</Label>
+					</Prop>
+					<Prop ID="5" Name="AssetNumber" NameU="AssetNumber">
+						<Value/>
+						<Label>资产号</Label>
+					</Prop>
+					<Prop ID="6" Name="SerialNumber" NameU="SerialNumber">
+						<Value/>
+						<Label>序列号</Label>
+					</Prop>
+					<Prop ID="7" Name="Location" NameU="Location">
+						<Value/>
+						<Label>位置</Label>
+					</Prop>
+					<Prop ID="8" Name="Building" NameU="Building">
+						<Value/>
+						<Label>建筑物</Label>
+					</Prop>
+					<Prop ID="9" Name="Room" NameU="Room">
+						<Value/>
+						<Label>房间</Label>
+					</Prop>
+					<Prop ID="1" Name="Manufacturer" NameU="Manufacturer">
+						<Value/>
+						<Label>制造商</Label>
+					</Prop>
+					<Prop ID="2" Name="ProductNumber" NameU="ProductNumber">
+						<Value/>
+						<Label>产品编号</Label>
+					</Prop>
+					<Prop ID="3" Name="PartNumber" NameU="PartNumber">
+						<Value/>
+						<Label>部件号</Label>
+					</Prop>
+					<Prop ID="4" Name="ProductDescription" NameU="ProductDescription">
+						<Value/>
+						<Label>产品说明</Label>
+					</Prop>
+					<Prop ID="13" Name="NetworkName" NameU="NetworkName">
+						<Value/>
+						<Label>网络名称</Label>
+					</Prop>
+					<Prop ID="14" Name="IPAddress" NameU="IPAddress">
+						<Value/>
+						<Label>IP 地址</Label>
+					</Prop>
+					<Prop ID="15" Name="SubnetMask" NameU="SubnetMask">
+						<Value/>
+						<Label>子网掩码</Label>
+					</Prop>
+					<Prop ID="16" Name="AdminInterface" NameU="AdminInterface">
+						<Value/>
+						<Label>管理接口</Label>
+					</Prop>
+					<Prop ID="17" Name="NumberofPorts" NameU="NumberofPorts">
+						<Value/>
+						<Label>端口数目</Label>
+					</Prop>
+					<Prop ID="18" Name="MACAddress" NameU="MACAddress">
+						<Value/>
+						<Label>MAC 地址</Label>
+					</Prop>
+					<Prop ID="19" Name="CommunityString" NameU="CommunityString">
+						<Value/>
+						<Label>团体字符串</Label>
+					</Prop>
+					<Prop ID="20" Name="NetworkDescription" NameU="NetworkDescription">
+						<Value/>
+						<Label>网络说明</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="35" Master="5" Name="服务器.35" NameU="Server.35" UniqueID="{D3F88E21-4B61-46C2-A648-D9F333AD4531}">
+					<XForm>
+						<PinX Unit="MM">6.417322834645669</PinX>
+						<PinY Unit="MM">4.724409448818896</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember/>
+					</LayerMem>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									
+									
+								<HLURL:Hyperlink ID="0"><HLURL:Description>SV_IP:10.1.229.13</HLURL:Description><HLURL:Address>#</HLURL:Address><HLURL:SubAddress/><HLURL:AbsoluteURL>#</HLURL:AbsoluteURL><HLURL:ExtraInfo/><HLURL:Default/><HLURL:Status>-100</HLURL:Status><HLURL:NewWindow>0</HLURL:NewWindow></HLURL:Hyperlink></HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+					<Prop ID="1" Name="SV_IP" NameU="SV_IP">
+						<Value Unit="STR">10.1.229.13</Value>
+						<Label>实体IP</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="50" Name="Sheet.50" NameU="Sheet.50" UniqueID="{EC320904-F848-4B3F-81E1-8C03954152F8}">
+					<Text>内网核心服务器IP（229网段）</Text>
+					<XForm>
+						<PinX Unit="MM">4.606299212598425</PinX>
+						<PinY Unit="MM">7.972440944881888</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="5" Master="5" Name="服务器.5" NameU="Server.5" UniqueID="{508F5D9A-B125-414F-9CE1-CFDC53C05562}">
+					<XForm>
+						<PinX Unit="MM">4.448818897637796</PinX>
+						<PinY Unit="MM">4.724409448818896</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember/>
+					</LayerMem>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									
+									
+								<HLURL:Hyperlink ID="0"><HLURL:Description>SV_IP:10.1.229.3</HLURL:Description><HLURL:Address>#</HLURL:Address><HLURL:SubAddress/><HLURL:AbsoluteURL>#</HLURL:AbsoluteURL><HLURL:ExtraInfo/><HLURL:Default/><HLURL:Status>-100</HLURL:Status><HLURL:NewWindow>0</HLURL:NewWindow></HLURL:Hyperlink></HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+					<Prop ID="1" Name="SV_IP" NameU="SV_IP">
+						<Value Unit="STR">10.1.229.3</Value>
+						<Label>实体IP</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="20" Master="5" Name="服务器.20" NameU="Server.20" UniqueID="{BD9E69EF-21A0-499C-8825-7A9F2EAC4936}">
+					<XForm>
+						<PinX Unit="MM">5.433070866141733</PinX>
+						<PinY Unit="MM">4.724409448818896</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember/>
+					</LayerMem>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									
+									
+								<HLURL:Hyperlink ID="0"><HLURL:Description>SV_IP:10.1.229.12</HLURL:Description><HLURL:Address>#</HLURL:Address><HLURL:SubAddress/><HLURL:AbsoluteURL>#</HLURL:AbsoluteURL><HLURL:ExtraInfo/><HLURL:Default/><HLURL:Status>-100</HLURL:Status><HLURL:NewWindow>0</HLURL:NewWindow></HLURL:Hyperlink></HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+					<Prop ID="1" Name="SV_IP" NameU="SV_IP">
+						<Value Unit="STR">10.1.229.12</Value>
+						<Label>实体IP</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="51" Master="5" Name="服务器.51" NameU="Server.51" UniqueID="{F10FCAC8-1FB6-464B-AC0E-1C98661F0B2A}">
+					<XForm>
+						<PinX Unit="MM">1.456692913385828</PinX>
+						<PinY Unit="MM">4.724409448818896</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember/>
+					</LayerMem>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									
+									
+								<HLURL:Hyperlink ID="0"><HLURL:Description>SV_IP:10.1.229.9</HLURL:Description><HLURL:Address>#</HLURL:Address><HLURL:SubAddress/><HLURL:AbsoluteURL>#</HLURL:AbsoluteURL><HLURL:ExtraInfo/><HLURL:Default/><HLURL:Status>-100</HLURL:Status><HLURL:NewWindow>0</HLURL:NewWindow></HLURL:Hyperlink></HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+					<Prop ID="1" Name="SV_IP" NameU="SV_IP">
+						<Value Unit="STR">10.1.229.9</Value>
+						<Label>实体IP</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="66" Master="5" Name="服务器.66" NameU="Server.66" UniqueID="{E9F4B272-D961-4C6B-8521-D9956AC24DE3}">
+					<XForm>
+						<PinX Unit="MM">7.362204724409448</PinX>
+						<PinY Unit="MM">4.724409448818896</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember/>
+					</LayerMem>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									
+									
+								<HLURL:Hyperlink ID="0"><HLURL:Description>SV_IP:10.1.229.7</HLURL:Description><HLURL:Address>#</HLURL:Address><HLURL:SubAddress/><HLURL:AbsoluteURL>#</HLURL:AbsoluteURL><HLURL:ExtraInfo/><HLURL:Default/><HLURL:Status>-100</HLURL:Status><HLURL:NewWindow>0</HLURL:NewWindow></HLURL:Hyperlink></HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+					<Prop ID="1" Name="SV_IP" NameU="SV_IP">
+						<Value Unit="STR">10.1.229.7</Value>
+						<Label>实体IP</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="81" Master="5" Name="服务器.81" NameU="Server.81" UniqueID="{977721C3-AC5F-468A-827A-8C52D4121ED4}">
+					<XForm>
+						<PinX Unit="MM">2.440944881889764</PinX>
+						<PinY Unit="MM">4.724409448818896</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember/>
+					</LayerMem>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									
+									
+								<HLURL:Hyperlink ID="0"><HLURL:Description>SV_IP:10.1.229.6</HLURL:Description><HLURL:Address>#</HLURL:Address><HLURL:SubAddress/><HLURL:AbsoluteURL>#</HLURL:AbsoluteURL><HLURL:ExtraInfo/><HLURL:Default/><HLURL:Status>-100</HLURL:Status><HLURL:NewWindow>0</HLURL:NewWindow></HLURL:Hyperlink></HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+					<Prop ID="1" Name="SV_IP" NameU="SV_IP">
+						<Value Unit="STR">10.1.229.6</Value>
+						<Label>实体IP</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="96" Master="5" Name="服务器.96" NameU="Server.96" UniqueID="{9FA42EB0-BF5D-445E-B1C1-BC3582043E89}">
+					<XForm>
+						<PinX Unit="MM">3.464566929133859</PinX>
+						<PinY Unit="MM">4.704724409448818</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember/>
+					</LayerMem>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									
+									
+								<HLURL:Hyperlink ID="0"><HLURL:Description>SV_IP:10.1.229.6</HLURL:Description><HLURL:Address>#</HLURL:Address><HLURL:SubAddress/><HLURL:AbsoluteURL>#</HLURL:AbsoluteURL><HLURL:ExtraInfo/><HLURL:Default/><HLURL:Status>-100</HLURL:Status><HLURL:NewWindow>0</HLURL:NewWindow></HLURL:Hyperlink></HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+					<Prop ID="1" Name="SV_IP" NameU="SV_IP">
+						<Value Unit="STR">10.1.229.6</Value>
+						<Label>实体IP</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="111" Master="5" Name="服务器.111" NameU="Server.111" UniqueID="{6F7AEA26-1AF0-4B65-9E76-DAC0B91A3580}">
+					<XForm>
+						<PinX Unit="MM">8.307086614173228</PinX>
+						<PinY Unit="MM">4.724409448818896</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember/>
+					</LayerMem>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									
+									
+								<HLURL:Hyperlink ID="0"><HLURL:Description>SV_IP:10.1.229.10</HLURL:Description><HLURL:Address>#</HLURL:Address><HLURL:SubAddress/><HLURL:AbsoluteURL>#</HLURL:AbsoluteURL><HLURL:ExtraInfo/><HLURL:Default/><HLURL:Status>-100</HLURL:Status><HLURL:NewWindow>0</HLURL:NewWindow></HLURL:Hyperlink></HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+					<Prop ID="1" Name="SV_IP" NameU="SV_IP">
+						<Value Unit="STR">10.1.229.10</Value>
+						<Label>实体IP</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="172" Master="7" Name="12 磅的文本" NameU="12pt. text" UniqueID="{1AB5C384-2272-4CB3-944D-02B254BE0CE3}">
+					<Text>DNS4
+2柜第4台</Text>
+					<XForm>
+						<PinX Unit="MM">0.866141732283465</PinX>
+						<PinY Unit="MM">3.937007874015746</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember>3</LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="173" Master="7" Name="12 磅的文本.173" NameU="12pt. text.173" UniqueID="{2E548DFA-901E-4736-8CF3-BDABE25FCAE0}">
+					<Text>DNS4
+2柜第5台</Text>
+					<XForm>
+						<PinX Unit="MM">1.968503937007874</PinX>
+						<PinY Unit="MM">4.035430878166137</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember>3</LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="174" Master="7" Name="12 磅的文本.174" NameU="12pt. text.174" UniqueID="{6D36C01F-1ED0-4BA7-A2D5-D171253C2D52}">
+					<Text>EMAIL
+1柜第5台</Text>
+					<XForm>
+						<PinX Unit="MM">3.937007874015748</PinX>
+						<PinY Unit="MM">4.035433070866141</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember>3</LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="175" Master="6" Name="框.175" NameU="Box.175" UniqueID="{42F99847-E989-4518-B071-87740606F24C}">
+					<XForm>
+						<PinX Unit="MM">5.826771653543309</PinX>
+						<PinY Unit="MM">4.114173228346457</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="176" Master="4" Name="以太网.176" NameU="Ethernet.176" UniqueID="{104EA314-34AC-4A21-AA1B-7E1EDC0935DD}">
+					<Text>
+					</Text>
+					<XForm>
+						<PinX Unit="MM">5.196850393700785</PinX>
+						<PinY Unit="MM">5.314960629921256</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember/>
+					</LayerMem>
+					<Prop ID="10" Name="Department" NameU="Department">
+						<Value/>
+						<Label>部门</Label>
+					</Prop>
+					<Prop ID="5" Name="AssetNumber" NameU="AssetNumber">
+						<Value/>
+						<Label>资产号</Label>
+					</Prop>
+					<Prop ID="6" Name="SerialNumber" NameU="SerialNumber">
+						<Value/>
+						<Label>序列号</Label>
+					</Prop>
+					<Prop ID="7" Name="Location" NameU="Location">
+						<Value/>
+						<Label>位置</Label>
+					</Prop>
+					<Prop ID="8" Name="Building" NameU="Building">
+						<Value/>
+						<Label>建筑物</Label>
+					</Prop>
+					<Prop ID="9" Name="Room" NameU="Room">
+						<Value/>
+						<Label>房间</Label>
+					</Prop>
+					<Prop ID="1" Name="Manufacturer" NameU="Manufacturer">
+						<Value/>
+						<Label>制造商</Label>
+					</Prop>
+					<Prop ID="2" Name="ProductNumber" NameU="ProductNumber">
+						<Value/>
+						<Label>产品编号</Label>
+					</Prop>
+					<Prop ID="3" Name="PartNumber" NameU="PartNumber">
+						<Value/>
+						<Label>部件号</Label>
+					</Prop>
+					<Prop ID="4" Name="ProductDescription" NameU="ProductDescription">
+						<Value/>
+						<Label>产品说明</Label>
+					</Prop>
+					<Prop ID="13" Name="NetworkName" NameU="NetworkName">
+						<Value/>
+						<Label>网络名称</Label>
+					</Prop>
+					<Prop ID="14" Name="IPAddress" NameU="IPAddress">
+						<Value/>
+						<Label>IP 地址</Label>
+					</Prop>
+					<Prop ID="15" Name="SubnetMask" NameU="SubnetMask">
+						<Value/>
+						<Label>子网掩码</Label>
+					</Prop>
+					<Prop ID="16" Name="AdminInterface" NameU="AdminInterface">
+						<Value/>
+						<Label>管理接口</Label>
+					</Prop>
+					<Prop ID="17" Name="NumberofPorts" NameU="NumberofPorts">
+						<Value/>
+						<Label>端口数目</Label>
+					</Prop>
+					<Prop ID="18" Name="MACAddress" NameU="MACAddress">
+						<Value/>
+						<Label>MAC 地址</Label>
+					</Prop>
+					<Prop ID="19" Name="CommunityString" NameU="CommunityString">
+						<Value/>
+						<Label>团体字符串</Label>
+					</Prop>
+					<Prop ID="20" Name="NetworkDescription" NameU="NetworkDescription">
+						<Value/>
+						<Label>网络说明</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="180" Master="5" Name="服务器.180" NameU="Server.180" UniqueID="{7F349EB3-71D6-4F88-B1CD-95710D23D0D9}">
+					<XForm>
+						<PinX Unit="MM">6.259842519685035</PinX>
+						<PinY Unit="MM">3.641732283464564</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember/>
+					</LayerMem>
+				</Shape>
+				<Shape ID="195" Name="Sheet.195" NameU="Sheet.195" UniqueID="{320EE658-D20C-4DAC-9A90-78F6C0EAB993}">
+					<Text>内网核心服务器IP</Text>
+					<XForm>
+						<PinX Unit="MM">5.098425196850391</PinX>
+						<PinY Unit="MM">6.889763779527555</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="196" Master="5" Name="服务器.196" NameU="Server.196" UniqueID="{68A68B74-279A-4F6F-ACF8-C863D60E9482}">
+					<XForm>
+						<PinX Unit="MM">4.291338582677161</PinX>
+						<PinY Unit="MM">3.641732283464564</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember/>
+					</LayerMem>
+				</Shape>
+				<Shape ID="211" Master="5" Name="服务器.211" NameU="Server.211" UniqueID="{0CDCCC22-77D5-4513-B31A-8991C538EDFC}">
+					<XForm>
+						<PinX Unit="MM">5.275590551181098</PinX>
+						<PinY Unit="MM">3.641732283464564</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember/>
+					</LayerMem>
+				</Shape>
+				<Shape ID="226" Master="5" Name="服务器.226" NameU="Server.226" UniqueID="{E1E527EB-6A3E-4C86-B458-50D316D0CC72}">
+					<XForm>
+						<PinX Unit="MM">2.007874015748032</PinX>
+						<PinY Unit="MM">3.641732283464564</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember/>
+					</LayerMem>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									
+									
+								<HLURL:Hyperlink ID="0"><HLURL:Description>Go To Page:example3</HLURL:Description><HLURL:Address>../showtuopu.zul?name=example3</HLURL:Address><HLURL:SubAddress/><HLURL:AbsoluteURL>../showtuopu.zul?name=example3</HLURL:AbsoluteURL><HLURL:ExtraInfo/><HLURL:Default/><HLURL:Status>1</HLURL:Status><HLURL:NewWindow>3</HLURL:NewWindow></HLURL:Hyperlink></HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+					<Prop ID="1" Name="SV_Link" NameU="SV_Link">
+						<Value Unit="STR">example3</Value>
+						<Label>实体IP</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="241" Master="5" Name="服务器.241" NameU="Server.241" UniqueID="{292C89ED-A298-42A0-BB18-3982E0B3452E}">
+					<XForm>
+						<PinX Unit="MM">7.204724409448815</PinX>
+						<PinY Unit="MM">3.641732283464564</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember/>
+					</LayerMem>
+				</Shape>
+				<Shape ID="256" Master="5" Name="服务器.256" NameU="Server.256" UniqueID="{5F3A26CB-9E77-4DC4-A303-AC5908999355}">
+					<XForm>
+						<PinX Unit="MM">3.149606299212598</PinX>
+						<PinY Unit="MM">3.641732283464564</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember/>
+					</LayerMem>
+				</Shape>
+				<Shape ID="286" Master="5" Name="服务器.286" NameU="Server.286" UniqueID="{F0F6DE28-8F02-4AF0-9C45-1393A6F40A74}">
+					<XForm>
+						<PinX Unit="MM">8.149606299212598</PinX>
+						<PinY Unit="MM">3.641732283464564</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember/>
+					</LayerMem>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									
+									
+								<HLURL:Hyperlink ID="0"><HLURL:Description>Go To Page:example2</HLURL:Description><HLURL:Address>../showtuopu.zul?name=example2</HLURL:Address><HLURL:SubAddress/><HLURL:AbsoluteURL>../showtuopu.zul?name=example2</HLURL:AbsoluteURL><HLURL:ExtraInfo/><HLURL:Default/><HLURL:Status>3</HLURL:Status><HLURL:NewWindow>3</HLURL:NewWindow></HLURL:Hyperlink></HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+					<Prop ID="1" Name="SV_Link" NameU="SV_Link">
+						<Value Unit="STR">example2</Value>
+						<Label>实体IP</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="301" Master="7" Name="12 磅的文本.301" NameU="12pt. text.301" UniqueID="{4EB583D1-12FF-4AB5-85A9-5AC4BF444139}">
+					<Text>服务器</Text>
+					<XForm>
+						<PinX Unit="MM">1.358267716535432</PinX>
+						<PinY Unit="MM">2.854330708661414</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember>3</LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="302" Master="7" Name="12 磅的文本.302" NameU="12pt. text.302" UniqueID="{B9C1DF4D-00E1-4215-800E-5A72FC078302}">
+					<Text>服务器</Text>
+					<XForm>
+						<PinX Unit="MM">2.637795275590551</PinX>
+						<PinY Unit="MM">2.952753712811804</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember>3</LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="303" Master="7" Name="12 磅的文本.303" NameU="12pt. text.303" UniqueID="{6186A826-9370-4A91-A324-3687363CC552}">
+					<Text>服务器</Text>
+					<XForm>
+						<PinX Unit="MM">3.858267716535433</PinX>
+						<PinY Unit="MM">2.952755905511808</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember>3</LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="304" Master="7" Name="12 磅的文本.304" NameU="12pt. text.304" UniqueID="{39B15FF5-ACE2-4433-A3AD-39C6869593A5}">
+					<Text>服务器</Text>
+					<XForm>
+						<PinX Unit="MM">5.866141732283464</PinX>
+						<PinY Unit="MM">2.933070866141731</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember>3</LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="305" Master="7" Name="12 磅的文本.305" NameU="12pt. text.305" UniqueID="{25D21859-C2A0-4085-81BA-5AE9BA12C378}">
+					<Text>服务器</Text>
+					<XForm>
+						<PinX Unit="MM">6.850393700787401</PinX>
+						<PinY Unit="MM">2.933070866141731</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember>3</LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="126" Master="7" Name="12 磅的文本.126" NameU="12pt. text.126" UniqueID="{5E8A50F9-3EEC-44AA-9B60-A09D6EBC571A}">
+					<Text>服务器</Text>
+					<XForm>
+						<PinX Unit="MM">4.842519685039370</PinX>
+						<PinY Unit="MM">2.913385826771654</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember>3</LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="127" Master="7" Name="12 磅的文本.127" NameU="12pt. text.127" UniqueID="{FDC74E2E-702E-4B47-90C0-26430908523E}">
+					<Text>服务器</Text>
+					<XForm>
+						<PinX Unit="MM">7.755905511811023</PinX>
+						<PinY Unit="MM">2.913385826771654</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember>3</LayerMember>
+					</LayerMem>
+				</Shape>
+			</Shapes>
+		</Page>
+	</Pages>
+</VisioDocument>

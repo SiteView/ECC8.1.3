@@ -1,0 +1,10 @@
+<?page title="" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window id="topnprogress" title="" border="normal" width="580px" apply="com.siteview.ecc.report.topnreport.TopNProgress" >
+<vbox align="end" style="margin-left:5px;margin-top:5px;margin-right:5px;margin-bottom:5px;" >
+<div align="left"> <label id="getdata"  value="正在生成报告..." /></div>
+<progressmeter id="progressmeter" width="550px" value="0"/>
+<button id="cancel" label="取消" sclass="btnDefault" width="70px" height="23px"></button>
+</vbox>
+</window>
+</zk>

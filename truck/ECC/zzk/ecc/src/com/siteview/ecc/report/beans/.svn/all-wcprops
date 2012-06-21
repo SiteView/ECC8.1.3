@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/svDCM/!svn/ver/4418/trunk/zk.ecc_zhongzubu/ecc/src/com/siteview/ecc/report/beans
+END
+StateItem.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/src/com/siteview/ecc/report/beans/StateItem.java
+END
+TendencyBean.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/src/com/siteview/ecc/report/beans/TendencyBean.java
+END
+BaseBean.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/src/com/siteview/ecc/report/beans/BaseBean.java
+END
+RuntimeReportBean.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/src/com/siteview/ecc/report/beans/RuntimeReportBean.java
+END
+CompareDataBean.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/src/com/siteview/ecc/report/beans/CompareDataBean.java
+END
+StateBean.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/src/com/siteview/ecc/report/beans/StateBean.java
+END
+TopNBean.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/src/com/siteview/ecc/report/beans/TopNBean.java
+END
+TendencyCheckDataBean.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/svDCM/!svn/ver/4418/trunk/zk.ecc_zhongzubu/ecc/src/com/siteview/ecc/report/beans/TendencyCheckDataBean.java
+END
+TopNGenerateDataBean.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/src/com/siteview/ecc/report/beans/TopNGenerateDataBean.java
+END
+MonitorBean.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/src/com/siteview/ecc/report/beans/MonitorBean.java
+END

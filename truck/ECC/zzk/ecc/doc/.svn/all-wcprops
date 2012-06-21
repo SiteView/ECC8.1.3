@@ -1,0 +1,119 @@
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/doc
+END
+SendTestImpl.cs
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/doc/SendTestImpl.cs
+END
+SvdbTableDaoImpl.cs
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/doc/SvdbTableDaoImpl.cs
+END
+AlertDaoImpl.cs
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/doc/AlertDaoImpl.cs
+END
+AlertLogDaoImpl.cs
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/doc/AlertLogDaoImpl.cs
+END
+MonitorSchedule.exe
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/doc/MonitorSchedule.exe
+END
+scasvapi.txt
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/doc/scasvapi.txt
+END
+BatchActionDaoImpl.cs
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/doc/BatchActionDaoImpl.cs
+END
+TextTemplateDaoImpl.cs
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/doc/TextTemplateDaoImpl.cs
+END
+QueryRecordSetDaoImpl.cs
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/doc/QueryRecordSetDaoImpl.cs
+END
+svdb.sql
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/doc/svdb.sql
+END
+ReportTableDaoImpl.cs
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/doc/ReportTableDaoImpl.cs
+END
+QueueDaoImpl.cs
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/doc/QueueDaoImpl.cs
+END
+TableDaoImpl.cs
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/doc/TableDaoImpl.cs
+END
+ResourceDaoImpl.cs
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/doc/ResourceDaoImpl.cs
+END
+WebECC.ini
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/doc/WebECC.ini
+END
+ReportToHTMLControl.cs
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/doc/ReportToHTMLControl.cs
+END
+CryptDaoImpl.cs
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/doc/CryptDaoImpl.cs
+END
+TaskDaoImpl.cs
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/doc/TaskDaoImpl.cs
+END
+MonitorScheduleWeb.dll
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/doc/MonitorScheduleWeb.dll
+END

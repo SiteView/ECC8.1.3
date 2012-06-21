@@ -1,0 +1,27 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window id="wse" title="SE" border="normal" width="450px"
+		position="center" closable="true"
+		apply="com.siteview.ecc.treeview.windows.EditSe">
+		<groupbox style="margin:5px 5px 5px 5px;" height="50px">
+			<caption label="基本信息" />
+			<hbox>
+				<label value="SE标签(*)*" />
+				<space />
+				<textbox id="sename" width="300px"/>
+			</hbox>
+		</groupbox>
+		<div style="float:right;margin-bottom:12px;margin-right:12px; " >
+			<button id="btnsave" sclass="btnDefault" width="74px"
+				height="23px" image="/main/images/button/ico/save_bt.gif"
+				label="保存"  tooltiptext="保存" />
+			<button id="btnclose" sclass="btnDefault" label="取消"
+				width="74px" height="23px" tooltiptext="放弃所做的编辑并关闭窗体" 
+				image="/main/images/button/ico/close_bt.gif">
+				<attribute name="onClick">
+		       wse.detach();
+	  	      </attribute>
+			</button>
+		</div>
+	</window>
+</zk>

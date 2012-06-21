@@ -1,0 +1,51 @@
+<?page title="拓扑视图" contentType="text/html;charset=UTF-8"?>
+<zk>
+<zscript><![CDATA[
+
+//LinkedHashMap<String, LinkedHashMap<String, String>> tuoplist =  
+//	com.siteview.ecc.tuopu.TuopuList.GetTuopuList();
+
+//value.put("name", "");
+//value.put("showurl", "");
+//value.put("vsdname", "");
+//value.put("downvsdurl", "");
+//value.put("edit", "");			
+//tuoplist.put("sortid", value);
+
+]]></zscript>
+	<panel height="300px" title="tuopulisttest2" border="normal" collapsible="true" style="margin-top:20px;margin-bottom:20px">
+		<panelchildren>
+		<listbox id="box" fixedLayout="true" multiple="true" checkmark="true">
+			<listhead>
+				<listheader width="80%" label="名  称"/>
+				<listheader width="10%" label="拓扑图"/>
+				<listheader width="10%" label="编辑"/>
+			</listhead>
+			<listitem forEach="${tuoplist}">
+				 <listcell><button label="${each.value.name}" href="${each.value.showurl}" target="_blank"/></listcell>
+				<listcell><textbox value="${each.value.vsdname}"/></listcell>
+				<listcell label="${each.value.edit}"/>
+			</listitem>
+		</listbox>	
+		</panelchildren>
+	</panel>
+	
+	<panel height="150px" title="tuopulisttest1" border="normal" collapsible="true"  style="margin-bottom:20px">
+		<panelchildren>
+			test1
+		</panelchildren>
+	</panel>	
+	<zscript>
+		List items = new org.zkoss.zkdemo.userguide.BigList(1000); //a big list of Integer
+	</zscript>
+	<listbox id="listbox" mold="paging">
+		<listitem forEach="&#36;{items}">
+		<listcell label="&#36;{each}-1"/>
+		<listcell label="&#36;{each}-2"/>
+		<listcell label="&#36;{each}-3"/>
+		<listcell label="&#36;{each}-4"/>
+		</listitem>
+	</listbox>
+
+
+</zk>

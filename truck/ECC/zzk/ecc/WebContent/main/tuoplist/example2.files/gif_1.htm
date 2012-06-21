@@ -1,0 +1,227 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<link rel="stylesheet" type="text/css" href="visio.css"/>
+<title>
+
+</title>
+<script type="text/javascript" language="javascript">
+function UpdateTooltip(){};
+function OnShapeClick(){};
+</script>
+
+<script src="gif_1.js" type="text/jscript" language="jscript"></script>
+
+<script type="text/jscript" language="jscript">
+	if(parent.isUpLevel)
+	{
+		location.replace(parent.g_FileList[parent.g_CurPageIndex].PriImage);
+	}
+</script>
+
+
+
+<script type="text/jscript" language="jscript">
+
+var pageID = 0;
+
+var isUpLevel = parent.isUpLevel;
+var OnShapeClick = null;
+if (!parent.isMac)
+{
+	OnShapeClick = parent.OnShapeClick;
+}
+
+var OnShapeKey = parent.OnShapeKey;
+var UpdateTooltip = parent.UpdateTooltip;
+var clickMenu = parent.clickMenu;
+var toggleMenuDiv = parent.toggleMenuDiv;
+var toggleMenuLink = parent.toggleMenuLink;
+var GoToPage = parent.GoToPage;
+
+
+if (parent.isUpLevel)
+{
+
+	if (parent.g_FirstPageToLoad != null && parent.g_FirstPageToLoad.length > 0)
+	{
+		if (parent.g_FileList[parent.g_CurPageIndex].PageID != pageID)
+		{
+			var fileEntry = parent.g_FileList[parent.g_CurPageIndex];
+			var fileToLoad = fileToLoad = fileEntry.PriImage;
+			if (fileEntry.SecImage.length > 0)
+			{
+				fileToLoad = fileEntry.SecImage;
+			}
+
+			location.replace(fileToLoad);
+		}
+
+		parent.g_FirstPageToLoad = null;
+	}
+
+
+	var viewMgr = new parent.CViewMgr();
+	parent.viewMgr = viewMgr;
+
+	viewMgr.SupportsDetails = true;
+	viewMgr.SupportsSearch = true;
+
+	viewMgr.put_Location = ViewMgrSetRasterLocation;
+	viewMgr.visBBoxLeft = 10.657275;
+	viewMgr.visBBoxRight = 208.907540;
+	viewMgr.visBBoxBottom = -0.075498;
+	viewMgr.visBBoxTop = 165.917815;
+	viewMgr.highlightDiv = null;
+}
+
+function load ()
+{
+	if(isUpLevel)
+	{
+		arrowdiv.innerHTML = '<img id="arrowgif" alt="显示所选形状的位置" src="arrow.gif"/>';
+
+		var pageIndex = parent.PageIndexFromID (pageID);
+		parent.CurPageUpdate (pageIndex);
+	}
+}
+
+function unload()
+{
+	if(isUpLevel)
+	{
+		viewMgr = null;
+		parent.viewMgr = null;
+	}
+}
+
+window.onload = load;
+window.onunload = unload;
+document.onclick = clickMenu;
+
+</script>
+</head>
+
+<body class="pageView" bgcolor="#FFFFFF">
+
+<div id=arrowdiv style="position:absolute;top:0;left:0;visibility:hidden;z-index:5">
+</div>
+
+<div id="menu1" onclick="clickMenu()" class="hlMenu">
+</div>
+
+<DIV id=RasterDiv>
+
+
+<center>
+  <IMG id="ConvertedImage" SRC="gif_1.gif" ALT="页-1" name=RasterImage BORDER="0" USEMAP="#visImageMap">
+</center>
+
+<MAP NAME="visImageMap">
+  <AREA shape="POLYGON" tabindex="1" ALT="铁通光端机" origTitle="铁通光端机" TITLE="铁通光端机"  target="_top" COORDS=" 248,435 320,435 320,423 248,423 248,435" onmouseover="UpdateTooltip(this,0,646)" onfocus="UpdateTooltip(this,0,646)" onclick="return OnShapeClick(0,646);" onkeyup="OnShapeKey(0,646);">
+  <AREA shape="POLYGON" tabindex="1" ALT="铁通光端机" origTitle="铁通光端机" TITLE="铁通光端机"  target="_top" COORDS=" 227,420 218,420 218,436 227,436 236,436 236,420 227,420" onmouseover="UpdateTooltip(this,0,646)" onfocus="UpdateTooltip(this,0,646)" onclick="return OnShapeClick(0,646);" onkeyup="OnShapeKey(0,646);">
+  <AREA shape="POLYGON" tabindex="1" ALT="铁通光端机" origTitle="铁通光端机" TITLE="铁通光端机"  target="_top" COORDS=" 325,420 325,437 386,437 386,420 325,420" onmouseover="UpdateTooltip(this,0,646)" onfocus="UpdateTooltip(this,0,646)" onclick="return OnShapeClick(0,646);" onkeyup="OnShapeKey(0,646);">
+  <AREA shape="POLYGON" tabindex="1" ALT="奥科中继网关" origTitle="奥科中继网关" TITLE="奥科中继网关"  target="_top" COORDS=" 253,462 319,462 319,461 253,461" onmouseover="UpdateTooltip(this,0,632)" onfocus="UpdateTooltip(this,0,632)" onclick="return OnShapeClick(0,632);" onkeyup="OnShapeKey(0,632);">
+  <AREA shape="POLYGON" tabindex="1" ALT="奥科中继网关" origTitle="奥科中继网关" TITLE="奥科中继网关"  target="_top" COORDS=" 253,463 319,463 319,462 253,462" onmouseover="UpdateTooltip(this,0,632)" onfocus="UpdateTooltip(this,0,632)" onclick="return OnShapeClick(0,632);" onkeyup="OnShapeKey(0,632);">
+  <AREA shape="POLYGON" tabindex="1" ALT="奥科中继网关" origTitle="奥科中继网关" TITLE="奥科中继网关"  target="_top" COORDS=" 253,463 319,463 319,462 253,462" onmouseover="UpdateTooltip(this,0,632)" onfocus="UpdateTooltip(this,0,632)" onclick="return OnShapeClick(0,632);" onkeyup="OnShapeKey(0,632);">
+  <AREA shape="POLYGON" tabindex="1" ALT="奥科中继网关" origTitle="奥科中继网关" TITLE="奥科中继网关"  target="_top" COORDS=" 253,464 319,464 319,463 253,463" onmouseover="UpdateTooltip(this,0,632)" onfocus="UpdateTooltip(this,0,632)" onclick="return OnShapeClick(0,632);" onkeyup="OnShapeKey(0,632);">
+  <AREA shape="POLYGON" tabindex="1" ALT="奥科中继网关" origTitle="奥科中继网关" TITLE="奥科中继网关"  target="_top" COORDS=" 253,465 319,465 319,464 253,464" onmouseover="UpdateTooltip(this,0,632)" onfocus="UpdateTooltip(this,0,632)" onclick="return OnShapeClick(0,632);" onkeyup="OnShapeKey(0,632);">
+  <AREA shape="POLYGON" tabindex="1" ALT="奥科中继网关" origTitle="奥科中继网关" TITLE="奥科中继网关"  target="_top" COORDS=" 253,466 319,466 319,465 253,465" onmouseover="UpdateTooltip(this,0,632)" onfocus="UpdateTooltip(this,0,632)" onclick="return OnShapeClick(0,632);" onkeyup="OnShapeKey(0,632);">
+  <AREA shape="POLYGON" tabindex="1" ALT="奥科中继网关" origTitle="奥科中继网关" TITLE="奥科中继网关"  target="_top" COORDS=" 253,467 319,467 319,466 253,466" onmouseover="UpdateTooltip(this,0,632)" onfocus="UpdateTooltip(this,0,632)" onclick="return OnShapeClick(0,632);" onkeyup="OnShapeKey(0,632);">
+  <AREA shape="POLYGON" tabindex="1" ALT="奥科中继网关" origTitle="奥科中继网关" TITLE="奥科中继网关"  target="_top" COORDS=" 259,466 260,466 260,465 259,465 259,466" onmouseover="UpdateTooltip(this,0,632)" onfocus="UpdateTooltip(this,0,632)" onclick="return OnShapeClick(0,632);" onkeyup="OnShapeKey(0,632);">
+  <AREA shape="POLYGON" tabindex="1" ALT="奥科中继网关" origTitle="奥科中继网关" TITLE="奥科中继网关"  target="_top" COORDS=" 265,466 266,466 266,465 265,465 265,466" onmouseover="UpdateTooltip(this,0,632)" onfocus="UpdateTooltip(this,0,632)" onclick="return OnShapeClick(0,632);" onkeyup="OnShapeKey(0,632);">
+  <AREA shape="POLYGON" tabindex="1" ALT="奥科中继网关" origTitle="奥科中继网关" TITLE="奥科中继网关"  target="_top" COORDS=" 257,464 262,464 262,465 264,465 264,464 268,464 268,463 257,463 257,464" onmouseover="UpdateTooltip(this,0,632)" onfocus="UpdateTooltip(this,0,632)" onclick="return OnShapeClick(0,632);" onkeyup="OnShapeKey(0,632);">
+  <AREA shape="POLYGON" tabindex="1" ALT="奥科中继网关" origTitle="奥科中继网关" TITLE="奥科中继网关"  target="_top" COORDS=" 250,468 253,468 253,461 250,461 250,468" onmouseover="UpdateTooltip(this,0,632)" onfocus="UpdateTooltip(this,0,632)" onclick="return OnShapeClick(0,632);" onkeyup="OnShapeKey(0,632);">
+  <AREA shape="POLYGON" tabindex="1" ALT="奥科中继网关" origTitle="奥科中继网关" TITLE="奥科中继网关"  target="_top" COORDS=" 319,468 322,468 322,461 319,461 319,468" onmouseover="UpdateTooltip(this,0,632)" onfocus="UpdateTooltip(this,0,632)" onclick="return OnShapeClick(0,632);" onkeyup="OnShapeKey(0,632);">
+  <AREA shape="POLYGON" tabindex="1" ALT="奥科中继网关" origTitle="奥科中继网关" TITLE="奥科中继网关"  target="_top" COORDS=" 229,452 220,452 220,469 229,469 238,469 238,452 229,452" onmouseover="UpdateTooltip(this,0,632)" onfocus="UpdateTooltip(this,0,632)" onclick="return OnShapeClick(0,632);" onkeyup="OnShapeKey(0,632);">
+  <AREA shape="POLYGON" tabindex="1" ALT="奥科中继网关" origTitle="奥科中继网关" TITLE="奥科中继网关"  target="_top" COORDS=" 327,453 327,469 399,469 399,453 327,453" onmouseover="UpdateTooltip(this,0,632)" onfocus="UpdateTooltip(this,0,632)" onclick="return OnShapeClick(0,632);" onkeyup="OnShapeKey(0,632);">
+  <AREA shape="POLYGON" tabindex="1" ALT="华为30-20路由器200" origTitle="华为30-20路由器200" TITLE="华为30-20路由器200"  target="_top" COORDS=" 280,487 280,474 279,474 279,487" onmouseover="UpdateTooltip(this,0,620)" onfocus="UpdateTooltip(this,0,620)" onclick="return OnShapeClick(0,620);" onkeyup="OnShapeKey(0,620);">
+  <AREA shape="POLYGON" tabindex="1" ALT="华为30-20路由器200" origTitle="华为30-20路由器200" TITLE="华为30-20路由器200"  target="_top" COORDS=" 319,486 319,475 318,475 318,486" onmouseover="UpdateTooltip(this,0,620)" onfocus="UpdateTooltip(this,0,620)" onclick="return OnShapeClick(0,620);" onkeyup="OnShapeKey(0,620);">
+  <AREA shape="POLYGON" tabindex="1" ALT="华为30-20路由器200" origTitle="华为30-20路由器200" TITLE="华为30-20路由器200"  target="_top" COORDS=" 253,486 253,475 252,475 252,486" onmouseover="UpdateTooltip(this,0,620)" onfocus="UpdateTooltip(this,0,620)" onclick="return OnShapeClick(0,620);" onkeyup="OnShapeKey(0,620);">
+  <AREA shape="POLYGON" tabindex="1" ALT="华为30-20路由器200" origTitle="华为30-20路由器200" TITLE="华为30-20路由器200"  target="_top" COORDS=" 301,486 301,475 300,475 300,486" onmouseover="UpdateTooltip(this,0,620)" onfocus="UpdateTooltip(this,0,620)" onclick="return OnShapeClick(0,620);" onkeyup="OnShapeKey(0,620);">
+  <AREA shape="POLYGON" tabindex="1" ALT="华为30-20路由器200" origTitle="华为30-20路由器200" TITLE="华为30-20路由器200"  target="_top" COORDS=" 259,486 259,475 258,475 258,486" onmouseover="UpdateTooltip(this,0,620)" onfocus="UpdateTooltip(this,0,620)" onclick="return OnShapeClick(0,620);" onkeyup="OnShapeKey(0,620);">
+  <AREA shape="POLYGON" tabindex="1" ALT="华为30-20路由器200" origTitle="华为30-20路由器200" TITLE="华为30-20路由器200"  target="_top" COORDS=" 250,486 259,486 259,487 301,487 301,486 322,486 322,475 301,475 301,474 259,474 259,475 250,475 250,486" onmouseover="UpdateTooltip(this,0,620)" onfocus="UpdateTooltip(this,0,620)" onclick="return OnShapeClick(0,620);" onkeyup="OnShapeKey(0,620);">
+  <AREA shape="POLYGON" tabindex="1" ALT="华为30-20路由器200" origTitle="华为30-20路由器200" TITLE="华为30-20路由器200"  target="_top" COORDS=" 229,471 220,471 220,488 229,488 238,488 238,471 229,471" onmouseover="UpdateTooltip(this,0,620)" onfocus="UpdateTooltip(this,0,620)" onclick="return OnShapeClick(0,620);" onkeyup="OnShapeKey(0,620);">
+  <AREA shape="POLYGON" tabindex="1" ALT="华为30-20路由器200" origTitle="华为30-20路由器200" TITLE="华为30-20路由器200"  target="_top" COORDS=" 418,472 382,472 369,472 365,472 351,472 327,472 327,488 351,488 365,488 369,488 382,488 418,488 438,488 438,472 418,472" onmouseover="UpdateTooltip(this,0,620)" onfocus="UpdateTooltip(this,0,620)" onclick="return OnShapeClick(0,620);" onkeyup="OnShapeKey(0,620);">
+  <AREA shape="POLYGON" tabindex="1" ALT="华为2403服务器交换机1.4" origTitle="华为2403服务器交换机1.4" TITLE="华为2403服务器交换机1.4" HREF="SV_IP:192.168.1.4+color" target="_top" COORDS=" 248,404 320,404 320,397 248,397 248,404" onmouseover="UpdateTooltip(this,0,604)" onfocus="UpdateTooltip(this,0,604)" onclick="return OnShapeClick(0,604);" onkeyup="OnShapeKey(0,604);">
+  <AREA shape="POLYGON" tabindex="1" ALT="华为2403服务器交换机1.4" origTitle="华为2403服务器交换机1.4" TITLE="华为2403服务器交换机1.4" HREF="SV_IP:192.168.1.4+color" target="_top" COORDS=" 227,391 218,391 218,408 227,408 236,408 236,391 227,391" onmouseover="UpdateTooltip(this,0,604)" onfocus="UpdateTooltip(this,0,604)" onclick="return OnShapeClick(0,604);" onkeyup="OnShapeKey(0,604);">
+  <AREA shape="POLYGON" tabindex="1" ALT="华为2403服务器交换机1.4" origTitle="华为2403服务器交换机1.4" TITLE="华为2403服务器交换机1.4" HREF="SV_IP:192.168.1.4+color" target="_top" COORDS=" 459,392 455,392 449,392 376,392 350,392 325,392 325,408 350,408 376,408 449,408 455,408 459,408 465,408 465,392 459,392" onmouseover="UpdateTooltip(this,0,604)" onfocus="UpdateTooltip(this,0,604)" onclick="return OnShapeClick(0,604);" onkeyup="OnShapeKey(0,604);">
+  <AREA shape="POLYGON" tabindex="1" ALT="机柜５" origTitle="机柜５" TITLE="机柜５"  target="_top" COORDS=" 322,321 322,316 246,316 246,321 246,587 246,598 322,598 322,587 322,321" onmouseover="UpdateTooltip(this,0,599)" onfocus="UpdateTooltip(this,0,599)" onclick="return OnShapeClick(0,599);" onkeyup="OnShapeKey(0,599);">
+  <AREA shape="POLYGON" tabindex="1" ALT="机柜５" origTitle="机柜５" TITLE="机柜５"  target="_top" COORDS=" 317,587 252,587 252,321 317,321 317,587" onmouseover="UpdateTooltip(this,0,599)" onfocus="UpdateTooltip(this,0,599)" onclick="return OnShapeClick(0,599);" onkeyup="OnShapeKey(0,599);">
+  <AREA shape="POLYGON" tabindex="1" ALT="机柜５" origTitle="机柜５" TITLE="机柜５"  target="_top" COORDS=" 287,299 272,299 272,316 287,316 296,316 296,299 287,299" onmouseover="UpdateTooltip(this,0,599)" onfocus="UpdateTooltip(this,0,599)" onclick="return OnShapeClick(0,599);" onkeyup="OnShapeKey(0,599);">
+  <AREA shape="POLYGON" tabindex="1" ALT="机柜５" origTitle="机柜５" TITLE="机柜５"  target="_top" COORDS=" 360,319 336,319 336,335 360,335 372,335 372,319 360,319" onmouseover="UpdateTooltip(this,0,599)" onfocus="UpdateTooltip(this,0,599)" onclick="return OnShapeClick(0,599);" onkeyup="OnShapeKey(0,599);">
+  <AREA shape="POLYGON" tabindex="1" ALT="PDU" origTitle="PDU" TITLE="PDU"  target="_top" COORDS=" 30,584 102,584 102,578 30,578 30,584" onmouseover="UpdateTooltip(this,0,587)" onfocus="UpdateTooltip(this,0,587)" onclick="return OnShapeClick(0,587);" onkeyup="OnShapeKey(0,587);">
+  <AREA shape="POLYGON" tabindex="1" ALT="PDU" origTitle="PDU" TITLE="PDU"  target="_top" COORDS=" 9,572 0,572 0,588 9,588 18,588 18,572 9,572" onmouseover="UpdateTooltip(this,0,587)" onfocus="UpdateTooltip(this,0,587)" onclick="return OnShapeClick(0,587);" onkeyup="OnShapeKey(0,587);">
+  <AREA shape="POLYGON" tabindex="1" ALT="PDU" origTitle="PDU" TITLE="PDU"  target="_top" COORDS=" 107,572 107,588 133,588 133,572 107,572" onmouseover="UpdateTooltip(this,0,587)" onfocus="UpdateTooltip(this,0,587)" onclick="return OnShapeClick(0,587);" onkeyup="OnShapeKey(0,587);">
+  <AREA shape="POLYGON" tabindex="1" ALT="" origTitle="" TITLE=""  target="_top" COORDS=" 102,405 37,405 33,405 33,411 37,411 102,411 106,411 106,405 102,405" onmouseover="UpdateTooltip(this,0,576)" onfocus="UpdateTooltip(this,0,576)" onclick="return OnShapeClick(0,576);" onkeyup="OnShapeKey(0,576);">
+  <AREA shape="POLYGON" tabindex="1" ALT="" origTitle="" TITLE=""  target="_top" COORDS=" 13,399 4,399 4,415 13,415 21,415 21,399 13,399" onmouseover="UpdateTooltip(this,0,576)" onfocus="UpdateTooltip(this,0,576)" onclick="return OnShapeClick(0,576);" onkeyup="OnShapeKey(0,576);">
+  <AREA shape="POLYGON" tabindex="1" ALT="" origTitle="" TITLE=""  target="_top" COORDS=" 79,400 79,400 79,400 79,400 79,400 79,400 80,400 80,400 80,400 80,400 80,400 81,400 81,400 81,400 81,399 81,399 82,399 82,399 82,399 82,399 82,399 83,399 83,399 83,399 83,399 83,399 84,399 84,399 84,399 84,399 84,398 85,398 85,398 85,398 85,398 85,398 86,398 86,398 86,398 86,398 86,398 86,398 87,398 87,397 87,397 87,397 87,397 88,397 88,397 88,397 100,397 100,341 35,341 35,397 47,397 47,397 47,397 48,397 48,397 48,397 48,397 48,398 49,398 49,398 49,398 49,398 49,398 50,398 50,398 50,398 50,398 50,398 50,398 51,398 51,399 51,399 51,399 51,399 52,399 52,399 52,399 52,399 52,399 53,399 53,399 53,399 53,399 53,399 54,399 54,399 54,400 54,400 54,400 55,400 55,400 55,400 55,400 55,400 56,400 56,400 56,400 56,400 56,400 57,400 48,403 47,405 88,405 87,403 79,400" onmouseover="UpdateTooltip(this,0,570)" onfocus="UpdateTooltip(this,0,570)" onclick="return OnShapeClick(0,570);" onkeyup="OnShapeKey(0,570);">
+  <AREA shape="POLYGON" tabindex="1" ALT="机柜４" origTitle="机柜４" TITLE="机柜４"  target="_top" COORDS=" 104,324 104,318 28,318 28,324 28,590 28,601 104,601 104,590 104,324" onmouseover="UpdateTooltip(this,0,493)" onfocus="UpdateTooltip(this,0,493)" onclick="return OnShapeClick(0,493);" onkeyup="OnShapeKey(0,493);">
+  <AREA shape="POLYGON" tabindex="1" ALT="机柜４" origTitle="机柜４" TITLE="机柜４"  target="_top" COORDS=" 98,590 33,590 33,324 98,324 98,590" onmouseover="UpdateTooltip(this,0,493)" onfocus="UpdateTooltip(this,0,493)" onclick="return OnShapeClick(0,493);" onkeyup="OnShapeKey(0,493);">
+  <AREA shape="POLYGON" tabindex="1" ALT="机柜４" origTitle="机柜４" TITLE="机柜４"  target="_top" COORDS=" 69,302 54,302 54,318 69,318 78,318 78,302 69,302" onmouseover="UpdateTooltip(this,0,493)" onfocus="UpdateTooltip(this,0,493)" onclick="return OnShapeClick(0,493);" onkeyup="OnShapeKey(0,493);">
+  <AREA shape="POLYGON" tabindex="1" ALT="机柜４" origTitle="机柜４" TITLE="机柜４"  target="_top" COORDS=" 141,322 117,322 117,338 141,338 154,338 154,322 141,322" onmouseover="UpdateTooltip(this,0,493)" onfocus="UpdateTooltip(this,0,493)" onclick="return OnShapeClick(0,493);" onkeyup="OnShapeKey(0,493);">
+  <AREA shape="POLYGON" tabindex="1" ALT="PDU" origTitle="PDU" TITLE="PDU"  target="_top" COORDS=" 500,288 572,288 572,282 500,282 500,288" onmouseover="UpdateTooltip(this,0,481)" onfocus="UpdateTooltip(this,0,481)" onclick="return OnShapeClick(0,481);" onkeyup="OnShapeKey(0,481);">
+  <AREA shape="POLYGON" tabindex="1" ALT="PDU" origTitle="PDU" TITLE="PDU"  target="_top" COORDS=" 479,276 470,276 470,292 479,292 488,292 488,276 479,276" onmouseover="UpdateTooltip(this,0,481)" onfocus="UpdateTooltip(this,0,481)" onclick="return OnShapeClick(0,481);" onkeyup="OnShapeKey(0,481);">
+  <AREA shape="POLYGON" tabindex="1" ALT="PDU" origTitle="PDU" TITLE="PDU"  target="_top" COORDS=" 577,276 577,292 602,292 602,276 577,276" onmouseover="UpdateTooltip(this,0,481)" onfocus="UpdateTooltip(this,0,481)" onclick="return OnShapeClick(0,481);" onkeyup="OnShapeKey(0,481);">
+  <AREA shape="POLYGON" tabindex="1" ALT="PDU" origTitle="PDU" TITLE="PDU"  target="_top" COORDS=" 500,60 572,60 572,54 500,54 500,60" onmouseover="UpdateTooltip(this,0,469)" onfocus="UpdateTooltip(this,0,469)" onclick="return OnShapeClick(0,469);" onkeyup="OnShapeKey(0,469);">
+  <AREA shape="POLYGON" tabindex="1" ALT="PDU" origTitle="PDU" TITLE="PDU"  target="_top" COORDS=" 479,48 470,48 470,64 479,64 488,64 488,48 479,48" onmouseover="UpdateTooltip(this,0,469)" onfocus="UpdateTooltip(this,0,469)" onclick="return OnShapeClick(0,469);" onkeyup="OnShapeKey(0,469);">
+  <AREA shape="POLYGON" tabindex="1" ALT="PDU" origTitle="PDU" TITLE="PDU"  target="_top" COORDS=" 577,48 577,64 602,64 602,48 577,48" onmouseover="UpdateTooltip(this,0,469)" onfocus="UpdateTooltip(this,0,469)" onclick="return OnShapeClick(0,469);" onkeyup="OnShapeKey(0,469);">
+  <AREA shape="POLYGON" tabindex="1" ALT="H3C 1526接入交换机" origTitle="H3C 1526接入交换机" TITLE="H3C 1526接入交换机"  target="_top" COORDS=" 500,104 572,104 572,98 500,98 500,104" onmouseover="UpdateTooltip(this,0,437)" onfocus="UpdateTooltip(this,0,437)" onclick="return OnShapeClick(0,437);" onkeyup="OnShapeKey(0,437);">
+  <AREA shape="POLYGON" tabindex="1" ALT="H3C 1526接入交换机" origTitle="H3C 1526接入交换机" TITLE="H3C 1526接入交换机"  target="_top" COORDS=" 479,92 470,92 470,108 479,108 488,108 488,92 479,92" onmouseover="UpdateTooltip(this,0,437)" onfocus="UpdateTooltip(this,0,437)" onclick="return OnShapeClick(0,437);" onkeyup="OnShapeKey(0,437);">
+  <AREA shape="POLYGON" tabindex="1" ALT="H3C 1526接入交换机" origTitle="H3C 1526接入交换机" TITLE="H3C 1526接入交换机"  target="_top" COORDS=" 631,92 604,92 592,92 586,92 577,92 577,109 586,109 592,109 604,109 631,109 692,109 692,92 631,92" onmouseover="UpdateTooltip(this,0,437)" onfocus="UpdateTooltip(this,0,437)" onclick="return OnShapeClick(0,437);" onkeyup="OnShapeKey(0,437);">
+  <AREA shape="POLYGON" tabindex="1" ALT="H3C1526接入交换机" origTitle="H3C1526接入交换机" TITLE="H3C1526接入交换机"  target="_top" COORDS=" 500,92 572,92 572,85 500,85 500,92" onmouseover="UpdateTooltip(this,0,421)" onfocus="UpdateTooltip(this,0,421)" onclick="return OnShapeClick(0,421);" onkeyup="OnShapeKey(0,421);">
+  <AREA shape="POLYGON" tabindex="1" ALT="H3C1526接入交换机" origTitle="H3C1526接入交换机" TITLE="H3C1526接入交换机"  target="_top" COORDS=" 479,79 470,79 470,96 479,96 488,96 488,79 479,79" onmouseover="UpdateTooltip(this,0,421)" onfocus="UpdateTooltip(this,0,421)" onclick="return OnShapeClick(0,421);" onkeyup="OnShapeKey(0,421);">
+  <AREA shape="POLYGON" tabindex="1" ALT="H3C1526接入交换机" origTitle="H3C1526接入交换机" TITLE="H3C1526接入交换机"  target="_top" COORDS=" 628,80 601,80 592,80 586,80 577,80 577,96 586,96 592,96 601,96 628,96 688,96 688,80 628,80" onmouseover="UpdateTooltip(this,0,421)" onfocus="UpdateTooltip(this,0,421)" onclick="return OnShapeClick(0,421);" onkeyup="OnShapeKey(0,421);">
+  <AREA shape="POLYGON" tabindex="1" ALT="PDU" origTitle="PDU" TITLE="PDU"  target="_top" COORDS=" 291,136 363,136 363,130 291,130 291,136" onmouseover="UpdateTooltip(this,0,409)" onfocus="UpdateTooltip(this,0,409)" onclick="return OnShapeClick(0,409);" onkeyup="OnShapeKey(0,409);">
+  <AREA shape="POLYGON" tabindex="1" ALT="PDU" origTitle="PDU" TITLE="PDU"  target="_top" COORDS=" 270,124 261,124 261,140 270,140 279,140 279,124 270,124" onmouseover="UpdateTooltip(this,0,409)" onfocus="UpdateTooltip(this,0,409)" onclick="return OnShapeClick(0,409);" onkeyup="OnShapeKey(0,409);">
+  <AREA shape="POLYGON" tabindex="1" ALT="PDU" origTitle="PDU" TITLE="PDU"  target="_top" COORDS=" 368,124 368,140 394,140 394,124 368,124" onmouseover="UpdateTooltip(this,0,409)" onfocus="UpdateTooltip(this,0,409)" onclick="return OnShapeClick(0,409);" onkeyup="OnShapeKey(0,409);">
+  <AREA shape="POLYGON" tabindex="1" ALT="PDU" origTitle="PDU" TITLE="PDU"  target="_top" COORDS=" 35,139 107,139 107,132 35,132 35,139" onmouseover="UpdateTooltip(this,0,397)" onfocus="UpdateTooltip(this,0,397)" onclick="return OnShapeClick(0,397);" onkeyup="OnShapeKey(0,397);">
+  <AREA shape="POLYGON" tabindex="1" ALT="PDU" origTitle="PDU" TITLE="PDU"  target="_top" COORDS=" 14,126 5,126 5,143 14,143 23,143 23,126 14,126" onmouseover="UpdateTooltip(this,0,397)" onfocus="UpdateTooltip(this,0,397)" onclick="return OnShapeClick(0,397);" onkeyup="OnShapeKey(0,397);">
+  <AREA shape="POLYGON" tabindex="1" ALT="PDU" origTitle="PDU" TITLE="PDU"  target="_top" COORDS=" 112,126 112,143 137,143 137,126 112,126" onmouseover="UpdateTooltip(this,0,397)" onfocus="UpdateTooltip(this,0,397)" onclick="return OnShapeClick(0,397);" onkeyup="OnShapeKey(0,397);">
+  <AREA shape="POLYGON" tabindex="1" ALT="华为6503交换机1.1" origTitle="华为6503交换机1.1" TITLE="华为6503交换机1.1" HREF="SV_Monitor:Cpu+color" target="_top" COORDS=" 500,240 572,240 572,215 500,215 500,240" onmouseover="UpdateTooltip(this,0,277)" onfocus="UpdateTooltip(this,0,277)" onclick="return OnShapeClick(0,277);" onkeyup="OnShapeKey(0,277);">
+  <AREA shape="POLYGON" tabindex="1" ALT="华为6503交换机1.1" origTitle="华为6503交换机1.1" TITLE="华为6503交换机1.1" HREF="SV_Monitor:Cpu+color" target="_top" COORDS=" 479,218 470,218 470,235 479,235 488,235 488,218 479,218" onmouseover="UpdateTooltip(this,0,277)" onfocus="UpdateTooltip(this,0,277)" onclick="return OnShapeClick(0,277);" onkeyup="OnShapeKey(0,277);">
+  <AREA shape="POLYGON" tabindex="1" ALT="华为6503交换机1.1" origTitle="华为6503交换机1.1" TITLE="华为6503交换机1.1" HREF="SV_Monitor:Cpu+color" target="_top" COORDS=" 674,219 671,219 664,219 628,219 601,219 577,219 577,235 601,235 628,235 664,235 671,235 674,235 681,235 681,219 674,219" onmouseover="UpdateTooltip(this,0,277)" onfocus="UpdateTooltip(this,0,277)" onclick="return OnShapeClick(0,277);" onkeyup="OnShapeKey(0,277);">
+  <AREA shape="POLYGON" tabindex="1" ALT="机柜３" origTitle="机柜３" TITLE="机柜３"  target="_top" COORDS=" 574,22 574,16 498,16 498,22 498,288 498,299 574,299 574,288 574,22" onmouseover="UpdateTooltip(this,0,256)" onfocus="UpdateTooltip(this,0,256)" onclick="return OnShapeClick(0,256);" onkeyup="OnShapeKey(0,256);">
+  <AREA shape="POLYGON" tabindex="1" ALT="机柜３" origTitle="机柜３" TITLE="机柜３"  target="_top" COORDS=" 568,288 503,288 503,22 568,22 568,288" onmouseover="UpdateTooltip(this,0,256)" onfocus="UpdateTooltip(this,0,256)" onclick="return OnShapeClick(0,256);" onkeyup="OnShapeKey(0,256);">
+  <AREA shape="POLYGON" tabindex="1" ALT="机柜３" origTitle="机柜３" TITLE="机柜３"  target="_top" COORDS=" 539,0 524,0 524,16 539,16 548,16 548,0 539,0" onmouseover="UpdateTooltip(this,0,256)" onfocus="UpdateTooltip(this,0,256)" onclick="return OnShapeClick(0,256);" onkeyup="OnShapeKey(0,256);">
+  <AREA shape="POLYGON" tabindex="1" ALT="机柜３" origTitle="机柜３" TITLE="机柜３"  target="_top" COORDS=" 611,20 587,20 587,36 611,36 623,36 623,20 611,20" onmouseover="UpdateTooltip(this,0,256)" onfocus="UpdateTooltip(this,0,256)" onclick="return OnShapeClick(0,256);" onkeyup="OnShapeKey(0,256);">
+  <AREA shape="POLYGON" tabindex="1" ALT="龙山税友243" origTitle="龙山税友243" TITLE="龙山税友243" HREF="SV_IP:127.0.0.1+color" target="_top" COORDS=" 356,196 356,192 355,192 355,196" onmouseover="UpdateTooltip(this,0,184)" onfocus="UpdateTooltip(this,0,184)" onclick="return OnShapeClick(0,184);" onkeyup="OnShapeKey(0,184);">
+  <AREA shape="POLYGON" tabindex="1" ALT="龙山税友243" origTitle="龙山税友243" TITLE="龙山税友243" HREF="SV_IP:127.0.0.1+color" target="_top" COORDS=" 298,196 298,192 297,192 297,196" onmouseover="UpdateTooltip(this,0,184)" onfocus="UpdateTooltip(this,0,184)" onclick="return OnShapeClick(0,184);" onkeyup="OnShapeKey(0,184);">
+  <AREA shape="POLYGON" tabindex="1" ALT="龙山税友243" origTitle="龙山税友243" TITLE="龙山税友243" HREF="SV_IP:127.0.0.1+color" target="_top" COORDS=" 360,192 294,192 291,192 291,198 291,204 294,204 360,204 363,204 363,198 363,192 360,192" onmouseover="UpdateTooltip(this,0,184)" onfocus="UpdateTooltip(this,0,184)" onclick="return OnShapeClick(0,184);" onkeyup="OnShapeKey(0,184);">
+  <AREA shape="POLYGON" tabindex="1" ALT="龙山税友243" origTitle="龙山税友243" TITLE="龙山税友243" HREF="SV_IP:127.0.0.1+color" target="_top" COORDS=" 270,189 261,189 261,205 270,205 279,205 279,189 270,189" onmouseover="UpdateTooltip(this,0,184)" onfocus="UpdateTooltip(this,0,184)" onclick="return OnShapeClick(0,184);" onkeyup="OnShapeKey(0,184);">
+  <AREA shape="POLYGON" tabindex="1" ALT="龙山税友243" origTitle="龙山税友243" TITLE="龙山税友243" HREF="SV_IP:127.0.0.1+color" target="_top" COORDS=" 416,189 368,189 368,206 416,206 436,206 436,189 416,189" onmouseover="UpdateTooltip(this,0,184)" onfocus="UpdateTooltip(this,0,184)" onclick="return OnShapeClick(0,184);" onkeyup="OnShapeKey(0,184);">
+  <AREA shape="POLYGON" tabindex="1" ALT="IBM DS3400存储" origTitle="IBM DS3400存储" TITLE="IBM DS3400存储"  target="_top" COORDS=" 291,281 363,281 363,262 291,262 291,281" onmouseover="UpdateTooltip(this,0,280)" onfocus="UpdateTooltip(this,0,280)" onclick="return OnShapeClick(0,280);" onkeyup="OnShapeKey(0,280);">
+  <AREA shape="POLYGON" tabindex="1" ALT="IBM DS3400存储" origTitle="IBM DS3400存储" TITLE="IBM DS3400存储"  target="_top" COORDS=" 270,263 261,263 261,279 270,279 279,279 279,263 270,263" onmouseover="UpdateTooltip(this,0,280)" onfocus="UpdateTooltip(this,0,280)" onclick="return OnShapeClick(0,280);" onkeyup="OnShapeKey(0,280);">
+  <AREA shape="POLYGON" tabindex="1" ALT="IBM DS3400存储" origTitle="IBM DS3400存储" TITLE="IBM DS3400存储"  target="_top" COORDS=" 437,263 410,263 368,263 368,279 410,279 437,279 461,279 461,263 437,263" onmouseover="UpdateTooltip(this,0,280)" onfocus="UpdateTooltip(this,0,280)" onclick="return OnShapeClick(0,280);" onkeyup="OnShapeKey(0,280);">
+  <AREA shape="POLYGON" tabindex="1" ALT="" origTitle="" TITLE=""  target="_top" COORDS=" 360,117 294,117 291,117 291,123 294,123 360,123 363,123 363,117 360,117" onmouseover="UpdateTooltip(this,0,346)" onfocus="UpdateTooltip(this,0,346)" onclick="return OnShapeClick(0,346);" onkeyup="OnShapeKey(0,346);">
+  <AREA shape="POLYGON" tabindex="1" ALT="" origTitle="" TITLE=""  target="_top" COORDS=" 270,111 261,111 261,127 270,127 279,127 279,111 270,111" onmouseover="UpdateTooltip(this,0,346)" onfocus="UpdateTooltip(this,0,346)" onclick="return OnShapeClick(0,346);" onkeyup="OnShapeKey(0,346);">
+  <AREA shape="POLYGON" tabindex="1" ALT="" origTitle="" TITLE=""  target="_top" COORDS=" 339,112 339,112 339,112 340,112 340,112 340,112 340,112 340,112 341,112 341,112 341,112 341,112 341,112 342,112 342,112 342,111 342,111 342,111 343,111 343,111 343,111 343,111 343,111 344,111 344,111 344,111 344,111 344,111 345,111 345,111 345,111 345,110 345,110 346,110 346,110 346,110 346,110 346,110 346,110 347,110 347,110 347,110 347,110 347,110 348,109 348,109 348,109 348,109 348,109 349,109 360,109 360,53 296,53 296,109 308,109 308,109 308,109 308,109 308,109 309,109 309,110 309,110 309,110 309,110 310,110 310,110 310,110 310,110 310,110 310,110 311,110 311,110 311,110 311,111 311,111 312,111 312,111 312,111 312,111 312,111 313,111 313,111 313,111 313,111 313,111 314,111 314,111 314,111 314,111 314,112 315,112 315,112 315,112 315,112 315,112 316,112 316,112 316,112 316,112 316,112 317,112 317,112 317,112 317,112 309,115 308,117 349,117 348,115 339,112" onmouseover="UpdateTooltip(this,0,340)" onfocus="UpdateTooltip(this,0,340)" onclick="return OnShapeClick(0,340);" onkeyup="OnShapeKey(0,340);">
+  <AREA shape="POLYGON" tabindex="1" ALT="" origTitle="" TITLE=""  target="_top" COORDS=" 360,158 294,158 291,158 291,165 294,165 360,165 363,165 363,158 360,158" onmouseover="UpdateTooltip(this,0,328)" onfocus="UpdateTooltip(this,0,328)" onclick="return OnShapeClick(0,328);" onkeyup="OnShapeKey(0,328);">
+  <AREA shape="POLYGON" tabindex="1" ALT="" origTitle="" TITLE=""  target="_top" COORDS=" 270,152 261,152 261,169 270,169 279,169 279,152 270,152" onmouseover="UpdateTooltip(this,0,328)" onfocus="UpdateTooltip(this,0,328)" onclick="return OnShapeClick(0,328);" onkeyup="OnShapeKey(0,328);">
+  <AREA shape="POLYGON" tabindex="1" ALT="机柜2" origTitle="机柜2" TITLE="机柜2"  target="_top" COORDS=" 365,22 365,16 289,16 289,22 289,288 289,299 365,299 365,288 365,22" onmouseover="UpdateTooltip(this,0,179)" onfocus="UpdateTooltip(this,0,179)" onclick="return OnShapeClick(0,179);" onkeyup="OnShapeKey(0,179);">
+  <AREA shape="POLYGON" tabindex="1" ALT="机柜2" origTitle="机柜2" TITLE="机柜2"  target="_top" COORDS=" 359,288 294,288 294,22 359,22 359,288" onmouseover="UpdateTooltip(this,0,179)" onfocus="UpdateTooltip(this,0,179)" onclick="return OnShapeClick(0,179);" onkeyup="OnShapeKey(0,179);">
+  <AREA shape="POLYGON" tabindex="1" ALT="机柜2" origTitle="机柜2" TITLE="机柜2"  target="_top" COORDS=" 330,0 315,0 315,16 330,16 339,16 339,0 330,0" onmouseover="UpdateTooltip(this,0,179)" onfocus="UpdateTooltip(this,0,179)" onclick="return OnShapeClick(0,179);" onkeyup="OnShapeKey(0,179);">
+  <AREA shape="POLYGON" tabindex="1" ALT="机柜2" origTitle="机柜2" TITLE="机柜2"  target="_top" COORDS=" 403,20 378,20 378,36 403,36 409,36 409,20 403,20" onmouseover="UpdateTooltip(this,0,179)" onfocus="UpdateTooltip(this,0,179)" onclick="return OnShapeClick(0,179);" onkeyup="OnShapeKey(0,179);">
+  <AREA shape="POLYGON" tabindex="1" ALT="" origTitle="" TITLE=""  target="_top" COORDS=" 103,120 38,120 35,120 35,126 38,126 103,126 107,126 107,120 103,120" onmouseover="UpdateTooltip(this,0,168)" onfocus="UpdateTooltip(this,0,168)" onclick="return OnShapeClick(0,168);" onkeyup="OnShapeKey(0,168);">
+  <AREA shape="POLYGON" tabindex="1" ALT="" origTitle="" TITLE=""  target="_top" COORDS=" 14,114 5,114 5,130 14,130 23,130 23,114 14,114" onmouseover="UpdateTooltip(this,0,168)" onfocus="UpdateTooltip(this,0,168)" onclick="return OnShapeClick(0,168);" onkeyup="OnShapeKey(0,168);">
+  <AREA shape="POLYGON" tabindex="1" ALT="" origTitle="" TITLE=""  target="_top" COORDS=" 83,115 83,115 83,115 83,115 84,115 84,115 84,115 84,114 84,114 85,114 85,114 85,114 85,114 85,114 86,114 86,114 86,114 86,114 86,114 87,114 87,114 87,114 87,114 87,114 88,114 88,113 88,113 88,113 88,113 88,113 89,113 89,113 89,113 89,113 89,113 90,113 90,113 90,113 90,113 90,112 91,112 91,112 91,112 91,112 91,112 92,112 92,112 92,112 92,112 92,112 104,112 104,55 40,55 40,112 51,112 52,112 52,112 52,112 52,112 52,112 52,112 53,112 53,112 53,112 53,112 53,113 54,113 54,113 54,113 54,113 54,113 55,113 55,113 55,113 55,113 55,113 56,113 56,113 56,113 56,114 56,114 56,114 57,114 57,114 57,114 57,114 57,114 58,114 58,114 58,114 58,114 58,114 59,114 59,114 59,114 59,114 59,114 60,115 60,115 60,115 60,115 60,115 61,115 61,115 52,118 51,120 92,120 91,118 83,115" onmouseover="UpdateTooltip(this,0,162)" onfocus="UpdateTooltip(this,0,162)" onclick="return OnShapeClick(0,162);" onkeyup="OnShapeKey(0,162);">
+  <AREA shape="POLYGON" tabindex="1" ALT="" origTitle="" TITLE=""  target="_top" COORDS=" 103,183 38,183 35,183 35,189 38,189 103,189 107,189 107,183 103,183" onmouseover="UpdateTooltip(this,0,150)" onfocus="UpdateTooltip(this,0,150)" onclick="return OnShapeClick(0,150);" onkeyup="OnShapeKey(0,150);">
+  <AREA shape="POLYGON" tabindex="1" ALT="" origTitle="" TITLE=""  target="_top" COORDS=" 14,177 5,177 5,193 14,193 23,193 23,177 14,177" onmouseover="UpdateTooltip(this,0,150)" onfocus="UpdateTooltip(this,0,150)" onclick="return OnShapeClick(0,150);" onkeyup="OnShapeKey(0,150);">
+  <AREA shape="POLYGON" tabindex="1" ALT="UNIX小机 93" origTitle="UNIX小机 93" TITLE="UNIX小机 93" HREF="SV_Monitor:Memory+color" target="_top" COORDS=" 100,156 100,151 99,151 99,156" onmouseover="UpdateTooltip(this,0,126)" onfocus="UpdateTooltip(this,0,126)" onclick="return OnShapeClick(0,126);" onkeyup="OnShapeKey(0,126);">
+  <AREA shape="POLYGON" tabindex="1" ALT="UNIX小机 93" origTitle="UNIX小机 93" TITLE="UNIX小机 93" HREF="SV_Monitor:Memory+color" target="_top" COORDS=" 42,156 42,151 41,151 41,156" onmouseover="UpdateTooltip(this,0,126)" onfocus="UpdateTooltip(this,0,126)" onclick="return OnShapeClick(0,126);" onkeyup="OnShapeKey(0,126);">
+  <AREA shape="POLYGON" tabindex="1" ALT="UNIX小机 93" origTitle="UNIX小机 93" TITLE="UNIX小机 93" HREF="SV_Monitor:Memory+color" target="_top" COORDS=" 103,151 38,151 35,151 35,158 38,158 38,170 35,170 35,177 38,177 103,177 107,177 107,170 103,170 103,158 107,158 107,151 103,151" onmouseover="UpdateTooltip(this,0,126)" onfocus="UpdateTooltip(this,0,126)" onclick="return OnShapeClick(0,126);" onkeyup="OnShapeKey(0,126);">
+  <AREA shape="POLYGON" tabindex="1" ALT="UNIX小机 93" origTitle="UNIX小机 93" TITLE="UNIX小机 93" HREF="SV_Monitor:Memory+color" target="_top" COORDS=" 14,155 5,155 5,171 14,171 23,171 23,155 14,155" onmouseover="UpdateTooltip(this,0,126)" onfocus="UpdateTooltip(this,0,126)" onclick="return OnShapeClick(0,126);" onkeyup="OnShapeKey(0,126);">
+  <AREA shape="POLYGON" tabindex="1" ALT="UNIX小机 93" origTitle="UNIX小机 93" TITLE="UNIX小机 93" HREF="SV_Monitor:Memory+color" target="_top" COORDS=" 125,164 141,164 165,164 165,148 141,148 112,148 112,163 112,164 112,179 125,179 125,164" onmouseover="UpdateTooltip(this,0,126)" onfocus="UpdateTooltip(this,0,126)" onclick="return OnShapeClick(0,126);" onkeyup="OnShapeKey(0,126);">
+  <AREA shape="POLYGON" tabindex="1" ALT="机柜１" origTitle="机柜１" TITLE="机柜１"  target="_top" COORDS=" 109,25 109,19 33,19 33,25 33,291 33,301 109,301 109,291 109,25" onmouseover="UpdateTooltip(this,0,1)" onfocus="UpdateTooltip(this,0,1)" onclick="return OnShapeClick(0,1);" onkeyup="OnShapeKey(0,1);">
+  <AREA shape="POLYGON" tabindex="1" ALT="机柜１" origTitle="机柜１" TITLE="机柜１"  target="_top" COORDS=" 103,291 38,291 38,25 103,25 103,291" onmouseover="UpdateTooltip(this,0,1)" onfocus="UpdateTooltip(this,0,1)" onclick="return OnShapeClick(0,1);" onkeyup="OnShapeKey(0,1);">
+  <AREA shape="POLYGON" tabindex="1" ALT="机柜１" origTitle="机柜１" TITLE="机柜１"  target="_top" COORDS=" 74,3 59,3 59,19 74,19 83,19 83,3 74,3" onmouseover="UpdateTooltip(this,0,1)" onfocus="UpdateTooltip(this,0,1)" onclick="return OnShapeClick(0,1);" onkeyup="OnShapeKey(0,1);">
+  <AREA shape="POLYGON" tabindex="1" ALT="机柜１" origTitle="机柜１" TITLE="机柜１"  target="_top" COORDS=" 146,22 122,22 122,38 146,38 158,38 158,22 146,22" onmouseover="UpdateTooltip(this,0,1)" onfocus="UpdateTooltip(this,0,1)" onclick="return OnShapeClick(0,1);" onkeyup="OnShapeKey(0,1);">
+</MAP>
+
+
+
+</DIV>
+
+</body>
+</html>
+

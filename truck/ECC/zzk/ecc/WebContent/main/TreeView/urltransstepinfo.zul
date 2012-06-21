@@ -1,0 +1,35 @@
+<zk>
+	<window title="UrlTransStepInfo" border="normal" width="600px" closable="true"
+		position="center"  id="UrlTransStepInfo"
+		apply="com.siteview.ecc.treeview.windows.UrlTransStepInfo">
+		<vbox>
+		<div
+			style="float:left;margin-bottom:12px;margin-right:12px; ">
+			<hbox>
+				<button id="btnok" sclass="btnDefault" width="74px"
+					height="23px" image="/main/images/button/ico/add_bt.gif" 
+					label="增加一步">
+				</button>
+				<button id="btncancel" sclass="btnDefault" width="74px"
+					height="23px" image="/main/images/button/ico/delete_bt.gif"
+					label="删除">
+				</button>
+				<button id="btnclose" sclass="btnDefault" width="74px"
+					height="23px" image="/main/images/button/ico/close_bt.gif"
+					label="取消">
+				</button>
+			</hbox>
+		</div>
+		<listbox id="UrlTrans" fixedLayout="true" checkmark="true"
+			mold="paging" pageSize="10" multiple="true">
+			<listhead sizable="true">
+				<listheader label="步名称" sort="auto(name)" />
+				<listheader label="步类型" sort="auto(name)"
+					align="center" width="100px" />
+				<listheader label="编辑" align="center" width="80px"
+					sort="auto(name)" />
+			</listhead>
+		</listbox>
+		</vbox>
+	</window>
+</zk>

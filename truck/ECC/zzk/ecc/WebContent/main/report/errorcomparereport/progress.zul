@@ -1,0 +1,20 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window border="none" use="com.siteview.ecc.monitorbrower.ProcessMonitor">
+<!-- 
+    <label id="infomation" value="数据正在处理中，请耐心等待..."/>
+    <button label="取消" id="cancel" sclass="btnDefault" width="70px" height="23px"/>
+    <progressmeter id="pm" value="0" width="400px"/>
+    <label id="finish"/>
+  -->   
+    <vbox align="end" style="margin-left:5px;margin-top:5px;margin-right:5px;margin-bottom:5px;" >
+		<div align="left">
+			<label id="infomation"  value="数据正在处理中，请耐心等待..."/>
+		</div>
+		<progressmeter id="pm" width="400px" value="0"/>
+		<button id="cancel" label="取消" sclass="btnDefault" width="70px" height="23px" style="margin-right:5px;margin-bottom:5px;"></button>
+	    <label id="finish"/>
+	</vbox>
+    
+</window>
+</zk>

@@ -1,0 +1,108 @@
+<?page title="Test Mail" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window id="addUserSetting" title="添加用户设置" border="normal"
+		mode="popup" width="370px" closable="true"
+		apply="com.siteview.ecc.usermanager.User_add" >
+
+			<groupbox closable="false" style="margin-left:10px;margin-right:10px;margin-top:10px" >
+	 			 <caption  label="基础设置"/>	
+					<grid id="manageGroupId" oddRowSclass="none"  style="margin-top:5px;border:none">
+						<columns>
+							<column label="" width="123px"/>
+							<column label="" width="123px"/>
+						</columns>
+						<rows >												
+							<row zclass="none" height="23px">
+								
+									<label value="&#160;&#160;登&#160;录&#160;名*：&#160;&#160;" />
+									<textbox id="loginName" height="15px" width="200px" tooltiptext="登录系统时输入的名称，不能为空"/>								
+							</row>
+							<row zclass="none" height="23px">
+							    
+									<label value="&#160;&#160;用&#160;户&#160;名*：&#160;&#160;" />
+									<textbox id="userName" height="15px" width="200px" tooltiptext="登录系统后窗体显示的名称，不能为空"/>
+							    
+							</row>		
+							<row zclass="none" height="23px" > 
+								
+								<label value="" />
+								<checkbox id="hold" label="禁止"	 tooltiptext="勾选表示禁止此用户登录系统，反之表示允许此用户登录系统"/>								
+							</row>	
+							<row zclass="none" height="23px" > 
+								
+								<label value="" />
+								<checkbox id="ldapCheck" label="使用LDAP认证"	 tooltiptext="勾选表示进行LDAP认证，反之表示对该用户不进行LDAP认证">
+									<attribute name="onCheck">{
+										if(self.isChecked()){
+											passwordDiv.setVisible(true);
+											ldapDiv.setVisible(true);
+										}else{
+											passwordDiv.setVisible(true);
+											ldapDiv.setVisible(false);
+										}
+									}</attribute>
+								
+								</checkbox>								
+							</row>	
+				
+						</rows>
+					</grid>
+					<div id="passwordDiv"  visible="true">
+						<grid  oddRowSclass="none"  style="border:none">
+							<columns>
+								<column label="" width="123px"/>
+								<column label="" width="123px"/>
+							</columns>
+							<rows>
+								<row zclass="none" height="23px">
+								   
+										<label value="&#160;&#160;密&#160;&#160;码*：&#160;&#160;" />
+										<textbox id="pwd" ctrlKeys="^v" type="password" height="15px" width="200px" tooltiptext="新用户的密码不能为空"/>
+								    
+								</row>	
+															
+								<row zclass="none" height="23px">
+								   
+										<label value="&#160;&#160;确认密码*：&#160;&#160;" />
+										<textbox id="confirmPwd" ctrlKeys="^v" height="15px" 	type="password" width="200px" tooltiptext="重复输入新用户的密码"/>							    
+								</row>	
+
+							</rows>						
+						</grid>																					
+					</div>	
+					
+					<div id="ldapDiv"  visible="false">
+						<grid  oddRowSclass="none"  style="border:none">
+							<columns>
+								<column label="" width="123px"/>
+								<column label="" width="123px"/>
+							</columns>
+							<rows>
+								<row zclass="none" height="23px">
+									
+										<label value="LDAP 认证地址：&#160;&#160;" />
+										<textbox id="LDAPProviderUrl" height="15px"  width="200px" tooltiptext="请输入LDAP 认证地址"/>								
+								</row>
+								<row zclass="none" height="23px">
+										<label value="LDAP 认证规则：&#160;&#160;" />
+										<textbox id="LDAPSecurityPrincipal" height="15px"   width="200px" tooltiptext="请输入LDAP 认证规则"/>
+								</row>	
+								<row zclass="none" height="23px">
+										<space width="1px"/>
+								</row>		
+							</rows>						
+						</grid>																					
+					</div>			
+						 	 			 	
+	 		</groupbox>	
+				<vbox style="margin-left:190px">
+					<hbox style="margin-top:10px;margin-bottom:10px">
+						<button id="userButton" label="保存" sclass="btnDefault" width="74px" height="23px" image="/main/images/button/ico/save_bt.gif"
+							forward="onClick=onAdd" />
+						<button label="取消" width="74px" height="23px" image="/main/images/button/ico/close_bt.gif"  sclass="btnDefault"
+							onClick="addUserSetting.detach()" />
+					</hbox>
+				</vbox>	 		
+
+	</window>
+</zk>

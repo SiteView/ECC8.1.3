@@ -1,0 +1,21 @@
+<window id="testMessageWin" title="接收信息测试" closable="true" height="100px"
+	width="320px" apply="com.siteview.ecc.message.SendTestImpl"
+	border="normal">
+	<hbox style="margin-top:5px" align="center">
+		<label value="输入接收信息的手机号码 * ：" style="margin-left:10px" />
+		<textbox id="phoneNum" height="15px"  width="105px"/>
+	</hbox>
+	<hbox id="testHbox" style="margin-top:10px" align="center">
+		<hbox width="110px">
+			<label id="messageLabel" value="" style="margin-left:10px;"/>
+		</hbox>
+		<hbox style="margin-left:10px;">
+			<button sclass="btnDefault" id="testSmsButton" label="发送"  width="74px" height="23px"
+				forward="onClick=onSmsTest" />
+
+			<button sclass="btnDefault" label="关闭"  width="74px" height="23px"
+				onClick="testMessageWin.detach()" />
+
+		</hbox>
+	</hbox>
+</window>

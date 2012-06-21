@@ -1,0 +1,22 @@
+<?page title="" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window apply="com.siteview.ecc.treeview.windows.MonitorList"
+		id="monitorList" title="监测器列表" border="normal" closable="true">
+
+		<panel>
+			<panelchildren>
+				<grid>
+					<columns>
+						<column width="20%" label=""></column>
+						<column label=""></column>
+					</columns>
+					<rows id="baserows">
+						
+					</rows>
+				</grid>
+			</panelchildren>
+		</panel>
+		<space height="10px" orient="horizontal" />
+		<button id="btnclose" label="取消" width="60px" height="23px" sclass="btnDefault"/>
+	</window>
+</zk>

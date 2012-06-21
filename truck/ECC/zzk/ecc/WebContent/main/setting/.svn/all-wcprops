@@ -1,0 +1,239 @@
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/svDCM/!svn/ver/4224/trunk/zk.ecc_zhongzubu/ecc/WebContent/main/setting
+END
+eidtDutyInfo.zul
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/WebContent/main/setting/eidtDutyInfo.zul
+END
+addDutyInfo_day.zul
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/WebContent/main/setting/addDutyInfo_day.zul
+END
+editDutySet.zul
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/WebContent/main/setting/editDutySet.zul
+END
+backuprestore.zul
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/WebContent/main/setting/backuprestore.zul
+END
+editEmailSet.zul
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/WebContent/main/setting/editEmailSet.zul
+END
+user_grant.zul
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/WebContent/main/setting/user_grant.zul
+END
+usermanager.zul
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/svDCM/!svn/ver/4123/trunk/zk.ecc_zhongzubu/ecc/WebContent/main/setting/usermanager.zul
+END
+editAbTask.zul
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/WebContent/main/setting/editAbTask.zul
+END
+setmaintain.zul
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/svDCM/!svn/ver/4123/trunk/zk.ecc_zhongzubu/ecc/WebContent/main/setting/setmaintain.zul
+END
+addEmailSet.zul
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/WebContent/main/setting/addEmailSet.zul
+END
+editPerTask.zul
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/WebContent/main/setting/editPerTask.zul
+END
+addDutyInfo_week.zul
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/WebContent/main/setting/addDutyInfo_week.zul
+END
+setgeneral.zul
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/svDCM/!svn/ver/4224/trunk/zk.ecc_zhongzubu/ecc/WebContent/main/setting/setgeneral.zul
+END
+set.zul
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/WebContent/main/setting/set.zul
+END
+taskrelative.zul
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/svDCM/!svn/ver/4123/trunk/zk.ecc_zhongzubu/ecc/WebContent/main/setting/taskrelative.zul
+END
+setmessage.zul
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/svDCM/!svn/ver/4123/trunk/zk.ecc_zhongzubu/ecc/WebContent/main/setting/setmessage.zul
+END
+taskabsolute.zul
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/svDCM/!svn/ver/4123/trunk/zk.ecc_zhongzubu/ecc/WebContent/main/setting/taskabsolute.zul
+END
+taskperiod.zul
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/svDCM/!svn/ver/4123/trunk/zk.ecc_zhongzubu/ecc/WebContent/main/setting/taskperiod.zul
+END
+paramedit.zul
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/WebContent/main/setting/paramedit.zul
+END
+editMessageSet.zul
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/WebContent/main/setting/editMessageSet.zul
+END
+userSet_group.zul
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/WebContent/main/setting/userSet_group.zul
+END
+addMessageSet.zul
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/WebContent/main/setting/addMessageSet.zul
+END
+about.zul
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/WebContent/main/setting/about.zul
+END
+addDutySet.zul
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/WebContent/main/setting/addDutySet.zul
+END
+editDutyInfo_month.zul
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/WebContent/main/setting/editDutyInfo_month.zul
+END
+addDutyInfo_month.zul
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/WebContent/main/setting/addDutyInfo_month.zul
+END
+setDataBase.zul
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/WebContent/main/setting/setDataBase.zul
+END
+license.zul
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/svDCM/!svn/ver/4172/trunk/zk.ecc_zhongzubu/ecc/WebContent/main/setting/license.zul
+END
+editDutyInfo_week.zul
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/WebContent/main/setting/editDutyInfo_week.zul
+END
+testmail.zul
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/WebContent/main/setting/testmail.zul
+END
+testMessage.zul
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/WebContent/main/setting/testMessage.zul
+END
+editUser.zul
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/WebContent/main/setting/editUser.zul
+END
+addUser.zul
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/WebContent/main/setting/addUser.zul
+END
+syslogset.zul
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/svDCM/!svn/ver/4123/trunk/zk.ecc_zhongzubu/ecc/WebContent/main/setting/syslogset.zul
+END
+setmail.zul
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/svDCM/!svn/ver/4123/trunk/zk.ecc_zhongzubu/ecc/WebContent/main/setting/setmail.zul
+END
+operatelog.zul
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/svDCM/!svn/ver/4123/trunk/zk.ecc_zhongzubu/ecc/WebContent/main/setting/operatelog.zul
+END
+task.zul
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/WebContent/main/setting/task.zul
+END
+editRelativeTask.zul
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/WebContent/main/setting/editRelativeTask.zul
+END
+editDutyInfo_day.zul
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/WebContent/main/setting/editDutyInfo_day.zul
+END

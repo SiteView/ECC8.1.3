@@ -1,0 +1,25 @@
+<?page title="" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window id="wentitytest" title="设备测试" border="normal" width="650px"
+		position="center,top"
+		apply="com.siteview.ecc.treeview.windows.EntityTest"
+		closable="true">
+		<panel border="normal">
+			<panelchildren
+				style="margin:5px 5px 5px 5px;padding-left:10px;overflow-y:auto;max-height:500px;">
+				<label value="设备测试结果：" />
+				<space orient="horizontal" />
+				<vbox id="parentcontainers"></vbox>
+				<space orient="horizontal" width="10px" />
+				<label id="lbfinish" />
+				<separator height="20px" bar="true" />
+
+			</panelchildren>
+		</panel>
+		<div
+			style="float:right;margin-bottom:12px;margin-right:12px; ">
+			<button id="btnclose" width="60px" sclass="btnDefault"
+				style="margin-left:10px;" label="关闭" />
+		</div>
+	</window>
+</zk>

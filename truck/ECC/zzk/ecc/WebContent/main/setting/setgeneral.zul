@@ -1,0 +1,170 @@
+<zk>
+	<borderlayout>
+		<center style="overflow:auto;border:none">
+			<panel title="基本设置" collapsible="true">
+				<panelchildren>
+					<window id="generalSet"
+						apply="com.siteview.ecc.general.GeneralSet" border="normal"
+						style="overflow-y:auto;" forward="onCreate=onInit">
+
+						<panel title="基本设置详细信息" border="normal"
+							collapsible="true">
+							<panelchildren style="center">
+								<hbox style="margin-top:20px">
+									<checkbox id="ipCheckbox"
+										style="margin-left:5px" label="是否需要IP验证"
+										onCheck="applyButton.setDisabled(false)" />
+								</hbox>
+								<vbox align="end"
+									style="margin-left:10px">
+									<hbox style="margin-top:10px"
+										align="center">
+										<label value="允许访问IP地址：" />
+										<textbox id="ip"
+											onChanging="applyButton.setDisabled(false)" width="300px"
+											height="15px" tooltiptext="请输入允许访问的IP地址" />
+									</hbox>
+									<hbox style="margin-top:10px"
+										align="center">
+
+										<button sclass="btnDefault"
+											width="74px" height="23px" label="应   用" id="applyButton"
+											forward="onClick=onApply"
+											image="/main/images/button/ico/save_bt.gif" />
+
+										<button sclass="btnDefault"
+											height="23px" label="重新获得" forward="onClick=onRecover"
+											style="margin-left:10px"
+											image="/main/images/button/ico/reload_bt.gif"
+											id="recoverButton" />
+
+									</hbox>
+									<panel></panel>
+								</vbox>
+							</panelchildren>
+						</panel>
+						<div id="setTuopuId" visible="false">
+						<panel title="拓扑设置" border="normal" 
+							collapsible="true">
+							<panelchildren id="pc"  apply="com.siteview.ecc.tuopu.tuopuset">
+								<listbox width="" >
+									<listhead>
+										<listheader width="60px" label="状态">
+										</listheader>
+										<listheader label="边框颜色">
+										</listheader>
+										<listheader label="边框宽度">
+										</listheader>
+									</listhead>
+									<listitem>
+										<listcell  label="错误"></listcell>
+										<listcell><hbox> <textbox id="c1"  readonly="true" ></textbox>  <toolbarbutton id="b1" height="18px"  label=". . ."/></hbox> </listcell>
+										<listcell ><spinner id="w1" readonly="true" constraint="min 1 max 6"/> </listcell>
+									</listitem>
+									<listitem>
+										<listcell label="危险">
+										</listcell>
+										<listcell><hbox> <textbox id="c2"  readonly="true" ></textbox> <toolbarbutton id="b2" label=". . ."/></hbox></listcell>
+										<listcell ><spinner id="w2" readonly="true" constraint="min 1 max 6"/> </listcell>
+									</listitem>
+									<listitem>
+										<listcell label="正常">
+										</listcell>
+										<listcell><hbox> <textbox id="c3"  readonly="true" ></textbox> <toolbarbutton id="b3"  label=". . ."/></hbox> </listcell>
+										<listcell ><spinner id="w3" readonly="true" constraint="min 1 max 6"/> </listcell>
+									</listitem>
+								</listbox>
+								<hbox align="center"><space width="150px"></space> 	<button sclass="btnDefault"
+											width="74px" height="23px" label="应   用" id="btntuopu"
+											image="/main/images/button/ico/save_bt.gif" />  <button sclass="btnDefault"
+											width="74px" height="23px" label="预览" id="btnlook"
+											image="/main/images/button/ico/query_bt.gif" /> 
+											<button sclass="btnDefault"
+											width="74px" height="23px" label="恢复默认" id="btnreturn"
+											image="/main/images/button/ico/reload_bt.gif" /> 
+											</hbox>
+							</panelchildren>
+						</panel>
+						</div>
+						<panel title="数据迁移设置" border="normal" collapsible="true">
+							<panelchildren id="dt"  apply="com.siteview.ecc.general.DataTransfer">
+								<radiogroup >
+								<vbox style="margin-left:20px">	
+								
+									<hbox style="margin-top:15px" >
+										<radio label="设定导出时间" id="radio1"/>
+										<space width="5px"/>
+										<datebox id="tdDate" lenient="true" buttonVisible="true" width="110px"/>
+										<timebox id="tdTime" width="70px" height="15px"/>
+									</hbox>
+										
+									<hbox style="margin-top:10px" align="center">
+										<radio label="设定导出间隔" id="radio2"/>
+										<space width="5px"/>
+										<textbox width="35px" height="15px" id="tdDay" /><label value="日"/>
+										<textbox width="35px" height="15px" id="tdHour" /><label value="时"/>
+										<textbox width="35px" height="15px" id="tdMinute" /><label value="分"/>
+									</hbox>
+								
+								</vbox>	
+								</radiogroup>	
+								<vbox align="end" style="margin-left:20px;margin-top:10px">
+									<hbox>
+										<hbox style="margin-top:5px" align="center">
+											<label value="数据库IP地址：" />
+											<textbox width="300px" height="15px" tooltiptext="请输入数据库的IP地址" id="dbIp" />
+										</hbox>
+										<space width="20px" />
+										<hbox style="margin-top:5px" align="center">
+											<label value="数据库端口：" />
+											<textbox width="300px" height="15px" tooltiptext="请输入数据库端口" id="dbPort" />
+										</hbox>
+									</hbox>
+									<hbox>
+										<hbox style="margin-top:5px" align="center">
+											<label value="数据库用户名：" />
+											<textbox width="300px" height="15px" tooltiptext="请输入数据库用户名" id="dbUser" />
+										</hbox>
+										<space width="20px" />
+										<hbox style="margin-top:5px" align="center">
+											<label value="数据库密码：" />
+											<textbox type="password" width="300px" height="15px" tooltiptext="请输入数据库密码" id="dbPassword" />
+										</hbox>
+									</hbox>
+									<hbox>
+										<hbox style="margin-top:5px" align="center">
+											<label value="svdbIP地址：" />
+											<textbox width="300px" height="15px" tooltiptext="请输入svdbIP地址" id="svdbIp" />
+										</hbox>
+										<space width="20px" />
+										<hbox style="margin-top:5px" align="center">
+											<label value="数据库库名：" />
+											<textbox width="300px" height="15px" tooltiptext="请输入迁移数据库库名" id="dbName" />
+										</hbox>
+									</hbox>
+									
+									<hbox style="margin-top:5px" align="center">
+										<button sclass="btnDefault" label="修   改"
+											width="74px" height="23px" id="modify"
+											image="/main/images/button/ico/ok_bt.gif" />
+
+										<button sclass="btnDefault" label="重新获得"
+											width="74px" height="23px" id="refresh"
+											style="margin-left:10px"
+											image="/main/images/button/ico/reload_bt.gif"/>
+										<button sclass="btnDefault" label="数据导回"
+											width="74px" height="23px" id="backup"
+											style="margin-left:10px"
+											image="/main/images/settings.gif" />
+									</hbox>
+								</vbox>
+							</panelchildren>
+						</panel>
+					</window>
+				</panelchildren>
+			</panel>
+		</center>
+	</borderlayout>
+</zk>
+
+

@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/src/com/siteview/ecc/tasks
+END
+EditPerTask.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/src/com/siteview/ecc/tasks/EditPerTask.java
+END
+TaskPack.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/src/com/siteview/ecc/tasks/TaskPack.java
+END
+Task.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/src/com/siteview/ecc/tasks/Task.java
+END
+TaskDaoImplRelative.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/src/com/siteview/ecc/tasks/TaskDaoImplRelative.java
+END
+TaskDaoImplAbsolute.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/src/com/siteview/ecc/tasks/TaskDaoImplAbsolute.java
+END
+TaskDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/src/com/siteview/ecc/tasks/TaskDaoImpl.java
+END
+TaskItemRenderer.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/src/com/siteview/ecc/tasks/TaskItemRenderer.java
+END
+EditAbTask.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/src/com/siteview/ecc/tasks/EditAbTask.java
+END
+EditRelTask.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/src/com/siteview/ecc/tasks/EditRelTask.java
+END
+TaskDaoImplPeriod.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/src/com/siteview/ecc/tasks/TaskDaoImplPeriod.java
+END
+TaskConstant.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/src/com/siteview/ecc/tasks/TaskConstant.java
+END

@@ -1,0 +1,1711 @@
+<?xml version="1.0" encoding="utf-8"?>
+<VisioDocument>
+	<DocumentProperties>
+		<Title></Title>
+		<HyperlinkBase href=""></HyperlinkBase>
+	</DocumentProperties>
+	<Pages>
+		<Page ID="4" Name="背景" NameU="背景">
+			<Layer IX="0">
+				<Name>Network</Name>
+				<NameUniv>Network</NameUniv>
+				<Visible>1</Visible>
+			</Layer>
+			<Shapes>
+				<Shape ID="193" UniqueID="{94725CE8-D479-4CF1-8E13-A42954D16884}" Name="框" NameU="Box" Master="62">
+					<XForm>
+						<PinX Unit="MM">6.062992125984254</PinX>
+						<PinY Unit="MM">4.291338582677167</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="173" UniqueID="{31312662-557A-4311-B3A4-42DE77823D95}" Name="无背景" NameU="Background none" Master="10">
+					<XForm>
+						<PinX Unit="MM">5.846456692913385</PinX>
+						<PinY Unit="MM">4.133858267716536</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="174" UniqueID="{D45CBB61-290F-4419-BAD3-401F678062D9}" Name="无背景.174" NameU="Background none.174" Master="10">
+					<XForm>
+						<PinX Unit="MM">5.846456692913385</PinX>
+						<PinY Unit="MM">4.133858267716536</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="175" UniqueID="{B4F01630-3D62-47B7-84AE-943BF24488AA}" Name="无背景.175" NameU="Background none.175" Master="10">
+					<XForm>
+						<PinX Unit="MM">5.846456692913385</PinX>
+						<PinY Unit="MM">4.133858267716536</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="779" UniqueID="{E99F8C19-8CFD-49D0-AD78-DFEEB384A3BE}" Name="服务器.779" NameU="Server.779" Master="27">
+					<XForm>
+						<PinX Unit="MM">1.181102362204724</PinX>
+						<PinY Unit="MM">4.881889763779528</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="1169" UniqueID="{CF01F912-F877-45A4-BC83-B8EE3F7D7528}" Name="架.1169" NameU="Shelf.1169" Master="42">
+					<XForm>
+						<PinX Unit="CM">4.330708661417322</PinX>
+						<PinY Unit="MM">3.564271653543307</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+					<Prop ID="1" Name="UCount" NameU="UCount">
+						<Value Unit="STR">1</Value>
+						<Label>单元高度</Label>
+					</Prop>
+					<Prop ID="2" Name="Height" NameU="Height">
+						<Value Unit="STR">44.45 mm</Value>
+						<Label>高</Label>
+					</Prop>
+					<Prop ID="9" Name="AssetNumber" NameU="AssetNumber">
+						<Value></Value>
+						<Label>资产号</Label>
+					</Prop>
+					<Prop ID="10" Name="SerialNumber" NameU="SerialNumber">
+						<Value></Value>
+						<Label>序列号</Label>
+					</Prop>
+					<Prop ID="11" Name="Location" NameU="Location">
+						<Value></Value>
+						<Label>位置</Label>
+					</Prop>
+					<Prop ID="12" Name="Building" NameU="Building">
+						<Value></Value>
+						<Label>建筑物</Label>
+					</Prop>
+					<Prop ID="13" Name="Room" NameU="Room">
+						<Value></Value>
+						<Label>房间</Label>
+					</Prop>
+					<Prop ID="5" Name="Manufacturer" NameU="Manufacturer">
+						<Value></Value>
+						<Label>制造商</Label>
+					</Prop>
+					<Prop ID="6" Name="ProductNumber" NameU="ProductNumber">
+						<Value></Value>
+						<Label>产品编号</Label>
+					</Prop>
+					<Prop ID="7" Name="PartNumber" NameU="PartNumber">
+						<Value></Value>
+						<Label>部件号</Label>
+					</Prop>
+					<Prop ID="8" Name="ProductDescription" NameU="ProductDescription">
+						<Value></Value>
+						<Label>产品说明</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="1180" UniqueID="{6B5A69AA-22D9-4C4A-A03F-BC898C5171FA}" Name="IBM 43P.55" NameU="IBM 43P.55" Master="55">
+					<XForm>
+						<PinX Unit="MM">4.330708661417323</PinX>
+						<PinY Unit="MM">3.998523622047244</PinY>
+					</XForm>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									<HLURL:Hyperlink ID="1"><HLURL:Description>Ping   包成功率(%)=100.00, 数据往返时间(ms)=4.67, 状态值(200表示成功 300表示出错)=200.00, </HLURL:Description><HLURL:Address>/fcgi-bin/simplereport.exe?monitorid=1.5.2.1</HLURL:Address><HLURL:SubAddress></HLURL:SubAddress><HLURL:ExtraInfo></HLURL:ExtraInfo><HLURL:Default></HLURL:Default><HLURL:AbsoluteURL>/fcgi-bin/simplereport.exe?monitorid=1.5.2.1</HLURL:AbsoluteURL><HLURL:Status>1</HLURL:Status><HLURL:NewWindow>3</HLURL:NewWindow></HLURL:Hyperlink><HLURL:Hyperlink ID="2"><HLURL:Description>Cpu   CPU使用率(%)=16.00, </HLURL:Description><HLURL:Address>/fcgi-bin/simplereport.exe?monitorid=1.5.2.2</HLURL:Address><HLURL:SubAddress></HLURL:SubAddress><HLURL:ExtraInfo></HLURL:ExtraInfo><HLURL:Default></HLURL:Default><HLURL:AbsoluteURL>/fcgi-bin/simplereport.exe?monitorid=1.5.2.2</HLURL:AbsoluteURL><HLURL:Status>1</HLURL:Status><HLURL:NewWindow>3</HLURL:NewWindow></HLURL:Hyperlink><HLURL:Hyperlink ID="3"><HLURL:Description>Memory   Memory使用率(%)=43.05, 剩余空间(MB)=583.17, 错误页/秒(页/秒)=29.00, 内存总量(MB)=1024.00, </HLURL:Description><HLURL:Address>/fcgi-bin/simplereport.exe?monitorid=1.5.2.3</HLURL:Address><HLURL:SubAddress></HLURL:SubAddress><HLURL:ExtraInfo></HLURL:ExtraInfo><HLURL:Default></HLURL:Default><HLURL:AbsoluteURL>/fcgi-bin/simplereport.exe?monitorid=1.5.2.3</HLURL:AbsoluteURL><HLURL:Status>1</HLURL:Status><HLURL:NewWindow>3</HLURL:NewWindow></HLURL:Hyperlink><HLURL:Hyperlink ID="4"><HLURL:Description>Disk(win):C:   Disk使用率(%)=21.00, 剩余空间(MB)=63200.00, </HLURL:Description><HLURL:Address>/fcgi-bin/simplereport.exe?monitorid=1.5.2.4</HLURL:Address><HLURL:SubAddress></HLURL:SubAddress><HLURL:ExtraInfo></HLURL:ExtraInfo><HLURL:Default></HLURL:Default><HLURL:AbsoluteURL>/fcgi-bin/simplereport.exe?monitorid=1.5.2.4</HLURL:AbsoluteURL><HLURL:Status>1</HLURL:Status><HLURL:NewWindow>3</HLURL:NewWindow></HLURL:Hyperlink><HLURL:Hyperlink ID="5"><HLURL:Description>Disk(win):D:   Disk使用率(%)=22.85, 剩余空间(MB)=61720.00, </HLURL:Description><HLURL:Address>/fcgi-bin/simplereport.exe?monitorid=1.5.2.5</HLURL:Address><HLURL:SubAddress></HLURL:SubAddress><HLURL:ExtraInfo></HLURL:ExtraInfo><HLURL:Default></HLURL:Default><HLURL:AbsoluteURL>/fcgi-bin/simplereport.exe?monitorid=1.5.2.5</HLURL:AbsoluteURL><HLURL:Status>1</HLURL:Status><HLURL:NewWindow>3</HLURL:NewWindow></HLURL:Hyperlink></HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+					<Prop ID="1" Name="SV_IP" NameU="SV_IP">
+						<Value Unit="STR">127.0.0.1</Value>
+						<Label>属性1</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="1374" UniqueID="{6BFDA1A8-D151-43C9-91F6-98C17CC786A8}" Name="IBM 43P.1374" NameU="IBM 43P.1374" Master="55">
+					<XForm>
+						<PinX Unit="MM">4.330708661417323</PinX>
+						<PinY Unit="MM">4.890501968503934</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="1320" UniqueID="{BF1BBAD0-FF17-4D38-9628-AE878ECED5CF}" Name="架.1320" NameU="Shelf.1320" Master="42">
+					<XForm>
+						<PinX Unit="MM">6.423818897637794</PinX>
+						<PinY Unit="MM">4.605819389763774</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+					<Prop ID="1" Name="UCount" NameU="UCount">
+						<Value Unit="STR">1</Value>
+						<Label>单元高度</Label>
+					</Prop>
+					<Prop ID="2" Name="Height" NameU="Height">
+						<Value Unit="STR">44.45 mm</Value>
+						<Label>高</Label>
+					</Prop>
+					<Prop ID="9" Name="AssetNumber" NameU="AssetNumber">
+						<Value></Value>
+						<Label>资产号</Label>
+					</Prop>
+					<Prop ID="10" Name="SerialNumber" NameU="SerialNumber">
+						<Value></Value>
+						<Label>序列号</Label>
+					</Prop>
+					<Prop ID="11" Name="Location" NameU="Location">
+						<Value></Value>
+						<Label>位置</Label>
+					</Prop>
+					<Prop ID="12" Name="Building" NameU="Building">
+						<Value></Value>
+						<Label>建筑物</Label>
+					</Prop>
+					<Prop ID="13" Name="Room" NameU="Room">
+						<Value></Value>
+						<Label>房间</Label>
+					</Prop>
+					<Prop ID="5" Name="Manufacturer" NameU="Manufacturer">
+						<Value></Value>
+						<Label>制造商</Label>
+					</Prop>
+					<Prop ID="6" Name="ProductNumber" NameU="ProductNumber">
+						<Value></Value>
+						<Label>产品编号</Label>
+					</Prop>
+					<Prop ID="7" Name="PartNumber" NameU="PartNumber">
+						<Value></Value>
+						<Label>部件号</Label>
+					</Prop>
+					<Prop ID="8" Name="ProductDescription" NameU="ProductDescription">
+						<Value></Value>
+						<Label>产品说明</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="1331" UniqueID="{C1A8A89E-54D6-440F-B23F-D26195AE483D}" Name="架.1331" NameU="Shelf.1331" Master="42">
+					<XForm>
+						<PinX Unit="CM">7.480314960629920</PinX>
+						<PinY Unit="MM">4.176771653543308</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+					<Prop ID="1" Name="UCount" NameU="UCount">
+						<Value Unit="STR">1</Value>
+						<Label>单元高度</Label>
+					</Prop>
+					<Prop ID="2" Name="Height" NameU="Height">
+						<Value Unit="STR">44.45 mm</Value>
+						<Label>高</Label>
+					</Prop>
+					<Prop ID="9" Name="AssetNumber" NameU="AssetNumber">
+						<Value></Value>
+						<Label>资产号</Label>
+					</Prop>
+					<Prop ID="10" Name="SerialNumber" NameU="SerialNumber">
+						<Value></Value>
+						<Label>序列号</Label>
+					</Prop>
+					<Prop ID="11" Name="Location" NameU="Location">
+						<Value></Value>
+						<Label>位置</Label>
+					</Prop>
+					<Prop ID="12" Name="Building" NameU="Building">
+						<Value></Value>
+						<Label>建筑物</Label>
+					</Prop>
+					<Prop ID="13" Name="Room" NameU="Room">
+						<Value></Value>
+						<Label>房间</Label>
+					</Prop>
+					<Prop ID="5" Name="Manufacturer" NameU="Manufacturer">
+						<Value></Value>
+						<Label>制造商</Label>
+					</Prop>
+					<Prop ID="6" Name="ProductNumber" NameU="ProductNumber">
+						<Value></Value>
+						<Label>产品编号</Label>
+					</Prop>
+					<Prop ID="7" Name="PartNumber" NameU="PartNumber">
+						<Value></Value>
+						<Label>部件号</Label>
+					</Prop>
+					<Prop ID="8" Name="ProductDescription" NameU="ProductDescription">
+						<Value></Value>
+						<Label>产品说明</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="831" UniqueID="{C4DC836E-647F-44C1-BDA5-5453476FCF92}" Name="服务器.831" NameU="Server.831" Master="27">
+					<XForm>
+						<PinX Unit="CM">1.181102362204724</PinX>
+						<PinY Unit="MM">4.439579232283466</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="772" UniqueID="{5D692D99-47F8-4070-A356-F0AB0C1E8900}" Name="服务器.772" NameU="Server.772" Master="27">
+					<XForm>
+						<PinX Unit="CM">1.181102362204724</PinX>
+						<PinY Unit="MM">4.002079232283466</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="855" UniqueID="{32CEB9D8-C72C-4413-B53B-8D1A624A4993}" Name="服务器.855" NameU="Server.855" Master="27">
+					<XForm>
+						<PinX Unit="CM">1.181102362204724</PinX>
+						<PinY Unit="MM">3.739579232283466</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="1029" UniqueID="{0F661692-33C5-41B0-8518-505BB910286F}" Name="架.1029" NameU="Shelf.1029" Master="42">
+					<XForm>
+						<PinX Unit="CM">4.330708661417322</PinX>
+						<PinY Unit="MM">4.439271653543308</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+					<Prop ID="1" Name="UCount" NameU="UCount">
+						<Value Unit="STR">1</Value>
+						<Label>单元高度</Label>
+					</Prop>
+					<Prop ID="2" Name="Height" NameU="Height">
+						<Value Unit="STR">44.45 mm</Value>
+						<Label>高</Label>
+					</Prop>
+					<Prop ID="9" Name="AssetNumber" NameU="AssetNumber">
+						<Value></Value>
+						<Label>资产号</Label>
+					</Prop>
+					<Prop ID="10" Name="SerialNumber" NameU="SerialNumber">
+						<Value></Value>
+						<Label>序列号</Label>
+					</Prop>
+					<Prop ID="11" Name="Location" NameU="Location">
+						<Value></Value>
+						<Label>位置</Label>
+					</Prop>
+					<Prop ID="12" Name="Building" NameU="Building">
+						<Value></Value>
+						<Label>建筑物</Label>
+					</Prop>
+					<Prop ID="13" Name="Room" NameU="Room">
+						<Value></Value>
+						<Label>房间</Label>
+					</Prop>
+					<Prop ID="5" Name="Manufacturer" NameU="Manufacturer">
+						<Value></Value>
+						<Label>制造商</Label>
+					</Prop>
+					<Prop ID="6" Name="ProductNumber" NameU="ProductNumber">
+						<Value></Value>
+						<Label>产品编号</Label>
+					</Prop>
+					<Prop ID="7" Name="PartNumber" NameU="PartNumber">
+						<Value></Value>
+						<Label>部件号</Label>
+					</Prop>
+					<Prop ID="8" Name="ProductDescription" NameU="ProductDescription">
+						<Value></Value>
+						<Label>产品说明</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="1040" UniqueID="{68FA05AF-C59F-40DC-A83B-A250F466D92E}" Name="IBM 43P.1040" NameU="IBM 43P.1040" Master="55">
+					<XForm>
+						<PinX Unit="MM">5.413385826771653</PinX>
+						<PinY Unit="MM">2.423720472440946</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="1056" UniqueID="{F2E70BA3-DF43-4C24-98AD-500CBF57B33D}" Name="IBM 43P.1056" NameU="IBM 43P.1056" Master="55">
+					<XForm>
+						<PinX Unit="MM">6.210629921259842</PinX>
+						<PinY Unit="MM">4.990465059055114</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="1084" UniqueID="{F4D8B752-E10A-4131-9608-4B018834DB1E}" Name="IBM 43P.1084" NameU="IBM 43P.1084" Master="55">
+					<XForm>
+						<PinX Unit="MM">6.614173228346456</PinX>
+						<PinY Unit="MM">4.990465059055114</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="1117" UniqueID="{79890C97-11D2-4828-AEC7-386B2E25BBC5}" Name="IBM 43P.1117" NameU="IBM 43P.1117" Master="55">
+					<XForm>
+						<PinX Unit="MM">6.393700787401574</PinX>
+						<PinY Unit="MM">4.124015748031495</PinY>
+					</XForm>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									<HLURL:Hyperlink ID="1"><HLURL:Description>Ping   包成功率(%)=100.00, 数据往返时间(ms)=3.65, 状态值(200表示成功 300表示出错)=200.00, </HLURL:Description><HLURL:Address>/fcgi-bin/simplereport.exe?monitorid=1.1.4.1</HLURL:Address><HLURL:SubAddress></HLURL:SubAddress><HLURL:ExtraInfo></HLURL:ExtraInfo><HLURL:Default></HLURL:Default><HLURL:AbsoluteURL>/fcgi-bin/simplereport.exe?monitorid=1.1.4.1</HLURL:AbsoluteURL><HLURL:Status>1</HLURL:Status><HLURL:NewWindow>3</HLURL:NewWindow></HLURL:Hyperlink><HLURL:Hyperlink ID="2"><HLURL:Description>SNMP_CPU   CPU使用率(%)=32.00, </HLURL:Description><HLURL:Address>/fcgi-bin/simplereport.exe?monitorid=1.1.4.2</HLURL:Address><HLURL:SubAddress></HLURL:SubAddress><HLURL:ExtraInfo></HLURL:ExtraInfo><HLURL:Default></HLURL:Default><HLURL:AbsoluteURL>/fcgi-bin/simplereport.exe?monitorid=1.1.4.2</HLURL:AbsoluteURL><HLURL:Status>1</HLURL:Status><HLURL:NewWindow>3</HLURL:NewWindow></HLURL:Hyperlink><HLURL:Hyperlink ID="3"><HLURL:Description>SNMP_Disk:C:   Disk使用率(%)=37.72, 磁盘总量(MB)=80000.00, 剩余空间(MB)=49824.00, </HLURL:Description><HLURL:Address>/fcgi-bin/simplereport.exe?monitorid=1.1.4.3</HLURL:Address><HLURL:SubAddress></HLURL:SubAddress><HLURL:ExtraInfo></HLURL:ExtraInfo><HLURL:Default></HLURL:Default><HLURL:AbsoluteURL>/fcgi-bin/simplereport.exe?monitorid=1.1.4.3</HLURL:AbsoluteURL><HLURL:Status>1</HLURL:Status><HLURL:NewWindow>3</HLURL:NewWindow></HLURL:Hyperlink><HLURL:Hyperlink ID="4"><HLURL:Description>SNMP_Disk:D:   Disk使用率(%)=16.18, 磁盘总量(MB)=80000.00, 剩余空间(MB)=67056.00, </HLURL:Description><HLURL:Address>/fcgi-bin/simplereport.exe?monitorid=1.1.4.4</HLURL:Address><HLURL:SubAddress></HLURL:SubAddress><HLURL:ExtraInfo></HLURL:ExtraInfo><HLURL:Default></HLURL:Default><HLURL:AbsoluteURL>/fcgi-bin/simplereport.exe?monitorid=1.1.4.4</HLURL:AbsoluteURL><HLURL:Status>1</HLURL:Status><HLURL:NewWindow>3</HLURL:NewWindow></HLURL:Hyperlink><HLURL:Hyperlink ID="5"><HLURL:Description>SNMP_Disk:X:   Disk使用率(%)=32.65, 磁盘总量(MB)=80000.00, 剩余空间(MB)=53880.00, </HLURL:Description><HLURL:Address>/fcgi-bin/simplereport.exe?monitorid=1.1.4.5</HLURL:Address><HLURL:SubAddress></HLURL:SubAddress><HLURL:ExtraInfo></HLURL:ExtraInfo><HLURL:Default></HLURL:Default><HLURL:AbsoluteURL>/fcgi-bin/simplereport.exe?monitorid=1.1.4.5</HLURL:AbsoluteURL><HLURL:Status>1</HLURL:Status><HLURL:NewWindow>3</HLURL:NewWindow></HLURL:Hyperlink><HLURL:Hyperlink ID="6"><HLURL:Description>SNMP_Disk:Y:   Disk使用率(%)=37.99, 磁盘总量(MB)=80000.00, 剩余空间(MB)=49608.00, </HLURL:Description><HLURL:Address>/fcgi-bin/simplereport.exe?monitorid=1.1.4.6</HLURL:Address><HLURL:SubAddress></HLURL:SubAddress><HLURL:ExtraInfo></HLURL:ExtraInfo><HLURL:Default></HLURL:Default><HLURL:AbsoluteURL>/fcgi-bin/simplereport.exe?monitorid=1.1.4.6</HLURL:AbsoluteURL><HLURL:Status>1</HLURL:Status><HLURL:NewWindow>3</HLURL:NewWindow></HLURL:Hyperlink><HLURL:Hyperlink ID="7"><HLURL:Description>SNMP_Disk:Z:   Disk使用率(%)=28.30, 磁盘总量(MB)=80000.00, 剩余空间(MB)=57360.00, </HLURL:Description><HLURL:Address>/fcgi-bin/simplereport.exe?monitorid=1.1.4.7</HLURL:Address><HLURL:SubAddress></HLURL:SubAddress><HLURL:ExtraInfo></HLURL:ExtraInfo><HLURL:Default></HLURL:Default><HLURL:AbsoluteURL>/fcgi-bin/simplereport.exe?monitorid=1.1.4.7</HLURL:AbsoluteURL><HLURL:Status>1</HLURL:Status><HLURL:NewWindow>3</HLURL:NewWindow></HLURL:Hyperlink><HLURL:Hyperlink ID="8"><HLURL:Description>SNMP_Memory:Virtual Memory   Memory使用率(%)=30.34, 剩余空间(MB)=713.32, 内存总量(MB)=1024, </HLURL:Description><HLURL:Address>/fcgi-bin/simplereport.exe?monitorid=1.1.4.8</HLURL:Address><HLURL:SubAddress></HLURL:SubAddress><HLURL:ExtraInfo></HLURL:ExtraInfo><HLURL:Default></HLURL:Default><HLURL:AbsoluteURL>/fcgi-bin/simplereport.exe?monitorid=1.1.4.8</HLURL:AbsoluteURL><HLURL:Status>1</HLURL:Status><HLURL:NewWindow>3</HLURL:NewWindow></HLURL:Hyperlink><HLURL:Hyperlink ID="9"><HLURL:Description>SNMP_Process:nhttp.exe   进程总数=1, </HLURL:Description><HLURL:Address>/fcgi-bin/simplereport.exe?monitorid=1.1.4.9</HLURL:Address><HLURL:SubAddress></HLURL:SubAddress><HLURL:ExtraInfo></HLURL:ExtraInfo><HLURL:Default></HLURL:Default><HLURL:AbsoluteURL>/fcgi-bin/simplereport.exe?monitorid=1.1.4.9</HLURL:AbsoluteURL><HLURL:Status>1</HLURL:Status><HLURL:NewWindow>3</HLURL:NewWindow></HLURL:Hyperlink><HLURL:Hyperlink ID="10"><HLURL:Description>SNMP_Process:nserver.exe   进程总数=1, </HLURL:Description><HLURL:Address>/fcgi-bin/simplereport.exe?monitorid=1.1.4.10</HLURL:Address><HLURL:SubAddress></HLURL:SubAddress><HLURL:ExtraInfo></HLURL:ExtraInfo><HLURL:Default></HLURL:Default><HLURL:AbsoluteURL>/fcgi-bin/simplereport.exe?monitorid=1.1.4.10</HLURL:AbsoluteURL><HLURL:Status>1</HLURL:Status><HLURL:NewWindow>3</HLURL:NewWindow></HLURL:Hyperlink><HLURL:Hyperlink ID="11"><HLURL:Description>接口信息   接收速率(Kbit/s)=1099.80, 发送速率(Kbit/s)=1111.50, 状态=1, 接口输出丢包率(%)=7.98, 接口输入丢包率(%)=4.26, </HLURL:Description><HLURL:Address>/fcgi-bin/simplereport.exe?monitorid=1.1.4.11</HLURL:Address><HLURL:SubAddress></HLURL:SubAddress><HLURL:ExtraInfo></HLURL:ExtraInfo><HLURL:Default></HLURL:Default><HLURL:AbsoluteURL>/fcgi-bin/simplereport.exe?monitorid=1.1.4.11</HLURL:AbsoluteURL><HLURL:Status>1</HLURL:Status><HLURL:NewWindow>3</HLURL:NewWindow></HLURL:Hyperlink></HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+					<Prop ID="1" Name="SV_IP" NameU="SV_IP">
+						<Value Unit="STR">10.0.170.8</Value>
+						<Label>IP</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="1133" UniqueID="{BAFAC627-5BB1-4D80-964E-D983D59C329A}" Name="IBM 43P.1133" NameU="IBM 43P.1133" Master="55">
+					<XForm>
+						<PinX Unit="MM">6.417322834645669</PinX>
+						<PinY Unit="MM">2.421259842519680</PinY>
+					</XForm>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									<HLURL:Hyperlink ID="1"><HLURL:Description>Ping   包成功率(%)=100.00, 数据往返时间(ms)=0.95, 状态值(200表示成功 300表示出错)=200.00, </HLURL:Description><HLURL:Address>/fcgi-bin/simplereport.exe?monitorid=1.1.9.1</HLURL:Address><HLURL:SubAddress></HLURL:SubAddress><HLURL:ExtraInfo></HLURL:ExtraInfo><HLURL:Default></HLURL:Default><HLURL:AbsoluteURL>/fcgi-bin/simplereport.exe?monitorid=1.1.9.1</HLURL:AbsoluteURL><HLURL:Status>1</HLURL:Status><HLURL:NewWindow>3</HLURL:NewWindow></HLURL:Hyperlink><HLURL:Hyperlink ID="2"><HLURL:Description>SNMP_CPU   CPU使用率(%)=10.00, </HLURL:Description><HLURL:Address>/fcgi-bin/simplereport.exe?monitorid=1.1.9.2</HLURL:Address><HLURL:SubAddress></HLURL:SubAddress><HLURL:ExtraInfo></HLURL:ExtraInfo><HLURL:Default></HLURL:Default><HLURL:AbsoluteURL>/fcgi-bin/simplereport.exe?monitorid=1.1.9.2</HLURL:AbsoluteURL><HLURL:Status>1</HLURL:Status><HLURL:NewWindow>3</HLURL:NewWindow></HLURL:Hyperlink><HLURL:Hyperlink ID="3"><HLURL:Description>SNMP_Disk:C:   Disk使用率(%)=14.62, 磁盘总量(MB)=80000.00, 剩余空间(MB)=68304.00, </HLURL:Description><HLURL:Address>/fcgi-bin/simplereport.exe?monitorid=1.1.9.3</HLURL:Address><HLURL:SubAddress></HLURL:SubAddress><HLURL:ExtraInfo></HLURL:ExtraInfo><HLURL:Default></HLURL:Default><HLURL:AbsoluteURL>/fcgi-bin/simplereport.exe?monitorid=1.1.9.3</HLURL:AbsoluteURL><HLURL:Status>1</HLURL:Status><HLURL:NewWindow>3</HLURL:NewWindow></HLURL:Hyperlink><HLURL:Hyperlink ID="4"><HLURL:Description>SNMP_Disk:H:   Disk使用率(%)=30.46, 磁盘总量(MB)=80000.00, 剩余空间(MB)=55632.00, </HLURL:Description><HLURL:Address>/fcgi-bin/simplereport.exe?monitorid=1.1.9.4</HLURL:Address><HLURL:SubAddress></HLURL:SubAddress><HLURL:ExtraInfo></HLURL:ExtraInfo><HLURL:Default></HLURL:Default><HLURL:AbsoluteURL>/fcgi-bin/simplereport.exe?monitorid=1.1.9.4</HLURL:AbsoluteURL><HLURL:Status>1</HLURL:Status><HLURL:NewWindow>3</HLURL:NewWindow></HLURL:Hyperlink><HLURL:Hyperlink ID="5"><HLURL:Description>SNMP_Memory:Virtual Memory   Memory使用率(%)=28.69, 剩余空间(MB)=730.21, 内存总量(MB)=1024, </HLURL:Description><HLURL:Address>/fcgi-bin/simplereport.exe?monitorid=1.1.9.5</HLURL:Address><HLURL:SubAddress></HLURL:SubAddress><HLURL:ExtraInfo></HLURL:ExtraInfo><HLURL:Default></HLURL:Default><HLURL:AbsoluteURL>/fcgi-bin/simplereport.exe?monitorid=1.1.9.5</HLURL:AbsoluteURL><HLURL:Status>1</HLURL:Status><HLURL:NewWindow>3</HLURL:NewWindow></HLURL:Hyperlink><HLURL:Hyperlink ID="6"><HLURL:Description>接口信息:Intel(R) PRO/1000 MT Network Connection #2_ethernet-csmacd_up_   接收速率(Kbit/s)=4650.00, 发送速率(Kbit/s)=4696.50, 状态=4, 接口输出丢包率(%)=0.32, 接口输入丢包率(%)=6.60, </HLURL:Description><HLURL:Address>/fcgi-bin/simplereport.exe?monitorid=1.1.9.7</HLURL:Address><HLURL:SubAddress></HLURL:SubAddress><HLURL:ExtraInfo></HLURL:ExtraInfo><HLURL:Default></HLURL:Default><HLURL:AbsoluteURL>/fcgi-bin/simplereport.exe?monitorid=1.1.9.7</HLURL:AbsoluteURL><HLURL:Status>3</HLURL:Status><HLURL:NewWindow>3</HLURL:NewWindow></HLURL:Hyperlink><HLURL:Hyperlink ID="7"><HLURL:Description>接口信息:Intel(R) PRO/1000 MT Network Connection_ethernet-csmacd_up_   接收速率(Kbit/s)=1170.00, 发送速率(Kbit/s)=1181.70, 状态=1, 接口输出丢包率(%)=6.83, 接口输入丢包率(%)=3.11, </HLURL:Description><HLURL:Address>/fcgi-bin/simplereport.exe?monitorid=1.1.9.8</HLURL:Address><HLURL:SubAddress></HLURL:SubAddress><HLURL:ExtraInfo></HLURL:ExtraInfo><HLURL:Default></HLURL:Default><HLURL:AbsoluteURL>/fcgi-bin/simplereport.exe?monitorid=1.1.9.8</HLURL:AbsoluteURL><HLURL:Status>1</HLURL:Status><HLURL:NewWindow>3</HLURL:NewWindow></HLURL:Hyperlink></HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+					<Prop ID="1" Name="SV_IP" NameU="SV_IP">
+						<Value Unit="STR">10.0.170.17</Value>
+						<Label>IP</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="1214" UniqueID="{0285C6EE-9902-4B72-9E15-326F178500D1}" Name="架.1214" NameU="Shelf.1214" Master="42">
+					<XForm>
+						<PinX Unit="CM">7.480314960629920</PinX>
+						<PinY Unit="MM">3.389271653543307</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+					<Prop ID="1" Name="UCount" NameU="UCount">
+						<Value Unit="STR">1</Value>
+						<Label>单元高度</Label>
+					</Prop>
+					<Prop ID="2" Name="Height" NameU="Height">
+						<Value Unit="STR">44.45 mm</Value>
+						<Label>高</Label>
+					</Prop>
+					<Prop ID="9" Name="AssetNumber" NameU="AssetNumber">
+						<Value></Value>
+						<Label>资产号</Label>
+					</Prop>
+					<Prop ID="10" Name="SerialNumber" NameU="SerialNumber">
+						<Value></Value>
+						<Label>序列号</Label>
+					</Prop>
+					<Prop ID="11" Name="Location" NameU="Location">
+						<Value></Value>
+						<Label>位置</Label>
+					</Prop>
+					<Prop ID="12" Name="Building" NameU="Building">
+						<Value></Value>
+						<Label>建筑物</Label>
+					</Prop>
+					<Prop ID="13" Name="Room" NameU="Room">
+						<Value></Value>
+						<Label>房间</Label>
+					</Prop>
+					<Prop ID="5" Name="Manufacturer" NameU="Manufacturer">
+						<Value></Value>
+						<Label>制造商</Label>
+					</Prop>
+					<Prop ID="6" Name="ProductNumber" NameU="ProductNumber">
+						<Value></Value>
+						<Label>产品编号</Label>
+					</Prop>
+					<Prop ID="7" Name="PartNumber" NameU="PartNumber">
+						<Value></Value>
+						<Label>部件号</Label>
+					</Prop>
+					<Prop ID="8" Name="ProductDescription" NameU="ProductDescription">
+						<Value></Value>
+						<Label>产品说明</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="1271" UniqueID="{33E714E2-7538-43F9-9E80-846CB377B34F}" Name="交换机.1271" NameU="Switch.1271" Master="46">
+					<XForm>
+						<PinX Unit="CM">7.480314960629920</PinX>
+						<PinY Unit="MM">2.951771653543307</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="1345" UniqueID="{F3091F61-D9C5-4C53-B1A3-57BEE45C1574}" Name="架.1345" NameU="Shelf.1345" Master="42">
+					<XForm>
+						<PinX Unit="CM">8.530118110236220</PinX>
+						<PinY Unit="MM">3.826771653543308</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+					<Prop ID="1" Name="UCount" NameU="UCount">
+						<Value Unit="STR">1</Value>
+						<Label>单元高度</Label>
+					</Prop>
+					<Prop ID="2" Name="Height" NameU="Height">
+						<Value Unit="STR">44.45 mm</Value>
+						<Label>高</Label>
+					</Prop>
+					<Prop ID="9" Name="AssetNumber" NameU="AssetNumber">
+						<Value></Value>
+						<Label>资产号</Label>
+					</Prop>
+					<Prop ID="10" Name="SerialNumber" NameU="SerialNumber">
+						<Value></Value>
+						<Label>序列号</Label>
+					</Prop>
+					<Prop ID="11" Name="Location" NameU="Location">
+						<Value></Value>
+						<Label>位置</Label>
+					</Prop>
+					<Prop ID="12" Name="Building" NameU="Building">
+						<Value></Value>
+						<Label>建筑物</Label>
+					</Prop>
+					<Prop ID="13" Name="Room" NameU="Room">
+						<Value></Value>
+						<Label>房间</Label>
+					</Prop>
+					<Prop ID="5" Name="Manufacturer" NameU="Manufacturer">
+						<Value></Value>
+						<Label>制造商</Label>
+					</Prop>
+					<Prop ID="6" Name="ProductNumber" NameU="ProductNumber">
+						<Value></Value>
+						<Label>产品编号</Label>
+					</Prop>
+					<Prop ID="7" Name="PartNumber" NameU="PartNumber">
+						<Value></Value>
+						<Label>部件号</Label>
+					</Prop>
+					<Prop ID="8" Name="ProductDescription" NameU="ProductDescription">
+						<Value></Value>
+						<Label>产品说明</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="1638" UniqueID="{21EF88BE-51DE-4153-9528-F48CC8B16548}" Name="架.1638" NameU="Shelf.1638" Master="42">
+					<XForm>
+						<PinX Unit="CM">9.580118110236221</PinX>
+						<PinY Unit="MM">2.951771653543307</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+					<Prop ID="1" Name="UCount" NameU="UCount">
+						<Value Unit="STR">1</Value>
+						<Label>单元高度</Label>
+					</Prop>
+					<Prop ID="2" Name="Height" NameU="Height">
+						<Value Unit="STR">44.45 mm</Value>
+						<Label>高</Label>
+					</Prop>
+					<Prop ID="9" Name="AssetNumber" NameU="AssetNumber">
+						<Value></Value>
+						<Label>资产号</Label>
+					</Prop>
+					<Prop ID="10" Name="SerialNumber" NameU="SerialNumber">
+						<Value></Value>
+						<Label>序列号</Label>
+					</Prop>
+					<Prop ID="11" Name="Location" NameU="Location">
+						<Value></Value>
+						<Label>位置</Label>
+					</Prop>
+					<Prop ID="12" Name="Building" NameU="Building">
+						<Value></Value>
+						<Label>建筑物</Label>
+					</Prop>
+					<Prop ID="13" Name="Room" NameU="Room">
+						<Value></Value>
+						<Label>房间</Label>
+					</Prop>
+					<Prop ID="5" Name="Manufacturer" NameU="Manufacturer">
+						<Value></Value>
+						<Label>制造商</Label>
+					</Prop>
+					<Prop ID="6" Name="ProductNumber" NameU="ProductNumber">
+						<Value></Value>
+						<Label>产品编号</Label>
+					</Prop>
+					<Prop ID="7" Name="PartNumber" NameU="PartNumber">
+						<Value></Value>
+						<Label>部件号</Label>
+					</Prop>
+					<Prop ID="8" Name="ProductDescription" NameU="ProductDescription">
+						<Value></Value>
+						<Label>产品说明</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="1614" UniqueID="{5A88C9C8-0211-4032-A8F4-67BD4BFD44CE}" Name="RAID 阵列.1614" NameU="RAID array.1614" Master="49">
+					<XForm>
+						<PinX Unit="CM">9.580118110236221</PinX>
+						<PinY Unit="MM">3.739271653543307</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="49" UniqueID="{24BED855-A8D1-443C-8232-E40910AD9C7A}" Name="IBM 44P.49" NameU="IBM 44P.49" Master="54">
+					<XForm>
+						<PinX Unit="MM">1.181102362204724</PinX>
+						<PinY Unit="MM">2.426181102362204</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="59" UniqueID="{534F00A7-7594-41F2-B39A-12D145C5AED9}" Name="RAID 阵列.59" NameU="RAID array.59" Master="49">
+					<XForm>
+						<PinX Unit="CM">3.280905511811023</PinX>
+						<PinY Unit="MM">4.439271653543307</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="941" UniqueID="{DD31BE19-1EA0-4697-AD47-D47C29873EAC}" Name="IBM 44P.941" NameU="IBM 44P.941" Master="54">
+					<XForm>
+						<PinX Unit="MM">2.225393700787402</PinX>
+						<PinY Unit="MM">2.426181102362204</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="981" UniqueID="{19CE92C4-8DA6-48C1-91BF-24AC601E54D5}" Name="服务器.981" NameU="Server.981" Master="27">
+					<XForm>
+						<PinX Unit="CM">2.230905511811023</PinX>
+						<PinY Unit="MM">4.876771653543307</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="869" UniqueID="{03790C62-B497-4879-892B-DA0698D2E2EA}" Name="服务器.869" NameU="Server.869" Master="27">
+					<XForm>
+						<PinX Unit="CM">2.230905511811023</PinX>
+						<PinY Unit="MM">4.001771653543307</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									<HLURL:Hyperlink ID="1"><HLURL:Description>Ping   包成功率(%)=100.00, 数据往返时间(ms)=7.24, 状态值(200表示成功 300表示出错)=200.00, </HLURL:Description><HLURL:Address>/fcgi-bin/simplereport.exe?monitorid=1.1.2.1</HLURL:Address><HLURL:SubAddress></HLURL:SubAddress><HLURL:ExtraInfo></HLURL:ExtraInfo><HLURL:Default></HLURL:Default><HLURL:AbsoluteURL>/fcgi-bin/simplereport.exe?monitorid=1.1.2.1</HLURL:AbsoluteURL><HLURL:Status>1</HLURL:Status><HLURL:NewWindow>3</HLURL:NewWindow></HLURL:Hyperlink><HLURL:Hyperlink ID="2"><HLURL:Description>SNMP_CPU   CPU使用率(%)=15.00, </HLURL:Description><HLURL:Address>/fcgi-bin/simplereport.exe?monitorid=1.1.2.2</HLURL:Address><HLURL:SubAddress></HLURL:SubAddress><HLURL:ExtraInfo></HLURL:ExtraInfo><HLURL:Default></HLURL:Default><HLURL:AbsoluteURL>/fcgi-bin/simplereport.exe?monitorid=1.1.2.2</HLURL:AbsoluteURL><HLURL:Status>1</HLURL:Status><HLURL:NewWindow>3</HLURL:NewWindow></HLURL:Hyperlink><HLURL:Hyperlink ID="3"><HLURL:Description>SNMP_Disk:C:   Disk使用率(%)=39.49, 磁盘总量(MB)=80000.00, 剩余空间(MB)=48408.00, </HLURL:Description><HLURL:Address>/fcgi-bin/simplereport.exe?monitorid=1.1.2.3</HLURL:Address><HLURL:SubAddress></HLURL:SubAddress><HLURL:ExtraInfo></HLURL:ExtraInfo><HLURL:Default></HLURL:Default><HLURL:AbsoluteURL>/fcgi-bin/simplereport.exe?monitorid=1.1.2.3</HLURL:AbsoluteURL><HLURL:Status>1</HLURL:Status><HLURL:NewWindow>3</HLURL:NewWindow></HLURL:Hyperlink><HLURL:Hyperlink ID="4"><HLURL:Description>SNMP_Disk:G:   Disk使用率(%)=30.28, 磁盘总量(MB)=80000.00, 剩余空间(MB)=55776.00, </HLURL:Description><HLURL:Address>/fcgi-bin/simplereport.exe?monitorid=1.1.2.4</HLURL:Address><HLURL:SubAddress></HLURL:SubAddress><HLURL:ExtraInfo></HLURL:ExtraInfo><HLURL:Default></HLURL:Default><HLURL:AbsoluteURL>/fcgi-bin/simplereport.exe?monitorid=1.1.2.4</HLURL:AbsoluteURL><HLURL:Status>1</HLURL:Status><HLURL:NewWindow>3</HLURL:NewWindow></HLURL:Hyperlink><HLURL:Hyperlink ID="5"><HLURL:Description>SNMP_Memory:Virtual Memory   Memory使用率(%)=28.33, 剩余空间(MB)=733.90, 内存总量(MB)=1024, </HLURL:Description><HLURL:Address>/fcgi-bin/simplereport.exe?monitorid=1.1.2.5</HLURL:Address><HLURL:SubAddress></HLURL:SubAddress><HLURL:ExtraInfo></HLURL:ExtraInfo><HLURL:Default></HLURL:Default><HLURL:AbsoluteURL>/fcgi-bin/simplereport.exe?monitorid=1.1.2.5</HLURL:AbsoluteURL><HLURL:Status>1</HLURL:Status><HLURL:NewWindow>3</HLURL:NewWindow></HLURL:Hyperlink><HLURL:Hyperlink ID="6"><HLURL:Description>接口信息   接收速率(Kbit/s)=1170.00, 发送速率(Kbit/s)=1064.70, 状态=1, 接口输出丢包率(%)=2.86, 接口输入丢包率(%)=9.14, </HLURL:Description><HLURL:Address>/fcgi-bin/simplereport.exe?monitorid=1.1.2.6</HLURL:Address><HLURL:SubAddress></HLURL:SubAddress><HLURL:ExtraInfo></HLURL:ExtraInfo><HLURL:Default></HLURL:Default><HLURL:AbsoluteURL>/fcgi-bin/simplereport.exe?monitorid=1.1.2.6</HLURL:AbsoluteURL><HLURL:Status>1</HLURL:Status><HLURL:NewWindow>3</HLURL:NewWindow></HLURL:Hyperlink></HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+					<Prop ID="1" Name="SV_IP" NameU="SV_IP">
+						<Value Unit="STR">10.0.170.19</Value>
+						<Label>IP</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="917" UniqueID="{9C405A12-ABA3-471C-8810-ADDC9E63A739}" Name="服务器.917" NameU="Server.917" Master="27">
+					<XForm>
+						<PinX Unit="CM">3.280905511811023</PinX>
+						<PinY Unit="MM">4.876771653543307</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="951" UniqueID="{760DC8D0-BEFE-41A4-864F-DE7495DAFF7A}" Name="服务器.951" NameU="Server.951" Master="27">
+					<XForm>
+						<PinX Unit="CM">3.280905511811023</PinX>
+						<PinY Unit="MM">4.089271653543307</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="1005" UniqueID="{05671267-1243-4C46-97F7-5EB44A1E4B20}" Name="服务器.1005" NameU="Server.1005" Master="27">
+					<XForm>
+						<PinX Unit="CM">1.181102362204724</PinX>
+						<PinY Unit="MM">3.477079232283466</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="1224" UniqueID="{3A2DD8AC-5384-4F47-86FF-9AC14D30ABDD}" Name="服务器.1224" NameU="Server.1224" Master="27">
+					<XForm>
+						<PinX Unit="CM">1.181102362204724</PinX>
+						<PinY Unit="MM">3.214579232283466</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="893" UniqueID="{A8AB8986-E03B-4EBF-9398-6E6D1E9EEE18}" Name="服务器.893" NameU="Server.893" Master="27">
+					<XForm>
+						<PinX Unit="CM">2.230905511811023</PinX>
+						<PinY Unit="MM">4.439271653543307</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="1149" UniqueID="{ACBC3076-83EB-4DBE-9C81-D240EA2DE6D2}" Name="服务器.1149" NameU="Server.1149" Master="27">
+					<XForm>
+						<PinX Unit="CM">7.480314960629920</PinX>
+						<PinY Unit="MM">4.964271653543308</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="1198" UniqueID="{C610CC8B-D9B9-4966-87B2-AB3CC0276F28}" Name="IBM 43P.1198" NameU="IBM 43P.1198" Master="55">
+					<XForm>
+						<PinX Unit="MM">7.480314960629920</PinX>
+						<PinY Unit="MM">4.557086614173228</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="1255" UniqueID="{55A2711D-040C-4DF5-9B8E-68BFEA44F781}" Name="IBM 43P.1255" NameU="IBM 43P.1255" Master="55">
+					<XForm>
+						<PinX Unit="MM">7.480314960629921</PinX>
+						<PinY Unit="MM">3.769685039370078</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="1287" UniqueID="{07BCFEE9-55A9-4C70-BCED-2494FE55803B}" Name="IBM 43P.1287" NameU="IBM 43P.1287" Master="55">
+					<XForm>
+						<PinX Unit="MM">9.586614173228346</PinX>
+						<PinY Unit="MM">3.336614173228347</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="1356" UniqueID="{EE7D1F06-86DE-4D6A-B713-CEA5DD9C5E95}" Name="IBM 43P.1356" NameU="IBM 43P.1356" Master="55">
+					<XForm>
+						<PinX Unit="MM">8.523622047244100</PinX>
+						<PinY Unit="MM">4.203063484251965</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="1" UniqueID="{5FB9577B-AD03-4C3C-8B29-F464EA0522D3}" Name="IBM 43P.1" NameU="IBM 43P.1" Master="55">
+					<XForm>
+						<PinX Unit="MM">7.500000000000000</PinX>
+						<PinY Unit="MM">2.438791830708658</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="17" UniqueID="{97CDD5BE-E1CD-414B-A227-A2B666CF9573}" Name="IBM 43P.17" NameU="IBM 43P.17" Master="55">
+					<XForm>
+						<PinX Unit="MM">9.586614173228355</PinX>
+						<PinY Unit="MM">2.443713090551180</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="33" UniqueID="{3501F488-F5EE-4ADD-882B-4E06CCA6C21D}" Name="IBM 43P.33" NameU="IBM 43P.33" Master="55">
+					<XForm>
+						<PinX Unit="MM">8.484251968503937</PinX>
+						<PinY Unit="MM">2.421259842519680</PinY>
+					</XForm>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									<HLURL:Hyperlink ID="1"><HLURL:Description>Ping   包成功率(%)=100.00, 数据往返时间(ms)=7.78, 状态值(200表示成功 300表示出错)=200.00, </HLURL:Description><HLURL:Address>/fcgi-bin/simplereport.exe?monitorid=1.1.6.1</HLURL:Address><HLURL:SubAddress></HLURL:SubAddress><HLURL:ExtraInfo></HLURL:ExtraInfo><HLURL:Default></HLURL:Default><HLURL:AbsoluteURL>/fcgi-bin/simplereport.exe?monitorid=1.1.6.1</HLURL:AbsoluteURL><HLURL:Status>1</HLURL:Status><HLURL:NewWindow>3</HLURL:NewWindow></HLURL:Hyperlink><HLURL:Hyperlink ID="2"><HLURL:Description>SNMP_CPU   CPU使用率(%)=5.00, </HLURL:Description><HLURL:Address>/fcgi-bin/simplereport.exe?monitorid=1.1.6.2</HLURL:Address><HLURL:SubAddress></HLURL:SubAddress><HLURL:ExtraInfo></HLURL:ExtraInfo><HLURL:Default></HLURL:Default><HLURL:AbsoluteURL>/fcgi-bin/simplereport.exe?monitorid=1.1.6.2</HLURL:AbsoluteURL><HLURL:Status>1</HLURL:Status><HLURL:NewWindow>3</HLURL:NewWindow></HLURL:Hyperlink><HLURL:Hyperlink ID="3"><HLURL:Description>SNMP_Disk:C:   Disk使用率(%)=19.78, 磁盘总量(MB)=80000.00, 剩余空间(MB)=64176.00, </HLURL:Description><HLURL:Address>/fcgi-bin/simplereport.exe?monitorid=1.1.6.3</HLURL:Address><HLURL:SubAddress></HLURL:SubAddress><HLURL:ExtraInfo></HLURL:ExtraInfo><HLURL:Default></HLURL:Default><HLURL:AbsoluteURL>/fcgi-bin/simplereport.exe?monitorid=1.1.6.3</HLURL:AbsoluteURL><HLURL:Status>1</HLURL:Status><HLURL:NewWindow>3</HLURL:NewWindow></HLURL:Hyperlink><HLURL:Hyperlink ID="4"><HLURL:Description>SNMP_Disk:E:   Disk使用率(%)=25.39, 磁盘总量(MB)=80000.00, 剩余空间(MB)=59688.00, </HLURL:Description><HLURL:Address>/fcgi-bin/simplereport.exe?monitorid=1.1.6.4</HLURL:Address><HLURL:SubAddress></HLURL:SubAddress><HLURL:ExtraInfo></HLURL:ExtraInfo><HLURL:Default></HLURL:Default><HLURL:AbsoluteURL>/fcgi-bin/simplereport.exe?monitorid=1.1.6.4</HLURL:AbsoluteURL><HLURL:Status>1</HLURL:Status><HLURL:NewWindow>3</HLURL:NewWindow></HLURL:Hyperlink><HLURL:Hyperlink ID="5"><HLURL:Description>SNMP_Memory:Virtual Memory   Memory使用率(%)=31.48, 剩余空间(MB)=701.64, 内存总量(MB)=1024, </HLURL:Description><HLURL:Address>/fcgi-bin/simplereport.exe?monitorid=1.1.6.5</HLURL:Address><HLURL:SubAddress></HLURL:SubAddress><HLURL:ExtraInfo></HLURL:ExtraInfo><HLURL:Default></HLURL:Default><HLURL:AbsoluteURL>/fcgi-bin/simplereport.exe?monitorid=1.1.6.5</HLURL:AbsoluteURL><HLURL:Status>1</HLURL:Status><HLURL:NewWindow>3</HLURL:NewWindow></HLURL:Hyperlink><HLURL:Hyperlink ID="6"><HLURL:Description>接口信息   接收速率(Kbit/s)=1123.20, 发送速率(Kbit/s)=1134.90, 状态=1, 接口输出丢包率(%)=9.39, 接口输入丢包率(%)=7.99, </HLURL:Description><HLURL:Address>/fcgi-bin/simplereport.exe?monitorid=1.1.6.6</HLURL:Address><HLURL:SubAddress></HLURL:SubAddress><HLURL:ExtraInfo></HLURL:ExtraInfo><HLURL:Default></HLURL:Default><HLURL:AbsoluteURL>/fcgi-bin/simplereport.exe?monitorid=1.1.6.6</HLURL:AbsoluteURL><HLURL:Status>1</HLURL:Status><HLURL:NewWindow>3</HLURL:NewWindow></HLURL:Hyperlink></HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+					<Prop ID="1" Name="SV_IP" NameU="SV_IP">
+						<Value Unit="STR">10.0.170.81</Value>
+						<Label>IP</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="86" UniqueID="{83435463-863F-46BF-A6E4-6B89C58FB1DE}" Name="服务器.86" NameU="Server.86" Master="27">
+					<XForm>
+						<PinX Unit="CM">8.530118110236220</PinX>
+						<PinY Unit="MM">4.614271653543309</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="110" UniqueID="{13563670-12AF-41FD-95BF-80C45F01B2BD}" Name="服务器.110" NameU="Server.110" Master="27">
+					<XForm>
+						<PinX Unit="CM">9.580118110236221</PinX>
+						<PinY Unit="MM">4.264271653543307</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									<HLURL:Hyperlink ID="1"><HLURL:Description>Ping   包成功率(%)=100.00, 数据往返时间(ms)=7.78, 状态值(200表示成功 300表示出错)=200.00, </HLURL:Description><HLURL:Address>/fcgi-bin/simplereport.exe?monitorid=1.1.6.1</HLURL:Address><HLURL:SubAddress></HLURL:SubAddress><HLURL:ExtraInfo></HLURL:ExtraInfo><HLURL:Default></HLURL:Default><HLURL:AbsoluteURL>/fcgi-bin/simplereport.exe?monitorid=1.1.6.1</HLURL:AbsoluteURL><HLURL:Status>1</HLURL:Status><HLURL:NewWindow>3</HLURL:NewWindow></HLURL:Hyperlink><HLURL:Hyperlink ID="2"><HLURL:Description>SNMP_CPU   CPU使用率(%)=5.00, </HLURL:Description><HLURL:Address>/fcgi-bin/simplereport.exe?monitorid=1.1.6.2</HLURL:Address><HLURL:SubAddress></HLURL:SubAddress><HLURL:ExtraInfo></HLURL:ExtraInfo><HLURL:Default></HLURL:Default><HLURL:AbsoluteURL>/fcgi-bin/simplereport.exe?monitorid=1.1.6.2</HLURL:AbsoluteURL><HLURL:Status>1</HLURL:Status><HLURL:NewWindow>3</HLURL:NewWindow></HLURL:Hyperlink><HLURL:Hyperlink ID="3"><HLURL:Description>SNMP_Disk:C:   Disk使用率(%)=19.78, 磁盘总量(MB)=80000.00, 剩余空间(MB)=64176.00, </HLURL:Description><HLURL:Address>/fcgi-bin/simplereport.exe?monitorid=1.1.6.3</HLURL:Address><HLURL:SubAddress></HLURL:SubAddress><HLURL:ExtraInfo></HLURL:ExtraInfo><HLURL:Default></HLURL:Default><HLURL:AbsoluteURL>/fcgi-bin/simplereport.exe?monitorid=1.1.6.3</HLURL:AbsoluteURL><HLURL:Status>1</HLURL:Status><HLURL:NewWindow>3</HLURL:NewWindow></HLURL:Hyperlink><HLURL:Hyperlink ID="4"><HLURL:Description>SNMP_Disk:E:   Disk使用率(%)=25.39, 磁盘总量(MB)=80000.00, 剩余空间(MB)=59688.00, </HLURL:Description><HLURL:Address>/fcgi-bin/simplereport.exe?monitorid=1.1.6.4</HLURL:Address><HLURL:SubAddress></HLURL:SubAddress><HLURL:ExtraInfo></HLURL:ExtraInfo><HLURL:Default></HLURL:Default><HLURL:AbsoluteURL>/fcgi-bin/simplereport.exe?monitorid=1.1.6.4</HLURL:AbsoluteURL><HLURL:Status>1</HLURL:Status><HLURL:NewWindow>3</HLURL:NewWindow></HLURL:Hyperlink><HLURL:Hyperlink ID="5"><HLURL:Description>SNMP_Memory:Virtual Memory   Memory使用率(%)=31.48, 剩余空间(MB)=701.64, 内存总量(MB)=1024, </HLURL:Description><HLURL:Address>/fcgi-bin/simplereport.exe?monitorid=1.1.6.5</HLURL:Address><HLURL:SubAddress></HLURL:SubAddress><HLURL:ExtraInfo></HLURL:ExtraInfo><HLURL:Default></HLURL:Default><HLURL:AbsoluteURL>/fcgi-bin/simplereport.exe?monitorid=1.1.6.5</HLURL:AbsoluteURL><HLURL:Status>1</HLURL:Status><HLURL:NewWindow>3</HLURL:NewWindow></HLURL:Hyperlink><HLURL:Hyperlink ID="6"><HLURL:Description>接口信息   接收速率(Kbit/s)=1123.20, 发送速率(Kbit/s)=1134.90, 状态=1, 接口输出丢包率(%)=9.39, 接口输入丢包率(%)=7.99, </HLURL:Description><HLURL:Address>/fcgi-bin/simplereport.exe?monitorid=1.1.6.6</HLURL:Address><HLURL:SubAddress></HLURL:SubAddress><HLURL:ExtraInfo></HLURL:ExtraInfo><HLURL:Default></HLURL:Default><HLURL:AbsoluteURL>/fcgi-bin/simplereport.exe?monitorid=1.1.6.6</HLURL:AbsoluteURL><HLURL:Status>1</HLURL:Status><HLURL:NewWindow>3</HLURL:NewWindow></HLURL:Hyperlink></HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+					<Prop ID="1" Name="SV_IP" NameU="SV_IP">
+						<Value Unit="STR">10.0.170.81</Value>
+						<Label>IP</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="134" UniqueID="{248A0865-969C-4E74-8E11-0F59439EC2C4}" Name="服务器.134" NameU="Server.134" Master="27">
+					<XForm>
+						<PinX Unit="CM">8.530118110236220</PinX>
+						<PinY Unit="MM">3.389271653543308</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="1961" UniqueID="{0671CEE1-3683-4CAE-8CA6-13B396EFCFE0}" Name="交换机.1961" NameU="Switch.1961" Master="46">
+					<XForm>
+						<PinX Unit="CM">4.330708661417322</PinX>
+						<PinY Unit="MM">3.214271653543308</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="1977" UniqueID="{AF80BFDD-1AE7-4313-AD8F-0DB325CF9B0B}" Name="服务器.1977" NameU="Server.1977" Master="27">
+					<XForm>
+						<PinX Unit="CM">9.580118110236221</PinX>
+						<PinY Unit="MM">4.789271653543308</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="2001" UniqueID="{D08477A0-2A48-4842-BB4D-5A0B06F0F59E}" Name="IBM 43P.2001" NameU="IBM 43P.2001" Master="55">
+					<XForm>
+						<PinX Unit="MM">4.330708661417323</PinX>
+						<PinY Unit="MM">2.438791830708656</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="182" UniqueID="{B1EF1427-8D00-4A0B-B9DE-402BA586F81A}" Name="架.182" NameU="Shelf.182" Master="42">
+					<XForm>
+						<PinX Unit="CM">6.430511811023621</PinX>
+						<PinY Unit="MM">3.739271653543307</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+					<Prop ID="1" Name="UCount" NameU="UCount">
+						<Value Unit="STR">1</Value>
+						<Label>单元高度</Label>
+					</Prop>
+					<Prop ID="2" Name="Height" NameU="Height">
+						<Value Unit="STR">44.45 mm</Value>
+						<Label>高</Label>
+					</Prop>
+					<Prop ID="9" Name="AssetNumber" NameU="AssetNumber">
+						<Value></Value>
+						<Label>资产号</Label>
+					</Prop>
+					<Prop ID="10" Name="SerialNumber" NameU="SerialNumber">
+						<Value></Value>
+						<Label>序列号</Label>
+					</Prop>
+					<Prop ID="11" Name="Location" NameU="Location">
+						<Value></Value>
+						<Label>位置</Label>
+					</Prop>
+					<Prop ID="12" Name="Building" NameU="Building">
+						<Value></Value>
+						<Label>建筑物</Label>
+					</Prop>
+					<Prop ID="13" Name="Room" NameU="Room">
+						<Value></Value>
+						<Label>房间</Label>
+					</Prop>
+					<Prop ID="5" Name="Manufacturer" NameU="Manufacturer">
+						<Value></Value>
+						<Label>制造商</Label>
+					</Prop>
+					<Prop ID="6" Name="ProductNumber" NameU="ProductNumber">
+						<Value></Value>
+						<Label>产品编号</Label>
+					</Prop>
+					<Prop ID="7" Name="PartNumber" NameU="PartNumber">
+						<Value></Value>
+						<Label>部件号</Label>
+					</Prop>
+					<Prop ID="8" Name="ProductDescription" NameU="ProductDescription">
+						<Value></Value>
+						<Label>产品说明</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="2017" UniqueID="{54217AAD-FD45-4E85-9E39-F7B3747469EF}" Name="A-B 交换盒" NameU="A-B switchbox" Master="63">
+					<XForm>
+						<PinX Unit="MM">1.180282152230971</PinX>
+						<PinY Unit="MM">2.854008589835361</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="2027" UniqueID="{5F40F5D6-DA73-412C-BB7E-76EFDC6A88D8}" Name="A-B 交换盒.2027" NameU="A-B switchbox.2027" Master="63">
+					<XForm>
+						<PinX Unit="MM">3.287401574803149</PinX>
+						<PinY Unit="MM">2.854330708661417</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="2047" UniqueID="{9A09EDA9-FF2B-41E3-AAC3-BDA3DFB9C0E8}" Name="A-B 交换盒.2047" NameU="A-B switchbox.2047" Master="63">
+					<XForm>
+						<PinX Unit="MM">6.438648293963254</PinX>
+						<PinY Unit="MM">3.385826771653543</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="2057" UniqueID="{C08EFFB6-E025-4D24-A2BA-545343B97059}" Name="A-B 交换盒.2057" NameU="A-B switchbox.2057" Master="63">
+					<XForm>
+						<PinX Unit="MM">6.437007874015748</PinX>
+						<PinY Unit="MM">2.952755905511811</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="2037" UniqueID="{BB711235-CD36-4780-BCBB-0759B234075B}" Name="A-B 交换盒.2037" NameU="A-B switchbox.2037" Master="63">
+					<XForm>
+						<PinX Unit="MM">4.330708661417322</PinX>
+						<PinY Unit="MM">2.864173228346456</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="2067" UniqueID="{FBA75E17-8494-4456-859C-F3099C4DD744}" Name="A-B 交换盒.2067" NameU="A-B switchbox.2067" Master="63">
+					<XForm>
+						<PinX Unit="MM">8.525262467191602</PinX>
+						<PinY Unit="MM">2.952755905511811</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="176" UniqueID="{5BBF902D-AE12-4CB0-9822-CE8F3D72F0D9}" Name="机柜.176" NameU="Cabinet.176" Master="37">
+					<XForm>
+						<PinX Unit="MM">1.181102362204724</PinX>
+						<PinY Unit="MM">3.701094980314962</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+					<Prop ID="1" Name="UCount" NameU="UCount">
+						<Value Unit="STR">38</Value>
+						<Label>单元高度</Label>
+					</Prop>
+					<Prop ID="3" Name="Height" NameU="Height">
+						<Value Unit="STR">1800 mm</Value>
+						<Label>高</Label>
+					</Prop>
+					<Prop ID="2" Name="HoleSpacing" NameU="HoleSpacing">
+						<Value Unit="STR">48.26 cm</Value>
+						<Label>孔间宽度</Label>
+					</Prop>
+					<Prop ID="10" Name="AssetNumber" NameU="AssetNumber">
+						<Value></Value>
+						<Label>资产号</Label>
+					</Prop>
+					<Prop ID="11" Name="SerialNumber" NameU="SerialNumber">
+						<Value></Value>
+						<Label>序列号</Label>
+					</Prop>
+					<Prop ID="12" Name="Location" NameU="Location">
+						<Value></Value>
+						<Label>位置</Label>
+					</Prop>
+					<Prop ID="13" Name="Building" NameU="Building">
+						<Value></Value>
+						<Label>建筑物</Label>
+					</Prop>
+					<Prop ID="14" Name="Room" NameU="Room">
+						<Value></Value>
+						<Label>房间</Label>
+					</Prop>
+					<Prop ID="6" Name="Manufacturer" NameU="Manufacturer">
+						<Value></Value>
+						<Label>制造商</Label>
+					</Prop>
+					<Prop ID="7" Name="ProductNumber" NameU="ProductNumber">
+						<Value></Value>
+						<Label>产品编号</Label>
+					</Prop>
+					<Prop ID="8" Name="PartNumber" NameU="PartNumber">
+						<Value></Value>
+						<Label>部件号</Label>
+					</Prop>
+					<Prop ID="9" Name="ProductDescription" NameU="ProductDescription">
+						<Value></Value>
+						<Label>产品说明</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="1845" UniqueID="{BDE634F0-38B6-4B97-9469-CAAAB6ACBC54}" Name="机柜.1845" NameU="Cabinet.1845" Master="37">
+					<XForm>
+						<PinX Unit="MM">2.230905511811023</PinX>
+						<PinY Unit="MM">3.700787401574802</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+					<Prop ID="1" Name="UCount" NameU="UCount">
+						<Value Unit="STR">38</Value>
+						<Label>单元高度</Label>
+					</Prop>
+					<Prop ID="3" Name="Height" NameU="Height">
+						<Value Unit="STR">1800 mm</Value>
+						<Label>高</Label>
+					</Prop>
+					<Prop ID="2" Name="HoleSpacing" NameU="HoleSpacing">
+						<Value Unit="STR">48.26 cm</Value>
+						<Label>孔间宽度</Label>
+					</Prop>
+					<Prop ID="10" Name="AssetNumber" NameU="AssetNumber">
+						<Value></Value>
+						<Label>资产号</Label>
+					</Prop>
+					<Prop ID="11" Name="SerialNumber" NameU="SerialNumber">
+						<Value></Value>
+						<Label>序列号</Label>
+					</Prop>
+					<Prop ID="12" Name="Location" NameU="Location">
+						<Value></Value>
+						<Label>位置</Label>
+					</Prop>
+					<Prop ID="13" Name="Building" NameU="Building">
+						<Value></Value>
+						<Label>建筑物</Label>
+					</Prop>
+					<Prop ID="14" Name="Room" NameU="Room">
+						<Value></Value>
+						<Label>房间</Label>
+					</Prop>
+					<Prop ID="6" Name="Manufacturer" NameU="Manufacturer">
+						<Value></Value>
+						<Label>制造商</Label>
+					</Prop>
+					<Prop ID="7" Name="ProductNumber" NameU="ProductNumber">
+						<Value></Value>
+						<Label>产品编号</Label>
+					</Prop>
+					<Prop ID="8" Name="PartNumber" NameU="PartNumber">
+						<Value></Value>
+						<Label>部件号</Label>
+					</Prop>
+					<Prop ID="9" Name="ProductDescription" NameU="ProductDescription">
+						<Value></Value>
+						<Label>产品说明</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="1851" UniqueID="{C997347C-74DE-4C03-9056-3BF1A355EA47}" Name="机柜.1851" NameU="Cabinet.1851" Master="37">
+					<XForm>
+						<PinX Unit="MM">3.280905511811023</PinX>
+						<PinY Unit="MM">3.700787401574802</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+					<Prop ID="1" Name="UCount" NameU="UCount">
+						<Value Unit="STR">38</Value>
+						<Label>单元高度</Label>
+					</Prop>
+					<Prop ID="3" Name="Height" NameU="Height">
+						<Value Unit="STR">1800 mm</Value>
+						<Label>高</Label>
+					</Prop>
+					<Prop ID="2" Name="HoleSpacing" NameU="HoleSpacing">
+						<Value Unit="STR">48.26 cm</Value>
+						<Label>孔间宽度</Label>
+					</Prop>
+					<Prop ID="10" Name="AssetNumber" NameU="AssetNumber">
+						<Value></Value>
+						<Label>资产号</Label>
+					</Prop>
+					<Prop ID="11" Name="SerialNumber" NameU="SerialNumber">
+						<Value></Value>
+						<Label>序列号</Label>
+					</Prop>
+					<Prop ID="12" Name="Location" NameU="Location">
+						<Value></Value>
+						<Label>位置</Label>
+					</Prop>
+					<Prop ID="13" Name="Building" NameU="Building">
+						<Value></Value>
+						<Label>建筑物</Label>
+					</Prop>
+					<Prop ID="14" Name="Room" NameU="Room">
+						<Value></Value>
+						<Label>房间</Label>
+					</Prop>
+					<Prop ID="6" Name="Manufacturer" NameU="Manufacturer">
+						<Value></Value>
+						<Label>制造商</Label>
+					</Prop>
+					<Prop ID="7" Name="ProductNumber" NameU="ProductNumber">
+						<Value></Value>
+						<Label>产品编号</Label>
+					</Prop>
+					<Prop ID="8" Name="PartNumber" NameU="PartNumber">
+						<Value></Value>
+						<Label>部件号</Label>
+					</Prop>
+					<Prop ID="9" Name="ProductDescription" NameU="ProductDescription">
+						<Value></Value>
+						<Label>产品说明</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="1857" UniqueID="{505B86F3-1EC2-4161-B002-6CDCE3DB9797}" Name="机柜.1857" NameU="Cabinet.1857" Master="37">
+					<XForm>
+						<PinX Unit="MM">4.330708661417322</PinX>
+						<PinY Unit="MM">3.700787401574803</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+					<Prop ID="1" Name="UCount" NameU="UCount">
+						<Value Unit="STR">38</Value>
+						<Label>单元高度</Label>
+					</Prop>
+					<Prop ID="3" Name="Height" NameU="Height">
+						<Value Unit="STR">1800 mm</Value>
+						<Label>高</Label>
+					</Prop>
+					<Prop ID="2" Name="HoleSpacing" NameU="HoleSpacing">
+						<Value Unit="STR">48.26 cm</Value>
+						<Label>孔间宽度</Label>
+					</Prop>
+					<Prop ID="10" Name="AssetNumber" NameU="AssetNumber">
+						<Value></Value>
+						<Label>资产号</Label>
+					</Prop>
+					<Prop ID="11" Name="SerialNumber" NameU="SerialNumber">
+						<Value></Value>
+						<Label>序列号</Label>
+					</Prop>
+					<Prop ID="12" Name="Location" NameU="Location">
+						<Value></Value>
+						<Label>位置</Label>
+					</Prop>
+					<Prop ID="13" Name="Building" NameU="Building">
+						<Value></Value>
+						<Label>建筑物</Label>
+					</Prop>
+					<Prop ID="14" Name="Room" NameU="Room">
+						<Value></Value>
+						<Label>房间</Label>
+					</Prop>
+					<Prop ID="6" Name="Manufacturer" NameU="Manufacturer">
+						<Value></Value>
+						<Label>制造商</Label>
+					</Prop>
+					<Prop ID="7" Name="ProductNumber" NameU="ProductNumber">
+						<Value></Value>
+						<Label>产品编号</Label>
+					</Prop>
+					<Prop ID="8" Name="PartNumber" NameU="PartNumber">
+						<Value></Value>
+						<Label>部件号</Label>
+					</Prop>
+					<Prop ID="9" Name="ProductDescription" NameU="ProductDescription">
+						<Value></Value>
+						<Label>产品说明</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="1833" UniqueID="{F50A4578-7E6C-4F52-8A0A-FB799705DE50}" Name="机柜.1833" NameU="Cabinet.1833" Master="37">
+					<XForm>
+						<PinX Unit="MM">5.380511811023621</PinX>
+						<PinY Unit="MM">3.701094980314961</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+					<Prop ID="1" Name="UCount" NameU="UCount">
+						<Value Unit="STR">38</Value>
+						<Label>单元高度</Label>
+					</Prop>
+					<Prop ID="3" Name="Height" NameU="Height">
+						<Value Unit="STR">1800 mm</Value>
+						<Label>高</Label>
+					</Prop>
+					<Prop ID="2" Name="HoleSpacing" NameU="HoleSpacing">
+						<Value Unit="STR">48.26 cm</Value>
+						<Label>孔间宽度</Label>
+					</Prop>
+					<Prop ID="10" Name="AssetNumber" NameU="AssetNumber">
+						<Value></Value>
+						<Label>资产号</Label>
+					</Prop>
+					<Prop ID="11" Name="SerialNumber" NameU="SerialNumber">
+						<Value></Value>
+						<Label>序列号</Label>
+					</Prop>
+					<Prop ID="12" Name="Location" NameU="Location">
+						<Value></Value>
+						<Label>位置</Label>
+					</Prop>
+					<Prop ID="13" Name="Building" NameU="Building">
+						<Value></Value>
+						<Label>建筑物</Label>
+					</Prop>
+					<Prop ID="14" Name="Room" NameU="Room">
+						<Value></Value>
+						<Label>房间</Label>
+					</Prop>
+					<Prop ID="6" Name="Manufacturer" NameU="Manufacturer">
+						<Value></Value>
+						<Label>制造商</Label>
+					</Prop>
+					<Prop ID="7" Name="ProductNumber" NameU="ProductNumber">
+						<Value></Value>
+						<Label>产品编号</Label>
+					</Prop>
+					<Prop ID="8" Name="PartNumber" NameU="PartNumber">
+						<Value></Value>
+						<Label>部件号</Label>
+					</Prop>
+					<Prop ID="9" Name="ProductDescription" NameU="ProductDescription">
+						<Value></Value>
+						<Label>产品说明</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="1296" UniqueID="{5C849B39-05E5-4CE2-BDBD-BE7A6A13AEBF}" Name="机柜.1296" NameU="Cabinet.1296" Master="37">
+					<XForm>
+						<PinX Unit="MM">6.430511811023621</PinX>
+						<PinY Unit="MM">3.700787401574802</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+					<Prop ID="1" Name="UCount" NameU="UCount">
+						<Value Unit="STR">38</Value>
+						<Label>单元高度</Label>
+					</Prop>
+					<Prop ID="3" Name="Height" NameU="Height">
+						<Value Unit="STR">1800 mm</Value>
+						<Label>高</Label>
+					</Prop>
+					<Prop ID="2" Name="HoleSpacing" NameU="HoleSpacing">
+						<Value Unit="STR">48.26 cm</Value>
+						<Label>孔间宽度</Label>
+					</Prop>
+					<Prop ID="10" Name="AssetNumber" NameU="AssetNumber">
+						<Value></Value>
+						<Label>资产号</Label>
+					</Prop>
+					<Prop ID="11" Name="SerialNumber" NameU="SerialNumber">
+						<Value></Value>
+						<Label>序列号</Label>
+					</Prop>
+					<Prop ID="12" Name="Location" NameU="Location">
+						<Value></Value>
+						<Label>位置</Label>
+					</Prop>
+					<Prop ID="13" Name="Building" NameU="Building">
+						<Value></Value>
+						<Label>建筑物</Label>
+					</Prop>
+					<Prop ID="14" Name="Room" NameU="Room">
+						<Value></Value>
+						<Label>房间</Label>
+					</Prop>
+					<Prop ID="6" Name="Manufacturer" NameU="Manufacturer">
+						<Value></Value>
+						<Label>制造商</Label>
+					</Prop>
+					<Prop ID="7" Name="ProductNumber" NameU="ProductNumber">
+						<Value></Value>
+						<Label>产品编号</Label>
+					</Prop>
+					<Prop ID="8" Name="PartNumber" NameU="PartNumber">
+						<Value></Value>
+						<Label>部件号</Label>
+					</Prop>
+					<Prop ID="9" Name="ProductDescription" NameU="ProductDescription">
+						<Value></Value>
+						<Label>产品说明</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="1839" UniqueID="{0E2BA9CE-57DA-48C9-8B84-B1266E07E088}" Name="机柜.1839" NameU="Cabinet.1839" Master="37">
+					<XForm>
+						<PinX Unit="MM">7.480314960629920</PinX>
+						<PinY Unit="MM">3.700787401574803</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+					<Prop ID="1" Name="UCount" NameU="UCount">
+						<Value Unit="STR">38</Value>
+						<Label>单元高度</Label>
+					</Prop>
+					<Prop ID="3" Name="Height" NameU="Height">
+						<Value Unit="STR">1800 mm</Value>
+						<Label>高</Label>
+					</Prop>
+					<Prop ID="2" Name="HoleSpacing" NameU="HoleSpacing">
+						<Value Unit="STR">48.26 cm</Value>
+						<Label>孔间宽度</Label>
+					</Prop>
+					<Prop ID="10" Name="AssetNumber" NameU="AssetNumber">
+						<Value></Value>
+						<Label>资产号</Label>
+					</Prop>
+					<Prop ID="11" Name="SerialNumber" NameU="SerialNumber">
+						<Value></Value>
+						<Label>序列号</Label>
+					</Prop>
+					<Prop ID="12" Name="Location" NameU="Location">
+						<Value></Value>
+						<Label>位置</Label>
+					</Prop>
+					<Prop ID="13" Name="Building" NameU="Building">
+						<Value></Value>
+						<Label>建筑物</Label>
+					</Prop>
+					<Prop ID="14" Name="Room" NameU="Room">
+						<Value></Value>
+						<Label>房间</Label>
+					</Prop>
+					<Prop ID="6" Name="Manufacturer" NameU="Manufacturer">
+						<Value></Value>
+						<Label>制造商</Label>
+					</Prop>
+					<Prop ID="7" Name="ProductNumber" NameU="ProductNumber">
+						<Value></Value>
+						<Label>产品编号</Label>
+					</Prop>
+					<Prop ID="8" Name="PartNumber" NameU="PartNumber">
+						<Value></Value>
+						<Label>部件号</Label>
+					</Prop>
+					<Prop ID="9" Name="ProductDescription" NameU="ProductDescription">
+						<Value></Value>
+						<Label>产品说明</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="1863" UniqueID="{FB8792AD-915A-462B-8E20-6E982713021E}" Name="机柜.1863" NameU="Cabinet.1863" Master="37">
+					<XForm>
+						<PinX Unit="MM">8.530118110236220</PinX>
+						<PinY Unit="MM">3.700787401574804</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+					<Prop ID="1" Name="UCount" NameU="UCount">
+						<Value Unit="STR">38</Value>
+						<Label>单元高度</Label>
+					</Prop>
+					<Prop ID="3" Name="Height" NameU="Height">
+						<Value Unit="STR">1800 mm</Value>
+						<Label>高</Label>
+					</Prop>
+					<Prop ID="2" Name="HoleSpacing" NameU="HoleSpacing">
+						<Value Unit="STR">48.26 cm</Value>
+						<Label>孔间宽度</Label>
+					</Prop>
+					<Prop ID="10" Name="AssetNumber" NameU="AssetNumber">
+						<Value></Value>
+						<Label>资产号</Label>
+					</Prop>
+					<Prop ID="11" Name="SerialNumber" NameU="SerialNumber">
+						<Value></Value>
+						<Label>序列号</Label>
+					</Prop>
+					<Prop ID="12" Name="Location" NameU="Location">
+						<Value></Value>
+						<Label>位置</Label>
+					</Prop>
+					<Prop ID="13" Name="Building" NameU="Building">
+						<Value></Value>
+						<Label>建筑物</Label>
+					</Prop>
+					<Prop ID="14" Name="Room" NameU="Room">
+						<Value></Value>
+						<Label>房间</Label>
+					</Prop>
+					<Prop ID="6" Name="Manufacturer" NameU="Manufacturer">
+						<Value></Value>
+						<Label>制造商</Label>
+					</Prop>
+					<Prop ID="7" Name="ProductNumber" NameU="ProductNumber">
+						<Value></Value>
+						<Label>产品编号</Label>
+					</Prop>
+					<Prop ID="8" Name="PartNumber" NameU="PartNumber">
+						<Value></Value>
+						<Label>部件号</Label>
+					</Prop>
+					<Prop ID="9" Name="ProductDescription" NameU="ProductDescription">
+						<Value></Value>
+						<Label>产品说明</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="1869" UniqueID="{33A1229E-C102-4E66-9994-8F698B3A5D48}" Name="机柜.1869" NameU="Cabinet.1869" Master="37">
+					<XForm>
+						<PinX Unit="MM">9.580118110236221</PinX>
+						<PinY Unit="MM">3.700787401574802</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+					<Prop ID="1" Name="UCount" NameU="UCount">
+						<Value Unit="STR">38</Value>
+						<Label>单元高度</Label>
+					</Prop>
+					<Prop ID="3" Name="Height" NameU="Height">
+						<Value Unit="STR">1800 mm</Value>
+						<Label>高</Label>
+					</Prop>
+					<Prop ID="2" Name="HoleSpacing" NameU="HoleSpacing">
+						<Value Unit="STR">48.26 cm</Value>
+						<Label>孔间宽度</Label>
+					</Prop>
+					<Prop ID="10" Name="AssetNumber" NameU="AssetNumber">
+						<Value></Value>
+						<Label>资产号</Label>
+					</Prop>
+					<Prop ID="11" Name="SerialNumber" NameU="SerialNumber">
+						<Value></Value>
+						<Label>序列号</Label>
+					</Prop>
+					<Prop ID="12" Name="Location" NameU="Location">
+						<Value></Value>
+						<Label>位置</Label>
+					</Prop>
+					<Prop ID="13" Name="Building" NameU="Building">
+						<Value></Value>
+						<Label>建筑物</Label>
+					</Prop>
+					<Prop ID="14" Name="Room" NameU="Room">
+						<Value></Value>
+						<Label>房间</Label>
+					</Prop>
+					<Prop ID="6" Name="Manufacturer" NameU="Manufacturer">
+						<Value></Value>
+						<Label>制造商</Label>
+					</Prop>
+					<Prop ID="7" Name="ProductNumber" NameU="ProductNumber">
+						<Value></Value>
+						<Label>产品编号</Label>
+					</Prop>
+					<Prop ID="8" Name="PartNumber" NameU="PartNumber">
+						<Value></Value>
+						<Label>部件号</Label>
+					</Prop>
+					<Prop ID="9" Name="ProductDescription" NameU="ProductDescription">
+						<Value></Value>
+						<Label>产品说明</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="2111" UniqueID="{1D0ADD6A-C637-42D2-B1ED-126181F5EC5A}" Name="电源/UPS.2111" NameU="Power supply/UPS.2111" Master="48">
+					<XForm>
+						<PinX Unit="CM">10.629921259842520</PinX>
+						<PinY Unit="MM">4.526771653543309</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+					<Prop ID="1" Name="UCount" NameU="UCount">
+						<Value Unit="STR">10</Value>
+						<Label>单元高度</Label>
+					</Prop>
+					<Prop ID="2" Name="Height" NameU="Height">
+						<Value Unit="STR">444.5 mm</Value>
+						<Label>高</Label>
+					</Prop>
+					<Prop ID="10" Name="AssetNumber" NameU="AssetNumber">
+						<Value></Value>
+						<Label>资产号</Label>
+					</Prop>
+					<Prop ID="11" Name="SerialNumber" NameU="SerialNumber">
+						<Value></Value>
+						<Label>序列号</Label>
+					</Prop>
+					<Prop ID="12" Name="Location" NameU="Location">
+						<Value></Value>
+						<Label>位置</Label>
+					</Prop>
+					<Prop ID="13" Name="Building" NameU="Building">
+						<Value></Value>
+						<Label>建筑物</Label>
+					</Prop>
+					<Prop ID="14" Name="Room" NameU="Room">
+						<Value></Value>
+						<Label>房间</Label>
+					</Prop>
+					<Prop ID="6" Name="Manufacturer" NameU="Manufacturer">
+						<Value></Value>
+						<Label>制造商</Label>
+					</Prop>
+					<Prop ID="7" Name="ProductNumber" NameU="ProductNumber">
+						<Value></Value>
+						<Label>产品编号</Label>
+					</Prop>
+					<Prop ID="8" Name="PartNumber" NameU="PartNumber">
+						<Value></Value>
+						<Label>部件号</Label>
+					</Prop>
+					<Prop ID="9" Name="ProductDescription" NameU="ProductDescription">
+						<Value></Value>
+						<Label>产品说明</Label>
+					</Prop>
+					<Prop ID="23" Name="Power" NameU="Power">
+						<Value></Value>
+						<Label>电源使用</Label>
+					</Prop>
+					<Prop ID="15" Name="NetworkName" NameU="NetworkName">
+						<Value></Value>
+						<Label>网络名称</Label>
+					</Prop>
+					<Prop ID="16" Name="IPAddress" NameU="IPAddress">
+						<Value></Value>
+						<Label>IP 地址</Label>
+					</Prop>
+					<Prop ID="17" Name="SubnetMask" NameU="SubnetMask">
+						<Value></Value>
+						<Label>子网掩码</Label>
+					</Prop>
+					<Prop ID="18" Name="AdminInterface" NameU="AdminInterface">
+						<Value></Value>
+						<Label>管理接口</Label>
+					</Prop>
+					<Prop ID="19" Name="NumberOfPorts" NameU="NumberOfPorts">
+						<Value></Value>
+						<Label>端口数目</Label>
+					</Prop>
+					<Prop ID="20" Name="MACAddress" NameU="MACAddress">
+						<Value></Value>
+						<Label>MAC 地址</Label>
+					</Prop>
+					<Prop ID="21" Name="CommunityString" NameU="CommunityString">
+						<Value></Value>
+						<Label>团体字符串</Label>
+					</Prop>
+					<Prop ID="22" Name="NetworkDescription" NameU="NetworkDescription">
+						<Value></Value>
+						<Label>网络说明</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="2128" UniqueID="{FD8BE95C-3E73-4C50-8DE1-F67613408D0B}" Name="电源/UPS.2128" NameU="Power supply/UPS.2128" Master="48">
+					<XForm>
+						<PinX Unit="CM">10.629921259842520</PinX>
+						<PinY Unit="MM">3.564271653543308</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+					<Prop ID="1" Name="UCount" NameU="UCount">
+						<Value Unit="STR">11</Value>
+						<Label>单元高度</Label>
+					</Prop>
+					<Prop ID="2" Name="Height" NameU="Height">
+						<Value Unit="STR">488.95 mm</Value>
+						<Label>高</Label>
+					</Prop>
+					<Prop ID="10" Name="AssetNumber" NameU="AssetNumber">
+						<Value></Value>
+						<Label>资产号</Label>
+					</Prop>
+					<Prop ID="11" Name="SerialNumber" NameU="SerialNumber">
+						<Value></Value>
+						<Label>序列号</Label>
+					</Prop>
+					<Prop ID="12" Name="Location" NameU="Location">
+						<Value></Value>
+						<Label>位置</Label>
+					</Prop>
+					<Prop ID="13" Name="Building" NameU="Building">
+						<Value></Value>
+						<Label>建筑物</Label>
+					</Prop>
+					<Prop ID="14" Name="Room" NameU="Room">
+						<Value></Value>
+						<Label>房间</Label>
+					</Prop>
+					<Prop ID="6" Name="Manufacturer" NameU="Manufacturer">
+						<Value></Value>
+						<Label>制造商</Label>
+					</Prop>
+					<Prop ID="7" Name="ProductNumber" NameU="ProductNumber">
+						<Value></Value>
+						<Label>产品编号</Label>
+					</Prop>
+					<Prop ID="8" Name="PartNumber" NameU="PartNumber">
+						<Value></Value>
+						<Label>部件号</Label>
+					</Prop>
+					<Prop ID="9" Name="ProductDescription" NameU="ProductDescription">
+						<Value></Value>
+						<Label>产品说明</Label>
+					</Prop>
+					<Prop ID="23" Name="Power" NameU="Power">
+						<Value></Value>
+						<Label>电源使用</Label>
+					</Prop>
+					<Prop ID="15" Name="NetworkName" NameU="NetworkName">
+						<Value></Value>
+						<Label>网络名称</Label>
+					</Prop>
+					<Prop ID="16" Name="IPAddress" NameU="IPAddress">
+						<Value></Value>
+						<Label>IP 地址</Label>
+					</Prop>
+					<Prop ID="17" Name="SubnetMask" NameU="SubnetMask">
+						<Value></Value>
+						<Label>子网掩码</Label>
+					</Prop>
+					<Prop ID="18" Name="AdminInterface" NameU="AdminInterface">
+						<Value></Value>
+						<Label>管理接口</Label>
+					</Prop>
+					<Prop ID="19" Name="NumberOfPorts" NameU="NumberOfPorts">
+						<Value></Value>
+						<Label>端口数目</Label>
+					</Prop>
+					<Prop ID="20" Name="MACAddress" NameU="MACAddress">
+						<Value></Value>
+						<Label>MAC 地址</Label>
+					</Prop>
+					<Prop ID="21" Name="CommunityString" NameU="CommunityString">
+						<Value></Value>
+						<Label>团体字符串</Label>
+					</Prop>
+					<Prop ID="22" Name="NetworkDescription" NameU="NetworkDescription">
+						<Value></Value>
+						<Label>网络说明</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="2145" UniqueID="{CE9C7A58-3883-4878-A382-D7BE600DEB53}" Name="电源/UPS.2145" NameU="Power supply/UPS.2145" Master="48">
+					<XForm>
+						<PinX Unit="CM">10.629921259842520</PinX>
+						<PinY Unit="MM">2.076771653543308</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+					<Prop ID="1" Name="UCount" NameU="UCount">
+						<Value Unit="STR">17</Value>
+						<Label>单元高度</Label>
+					</Prop>
+					<Prop ID="2" Name="Height" NameU="Height">
+						<Value Unit="STR">755.65 mm</Value>
+						<Label>高</Label>
+					</Prop>
+					<Prop ID="10" Name="AssetNumber" NameU="AssetNumber">
+						<Value></Value>
+						<Label>资产号</Label>
+					</Prop>
+					<Prop ID="11" Name="SerialNumber" NameU="SerialNumber">
+						<Value></Value>
+						<Label>序列号</Label>
+					</Prop>
+					<Prop ID="12" Name="Location" NameU="Location">
+						<Value></Value>
+						<Label>位置</Label>
+					</Prop>
+					<Prop ID="13" Name="Building" NameU="Building">
+						<Value></Value>
+						<Label>建筑物</Label>
+					</Prop>
+					<Prop ID="14" Name="Room" NameU="Room">
+						<Value></Value>
+						<Label>房间</Label>
+					</Prop>
+					<Prop ID="6" Name="Manufacturer" NameU="Manufacturer">
+						<Value></Value>
+						<Label>制造商</Label>
+					</Prop>
+					<Prop ID="7" Name="ProductNumber" NameU="ProductNumber">
+						<Value></Value>
+						<Label>产品编号</Label>
+					</Prop>
+					<Prop ID="8" Name="PartNumber" NameU="PartNumber">
+						<Value></Value>
+						<Label>部件号</Label>
+					</Prop>
+					<Prop ID="9" Name="ProductDescription" NameU="ProductDescription">
+						<Value></Value>
+						<Label>产品说明</Label>
+					</Prop>
+					<Prop ID="23" Name="Power" NameU="Power">
+						<Value></Value>
+						<Label>电源使用</Label>
+					</Prop>
+					<Prop ID="15" Name="NetworkName" NameU="NetworkName">
+						<Value></Value>
+						<Label>网络名称</Label>
+					</Prop>
+					<Prop ID="16" Name="IPAddress" NameU="IPAddress">
+						<Value></Value>
+						<Label>IP 地址</Label>
+					</Prop>
+					<Prop ID="17" Name="SubnetMask" NameU="SubnetMask">
+						<Value></Value>
+						<Label>子网掩码</Label>
+					</Prop>
+					<Prop ID="18" Name="AdminInterface" NameU="AdminInterface">
+						<Value></Value>
+						<Label>管理接口</Label>
+					</Prop>
+					<Prop ID="19" Name="NumberOfPorts" NameU="NumberOfPorts">
+						<Value></Value>
+						<Label>端口数目</Label>
+					</Prop>
+					<Prop ID="20" Name="MACAddress" NameU="MACAddress">
+						<Value></Value>
+						<Label>MAC 地址</Label>
+					</Prop>
+					<Prop ID="21" Name="CommunityString" NameU="CommunityString">
+						<Value></Value>
+						<Label>团体字符串</Label>
+					</Prop>
+					<Prop ID="22" Name="NetworkDescription" NameU="NetworkDescription">
+						<Value></Value>
+						<Label>网络说明</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="1875" UniqueID="{1CB63992-57B6-4622-AB5E-4B32A81A4990}" Name="机柜.1875" NameU="Cabinet.1875" Master="37">
+					<XForm>
+						<PinX Unit="MM">10.629921259842520</PinX>
+						<PinY Unit="MM">3.700787401574804</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember></LayerMember>
+					</LayerMem>
+					<Prop ID="1" Name="UCount" NameU="UCount">
+						<Value Unit="STR">38</Value>
+						<Label>单元高度</Label>
+					</Prop>
+					<Prop ID="3" Name="Height" NameU="Height">
+						<Value Unit="STR">1800 mm</Value>
+						<Label>高</Label>
+					</Prop>
+					<Prop ID="2" Name="HoleSpacing" NameU="HoleSpacing">
+						<Value Unit="STR">48.26 cm</Value>
+						<Label>孔间宽度</Label>
+					</Prop>
+					<Prop ID="10" Name="AssetNumber" NameU="AssetNumber">
+						<Value></Value>
+						<Label>资产号</Label>
+					</Prop>
+					<Prop ID="11" Name="SerialNumber" NameU="SerialNumber">
+						<Value></Value>
+						<Label>序列号</Label>
+					</Prop>
+					<Prop ID="12" Name="Location" NameU="Location">
+						<Value></Value>
+						<Label>位置</Label>
+					</Prop>
+					<Prop ID="13" Name="Building" NameU="Building">
+						<Value></Value>
+						<Label>建筑物</Label>
+					</Prop>
+					<Prop ID="14" Name="Room" NameU="Room">
+						<Value></Value>
+						<Label>房间</Label>
+					</Prop>
+					<Prop ID="6" Name="Manufacturer" NameU="Manufacturer">
+						<Value></Value>
+						<Label>制造商</Label>
+					</Prop>
+					<Prop ID="7" Name="ProductNumber" NameU="ProductNumber">
+						<Value></Value>
+						<Label>产品编号</Label>
+					</Prop>
+					<Prop ID="8" Name="PartNumber" NameU="PartNumber">
+						<Value></Value>
+						<Label>部件号</Label>
+					</Prop>
+					<Prop ID="9" Name="ProductDescription" NameU="ProductDescription">
+						<Value></Value>
+						<Label>产品说明</Label>
+					</Prop>
+				</Shape>
+			</Shapes>
+		</Page>
+	</Pages>
+</VisioDocument>

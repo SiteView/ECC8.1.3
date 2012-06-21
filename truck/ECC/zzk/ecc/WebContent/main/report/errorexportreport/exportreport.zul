@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zk>
+	<window id="wreport" 
+		use="com.siteview.ecc.report.reportforms.PeriodExportWindow"
+		title="导出报表" border="normal" width="250px" height="140px">
+		<separator width="20px" height="20px" />
+		<div>
+			<space width="15px" />
+			请选择文件类型：
+			<listbox id="format" mold="select">
+				<listitem label="PDF" value="pdf" />
+				<listitem label="HTML" value="html" selected="true" />
+				<listitem label="Excel" value="xls" />
+			</listbox>
+			<separator width="20px" height="20px" />
+			<div align="right">
+				<button id="saveReport"
+					image="/main/images/bakRestore.gif" label="保存报表" sclass="btnDefault"
+					height="23px" />
+				<space width="15px" />
+				<button width="74px" height="23px" sclass="btnDefault"
+					label="取消" onClick="wreport.detach()" image="/main/images/button/ico/close_bt.gif"/>
+			</div>
+		</div>
+
+	</window>
+</zk>

@@ -1,0 +1,73 @@
+<?page title="about" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<borderlayout>
+		<center style="overflow:auto;border:none">
+			<panel title="产品介绍" collapsible="true">
+				<panelchildren>
+					<window title="" border="normal">
+
+
+						<vbox align="center" width="100%">
+							<label>
+							</label>
+							<image src="/images/siteviewabout.jpg" 
+								align="center" width="70%">
+							</image>
+							<label
+								style="font:small-caps 900 16pt 楷体;line-height:40px"
+								value="产品介绍">
+							</label>
+
+							<div align="center" width="70%"
+								style="font:12pt;color:#418577;line-height:25px;text-align:left">
+								<label id="intro" multiline="true"
+									style="font:10pt;color:#6495ED;line-height:16px;text-align:left ">
+									<attribute name="value">    SiteView ECC专注于对局域网、广域网和互联网上的系统应用、服务器和网络设备的故障监测和性能进行管理，是集中式、跨平台的系统管理软件。SiteView ECC通过持续监控企业Internet、WAN、LAN上的服务器、网络设备和应用系统的运行状况，对中间件、数据库、邮件系统、DNS系统、FTP系统、OA系统、ERP系统等进行全面深入的监测，确保企业信息平台7X24小时高效稳定地运行。
+									
+    SiteView ECC功能强大，不仅方便系统管理人员随时了解整个IT系统的运行状况，而且能从应用层面对企业IT系统的关键应用进行实时监测。一旦系统出现异常，警报系统将通过声音、E-mail、手机短信息、Post和脚本等方式及时通知相关人员；对一些常见故障可以自动处理。SiteView ECC完善的性能分析报告，能帮助系统管理人员及时预测、发现性能瓶颈，为企业系统的战略规划提供依据。
+   
+    SiteView ECC为广大用户提供了一个网络管理软件的新视野：
+   
+   更开放  作为新一代的网络管理软件，SiteView ECC支持Windows2003/XP、 Unix、Solaris、AIX、FreeBSD、UnixWare、HP-UX、Linux、OpenServer等所有主流操作系统，适用于各种异构环境。高度模块化设计，开放式API接口，便于与其它网管系统实现无缝集成。
+     
+   更自动  数据采集与分析、故障报警、性能报告、故障恢复等全部可以按任务计划自动执行，真正实现机房无人职守，大幅度降低系统管理人员的工作强度。
+           
+      更智能  事件关联、基线动态阀值、连锁诊断、网络应用拓扑等构成的故障推理引擎，可以帮助系统管理人员快速定位故障源。
+
+     更全面  内置100多种监测器，并可根据用户的需求定制专门的监测器，真正实现对网络基础架构及应用的全面深度监测。
+
+     更好用  无需在被监测服务器上安装代理。安装、实施与维护非常简单。只需具备基本网管常识，无需专门培训，就可轻松使用SiteView ECC进行系统维护。
+
+     多数据库  支持多种底层数据库，安装过程中您可以任意选择。用户在使用过程中可以很简单地更换底层数据库，使用户需求得到满足。
+
+    SiteView ECC具有无与伦比的伸缩性和可管理性，适用于任何规模的网络，其模块化、方便易用的设计伴随企业需求的变化共同成长。SiteView ECC具有灵活的架构、先进的智能和可视化设计，是企业提供高品质服务的保证，能大幅度提升网络信息平台的可靠性、可用性和可管理性。游龙科技凭借其世界领先的技术水平、强大的研发实力、本地化的服务推出的SiteView ECC网管软件，可使您的网络信息平台实现自动化、智能化管理。
+    
+    SiteView ECC适用于大中小型网络环境，运行SiteView ECC对系统资源占用较大，且因不同的网络环境、不同的监测条件、以及数据采集对系统资源占用的情况有较大的差别，根据我们的反复测试，以下推荐的配置可以保证软件稳定运行。
+  Windows 2003 /Windows XP
+  鼠标或其他屏幕定位设备支持
+  系统补丁：Service Pack 1/ Service Pack 2
+  显示器分辨率1024x768及以上
+  P4 2.8G 以上处理器
+  2G 以上内存
+  1G 硬盘剩余空间
+  10/100M以太网卡Voice/Data
+  如果需要打印输出，则需要一台支持Windows位图打印的打印机
+ 
+ 					
+</attribute>
+								</label>
+							</div>
+							<html>
+								<attribute name="content" >
+		欢迎访问游龙科技网站 <a href="http://www.siteview.com"> www.siteview.com </a> 获取更全面的技术服务
+		</attribute>
+							</html>
+						</vbox>
+
+
+					</window>
+				</panelchildren>
+			</panel>
+		</center>
+	</borderlayout>
+</zk>

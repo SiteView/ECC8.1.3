@@ -1,0 +1,46 @@
+<?page id="treeViewPage" ?>
+<zk>
+<zscript><![CDATA[
+/*tree		=(org.zkoss.zul.Tree)desktop.getPage("eccmain").getFellow("tree");
+treeModel	=(com.siteview.ecc.treeview.EccTreeModel)tree.getModel();
+eccView		=(com.siteview.base.manage.View)treeModel.getView();
+eccTreeItem = (com.siteview.ecc.treeview.EccTreeItem)tree.getSelectedItem().getValue();
+
+String type	=eccTreeItem.getType();
+String id	=eccTreeItem.getId();
+String name	=eccTreeItem.getTitle();
+*/
+]]></zscript>
+<style>
+		.vista.z-toolbar,.vista.z-toolbar a,.vista.z-toolbar
+			a:visited,.vista.z-toolbar a:hover {
+			background:none;
+			border:none;
+		}
+</style>
+<borderlayout>
+	<center>
+		<borderlayout>
+			<north size="20px" style="border-style: outset;background-color:#6BAEDE;border-width:1px">
+					<hbox valign="middle" style="height:20px;background-color:#6BAEDE;color:#ffffff" width="100%">
+					<label style="padding-left:5px;" id="curNodeTitle" value="树状视图"/>
+					<label style="float:right;padding-right:5px;" id="curNodeInfo" value=""/>
+					</hbox>
+			</north>
+			<center style="overflow:auto;border:none">
+				<tree vflex="true" id="openedTreeView" zclass="z-dottree" use="com.siteview.ecc.treeview.EccOpenedTreeView" >
+				   <treechildren>
+				   </treechildren>
+				</tree>
+			</center>
+		</borderlayout>
+	</center>				
+	<south size="20" style="border:none">
+	<hbox width="100%">
+			<include style="float:left" src="/main/control/status_legend.zul"/>
+			<popup id="nodeInfoTooltip" use="com.siteview.ecc.util.TooltipPopup"/>
+			<div style="float:right">数据过滤<space/><listbox onSelect="openedTreeView.refreshStatus(self.selectedItem.value)" id="favSelect" mold="select" rows="1" use="com.siteview.ecc.util.FavouriteSelect"/></div>
+	</hbox>								
+	</south>	
+</borderlayout>
+</zk>

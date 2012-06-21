@@ -1,0 +1,21 @@
+<?page id="alertPage" ?>
+<zk>
+<borderlayout apply="com.siteview.ecc.general.ShowInVirtualView" forward="onCreate=onInit">
+	<center>
+		<borderlayout>
+			<center style="overflow:auto;border:none">
+			<panel id="title" collapsible="true"><panelchildren>
+			
+			<listbox id="mainMenu">
+				<listhead sizable="true">
+					<listheader label="名称" height="25px" width="120px"/>
+					<listheader label="说明" height="25px"/>
+				</listhead>
+							
+			</listbox>
+		    </panelchildren></panel>
+			</center>
+		</borderlayout>
+	</center>				
+</borderlayout>
+</zk>	

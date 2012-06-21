@@ -1,0 +1,17 @@
+.eccThemeChoseImage
+{
+  border-width:1px;  border-color:#c0c0c0; margin:5px;cursor:pointer;border-style:outset;
+}
+.eccThemeCurrentImage
+{
+  border-width:1px;  border-color:#FF0000; margin:5px;border-style:inset;
+}
+html
+{
+  overflow:hidden;
+}
+.z-tabs-scroll
+{
+border-width: 0px;
+}
+

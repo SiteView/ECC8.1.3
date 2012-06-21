@@ -1,0 +1,12 @@
+<zk>
+<div style="height:30;float:left">
+<image src="/main/images/none.gif" width="10"/>
+<label value="状态描述: "/><image align="absmiddle" src="/main/control/images/state_grey.gif"/>
+<label value="定义错误; "/><image align="absmiddle" src="/main/control/images/state_dark.gif"/>
+<label value="无监测数据; "/><image align="absmiddle" src="/main/control/images/state_green.gif"/>
+<label value="正常; "/><image align="absmiddle" src="/main/control/images/state_yellow.gif"/>
+<label value="危险; "/><image align="absmiddle" src="/main/control/images/state_red.gif"/>
+<label value="错误; "/><image align="absmiddle" src="/main/control/images/state_stop.gif"/>
+<label value="禁止"/>
+</div>
+</zk>

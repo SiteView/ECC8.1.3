@@ -1,0 +1,202 @@
+<zk>
+	<window id="WAddMonitor" title="添加监测器 " border="normal"
+		width="650px" closable="true"
+		apply="com.siteview.ecc.treeview.windows.AddMonitor">
+		<vbox width="100%">
+			<div style="float:right;margin-right:10px">
+				<image id="btnhelp" tooltiptext="展示输入框的辅助提示信息"
+					src="/main/images/btnhelp.gif"
+					hover="/main/images/btnhelp_hover.gif"
+					use="com.siteview.actions.HelpImageButton" />
+			</div>
+		</vbox>
+		<!-- style="margin:5px 5px 5px 5px;overflow-y:auto;max-height:480px;" -->
+		<panel id="p1">
+			<panelchildren id="pc"
+				>
+				<panel title="基本信息" collapsible="true">
+					<panelchildren>
+						<grid>
+							<columns>
+								<column width="20%" label=""></column>
+								<column label=""></column>
+							</columns>
+							<rows id="baserow">
+								<row>
+									<label value="设备名称:" />
+									<label id="entityname" value="设备名称" />
+								</row>
+							</rows>
+						</grid>
+					</panelchildren>
+				</panel>
+				<panel title="报警条件" collapsible="true">
+					<panelchildren>
+						<grid>
+							<columns>
+								<column width="20%" label=""></column>
+								<column label=""></column>
+							</columns>
+							<rows>
+								<row>
+									<label value="错误:"></label>
+									<box>
+										<hbox align="end">
+											<textbox id="tberror"
+												readonly="true" rows="4" width="350px" multiline="true">
+											</textbox>
+											<button id="btnerror"
+												height="15px" width="25px" label="..." />
+										</hbox>
+
+										<label visible="false" id="lbp1"
+											sclass="helplabel" value="请输入附加的描述信息，此描述信息将显示在基础信息表内">
+										</label>
+									</box>
+								</row>
+								<row>
+									<label value="危险:"></label>
+									<box>
+										<hbox align="end">
+											<textbox id="tbdanger"
+												readonly="true" rows="4" width="350px" multiline="true">
+											</textbox>
+											<button id="btndanger"
+												height="15px" width="25px" label="..." />
+										</hbox>
+										<label visible="false" id="lbp2"
+											sclass="helplabel" value="请输入附加的描述信息，此描述信息将显示在基础信息表内">
+										</label>
+									</box>
+								</row>
+								<row>
+									<label value="正常:"></label>
+									<box>
+										<hbox align="end">
+											<textbox id="tbnormal"
+												readonly="true" rows="4" width="350px" multiline="true">
+											</textbox>
+											<button id="btnnormal"
+												height="15px" width="25px" label="..." />
+										</hbox>
+										<label visible="false" id="lbp3"
+											sclass="helplabel" value="请输入附加的描述信息，此描述信息将显示在基础信息表内">
+										</label>
+									</box>
+								</row>
+							</rows>
+						</grid>
+					</panelchildren>
+				</panel>
+				<panel title="高级选项" collapsible="true">
+					<panelchildren>
+						<grid>
+							<columns>
+								<column width="20%" label=""></column>
+								<column label=""></column>
+							</columns>
+							<rows id="advancerow">
+								<row id="insertp">
+									<label value="校验错误:" />
+									<box>
+										<checkbox id="chCheckError" checked="true"
+											label="监测器错误检验">
+										</checkbox>
+										<label visible="false" id="lbp4"
+											sclass="helplabel" value="当发生错误后，立即再次执行监测器以校验错误">
+										</label>
+									</box>
+								</row>
+								<row>
+									<label value="错误时监测频率:" />
+									<box>
+										<hbox>
+											<textbox width="285px"
+												height="15px" id="tbErrorFrequency">
+											</textbox>
+											<combobox
+												id="cbErrorFrequencyUnit" height="15px" width="40px"
+												readonly="true">
+											</combobox>
+
+										</hbox>
+										<label visible="false" id="lbp5"
+											sclass="helplabel" value="当发生错误后，监测器的监测频率">
+										</label>
+									</box>
+								</row>
+								<row>
+									<label value="任务计划:" id="taskLink"/>
+									<box>
+										<combobox id="cbPlan"
+											width="335px" height="15px" readonly="true">
+
+										</combobox>
+										<label visible="false" id="lbp6"
+											sclass="helplabel" value="从下拉框中选择该监测器执行何种任务计划">
+										</label>
+									</box>
+								</row>
+
+								<row>
+									<label value="监测描述:"></label>
+									<box>
+										<textbox id="tbDescription"
+											rows="4" width="350px" multiline="true">
+										</textbox>
+										<label visible="false" id="lbp7"
+											sclass="helplabel" value="在该设备的监测器列表界面中，显示在该监测器名称下面">
+										</label>
+									</box>
+								</row>
+								<row>
+									<label value="报告描述:"></label>
+									<box>
+										<textbox
+											id="tbReqortDescription" rows="4" width="350px"
+											multiline="true">
+										</textbox>
+										<label visible="false" id="lbp8"
+											sclass="helplabel" value="填写的内容将显示在报告图形的下方">
+										</label>
+									</box>
+								</row>
+
+							</rows>
+						</grid>
+					</panelchildren>
+				</panel>
+
+
+			</panelchildren>
+		</panel>
+		<div
+			style="float:right;margin-bottom:12px;margin-right:12px; ">
+			<hbox>
+			  <button id="btnstep" sclass="btnDefault" width="90px" visible="false"
+					height="23px" label="步数设置" tooltiptext="步数设置">
+				</button>
+				<space width="80px"></space>
+				<button id="btnplok" sclass="btnDefault" label="批量添加"
+					width="74px" height="23px" visible="false"
+					tooltiptext="批量添加相同类型的监测器">
+				</button>
+				<button id="btnok" sclass="btnDefault" width="74px"
+					height="23px" image="/main/images/button/ico/save_bt.gif"
+					label="保存" tooltiptext="保存对当前监测器的修改并选中所修改的树节点">
+				</button>
+				<button id="btncancel" sclass="btnDefault" width="74px"
+					height="23px" image="/main/images/button/ico/close_bt.gif"
+					label="取消" tooltiptext="放弃所做的编辑并关闭窗体">
+				</button>
+				<button id="btnadd" sclass="btnDefault" width="90px"
+					height="23px" image="/main/images/button/ico/reload_bt.gif"
+					label="继续添加" tooltiptext="保存对当前监测器的修改不关闭监测器列表">
+				</button>
+				<button id="btndefault" sclass="btnDefault" width="90px"
+					height="23px" label="报警默认值" tooltiptext="设置报警默认值">
+				</button>
+			</hbox>
+		</div>
+	</window>
+</zk>

@@ -1,0 +1,9 @@
+<zk>	
+   <window id="treewindow"  title="My Tree Window" border="normal" width="400px">
+	<zscript language="java">					
+	/*System.out.println(System.getProperty("user.dir"));*/
+	com.siteview.svecc.zk.test.TreePush.start(treewindow ,"admin","siteview");
+	</zscript>
+	</window>
+	
+</zk>

@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/svDCM/!svn/ver/4163/trunk/zk.ecc_zhongzubu/ecc/src/com/siteview/ecc/email
+END
+Email_add.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/src/com/siteview/ecc/email/Email_add.java
+END
+EmailConstant.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/src/com/siteview/ecc/email/EmailConstant.java
+END
+EmailTemplate.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/src/com/siteview/ecc/email/EmailTemplate.java
+END
+EmailModel.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/src/com/siteview/ecc/email/EmailModel.java
+END
+EmailUsingCheck.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/src/com/siteview/ecc/email/EmailUsingCheck.java
+END
+SendTestImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/src/com/siteview/ecc/email/SendTestImpl.java
+END
+Email_edit.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/src/com/siteview/ecc/email/Email_edit.java
+END
+EmailBean.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/src/com/siteview/ecc/email/EmailBean.java
+END
+EmailModelListbox.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/src/com/siteview/ecc/email/EmailModelListbox.java
+END
+IniFilePack.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/src/com/siteview/ecc/email/IniFilePack.java
+END
+SetMail.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/svDCM/!svn/ver/4163/trunk/zk.ecc_zhongzubu/ecc/src/com/siteview/ecc/email/SetMail.java
+END

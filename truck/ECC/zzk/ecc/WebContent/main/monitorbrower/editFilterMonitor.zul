@@ -1,0 +1,104 @@
+<?page id="editfiltermonitorPage" title="" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window id="createFilter" title="编辑筛选条件"  apply="com.siteview.ecc.monitorbrower.FilterMonitorComposer" border="normal" width="390px" height="408px">
+<groupbox style="margin-top:8px"> 
+	<caption label="自定义信息"/>
+	<hbox style="margin-top:8px;">筛选名称*：<textbox width="140px" id="filterName" height="15px"/></hbox>
+	<radiogroup id="eidt"  ><radio id="add" label="添加" disabled="true"/><radio id="edit" label="编辑"    selected="true" /></radiogroup>
+</groupbox>
+<groupbox height="236px" style="margin-top:5px"> 
+	<caption label="条件设置"/>
+		<grid oddRowSclass="none" style="margin-top:8px;border:none;margin-left:10px">
+			<columns>
+				<column label="" align="left"/>
+				<column label="" align="left"/>
+			</columns>
+			<rows>
+				<row  zclass="none" style="border:none" height="28px">
+					监测器名称：
+					<hbox><textbox width="140px" id="monitorName" height="14px" tooltiptext="输入您要查找的监测器的名称，也支持浏览选择，否则系统默认为查找所有监测器" />
+					<button id="monitorNameBtn" label="..."/></hbox>
+				</row>
+				<row  zclass="none" style="border:none" height="28px">
+					所属组：
+					<hbox><textbox width="140px" id="groupName" height="14px" tooltiptext="输入您要查找的监测器所属的组的名称，也支持浏览选择，否则系统默认为查找所有组下面的监测器" />
+					<button id="monitorGroupBtn" label="..."/></hbox>
+				</row>
+				<row  zclass="none" style="border:none" height="10px">
+					所属设备：
+					<hbox><textbox width="140px" id="entityBe" height="14px"  tooltiptext="输入您要查找的监测器所属的设备的名称，也支持浏览选择，否则系统默认为查找所有设备下面的监测器" />
+					<button id="monitorEntiryBtn" label="..."/></hbox>
+				</row>
+				<row  zclass="none" style="border:none" height="28px">
+					描述：
+					<textbox width="140px" id="descript" height="14px"  tooltiptext="输入组、设备、监测器的描述信息" />
+				</row>
+				<row  zclass="none" style="border:none" height="20px">
+					显示/隐藏：
+					<listbox width="145px" id="showAndHidden" height="25px" mold="select" rows="1"  tooltiptext="根据需要选择显示监测器的分类和统计选项，默认为显示所有">
+						<listitem selected="true" id="showAll"><listcell  label="显示所有"/></listitem>
+						<listitem id="showErrorWarnning" ><listcell label="显示错误和危险"/></listitem>
+						<listitem id="showError"><listcell  label="显示错误"/></listitem>
+						<listitem id="showWarnning"><listcell label="显示危险"/></listitem>
+						<listitem id="showNormal" selected="true"><listcell label="显示正常"/></listitem>
+						<listitem id="showNone"><listcell label="显示无状态"/></listitem>
+						<listitem id="showBad"><listcell label="显示定义错误"/></listitem>
+						<listitem id="showForbid"><listcell label="显示禁止监测"/></listitem>
+						<listitem id="showForeverForbid"><listcell label="显示永久禁止监测"/></listitem>
+						<listitem id="showTemporaryForbid"><listcell label="显示临时禁止监测"/></listitem>
+						<listitem id="hideErrorWarnning"><listcell label="隐藏错误和危险"/></listitem>
+						<listitem id="hideError"><listcell label="隐藏错误"/></listitem>
+						<listitem id="hideWarnning"><listcell label="隐藏危险"/></listitem>
+						<listitem id="hideNormal"><listcell label="隐藏正常"/></listitem>
+						<listitem id="hideNone"><listcell label="隐藏无状态"/></listitem>
+						<listitem id="hideBad"><listcell label="隐藏定义错误"/></listitem>
+						<listitem id="hideForbid"><listcell label="隐藏禁止监测"/></listitem>
+						<listitem id="hideForeverForbid"><listcell label="隐藏永久禁止监测"/></listitem>
+						<listitem id="hideTemporaryForbid"><listcell label="隐藏临时禁止监测"/></listitem>
+					</listbox>
+					
+				</row>
+				<row  zclass="none" style="border:none" height="25px">
+					监测器类型：
+					<listbox width="145px" id="monitorType" height="20px" mold="select" rows="1" tooltiptext="系统自动收集当前服务器中所有的监测器类型，可以通过下拉框选定您要查看和统计的监测器类型">
+					</listbox>
+				</row>
+				<row  zclass="none" style="border:none" height="25px">
+					排序：
+					<listbox width="145px" id="sort" height="20px" mold="select" rows="1" tooltiptext="选择您对查询结果的排序方式。排序方式有状态、组、设备、名称、描述。默认为按状态排序">
+						<listitem selected="true"  id="status"><listcell label="状态"/></listitem>
+						<listitem id="group"><listcell label="组"/></listitem>
+						<listitem id="name"><listcell label="名称"/></listitem>
+						<listitem id="statusText"><listcell label="描述"/></listitem>
+						<listitem id="entity"><listcell label="设备"/></listitem>
+					</listbox>
+				</row>
+				<row  zclass="none" style="border:none" height="25px">
+					刷新设置：
+					<listbox width="145px" id="reflesh"  mold="select"  rows="1" height="20px" disabled="true" tooltiptext="设置手动刷新或者自动刷新">
+						<listitem selected="true" id="manual"><listcell label="手动刷新"/></listitem>
+						<listitem id="fifteenSecond"><listcell label="每15秒刷新"/></listitem>
+						<listitem id="thirtySecond"><listcell label="每30秒刷新"/></listitem>
+						<listitem id="oneMinute"><listcell label="每1分钟刷新"/></listitem>
+						<listitem id="twoMinute"><listcell label="每2分钟刷新"/></listitem>
+						<listitem id="fiveMinute"><listcell label="每5分钟刷新"/></listitem>
+					</listbox>
+				</row>
+			</rows>
+		</grid>
+	</groupbox>
+	<grid oddRowSclass="none" style="border:none;">
+				<columns>
+					<column label="" align="right"/>
+				</columns>
+				<rows>
+					<row  zclass="none" style="border:none" height="28px">
+						<hbox>
+						<button id="OK" label="保存"  sclass="btnDefault" width="74px" height="23px" image="/main/images/button/ico/save_bt.gif"/>
+						<button id="Cancel" label="取消"  sclass="btnDefault" onClick="createFilter.detach()"  width="74px" height="23px" image="/main/images/button/ico/close_bt.gif"/>
+						</hbox>
+					</row>
+				</rows>
+	</grid>
+</window>
+</zk>

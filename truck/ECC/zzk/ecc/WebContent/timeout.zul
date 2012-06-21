@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?page title="Session Timeout" ?>
+<window width="80%" title="会话超时" border="normal">
+	<vbox>
+由于您太长时间没有进行操作或者刷新页面，会话过期，请重新登录.
+	<div style="margin-top: 10px"> 
+	<toolbarbutton href="index.jsp" label="点击重新登录"/>
+	</div>
+	</vbox>
+</window>

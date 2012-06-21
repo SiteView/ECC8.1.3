@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/src/com/siteview/ecc/report/syslogreport
+END
+SyslogReportGenericForwardComposer.java
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/src/com/siteview/ecc/report/syslogreport/SyslogReportGenericForwardComposer.java
+END
+SyslogQureyRecords.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/src/com/siteview/ecc/report/syslogreport/SyslogQureyRecords.java
+END
+SyslogDataSource.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/src/com/siteview/ecc/report/syslogreport/SyslogDataSource.java
+END
+QueryCondition.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/src/com/siteview/ecc/report/syslogreport/QueryCondition.java
+END

@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/svDCM/!svn/ver/4267/trunk/zk.ecc_zhongzubu/ecc/WebContent/main/alert
+END
+alert.zul
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/WebContent/main/alert/alert.zul
+END
+smsalert.zul
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/WebContent/main/alert/smsalert.zul
+END
+alertrulelist.zul
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/svDCM/!svn/ver/4123/trunk/zk.ecc_zhongzubu/ecc/WebContent/main/alert/alertrulelist.zul
+END
+scriptalert.zul
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/WebContent/main/alert/scriptalert.zul
+END
+alertruleloglist.zul
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/svDCM/!svn/ver/4167/trunk/zk.ecc_zhongzubu/ecc/WebContent/main/alert/alertruleloglist.zul
+END
+alertcondition.zul
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/WebContent/main/alert/alertcondition.zul
+END
+emailalert.zul
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/WebContent/main/alert/emailalert.zul
+END
+soundalert.zul
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/svDCM/!svn/ver/4090/trunk/zk.ecc_zhongzubu/ecc/WebContent/main/alert/soundalert.zul
+END

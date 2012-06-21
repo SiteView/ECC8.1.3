@@ -1,0 +1,40 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window id="editalertexpression" title="编辑报警条件" border="normal" width="600px" position="center"
+	apply="com.siteview.ecc.setmonitor.EditAlertExpression"	closable="true">
+		<hbox style="margin:5px 5px 5px 5px">
+			<label value="条件" />
+			<combobox id="expr" width="250px" readonly="true"/>
+			<combobox id="fh" width="60px" readonly="true"/>
+			<textbox id="v1"/>
+		</hbox>
+		<hbox style="margin:5px 5px 5px 5px">
+			<label value="关系" />
+			<radiogroup>
+				<radio id="rdy" label="与" checked="true" />
+				<radio id="rdh" label="或" />
+			</radiogroup>
+			<space width="380px"/>
+			<button label="添加" id="btnadd" width="60px"/>
+		</hbox>
+		<listbox id="lb1" style="margin:5px 5px 5px 5px" checkmark="true"
+			multiple="true">
+			<listhead sizable="true">
+				<listheader label="项目" width="40%" sort="none"></listheader>
+				<listheader label="操作符" width="15%" sort="none"></listheader>
+				<listheader label="值" sort="none"></listheader>
+				<listheader label="关系" width="10%" sort="none"></listheader>
+			</listhead>
+		</listbox>
+		<space orient="horizontal" height="30px"/>
+		<div style="float:right;margin-bottom:12px;margin-right:12px; " >
+			<button id="btndel" label="删除" sclass="btnDefault" width="60px" />
+			<button id="btnok" label="确定" sclass="btnDefault" width="60px"/>
+			<button id="btnclose"  label="取消" sclass="btnDefault" width="60px">
+				<attribute name="onClick">
+		       editalertexpression.detach();
+	  	      </attribute>
+			</button>
+		</div>
+	</window>
+</zk>

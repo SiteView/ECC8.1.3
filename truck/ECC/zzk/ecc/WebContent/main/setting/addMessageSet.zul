@@ -1,0 +1,79 @@
+<?page title="Test Mail" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window  title="添加手机号码设置" width="425px" height="" id="messageWin"  
+apply="com.siteview.ecc.message.SetMessage_add" closable="true" border="normal"
+forward="onCreate=onInit">
+
+
+			<groupbox style="margin-left:10px;margin-right:10px;margin-top:10px">
+	 			 <caption  label="手机号码信息"/>		
+					<grid oddRowSclass="none"  style="margin-top:5px;border:none">
+						<columns>
+							<column label="" width="6px"/>
+							<column label="" />
+							<column label="" />
+						</columns>
+						<rows >					
+							<row zclass="none" height="23px">
+							<space width="1px"/>
+								<label value="名称 * ：" />
+								<textbox id="name" value="" width="260px" height="15px" tooltiptext="请输入名称"/>
+							</row>
+							<row zclass="none" height="23px">
+							<space width="1px"/>
+								<label   value="接收手机号码 * ：" />
+								<textbox id="mobileNum" width="260px"  height="15px"  tooltiptext="请输入接收的手机号码"/>
+							</row>		
+							<row zclass="none" height="23px">
+							<space width="1px"/>
+								<label   value="" />
+								<checkbox label="禁止" id="hold" checked="false" tooltiptext="禁止该手机号码"/>
+							</row>					
+							<row zclass="none" height="23px">
+							<space width="1px"/>
+								<label   value="模板类型：" />
+								<combobox id="templateType" width="242px" forward="onSelect=onGetTemplatevalue" readonly="true" height="15px" tooltiptext="请选择模板类型">
+									<comboitem label="com"  value="com"/>
+									<comboitem label="web"  value="web"/>
+								</combobox>							
+							</row>		
+							<row zclass="none" height="23px">
+							<space width="1px"/>
+								<label   value="信息模板 * ：" id="messageTemplateLink"/>
+								<combobox id="messageTemplater"  width="242px" readonly="true" height="15px" tooltiptext="请选择短信模板">
+								</combobox>								
+							</row>	
+							<row zclass="none" height="23px">
+							<space width="1px"/>
+								<label value="任务计划类型：" />
+								<combobox id="taskType" width="242px" forward="onSelect=onGetTaskvalue" readonly="true" height="15px" tooltiptext="请选择任务计划类型">
+									<comboitem label="绝对时间任务计划"  value="1"/>
+									<comboitem label="时间段任务计划"  value="2"/>
+									<comboitem label="相对时间任务计划"  value="3"/>
+								</combobox>
+							</row>							
+							<row zclass="none" height="23px">
+							<space width="1px"/>
+								<label value="任务计划 * ：" id="taskLink"/>
+								<combobox id="taskPlan" width="242px" readonly="true" height="15px" tooltiptext="请选择任务计划">		
+								</combobox>
+							</row>																									
+						</rows>
+					</grid>	
+	 		</groupbox>		
+					<hbox   style="margin-top:10px;margin-bottom:10px">
+					<space width="240px"/>
+							<button sclass="btnDefault" width="74px" height="23px" image="/main/images/button/ico/save_bt.gif"  label="保存"		forward="onClick=onSave" />
+				
+							<button sclass="btnDefault" width="74px" height="23px" image="/main/images/button/ico/close_bt.gif" label="取消"		forward="onClick=onReFresh" />
+
+					</hbox>	
+</window>	
+
+	<popup id="myPhone" width="200px">
+		<html>
+			(&lt;font color="#FFA500" &gt; 电话号码格式：139-88888888&lt;/font&gt;)
+		</html>
+	</popup>
+				   						   
+</zk>

@@ -1,0 +1,2 @@
+ <window id="createReportIframeWindow" border="normal" apply="com.siteview.ecc.report.statisticalreport.StatisticalReportGenericForwardComposer">
+ </window>

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VisioDocument>
+	<DocumentProperties>
+		<Title/>
+		<HyperlinkBase href=""/>
+	</DocumentProperties>
+	<Pages>
+		<Page ID="0" Name="页-1" NameU="Page-1">
+			<Layer IX="0">
+				<Name>连接线</Name>
+				<NameUniv>Connector</NameUniv>
+				<Visible>1</Visible>
+			</Layer>
+			<Shapes>
+				<Shape ID="475" Name="Sheet.475" NameU="Sheet.475" UniqueID="{7B808ABD-9E4F-4BE6-AEFD-FC6D0645E2F5}">
+					<XForm>
+						<PinX Unit="MM">5.511811023622046</PinX>
+						<PinY Unit="MM">4.234713432693800</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="149" Name="Sheet.149" NameU="Sheet.149" UniqueID="{9B8E0FAA-00C3-42B0-AFBD-BA1335E1735C}">
+					<XForm>
+						<PinX Unit="MM">9.799040099912013</PinX>
+						<PinY Unit="MM">3.453826508417650</PinY>
+					</XForm>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									
+									
+								<HLURL:Hyperlink ID="0"><HLURL:Description>SV_Group:江西</HLURL:Description><HLURL:Address>#</HLURL:Address><HLURL:SubAddress/><HLURL:AbsoluteURL>#</HLURL:AbsoluteURL><HLURL:ExtraInfo/><HLURL:Default/><HLURL:Status>-100</HLURL:Status><HLURL:NewWindow>0</HLURL:NewWindow></HLURL:Hyperlink></HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+					<Prop ID="1" Name="SV_Group" NameU="SV_Group">
+						<Value Unit="STR">江西</Value>
+						<Label>SV_Group</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="124" Name="Sheet.124" NameU="Sheet.124" UniqueID="{802628E9-8274-4D61-B1C5-742AA724AE53}">
+					<XForm>
+						<PinX Unit="MM">6.044420792052436</PinX>
+						<PinY Unit="MM">7.576789279545185</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="473" Name="Sheet.473" NameU="Sheet.473" UniqueID="{3FCEC981-BD2F-49F3-8200-295D9509308D}">
+					<Text>台湾</Text>
+					<XForm>
+						<PinX Unit="MM">11.374234470691164</PinX>
+						<PinY Unit="MM">2.653825344200396</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="71" Name="Sheet.71" NameU="Sheet.71" UniqueID="{AD24D320-0B7C-490C-AE33-8D51E7EA626F}">
+					<Text>湖南</Text>
+					<XForm>
+						<PinX Unit="MM">8.070866141732283</PinX>
+						<PinY Unit="MM">3.266130796150481</PinY>
+					</XForm>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									
+									
+								<HLURL:Hyperlink ID="0"><HLURL:Description>Go To Page:湖南</HLURL:Description><HLURL:Address>../showtuopu.zul?name=hunan</HLURL:Address><HLURL:SubAddress/><HLURL:AbsoluteURL>../showtuopu.zul?name=hunan</HLURL:AbsoluteURL><HLURL:ExtraInfo/><HLURL:Default/><HLURL:Status>3</HLURL:Status><HLURL:NewWindow>3</HLURL:NewWindow></HLURL:Hyperlink></HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+					<Prop ID="1" Name="SV_Link" NameU="SV_Link">
+						<Value Unit="STR">hunan$湖南</Value>
+						<Label>属性1</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="75" Name="Sheet.75" NameU="Sheet.75" UniqueID="{DD5B8649-7CD9-46CF-BB8D-0695250CD1FB}">
+					<Text>湖北</Text>
+					<XForm>
+						<PinX Unit="MM">8.020231846019247</PinX>
+						<PinY Unit="MM">4.017333770778652</PinY>
+					</XForm>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									
+									
+								<HLURL:Hyperlink ID="0"><HLURL:Description>Go To Page:湖北</HLURL:Description><HLURL:Address>../showtuopu.zul?name=hubei</HLURL:Address><HLURL:SubAddress/><HLURL:AbsoluteURL>../showtuopu.zul?name=hubei</HLURL:AbsoluteURL><HLURL:ExtraInfo/><HLURL:Default/><HLURL:Status>3</HLURL:Status><HLURL:NewWindow>3</HLURL:NewWindow></HLURL:Hyperlink></HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+					<Prop ID="1" Name="SV_Link" NameU="SV_Link">
+						<Value Unit="STR">hubei$湖北</Value>
+						<Label>属性1</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="2" Name="Sheet.2" NameU="Sheet.2" UniqueID="{588502CD-EAB5-449A-A92A-771B932F7701}">
+					<Text>河南</Text>
+					<XForm>
+						<PinX Unit="MM">8.335192475940508</PinX>
+						<PinY Unit="MM">4.644083552055993</PinY>
+					</XForm>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									
+									
+								<HLURL:Hyperlink ID="0"><HLURL:Description>Go To Page:河南</HLURL:Description><HLURL:Address>../showtuopu.zul?name=henan</HLURL:Address><HLURL:SubAddress/><HLURL:AbsoluteURL>../showtuopu.zul?name=henan</HLURL:AbsoluteURL><HLURL:ExtraInfo/><HLURL:Default/><HLURL:Status>1</HLURL:Status><HLURL:NewWindow>3</HLURL:NewWindow></HLURL:Hyperlink></HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+					<Prop ID="1" Name="SV_Link" NameU="SV_Link">
+						<Value Unit="STR">henan$河南</Value>
+						<Label>属性1</Label>
+					</Prop>
+				</Shape>
+			</Shapes>
+		</Page>
+	</Pages>
+</VisioDocument>

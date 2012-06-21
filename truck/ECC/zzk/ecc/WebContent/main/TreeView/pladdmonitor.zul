@@ -1,0 +1,28 @@
+<?page title="批量添加监测器" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window id="Wpladdmonitor" title="批量添加监测器" border="normal"
+		width="600px" closable="true" position="center"
+		apply="com.siteview.ecc.treeview.windows.PLAddMonitor">
+		<panel>
+		 <!-- style="margin:5px 5px 5px 5px;overflow-y:auto;max-height:400px;" -->
+			<panelchildren id="pc"
+				>
+				<listbox id="lbmonitor" checkmark="true"
+					fixedLayout="true" multiple="true">
+					<listhead>
+						<listheader label="监测器名称"></listheader>
+					</listhead>
+				</listbox>
+				<space orient="horizontal" />
+				<separator height="20px" bar="true" />
+			</panelchildren>
+		</panel>
+		<div
+			style="float:right;margin-bottom:12px;margin-right:12px; ">
+			<button id="btnok" label="保存" width="74px" height="23px"
+				image="/main/images/button/ico/save_bt.gif" sclass="btnDefault" />
+			<button id="btnclose" label="取消" width="74px" height="23px"
+				image="/main/images/button/ico/close_bt.gif" sclass="btnDefault" />
+		</div>
+	</window>
+</zk>

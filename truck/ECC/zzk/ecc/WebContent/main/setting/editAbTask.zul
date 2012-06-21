@@ -1,0 +1,103 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window id="editAbTask" border="normal" closable="true"
+		width="350px" apply="com.siteview.ecc.tasks.EditAbTask"
+		forward="onCreate=onInit">
+		<tabbox>
+			<tabs>
+				<tab label="基本" />
+				<tab label="描述" />
+			</tabs>
+			<tabpanels>
+				<tabpanel>
+					<grid>
+						<columns>
+							 <column label="" width="6px"/>
+							<column label="" />
+							<column label="" />
+						</columns>
+						<rows>
+							<row zclass="none" height="23px"><space width="1px"/>
+								<label value="任务计划名称 *：" />
+								<textbox width="180px" id="nameTextbox" height="15px" />
+							</row>
+							<row zclass="none" height="23px"><space width="1px"/>
+								<label value="星期日" />
+								<hbox align="center">
+									<checkbox label="允许" id="cb0" />
+									<timebox width="80px" id="tb0" height="15px" />
+								</hbox>
+							</row>
+							<row zclass="none" height="23px"><space width="1px"/>
+								<label value="星期一" />
+								<hbox align="center">
+									<checkbox label="允许" id="cb1" />
+									<timebox width="80px" id="tb1" height="15px"/>
+								</hbox>
+							</row>
+							<row zclass="none" height="23px"><space width="1px"/>
+								<label value="星期二" />
+								<hbox align="center">
+									<checkbox label="允许" id="cb2" />
+									<timebox width="80px" id="tb2" height="15px"/>
+								</hbox>
+							</row>
+							<row zclass="none" height="23px"><space width="1px"/>
+								<label value="星期三" />
+								<hbox align="center">
+									<checkbox label="允许" id="cb3" />
+									<timebox width="80px" id="tb3" height="15px"/>
+								</hbox>
+							</row>
+							<row zclass="none" height="23px"><space width="1px"/>
+								<label value="星期四" />
+								<hbox align="center">
+									<checkbox label="允许" id="cb4" />
+									<timebox width="80px" id="tb4" height="15px"/>
+								</hbox>
+							</row>
+							<row zclass="none" height="23px"><space width="1px"/>
+								<label value="星期五" />
+								<hbox align="center">
+									<checkbox label="允许" id="cb5" />
+									<timebox width="80px" id="tb5" height="15px"/>
+								</hbox>
+							</row>
+							<row zclass="none" height="23px"><space width="1px"/>
+								<label value="星期六" />
+								<hbox align="center">
+									<checkbox label="允许" id="cb6" />
+									<timebox width="80px" id="tb6" height="15px"/>
+								</hbox>
+							</row>
+						</rows>
+
+					</grid>
+				</tabpanel>
+				<tabpanel>
+				<grid zclass="none">
+						<columns>
+							<column label="" />
+							<column label="" />
+						</columns>
+						<rows>
+							<row zclass="none">
+								<label value="描述：" />
+								<textbox width="280px" multiline="true"
+									id="description" height="180px"/>
+							</row>
+						</rows>
+					</grid>
+				
+					
+				</tabpanel>
+			</tabpanels>
+		</tabbox>
+		<hbox align="center" style="margin-left:52%;margin-top:3px;margin-bottom:3px" >
+			<button label="保存" width="74px" height="23px" image="/main/images/button/ico/save_bt.gif" sclass="btnDefault"
+				forward="onClick=onApply" />
+			<button label="取 消" sclass="btnDefault" width="74px" height="23px" image="/main/images/button/ico/close_bt.gif"
+				onClick="editAbTask.detach()" />
+		</hbox>
+	</window>
+</zk>

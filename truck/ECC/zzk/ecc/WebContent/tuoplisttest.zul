@@ -1,0 +1,58 @@
+<?page title="拓扑视图" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<panel height="300px" title="tuopulisttest2" border="normal" collapsible="true" style="margin-top:20px;margin-bottom:20px">
+		<panelchildren>
+		<listbox id="box" fixedLayout="true" multiple="true" checkmark="true">
+			<listhead>
+				<listheader label="Name"/>
+				<listheader label="Gender"/>
+				<listheader label="Age"/>
+				<listheader label="Description"/>
+			</listhead>
+			<listitem>
+				<listcell label="Mary"/>
+				<listcell label="FEMALE"/>
+				<listcell label="18"/>
+				<listcell label="A young lady."/>
+			</listitem>
+			<listitem>
+				<listcell label="John"/>
+				<listcell label="MALE"/>
+				<listcell label="20"/>
+				<listcell label="A college student."/>
+			</listitem>
+			<listitem>
+				<listcell label="Jane"/>
+				<listcell label="FEMALE"/>
+				<listcell label="32"/>
+				<listcell label="A remarkable artist."/>
+			</listitem>
+			<listitem>
+				<listcell label="Henry"/>
+				<listcell label="MALE"/>
+				<listcell label="29"/>
+				<listcell label="A graduate."/>
+			</listitem>
+		</listbox>	
+		</panelchildren>
+	</panel>
+	
+	<panel height="150px" title="tuopulisttest1" border="normal" collapsible="true"  style="margin-bottom:20px">
+		<panelchildren>
+			test1
+		</panelchildren>
+	</panel>	
+	<zscript>
+		List items = new org.zkoss.zkdemo.userguide.BigList(1000); //a big list of Integer
+	</zscript>
+	<listbox id="listbox" mold="paging">
+		<listitem forEach="&#36;{items}">
+		<listcell label="&#36;{each}-1"/>
+		<listcell label="&#36;{each}-2"/>
+		<listcell label="&#36;{each}-3"/>
+		<listcell label="&#36;{each}-4"/>
+		</listitem>
+	</listbox>
+
+
+</zk>
