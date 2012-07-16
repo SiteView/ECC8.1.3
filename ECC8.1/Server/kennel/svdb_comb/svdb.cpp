@@ -4127,7 +4127,7 @@ BOOL WINAPI ConsoleHandler(DWORD CEvent)
 #endif
 
 unsigned short g_port=8600;
-#include "QueryData.h"
+#include <QueryData.h>
 bool tryGetAllResourceInfo(void)
 {
 	SVDBQUERY querybuf={0};

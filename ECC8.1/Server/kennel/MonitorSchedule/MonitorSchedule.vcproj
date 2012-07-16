@@ -23,7 +23,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\svdb\include;..\svdb\w32;..\svdb\svapi;..\svdb"
+				AdditionalIncludeDirectories="../../include; ../../include/w32;..\svdb_comb\svapi;..\svdb_comb"
 				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE"
 				MinimalRebuild="TRUE"
 				BasicRuntimeChecks="3"
@@ -37,9 +37,9 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="ccgnu2.lib ccext2.lib svapi.lib ws2_32.lib libutil.lib"
-				OutputFile="..\..\bin\kennel\MonitorSchedule.exe"
+				OutputFile="C:\\SiteView\\SiteViewECC\\fcgi-bin\\MonitorSchedule.exe"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="..\..\bin\kennel"
+				AdditionalLibraryDirectories="..\..\lib"
 				GenerateDebugInformation="TRUE"
 				ProgramDatabaseFile="$(OutDir)/MonitorSchedule.pdb"
 				SubSystem="1"
@@ -67,14 +67,14 @@
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory="..\Release"
-			IntermediateDirectory="..\Release"
+			OutputDirectory="Release"
+			IntermediateDirectory="Release"
 			ConfigurationType="1"
 			CharacterSet="2">
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/GX- /EHsc"
-				AdditionalIncludeDirectories="..\svdb;..\svdb\include;..\svdb\w32;..\svdb\svapi"
+				AdditionalIncludeDirectories="../../include; ../../include/w32;..\svdb_comb\svapi;..\svdb_comb"
 				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE"
 				RuntimeLibrary="2"
 				UsePrecompiledHeader="0"
@@ -87,9 +87,9 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="ccgnu2.lib ccext2.lib svapi.lib ws2_32.lib libutil.lib"
-				OutputFile="..\..\bin\kennel\MonitorSchedule.exe"
+				OutputFile="..\..\bin\MonitorSchedule.exe"
 				LinkIncremental="1"
-				AdditionalLibraryDirectories="..\..\bin\kennel"
+				AdditionalLibraryDirectories="..\..\lib"
 				GenerateDebugInformation="TRUE"
 				GenerateMapFile="TRUE"
 				SubSystem="1"

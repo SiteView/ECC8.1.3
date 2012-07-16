@@ -23,7 +23,7 @@ public:
 
 		}catch(ost::Socket *sock)
 		{
-			puts("exception happen");
+			puts("socket exception happen");
 			printf("error number:%d\n",sock->getErrorNumber());
 			printf("system error number:%d\n",::WSAGetLastError());
 		//	puts(sock->getErrorString());
@@ -55,10 +55,43 @@ public:
 
 		}catch(ost::Socket *sock)
 		{
-			puts("exception happen");
+			puts("socket exception happen");
 			printf("system error number:%d\n",::WSAGetLastError());
 		//	puts(sock->getErrorString());
 		}
+		return 0;
+	}
+
+	size_t ReadDataWithTimeOut(void *Target, size_t Size, char Separator, timeout_t timeout)
+	{
+		try{
+			char *pt=(char*)Target;
+			size_t len=0;
+			while(len<Size)
+			{
+	//			printf("in recv\n");
+				size_t err=0;
+				err= readData(pt,Size-len,Separator,timeout);
+				if(err<=0)
+				{
+					return err;
+				}
+			
+				len+=err;
+				pt+=err;
+
+		//		printf("Size :%d,len :%d,err :%d\n",Size,len,err);
+			}
+
+			return Size;
+
+		}catch(ost::Socket *sock)
+		{
+			puts("socket exception happen");
+			printf("system error number:%d\n",::WSAGetLastError());
+		//	puts(sock->getErrorString());
+		}
+		return 0;
 	}
 
 	bool SConnect(const IPV4Host &host,tpport_t port,size_t size=512);

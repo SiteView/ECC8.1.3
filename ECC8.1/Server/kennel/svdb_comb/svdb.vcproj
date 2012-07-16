@@ -23,7 +23,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="./include; ./w32"
+				AdditionalIncludeDirectories=".\;.\svapi\;../../include; ../../include/w32"
 				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE"
 				MinimalRebuild="TRUE"
 				BasicRuntimeChecks="3"
@@ -37,9 +37,9 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="libutil.lib ccgnu2.lib ccext2.lib ws2_32.lib"
-				OutputFile="../../bin/kennel/svdb1_d.exe"
+				OutputFile="../../bin/svdb_comb.exe"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="../../bin/kennel"
+				AdditionalLibraryDirectories="../../lib"
 				GenerateDebugInformation="TRUE"
 				ProgramDatabaseFile="$(OutDir)/svdb.pdb"
 				SubSystem="1"
@@ -73,7 +73,7 @@
 			CharacterSet="2">
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="./;./include; ./w32;./svapi;../../../ice/Ice-3.2.0-VC71/include"
+				AdditionalIncludeDirectories=".\;.\svapi\;../../include; ../../include/w32"
 				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE"
 				RuntimeLibrary="2"
 				UsePrecompiledHeader="0"
@@ -86,9 +86,9 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="libutil.lib ccgnu2.lib ccext2.lib ws2_32.lib"
-				OutputFile="../../bin/kennel/svdb1.exe"
+				OutputFile="../../bin/svdb_comb.exe"
 				LinkIncremental="1"
-				AdditionalLibraryDirectories="./lib;../../bin/kennel;..\..\opens\common\common\w32\Release;../../../ice/Ice-3.2.0-VC71/lib"
+				AdditionalLibraryDirectories="../../lib"
 				GenerateDebugInformation="TRUE"
 				GenerateMapFile="TRUE"
 				SubSystem="1"

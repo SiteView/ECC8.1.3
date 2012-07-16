@@ -18,8 +18,10 @@ static ost::Mutex g_InsertMQLock;
 static CString g_SVMQAddress="127.0.0.1";
 
 CString Util::g_strSession="Refresh";
-
+string Util::szServer = "", Util::szPort = "";
 std::list<SingelRecord> Util::listrcd;
+typedef bool (*SendMsg)(string szId, string szText, string szServer, string szPort, string &szErrorMsg);
+static SendMsg sendmsg = NULL;
 
 
 Util::Util()
@@ -27,6 +29,7 @@ Util::Util()
 //	strRootPath[0]='\0';
 //	m_hResLibrary=NULL;
        g_SVMQAddress=GetSVMQAddress();
+	  // Init();
        
 }
 
@@ -80,6 +83,26 @@ CString Util::GetRootPath()
 
 BOOL Util::Init()
 {
+
+	puts("ddddddddddddddddddddsgggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg");
+	CString strPath="";
+
+	//strPath=GetRootPath();
+	if(strPath.IsEmpty())
+		throw MSException("RootPath is empty");
+
+	//strcpy(strRootPath,(LPCSTR)strPath);
+
+	strPath.Format("%s\\fcgi-bin\\MonitorScheduleWeb.dll",GetRootPath());
+
+	HMODULE m_hWebDll=::LoadLibrary(strPath);
+	if(m_hWebDll==NULL)
+		throw MSException("Load MonitorScheduleWeb.dll failed");
+	sendmsg = (SendMsg)::GetProcAddress(m_hWebDll, "SendMsg");
+	if(sendmsg == NULL)
+	{
+		puts("  获取dll函数失败, Failed to GetProcAddress: MonitorScheduleWeb.dll 's SendMsg;  ");
+	}
 
 //	CString strPath=_T("");
 
@@ -284,6 +307,49 @@ bool Util::InsertSvdb(string tablename,const char *pdata,int datalen)
 
 	return bret;
 
+}
+
+bool Util::SendMsgToWsServer(string szId, string szText)
+{
+	bool bRet = true;
+	string errorMsg = "";
+	if(sendmsg == NULL)
+	{
+		//Init();
+		char buf[1024]={0};
+		sprintf(buf,"%s/fcgi-bin/MonitorScheduleWeb.dll",GetRootPath().getText());
+		//strPath = ".\\MonitorScheduleWeb.dll";
+		//puts(strPath);
+		HMODULE m_hWebDll=::LoadLibrary(buf);
+		if(m_hWebDll==NULL)
+			throw MSException("Load MonitorScheduleWeb.dll failed");
+		sendmsg = (SendMsg)::GetProcAddress(m_hWebDll, "SendMsg");
+		if(sendmsg == NULL)
+		{
+			puts("  获取dll函数失败, Failed to GetProcAddress: MonitorScheduleWeb.dll 's SendMsg;  ");
+		}
+
+		sprintf(buf,"%s/fcgi-bin/WebECC.ini",GetRootPath().getText());
+		INIFile inf=LoadIni(buf);
+		szServer=GetIniSetting(inf,"WebECC","WebService","");
+		szPort=GetIniSetting(inf,"WebECC","WebPort","");
+		//puts(szServer.c_str());
+		//puts(szPort.c_str());
+	}
+	
+
+	bRet = sendmsg(szId, szText, szServer, szPort, errorMsg);
+	if(bRet)
+	{
+		puts("sendmsg sucess\n");
+	}
+	else
+	{
+		puts("sendmsg failed\n");
+		puts(errorMsg.c_str());
+	}
+		
+	return bRet;
 }
 
 /*String Util::GetStringByID(UINT strid)

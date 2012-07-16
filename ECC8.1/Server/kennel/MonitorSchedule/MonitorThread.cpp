@@ -1439,7 +1439,12 @@ void MonitorThread::ProcessResultV70(void)
 	strcpy(pt,(char *)m_strDisplay);
 	dlen+=strlen((char *)m_strDisplay)+1;
 
-	printf("MonitorId:%s,MonitorType:%d,state:%d,dstr:%s\n",m_Monitor->GetMonitorID(),m_Monitor->GetMonitorType(),m_MonitorState,(char *)m_strDisplay);
+	CString strResult="";
+
+	strResult.Format(2048,"MonitorId:%s,MonitorType:%d,state:%d,dstr:%s\n",m_Monitor->GetMonitorID(),m_Monitor->GetMonitorType(),m_MonitorState,(char *)m_strDisplay);
+
+	//printf("MonitorId:%s,MonitorType:%d,state:%d,dstr:%s\n",m_Monitor->GetMonitorID(),m_Monitor->GetMonitorType(),m_MonitorState,(char *)m_strDisplay);
+	printf("Send to Ws:%s", strResult);
 
 //	puts((char *)m_strDisplay);
 //	const char *ps=m_Monitor->GetMonitorID();
@@ -1461,11 +1466,13 @@ void MonitorThread::ProcessResultV70(void)
 		string text="Refresh ,PushMessage f: \"";
 		text+=g_RefreshQueueName + "\"";
 		if(!::PushMessage(g_RefreshQueueName,"Refresh_OK",buf,strlen(buf)+1,"default",g_QueueAddr))
-			;//putil->ErrorLog(text.c_str());
+			putil->ErrorLog(text.c_str());
 	}
-
 	
+
+	putil->SendMsgToWsServer(m_Monitor->GetMonitorID(), strResult.GetBuffer(0));
 }
+
 void MonitorThread::ProcessResult()
 {
 	CString strResult="",
@@ -1489,9 +1496,10 @@ void MonitorThread::ProcessResult()
 		m_RetBuf,
 		(char *)m_strDisplay);
 
-		
 	puts(strResult);
 	puts(m_strDisplay);
+
+	putil->SendMsgToWsServer(m_Monitor->GetMonitorID(), strResult.GetBuffer(0));
 
 /*	puts("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
 	puts(strResult);

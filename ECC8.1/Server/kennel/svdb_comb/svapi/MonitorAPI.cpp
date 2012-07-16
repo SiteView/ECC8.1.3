@@ -404,7 +404,7 @@ string AddNewMonitor(OBJECT monitorobj,string entityid,string user,string addr)
 {
 	if(monitorobj==INVALID_VALUE)
 		return "";
-	if(user.empty()||addr.empty())
+	if(user.empty()||addr.empty()||entityid.empty())
 		return "";
 
 	try{
@@ -437,20 +437,47 @@ string AddNewMonitor(OBJECT monitorobj,string entityid,string user,string addr)
 
 	return "";
 }
-SVAPI_API
-string MonitorCopy(string srcmonitorid,string objentityid,string user,string addr)
+
+
+
+string MonitorCopyGeneral(bool bCreatTable,string srcmonitorid,string objentityid,string user,string addr)
 {
 	if(srcmonitorid.empty()||objentityid.empty()||user.empty()||addr.empty())
 		return "";
 
-	OBJECT monitorobj=GetMonitor(srcmonitorid,user,addr);
+	OBJECT monitorobj= GetMonitor(srcmonitorid,user,addr);
 	if(monitorobj==INVALID_VALUE)
 		return "";
 
 	string nid=AddNewMonitor(monitorobj,objentityid,user,addr);
-
+	if( bCreatTable && !nid.empty() )
+	{
+		MAPNODE ma= GetMonitorMainAttribNode(monitorobj);
+		string value;
+		FindNodeValue(ma,"sv_monitortype",value);
+		int mid= atoi(value.c_str());
+		if(mid>0)
+			InsertTable(nid,mid,user,addr);
+	}
 	CloseMonitor(monitorobj);
 	return nid;
-
-
 }
+
+
+
+SVAPI_API
+string MonitorCopyAndCreateTable(string srcmonitorid,string objentityid,string user,string addr)
+{
+	return MonitorCopyGeneral(true,srcmonitorid,objentityid,user,addr);
+}
+
+
+SVAPI_API
+string MonitorCopy(string srcmonitorid,string objentityid,string user,string addr)
+{
+	return MonitorCopyGeneral(false,srcmonitorid,objentityid,user,addr);
+}
+
+
+
+

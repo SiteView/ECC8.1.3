@@ -372,7 +372,7 @@ string AddNewGroup(OBJECT groupobj,string pid,string user,string addr)
 {
 	if(groupobj==INVALID_VALUE)
 		return "";
-	if(user.empty()||addr.empty())
+	if(user.empty()||addr.empty()||pid.empty())
 		return "";
 
 	try{

@@ -119,6 +119,25 @@ unsigned int GetNodeSize(MAPNODE node)
 	return 0;
 }
 
+
+SVAPI_API 
+bool	ClearMapNode(MAPNODE node)
+{
+	if(node==INVALID_VALUE)
+		return false;
+
+	try{
+		StringMap *pmap= reinterpret_cast< StringMap * >(node);
+		pmap->clear();
+		return true;
+	}catch(...)
+	{
+		puts("Exception to ClearMapNode");
+	}
+	return false;
+}
+
+
 SVAPI_API 
 MAPNODE FindNext(const LISTITEM &item)
 {
@@ -1074,6 +1093,73 @@ bool EditIniFileKey(string section,string oldkey,string newkey,string filename,s
 
 
 SVAPI_API
+bool GetSvIniFileBySections( SvIniFile & inifile, string filename, string sections, string addr, string user)
+{
+	if(sections.empty()||filename.empty()||addr.empty()|| user.empty())
+		return false;
+
+	QueryData qd;
+	char *pdata=NULL;
+	S_UINT rlen=0;
+
+	S_UINT len=0;
+
+	SVDBQUERY querybuf={0};
+	querybuf.len = sizeof(SVDBQUERY);
+	querybuf.querytype=QUERY_GET;
+	querybuf.datatype=S_INIFILE;
+	strcpy(querybuf.qstr,filename.c_str());
+	strcpy(querybuf.idcuser,user.c_str());
+
+	INIQUERY iquery={0};
+	iquery.len=sizeof(INIQUERY);
+	iquery.datatype=QUERY_FAST_GET;
+	iquery.datalen=sections.size()+1;
+
+	len+=sizeof(INIQUERY);
+	len+=sections.size()+1;
+
+	querybuf.datalen=len;
+
+	buffer buf;
+	if(!buf.checksize(len))
+		return false;
+	char *pt=buf.getbuffer();
+	memcpy(pt,&iquery,sizeof(INIQUERY));
+	pt+=sizeof(INIQUERY);
+	strcpy(pt,sections.c_str());
+	pt+=sections.size();
+	pt[0]='\0';
+
+
+	if(qd.Query(&querybuf,buf,len,(void **)&pdata,rlen,addr))
+	{
+		try{
+			std::list<SingelRecord> listrcd2;
+			std::list<SingelRecord>::iterator lit;
+			if( CreateMassRecordListByRawData(listrcd2,pdata,rlen) )
+			{
+				for(lit=listrcd2.begin(); lit!=listrcd2.end(); ++lit)
+				{
+					NodeData ndata;
+					CreateNodeDataByRawData(ndata, lit->data ,lit->datalen);
+					inifile.insert(std::make_pair( lit->monitorid,ndata));					
+				}
+				if(pdata!=NULL)
+					delete [] pdata;
+				return true;
+			}
+		}catch(...)
+		{
+			printf("Exception to GetSvIniFileBySections.");
+		}		
+	}
+	if(pdata!=NULL)
+		delete [] pdata;
+	return false;
+}
+
+SVAPI_API
 MAPNODE CloneMapNode(MAPNODE node)
 {
 	if(node==INVALID_VALUE)
@@ -1107,4 +1193,57 @@ MAPNODE CloneMapNode(MAPNODE node)
 
 }
 
+SVAPI_API
+bool WriteIniSectionManyString(const NodeData & ndata, string section, string filename, string addr,string user)
+{
+	if(section.empty()||filename.empty()||addr.empty()|| user.empty())
+		return false;
+	if((section.size()>MAXSECTIONLEN)||(filename.size()>MAXQUEREYSTRINGLEN))
+		return false;
+	if(ndata.empty())
+		return false;
+
+	NodeData & ndata1= const_cast< NodeData & >( ndata );
+	unsigned int tlen= GetNodeDataRawDataSize(ndata1);
+	svutil::buffer tbuf;
+	if(!tbuf.checksize(tlen))
+		return false;
+	const char *data= GetNodeDataRawData(ndata1,tbuf,tlen); 
+	if(data==NULL)
+		return false;
+
+
+	S_UINT len=0;
+
+	SVDBQUERY querybuf={0};
+	querybuf.len = sizeof(SVDBQUERY);
+	querybuf.querytype=QUERY_UPDATE;
+	querybuf.datatype=S_INIFILE;
+	strcpy(querybuf.qstr,filename.c_str());
+	strcpy(querybuf.idcuser,user.c_str());
+
+	INIQUERY iquery={0};
+	iquery.len=sizeof(INIQUERY);
+	strcpy(iquery.section,section.c_str());
+	iquery.datatype=QUERY_UPDATE_MASS;
+	iquery.datalen=tlen;
+
+
+	len+=sizeof(INIQUERY);
+	len+=tlen;
+
+	querybuf.datalen=len;
+
+	buffer buf;
+	if(!buf.checksize(len))
+		return false;
+	char *pt=buf.getbuffer();
+	memmove(pt,&iquery,sizeof(INIQUERY));
+	pt+=sizeof(INIQUERY);
+	memmove(pt,data,tlen);
+
+	QueryData qd;
+	SVDBRESULT ret={0};
+	return qd.Update(&querybuf,buf,len,&ret,addr);
+}
 

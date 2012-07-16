@@ -253,7 +253,7 @@ string AddNewEntity(OBJECT entityobj,string groupid,string user,string addr)
 {
 	if(entityobj==INVALID_VALUE)
 		return "";
-	if(user.empty()||addr.empty())
+	if(user.empty()||addr.empty()||groupid.empty())
 		return "";
 	try{
 		Entity *pmtp=reinterpret_cast<Entity *>(entityobj);
@@ -345,13 +345,12 @@ bool SubmitEntity(OBJECT entityobj,string user,string addr)
 
 }
 
-SVAPI_API
-string EntityCopy(string srcentityid,string objgroupid,string user,string addr)
+string EntityCopyGeneral(bool bCreatTable,string srcentityid,string objgroupid,string user,string addr)
 {
 	if(srcentityid.empty()||objgroupid.empty()||user.empty()||addr.empty())
 		return "";
 
-	OBJECT entityobj=GetEntity(srcentityid,user,addr);
+	OBJECT entityobj= GetEntity(srcentityid,user,addr);
 	if(entityobj==INVALID_VALUE)
 		return "";
 
@@ -377,7 +376,12 @@ string EntityCopy(string srcentityid,string objgroupid,string user,string addr)
 
 		std::list<string>::iterator lit;
 		for(lit=mlist.begin();lit!=mlist.end();lit++)
-			MonitorCopy((*lit),eid);
+		{
+			if( bCreatTable )
+				MonitorCopyAndCreateTable((*lit),eid,user,addr);
+			else
+				MonitorCopy((*lit),eid,user,addr);
+		}
 
 		return eid;
 		
@@ -388,9 +392,19 @@ string EntityCopy(string srcentityid,string objgroupid,string user,string addr)
 	}
 
 	return "";
+}
 
 
+SVAPI_API
+string EntityCopyAndCreateTable(string srcentityid,string objgroupid,string user,string addr)
+{
+	return EntityCopyGeneral(true,srcentityid,objgroupid,user,addr);
+}
 
+SVAPI_API
+string EntityCopy(string srcentityid,string objgroupid,string user,string addr)
+{
+	return EntityCopyGeneral(false,srcentityid,objgroupid,user,addr);
 }
 
 

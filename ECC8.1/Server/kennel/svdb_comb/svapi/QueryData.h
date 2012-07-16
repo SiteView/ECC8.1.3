@@ -29,23 +29,30 @@ public:
 	}
 
 	bool	Query(LPSVDBQUERY lpquery,void **pret,S_UINT &len,string addr="localhost");
+	bool	QueryWithTimeOut(LPSVDBQUERY lpquery,void **pret,S_UINT &len,string addr="localhost");
 	bool	Query(LPSVDBQUERY lpquery,const char *pdata,S_UINT len,void **pret,S_UINT &rlen,string addr="localhost");
+	bool	QueryWithTimeOut(LPSVDBQUERY lpquery,const char *pdata,S_UINT len,void **pret,S_UINT &rlen,string addr="localhost");
 	bool	Query(LPSVDBQUERY lpquery,LPINIQUERY lpiniquery,void **pret,S_UINT &len,string addr="localhost");
 	bool	Query(LPSVDBQUERY lpquery,LPDBQUERY lpdbquery,void **pret,S_UINT &len,string addr="localhost");
 	bool	Update(LPSVDBQUERY lpquery,const char *pdata,S_UINT len,LPSVDBRESULT ret,string addr="localhost");
+	bool	UpdateWithTimeOut(LPSVDBQUERY lpquery,const char *pdata,S_UINT len,LPSVDBRESULT ret,string addr="localhost");
 protected:
 	bool	QueryByPipe(LPSVDBQUERY lpquery,void **pret,S_UINT &len,string addr,S_UINT timeout=-1);
 	bool	QueryByPipe(LPSVDBQUERY lpquery,const char *pdata,S_UINT len,void **pret,S_UINT &rlen,string addr,S_UINT timeout=-1);
 	bool	QueryByPipe(LPSVDBQUERY lpquery,LPINIQUERY lpiniquery,void **pret,S_UINT &len,string addr,S_UINT timeout=-1);
 	bool	QueryByPipe(LPSVDBQUERY lpquery,LPDBQUERY lpdbquery,void **pret,S_UINT &len,string addr,S_UINT timeout=-1);
+	
 	bool	QueryBySocket(LPSVDBQUERY lpquery,void **pret,S_UINT &len,string addr,S_UINT timeout=-1);
+	bool	QueryBySocketWithTimeOut(LPSVDBQUERY lpquery,void **pret,S_UINT &len,string addr,S_UINT timeout);
 	bool	QueryBySocket(LPSVDBQUERY lpquery,const char *pdata,S_UINT len,void **pret,S_UINT &rlen,string addr,S_UINT timeout=-1);
+	bool	QueryBySocketWithTimeOut(LPSVDBQUERY lpquery,const char *pdata,S_UINT len,void **pret,S_UINT &rlen,string addr,S_UINT timeout);
 	bool	QueryBySocket(LPSVDBQUERY lpquery,LPINIQUERY lpiniquery,void **pret,S_UINT &len,string addr,S_UINT timeout=-1);
 	bool	QueryBySocket(LPSVDBQUERY lpquery,LPDBQUERY lpdbquery,void **pret,S_UINT &len,string addr,S_UINT timeout=-1);
 	bool	QueryBySocket(int type,string querystring,void **pret,S_UINT &len,string addr,S_UINT timeout=-1);
 
 	bool	UpdateByPipe(LPSVDBQUERY lpquery,const char *pdata,S_UINT len,LPSVDBRESULT ret,string addr,S_UINT timeout=-1);
 	bool	UpdateBySocket(LPSVDBQUERY lpquery,const char *pdata,S_UINT len,LPSVDBRESULT ret,string addr,S_UINT timeout=-1);
+	bool	UpdateBySocketWithTimeOut(LPSVDBQUERY lpquery,const char *pdata,S_UINT len,LPSVDBRESULT ret,string addr,S_UINT timeout);
 
 #ifdef	WIN32
 	bool	Pipe_Send(HANDLE hand,void *data,S_UINT len);
@@ -53,6 +60,7 @@ protected:
 #endif
 	bool	Socket_Send(MyTCPStream &msock,void *data,S_UINT len,timeout_t timeout=0);
 	bool	Socket_Recev(MyTCPStream &msock,void **data,S_UINT &len,timeout_t timeout=0);
+	bool	Socket_RecevWithTimeOut(MyTCPStream &msock,void **data,S_UINT &len,timeout_t timeout);
 
 private:
 //	MyTCPStream m_sock;

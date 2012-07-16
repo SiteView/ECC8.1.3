@@ -26,7 +26,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				InlineFunctionExpansion="1"
-				AdditionalIncludeDirectories="../svdb/svapi;../svdb;../svdb/include"
+				AdditionalIncludeDirectories="../svdb_comb/svapi;../svdb_comb;../../include"
 				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE"
 				StringPooling="TRUE"
 				RuntimeLibrary="2"
@@ -43,11 +43,11 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib svapi.lib libutil.lib"
-				OutputFile="..\..\bin\kennel\MonitorContrl.exe"
+				AdditionalDependencies="kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib svapi.lib libutil.lib Wininet.lib"
+				OutputFile="..\..\bin\MonitorContrl.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="TRUE"
-				AdditionalLibraryDirectories="..\..\bin\kennel"
+				AdditionalLibraryDirectories="..\..\lib"
 				ProgramDatabaseFile=".\Release/MonitorContrl.pdb"
 				SubSystem="1"
 				TargetMachine="1"/>
@@ -87,10 +87,11 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="../svdb/svapi;../svdb"
+				AdditionalIncludeDirectories="../svdb_comb/svapi;../svdb_comb;../../include/base"
 				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
+				UsePrecompiledHeader="3"
 				PrecompiledHeaderFile=".\Debug/MonitorContrl.pch"
 				AssemblerListingLocation=".\Debug/"
 				ObjectFile=".\Debug/"
@@ -103,11 +104,11 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="ccgnu2.lib ccext2.lib svapi.lib ws2_32.lib libutil.lib"
-				OutputFile="..\..\bin\kennel/MonitorContrl.exe"
+				AdditionalDependencies="ccgnu2.lib ccext2.lib svapi.lib ws2_32.lib libutil.lib Wininet.lib"
+				OutputFile="..\..\bin\MonitorContrl.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="TRUE"
-				AdditionalLibraryDirectories="..\..\bin\kennel"
+				AdditionalLibraryDirectories="..\..\lib"
 				GenerateDebugInformation="TRUE"
 				ProgramDatabaseFile=".\Debug/MonitorContrl.pdb"
 				SubSystem="1"
@@ -144,6 +145,9 @@
 		<Filter
 			Name="Source Files"
 			Filter="cpp;c;cxx;rc;def;r;odl;idl;hpj;bat">
+			<File
+				RelativePath="..\..\include\Base\Base64.cpp">
+			</File>
 			<File
 				RelativePath="MonitorContrl.cpp">
 				<FileConfiguration
@@ -188,10 +192,16 @@
 						BrowseInformation="1"/>
 				</FileConfiguration>
 			</File>
+			<File
+				RelativePath="..\..\include\Base\SVHttp.cpp">
+			</File>
 		</Filter>
 		<Filter
 			Name="Header Files"
 			Filter="h;hpp;hxx;hm;inl">
+			<File
+				RelativePath="..\..\include\Base\base64.h">
+			</File>
 			<File
 				RelativePath="MonitorContrl.h">
 			</File>
@@ -200,6 +210,9 @@
 			</File>
 			<File
 				RelativePath="StdAfx.h">
+			</File>
+			<File
+				RelativePath="..\..\include\Base\SVHttp.h">
 			</File>
 		</Filter>
 		<Filter

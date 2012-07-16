@@ -25,6 +25,20 @@ void outputRegeditKey(void);
 
 std::string GetRootPath();
 
+std::string GetRootPathFromKeyCore();
+
+std::string GetRootPathByKey(string key);
+
+void	OutputForestMap(ForestMap & fmap);
+S_UINT	GetForestMapRawDataSize(ForestMap & fmap);
+char*   GetForestMapRawData(ForestMap & fmap,char *lpbuf,S_UINT bufsize);
+bool	CreateForestMapByRawData(ForestMap & fmap,const char *lpbuf,S_UINT bufsize);
+
+void	OutputNodeData(NodeData & ndata);
+S_UINT GetNodeDataRawDataSize(NodeData & ndata);
+char*   GetNodeDataRawData(NodeData & ndata,char *lpbuf,S_UINT bufsize);
+bool	CreateNodeDataByRawData(NodeData & ndata,const char *lpbuf,S_UINT bufsize);
+
 S_UINT GetMassRecordListRawDataSize(std::list<SingelRecord> & listrcd);
 char*   GetMassRecordListRawData(std::list<SingelRecord> & listrcd,char *lpbuf,S_UINT bufsize);
 bool	CreateMassRecordListByRawData(std::list<SingelRecord> & listrcd,const char *lpbuf,S_UINT bufsize);

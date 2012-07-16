@@ -44,7 +44,7 @@ struct sv_dyn{
 	int	 m_state;
 	TTimeSpan m_keeplaststatetime;
 	unsigned int m_laststatekeeptimes;
-	char *m_displaystr;
+	char *m_displaystr; // AppendRecord 时创建的
 
 };
 
@@ -74,6 +74,14 @@ bool CacheRefreshSVDYNs(string parentid);
 SVAPI_API 
 bool Cache_GetSVDYN(string monitorid,SVDYN &dyn);
 //返回本地缓存的 dyn (不询问服务器)
+
+
+
+SVAPI_API
+bool CacheRefreshLatestRecords(string parentid, ForestMap & fmap, int command=0);
+//										fmap 为此次刷新得到的 record , command=0 为标准功能/ =1 是给 OneCMDB 的
+//为 parentid 的所有子孙从服务器获取最新 record ,并缓存在本地
+//   parentid 最高可以是 "1"、"2" 等 SE 的 id
 
 
 /////////////////////////////////DB///////////////////////////
@@ -164,7 +172,7 @@ bool GetRecordValueByField(RECORD rd,string Field,int &type,int &state,int &iv,f
 
 SVAPI_API
 bool GetRecordDisplayString(RECORD rd,int &state,string &dstr);
-//获取某个记录的 状态，和 dstr(将所有字段拼接成的一个字符串)
+//获取某个记录的 状态，和 dstr( svapi 动态地将各字段拼接成一个字符串)
 
 SVAPI_API
 void CloseRecordSet(RECORDSET &rset);

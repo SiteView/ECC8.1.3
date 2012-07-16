@@ -88,10 +88,9 @@ bool PushStringMessage(string queuename,string label,string content,string user,
 	svutil::buffer buf;
 	if(!buf.checksize(csize))
 		return false;
+	buf.zerobuf();
 	char * tempchar= buf;
-	strcpy(tempchar,content.c_str());
-	tempchar+= csize;
-	tempchar[0] = '\0';
+	memmove(tempchar,content.c_str(),content.size());
 	return PushMessage(queuename, label, tempchar, csize, user, addr);
 }
 

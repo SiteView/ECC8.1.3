@@ -4,6 +4,160 @@
 #include "QueryData.h"
 #include "ObjCache.h"
 
+SVAPI_API
+bool PutValueIntoChildren(const NodeData & ndata, string pid, string addr)
+{
+	if(pid.empty()||addr.empty())
+		return false;
+	if(pid.find(".")==std::string::npos)
+		return false;
+	if(ndata.empty())
+		return false;
+
+	NodeData & ndata1= const_cast< NodeData & >( ndata );
+	unsigned int tlen= GetNodeDataRawDataSize(ndata1);
+	svutil::buffer tbuf;
+	if(!tbuf.checksize(tlen))
+		return false;
+	const char *data= GetNodeDataRawData(ndata1,tbuf,tlen); 
+	if(data==NULL)
+		return false;
+
+	QueryData qd;
+	char *pdata=NULL;
+	S_UINT rlen=0;
+
+	S_UINT len=0;
+
+	SVDBQUERY querybuf={0};
+	querybuf.len = sizeof(SVDBQUERY);
+	querybuf.querytype=QUERY_PUT_VALUE;
+	querybuf.datatype=S_SVSE;
+	strcpy(querybuf.qstr,pid.c_str());
+
+	INIQUERY iquery={0};
+	iquery.len=sizeof(INIQUERY);
+	iquery.datatype=D_STRING;
+	iquery.datalen=tlen;
+
+	len+=sizeof(INIQUERY);
+	len+=tlen;
+
+	querybuf.datalen=len;
+
+	buffer buf;
+	if(!buf.checksize(len))
+		return false;
+	char *pt=buf.getbuffer();
+	memcpy(pt,&iquery,sizeof(INIQUERY));
+	pt+=sizeof(INIQUERY);
+	memmove(pt,data,tlen);
+
+	if(qd.Query(&querybuf,buf,len,(void **)&pdata,rlen,addr))
+	{
+		if(pdata!=NULL && rlen>0)
+		{
+			int *pret=(int*)pdata;
+			if(*pret==SVDB_OK)
+			{
+				delete [] pdata;
+				return true;
+			}
+		}
+	}
+	if(pdata!=NULL)
+		delete [] pdata;
+	return false;
+}
+
+
+SVAPI_API
+bool DelChildren(string pid, bool autoDelTable, string addr)
+{
+	if(pid.empty()||addr.empty())
+		return false;
+	if(pid.find(".")==std::string::npos)
+		return false;
+
+	string sonstr("0");
+	if(autoDelTable)
+		sonstr="1";
+
+	SVDBQUERY querybuf={0};
+	querybuf.len = sizeof(SVDBQUERY);
+	querybuf.querytype=QUERY_FAST_DEL;
+	querybuf.datatype=S_SVSE;
+	strcpy(querybuf.qstr,pid.c_str());
+	strcpy(querybuf.idcuser,sonstr.c_str());
+
+    QueryData qd;
+	S_UINT len=0;
+	char *pdata=NULL;
+	if(qd.Query(&querybuf,(void **)&pdata,len,addr))
+	{
+		if(pdata!=NULL && len>0)
+		{
+			int *pret=(int*)pdata;
+			if(*pret==SVDB_OK)
+			{
+				delete [] pdata;
+				return true;
+			}
+		}
+	}
+	if(pdata!=NULL)
+		delete [] pdata;
+	return false;
+}
+
+
+SVAPI_API
+bool GetForestData(ForestList & flist, string pid, bool onlySon, string addr)
+{
+	if(pid.empty()||addr.empty())
+		return false;
+	
+	string sonstr("0");
+	if(onlySon)
+		sonstr="1";
+
+	SVDBQUERY querybuf={0};
+	querybuf.len = sizeof(SVDBQUERY);
+	querybuf.querytype=QUERY_FAST_GET;
+	querybuf.datatype=S_SVSE;
+	strcpy(querybuf.qstr,pid.c_str());
+	strcpy(querybuf.idcuser,sonstr.c_str());
+
+    QueryData qd;
+	S_UINT len=0;
+	char *pdata=NULL;
+	if(qd.Query(&querybuf,(void **)&pdata,len,addr))
+	{
+		try{
+			std::list<SingelRecord> listrcd2;
+			std::list<SingelRecord>::iterator lit;
+			if( CreateMassRecordListByRawData(listrcd2,pdata,len) )
+			{
+				for(lit=listrcd2.begin(); lit!=listrcd2.end(); ++lit)
+				{
+					NodeData ndata;
+					CreateNodeDataByRawData(ndata, lit->data ,lit->datalen);
+					flist.push_back( ndata );					
+				}
+				if(pdata!=NULL)
+					delete [] pdata;
+				return true;
+			}
+		}catch(...)
+		{
+			printf("Exception to GetForestData.");
+		}		
+	}
+	if(pdata!=NULL)
+		delete [] pdata;
+	return false;
+}
+
 
 SVAPI_API 
 OBJECT	Cache_GetSVSE(string id)

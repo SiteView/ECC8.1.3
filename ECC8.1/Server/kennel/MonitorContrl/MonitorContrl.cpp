@@ -8,7 +8,7 @@
 #include <svdbapi.h>
 #include <libutil/Time.h>
 #include <libutil/buffer.h>
-
+#include <base/SVHttp.h>
 #include "PSAPI.h"
 #pragma comment( lib, "PSAPI.LIB" )
 
@@ -75,6 +75,25 @@ string g_mcPName="";
 const char *g_ServiceDName="SiteView_Watch";
 const char *g_ServiceName="SiteView_Watch";
 
+///
+CString rootPath;
+BOOL RunExecuteBat(CString path, CString filename);
+BOOL FileExists(char *filename);
+
+CString g_startItsm	= "start.bat";
+CString g_stopItsm	= "stop.bat";
+
+//CString g_startWeb813	= "net start 'SiteViewEcc813WEB'";
+//CString g_stopIWeb813	= "net stop 'SiteViewEcc813WEB'";
+CString g_startWeb813	= "startweb813.bat";
+CString g_stopWeb813	= "stopweb813.bat";
+
+CString g_strofbizurl="http://localhost:18081/cxf/eccservices/eccapi?wsdl";
+int g_ofbizheartbeat=10;
+CString g_strweb813url="http://127.0.0.1:8181/ecc/";
+int g_web813heartbeat=10;
+
+PROCESS_INFORMATION xfire_pi;
 
 BOOL	g_Disabled=FALSE;
 BOOL g_SubProcessState=TRUE;
@@ -116,6 +135,8 @@ void  WINAPI SVS_ServiceCtrlHandler(DWORD opcode)
 			::Sleep(1000);
 			::TerminateProcess(g_pi.hProcess,3);
 			::TerminateProcess(g_alertpi.hProcess,3);
+
+			RunExecuteBat(rootPath+"\\itsm\\", g_stopItsm);	// 启动 itsm目录中的 stop.bat
 
 			AddToEventLog("服务退出正终止子进程");
 
@@ -207,6 +228,10 @@ void WINAPI SVS_ServiceStart(DWORD argc, LPTSTR *argv)
     SetPriorityClass(m_handle,HIGH_PRIORITY_CLASS);
     HANDLE m_thread=GetCurrentThread();
 	SetThreadPriority(m_thread,THREAD_PRIORITY_ABOVE_NORMAL);
+
+	// 启动 itsm目录中的 start.bat
+	RunExecuteBat(rootPath+"\\itsm\\", g_startItsm);	
+
 	AddToEventLog("服务启动成功!");
 
 	while(!Check())
@@ -366,10 +391,12 @@ bool UnInstall()
 }
 
 
-int _tmain(int argc, TCHAR* argv[], TCHAR* envp[])m
+int _tmain(int argc, TCHAR* argv[], TCHAR* envp[])
 {
 	int nRetCode = 0;
-
+	
+	rootPath = GetRootPath();
+	
 	// initialize MFC and print and error on failure
 	if (!AfxWinInit(::GetModuleHandle(NULL), NULL, ::GetCommandLine(), 0))
 	{
@@ -524,6 +551,7 @@ LOOP:
 
 	return 1;
 }
+
 DWORD WINAPI WatchReportProcess(LPVOID lpParam )
 {
 	 ZeroMemory(&g_reportpi,sizeof(PROCESS_INFORMATION));
@@ -570,6 +598,117 @@ LOOP:
 
 	return 1;
 
+}
+
+DWORD WINAPI WatchOfbizService(LPVOID lpParam )
+{
+	 while(true)
+	 {
+		SVHttp http;
+		http.SetUrl(g_strofbizurl);
+		//svHttp.SetTimeOut();
+		if(http.SendRequest())
+		{
+			CString strResponse = "";
+			strResponse = http.GetResponseText();
+
+			if(strResponse.GetLength() > 0)
+			{
+				//puts(strResponse);
+				puts("ofbiz service keep alive");
+				Sleep(g_ofbizheartbeat*60*1000);
+				continue;
+			}
+		}
+		else
+		{
+			puts("ofbiz service die and reset");
+			puts(rootPath+"\\itsm\\");
+			// 启动 itsm目录中的 stop.bat
+			RunExecuteBat(rootPath+"\\itsm\\", g_stopItsm);	
+			Sleep(20*1000);
+			// 启动 itsm目录中的 start.bat
+			RunExecuteBat(rootPath+"\\itsm\\", g_startItsm);	
+			//Sleep(20*1000);
+		}
+
+		Sleep(g_ofbizheartbeat*60*1000);
+	 }
+
+	return 1;
+}
+
+DWORD WINAPI WatchWeb813(LPVOID lpParam )
+{
+	 while(true)
+	 {
+		SVHttp http;
+		http.SetUrl(g_strweb813url);
+		if(http.SendRequest())
+		{
+			CString strResponse = "";
+			strResponse = http.GetResponseText();
+
+			if(strResponse.GetLength() > 0)
+			{
+				//puts(strResponse);
+				puts("web813 keep alive");
+				Sleep(g_web813heartbeat*60*1000);
+				continue;
+			}
+		}
+		else
+		{
+			puts("web813 die and reset");
+
+			// 启动 WebECC8.1.3目录中的 stop.bat
+			RunExecuteBat(rootPath+"\\WebECC8.1.3\\", g_stopWeb813);	
+			Sleep(20*1000);
+			// 启动 WebECC8.1.3目录中的 start.bat
+			RunExecuteBat(rootPath+"\\WebECC8.1.3\\", g_startWeb813);
+			//Sleep(20*1000);
+		}
+
+		Sleep(g_web813heartbeat*60*1000);
+	 }
+
+	return 1;
+}
+
+DWORD WINAPI WatchWeb7(LPVOID lpParam )
+{
+	 while(true)
+	 {
+		SVHttp http;
+		http.SetUrl("http://localhost:18081/cxf/eccservices/eccapi?wsdl");
+		if(http.SendRequest())
+		{
+			CString strResponse = "";
+			strResponse = http.GetResponseText();
+
+			if(strResponse.GetLength() > 0)
+			{
+				//puts(strResponse);
+				puts("web7 keep alive");
+				Sleep(180*1000);
+				continue;
+			}
+		}
+		else
+		{
+			puts("web7 die and reset");
+			puts(rootPath+"\\itsm\\");
+			// 启动 itsm目录中的 stop.bat
+			RunExecuteBat(rootPath+"\\itsm\\", g_stopItsm);	
+			Sleep(20*1000);
+			// 启动 itsm目录中的 start.bat
+			RunExecuteBat(rootPath+"\\itsm\\", g_startItsm);	
+		}
+
+		Sleep(60*1000);
+	 }
+
+	return 1;
 }
 
 DWORD WINAPI CommThreadFunc( LPVOID lpParam )
@@ -655,6 +794,8 @@ EXIT:
 
 	return 1;
 }
+
+
 /***************************************************************
 只所以多此一个线程而不直接让ReloadConfig.exe
 用g_hReLoadConfig直接跟MonitorExecult.exe
@@ -883,6 +1024,26 @@ BOOL Init(void)
 	if(strlen(buf)>0)
 		g_seid=atoi(buf);
 
+	memset(buf,0,256);
+	::GetPrivateProfileString("web","ofbizurl","",buf,255,strPath);
+	if(strlen(buf)>1)
+		g_strofbizurl=buf;
+
+	memset(buf,0,256);
+	::GetPrivateProfileString("web","web813url","",buf,255,strPath);
+	if(strlen(buf)>1)
+		g_strweb813url=buf;
+
+	memset(buf,0,256);
+	::GetPrivateProfileString("web","ofbizheartbeat","",buf,255,strPath);
+	if(strlen(buf)>0)
+		g_ofbizheartbeat=atoi(buf);
+
+	memset(buf,0,256);
+	::GetPrivateProfileString("web","web813heartbeat","",buf,255,strPath);
+	if(strlen(buf)>0)
+		g_web813heartbeat=atoi(buf);
+
 	char strr[1024]={0};
 	sprintf(strr,"%s_%d",g_strRefreshQueueName.GetBuffer(1),g_seid);
 
@@ -891,6 +1052,7 @@ BOOL Init(void)
 
 	return TRUE;
 }
+
 BOOL Run(void)
 {
 	if(!Init())
@@ -981,6 +1143,39 @@ BOOL Run(void)
 			else if(hrt==NULL&&i==5)
 			{
 				AddToErrorLog("Start watch report thread failed");
+				return FALSE;
+			}
+		}
+
+		for(i=0;i<6;i++)
+		{
+			HANDLE hrt=::CreateThread(NULL,0,&WatchOfbizService,NULL,0,&dw);
+			if(hrt)
+			{
+				AddToEventLog("Start watch ofbiz service thread succeed");
+				::CloseHandle(hrt);
+				break;
+			}
+			else if(hrt==NULL&&i==5)
+			{
+				AddToErrorLog("Start watch ofbiz service thread failed");
+				return FALSE;
+			}
+		}
+
+
+		for(i=0;i<6;i++)
+		{
+			HANDLE hrt=::CreateThread(NULL,0,&WatchWeb813,NULL,0,&dw);
+			if(hrt)
+			{
+				AddToEventLog("Start watch web813 thread succeed");
+				::CloseHandle(hrt);
+				break;
+			}
+			else if(hrt==NULL&&i==5)
+			{
+				AddToErrorLog("Start watch web813 thread failed");
 				return FALSE;
 			}
 		}
@@ -1223,7 +1418,7 @@ CString GetRootPath()
 	string path=::GetSiteViewRootPath();
 	return path.c_str();
 
-	return "d:\\v70";
+//	return "d:\\v70";
 //	return ::FuncGetInstallRootPath();
 
 /*	CString strRet = _T("");
@@ -1357,6 +1552,7 @@ CString GetConditonString(void)
 	return strRet;
 
 }
+
 BOOL Check(void)
 {
 	return TRUE;
@@ -1369,6 +1565,7 @@ BOOL Check(void)
 		return FALSE;
 	
 }
+
 DWORD GetProcessMemSize(DWORD ProcessID)
 {
    char szProcessName[MAX_PATH] = "unknown";
@@ -1406,4 +1603,124 @@ DWORD GetProcessMemSize(DWORD ProcessID)
 	
 
 
+}
+
+// 检查指定文件是否存在
+BOOL FileExists(char *filename)
+{
+	BOOL Exist;  
+	// 最后结果，表示目录是否存在
+	if(filename[strlen(filename)]=='\\')
+		filename[strlen(filename)-1]='\0';    // 先删除最后的“\”
+	
+	WIN32_FIND_DATA wfd;                                  // 查找
+	
+	HANDLE hFind=FindFirstFile(filename,&wfd);                  
+	
+	if(hFind==INVALID_HANDLE_VALUE)
+		Exist=FALSE;						// 没有找到配备，目录肯定不存在
+	else
+	{
+		if(wfd.dwFileAttributes != FILE_ATTRIBUTE_DIRECTORY)		// 检查找到的结果是否目录
+			Exist=TRUE;												// 不是目录
+		else
+			Exist=FALSE;
+		
+		FindClose(hFind);
+	} 
+	
+	return(Exist);	
+}
+
+///
+BOOL RunExecuteBat(CString path, CString filename)
+{
+	CString strDir;
+
+	strDir = path+filename;
+	if( FileExists( strDir.GetBuffer(strDir.GetLength())) == FALSE)
+		return FALSE;
+
+	AddToEventLog( "开始运行 " + filename);
+
+	//strDir = GetRootPath();
+	//strDir += "\\xfire\\";
+
+	CString strCommandLine=_T("");
+	strCommandLine.Format("%s\\%s", path, filename);
+
+    STARTUPINFO si;
+
+	DWORD dcid=::GetCurrentProcessId();
+
+    ZeroMemory( &si, sizeof(si) );
+    si.cb = sizeof(si);
+    ZeroMemory( &xfire_pi, sizeof(PROCESS_INFORMATION) );
+
+	int n=0;
+	BOOL bRet=TRUE;
+
+	while(!::CreateProcess( NULL,
+		strCommandLine.GetBuffer(strCommandLine.GetLength()),
+		NULL,
+		NULL,
+		FALSE,
+		/*CREATE_NO_WINDOW*/CREATE_NEW_CONSOLE,
+		NULL,
+		path.GetBuffer(path.GetLength()),
+		&si, &xfire_pi))
+	{
+		::Sleep(3000);
+		n++;
+		if(n==4)
+		{
+			bRet = FALSE;
+			AddToEventLog("  > 启动 " + filename +"失败");
+			break;
+		}
+
+		AddToEventLog("  > 启动 " + filename +"失败");
+	}
+
+	if(bRet)
+		AddToEventLog("  > 启动 " + filename +" 成功");
+
+	return bRet;
+}
+
+// 
+DWORD WINAPI WatchXfireProcess(LPVOID lpParam )
+{
+	while(1)
+		Sleep(60*1000);
+
+	/*
+LOOP:
+	 if( g_SubProcessState && (!g_Disabled) )
+	 {
+		 ::Sleep(2000);
+		 DWORD dw=0;
+		 for(int i=0;i<1;i++)
+		 {
+			 HANDLE hd=::CreateThread(NULL,0,&WatchXfireProcess,NULL,0,&dw);
+			 if(hd)
+			 {
+				 AddToEventLog("Start watch xfire thread ok");
+				 ::CloseHandle(hd);
+				 break;
+			 }
+			 else if(hd==NULL )	//&& i==5)
+			 {
+				 AddToErrorLog("Start watch xfire thread failed");
+				 break;
+			 }
+		 }
+	 }
+	 else
+	 {
+		 Sleep(60*1000);
+		 goto LOOP;
+	 }
+*/
+	return 1;
 }

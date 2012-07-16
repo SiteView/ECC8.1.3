@@ -48,6 +48,7 @@ public:
 	static OBJECT RefreshFastGetMonitor(string id);
 	static OBJECT RefreshFastGetEntity(string id);
 
+	static bool RefreshLatestRecords(string pid, ForestMap & fmap, int command, bool need);
 	static bool FastGetSVDYN(string id, SVDYN &dyn);
 	static bool RefreshSVDYNs(string pid);
 	static bool QuerySVDYNs( string pid, std::list<SingelRecord> & listrcd, std::list<SingelRecord> & listrcd_out );
@@ -59,6 +60,8 @@ public:
 	static void SetUserAddr(string user,string addr);
 
 private:
+	static bool SetLatestRecords(std::list<SingelRecord> & listrcdin, ForestMap & fmap, int command);
+
 	static bool CheckLatest(VerOBJECT & vobj, int dtype, string id);
 
 	static string svdbuser;

@@ -45,7 +45,7 @@ typedef std::list<svutil::word>	WORDLIST;
 #define PAGESIZE	4096
 #define HEADPAGESIZE	2048
 
-#define MAXTABLE	40000
+#define MAXTABLE	100000
 
 #define PERFILESIZE	2097152000
 // 2GB
@@ -70,11 +70,14 @@ typedef std::list<svutil::word>	WORDLIST;
 #include <cc++/file.h>
 #include <string>
 #include <set>
+#include <map>
+using std::string;
 
 class IdcUser
 {
 public:
 	static std::set<std::string> Users;
+	static bool EnableConfigDB;
 	static bool EnableIdc;
 	static bool AutoResolveIDS;
 	static bool BoolToExit;
@@ -85,8 +88,39 @@ public:
 	static int PipeTreadPlusCount;
 	static void *m_pResource;
 	static void *m_pLanguage;
+	static S_UINT initial_time;
+	static std::string ProcessID;
+	
+	static bool DisableEntityCombine;
+	static bool nnmEntityParentOk;
+	static bool PreCreateNnmEntityParent;
+	static std::map<string,string> nnmEntityParentId;
+	static std::map<string,string> nnmEntityParentValue;
+	static std::string nnmEntityParentKey;
+
+	static std::string StrDisable;
+	static std::string StrTempDisable;
 	
 	std::string CreatChineseIDS(const std::string key, const std::string value, void *m_pLanguage);
+
+	static std::set<int> set_InitLoadSEId;
+	static std::string CenterAdress;
+	static bool SELocked;
+	static std::string CacheQueueName;
+	static int msBackup;
+	static bool RecordsAutoBackup;
+	static bool ConfigAutoBackup;
+	static bool AcceptConfigIncoming;
+	static bool FullTeleBackup;
+	static bool WillTeleBackup(const std::string id);
+	static bool SetTeleBackupId(std::set<std::string> newid);
+
+	static void PutLocalSEId(std::string str);
+	static std::set<int> GetLocalSEId();
+	static std::string GetLocalSEIdStr();
+	static std::string GetFirstSEId();
+	static bool IsAnLocalSEId(int index);
+	static bool IsAnLocalSEId(std::string str);
 
 	bool CreatDir(std::string fname)		
 	{
@@ -121,6 +155,10 @@ public:
 
 private:
 	ost::Mutex	m_UpdateLockCreatDir;
+	static std::set<int> set_LocalSEId;
+
+	static std::set<std::string> set_backupId;
+	static ost::Mutex	m_LockBackupId;
 
 };
 

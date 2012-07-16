@@ -24,6 +24,7 @@ public:
 
 #ifndef WIN32
 	static BOOL InsertSVMQ(CString strQueueName,CString strMessage,CString );
+	static bool SendMsgToWsServer(string szId, string szText, string szServer, string szPort);
 #endif
 	static bool InsertSvdb(string tablename,const char *pdata,int datalen);
 	static bool InsertSvdb(string tablename,const char *pdata,int datalen,string addr);
@@ -40,16 +41,14 @@ public:
 	static CString g_strSession;;
 
 	static int AppendThenClearAllRecords (std::list<SingelRecord> & inrcd);
-
+	static bool SendMsgToWsServer(string szId, string szText);
 private:
 //	HMODULE m_hResLibrary;
 
     void method_2();
-
+	static string szServer, szPort;
 	static std::list<SingelRecord> listrcd;
 	static bool CacheRecords(string tablename,const char *pdata,int datalen);
-
-
 };
 
 #endif

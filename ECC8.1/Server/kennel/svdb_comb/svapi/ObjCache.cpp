@@ -36,6 +36,7 @@ Mutex ObjectCache::m_LockDyns;
 
 OBJECT ObjectCache::FastGetSVSE(string id)
 {
+	ost::MutexLock lock(m_LockSvses);
 	map<string, VerOBJECT>::iterator it= Svses.find(id);
 	if( it != Svses.end() )
 	{
@@ -46,7 +47,6 @@ OBJECT ObjectCache::FastGetSVSE(string id)
 		}
 	}
 	
-	ost::MutexLock lock(m_LockSvses);
 	if( it != Svses.end() )
 	{
 		if( (it->second).obj!= INVALID_VALUE )
@@ -73,6 +73,7 @@ OBJECT ObjectCache::FastGetSVSE(string id)
 
 OBJECT ObjectCache::RefreshFastGetMonitor(string id)
 {
+	ost::MutexLock lock(m_LockMonitors);
 	map<string, VerOBJECT>::iterator it= Monitors.find(id);
 	if( it != Monitors.end() )
 	{
@@ -80,7 +81,6 @@ OBJECT ObjectCache::RefreshFastGetMonitor(string id)
 			return (it->second).obj;
 	}
 	
-	ost::MutexLock lock(m_LockMonitors);
 	S_UINT ver;
 	OBJECT obj= GetMonitorWithVer( id, svdbuser, svdbaddr, ver );
 	if( obj==INVALID_VALUE )
@@ -100,6 +100,7 @@ OBJECT ObjectCache::RefreshFastGetMonitor(string id)
 
 OBJECT ObjectCache::FastGetMonitor(string id)
 {
+	ost::MutexLock lock(m_LockMonitors);
 	map<string, VerOBJECT>::iterator it= Monitors.find(id);
 	if( it != Monitors.end() )
 	{
@@ -109,8 +110,7 @@ OBJECT ObjectCache::FastGetMonitor(string id)
 				return (it->second).obj;
 		}
 	}
-	
-	ost::MutexLock lock(m_LockMonitors);
+
 	if( it != Monitors.end() )
 	{
 		if( (it->second).obj!= INVALID_VALUE )
@@ -136,6 +136,7 @@ OBJECT ObjectCache::FastGetMonitor(string id)
 
 OBJECT ObjectCache::FastGetGroup(string id)
 {
+	ost::MutexLock lock(m_LockGroups);
 	map<string, VerOBJECT>::iterator it= Groups.find(id);
 	if( it != Groups.end() )
 	{
@@ -146,7 +147,6 @@ OBJECT ObjectCache::FastGetGroup(string id)
 		}
 	}
 	
-	ost::MutexLock lock(m_LockGroups);
 	if( it != Groups.end() )
 	{
 		if( (it->second).obj!= INVALID_VALUE )
@@ -172,6 +172,7 @@ OBJECT ObjectCache::FastGetGroup(string id)
 
 OBJECT ObjectCache::RefreshFastGetEntity(string id)
 {
+	ost::MutexLock lock(m_LockEntities);
 	map<string, VerOBJECT>::iterator it= Entities.find(id);
 	if( it != Entities.end() )
 	{
@@ -179,7 +180,6 @@ OBJECT ObjectCache::RefreshFastGetEntity(string id)
 			return (it->second).obj;
 	}
 
-	ost::MutexLock lock(m_LockEntities);
 	S_UINT ver;
 	OBJECT obj= GetEntityWithVer( id, svdbuser, svdbaddr, ver );
 	if( obj==INVALID_VALUE )
@@ -198,6 +198,7 @@ OBJECT ObjectCache::RefreshFastGetEntity(string id)
 
 OBJECT ObjectCache::FastGetEntity(string id)
 {
+	ost::MutexLock lock(m_LockEntities);
 	map<string, VerOBJECT>::iterator it= Entities.find(id);
 	if( it != Entities.end() )
 	{
@@ -208,7 +209,6 @@ OBJECT ObjectCache::FastGetEntity(string id)
 		}
 	}
 	
-	ost::MutexLock lock(m_LockEntities);
 	if( it != Entities.end() )
 	{
 		if( (it->second).obj!= INVALID_VALUE )
@@ -484,7 +484,14 @@ bool ObjectCache::FastGetSVDYN(string id,SVDYN &dyn)
 	{
 		bool bret(false);
 		try{
-			bret=builddyn(it->second.data,it->second.datalen,dyn,true);
+			std::list<SingelRecord> listrcd;
+			if( !CreateMassRecordListByRawData(listrcd,it->second.data,it->second.datalen) )
+				return false;
+			std::list<SingelRecord>::iterator lit= listrcd.begin();
+			if(lit== listrcd.end())
+				return false;
+
+			bret=builddyn(lit->data,lit->datalen,dyn,true);
 			if(bret)
 				return true;
 		}catch(...)
@@ -550,12 +557,19 @@ bool ObjectCache::QuerySVDYNs( string pid, std::list<SingelRecord> & listrcd, st
 					SingelRecord rcd;
 					rcd.monitorid= lit->monitorid;
 					rcd.datalen= lit->datalen;
-					char * tempchar= new char[lit->datalen];
-					memmove(tempchar,lit->data,lit->datalen);
-					rcd.data= tempchar;
+					if(lit->datalen)
+					{
+						char * tempchar= new char[lit->datalen];
+						memmove(tempchar,lit->data,lit->datalen);
+						rcd.data= tempchar;
+					}
+					else
+						rcd.data= NULL;
 
 					listrcd_out.push_back(rcd);
 				}
+				if(pdata!=NULL)
+					delete [] pdata;
 				return true;
 			}
 		}catch(...)
@@ -565,11 +579,160 @@ bool ObjectCache::QuerySVDYNs( string pid, std::list<SingelRecord> & listrcd, st
 	}
 	if(pdata!=NULL)
 		delete [] pdata;
+	if(rlen==0)
+		return true;
 	return false;
 }
 
 
 bool ObjectCache::RefreshSVDYNs(string pid)
+{
+	ForestMap fmap;
+	return RefreshLatestRecords(pid,fmap, 0, false);
+}
+
+bool ObjectCache::SetLatestRecords(std::list<SingelRecord> & listrcdin, ForestMap & fmap, int command)
+{
+	NodeData IdAlias;
+	if(command==1)
+	{
+		PAIRLIST retlist;
+		if( !GetAllMonitorsInfo(retlist,"onecmdb_alias") )
+			return false;
+		for(PAIRLIST::iterator pit=retlist.begin(); pit!=retlist.end(); ++pit)
+		{
+			if( !(pit->value.empty()) )
+				IdAlias.insert(std::make_pair(pit->name,pit->value));
+		}
+	}
+
+	for(std::list<SingelRecord>::iterator litin=listrcdin.begin(); litin!=listrcdin.end(); ++litin)
+	{
+		try{
+			string onecmdb_alias;
+			if(command==1)
+			{
+				NodeData::iterator nit= IdAlias.find(litin->monitorid);
+				if(nit!=IdAlias.end())
+					onecmdb_alias= nit->second;
+				if(onecmdb_alias.empty())
+					continue;
+			}
+
+			std::list<SingelRecord> listrcd;
+			if( !CreateMassRecordListByRawData(listrcd,litin->data,litin->datalen) )
+				continue;
+			std::list<SingelRecord>::iterator lit= listrcd.begin();
+			if(lit== listrcd.end())
+				continue;
+
+			NodeData ndata;
+			SVDYN dyn;
+			if(builddyn(lit->data,lit->datalen,dyn,true))
+			{
+				ndata.insert(std::make_pair("dstr",dyn.m_displaystr));
+ 
+				string creattime;
+				try{ 
+					creattime= (dyn.m_time.Format()).c_str();
+				}
+				catch(...) 
+				{ 
+					creattime="abnormal time"; 
+				}
+				ndata.insert(std::make_pair("creat_time", creattime));
+				
+				int rstate= dyn.m_state;
+				string status;
+				if( rstate==0 )		  status= "null";
+				else if( rstate==1 )   status= "ok";
+				else if( rstate==2 )   status= "warning";
+				else if( rstate==3 )   status= "error";
+				else if( rstate==4 )   status= "disable";
+				else if( rstate==5 )   status= "bad";
+				else	              status= "GetRecordState failed.";
+				ndata.insert(std::make_pair("record_status",status ));
+
+				char charint[128]={0};
+				sprintf(charint,"%d",dyn.m_keeplaststatetime.GetTotalSeconds());
+				ndata.insert(std::make_pair("KLS_seconds",charint));
+
+				char charint2[128]={0};
+				sprintf(charint2,"%d",dyn.m_laststatekeeptimes);
+				ndata.insert(std::make_pair("KLS_times",charint2));
+			}
+
+			if(++lit== listrcd.end())
+				continue;
+
+			LISTITEM param;
+			MAPNODE ma;
+			const char * buf= lit->data;
+			
+			OBJECT obj= FastGetMonitorTPL(atoi(lit->monitorid.c_str()));
+			if( lit->datalen>0 && FindMTReturnFirst( obj, param ) )
+			{
+				while( (ma=::FindNext(param))!=INVALID_VALUE )
+				{
+					string sv_type,sv_name;
+					FindNodeValue(ma,"sv_type",sv_type);
+					FindNodeValue(ma,"sv_name",sv_name);
+					if(sv_type.empty() || sv_name.empty())
+						continue;
+
+					for(string::size_type index=0; index !=sv_type.size(); ++index)
+						sv_type[index]=tolower(sv_type[index]);
+					//for(string::size_type index=0; index !=sv_name.size(); ++index)
+					//	sv_name[index]=tolower(sv_name[index]);
+
+					ostringstream temp; 
+					if(sv_type.compare("int")==0)
+					{
+						int ivalue(0);
+						memmove(&ivalue, buf, sizeof(int));
+						temp<<ivalue;
+						buf+= sizeof(int);
+
+					}
+					else if(sv_type.compare("float")==0)
+					{
+						float fvalue(0);
+						memmove(&fvalue, buf, sizeof(float));
+						temp<<fvalue;
+						buf+= sizeof(float);
+					}
+					else if(sv_type.compare("string")==0)
+					{
+						temp<<buf;
+						buf+= strlen(buf)+1;
+					}
+					else
+						continue;
+
+					ndata.insert(std::make_pair(sv_name,temp.str()));
+					if( (buf-lit->data)>lit->datalen )
+						continue;
+				}
+				::ReleaseItemList(param);
+			}
+
+			ndata.insert(std::make_pair("sv_id",litin->monitorid));
+			ndata.insert(std::make_pair("sv_monitortype",lit->monitorid));
+			if(command==1)
+				fmap.insert(std::make_pair(onecmdb_alias, ndata));
+			else
+				fmap.insert(std::make_pair(litin->monitorid, ndata));
+
+		}catch(...)
+		{
+			printf("Exception to SetLatestRecords .");
+			continue;
+		}
+	}
+	return true;
+}
+
+bool ObjectCache::RefreshLatestRecords(string pid, ForestMap & fmap, int command, bool need)
 {
 	if(pid.empty())
 		return false;
@@ -585,12 +748,26 @@ bool ObjectCache::RefreshSVDYNs(string pid)
 	{
 		if( (mit->first).find(pid+".")!=0 )
 			continue;
-		SingelRecord rcd;
-		rcd.monitorid= mit->first;
-		rcd.data= mit->second.data;
-		rcd.datalen= sizeof(svutil::TTime);
 
-		listrcd.push_back(rcd);
+		try{
+			std::list<SingelRecord> templistrcd;
+			if( !CreateMassRecordListByRawData(templistrcd,mit->second.data,mit->second.datalen) )
+				continue;
+			std::list<SingelRecord>::iterator templit= templistrcd.begin();
+			if(templit== templistrcd.end())
+				continue;
+
+			SingelRecord rcd;
+			rcd.monitorid= mit->first;
+			rcd.data= templit->data;
+			rcd.datalen= sizeof(svutil::TTime);
+
+			listrcd.push_back(rcd);
+		}catch(...)
+		{
+			printf("Exception in RefreshLatestRecords.");
+			continue;
+		}
 	}
 
 	std::list<SingelRecord> listrcd_out;
@@ -600,6 +777,9 @@ bool ObjectCache::RefreshSVDYNs(string pid)
 		return true;
 
 	ost::MutexLock lock(m_LockDyns);
+	if(need)
+		SetLatestRecords(listrcd_out,fmap,command);
+
 	std::list<SingelRecord>::iterator lit;
 	for(lit=listrcd_out.begin(); lit!=listrcd_out.end(); ++lit)
 	{
@@ -675,12 +855,19 @@ bool ObjectCache::QueryMassMonitor( string pid, StringMap & smap, std::list<Sing
 					SingelRecord rcd;
 					rcd.monitorid= lit->monitorid;
 					rcd.datalen= lit->datalen;
-					char * tempchar= new char[lit->datalen];
-					memmove(tempchar,lit->data,lit->datalen);
-					rcd.data= tempchar;
+					if(lit->datalen)
+					{
+						char * tempchar= new char[lit->datalen];
+						memmove(tempchar,lit->data,lit->datalen);
+						rcd.data= tempchar;
+					}
+					else
+						rcd.data= NULL;
 
 					listrcd_out.push_back(rcd);
 				}
+				if(pdata!=NULL)
+					delete [] pdata;
 				return true;
 			}
 		}catch(...)
@@ -723,6 +910,17 @@ bool ObjectCache::RefreshMonitors_new(string pid)
 	std::list<SingelRecord>::iterator lit;
 	for(lit=listrcd_out.begin(); lit!=listrcd_out.end(); ++lit)
 	{
+		if(lit->data == NULL && lit->datalen==0 )
+		{
+			map<string, VerOBJECT>::iterator it= Monitors.find(lit->monitorid);
+			if( it != Monitors.end() )
+			{
+				if( (it->second).obj!= INVALID_VALUE )
+					CloseMonitor( (it->second).obj );
+				Monitors.erase(it);
+			}
+		}
+
 		if(lit->data == NULL)
 			continue;
 
@@ -827,12 +1025,19 @@ bool ObjectCache::QueryMassEntity( string pid, StringMap & smap, std::list<Singe
 					SingelRecord rcd;
 					rcd.monitorid= lit->monitorid;
 					rcd.datalen= lit->datalen;
-					char * tempchar= new char[lit->datalen];
-					memmove(tempchar,lit->data,lit->datalen);
-					rcd.data= tempchar;
+					if(lit->datalen)
+					{
+						char * tempchar= new char[lit->datalen];
+						memmove(tempchar,lit->data,lit->datalen);
+						rcd.data= tempchar;
+					}
+					else
+						rcd.data= NULL;
 
 					listrcd_out.push_back(rcd);
 				}
+				if(pdata!=NULL)
+					delete [] pdata;
 				return true;
 			}
 		}catch(...)
@@ -875,6 +1080,17 @@ bool ObjectCache::RefreshEntities_new(string pid)
 	std::list<SingelRecord>::iterator lit;
 	for(lit=listrcd_out.begin(); lit!=listrcd_out.end(); ++lit)
 	{
+		if(lit->data == NULL && lit->datalen==0 )
+		{
+			map<string, VerOBJECT>::iterator it= Entities.find(lit->monitorid);
+			if( it != Entities.end() )
+			{
+				if( (it->second).obj!= INVALID_VALUE )
+					CloseEntity( (it->second).obj );
+				Entities.erase(it);
+			}
+		}
+
 		if(lit->data == NULL)
 			continue;
 
@@ -954,5 +1170,10 @@ bool	CacheRefreshSVDYNs(string parentid)
 	return ObjectCache::RefreshSVDYNs(parentid);
 }
 
+SVAPI_API
+bool CacheRefreshLatestRecords(string parentid, ForestMap & fmap, int command)
+{
+	return ObjectCache::RefreshLatestRecords(parentid,fmap, command, true);
+}
 
 
