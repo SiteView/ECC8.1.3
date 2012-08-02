@@ -46,10 +46,11 @@
 
 #include "stdafx.h"
 #include "AlertMain.h"
-#include "../base/funcGeneral.h"
+#include "./base/funcGeneral.h"
 #include <WinSvc.h>
 #include <direct.h>
-
+#include <libutil/time.h>
+#include <svapi/svapi.h>
 VOID  WINAPI StartAlertService(DWORD argc, LPTSTR *argv);//启动服务
 VOID  WINAPI sch_ServiceCtrlHandler(DWORD opcode);//服务控制
 BOOL  InstallService(CString strServiceName);//安装服务
@@ -101,15 +102,60 @@ bool hasrun()
 int _tmain(int argc, _TCHAR* argv[])
 {
 	int nRetCode = 0;
+	if(WriteIniFileString("testsection","testkey","testvalue","alert.ini"))
+	{
+		DeleteIniFileSection("testsection","alert.ini");
+	}
+	if(WriteIniFileString("testsection","testkey","testvalue","TxtTemplate.ini"))
+	{
+		DeleteIniFileSection("testsection","TxtTemplate.ini");
+	}
+	if(WriteIniFileString("testsection","testkey","testvalue","smsconfig.ini"))
+	{
+		DeleteIniFileSection("testsection","smsconfig.ini");
+	}
+	if(WriteIniFileString("testsection","testkey","testvalue","general.ini"))
+	{
+		DeleteIniFileSection("testsection","general.ini");
+	}
+	if(WriteIniFileString("testsection","testkey","testvalue","itsmConfig.ini"))
+	{
+		DeleteIniFileSection("testsection","itsmConfig.ini");
+	}
+	if(WriteIniFileString("testsection","testkey","testvalue","watchsheetcfg.ini"))
+	{
+		DeleteIniFileSection("testsection","watchsheetcfg.ini");
+	}
+	if(WriteIniFileString("testsection","testkey","testvalue","email.ini"))
+	{
+		DeleteIniFileSection("testsection","email.ini");
+	}
+	if(WriteIniFileString("testsection","testkey","testvalue","emailAdress.ini"))
+	{
+		DeleteIniFileSection("testsection","emailAdress.ini");
+	}
+	if(WriteIniFileString("testsection","testkey","testvalue","smsphoneset.ini"))
+	{
+		DeleteIniFileSection("testsection","smsphoneset.ini");
+	}
+	if(WriteIniFileString("testsection","testkey","testvalue","interfacedll.ini"))
+	{
+		DeleteIniFileSection("testsection","interfacedll.ini");
+	}
+	if(WriteIniFileString("testsection","testkey","testvalue","OfbizConfig.ini"))
+	{
+		DeleteIniFileSection("testsection","OfbizConfig.ini");
+	}
+
 #if 1
     try
 	{
 		if(hasrun())
 			return 0;
+
 		CAlertMain alertmain;
-		alertmain.Init();
 		
-		OutputDebugString("ddd");
+		alertmain.Init();
 		
 		//MSG msg;
 		//BOOL bRet=TRUE;
@@ -131,7 +177,6 @@ int _tmain(int argc, _TCHAR* argv[])
 			switch(msg.message)
 			{
 				case WM_QUIT:
-					OutputDebugString("AlertExit");
 					exit(1);
 					break;
 				default:
@@ -141,7 +186,6 @@ int _tmain(int argc, _TCHAR* argv[])
 	}
 	catch(...)
 	{
-		OutputDebugString("ddd");
 	}
 #else
 //   argc = 2;

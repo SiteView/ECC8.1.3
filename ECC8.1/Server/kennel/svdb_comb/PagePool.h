@@ -140,7 +140,7 @@ public:
 	bool Put(Page *pt,bool isch,bool isdel);
 
 	bool LoadPage(const char *filepath);
-	bool LoadPageEx(const char *filetitle);
+	int  LoadPageEx(const char *filetitle);
 
 	bool CreatePage(const char * filepath,bool overlay);
 	bool CreatePageEx(const char * filetitle,int fileindex,int pagecount,int pageindex,bool overlay);
@@ -158,7 +158,7 @@ public:
 			PerFileLen=PERFILESIZE;
 		int p=PerFileLen/m_Head.m_PageSize;
 		
-		m_Head.m_PerFileSize=p*m_Head.m_PageSize;
+		m_Head.m_PerFileSize= ((LONG)m_Head.m_PageSize) * p;
 	}
 
 	PagePoolHead &GetPagePoolHead();

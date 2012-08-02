@@ -56,7 +56,12 @@ public:
 		m_monitortype=0;
 		m_monitorid="";
 	};
-	~RecordType(void){
+	~RecordType(void)
+	{
+		for(std::vector<DataType *>::iterator it=m_data.begin(); it!=m_data.end(); ++it)
+			if((*it)!=NULL)
+				delete (*it);
+		m_data.clear();
 	};
 
 	int	m_monitortype;

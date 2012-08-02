@@ -2761,7 +2761,7 @@ BOOL GetFileInfo(const char * strParas, char * szReturn, int& nSize)
 			if ( !bRet )
 			{
 				//strReturn.Format("error=Error ocured: File path is error");
-				sprintf(szReturn, "error=Error ocured: File path is error");
+				sprintf(szReturn, "error=Error ocured: path is error");
 				return false;
 			}
 
@@ -2811,6 +2811,147 @@ BOOL GetFileInfo(const char * strParas, char * szReturn, int& nSize)
 					return false;
 				}
 			}
+
+		}
+		catch (_com_error err)
+		{
+			char buf[200] = {0};
+			IErrorInfo * ei = err.ErrorInfo();
+			BSTR strDesEI;
+			ei->GetDescription(&strDesEI);
+			sprintf(szReturn, "error=Error ocured:%x: %s", (unsigned)err.Error(),_com_util::ConvertBSTRToString(strDesEI));
+			return false;
+
+		}
+		catch (...)
+		{
+			sprintf(szReturn, "error=Error ocured: %d",::GetLastError());
+			OutputDebugString(szReturn);
+			return false;
+		}
+
+		strcpy(szReturn,strReturn);
+		CString strOutRet;
+		strOutRet =szReturn;
+		nSize = 1000;
+		MakeCharByString(szReturn,nSize,strOutRet);	 
+
+	}
+	CoUninitialize();
+
+	return TRUE;
+}
+
+//bin.liu
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+int GetPrivateProfileString1(char * m_AppName, char * m_KeyName, char * m_default, char * m_Ret, int size, char * m_FileName)
+{
+	std::string  gRoot_path=GetSiteViewRootPath();
+		//gRoot_path = "D:\\SiteView\\SiteView ECC";  //zjw
+
+	char szPath[1024]={0};
+	sprintf(szPath,"%s\\data\\TmpIniFile\\%s",gRoot_path.c_str(),m_FileName);
+	return GetPrivateProfileString(m_AppName,m_KeyName,m_default,m_Ret,size,szPath);
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+int GetPrivateProfileInt1(char * m_AppName, char * m_KeyName, int k, char * m_FileName )
+{
+	std::string  gRoot_path=GetSiteViewRootPath();
+		//gRoot_path = "D:\\SiteView\\SiteView ECC";  //zjw
+
+	char szPath[1024]={0};
+	sprintf(szPath,"%s\\data\\TmpIniFile\\%s",gRoot_path.c_str(),m_FileName);
+	return GetPrivateProfileInt(m_AppName,m_KeyName,k,szPath);
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+int WritePrivateProfileString1( char * m_AppName, char * m_KeyName, char * m_Value, char * m_FileName)
+{
+	string strInt;
+	std::string  gRoot_path=GetSiteViewRootPath();
+
+	char szPath[1024]={0};
+	sprintf(szPath,"%s\\data\\TmpIniFile\\%s",gRoot_path.c_str(),m_FileName);
+	return WritePrivateProfileString(m_AppName,m_KeyName,m_Value,szPath);
+}
+extern "C" _declspec(dllexport) 
+BOOL GetDirInfo(const char * strParas, char * szReturn, int& nSize)
+{
+	AFX_MANAGE_STATE(AfxGetStaticModuleState());
+
+	list<string> paramList;
+	MakeStringListByChar(paramList,strParas); //将输入参数拆入一个 list<string> 中	
+
+	CoInitialize(NULL);
+	{
+		CString strReturn = "";
+		WbemScripting::ISWbemServicesPtr services;
+		if(!ConnectServer(paramList, szReturn, nSize, services))
+			return false;
+		try
+		{
+			CString filename ="";
+			filename = FindStrValue(paramList,"_dirpath");
+			if(filename.IsEmpty())
+			{
+				//strReturn.Format("error=Error ocured: File path is NULL");
+				sprintf(szReturn, "error=Error ocured: path is not find ");
+				return false;
+			}
+			CString strMonitorID = FindStrValue(paramList, "_MonitorID");
+			//bool bRet = FilePathParser(filename);
+			//if ( !bRet )
+			//{
+			//	//strReturn.Format("error=Error ocured: File path is error");
+			//	sprintf(szReturn, "error=Error ocured: File path is error");
+			//	return false;
+			//}
+            CString csDrive=filename.Mid(0,2);
+			//printf(csDrive);
+			CString csPath=filename.Mid(2,filename.GetLength()-2)+"\\";
+			csPath.Replace("\\","\\\\");
+			//printf(csPath);
+			//Replace("\","\\\\");
+			CString strCom="";
+			//strCom.Format("SELECT * FROM CIM_LogicalFile where Name='%s'",filename);
+			strCom.Format("SELECT * FROM CIM_DataFile where (Drive='%s') and (Path = '%s') ",csDrive,csPath);
+			
+			WbemScripting::ISWbemObjectSetPtr objects = services->ExecQuery(LPCTSTR(strCom),"WQL",0x10,NULL);
+			//printf(LPCTSTR(strCom));
+			printf(strCom);
+			//WbemScripting::ISWbemObjectSetPtr objects = services->ExecQuery("SELECT * FROM CIM_DataFile where (Drive='D:') and (Path = '\\\\backup\\\\Outlook\\\\') ","WQL",0x10,NULL);
+			IEnumVARIANTPtr obj_enum = objects->Get_NewEnum(); 
+			ULONG fetched; 
+			VARIANT var; 
+			//CString strSize;
+			int nSize=0;
+			while (obj_enum->Next(1,&var,&fetched) == S_OK) 
+            { 
+				nSize=nSize+1;
+			}
+			char chTempFile[1024] = {0};
+			sprintf(chTempFile, "wmidir_%s.ini", strMonitorID);
+			
+			//GetPrivateProfileInt1("wmidir", "HistoryValue",Hnsize, chTempFile);
+			char tempbb[10]={0} ;
+			GetPrivateProfileString1("wmidir", "HistoryValue", "0",tempbb , 1024, chTempFile);
+			int Hnsize=atoi(tempbb);
+			char tempaa[10]={0} ;
+			sprintf(tempaa, "%d", nSize); 
+			WritePrivateProfileString1( "wmidir", "HistoryValue",tempaa, chTempFile );
+			printf(tempaa);
+			printf(" and ");
+			printf(tempbb);
+			if(nSize>Hnsize)
+			{
+				nSize=nSize-Hnsize;
+			}else
+			{
+				nSize=0;
+			}
+			strReturn.Format("add_fileCount=%d$",nSize);
 
 		}
 		catch (_com_error err)

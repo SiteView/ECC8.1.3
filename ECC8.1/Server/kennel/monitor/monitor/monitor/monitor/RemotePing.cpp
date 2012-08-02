@@ -175,8 +175,8 @@ struct oid nv6saIcmpEchoReq = {{0x2b, 6, 1, 4, 1, 2, 6, 4, 3, 1}, 10, "nv6saIcmp
 			sprintf(szReturn, "error=%s", FuncGetStringFromIDS("<%IDS_RemotePing_18%>"));		// internal error
 			return FALSE;
 		case -2:
-			//sprintf(szReturn, "error=%s", FuncGetStringFromIDS("<%IDS_RemotePing_19%>"));		// request timed out
-			sprintf(szReturn, "error=%s", "request timed out");		// 
+			sprintf(szReturn, "error=%s", FuncGetStringFromIDS("<%IDS_RemotePing_19%>"));		// request timed out
+			//sprintf(szReturn, "error=%s", "request timed out");		// 
 			return FALSE;
 		case -3:
 			sprintf(szReturn, "error=%s", FuncGetStringFromIDS("<%IDS_RemotePing_20%>"));		// echo reply is not the correct reply
@@ -214,6 +214,7 @@ struct oid nv6saIcmpEchoReq = {{0x2b, 6, 1, 4, 1, 2, 6, 4, 3, 1}, 10, "nv6saIcmp
 	snvalr.sv_val.sv_int = 0x06;
 	if((ret = SN_SET_VALUES(s, serv, community, reqid ++, &oidr, &snvalr)) < 0)
 	{
+		//printf("teststests:%d \n",ret);
 		sprintf(szReturn, "error=%s", FuncGetStringFromIDS("<%IDS_RemotePing_05%>"));		// 通信过程失败 (CiscoPingEntryStatus)
 		return FALSE;
 	}
@@ -411,9 +412,9 @@ next:
 		sprintf(szReturn, "error=%s", FuncGetStringFromIDS("<%IDS_RemotePing_15%>"));		// 网络连接超时
 		sprintf(szReturn, "error=%d$", ret);		// 网络连接超时
 
-		OutputDebugString("szReturn=");
-		OutputDebugString(szReturn);
-		OutputDebugString("\n");
+		//OutputDebugString("szReturn=");
+		//OutputDebugString(szReturn);
+		//OutputDebugString("\n");
 
 		ret = 1;
 		goto w;

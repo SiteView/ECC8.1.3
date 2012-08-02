@@ -24,7 +24,7 @@ public:
 
 		}catch(ost::Socket *sock)
 		{
-			puts("exception happen");
+			puts("socket exception happen");
 			printf("error number:%d\n",sock->getErrorNumber());
 			printf("system error number:%d\n",::WSAGetLastError());
 		//	puts(sock->getErrorString());
@@ -52,7 +52,7 @@ public:
 
 		}catch(ost::Socket *sock)
 		{
-			puts("exception happen");
+			puts("socket exception happen");
 		//	puts(sock->getErrorString());
 		}
 

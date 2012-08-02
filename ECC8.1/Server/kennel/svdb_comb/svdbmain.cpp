@@ -23,10 +23,16 @@ SvdbMain::SvdbMain(void)
     m_pEntityGroup_orig=NULL;
 	m_pEntityTemplet_orig=NULL;
 	m_pLanguage=NULL;
+	m_pWholeConfig=NULL;
 
 	m_pEntityEx=NULL;
 	m_pTopologyChart=NULL;
 	m_pVirtualGroup=NULL;
+
+	m_pNnmSave=NULL;
+	m_pBackupRecordThread=NULL;
+	m_pBackupRecordDamonThread=NULL;
+	m_pBackupConfigThread=NULL;
 }
 
 SvdbMain::~SvdbMain(void)
@@ -52,6 +58,17 @@ SvdbMain::~SvdbMain(void)
 		delete m_pTopologyChart;
 	if(m_pVirtualGroup!=NULL)
 		delete m_pVirtualGroup;
+	if(m_pNnmSave!=NULL)
+		delete m_pNnmSave;
+	if(m_pBackupRecordThread!=NULL)
+		delete m_pBackupRecordThread;
+	if(m_pBackupRecordDamonThread!=NULL)
+		delete m_pBackupRecordDamonThread;
+	if(m_pBackupConfigThread!=NULL)
+		delete m_pBackupConfigThread;
+
+	if(m_pWholeConfig!=NULL)
+		delete m_pWholeConfig;
 }
 
 void SvdbMain::toExitListen(void)
@@ -65,6 +82,15 @@ void SvdbMain::toExitListen(void)
 		m_pWT->toExit();
 	if(m_pSWT!=NULL)
 		m_pSWT->toExit();
+
+	if(m_pNnmSave!=NULL)
+		m_pNnmSave->toExit();
+	if(m_pBackupRecordThread!=NULL)
+		m_pBackupRecordThread->toExit();
+	if(m_pBackupRecordDamonThread!=NULL)
+		m_pBackupRecordDamonThread->toExit();
+	if(m_pBackupConfigThread!=NULL)
+		m_pBackupConfigThread->toExit();
 }
 
 bool SvdbMain::Init(void)
@@ -77,7 +103,7 @@ bool SvdbMain::Init(void)
 
 	m_RootPath=m_pOption->m_rootpath;
 	IdcUser::RootPath= m_RootPath.getword();
-	printf("m_RootPath=%s\n", m_RootPath.getword());
+	printf("\nm_RootPath=%s\n", m_RootPath.getword());
 	string sename="localhost";
 
 	char buf[1024]={0};
@@ -94,15 +120,29 @@ bool SvdbMain::Init(void)
 	m_pVirtualGroup=new VirtualGroupPool(buf);
 	m_pVirtualGroup->Load();
 
+
+	if( IdcUser::EnableConfigDB )
+	{
+		string cdbpath=		IdcUser::RootPath + "/data/configdb";
+		string historypath=	IdcUser::RootPath + "/data/configdb_history";
+		IdcUser::CreatDirNonThreadSafe(cdbpath);
+		IdcUser::CreatDirNonThreadSafe(historypath);
+		m_pWholeConfig= new CWholeConfig(IdcUser::RootPath + "/data/configdbIndex.data" , cdbpath+"/", historypath+"/" );
+		string estr;
+		m_pWholeConfig->LoadData(estr);
+		if(!estr.empty())
+			cout<<estr.c_str()<<endl;
+	}
+
 	if( IdcUser::EnableIdc )
 	{
-		printf("\nLoad data for IDC\n");
+		printf("\n\nLoad data for IDC\n");
 		string fname= IdcUser::RootPath; fname += "/data/idc_data";
 		if( !IdcUser::CreatDirNonThreadSafe(fname.c_str()) )
 			;//cout<<"----- 创建目录失败："<<fname.c_str()<<endl;
 	}
 	else
-		printf("\nLoad data\n");
+		printf("\n\nLoad data\n");
 
 	sprintf(buf,"%s/data/%s/Resource.data",m_RootPath.getword(),sename.c_str());
 	m_pResource=new ResourcePool(buf);
@@ -113,10 +153,24 @@ bool SvdbMain::Init(void)
 		strlang+="-ForTpl";
 		m_pLanguage= m_pResource->GetResource(strlang.c_str());
 		if(m_pLanguage==NULL)
+		{
 			cout<<"Failed to load resource:"<<strlang<<endl;
+			cout<<" ********************************************************************************\n"<<endl;
+			cout<<"    严重错误  Fatal error of Template file: "<<buf<<endl;
+			cout<<"\n ********************************************************************************"<<endl;
+		}
 
 		IdcUser::m_pResource= (void *)m_pResource;
 	}
+
+	StringMap & defaultlang= m_pLanguage->GetResourceDict();
+	word *tpv=NULL;
+	if( ( tpv=defaultlang.find("IDS_MonitorDisabled") )!=NULL )
+		IdcUser::StrDisable= *tpv;
+	tpv=NULL;
+	if( ( tpv=defaultlang.find("IDS_TempDisableMonitorTime") )!=NULL )
+		IdcUser::StrTempDisable= *tpv;
+
 
 	sprintf(buf,"%s/data/%s/MonitorTemplet.data",m_RootPath.getword(),sename.c_str());
 	m_pMT=new MonitorTempletPool(buf);
@@ -170,7 +224,8 @@ bool SvdbMain::Init(void)
 
 	if(!m_pDB->Init("SiteViewLog",this,nPFS,nPS))
 	{
-		AddToErrorLog("Start db failed");
+		AddToErrorLog("Failed to Init \".db\" ! ");
+		cout<<"Failed to Init \".db\" ! "<<endl;
 		return false;
 	}
 	clock_t time2=clock(); 
@@ -184,6 +239,7 @@ bool SvdbMain::Init(void)
 		m_pSVSE=new SVSEPool(buf);
 		if(!m_pSVSE->Load())
 			m_pSVSE->InitSVSEPool();
+		m_pSVSE->InitLockedSVSEPool();
 			
 		IdcUser::Users.clear();
 		for(S_UINT seId= 1; seId<=m_pSVSE->maxsize; seId++) 
@@ -248,6 +304,7 @@ bool SvdbMain::Init(void)
 		m_pSVSE=new SVSEPool(buf);
 		if(!m_pSVSE->Load())
 			m_pSVSE->InitSVSEPool();
+		m_pSVSE->InitLockedSVSEPool();
 
 		sprintf(buf,"%s/data/%s/Group.data",m_RootPath.getword(),sename.c_str());
 		m_pGroup=new GroupPool(buf);
@@ -261,8 +318,51 @@ bool SvdbMain::Init(void)
 		m_pMonitor=new MonitorPool(buf);
 		m_pMonitor->Load();
 	}
-	printf("Start all %d DB files:  %.2f seconds\n\n",IdcUser::Users.size()+1,(double)(time2-time1+time4)/CLK_TCK);
+	printf("Start all %d DB heads:  %.2f seconds\n\n",IdcUser::Users.size()+1,(double)(time2-time1+time4)/CLK_TCK);
+	initialBackupConfigIni();
 
+	m_pMonitor->ReSetBackupId();	
+	if( IdcUser::RecordsAutoBackup )
+	{
+		m_pBackupRecordDamonThread= new CBackupRecordDamon();
+		if(m_pBackupRecordDamonThread==NULL)
+		{
+			AddToErrorLog("Failed to new thread of BackupRecordDamon ! ");
+			printf("Failed to new thread of BackupRecordDamon ! ");
+			return false;
+		}
+		m_pBackupRecordDamonThread->Start();
+
+		m_pBackupRecordThread=new CBackupRecord(m_pDB, m_pBackupRecordDamonThread);
+		if(m_pBackupRecordThread==NULL)
+		{
+			AddToErrorLog("Failed to new thread of BackupRecord ! ");
+			printf("Failed to new thread of BackupRecord ! ");
+			return false;
+		}
+		m_pBackupRecordThread->Start();
+
+		m_pBackupRecordDamonThread->setBkpRcdThread(m_pBackupRecordThread);
+	}
+
+	m_pBackupConfigThread=new CBackupConfig(this);
+	if(m_pBackupConfigThread==NULL)
+	{
+		AddToErrorLog("Failed to new thread of BackupConfig ! ");
+		printf("Failed to new thread of BackupConfig ! ");
+		return false;
+	}
+	m_pBackupConfigThread->Start();
+
+
+	if(m_pGroup!=NULL)
+		m_pGroup->UpdateNnmEntityParentGid();
+	
+	if( !IdcUser::DisableEntityCombine && IdcUser::PreCreateNnmEntityParent && !IdcUser::nnmEntityParentOk)
+	{
+		m_pEntityEx->CreateNnmEntityParentGroup(this);
+		printf("\n\n");
+	}
 	if(m_pOption->m_waitMode==Option::WAITMODE_VAR)
 	{
 		m_pWT=new WatchThread;
@@ -300,10 +400,84 @@ bool SvdbMain::Init(void)
 	
 	AddToErrorLog("Socket mode VAR");
 
+	m_pNnmSave=new NnmSaveThread;
+	if(m_pNnmSave==NULL)
+		return false;
+	m_pNnmSave->m_pMain= this;
+	if(!m_pNnmSave->Init())
+	{
+		AddToErrorLog("Init NnmSaveThread failed! ");
+		printf("Init NnmSaveThread failed! ");
+		return false;
+	}
+	m_pNnmSave->Start();
+
 	printf("\n\nSVDB server starts working... \n");
 	return true;
 
 }
+
+void SvdbMain::initialBackupConfigIni(void)
+{
+	GeneralPool *pGp=NULL;
+	std::string fname= "svdbbackupconfig.ini";
+	char filepath[512]={0};
+	sprintf(filepath,"%s/data/IniFile/%s", m_pOption->m_rootpath.c_str(),fname.c_str());
+    
+	if(m_IniPool.find(filepath)!=NULL )
+		pGp=m_IniPool[filepath];
+	else
+	{
+		pGp=new GeneralPool(filepath);
+		if(pGp==NULL)
+			return;
+		pGp->Load();
+		m_IniPool[filepath]=pGp;
+	}
+	if(pGp==NULL)
+		return;
+
+	char strvalue[512]={0};
+	sprintf(strvalue,"%s", IdcUser::CenterAdress.c_str());
+	pGp->WriteString("backupCenter", "CenterAdress", strvalue);
+
+	memset(strvalue,0,512);
+	sprintf(strvalue,"%s", IdcUser::GetLocalSEIdStr().c_str());
+	pGp->WriteString("backupCenter", "LocalSEId", strvalue);
+
+	memset(strvalue,0,512);
+	sprintf(strvalue,"%d", IdcUser::SELocked);
+	pGp->WriteString("backupCenter", "SELocked", strvalue);
+
+	memset(strvalue,0,512);
+	sprintf(strvalue,"%s", IdcUser::CacheQueueName.c_str());
+	pGp->WriteString("backupCenter", "CacheQueueName", strvalue);
+
+	memset(strvalue,0,512);
+	sprintf(strvalue,"%d", IdcUser::msBackup);
+	pGp->WriteString("backupCenter", "MilliSecondBetweenBackup", strvalue);
+
+	memset(strvalue,0,512);
+	sprintf(strvalue,"%d", IdcUser::RecordsAutoBackup);
+	pGp->WriteString("backupCenter", "RecordsAutoBackup", strvalue);
+
+	memset(strvalue,0,512);
+	sprintf(strvalue,"%d", IdcUser::ConfigAutoBackup);
+	pGp->WriteString("backupCenter", "ConfigAutoBackup", strvalue);
+
+	memset(strvalue,0,512);
+	sprintf(strvalue,"%d", IdcUser::AcceptConfigIncoming);
+	pGp->WriteString("backupCenter", "AcceptConfigIncoming", strvalue);
+
+	memset(strvalue,0,512);
+	sprintf(strvalue,"%d", IdcUser::FullTeleBackup);
+	pGp->WriteString("backupCenter", "FullTeleBackup", strvalue);
+
+	
+	pGp->Submit();
+	pGp->m_LastAccessTime=svutil::TTime::GetCurrentTimeEx();
+}
+
 bool SvdbMain::Start(void)
 {
 	return true;

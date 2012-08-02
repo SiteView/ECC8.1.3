@@ -11,7 +11,7 @@
 
 #include "GsmOperate.h"
 
-#define MaxSMSLen 100 //最大短信长度
+#define MaxSMSLen 70 //最大短信长度
 
 class CSerialPort : public CGsmOperate
 {
@@ -35,12 +35,12 @@ public:
 	void SetMsgContent(CString strMsgContent);//设置短信内容
 	void SetSerialPortName(CString strPortName);//设置穿口名称
 	//发送短信
-	int SendMsg(CString strRecvPhone ,CString strMsgContent);
+	int SendMsg( CString strRecvPhone ,CString strMsgContent, int nSMSMaxLength );
 
 private:
 	struct MsgList
 	{
-		char chMsg[MaxSMSLen];
+		char chMsg[200];
 		MsgList *pNext;
 	};
 	BOOL ClosePort(HANDLE hPort);//关闭串行端口
@@ -52,14 +52,17 @@ private:
 	BOOL WritePort(void* pData, int nLength);
 */
 	//短信内容分页
-	int page(char *SrcMsg, MsgList *DestMsg);
+	int page( char *SrcMsg, MsgList *DestMsg, int nSMSMaxLength );
     bool gsmDeleteMessage(const int index);	
     bool gsmSendMessage(const SM_PARAM* pSrc);
 	int gsmReadMessage(SM_PARAM* pMsg);
 private:
 	HANDLE hSerialPort;
 	CString m_SmsCenterNum;
-protected:
+public:
+	//yi.duan 2011-08-08 long Message
+	CString m_strPort;   // for sendLongMessage.dll invoke
+	int SendLongMsg(CString portName, CString strRecvPhone, CString strMsgContent);
 };
 
 #endif // !defined(AFX_SERIALPORT_H__D244580C_F08C_4E25_B3BB_C407981A6DC6__INCLUDED_)

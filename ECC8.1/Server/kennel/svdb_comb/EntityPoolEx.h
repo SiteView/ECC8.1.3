@@ -1,13 +1,14 @@
 #ifndef SVDB_ENTITYPOOLEX_
 #define SVDB_ENTITYPOOLEX_
 
+#include "svdbmain.h"
 #include "PoolBase.h"
 #include "SerialBase.h"
 #include "svdbtype.h"
 #include "EntityEx.h"
 #include <cc++/file.h>
 
-
+class SvdbMain;
 
 class EntityPoolEx :
 	public PoolBase,public SerialBase
@@ -27,17 +28,22 @@ public:
 	char*	GetRawData(char *lpbuf,S_UINT bufsize);
 	BOOL	CreateObjectByRawData(const char *lpbuf,S_UINT bufsize);
 
-	bool push(EntityEx *pm);
-	bool PushData(const char *buf,S_UINT len);
+	bool push(EntityEx *pm,string & exid,SvdbMain *pMain);
+	bool PushData(const char *buf,S_UINT len,string & exid,SvdbMain *pMain);
 
 	EntityEx *GetEntityEx(word id)
 	{
 		EntityEx **pm=m_entityexs.find(id);
 		if(pm==NULL)
 			return NULL;
-		m_changed=true;
+		//m_changed=true;
 		return *pm;
 	}
+
+	bool SaveDataFromEccEntity(string id, StringMap & smap);
+	bool SaveEccEntityId(string exid, string ecceid);
+	bool UndoInvalidUpdateOfEccEntityId(EntityEx * pOld, EntityEx * pNew, SvdbMain *pMain);
+	bool CreateNnmEntityParentGroup(SvdbMain *pMain);
 
 	bool GetEntityExData(word id,char *buf,S_UINT &len);
 
@@ -51,6 +57,7 @@ public:
 
 	bool GetInfo(word infoname,StringMap &map)
 	{
+		ost::MutexLock lock(m_UpdateLock);
 		ENTITYEXMAP::iterator it;
 		while(m_entityexs.findnext(it))
 		{
@@ -69,6 +76,7 @@ public:
 
 	bool GetInfoByKey(string key,string value,std::list<string> &idlist)
 	{
+		ost::MutexLock lock(m_UpdateLock);
 		ENTITYEXMAP::iterator it;
 		bool flag=false;
 		while(m_entityexs.findnext(it))
@@ -102,8 +110,23 @@ public:
 		return true;
 	}
 
+	string GetNnmEidByEccEid(string ecceid);
+	//{// new way is faster 25% on 800 SubmitEntity
+	//	ENTITYEXMAP::iterator it;
+	//	while(m_entityexs.findnext(it))
+	//	{
+	//		if((*it).getkey().empty())
+	//			continue;
+
+	//		if(ecceid.compare((*it).getvalue()->GetEccEntityID().getword())==0)
+	//			return (*it).getkey().getword();
+	//	}
+	//	return "";
+	//}
+
 	bool GetInfoByProperty(string key,string value,std::list<string> &idlist)
 	{
+		ost::MutexLock lock(m_UpdateLock);
 		ENTITYEXMAP::iterator it;
 		bool flag=false;
 		while(m_entityexs.findnext(it))
@@ -137,6 +160,7 @@ public:
 	}
 
 protected:
+	std::map<string,string> EidToExid;
 
 	ENTITYEXMAP m_entityexs;
 	S_UINT	m_hashtablesize;

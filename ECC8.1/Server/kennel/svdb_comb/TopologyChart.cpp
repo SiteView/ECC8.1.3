@@ -105,6 +105,7 @@ char*	TopologyChart::GetRawData(char *lpbuf,S_UINT bufsize)
 		{
 			if( (*it)==NULL )
 				continue;
+			len= (*it)->GetRawDataSize();
 			memmove(pt,&len,tlen);
 			pt+=tlen;
 

@@ -24,7 +24,6 @@ public:
 
 #ifndef WIN32
 	static BOOL InsertSVMQ(CString strQueueName,CString strMessage,CString );
-	static bool SendMsgToWsServer(string szId, string szText, string szServer, string szPort);
 #endif
 	static bool InsertSvdb(string tablename,const char *pdata,int datalen);
 	static bool InsertSvdb(string tablename,const char *pdata,int datalen,string addr);
@@ -49,6 +48,8 @@ private:
 	static string szServer, szPort;
 	static std::list<SingelRecord> listrcd;
 	static bool CacheRecords(string tablename,const char *pdata,int datalen);
+
+
 };
 
 #endif

@@ -23,7 +23,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories=".\;.\svapi\;../../include; ../../include/w32"
+				AdditionalIncludeDirectories="./;./include; ./include/w32;./svapi;./svclient"
 				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE"
 				MinimalRebuild="TRUE"
 				BasicRuntimeChecks="3"
@@ -37,9 +37,9 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="libutil.lib ccgnu2.lib ccext2.lib ws2_32.lib"
-				OutputFile="../../bin/svdb_comb.exe"
+				OutputFile="./debugbin/svdb1_d.exe"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="../../lib"
+				AdditionalLibraryDirectories="./debuglib"
 				GenerateDebugInformation="TRUE"
 				ProgramDatabaseFile="$(OutDir)/svdb.pdb"
 				SubSystem="1"
@@ -73,14 +73,15 @@
 			CharacterSet="2">
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories=".\;.\svapi\;../../include; ../../include/w32"
+				AdditionalIncludeDirectories="./;./svclient;./svapi;../../include; ../../include/w32"
 				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE"
 				RuntimeLibrary="2"
 				UsePrecompiledHeader="0"
 				AssemblerOutput="2"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="TRUE"
-				DebugInformationFormat="3"/>
+				DebugInformationFormat="3"
+				DisableSpecificWarnings="4251;4267;4018"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
 			<Tool
@@ -91,6 +92,8 @@
 				AdditionalLibraryDirectories="../../lib"
 				GenerateDebugInformation="TRUE"
 				GenerateMapFile="TRUE"
+				MapExports="TRUE"
+				MapLines="TRUE"
 				SubSystem="1"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
@@ -124,6 +127,18 @@
 			Name="Source Files"
 			Filter="cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx"
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}">
+			<File
+				RelativePath=".\backupconfig.cpp">
+			</File>
+			<File
+				RelativePath=".\backuprecord.cpp">
+			</File>
+			<File
+				RelativePath=".\backuprecordDamon.cpp">
+			</File>
+			<File
+				RelativePath=".\backuprecordDamon.h">
+			</File>
 			<File
 				RelativePath=".\DB.cpp">
 			</File>
@@ -230,9 +245,6 @@
 				RelativePath=".\StringMap.cpp">
 			</File>
 			<File
-				RelativePath=".\svdb.cpp">
-			</File>
-			<File
 				RelativePath=".\SvdbMain.cpp">
 			</File>
 			<File
@@ -281,7 +293,7 @@
 					RelativePath=".\EntityRelation.cpp">
 				</File>
 				<File
-					RelativePath=".\NNM2ECC.cpp">
+					RelativePath=".\NnmSaveThread.cpp">
 				</File>
 				<File
 					RelativePath=".\Port.cpp">
@@ -307,6 +319,12 @@
 			Name="Header Files"
 			Filter="h;hpp;hxx;hm;inl;inc;xsd"
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}">
+			<File
+				RelativePath=".\backupconfig.h">
+			</File>
+			<File
+				RelativePath=".\backuprecord.h">
+			</File>
 			<File
 				RelativePath=".\DB.h">
 			</File>
@@ -336,6 +354,9 @@
 			</File>
 			<File
 				RelativePath=".\GroupPool.h">
+			</File>
+			<File
+				RelativePath=".\mapwithsort.h">
 			</File>
 			<File
 				RelativePath=".\Monitor.h">
@@ -464,7 +485,7 @@
 					RelativePath=".\EntityRelation.h">
 				</File>
 				<File
-					RelativePath=".\NNM2ECC.h">
+					RelativePath=".\NnmSaveThread.h">
 				</File>
 				<File
 					RelativePath=".\Port.h">
@@ -493,6 +514,35 @@
 			Name="Resource Files"
 			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx"
 			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}">
+		</Filter>
+		<Filter
+			Name="new_h"
+			Filter="">
+			<File
+				RelativePath=".\action.h">
+			</File>
+			<File
+				RelativePath=".\serverbase.h">
+			</File>
+			<File
+				RelativePath=".\svclient\somefunc.h">
+			</File>
+		</Filter>
+		<Filter
+			Name="new_cpp"
+			Filter="">
+			<File
+				RelativePath=".\action.cpp">
+			</File>
+			<File
+				RelativePath=".\serverbase.cpp">
+			</File>
+			<File
+				RelativePath=".\svclient\somefunc.cpp">
+			</File>
+			<File
+				RelativePath=".\svdb.cpp">
+			</File>
 		</Filter>
 	</Files>
 	<Globals>

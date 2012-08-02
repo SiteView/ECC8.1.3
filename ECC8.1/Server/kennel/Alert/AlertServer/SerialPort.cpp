@@ -543,7 +543,7 @@ void CSerialPort::CloseCom()
 //yi.duan 2011-08-08 long Message 
 int CSerialPort::SendLongMsg(CString portName, CString strRecvPhone, CString strMsgContent)
 {
-   CloseCom();//关闭端口 sendLongMsg.dll 会重新打开
+   //CloseCom();//关闭端口 sendLongMsg.dll 会重新打开 bin.liu
    typedef BOOL (*lpNetTraffic)(char* portName, char* strRecvPhone , char* content);
 
    HINSTANCE        hInstance = NULL;
@@ -576,7 +576,7 @@ int CSerialPort::SendLongMsg(CString portName, CString strRecvPhone, CString str
 	   return 1;
    }
 
-   InitPort(portName); //调用完dll 再次启动端口
+  // InitPort(portName); //bin.liu调用完dll 再次启动端口
    return 0; //ok
 }
 

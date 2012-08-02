@@ -18,18 +18,17 @@ static ost::Mutex g_InsertMQLock;
 static CString g_SVMQAddress="127.0.0.1";
 
 CString Util::g_strSession="Refresh";
-string Util::szServer = "", Util::szPort = "";
+
 std::list<SingelRecord> Util::listrcd;
+string Util::szServer = "", Util::szPort = "";
 typedef bool (*SendMsg)(string szId, string szText, string szServer, string szPort, string &szErrorMsg);
 static SendMsg sendmsg = NULL;
-
 
 Util::Util()
 {
 //	strRootPath[0]='\0';
 //	m_hResLibrary=NULL;
        g_SVMQAddress=GetSVMQAddress();
-	  // Init();
        
 }
 
@@ -84,26 +83,6 @@ CString Util::GetRootPath()
 BOOL Util::Init()
 {
 
-	puts("ddddddddddddddddddddsgggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg");
-	CString strPath="";
-
-	//strPath=GetRootPath();
-	if(strPath.IsEmpty())
-		throw MSException("RootPath is empty");
-
-	//strcpy(strRootPath,(LPCSTR)strPath);
-
-	strPath.Format("%s\\fcgi-bin\\MonitorScheduleWeb.dll",GetRootPath());
-
-	HMODULE m_hWebDll=::LoadLibrary(strPath);
-	if(m_hWebDll==NULL)
-		throw MSException("Load MonitorScheduleWeb.dll failed");
-	sendmsg = (SendMsg)::GetProcAddress(m_hWebDll, "SendMsg");
-	if(sendmsg == NULL)
-	{
-		puts("  获取dll函数失败, Failed to GetProcAddress: MonitorScheduleWeb.dll 's SendMsg;  ");
-	}
-
 //	CString strPath=_T("");
 
 /*	strPath=GetRootPath();
@@ -118,7 +97,18 @@ BOOL Util::Init()
 	if(m_hResLibrary==NULL)
 		throw MSException("Load ResLibrary.dll failed");*/
 	
-	
+	CString strPath="";
+
+	strPath.Format("%s\\fcgi-bin\\MonitorScheduleWeb.dll",GetRootPath());
+
+	HMODULE m_hWebDll=::LoadLibrary(strPath);
+	if(m_hWebDll==NULL)
+		throw MSException("Load MonitorScheduleWeb.dll failed");
+	sendmsg = (SendMsg)::GetProcAddress(m_hWebDll, "SendMsg");
+	if(sendmsg == NULL)
+	{
+		puts("  获取dll函数失败, Failed to GetProcAddress: MonitorScheduleWeb.dll 's SendMsg;  ");
+	}
 
 	return TRUE;
 
@@ -173,6 +163,8 @@ void Util::EventLog(CString strError)
 
 }
 
+#include <sys/types.h>
+#include <sys/stat.h>
 void Util::ErrorLog(CString strError)
 {
 	ost::MutexLock lock(g_ErrorLoglock);
@@ -195,6 +187,18 @@ void Util::ErrorLog(CString strError)
 	strlog.Format("%s\t%s",stime.Format().c_str(),strError.getText());
 
 	char *pstr=strlog.getText();
+
+	// 判断文件大小：在不打开文件的情况下实现
+	struct _stat buf;
+	if( _stat( pstr, &buf ) == 0 )
+	{
+		if( buf.st_size > 10000*1024 )
+		{
+			FILE *log = fopen( pstr, "w" );
+			if( log != NULL )
+				fclose( log );
+		}
+	}
 
 	tf.append(pstr,(ccxx_size_t)strlen(pstr));
 
@@ -233,14 +237,20 @@ int Util::AppendThenClearAllRecords(std::list<SingelRecord> & inrcd)
 	inrcd.clear();
 	listrcd.swap(inrcd);
 	if(inrcd.empty())
+	{
+		printf("incrd is empty!\n");
 		return 0;
+	}
 	bool ret=::AppendMassRecord(inrcd,"default",g_ServerHost);
 	std::list<SingelRecord>::iterator it;
 	for(it=inrcd.begin();  it!=inrcd.end(); ++it)
 		if( (it->data)!=NULL )
 			delete [] it->data;
 	if(ret==false) 
+	{
+		printf("ret==false\n");
 		return -1;
+	}
 	return inrcd.size();
 }
 

@@ -45,6 +45,83 @@ int Univ::msappend(1000);
 int Univ::pluscount(0);
 bool Univ::enablemass(false);
 
+
+#include <time.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+void WriteLog( const char* str )
+{
+	char timebuf[128],datebuf[128];
+
+	_tzset();
+	_strtime( timebuf );
+	_strdate( datebuf );
+
+	string path = GetSiteViewRootPath();
+	path += "\\temp\\mserror.log";
+
+	// 判断文件大小：在不打开文件的情况下实现
+	struct _stat buf;
+	if( _stat( path.c_str(), &buf ) == 0 )
+	{
+		if( buf.st_size > 50000*1024 )
+		{
+			FILE *log = fopen( path.c_str(), "w" );
+			if( log != NULL )
+				fclose( log );
+		}
+	}
+	
+
+	FILE *log = fopen( path.c_str(),"a+");
+	if( log != NULL )
+	{
+		fprintf( log, "%s %s \t%s\n", datebuf, timebuf, str );
+		fclose( log );
+	}
+
+}
+
+void WriteTxt( const char* str, const char* pszFileName=NULL )
+{
+	return;
+
+	char timebuf[128],datebuf[128];
+
+	_tzset();
+	_strtime( timebuf );
+	_strdate( datebuf );
+
+	char szProgramName[] = "monitorSchedule.log";
+	string	strEccPath = GetSiteViewRootPath();
+	char szLogFile[128];
+
+
+	if( pszFileName != NULL )
+	{
+		sprintf( szLogFile, "%s\\itsm\\runtime\\logs\\%s.log", 
+		         strEccPath.c_str(), pszFileName );
+	}
+	else
+	{
+		//sprintf( szLogFile, "%s\\itsm\\runtime\\logs\\%s", 
+		//         strEccPath.c_str(), szProgramName );
+
+		sprintf( szLogFile, "%s", szProgramName );
+	}
+	
+
+	FILE *log = fopen( szLogFile,"a+");
+	if( log != NULL )
+	{
+		fprintf( log, "%s %s \t%s\n", datebuf, timebuf, str );
+		fclose( log );
+	}
+
+}
+
+
+
 void Run(void)
 {
 	puts("run()");
@@ -62,7 +139,9 @@ void Run(void)
 	}catch (MSException &e)
 	{
 		strError.Format("Run failed :%s",e.Description);
-		putil->ErrorLog(strError);
+		string strTemp = strError.getText();
+		WriteLog( strTemp.c_str() );
+		//putil->ErrorLog(strError);
 		//	throw MSException((char *)strError);
 		::ExitProcess(2);
 		return ;
@@ -382,7 +461,7 @@ void test_taskplan()
 		lc.LoadAll();
 
 		TASKMAP tmap;
-		if(!lc.LoadTaskPlan(tmap))
+		if(!lc.LoadTaskPlan(tmap)) //加载任务计划
 		{
 			puts("Load task plan failed");
 			return ;
@@ -575,47 +654,38 @@ int main(int argc,char *argv[])
 	for(int i=0; i<=argc-1; ++i)
 		printf("%s  ",argv[i]);
 	printf("\n");
-
 	SetSvdbAddrByFile("mc.config");
-
 	if(argc>1)
 	{
 		putil=new Util();
 		if(argc>4)
 		{
 			puts("Parameter error");
-			putil->ErrorLog("Parameter error");
+			//putil->ErrorLog("Parameter error");
 			return -1;
 		}
 		puts("Begin refresh"); 
-
 		BOOL isRefresh=FALSE;
-
-
-		g_strRootPath=putil->GetRootPath();
- 
-		try{
-
+		g_strRootPath=putil->GetRootPath(); 
+		try
+		{
 			ThreadContrl *pt=new ThreadContrl();
 			Option *popt=new Option;
 			if(popt==NULL)
 			{
-				putil->ErrorLog("Create Option object failed");
+				//putil->ErrorLog("Create Option object failed");
 				return 1;
 			}
 			//load 设置文件 mc.config
 			popt->LoadOption();
 			g_ServerHost=popt->m_ServerAddress;
-
 			pt->m_pOption=popt;
 			g_pOption=popt;
-
 			if(argc==2)
 			{
 				pt->InitRefresh(1);
 				LoadConfig lc; // monitor device group file
 				lc.m_pOption=popt;
-
 				lc.LoadAll();	      
 				Monitor *pM=new Monitor();
 				if(!lc.CreateSingleMonitor(pM,argv[1]))
@@ -626,21 +696,20 @@ int main(int argc,char *argv[])
 				}
 				pt->ExecuteMonitor(pM);
 				delete pM;
-				//return 1;
+//				return 1;
 
-			}else if(argc==3)
+			}
+			else if(argc==3)
 			{
 				if(strcmp(argv[1],"-e")==0)
 				{
 					Run_ProcessMonitor(argv[2]);
 					return 1;
-
 				}
-
 				pt->InitRefresh(10);
 				isRefresh=TRUE;
-				//				putil->InsertSVMQ("SiteviewRefresh","Start",argv[1]);
-				//			        putil->g_strSession=argv[1];
+//				putil->InsertSVMQ("SiteviewRefresh","Start",argv[1]);
+//			    putil->g_strSession=argv[1];
 				CMonitorList lstMonitor;
 				if(GetMonitorListByFile(lstMonitor,argv[2]))
 				{
@@ -648,9 +717,11 @@ int main(int argc,char *argv[])
 					pt->RefreshMonitors(lstMonitor);
 				}
 				else
-					putil->ErrorLog("Monitor list empty");
-				//				putil->InsertSVMQ("SiteviewRefresh","End",argv[1]);
-			}else if(argc==4)
+					;
+//				putil->ErrorLog("Monitor list empty");
+//				putil->InsertSVMQ("SiteviewRefresh","End",argv[1]);
+			}
+			else if(argc==4)
 			{
 				char buf[256]={0};
 				pt->InitRefresh(30);
@@ -664,24 +735,21 @@ int main(int argc,char *argv[])
 					pt->RefreshMonitors(lstMonitor);
 				}else
 				{
-					putil->ErrorLog("Refresh Monitors empty");
+//					putil->ErrorLog("Refresh Monitors empty");
 					puts("eeeeeeee");
 				}
 				sprintf(buf,"Refresh end");
 				::PushMessage(argv[2],"Refresh_END",buf,strlen(buf)+1,"default",argv[3]);
-
-			//	::Sleep(200000000);
+//				::Sleep(200000000);
 			}
-
-
-		}catch(MSException &e)
+		}
+		catch(MSException &e)
 		{
 			//			if(isRefresh)
 			//		           putil->InsertSVMQ("SiteviewRefresh","End",argv[1]);
-			putil->ErrorLog(e.GetDescription());
+			//putil->ErrorLog(e.GetDescription());
 			return -1;
 		}
-
 		if( Univ::enablemass && putil!=NULL )
 		{	
 			std::list<SingelRecord> listrcd;
@@ -697,9 +765,7 @@ int main(int argc,char *argv[])
 	}
 
 #ifdef WIN32
-
  	HANDLE hCommEvent=::CreateEvent(NULL,TRUE,FALSE,"Global\\Siteview-Communictions");
-
 	if(hCommEvent==NULL)
 	{
 		puts("Create event of communication  failed");
@@ -708,31 +774,28 @@ int main(int argc,char *argv[])
 	if(::GetLastError()!=ERROR_ALREADY_EXISTS)
 	{
 		puts("Parent process isn't exist");
-		return -2;
+		//return -2;
 	}
     ::SetLastError(0);
-
-
 #endif
 
-
-
-	try{
-
-		Run();
-	}catch(MSException &e)
+	try
 	{
-		putil->ErrorLog(e.GetDescription());
+		Run();
+	}
+	catch(MSException &e)
+	{
+		//putil->ErrorLog(e.GetDescription());
+		WriteLog( e.GetDescription() );
 		return -3;
-
 	}
 
 #ifdef WIN32
-
 	MSG msg;
 	BOOL bRet=TRUE;
 	while((bRet=::GetMessage(&msg,NULL,0,0))!=0)
 	{
+//		MemLeakCheckAndFree();
 		if(bRet==-1)
 		{
 			continue;
@@ -751,7 +814,8 @@ int main(int argc,char *argv[])
 			{
 				string show= " Self-exit MonitorSchedule! ";
 				show+=text;
-				putil->ErrorLog(show.c_str());
+				//putil->ErrorLog(show.c_str());
+				WriteLog( show.c_str() );
 				OutputDebugString(show.c_str());
 				::Sleep(100);
 				return 1;
@@ -778,14 +842,10 @@ int main(int argc,char *argv[])
 	}
 
 #else
-
 	while(true)
 	{
 		ThreadEx::sleep(2000000);
 	}
 #endif
-
 	return 1;
-
-
 }

@@ -13,6 +13,7 @@
 #include <iostream>
 #include <string>
 #include <list>
+#include <libutil/time.h>
 using namespace std;
 #include "AlertMain.h"
 
@@ -25,20 +26,46 @@ class CAlertEventObj
 		string strMonitorId;
 		string strEventDes;
 		string strTime;
-		//为解决Ticket #98 修改报警内容筛选不正确的问题
-		//苏合 2007-08-01
+		int nEventType; //1、正常。2、危险。3、错误。4、禁止。5、错误。
+		int nEventCount;		//报警出现的次数
+		
 
-		//+++++++++++++++++++++++++++代码修改开始  苏合 2007-08-01+++++++++++++++++++++++++++
-		//修改错误的代码注释
-		//int nEventType; //1、正常。2、危险。3、错误。4、禁止。5、错误。
-		int nEventType; //1、正常。2、危险。3、错误。4、禁止。5、其他。
-		//+++++++++++++++++++++++++++代码修改结束  苏合 2007-08-01+++++++++++++++++++++++++++
-		int nEventCount;
-
-		int nLastEventType; //最后状态，苏合 2008-02-13
-
+		//添加消息过期时间 2008-12-2
+		svutil::TTime m_dtExpireTime;
 	public :
 		inline string GetEventTypeString()
+		{
+			string strType = "";
+			switch(nEventType)
+			{
+				case 1 :
+					//strType = "正常";
+					strType = CAlertMain::strENNormal;
+					break;
+				case 2 :
+					//strType = "危险";
+					strType = CAlertMain::strENWarning;
+					break;
+				case 3 :
+					//strType = "错误";
+					strType = CAlertMain::strENError;
+					break;
+				case 4 :
+					//strType = "禁止";
+					strType = CAlertMain::strENDisable;
+					break;
+				case 5 :
+					//strType = "错误";
+					strType = CAlertMain::strENError;
+					break;
+				default:
+					break;
+			}
+
+			return strType;
+		}
+
+		inline string GetEventTypeCHString()
 		{
 			string strType = "";
 			switch(nEventType)
@@ -60,13 +87,8 @@ class CAlertEventObj
 					strType = CAlertMain::strDisable;
 					break;
 				case 5 :
-					//为解决Ticket #98 修改报警内容筛选不正确的问题
-					//苏合 2007-08-01
-
-					//+++++++++++++++++++++++++++代码修改开始  苏合 2007-08-01+++++++++++++++++++++++++++
-					//strType = CAlertMain::strError;
-					strType = CAlertMain::strOther;
-					//+++++++++++++++++++++++++++代码修改结束  苏合 2007-08-01+++++++++++++++++++++++++++
+					//strType = "错误";
+					strType = CAlertMain::strError;
 					break;
 				default:
 					break;
@@ -93,4 +115,5 @@ class CAlertEventObj
 		}
 
 };
+
 #endif

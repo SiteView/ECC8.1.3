@@ -1310,10 +1310,10 @@ LOOP://Ñ­»·µ÷ÓÃ
 	{
 		svHttp.SetProxyPwd(strProxyPassword);
 	}
-	if (!strServerIP.IsEmpty())// set server ip
+/*	if (!strServerIP.IsEmpty())// set server ip
 	{
 		svHttp.SetServerIP(strServerIP);
-	}
+	}*/
 	svHttp.SetUrl(strURL);
 	svHttp.SetPostData(strPostData);	
 	svHttp.SetTimeOut(nTimeout);

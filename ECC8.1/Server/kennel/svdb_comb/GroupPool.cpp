@@ -4,6 +4,7 @@ GroupPool::GroupPool(void)
 {
 	m_hashtablesize=hashtablesize;
 	m_groups.resetsize(m_hashtablesize);
+	m_hide_groups.resetsize(m_hashtablesize);
 	m_changed=false;
 	needToDel=true;
 
@@ -12,6 +13,7 @@ GroupPool::GroupPool(word filepath):PoolBase2(filepath)
 {
 	m_hashtablesize=hashtablesize;
 	m_groups.resetsize(m_hashtablesize);
+	m_hide_groups.resetsize(m_hashtablesize);
 	m_changed=false;
 	needToDel=true;
 }
@@ -36,6 +38,13 @@ GroupPool::~GroupPool(void)
 			delete pg;
 	}
 
+	GROUPMAP::iterator hit;
+	while(m_hide_groups.findnext(hit))
+	{
+		Group *pg=(*hit).getvalue();
+		if(pg)
+			delete pg;
+	}
 }
 bool GroupPool::Load(void)
 {
@@ -95,9 +104,10 @@ bool GroupPool::SubmitToFile(string fileName, GroupPool * dataPool )
 bool GroupPool::Submit(std::string modifyid)
 {
 	ost::MutexLock lock(m_UpdateLock);
-
 	if(!m_changed)
 		return true;
+	if(m_FilePath.empty())
+		return false;
 
 	if( !IdcUser::EnableIdc )
 	{  //for non-idc
@@ -188,7 +198,44 @@ bool GroupPool::LoadFile(string fileName)
 }
 
 
-S_UINT	GroupPool::GetRawDataSize(void)
+bool	GroupPool::GetBackupData(std::list<SingelRecord> & listrcd)
+{
+	ost::MutexLock lock(m_UpdateLock);
+
+	int datalen= GetRawDataSize(true);
+	char * tdata(NULL);
+	char * pdata(NULL);
+	try{
+		pdata=new char[datalen];
+		if(datalen==0 || pdata==NULL)
+			return false;
+		tdata= GetRawData(pdata, datalen, true);
+		if(tdata==NULL)
+		{
+			delete [] pdata;
+			return false;
+		}
+	}
+	catch(...)
+	{
+		delete [] pdata;
+		return false;
+	}
+	SingelRecord rcd;
+	rcd.monitorid= "group_"+IdcUser::GetLocalSEIdStr();
+	rcd.data= tdata;
+	rcd.datalen= datalen;
+
+	GroupPool mp;
+	if(!mp.CreateObjectByRawData(tdata, datalen))
+		return false;
+
+	listrcd.push_back(rcd);
+	return true;
+}
+
+
+S_UINT	GroupPool::GetRawDataSize(bool onlyLocked)
 {
 	S_UINT len=0,tlen=sizeof(S_UINT);
 
@@ -198,20 +245,30 @@ S_UINT	GroupPool::GetRawDataSize(void)
 	GROUPMAP::iterator it;
 	while(m_groups.findnext(it))
 	{
+		if(onlyLocked && !IdcUser::WillTeleBackup((*it).getvalue()->GetID().getword()))
+			continue;
 		len+=tlen;			//len size;
-		len+=(*it).getvalue()->GetRawDataSize();
+		len+=(*it).getvalue()->GetRawDataSize(onlyLocked);
 
 	}
+	if(onlyLocked)
+		return len;
 
+	GROUPMAP::iterator hit;
+	while(m_hide_groups.findnext(hit))
+	{
+		len+=tlen;			//len size;
+		len+=(*hit).getvalue()->GetRawDataSize();
+	}
 	return len;
 
 }
-char*	GroupPool::GetRawData(char *lpbuf,S_UINT bufsize)
+char*	GroupPool::GetRawData(char *lpbuf,S_UINT bufsize, bool onlyLocked)
 {
 	if(lpbuf==NULL)
 		return NULL;
 
-	if(bufsize<GetRawDataSize())
+	if(bufsize<GetRawDataSize(onlyLocked))
 		return NULL;
 
 	S_UINT len=0,tlen=sizeof(S_UINT);
@@ -221,23 +278,52 @@ char*	GroupPool::GetRawData(char *lpbuf,S_UINT bufsize)
 	pt+=tlen;
 
 	len=m_groups.size();
+	if(onlyLocked)
+	{
+		S_UINT tempcount=0;
+		GROUPMAP::iterator tempit;
+		while(m_groups.findnext(tempit))
+		{
+			if(IdcUser::WillTeleBackup((*tempit).getvalue()->GetID().getword()))
+				++tempcount;
+		}
+		len= tempcount;
+	}
+
+	if(!onlyLocked)
+		len+= m_hide_groups.size();
 	memmove(pt,&len,tlen);
 	pt+=tlen;
 
 	GROUPMAP::iterator it;
 	while(m_groups.findnext(it))
 	{
-		len=(*it).getvalue()->GetRawDataSize();
+		if(onlyLocked && !IdcUser::WillTeleBackup((*it).getvalue()->GetID().getword()))
+			continue;
+		len=(*it).getvalue()->GetRawDataSize(onlyLocked);
 		memmove(pt,&len,tlen);
 		pt+=tlen;
 
-		if((*it).getvalue()->GetRawData(pt,len)==NULL)
+		if((*it).getvalue()->GetRawData(pt,len,onlyLocked)==NULL)
 			return NULL;
 
 		pt+=len;
 	}
+	if(onlyLocked)
+		return lpbuf;
 
+	GROUPMAP::iterator hit;
+	while(m_hide_groups.findnext(hit))
+	{
+		len=(*hit).getvalue()->GetRawDataSize();
+		memmove(pt,&len,tlen);
+		pt+=tlen;
 
+		if((*hit).getvalue()->GetRawData(pt,len)==NULL)
+			return NULL;
+
+		pt+=len;
+	}
 
 	return lpbuf;
 }
@@ -257,7 +343,7 @@ BOOL	GroupPool::CreateObjectByRawData(const char *lpbuf,S_UINT bufsize)
 		pt+=tlen;
 
 		m_groups.resetsize(m_hashtablesize);
-
+		m_hide_groups.resetsize(m_hashtablesize);
 
 		S_UINT count=0;
 		memmove(&count,pt,tlen);
@@ -277,8 +363,17 @@ BOOL	GroupPool::CreateObjectByRawData(const char *lpbuf,S_UINT bufsize)
 				return false;
 			pt+=len;
 			id=pm->GetID();
-			m_groups.insert(id,pm);
+
 			NewVersion(id);
+
+			if(IdcUser::SELocked && !IdcUser::IsAnLocalSEId(id.getword()))
+			{
+				m_hide_groups.insert(id,pm);
+				continue;
+			}
+
+			m_groups.insert(id,pm);
+
 
 		}
 	}catch(...)
@@ -289,6 +384,75 @@ BOOL	GroupPool::CreateObjectByRawData(const char *lpbuf,S_UINT bufsize)
 	return true;
 }
 
+
+bool	GroupPool::UpdateConfig(string sestr, const char *data,S_UINT datalen)
+{
+	try{
+		if(!IdcUser::AcceptConfigIncoming || sestr.empty())
+			return false;
+
+		ost::MutexLock lock(m_UpdateLock);
+		sestr= ","+sestr+",";
+		GroupPool mp;
+		if(!mp.CreateObjectByRawData(data, datalen))
+			return false;
+
+		GROUPMAP mDel;
+		mDel.resetsize(m_hashtablesize);
+		GROUPMAP::iterator git;
+		while(m_groups.findnext(git))
+		{
+			string id= (*git).getkey().getword();
+			string seid= GetTopID(id).getword();
+			if(sestr.find(","+seid+",")==std::string::npos)
+				continue;
+			if(!IdcUser::IsAnLocalSEId(id))
+				continue;
+
+			Group *pIncome= mp.GetGroup(id.c_str());
+			if(pIncome==NULL)
+				mDel.insert(id,NULL);
+		}
+
+		GROUPMAP & ingroups= mp.GetMemberData();
+		GROUPMAP::iterator git3;
+		while(ingroups.findnext(git3))
+		{
+			string id= (*git3).getkey().getword();
+			if(!IdcUser::IsAnLocalSEId(id))
+				continue;
+
+			Group **p= m_groups.find(id);
+			if(p!=NULL)
+				delete (*p);
+			m_groups[id]= (*git3).getvalue();
+			NewVersion(id);
+
+			(*git3).setvalue(NULL);
+		}
+
+		GROUPMAP::iterator git2;
+		while(mDel.findnext(git2))
+		{
+			string id= (*git2).getkey().getword();
+			Group **pm=m_groups.find(id);
+			if(pm!=NULL)
+				delete (*pm);
+
+			if(m_groups.erase(id))
+				m_mversion.erase(id);
+		}
+
+		m_changed=true;
+		return Submit();
+	}
+	catch(...)
+	{
+		return false;
+	}
+}
+
+
 bool GroupPool::push(Group *pm)
 {
 	ost::MutexLock lock(m_UpdateLock);
@@ -296,6 +460,9 @@ bool GroupPool::push(Group *pm)
 	if(!pm)
 		return false;
 	word id=pm->GetID();
+
+	if(IdcUser::SELocked && !IdcUser::IsAnLocalSEId(id.getword()))
+		return false;
 
 	Group **p=m_groups.find(id);
 	if(p!=NULL)
@@ -343,10 +510,8 @@ bool GroupPool::DeleteGroup(word id)
 {
 	ost::MutexLock lock(m_UpdateLock);
 	Group **pm=m_groups.find(id);
-	if(pm==NULL)
-		return false;
-
-	delete (*pm);
+	if(pm!=NULL)
+		delete (*pm);
 
 	if(m_groups.erase(id))
 	{
@@ -359,5 +524,79 @@ bool GroupPool::DeleteGroup(word id)
 
 
 }
+
+bool GroupPool::UpdateNnmEntityParentGid()
+{
+	ost::MutexLock lock(m_NnmEntityParentGid_Lock);
+
+	try{
+		StringMap smap(577);
+		GetInfo(IdcUser::nnmEntityParentKey,"default",smap);
+
+		IdcUser::nnmEntityParentId.clear();
+		bool OkOld= IdcUser::nnmEntityParentOk;
+		IdcUser::nnmEntityParentOk= false;
+		StringMap::iterator sit;
+		while(smap.findnext(sit))
+		{
+			for(std::map<string,string>::iterator mit= IdcUser::nnmEntityParentValue.begin(); mit!=IdcUser::nnmEntityParentValue.end(); ++mit)
+			{
+				if( (mit->second).compare((*sit).getvalue().getword())==0 )
+				{
+					AddToErrorLog(mit->second+"="+(*sit).getkey().getword());
+					pair< std::map<string,string>::iterator, bool > pr= IdcUser::nnmEntityParentId.insert(std::make_pair(mit->first,(*sit).getkey().getword()));
+					if( !pr.second )
+					{
+						cout<<mit->second.c_str()<<"="<<(*sit).getkey().getword();
+						cout<<"   (系统发现多个\""<<mit->second.c_str()<<"\"，请检查，该设备组只能有一个!)"<<endl;
+						AddToErrorLog("   (系统发现多个\""+mit->second+"\"，请检查，该设备组只能有一个!)");
+					}
+				}
+			}
+		}
+
+		if(IdcUser::nnmEntityParentId.size()== IdcUser::nnmEntityParentValue.size())
+		{
+			IdcUser::nnmEntityParentOk= true;
+			if( OkOld== false )
+			{
+				for(std::map<string,string>::iterator mit= IdcUser::nnmEntityParentId.begin(); mit!=IdcUser::nnmEntityParentId.end(); ++mit)
+				{
+					std::map<string,string>::iterator mit2= IdcUser::nnmEntityParentValue.find(mit->first);
+					if(mit2!=IdcUser::nnmEntityParentValue.end())
+						cout<<mit2->second.c_str()<<"="<<mit->second.c_str()<<endl;
+				}
+			}
+		}
+	}
+	catch(...)
+	{
+		cout<<" Exception in GroupPool::UpdateNnmEntityParentGid() "<<endl;
+		return false;
+	}
+	return IdcUser::nnmEntityParentOk;
+}
+
+string GroupPool::GetNnmEntityParentGid(string type)
+{
+	ost::MutexLock lock(m_NnmEntityParentGid_Lock);
+	std::map<string,string>::iterator mit= IdcUser::nnmEntityParentId.find(type);
+	if(mit==IdcUser::nnmEntityParentId.end())
+		return "";
+	else
+		return mit->second;
+}
+
+bool GroupPool::CheckIdIsNnmEntityParent(string id)
+{
+	ost::MutexLock lock(m_NnmEntityParentGid_Lock);
+	for(std::map<string,string>::iterator mit= IdcUser::nnmEntityParentId.begin(); mit!=IdcUser::nnmEntityParentId.end(); ++mit)
+	{
+		if(id.compare(mit->second)==0)
+			return true;
+	}
+	return false;
+}
+
 
 

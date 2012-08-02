@@ -11,7 +11,7 @@
 typedef svutil::hashtable<word,Monitor *> MONITORMAP;
 
 class MonitorPool :
-	public PoolBase2,public SerialBase
+	public PoolBase2,public SerialBase2
 {
 public:
 	MonitorPool(void);
@@ -37,9 +37,12 @@ public:
 	bool LoadFile(string fileName);
 	bool SubmitToFile(string fileName, MonitorPool * dataPool );
 
-	S_UINT	GetRawDataSize(void);
-	char*	GetRawData(char *lpbuf,S_UINT bufsize);
+	bool	GetBackupData(std::list<SingelRecord> & listrcd);
+	S_UINT	GetRawDataSize(bool onlyLocked= false);
+	char*	GetRawData(char *lpbuf,S_UINT bufsize, bool onlyLocked= false);
 	BOOL	CreateObjectByRawData(const char *lpbuf,S_UINT bufsize);
+	bool	UpdateConfig(string sestr, const char *data, S_UINT datalen);
+	bool    ReSetBackupId();
 
 	bool push(Monitor *pm);
 	bool PushData(const char *buf,S_UINT len);
@@ -55,7 +58,7 @@ public:
 		Monitor **pm=m_monitors.find(id);
 		if(pm==NULL)
 			return NULL;
-		m_changed=true;
+		//m_changed=true;
 		return *pm;
 	}
 	int QueryMassMonitor(string pid, const char *data,S_UINT datalen, std::list<SingelRecord> & listrcd );
@@ -64,8 +67,9 @@ public:
 
 	bool DeleteMonitor(word id);
 
-	bool GetInfo(word infoname,string pid,StringMap &map)
+	bool GetInfo(word infoname,string pid,StringMap &map,bool onlyson=false)
 	{
+		ost::MutexLock lock(m_UpdateLock);
 		MONITORMAP::iterator it;
 
 		bool getver(false);
@@ -82,9 +86,15 @@ public:
 		string mid;
 		while(m_monitors.findnext(it))
 		{
+			if((*it).getkey().empty())
+				continue;
+
 			const char * key = (*it).getkey().getword();
 			mid=key;
 			if( !isdefault && mid.find(pid)!=0)
+				continue;
+
+			if(onlyson && mid.find(".",pid.size())!=std::string::npos )
 				continue;
 
 			if(getver)
@@ -109,6 +119,7 @@ public:
 		if(seid<1)
 			return false;
 
+		ost::MutexLock lock(m_UpdateLock);
 		MONITORMAP::iterator it;
 		while(m_monitors.findnext(it))
 		{
@@ -141,9 +152,15 @@ public:
 		}
 	}
 
+	MONITORMAP & GetMemberData()
+	{
+		return m_monitors;
+	}
 
 protected:
 	MONITORMAP m_monitors;
+	MONITORMAP m_hide_monitors;
+
 	S_UINT	m_hashtablesize;
 	bool needToDel;
 

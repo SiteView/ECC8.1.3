@@ -83,6 +83,8 @@ public:
 
 	bool GetAlertInfoData(char *buf,S_UINT &buflen);
 
+	bool GetLatestRCD(char * & buf,S_UINT &buflen);
+	bool SetLatestRCD(const char *buf,int buflen);
 
 protected:
 
@@ -110,6 +112,8 @@ private:
 	svutil::TTime m_laststatechangetime;
 	unsigned int m_laststatekeeptimes;
 	string m_displaystr;
+
+	SingelRecord m_latestRCD;
     /**********************************/
 
 	S_UINT GetDynSize(void);

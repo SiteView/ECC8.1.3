@@ -37,20 +37,20 @@ S_UINT	GeneralPool::GetRawDataSize(void)
 	len+=tlen;			//m_hashtablesize
 	len+=tlen;			//data count;
 
-	WORDLIST::iterator wit;
-	Section **pdata=NULL;
-	for(wit=m_SectionOrder.begin();wit!=m_SectionOrder.end();wit++)
-	{
-		pdata=m_data.find((*wit));
-		if(pdata!=NULL)
-		{
-			len+=tlen;   //data len;
-			len+=(*pdata)->GetRawDataSize();
+	//WORDLIST::iterator wit;
+	//Section **pdata=NULL;
+	//for(wit=m_SectionOrder.begin();wit!=m_SectionOrder.end();wit++)
+	//{
+	//	pdata=m_data.find((*wit));
+	//	if(pdata!=NULL)
+	//	{
+	//		len+=tlen;   //data len;
+	//		len+=(*pdata)->GetRawDataSize();
 
-		}
-	}
+	//	}
+	//}
 
-/*	
+	
 	COMMONDATAMAP::iterator it;
 	while(m_data.findnext(it))
 	{
@@ -58,7 +58,7 @@ S_UINT	GeneralPool::GetRawDataSize(void)
 		len+=(*it).getvalue()->GetRawDataSize();
 
 	}
-*/
+
 	return len;
 
 
@@ -77,30 +77,30 @@ char*	GeneralPool::GetRawData(char *lpbuf,S_UINT bufsize)
 	memmove(pt,&m_hashtablesize,tlen);
 	pt+=tlen;
 
-//	len=m_data.size();
-	len=m_SectionOrder.size();
+	len=m_data.size();
+	//len=m_SectionOrder.size();
 	memmove(pt,&len,tlen);
 	pt+=tlen;
 
-	WORDLIST::iterator wit;
-	Section **pdata=NULL;
-	for(wit=m_SectionOrder.begin();wit!=m_SectionOrder.end();wit++)
-	{
-		pdata=m_data.find((*wit));
-		if(pdata!=NULL)
-		{
-			len=(*pdata)->GetRawDataSize();
-			memmove(pt,&len,tlen);
-			pt+=tlen;
+	//WORDLIST::iterator wit;
+	//Section **pdata=NULL;
+	//for(wit=m_SectionOrder.begin();wit!=m_SectionOrder.end();wit++)
+	//{
+	//	pdata=m_data.find((*wit));
+	//	if(pdata!=NULL)
+	//	{
+	//		len=(*pdata)->GetRawDataSize();
+	//		memmove(pt,&len,tlen);
+	//		pt+=tlen;
 
-			if(!(*pdata)->GetRawData(pt,len))
-				return NULL;
-			pt+=len;
+	//		if(!(*pdata)->GetRawData(pt,len))
+	//			return NULL;
+	//		pt+=len;
 
-		}
-	}
+	//	}
+	//}
 
-/*
+
 	COMMONDATAMAP::iterator it;
 	while(m_data.findnext(it))
 	{
@@ -112,7 +112,7 @@ char*	GeneralPool::GetRawData(char *lpbuf,S_UINT bufsize)
 			return NULL;
 		pt+=len;
 	}
-*/
+
     
 	return lpbuf;
 }
@@ -270,6 +270,45 @@ bool GeneralPool::GetData(word section,word key,void *data,S_UINT &len)
 	return true;
 }
 
+bool GeneralPool::WriteManyString(word section, const char *data,S_UINT datalen)
+{
+	MutexLock lock(m_UpdateLock);
+	try{
+
+		NodeData ndata;
+		CreateNodeDataByRawData(ndata, data ,datalen);
+		if(ndata.empty())
+			return true;
+
+		if(!Find(section))
+		{
+			Section *ps=new Section();
+			if(!ps)
+				return false;
+			m_changed=true;
+			ps->PutSection(section);
+			for(NodeData::const_iterator nit=ndata.begin(); nit!=ndata.end(); ++nit)
+				ps->Push(nit->first.c_str(), nit->second.c_str());
+
+			m_data[section]=ps;
+			m_SectionOrder.push_back(section);
+			return true;
+		}else
+		{
+			m_changed=true;
+			for(NodeData::const_iterator nit=ndata.begin(); nit!=ndata.end(); ++nit)
+				m_data[section]->Push(nit->first.c_str(), nit->second.c_str());
+			return true;
+		}
+	}
+	catch(...)
+	{
+		cout<<" Exception in WriteManyString into IniFile."<<endl;
+		return false;
+	}
+	return true;
+}
+
 bool GeneralPool::WriteString(word section, word key, word str)
 {
 	MutexLock lock(m_UpdateLock);
@@ -339,11 +378,38 @@ int GeneralPool::GetInt(word section,word key, int defaultret)
 	return value;
 }
 
-bool GeneralPool::GetSectionsName(std::list<string> &sections)
+bool GeneralPool::GetSectionsName(std::list<string> &sections,std::string inifilename)
 {
+	std::set<string> names;  std::set<string>::iterator sit;
+	std::set<string> sectodel; 
+	string sname;
+
 	WORDLIST::iterator it;
 	for(it=m_SectionOrder.begin();it!=m_SectionOrder.end();it++)
-		sections.push_back((*it).getword());
+	{
+		sname= (*it).getword();
+		sit= names.find(sname);
+		if(sit!=names.end())
+		{
+			sectodel.insert(sname);
+			continue;
+		}
+
+		sections.push_back(sname);
+		names.insert(sname);
+	}
+
+	if(sectodel.empty())
+		return true;
+	else
+	{
+		MutexLock lock(m_UpdateLock);
+		for(sit=sectodel.begin(); sit!=sectodel.end(); ++sit)
+			DeleteSectionInSectionOrder(sit->c_str());
+		printf("inifile: %s \n    deleted %d duplicate section-name in SectionOrder.\n",inifilename.c_str(),sectodel.size());
+		m_changed=true;
+	}
+	Submit();
 
 /*	COMMONDATAMAP::iterator it;
 	while(m_data.findnext(it))

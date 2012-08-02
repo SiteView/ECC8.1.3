@@ -22,8 +22,7 @@ bool Queue::Append(const char * data,S_UINT len,int level)
 
 	if(ppage==NULL)
 	{
-		printf("Append queue record get page failed queue name :%s page id:%d",m_queuename.c_str(),m_currentpage);
-		puts("Get page failed");
+		printf("Get page failed in Queue::Append, queue name :%s page id:%d",m_queuename.c_str(),m_currentpage);
 		return false;
 	}
 
@@ -318,7 +317,7 @@ LOOP:
 	while(true)
 	{
 		rlen=this->PeekTopRecord(buf,blen);
-		puts("Pop record over");
+		//puts("Pop record over");
 
 		if(rlen!=QUEUE_OK)
 		{
@@ -391,7 +390,7 @@ LOOP:
 	while(true)
 	{
 		rlen=PopTopRecord(buf,blen);
-		puts("Pop record over");
+		//puts("Pop record over");
 
 		if(rlen!=QUEUE_OK)
 		{
@@ -774,186 +773,137 @@ bool Queue::QueryAllRecord(svutil::buffer &buf,int &datalen)
 bool Queue::GetQueueAllMessageLabels(std::list<string> & retlist)
 {
 	MutexLock lock(m_mutex);
-	cout<<"Get all labels of queue:"<<endl;
+	int startpage= m_top.m_page;
+	int startpos= m_top.m_pos;
 
-	if((m_last.m_page<0)||(m_last.m_pos<0))
-		return false;
+	int count(1);
+	try{
+		while(GetMessageData(retlist,startpage,startpos)==QUEUE_OK)
+		{
+			if(++count > 300)
+				break;
+		}
+	}
+	catch(...)
+	{
+		cout<<"    **** Exception in GetAllMessageLabels "<<endl;
+		OutputDebugString("    **** Exception in GetAllMessageLabels\n\n ");
+	}
+	cout<<"    Get all labels of queue \""<<m_queuename.c_str()<<"\" , size: "<<retlist.size()<<"  "<<endl;
+	return true;
+}
 
-	Page *ppage=m_pagepool->Get(m_last.m_page,false); 
+int  Queue::GetMessageData(std::list<string> & retlist, int & page, int & pos)
+{
+	if(m_recordcount==0)
+		return QUEUE_EMPTY;
+
+	if((page<0)||(pos<0))
+		return QUEUE_UNKNOWERROR;
+
+	Page *ppage=m_pagepool->Get(page);
 	if(ppage==NULL)
-		return false;
-	m_pagepool->Put(ppage,false,false);
+		return QUEUE_GETPAGEERROR;
 
 	if(ppage->m_data==NULL)
-		return false;
-
+	{
+		m_pagepool->Put(ppage,false,true);
+		return QUEUE_GETPAGEERROR;
+	}
 	PageHead *ppagehead=ppage->GetPageHead();
 	if(ppagehead==NULL)
-		return false;
-
-	if((m_currentpage==m_firstpage)&&(ppagehead->m_lastrecordpos<0))
-		return true;
-
-	if(ppagehead->m_lastrecordpos<0)
 	{
-		Page *ptemp=GetPreRecordPage(ppage);
-		if(ptemp==NULL)
-			return false;
 		m_pagepool->Put(ppage,false,true);
-
-		ppage=ptemp;
-		ppagehead=ppage->GetPageHead();
-		if(ppagehead==NULL)
-			return false;
+		return QUEUE_GETPAGEERROR;
 	}
 
-	int pos= m_last.m_pos;
 
-	char *pc=ppage->m_data + pos;
-	if(((LPQUEUEHEAD)pc)->m_cblen!=sizeof(QUEUEHEAD))
-		return false;
-
-	//svutil::buffer tempbuf;
-	//if(!tempbuf.checksize(4096))
-	//	return false;
-
-	cout<<"    "<<m_queuename.c_str()<<endl;
-	const int AtLeaseSize( sizeof(QUEUEHEAD)+sizeof(S_UINT)+sizeof(svutil::TTime)+sizeof(int)+sizeof(S_UINT) );
-
-	std::set<Page *> pagepoints;
-	std::set<LPQUEUEHEAD> pcpoints;
-
-	int times(0),pagecount(0);
-	bool retlabel=true, anerror=true;
-	while(true)
+	char *pt=ppage->m_data+pos;
+	if(((LPQUEUEHEAD)pt)->m_cblen!=sizeof(QUEUEHEAD))
 	{
-		int rlen=0,blen=0,prep=0,pmpage=0;
-		int flen=ppagehead->m_datasize - m_top.m_pos;
-		LPQUEUEHEAD temppc;
-
-		try{
-			temppc= reinterpret_cast<LPQUEUEHEAD>(pc);
-			if(temppc!=NULL)
-			{
-				std::set<LPQUEUEHEAD>::iterator pit=pcpoints.find(temppc);
-				if(pit!=pcpoints.end())
-					anerror=false;
-			}
-			else
-			{
-				anerror=false;
-				cout<<"anerror==false"<<endl;
-			}
-
-			if( anerror )
-			{
-				blen = temppc->m_datalen;
-				prep = temppc->m_prerecord.m_pos;
-				pmpage=  temppc->m_prerecord.m_page;
-			}
-		}
-		catch(...)
-		{
-			anerror=false;
-			cout<<"anerror==false"<<endl;
-		}
-
-		if( anerror )
-		{
-			pcpoints.insert(temppc);
-			blen+= sizeof(QUEUEHEAD);
-
-			if(blen<=flen && blen>AtLeaseSize )
-			{
-				//cout<<" blen < flen : "<<blen<<"  "<<flen<<"   prep: "<<prep<<"   pmpage: "<<pmpage<<endl;
-				retlabel=GetLabelData(retlist, pc, blen);
-			}
-			else
-			{
-				//cout<<" blen > flen : "<<blen<<"  "<<flen<<"   prep: "<<prep<<"   pmpage: "<<pmpage<<endl;
-
-				//char * buf= tempbuf;
-				//int i=0;
-				//while(true)
-				//{
-				//	rlen=GetSingleRecord(ppage,pos,buf,blen);
-				//	if(rlen>=0)
-				//	{
-				//		buf+=rlen;
-				//		blen-=rlen;
-				//		GetLabelData(retlist, buf, rlen+sizeof(QUEUEHEAD));
-				//		break;
-				//	}
-				//	if(++i>500)
-				//		break;
-				//}
-			}
-		}
-
-		if(retlist.size()>=500)
-			return true;
-
-		if(prep==-1 || pmpage==-1)
-			return true;
-
-		if(anerror && prep>=0 && blen>AtLeaseSize && blen<=flen && (++times)<500) 
-		{
-			if( (++times)>500 )
-			{
-				cout<<" times protection"<<endl;
-				break;
-			}
-			pc=ppage->m_data+prep;
-			pos=prep;
-			continue;
-		}
-		else
-		{
-			times=0;
-			retlabel=true;  anerror=true;
-
-			std::set<Page *>::iterator it;
-			Page *ptem;
-			do{
-				ptem=GetPreRecordPage(ppage);   
-				if(ptem==NULL)
-				{
-					m_pagepool->Put(ptem,false,true);
-					return true;
-				}
-				if(ptem->m_data==NULL)
-				{
-					m_pagepool->Put(ptem,false,true);
-					return true;
-				}
-				it=pagepoints.find(ptem);
-			}while(it!=pagepoints.end());
-
-			cout<<"---Get labels from another page: "<<++pagecount<<" ---"<<endl;
-
-			ppage=ptem;
-			pagepoints.insert(ppage);
-
-			m_pagepool->Put(ppage,false,false);
-
-			ppagehead=ppage->GetPageHead();
-			if(ppagehead==NULL)
-			{
-				m_pagepool->Put(ppage,false,true);
-				return true;
-			}
-			if(ppagehead->m_lastrecordpos<0)
-			{
-				m_pagepool->Put(ppage,false,true);
-				return true;
-			}
-
-			pos=ppagehead->m_lastrecordpos; 
-			pc=ppage->m_data+pos;
-		}
-
+		m_pagepool->Put(ppage,false,true);
+		return QUEUE_UNKNOWERROR;
 	}
-	return true;
+
+	S_UINT len=((LPQUEUEHEAD)pt)->m_datalen;
+	len+=sizeof(QUEUEHEAD);
+
+	int flen=ppagehead->m_datasize-pos;
+	int csize=ppagehead->m_datasize-pos;
+
+	page= ((LPQUEUEHEAD)pt)->m_nextrecord.m_page;
+	pos= ((LPQUEUEHEAD)pt)->m_nextrecord.m_pos;
+
+	if(len<=flen)
+	{
+		m_pagepool->Put(ppage,false,false);
+		GetLabelData(retlist, pt, len);
+
+		return QUEUE_OK;
+
+	}else if(F_ISSET(ppagehead->m_flag,CROSSPAGEDOWN))
+	{
+		svutil::buffer buf;
+		if(!buf.checksize(QBUFFERLEN+PAGESIZE))
+			return 0;
+
+		char *ptbuf=buf;
+		memmove(ptbuf,pt,csize);
+		ptbuf+=csize;
+		int mlen=len-csize;
+		Page *ptpt=ppage;
+		while(true)
+		{
+			Page *ptt=GetNextPage(ptpt);
+			if(ptt==NULL)
+			{
+				m_pagepool->Put(ptpt,false,true);
+				return QUEUE_GETPAGEERROR;
+			}
+			PageHead *ptthead=ptt->GetPageHead();
+			if(ptthead==NULL)
+			{
+				m_pagepool->Put(ptt,false,true);
+				m_pagepool->Put(ptpt,false,true);
+				return QUEUE_GETPAGEERROR;
+			}
+		
+			m_pagepool->Put(ptpt,false,true);
+
+			if(F_ISSET(ptthead->m_flag,CROSSPAGEUP))
+			{
+				flen=ptthead->m_datasize;
+				if(mlen<=flen)
+				{
+					memmove(ptbuf,ptt->m_data,mlen);
+					m_pagepool->Put(ptt,false,true);
+					GetLabelData(retlist, buf, len);
+
+					return QUEUE_OK;
+				}else
+				{
+					memmove(ptbuf,ptt->m_data,ptthead->m_datasize);
+					ptbuf+=ptthead->m_datasize;
+					ptpt=ptt;
+					mlen=mlen-ptthead->m_datasize;
+				}
+
+			}else
+			{
+				m_pagepool->Put(ptt,false,true);
+				return QUEUE_UNKNOWERROR;
+			}
+
+		}
+	}else
+	{
+		m_pagepool->Put(ppage,false,true);
+		return QUEUE_UNKNOWERROR;
+	}
+
+
+	return QUEUE_OK;
+
 }
 
 #include <sstream>
@@ -963,7 +913,7 @@ bool Queue::GetLabelData(std::list<string> & retlist,const char * pt,S_UINT len)
 		QueueRecord prd;
 		if(!prd.CreateObjectByRawData(pt+sizeof(QUEUEHEAD),len-sizeof(QUEUEHEAD)))
 		{
-			puts("Create QueueRecord LabelData object failed");
+			cout<<"Create QueueRecord LabelData object failed, "<<retlist.size()<<endl;
 			return false;
 		}
 		std::ostringstream textstm;
@@ -971,7 +921,7 @@ bool Queue::GetLabelData(std::list<string> & retlist,const char * pt,S_UINT len)
 		textstm<<"  label: \""<<prd.GetLabel()<<"\"";
 		textstm<<"  level: \""<<prd.GetLevel()<<"\"";
 		textstm<<"  datalen: \""<<prd.GetDataLen()<<"\"";
-		retlist.push_back( textstm.str() );
+		retlist.push_front( textstm.str() );
 	}
 	catch(...)
 	{

@@ -9,8 +9,8 @@
 #include <stdlib.h>
 #include <fstream>
 #include <atltime.h>
-
-#include <Base/SVDefines.h>
+#include <vector>
+#include "Base/SVDefines.h"
 //#include "windows.h"
 
 //#include "..\..\base\funcGeneral.h"
@@ -505,6 +505,111 @@ int SNMPDone(const char * strParas, char * szReturn, int& nSize)
 
     snmpOperate.GetResult(szReturn, nSize);
 
+
+
+	//bin.liu 0 的话补值
+	if(nTplID==433)
+	{
+		
+		char chTempFile[MAX_BUFF_LEN] = {0};
+		sprintf(chTempFile, "snmpresult_%s.ini", strMonitorID.c_str());
+        char oldvalue1[MAX_BUFF_LEN];
+		char oldvalue2[MAX_BUFF_LEN];
+		//GetPrivateProfileString1("", "HistoryValue", "13", pOidList[i].chHisValue, MAX_BUFF_LEN, chTempFile);
+		GetPrivateProfileString1("result", "ifInOctetsRate", "13", oldvalue1, MAX_BUFF_LEN, chTempFile);
+		GetPrivateProfileString1("result", "ifOutOctetsRate", "12.00", oldvalue2, MAX_BUFF_LEN, chTempFile);
+		const char * p;
+		//char * pszReturn;
+	   // memset(pszReturn,0,100000);
+		//char * p;
+		int nSize1 = 0;
+		p=szReturn;
+		//pszReturn=szReturn;
+		while(*p!='\0')
+		{
+			nSize1 += strlen(p) + 1;
+			p += strlen(p)+1;
+		}
+
+		//将'\0' 替换为'$'
+		CString strOut= _T("");
+		CString allstrOut= _T("");
+		CString temptrOut= _T("");
+		char * value1;
+		char * value2;
+		int poss=0;
+		for (int j = 0;j<nSize1; j++)
+		{
+			if(szReturn[j]=='\0')
+			{
+				
+				poss=strOut.Find("ifInOctetsRate");// ifInOctetsRate
+				
+				if(poss==0)
+				{
+				  poss=strOut.Find("=");
+				  CString tempp=strOut.Mid(poss+1,strOut.GetLength()-poss-1);
+				  printf("dddddddddddddddddddd   %s \n",tempp.GetBuffer(tempp.GetLength()));
+				  if(tempp!="0.00")
+				  {
+				   value1=tempp.GetBuffer(tempp.GetLength());
+				   WritePrivateProfileString1("result", "ifInOctetsRate",  value1, chTempFile );
+				  }else
+				  {
+					 
+					  temptrOut=oldvalue1;
+					   printf("dddddddddddddddddddd   %s \n",temptrOut.GetBuffer(temptrOut.GetLength()));
+					  strOut="ifInOctetsRate="+temptrOut; 
+					   printf("dddddddddddddddddddd   %s \n",strOut.GetBuffer(strOut.GetLength()));
+				  }
+
+				}
+				 poss=strOut.Find("ifOutOctetsRate");
+				if(poss==0)
+				{
+				  poss=strOut.Find("=");
+				  CString tempp=strOut.Mid(poss+1,strOut.GetLength()-poss-1);
+				  if(tempp!="0.00")
+				  {
+				  value2=tempp.GetBuffer(tempp.GetLength());
+				  WritePrivateProfileString1("result", "ifOutOctetsRate", value2, chTempFile );
+				  }else
+				  {
+                      temptrOut=oldvalue2;
+					  strOut="ifOutOctetsRate="+temptrOut; 
+				  }
+
+				}
+				/*if (strOut.Mid("ifInOctetsRate")!=-1)
+				{
+                  value1="1";
+				}*/
+				allstrOut+=strOut;
+				allstrOut+="$";
+				
+				strOut="";
+			}else
+			{
+				strOut+=szReturn[j];
+			}
+		}
+		//GetBuffer(strTest.GetLength());
+		
+		printf("dddddddddddddddddddd   %s",allstrOut);
+		sprintf(szReturn,allstrOut);
+	   char * strEnd = szReturn;
+		while(*strEnd)
+	   {
+		if(*strEnd == '$')
+			*strEnd = '\0';
+		strEnd++;
+	   }
+		//bool dd= MakeCharByString(szReturn,nSize1,strInput);	
+		//printf("dddddddddddddddddddd   %d",dd);
+
+      
+	}
+
     SV_ECC_SNMP_LIB::ReleaseLib();
 
 	/*
@@ -532,6 +637,190 @@ int SNMPDone(const char * strParas, char * szReturn, int& nSize)
 
     return bReturn;
 }
+
+//字符串分割函数
+ std::vector<std::string> split(std::string str,std::string pattern)
+ {
+     std::string::size_type pos;
+     std::vector<std::string> result;
+     str+=pattern;//扩展字符串以方便操作
+     int size=str.size();
+ 
+     for(int i=0; i<size; i++)
+     {
+         pos=str.find(pattern,i);
+         if(pos<size)
+         {
+             std::string s=str.substr(i,pos-i);
+             result.push_back(s);
+             i=pos+pattern.size()-1;
+         }
+     }
+     return result;
+ }
+
+extern "C" __declspec(dllexport)
+int SNMPProcListDone(const char * strParas, char * szReturn, int& nSize)
+{
+//	AFX_MANAGE_STATE(AfxGetStaticModuleState());
+   
+	int bReturn = TRUE;
+	std::string strIP ;
+	std::string	strCommunity ;
+	std::string	strMonitorID ;
+	std::string strIniFilePath ;
+	std::string	strIndex;
+	std::string	strSelValue;
+	std::string strValue ;	
+
+	int nTplID = 0, nPort = 161, nSnmpVer = 2, 
+	//int	nTimeout = 300;//, nIfIndex = 0;   //nTimeout = 300;原来的
+	int	nTimeout = 2000; //yi.duan 上海检察院2010-06-07
+
+    map<string, string, less<string> > InputParams;
+    map<string, string, less<string> >::iterator paramItem;
+
+    if(!splitparam(strParas, InputParams))
+    {
+        string szErrMsg = FuncGetStringFromIDS("IDS_MONITOR_PARAM_ERROR");
+        nSize = sprintf(szReturn , "error=some parameter is wrong");//, FuncGetStringFromIDS("IDS_MONITOR_PARAM_ERROR"));
+        return FALSE;
+    }
+
+    paramItem = InputParams.find(SV_MonitorID);
+	
+    if(paramItem != InputParams.end())
+        strMonitorID = paramItem->second;
+
+    paramItem = InputParams.find(SV_Community);
+    if(paramItem != InputParams.end())
+        strCommunity = paramItem->second;
+
+    paramItem = InputParams.find(SV_Host);
+    if(paramItem != InputParams.end())
+        strIP = paramItem->second; 
+//////////解决接口信息的显示问题。	张驹武 2007.12.28
+    paramItem = InputParams.find(SV_InterfaceIndex);
+    if(paramItem != InputParams.end())
+        strIndex = paramItem->second;
+
+	//
+	int nPos = strIndex.find('_');
+	if(nPos != -1)
+		strIndex.erase(nPos, strIndex.length()-nPos);
+//////////解决接口信息的显示问题。	张驹武 2007.12.28
+
+    paramItem = InputParams.find(SV_SNMPDisk);
+    if(paramItem != InputParams.end())
+        strIndex = paramItem->second; 
+/////////解决进程显示问题
+    paramItem = InputParams.find(SV_SNMPSelvalue);
+
+    if(paramItem != InputParams.end())
+	{		
+		/*
+		string strIn=paramItem->second;
+		int n=strIn.find("_");
+
+		string strSub=strIn.substr(n+1);
+
+        strSelValue = strSub;
+		*/ 
+		strSelValue=paramItem->second;
+		//nPos=strSelValue.find('_');
+		//if(nPos !=-1)
+		//	strSelValue.erase(nPos,strSelValue.length()-nPos);
+
+	}
+/////////解决进程显示问题
+    paramItem = InputParams.find(SV_Port);
+    if(paramItem != InputParams.end())
+    {
+        nPort = atoi(paramItem->second.c_str());
+        if(nPort <= 0)
+            nPort = 161;
+    }
+
+    paramItem = InputParams.find(SV_TimeOut);
+    if(paramItem != InputParams.end())
+    {
+        nTimeout = atoi(paramItem->second.c_str());
+        if(nTimeout <= 0)
+		{    
+			nTimeout = 300; 
+		}
+		else 
+            nTimeout = nTimeout * 100;
+    } 
+
+    paramItem = InputParams.find(SV_SNMPVersion);
+    if(paramItem != InputParams.end())
+    {
+        nSnmpVer = atoi(paramItem->second.c_str());
+        if(nSnmpVer <= 0)
+            nSnmpVer = 2;
+    }
+
+    paramItem = InputParams.find(SV_TPLID);
+    if(paramItem != InputParams.end())
+        nTplID = atoi(paramItem->second.c_str());
+
+	StringList::iterator pos;
+	if(strIP.empty())
+	{
+		std::string m_Ret = FuncGetStringFromIDS("SV_NETWORK_SET", "NETWORK_SET_IP_ADDRESS_NULL");
+		sprintf(szReturn, "error=%s", m_Ret.c_str());
+		nSize = static_cast<int>(strlen(szReturn));
+		return FALSE;
+	}
+
+	strIniFilePath = "smi.ini";
+
+	std::vector<std::string> strProcList = split(strSelValue.c_str(), ",");
+	CString strProc = "", strTmp = "";
+	int nProcCount = 0;
+	
+	SV_ECC_SNMP_LIB::InitLib();
+
+	for(int i = 0; i< strProcList.size(); i ++ )
+	{
+		CSnmpOperate snmpOperate(strIniFilePath.c_str(), strMonitorID.c_str(), 
+			strIP.c_str(), strCommunity.c_str(), strIndex.c_str(), strProcList[i].c_str(),
+			nTplID, nPort, nSnmpVer, nTimeout);
+
+		snmpOperate.GetResult(szReturn, nSize);
+		strTmp="";
+		strTmp.Format("%s", szReturn);
+		strTmp.Replace("ProcessCount=", "");
+		strTmp.Replace(".00", "");
+		nProcCount += atoi(strTmp);
+		strProc += strProcList[i].c_str();
+		strProc += ":" ;
+		strProc += strTmp;
+		strProc += " " ;
+		
+	}
+
+    SV_ECC_SNMP_LIB::ReleaseLib();
+
+	CString strInput ;
+
+	strInput.Format("ProcessCount=%d$Dstr=%s", nProcCount, strProc);
+	nSize = strInput.GetLength() + 3;
+	//strInput =szReturn;
+	MakeCharByString(szReturn,nSize,strInput);
+
+/*	WriteTxt( "结果：", strMonitorID.c_str() );
+	char* pszTemp = szReturn;
+	while(*pszTemp)
+	{
+		WriteTxt( pszTemp, strMonitorID.c_str() );
+		pszTemp += strlen(pszTemp) + 1;
+	}
+*/
+    return bReturn;
+}
+
 
 /////////////////////////////////////////////////////////////////////////////
 
@@ -1839,39 +2128,39 @@ extern "C" __declspec(dllexport)  bool INTERFACESTest(const char * strParas, cha
 bool WriteLog(CString strFileName,const CString strLog)
 {
 	return true;
-	char szDataBuf[128]		= _T("");
-	char szTimeBuf[128]		= _T("");
-	char szTempBuf[1024*10] = _T("");
-	_strdate(szDataBuf);
-	_strtime(szTimeBuf);
-	sprintf(szTempBuf,"%s-%s",szDataBuf,szTimeBuf);
+	//char szDataBuf[128]		= _T("");
+	//char szTimeBuf[128]		= _T("");
+	//char szTempBuf[1024*10] = _T("");
+	//_strdate(szDataBuf);
+	//_strtime(szTimeBuf);
+	//sprintf(szTempBuf,"%s-%s",szDataBuf,szTimeBuf);
 
-	CString szFileName="";
-	char szFileDirectory[MAX_PATH]={};
-	GetCurrentDirectory(MAX_PATH, szFileDirectory);
-	szFileName.Format("%s\\TestLog",szFileDirectory);
-	CreateDirectory(szFileName,NULL);
-	szFileName.Format("%s\\%s.log",szFileName,strFileName);
-	//szFileName.Format("%s.log",strFileName);
+	//CString szFileName="";
+	//char szFileDirectory[MAX_PATH]={};
+	//GetCurrentDirectory(MAX_PATH, szFileDirectory);
+	//szFileName.Format("%s\\TestLog",szFileDirectory);
+	//CreateDirectory(szFileName,NULL);
+	//szFileName.Format("%s\\%s.log",szFileName,strFileName);
+	////szFileName.Format("%s.log",strFileName);
 
-	struct _stat buf;
-	if( _stat(szFileName.GetBuffer(szFileName.GetLength()), &buf ) == 0 )
-	{
-		if( buf.st_size > 1000*1024 )  //文件过大
-		{
-			FILE *log = fopen( szFileName.GetBuffer(szFileName.GetLength()), "w" );
-			if( log != NULL )
-			{
-				fclose( log );
-			}
-		}
-	}
+	//struct _stat buf;
+	//if( _stat(szFileName.GetBuffer(szFileName.GetLength()), &buf ) == 0 )
+	//{
+	//	if( buf.st_size > 1000*1024 )  //文件过大
+	//	{
+	//		FILE *log = fopen( szFileName.GetBuffer(szFileName.GetLength()), "w" );
+	//		if( log != NULL )
+	//		{
+	//			fclose( log );
+	//		}
+	//	}
+	//}
 
-	ofstream stFileStream;
-	stFileStream.open(szFileName, ios::app);
-	stFileStream<<szTempBuf<<"\t"<<strLog<<endl;
-	stFileStream.close();
-	return true;
+	//ofstream stFileStream;
+	//stFileStream.open(szFileName, ios::app);
+	//stFileStream<<szTempBuf<<"\t"<<strLog<<endl;
+	//stFileStream.close();
+	//return true;
 }
 
 extern "C" __declspec(dllexport)  BOOL TelnetInteface(const char * strParas, char *strReturn, int & nSize)
@@ -1977,23 +2266,24 @@ extern "C" __declspec(dllexport)  BOOL TelnetInteface(const char * strParas, cha
 	if(paramItem != InputParams.end())
 		nTplID = atoi(paramItem->second.c_str());
 
-	paramItem = InputParams.find(SV_TelPort);
+	/*lll paramItem = InputParams.find(SV_TelPort);
 	if (paramItem != InputParams.end())
 	{
 		nTelPort = atoi(paramItem->second.c_str());
-	}
+	}*/
 
-	paramItem = InputParams.find(SV_TelPassword);
+	/*paramItem = InputParams.find(SV_TelPassword);
 	if(paramItem != InputParams.end())
-		strPWD = paramItem->second;
+		strPWD = paramItem->second;*/
 
-	paramItem = InputParams.find(SV_TelPrompt);
+	/*paramItem = InputParams.find(SV_TelPrompt);
 	if(paramItem != InputParams.end())
-		pwdPrompt = paramItem->second;
+		pwdPrompt = paramItem->second;*/
 
-	paramItem = InputParams.find(SV_PromptCMD);
-	if(paramItem != InputParams.end())
-		cmdPrompt = paramItem->second;
+
+	//paramItem = InputParams.find(SV_PromptCMD);
+	//if(paramItem != InputParams.end())
+	//	cmdPrompt = paramItem->second;
 
 	//StringList::iterator pos;
 	if(strIP.empty())
@@ -2755,23 +3045,23 @@ extern "C" __declspec(dllexport)  bool TelnetAllInteface(const char * strParas, 
 	if(paramItem != InputParams.end())
 		nTplID = atoi(paramItem->second.c_str());
 
-	paramItem = InputParams.find(SV_TelPort);
+	/*paramItem = InputParams.find(SV_TelPort);
 	if (paramItem != InputParams.end())
 	{
 		nTelPort = atoi(paramItem->second.c_str());
-	}
+	}*/
 
-	paramItem = InputParams.find(SV_TelPassword);
-	if(paramItem != InputParams.end())
-		strPWD = paramItem->second;
+	//paramItem = InputParams.find(SV_TelPassword);
+	//if(paramItem != InputParams.end())
+	//	strPWD = paramItem->second;
 
-	paramItem = InputParams.find(SV_TelPrompt);
+	/*paramItem = InputParams.find(SV_TelPrompt);
 	if(paramItem != InputParams.end())
 		pwdPrompt = paramItem->second;
 
 	paramItem = InputParams.find(SV_PromptCMD);
 	if(paramItem != InputParams.end())
-		cmdPrompt = paramItem->second;
+		cmdPrompt = paramItem->second;*/
 
 	//StringList::iterator pos;
 	if(strIP.empty())

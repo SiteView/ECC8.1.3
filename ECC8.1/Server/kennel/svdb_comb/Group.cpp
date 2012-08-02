@@ -9,7 +9,7 @@ Group::~Group(void)
 {
 }
 
-S_UINT Group::GetRawDataSize(void)
+S_UINT Group::GetRawDataSize( bool onlyLocked)
 {
 	S_UINT len=0,tlen=sizeof(S_UINT);
 
@@ -24,20 +24,28 @@ S_UINT Group::GetRawDataSize(void)
 	len+=tlen;
 	WORDLIST::iterator it;
 	for(it=m_SubGroups.begin();it!=m_SubGroups.end();it++)
-	   len+=strlen((*it))+1;
+	{
+		if(onlyLocked && !IdcUser::WillTeleBackup( (*it).getword()) )
+			continue;
+		len+=strlen((*it))+1;
+	}
 
 	len+=tlen;
 	for(it=m_Entitys.begin();it!=m_Entitys.end();it++)
+	{
+		if(onlyLocked && !IdcUser::WillTeleBackup( (*it).getword()) )
+			continue;
 		len+=strlen((*it))+1;
+	}
 
 	return len;
 }
-char* Group::GetRawData(char *lpbuf,S_UINT bufsize)
+char* Group::GetRawData(char *lpbuf,S_UINT bufsize, bool onlyLocked)
 {
 	if(lpbuf==NULL)
 		return NULL;
 
-	if(bufsize<GetRawDataSize())
+	if(bufsize<GetRawDataSize(onlyLocked))
 		return NULL;
 
 	char *pt=lpbuf;
@@ -59,12 +67,26 @@ char* Group::GetRawData(char *lpbuf,S_UINT bufsize)
 	pt+=len;
 
 	len=m_SubGroups.size();
+	if(onlyLocked)
+	{
+		S_UINT tempcount=0;
+		WORDLIST::iterator tempit;
+		for(tempit=m_SubGroups.begin();tempit!=m_SubGroups.end();tempit++)
+		{
+			if(IdcUser::WillTeleBackup( (*tempit).getword()) )
+				++tempcount;
+		}
+		len= tempcount;
+	}
+
 	memmove(pt,&len,tlen);
 	pt+=tlen;
 
 	WORDLIST::iterator it;
 	for(it=m_SubGroups.begin();it!=m_SubGroups.end();it++)
 	{
+		if(onlyLocked && !IdcUser::WillTeleBackup( (*it).getword()) )
+			continue;
 		len=strlen((*it));
 		strcpy(pt,(*it).getword());
 		pt+=len;
@@ -73,11 +95,25 @@ char* Group::GetRawData(char *lpbuf,S_UINT bufsize)
 	}
 
 	len=m_Entitys.size();
+	if(onlyLocked)
+	{
+		S_UINT tempcount=0;
+		WORDLIST::iterator tempit;
+		for(tempit=m_Entitys.begin();tempit!=m_Entitys.end();tempit++)
+		{
+			if(IdcUser::WillTeleBackup( (*tempit).getword()) )
+				++tempcount;
+		}
+		len= tempcount;
+	}
+
 	memmove(pt,&len,tlen);
 	pt+=tlen;
 
 	for(it=m_Entitys.begin();it!=m_Entitys.end();it++)
 	{
+		if(onlyLocked && !IdcUser::WillTeleBackup( (*it).getword()) )
+			continue;
 		len=strlen((*it));
 		strcpy(pt,(*it).getword());
 		pt+=len;

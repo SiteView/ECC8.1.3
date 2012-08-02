@@ -9,7 +9,7 @@
 
 
 class Entity :
-	public SerialBase
+	public SerialBase2
 {
 public:
 	Entity(void);
@@ -28,8 +28,8 @@ public:
 		m_CurrentID=m_CurrentID<0 ? 0 : m_CurrentID;
 	}
 
-	S_UINT	GetRawDataSize(void);
-	char*	GetRawData(char *lpbuf,S_UINT bufsize);
+	S_UINT	GetRawDataSize( bool onlyLocked= false);
+	char*	GetRawData(char *lpbuf,S_UINT bufsize, bool onlyLocked= false);
 	BOOL	CreateObjectByRawData(const char *lpbuf,S_UINT bufsize);
 
 	word GetNextMonitorID()

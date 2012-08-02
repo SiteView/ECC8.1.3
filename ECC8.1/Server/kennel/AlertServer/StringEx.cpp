@@ -11,10 +11,12 @@
 
 #include "stdafx.h"
 #include "StringEx.h"
+
 // Insert	- Inserts a sub string into the string
 // Returns	- Reference to the same string object
 // pos		- Position to insert at. Extends the string with spaces if needed
 // s		- Sub string to insert
+
 CStringEx& CStringEx::Insert(int pos, LPCTSTR s)
 {
 	int len = lstrlen(s);

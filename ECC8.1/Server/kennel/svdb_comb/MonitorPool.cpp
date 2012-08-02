@@ -5,6 +5,8 @@ MonitorPool::MonitorPool(void)
 {
 	m_hashtablesize=hashtablesize;
 	m_monitors.resetsize(m_hashtablesize);
+	m_hide_monitors.resetsize(m_hashtablesize);
+
 	m_changed=false;
 	needToDel=true;
 
@@ -13,6 +15,8 @@ MonitorPool::MonitorPool(word filepath):PoolBase2(filepath)
 {
 	m_hashtablesize=hashtablesize;
 	m_monitors.resetsize(m_hashtablesize);
+	m_hide_monitors.resetsize(m_hashtablesize);
+
 	m_changed=false;
 	needToDel=true;
 
@@ -36,7 +40,13 @@ MonitorPool::~MonitorPool(void)
 		if(pm)
 			delete pm;
 	}
-
+	MONITORMAP::iterator hit;
+	while(m_hide_monitors.findnext(hit))
+	{
+		Monitor *pm=(*hit).getvalue();
+		if(pm)
+			delete pm;
+	}
 }
 
 int MonitorPool::QueryMassMonitor(string pid, const char *data,S_UINT datalen, std::list<SingelRecord> & listrcd )
@@ -70,6 +80,7 @@ int MonitorPool::QueryMassMonitor(string pid, const char *data,S_UINT datalen, s
 		if( (pv=smap.find(key))!=NULL )
 		{
 			S_UINT ver= atoi( (*pv).getword() );
+			smap.erase(key);
 			if( ver== sver )
 				continue;
 		}
@@ -103,6 +114,15 @@ int MonitorPool::QueryMassMonitor(string pid, const char *data,S_UINT datalen, s
 		}
 		listrcd.push_back(rcd);
 	}
+	StringMap::iterator mit;
+	while(smap.findnext(mit))
+	{
+		SingelRecord rcd;
+		rcd.monitorid= (*mit).getkey().getword();
+		rcd.data= NULL;
+		rcd.datalen= 0;
+		listrcd.push_back(rcd);
+	}
 	return listrcd.size();
 }
 
@@ -131,9 +151,10 @@ bool MonitorPool::SubmitToFile(string fileName, MonitorPool * dataPool )
 bool MonitorPool::Submit(std::string modifyid)
 {
 	ost::MutexLock lock(m_UpdateLock); 
-
 	if(!m_changed)
 		return true;
+	if(m_FilePath.empty())
+		return false;
 
 	if( !IdcUser::EnableIdc )
 	{  //for non-idc
@@ -262,8 +283,44 @@ bool MonitorPool::Load(void)
 	return	false;
 }
 
+bool	MonitorPool::GetBackupData(std::list<SingelRecord> & listrcd)
+{
+	ost::MutexLock lock(m_UpdateLock);
 
-S_UINT	MonitorPool::GetRawDataSize(void)
+	int datalen= GetRawDataSize(true);
+	char * tdata(NULL);
+	char * pdata(NULL);
+	try{
+		pdata=new char[datalen];
+		if(datalen==0 || pdata==NULL)
+			return false;
+		tdata= GetRawData(pdata, datalen, true);
+		if(tdata==NULL)
+		{
+			delete [] pdata;
+			return false;
+		}
+	}
+	catch(...)
+	{
+		printf(" Exception in MonitorPool::GetBackupData!  ");
+		delete [] pdata;
+		return false;
+	}
+	SingelRecord rcd;
+	rcd.monitorid= "monitor_"+IdcUser::GetLocalSEIdStr();
+	rcd.data= tdata;
+	rcd.datalen= datalen;
+
+	MonitorPool mp;
+	if(!mp.CreateObjectByRawData(tdata, datalen))
+		return false;
+
+	listrcd.push_back(rcd);
+	return true;
+}
+
+S_UINT	MonitorPool::GetRawDataSize(bool onlyLocked)
 {
 	S_UINT len=0,tlen=sizeof(S_UINT);
 
@@ -273,19 +330,30 @@ S_UINT	MonitorPool::GetRawDataSize(void)
 	MONITORMAP::iterator it;
 	while(m_monitors.findnext(it))
 	{
+		if(onlyLocked && !IdcUser::WillTeleBackup((*it).getvalue()->GetID().getword()))
+			continue;
 		len+=tlen;			//len size;
 		len+=(*it).getvalue()->GetRawDataSize();
 
 	}
+	if(onlyLocked)
+		return len;
 
+	MONITORMAP::iterator hit;
+	while(m_hide_monitors.findnext(hit))
+	{
+		len+=tlen;	
+		len+=(*hit).getvalue()->GetRawDataSize();
+
+	}
 	return len;
 }
-char*	MonitorPool::GetRawData(char *lpbuf,S_UINT bufsize)
+char*	MonitorPool::GetRawData(char *lpbuf,S_UINT bufsize, bool onlyLocked)
 {
 	if(lpbuf==NULL)
 		return NULL;
 
-	if(bufsize<GetRawDataSize())
+	if(bufsize<GetRawDataSize(onlyLocked))
 		return NULL;
 
 	S_UINT len=0,tlen=sizeof(S_UINT);
@@ -295,12 +363,29 @@ char*	MonitorPool::GetRawData(char *lpbuf,S_UINT bufsize)
 	pt+=tlen;
 
 	len=m_monitors.size();
+	if(onlyLocked)
+	{
+		S_UINT tempcount=0;
+		MONITORMAP::iterator tempit;
+		while(m_monitors.findnext(tempit))
+		{
+			if(IdcUser::WillTeleBackup((*tempit).getvalue()->GetID().getword()))
+				++tempcount;
+		}
+		len= tempcount;
+	}
+
+	if(!onlyLocked)
+		len+= m_hide_monitors.size();
 	memmove(pt,&len,tlen);
 	pt+=tlen;
 
 	MONITORMAP::iterator it;
 	while(m_monitors.findnext(it))
 	{
+		if(onlyLocked && !IdcUser::WillTeleBackup((*it).getvalue()->GetID().getword()))
+			continue;
+
 		len=(*it).getvalue()->GetRawDataSize();
 		memmove(pt,&len,tlen);
 		pt+=tlen;
@@ -310,11 +395,25 @@ char*	MonitorPool::GetRawData(char *lpbuf,S_UINT bufsize)
 
 		pt+=len;
 	}
+	if(onlyLocked)
+		return lpbuf;
 
+	MONITORMAP::iterator hit;
+	while(m_hide_monitors.findnext(hit))
+	{
+		len=(*hit).getvalue()->GetRawDataSize();
+		memmove(pt,&len,tlen);
+		pt+=tlen;
 
+		if((*hit).getvalue()->GetRawData(pt,len)==NULL)
+			return NULL;
+
+		pt+=len;
+	}
 
 	return lpbuf;
 }
+
 BOOL	MonitorPool::CreateObjectByRawData(const char *lpbuf,S_UINT bufsize)
 {
 	if(lpbuf==NULL)
@@ -331,7 +430,7 @@ BOOL	MonitorPool::CreateObjectByRawData(const char *lpbuf,S_UINT bufsize)
 		pt+=tlen;
 
 		m_monitors.resetsize(m_hashtablesize);
-
+		m_hide_monitors.resetsize(m_hashtablesize);
 
 		S_UINT count=0;
 		memmove(&count,pt,tlen);
@@ -351,9 +450,14 @@ BOOL	MonitorPool::CreateObjectByRawData(const char *lpbuf,S_UINT bufsize)
 				return false;
 			pt+=len;
 			id=pm->GetID();
-			m_monitors.insert(id,pm);
-			NewVersion(id);
 
+			NewVersion(id);
+			if(IdcUser::SELocked && !IdcUser::IsAnLocalSEId(id.getword()))
+			{
+				m_hide_monitors.insert(id,pm);
+				continue;
+			}
+			m_monitors.insert(id,pm);
 		}
 	}catch(...)
 	{
@@ -364,6 +468,73 @@ BOOL	MonitorPool::CreateObjectByRawData(const char *lpbuf,S_UINT bufsize)
 	return true;
 }
 
+bool	MonitorPool::UpdateConfig(string sestr, const char *data,S_UINT datalen)
+{
+	try{
+		if(!IdcUser::AcceptConfigIncoming || sestr.empty())
+			return false;
+
+		ost::MutexLock lock(m_UpdateLock);
+		sestr= ","+sestr+",";
+		MonitorPool mp;
+		if(!mp.CreateObjectByRawData(data, datalen))
+			return false;
+
+		MONITORMAP mDel;
+		mDel.resetsize(m_hashtablesize);
+		MONITORMAP::iterator git;
+		while(m_monitors.findnext(git))
+		{
+			string id= (*git).getkey().getword();
+			string seid= GetTopID(id).getword();
+			if(sestr.find(","+seid+",")==std::string::npos)
+				continue;
+			if(!IdcUser::IsAnLocalSEId(id))
+				continue;
+
+			Monitor *pIncome= mp.GetMonitor(id.c_str());
+			if(pIncome==NULL)
+				mDel.insert(id,NULL);
+		}
+	
+		MONITORMAP & ingroups= mp.GetMemberData();
+		MONITORMAP::iterator git3;
+		while(ingroups.findnext(git3))
+		{
+			string id= (*git3).getkey().getword();
+			if(!IdcUser::IsAnLocalSEId(id))
+				continue;
+
+			Monitor **p= m_monitors.find(id);
+			if(p!=NULL)
+				delete (*p);
+			m_monitors[id]= (*git3).getvalue();
+			NewVersion(id);
+
+			(*git3).setvalue(NULL);
+		}
+
+		MONITORMAP::iterator git2;
+		while(mDel.findnext(git2))
+		{
+			string id= (*git2).getkey().getword();
+			Monitor **pm=m_monitors.find(id);
+			if(pm!=NULL)
+				delete (*pm);
+
+			if(m_monitors.erase(id))
+				m_mversion.erase(id);
+		}
+
+		m_changed=true;
+		return Submit();
+	}
+	catch(...)
+	{
+		return false;
+	}
+}
+
 bool MonitorPool::push(Monitor *pm)
 {
 	ost::MutexLock lock(m_UpdateLock);
@@ -371,6 +542,9 @@ bool MonitorPool::push(Monitor *pm)
 	if(!pm)
 		return false;
 	word id=pm->GetID();
+
+	if(IdcUser::SELocked && !IdcUser::IsAnLocalSEId(id.getword()))
+		return false;
 
 	Monitor **p=m_monitors.find(id);
 	if(p!=NULL)
@@ -418,9 +592,8 @@ bool MonitorPool::DeleteMonitor(word id)
 	ost::MutexLock lock(m_UpdateLock);
 
 	Monitor **pm=m_monitors.find(id);
-	if(pm==NULL)
-		return false;
-	delete (*pm);
+	if(pm!=NULL)
+		delete (*pm);
 
    if(m_monitors.erase(id))
    {
@@ -431,5 +604,43 @@ bool MonitorPool::DeleteMonitor(word id)
 
    return false;
 
+}
+
+bool MonitorPool::ReSetBackupId()
+{
+	if(IdcUser::FullTeleBackup)
+		return true;
+	std::set<std::string> backupId;
+
+	StringMap smap(577);
+	if(GetInfo("sv_telebackup", "default", smap, false))
+	{
+		StringMap::iterator smit;
+		while(smap.findnext(smit))
+		{
+			try{
+				string value= (*smit).getvalue().getword();
+				if(value.compare("true")!=0)
+					continue;
+				string pid= (*smit).getkey().getword();
+				backupId.insert(pid);
+
+				std::string::size_type lastpos;	
+				while( (lastpos=pid.rfind("."))!=std::string::npos )
+				{
+					pid.erase(lastpos);
+					backupId.insert(pid);
+				}
+			}
+			catch(...)
+			{
+				continue;
+			}
+		}
+	}
+
+	//printf(" ****  ReSetBackupId, id count: %d\n", backupId.size());
+	IdcUser::SetTeleBackupId(backupId);
+	return true;
 }
 

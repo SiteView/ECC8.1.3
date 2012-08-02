@@ -224,11 +224,20 @@ bool RecordSet::CreateObjectByRawData(StringMap *resMap,const char *buf,S_UINT l
 			}
 			char dstr[2048]={0};
 
+			bool badRCD=false;
+			string badStr;
 			for(int i=0;i<count;i++)
 			{
+				if(badRCD)
+					break;
+
 				DataType *prt=m_type.m_data[i];
 				if(prt==NULL)
-					return false;
+				{
+					badRCD= true;
+					badStr+="DataType==NULL;  ";
+					continue;
+				}
 				int iv=0;
 				float fv=0.00f;
 				string sv="";
@@ -236,15 +245,25 @@ bool RecordSet::CreateObjectByRawData(StringMap *resMap,const char *buf,S_UINT l
 				int dlen=0;
 				RecordValue *prv=new RecordValue();
 				if(prv==NULL)
-					return false;
+				{
+					badRCD= true;
+					badStr+="new RecordValue ==NULL;  ";
+					continue;
+				}
+
 				slabel=FindLabelInresMap(prt->label,resMap);
 				switch(prt->type)
 				{
 				case	DataType::inttype:
 					if((dlen=::parsebuffer(pt,pend-pt,iv))==0)
 					{
-						puts("parse buffer failed");
-						return false;
+						badRCD= true;
+						badStr+="bad int of ";
+						badStr+=slabel;
+						badStr+=";  ";
+						puts(badStr.c_str());
+						delete prv;
+						continue;
 					}
 					*prv=iv;
 					pt+=dlen;
@@ -256,8 +275,13 @@ bool RecordSet::CreateObjectByRawData(StringMap *resMap,const char *buf,S_UINT l
 				case	DataType::floattype:
 					if((dlen=::parsebuffer(pt,pend-pt,fv))==0)
 					{
-						puts("parse buffer failed");
-						return false;
+						badRCD= true;
+						badStr+="bad float of ";
+						badStr+=slabel;
+						badStr+=";  ";
+						puts(badStr.c_str());
+						delete prv;
+						continue;
 					}
 					*prv=fv;
 					pt+=dlen;
@@ -269,8 +293,13 @@ bool RecordSet::CreateObjectByRawData(StringMap *resMap,const char *buf,S_UINT l
 				case	DataType::stringtype:
 					if((dlen=::parsebuffer(pt,pend-pt,sv))==0)
 					{
-						puts("parse buffer failed");
-						return false;
+						badRCD= true;
+						badStr+="bad string of ";
+						badStr+=slabel;
+						badStr+=";  ";
+						puts(badStr.c_str());
+						delete prv;
+						continue;
 					}
 					*prv=sv;
 					pt+=dlen;
@@ -280,15 +309,28 @@ bool RecordSet::CreateObjectByRawData(StringMap *resMap,const char *buf,S_UINT l
 						sprintf(dstr,"%s,%s=%s",dstr,slabel.c_str(),sv.c_str());
 					break;
 				default: 
+					badRCD= true;
+					badStr+="uknown data type of ";
+					badStr+=slabel;
+					badStr+=";  ";
+					puts(badStr.c_str());
 					delete prv;
-					return false;
-
+					continue;
 				}
 
 				prd->m_value.insert(prt->name,prv);
 			}
-			strcat(dstr,".");
-			prd->m_displaystr=_strdup(dstr);
+			if(badRCD)
+			{
+				prd->m_error= _strdup(badStr.c_str());
+				prht->state= Record::STATUS_BAD;
+				prd->m_state=prht->state;
+			}
+			else
+			{
+				strcat(dstr,".");
+				prd->m_displaystr=_strdup(dstr);
+			}
 			if(prd!=NULL)
 				m_records.push_back(prd);
 		}
@@ -347,11 +389,20 @@ bool RecordSet::CreateObjectByRawData(const char *buf,S_UINT len)
 			}
 			char dstr[2048]={0};
 
+			bool badRCD=false;
+			string badStr;
 			for(int i=0;i<count;i++)
 			{
+				if(badRCD)
+					break;
+
 				DataType *prt=m_type.m_data[i];
 				if(prt==NULL)
-					return false;
+				{
+					badRCD= true;
+					badStr+="DataType==NULL;  ";
+					continue;
+				}
 				int iv=0;
 				float fv=0.00f;
 				string sv="";
@@ -359,14 +410,23 @@ bool RecordSet::CreateObjectByRawData(const char *buf,S_UINT len)
 				int dlen=0;
 				RecordValue *prv=new RecordValue();
 				if(prv==NULL)
-					return false;
+				{
+					badRCD= true;
+					badStr+="new RecordValue ==NULL;  ";
+					continue;
+				}
 				switch(prt->type)
 				{
 				case	DataType::inttype:
 					if((dlen=::parsebuffer(pt,pend-pt,iv))==0)
 					{
-						puts("parse buffer failed");
-						return false;
+						badRCD= true;
+						badStr+="bad int of ";
+						badStr+=prt->label;
+						badStr+=";  ";
+						puts(badStr.c_str());
+						delete prv;
+						continue;
 					}
 					*prv=iv;
 					pt+=dlen;
@@ -378,8 +438,13 @@ bool RecordSet::CreateObjectByRawData(const char *buf,S_UINT len)
 				case	DataType::floattype:
 					if((dlen=::parsebuffer(pt,pend-pt,fv))==0)
 					{
-						puts("parse buffer failed");
-						return false;
+						badRCD= true;
+						badStr+="bad float of ";
+						badStr+=prt->label;
+						badStr+=";  ";
+						puts(badStr.c_str());
+						delete prv;
+						continue;
 					}
 					*prv=fv;
 					pt+=dlen;
@@ -391,8 +456,13 @@ bool RecordSet::CreateObjectByRawData(const char *buf,S_UINT len)
 				case	DataType::stringtype:
 					if((dlen=::parsebuffer(pt,pend-pt,sv))==0)
 					{
-						puts("parse buffer failed");
-						return false;
+						badRCD= true;
+						badStr+="bad string of ";
+						badStr+=prt->label;
+						badStr+=";  ";
+						puts(badStr.c_str());
+						delete prv;
+						continue;
 					}
 					*prv=sv;
 					pt+=dlen;
@@ -402,15 +472,29 @@ bool RecordSet::CreateObjectByRawData(const char *buf,S_UINT len)
 						sprintf(dstr,"%s,%s=%s",dstr,prt->label,sv.c_str());
 					break;
 				default: 
+					badRCD= true;
+					badStr+="uknown data type of ";
+					badStr+=prt->label;
+					badStr+=";  ";
+					puts(badStr.c_str());
 					delete prv;
-					return false;
+					continue;
 
 				}
 
 				prd->m_value.insert(prt->name,prv);
 			}
-			strcat(dstr,".");
-			prd->m_displaystr=_strdup(dstr);
+			if(badRCD)
+			{
+				prd->m_error= _strdup(badStr.c_str());
+				prht->state= Record::STATUS_BAD;
+				prd->m_state=prht->state;
+			}
+			else
+			{
+				strcat(dstr,".");
+				prd->m_displaystr=_strdup(dstr);
+			}
 			if(prd!=NULL)
 				m_records.push_back(prd);
 		}

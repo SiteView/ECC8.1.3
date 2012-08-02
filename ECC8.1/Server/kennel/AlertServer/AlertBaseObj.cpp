@@ -20,10 +20,13 @@
 #include "AlertBaseObj.h"
 #include "AlertEventObj.h"
 #include "AlertSendObj.h"
-#include <svapi.h>
-
+#include <svapi/svapi.h>
 
 static const basic_string <char>::size_type npos = -1;
+
+void DebugePrint(string strDebugInfo);
+int WriteLog( const char* str );
+
 //
 CAlertBaseObj::CAlertBaseObj()
 {
@@ -56,11 +59,10 @@ void CAlertBaseObj::AnalysisAlertTarget()
 	{		
 		strNewAlertTargerList += (*listitem);
 		strNewAlertTargerList += ",";
-
+	
 		pAlertTargetMap[(*listitem)] = 0;
 	}
-	
-	
+
 	sscanf(strAlwaysTimesValue.c_str(), "%d", &nAlwaysTimes);
 	sscanf(strOnlyTimesValue.c_str(), "%d", &nOnlyTimes);
 	sscanf(strSelTimes1Value.c_str(), "%d", &nSelTimes1);
@@ -112,11 +114,19 @@ void CAlertBaseObj::WriteAlertTargerById(string strId)
 //报警条件匹配
 bool CAlertBaseObj::IsMatching(CAlertEventObj * eventObj)
 {
-	curEventObj = eventObj;
+	CAlertEventObj *curEventObj = eventObj;
+ 
 	if(eventObj == NULL)
 		return false;
 
 	bool bMatching = false;
+
+	if (pAlertTargetList.empty())
+	{
+		WriteLog("pAlertTargetList is empty");
+	}
+	
+
 	try
 	{
 		if(!pAlertTargetList.empty())
@@ -131,13 +141,21 @@ bool CAlertBaseObj::IsMatching(CAlertEventObj * eventObj)
 			bool bTargetMatch = false;
 			string strTmpId = eventObj->strMonitorId;
 			string strTmp = "";
-			int nPos = 0;
-			while(nPos != -1)
+			size_t nPos = 0;
+//dy--------------------------------------------------
+			//typedef map <string, int>::const_iterator CIT;
+			//for(CIT p=pAlertTargetMap.begin(); p!=pAlertTargetMap.end(); ++p)
+			//{
+			//	WriteLog ((p->first).c_str());
+			//}
+//dy--------------------------------------------------
+			while(static_cast<int>(nPos) != -1)
 			{
-				//OutputDebugString(strTmpId.c_str());
-				//OutputDebugString("\n");
+				WriteLog( strTmpId.c_str() );
+
 				if(pAlertTargetMap.find(strTmpId) != pAlertTargetMap.end())
 				{
+					WriteLog( "找到ID！" );
 					bTargetMatch = true;
 					break;
 				}
@@ -162,55 +180,79 @@ bool CAlertBaseObj::IsMatching(CAlertEventObj * eventObj)
 				{
 					//printf("eventObj:MonitorId:%s\n", eventObj->strMonitorId.c_str());
 
+					WriteLog( strAlertCategory.c_str() );
+					WriteLog( eventObj->GetEventTypeString().c_str() );
+					char strInfo[1024] = {0};
+					sprintf(strInfo, "eventObj->GetEventTypeString = %s\neventObj->GetEventTypeCHString=",eventObj->GetEventTypeString().c_str() , eventObj->GetEventTypeCHString().c_str());
+					WriteLog(strInfo);
+					sprintf(strInfo , "nCond = %d\teventObj->nEventCount = %d\t nOnlyTimes=%d",
+						nCond , eventObj->nEventCount , nOnlyTimes);
+					WriteLog(strInfo);
 					//事件类型匹配
-					//苏合 2008-02-13
-					if (nStateChanged == 1)
+					WriteLog("strAlertCategory =");
+					WriteLog(strAlertCategory.c_str());
+					if(strAlertCategory == eventObj->GetEventTypeString() ||
+					   strAlertCategory == eventObj->GetEventTypeCHString() || 
+					   (strAlertCategory=="危险" && (eventObj->GetEventTypeString()=="错误" ||
+			            eventObj->GetEventTypeCHString()=="错误"))) //dy2010-09-30设置为危险时报警，但是状态已经到错误了，应该也报警，毕竟错误的级别比危险高。
 					{
-						if (eventObj->nEventType != eventObj->nLastEventType) 
-						{
-							bMatching = true;
-						}
-					}
-					else if(strAlertCategory == eventObj->GetEventTypeString())
-					{
+						WriteLog("事件类型匹配成功");
+						this->nGoodAlert=1;
 						//printf("eventObj:GetEventTypeString:%s\n", eventObj->GetEventTypeString().c_str());
 						switch(nCond)
 						{
-						case 1 :
-							//Always
-							//if((eventObj->nEventCount % nAlwaysTimes) == 0)
-							if(eventObj->nEventCount >= nAlwaysTimes)
-							{
-								//发送次数匹配
-								bMatching = true;
-							}
-							break;
-						case 2 :
-							//Only
-							if(eventObj->nEventCount == nOnlyTimes)
-							{
-								//发送次数匹配
-								bMatching = true;
-							}
-							break;
-						case 3 :
-							//Select
-							//(eventObj->nEventCount - nSelTimes1)为负数时有效吗？
-							if(eventObj->nEventCount == nSelTimes1)
-							{
-								bMatching = true;
-							}
-							else if(eventObj->nEventCount > nSelTimes1)
-							{
-								if(((eventObj->nEventCount - nSelTimes1) % nSelTimes2) == 0)
+							case 1 :
+								//Always
+								//if((eventObj->nEventCount % nAlwaysTimes) == 0)
+						
+								if(eventObj->nEventCount >= nAlwaysTimes)
 								{
 									//发送次数匹配
 									bMatching = true;
 								}
-							}
-							break;
-						default:
-							break;
+								break;
+							case 2 :
+								//Only
+								
+								if(eventObj->nEventCount == nOnlyTimes)
+								{
+									//发送次数匹配
+									bMatching = true;
+									WriteLog("发送次数匹配成功！");
+								}
+								break;
+							case 3 :
+							
+								//Select
+								//(eventObj->nEventCount - nSelTimes1)为负数时有效吗？
+								if(eventObj->nEventCount == nSelTimes1)
+								{
+									bMatching = true;
+								}
+								else if(eventObj->nEventCount > nSelTimes1)
+								{
+									if(((eventObj->nEventCount - nSelTimes1) % nSelTimes2) == 0)
+									{
+										//发送次数匹配
+										bMatching = true;
+									}
+								}
+								break;
+							default:
+								break;
+						}
+					}else
+					{
+						// WriteLog("事件匹配不成功！");
+						 //bin.liu 2012-5-11
+					     //sprintf(strInfo , "nGoodAlert = %d", eventObj->nGoodAlert );
+					    //WriteLog(strInfo);
+						if ( this->nGoodAlert==1)
+						{
+                            WriteLog("恢复确认！");
+							this->nGoodAlert=0;
+							bMatching = true;
+
 						}
 					}
 				}				
@@ -232,7 +274,7 @@ bool CAlertBaseObj::IsUpgradeMatching(CAlertEventObj * eventObj)
 }
 
 //
-CAlertSendObj * CAlertBaseObj::MakeSendObj()
+CAlertSendObj * CAlertBaseObj::MakeSendObj(CAlertEventObj * eventObj)
 {	
 	CAlertSendObj * alertobj = NULL;
 	//CAlertEmailSendObj * alertemailobj = NULL;
@@ -279,8 +321,8 @@ string CAlertBaseObj::GetDebugInfo()
 	strDebugInfo += ("报警类型：" + strAlertType + "\r\n");
 	strDebugInfo += ("报警种类：" + strAlertCategory + "\r\n");
 	strDebugInfo += ("报警状态：" + strAlertState + "\r\n");
-	strDebugInfo += ("原始的报警依赖对象：" + strAlertTargerList + "\r\n");
-	strDebugInfo += ("分析后的报警依赖对象：" + strNewAlertTargerList + "\r\n");
+//	strDebugInfo += ("原始的报警依赖对象：" + strAlertTargerList + "\r\n");
+//	strDebugInfo += ("分析后的报警依赖对象：" + strNewAlertTargerList + "\r\n");
 	string strCond = "";
 	if(nCond == 1)
 		strCond = "AlwaysTimes";
@@ -331,8 +373,12 @@ void CAlertEmailObj::RefreshData()
 }
 
 //生成发送对象
-CAlertSendObj * CAlertEmailObj::MakeSendObj()
+CAlertSendObj * CAlertEmailObj::MakeSendObj(CAlertEventObj *eventObj)
 {
+	CAlertEventObj *curEventObj = eventObj;
+	if (curEventObj == NULL)
+		return NULL;
+
 	nSendId ++;
 	CAlertEmailSendObj * alertemailobj = new CAlertEmailSendObj();
 	//
@@ -356,6 +402,11 @@ CAlertSendObj * CAlertEmailObj::MakeSendObj()
 	alertemailobj->strEmailTemplateValue = strEmailTemplateValue;
 	alertemailobj->strAlertUpgradeToValue = strAlertUpgradeToValue;	
 
+	alertemailobj->strIdcId = strIdcId;
+
+	//2008-12-2 sxf 事件过期时间
+	alertemailobj->m_dtExpireTime = curEventObj->m_dtExpireTime;
+
 	return alertemailobj;
 }
 
@@ -367,7 +418,8 @@ bool CAlertEmailObj::IsUpgradeMatching(CAlertEventObj * eventObj)
 	{
 		//
 		//if(strAlertState == "禁止")
-		if(strcmp(strAlertState.c_str(), CAlertMain::strDisable.c_str()) == 0)
+		if( (strcmp(strAlertState.c_str(), CAlertMain::strDisable.c_str()) == 0) || 
+			(strcmp(strAlertState.c_str(), CAlertMain::strENDisable.c_str()) == 0) )
 			return false;
 		
 		//停止条件匹配
@@ -401,7 +453,8 @@ bool CAlertEmailObj::IsMatching(CAlertEventObj * eventObj)
 	{
 		//
 		//if(strAlertState == "禁止")
-		if(strcmp(strAlertState.c_str(), CAlertMain::strDisable.c_str()) == 0)
+		if( (strcmp(strAlertState.c_str(), CAlertMain::strDisable.c_str()) == 0) || 
+			(strcmp(strAlertState.c_str(), CAlertMain::strENDisable.c_str()) == 0) )
 			return false;
 
 		//停止条件匹配
@@ -468,8 +521,19 @@ void CAlertSmsObj::RefreshData()
 }
 
 //生成发送对象
-CAlertSendObj * CAlertSmsObj::MakeSendObj()
+CAlertSendObj * CAlertSmsObj::MakeSendObj(CAlertEventObj * eventObj)
 {
+	WriteLog("--------MakeSendObj Start--------");
+	char strTempInfo[1024] = {0};
+
+	CAlertEventObj * curEventObj = eventObj;
+	if (curEventObj == NULL)
+	{
+        sprintf(strTempInfo , "%s" , "GetEventObj ptr is null!");
+		WriteLog(strTempInfo);
+		return NULL;
+	}
+
 	nSendId ++;
 	CAlertSmsSendObj * alertsmsobj = new CAlertSmsSendObj();
 	//
@@ -495,6 +559,8 @@ CAlertSendObj * CAlertSmsObj::MakeSendObj()
 
 	alertsmsobj->strAlertUpgradeToValue = strAlertUpgradeToValue;	
 
+	alertsmsobj->strIdcId = strIdcId;
+
 	return alertsmsobj;
 }
 
@@ -506,7 +572,8 @@ bool CAlertSmsObj::IsUpgradeMatching(CAlertEventObj * eventObj)
 	{
 		//
 		//if(strAlertState == "禁止")
-		if(strcmp(strAlertState.c_str(), CAlertMain::strDisable.c_str()) == 0)
+		if( (strcmp(strAlertState.c_str(), CAlertMain::strDisable.c_str()) == 0) || 
+			(strcmp(strAlertState.c_str(), CAlertMain::strENDisable.c_str()) == 0) )
 			return false;
 		
 		//停止条件匹配
@@ -540,7 +607,8 @@ bool CAlertSmsObj::IsMatching(CAlertEventObj * eventObj)
 	{
 		//
 		//if(strAlertState == "禁止")
-		if(strcmp(strAlertState.c_str(), CAlertMain::strDisable.c_str()) == 0)
+		if( (strcmp(strAlertState.c_str(), CAlertMain::strDisable.c_str()) == 0) || 
+			(strcmp(strAlertState.c_str(), CAlertMain::strENDisable.c_str()) == 0) )
 			return false;
 
 		//停止条件匹配
@@ -579,8 +647,13 @@ CAlertScriptObj::CAlertScriptObj()
 }
 
 //
-CAlertSendObj * CAlertScriptObj::MakeSendObj()
+CAlertSendObj * CAlertScriptObj::MakeSendObj(CAlertEventObj *eventObj)
 {
+
+	CAlertEventObj * curEventObj = eventObj;
+	if (curEventObj == NULL)
+		return NULL;
+
 	nSendId ++;
 	CAlertScriptSendObj * alertscriptobj = new CAlertScriptSendObj();
 	
@@ -608,10 +681,14 @@ CAlertSendObj * CAlertScriptObj::MakeSendObj()
 	alertscriptobj->nEventCount = curEventObj->nEventCount;
 	alertscriptobj->nEventType = curEventObj->nEventType;
 
+
+
 	//事件id
 	alertscriptobj->strServerTextValue = strServerTextValue;
 	alertscriptobj->strScriptFileValue = strScriptFileValue;
 	alertscriptobj->strScriptParamValue = strScriptParamValue;
+
+	alertscriptobj->strIdcId = strIdcId;
 
 	return alertscriptobj;
 }
@@ -624,7 +701,8 @@ bool CAlertScriptObj::IsMatching(CAlertEventObj * eventObj)
 	{
 		//
 		//if(strAlertState == "禁止")
-		if(strcmp(strAlertState.c_str(), CAlertMain::strDisable.c_str()) == 0)
+		if( (strcmp(strAlertState.c_str(), CAlertMain::strDisable.c_str()) == 0) || 
+			(strcmp(strAlertState.c_str(), CAlertMain::strENDisable.c_str()) == 0) )
 			return false;
 
 		bIsMatching = CAlertBaseObj::IsMatching(eventObj);
@@ -661,7 +739,8 @@ bool CAlertSoundObj::IsMatching(CAlertEventObj * eventObj)
 	{
 		//
 		//if(strAlertState == "禁止")
-		if(strcmp(strAlertState.c_str(), CAlertMain::strDisable.c_str()) == 0)
+		if( (strcmp(strAlertState.c_str(), CAlertMain::strDisable.c_str()) == 0) || 
+			(strcmp(strAlertState.c_str(), CAlertMain::strENDisable.c_str()) == 0) )
 			return false;
 
 		bIsMatching = CAlertBaseObj::IsMatching(eventObj);
@@ -680,8 +759,12 @@ bool CAlertSoundObj::IsMatching(CAlertEventObj * eventObj)
 
 
 //
-CAlertSendObj * CAlertSoundObj::MakeSendObj()
+CAlertSendObj * CAlertSoundObj::MakeSendObj(CAlertEventObj *eventObj)
 {
+	CAlertEventObj * curEventObj = eventObj;
+	if (curEventObj == NULL)
+		return NULL;
+	
 	nSendId ++;
 	CAlertSoundSendObj * alertsendobj = new CAlertSoundSendObj();	
 	//
@@ -706,6 +789,8 @@ CAlertSendObj * CAlertSoundObj::MakeSendObj()
 	alertsendobj->strLoginNameValue = strLoginNameValue;
 	alertsendobj->strLoginPwdValue = strLoginPwdValue;
 
+	alertsendobj->strIdcId = strIdcId;
+
 	return alertsendobj;
 }
 
@@ -714,3 +799,275 @@ string CAlertSoundObj::GetDebugInfo()
 {
 	return CAlertBaseObj::GetDebugInfo();
 }
+
+
+
+//
+CAlertPythonObj::CAlertPythonObj()
+{
+	
+}
+
+//
+bool CAlertPythonObj::IsMatching(CAlertEventObj * eventObj)
+{		
+	bool bIsMatching = false;
+	try
+	{
+		//
+		//if(strAlertState == "禁止")
+		if( (strcmp(strAlertState.c_str(), CAlertMain::strDisable.c_str()) == 0) || 
+			(strcmp(strAlertState.c_str(), CAlertMain::strENDisable.c_str()) == 0) )
+			return false;
+
+		bIsMatching = CAlertBaseObj::IsMatching(eventObj);
+		if(bIsMatching)
+		{
+
+		}
+	}
+	catch(...)
+	{
+		return false;
+	}
+	
+	return bIsMatching;
+}
+
+
+//
+CAlertSendObj * CAlertPythonObj::MakeSendObj(CAlertEventObj *eventObj)
+{
+
+	CAlertEventObj *curEventObj = eventObj;
+	if (curEventObj == NULL)
+		return NULL;
+
+	nSendId ++;
+	CAlertPythonSendObj * alertsendobj = new CAlertPythonSendObj();	
+	
+	////
+	alertsendobj->strAlertMonitorId = curEventObj->strMonitorId;		
+	//
+	alertsendobj->strAlertName = strAlertName;	
+	//send事件id
+	alertsendobj->nSendId = nSendId;
+	//
+	alertsendobj->strEventDes = curEventObj->strEventDes;
+	//
+	alertsendobj->strAlertIndex = strIndex;
+	//事件id
+	//
+	alertsendobj->strTime = curEventObj->strTime;
+	
+
+	alertsendobj->nEventCount = curEventObj->nEventCount;
+	alertsendobj->nEventType = curEventObj->nEventType;
+
+	
+	alertsendobj->strReceive = strReceive;
+	alertsendobj->strLevel = strLevel;
+	alertsendobj->strContent = strContent;
+
+	alertsendobj->strIdcId = strIdcId;
+
+	return alertsendobj;
+}
+
+//
+string CAlertPythonObj::GetDebugInfo()
+{
+	return CAlertBaseObj::GetDebugInfo();
+}
+
+
+//下面是增加网页报警的内容
+//方法是把需要报警的信息作为工单发送到网上
+CAlertWebObj::CAlertWebObj()
+{
+	nStopValue = -1;
+	nUpgradeValue = -1;
+}
+
+//
+void CAlertWebObj::RefreshData()
+{	
+	try
+	{
+		//printf("RefreshData");
+		//printf(strAlertStopValue.c_str());
+		//printf("\r\n");
+		if(!strAlertUpgradeValue.empty())
+			sscanf(strAlertUpgradeValue.c_str(), "%d", &nUpgradeValue);
+		else
+			nUpgradeValue = -1;
+
+		if(!strAlertStopValue.empty())
+			sscanf(strAlertStopValue.c_str(), "%d", &nStopValue);
+		else
+			nStopValue = -1;
+
+		//printf( "nUpgradeValue:  = %d\n", nUpgradeValue );
+		//printf( "nStopValue:  = %d\n", nStopValue );
+	}
+	catch(...)
+	{
+
+	}
+}
+
+//生成发送对象
+CAlertSendObj * CAlertWebObj::MakeSendObj(CAlertEventObj * eventObj)
+{
+
+	nSendId ++;
+	CAlertWebObj * alertwebobj = new CAlertWebObj();
+	//
+/*	alertwebobj->strAlertMonitorId = curEventObj->strMonitorId;	
+	//
+	alertwebobj->strAlertName = strAlertName;
+	//
+	alertwebobj->strAlertIndex = strIndex;	
+	//send事件id
+	alertwebobj->nSendId = nSendId;
+	//事件id
+	alertwebobj->strEventDes = curEventObj->strEventDes;
+	//
+	alertwebobj->strTime = curEventObj->strTime;
+
+	alertwebobj->nEventCount = curEventObj->nEventCount;
+	alertwebobj->nEventType = curEventObj->nEventType;
+
+	alertwebobj->strEmailAdressValue = strEmailAdressValue;
+	alertwebobj->strOtherAdressValue = strOtherAdressValue;
+	alertwebobj->strEmailTemplateValue = strEmailTemplateValue;
+	alertwebobj->strAlertUpgradeToValue = strAlertUpgradeToValue;	
+
+	alertwebobj->strIdcId = strIdcId;
+
+	return alertwebobj;
+*/
+	return NULL;
+}
+
+//升级条件是否匹配
+bool CAlertWebObj::IsUpgradeMatching(CAlertEventObj * eventObj)
+{
+	bool bIsMatching = false;
+	try
+	{
+		//
+		//if(strAlertState == "禁止")
+		if( (strcmp(strAlertState.c_str(), CAlertMain::strDisable.c_str()) == 0) || 
+			(strcmp(strAlertState.c_str(), CAlertMain::strENDisable.c_str()) == 0) )
+			return false;
+
+		//停止条件匹配
+		if((nStopValue <= eventObj->nEventCount && nStopValue != -1) && nStopValue != 0)
+		{
+			//printf(strAlertStopValue.c_str());
+			return false;
+		}
+
+		if(eventObj->nEventCount >= nUpgradeValue && nUpgradeValue != 0)
+		{
+			if(IsMatching(eventObj))
+				bIsMatching = true;
+		}
+
+		nUpgradeStatCount++;
+	}
+	catch(...)
+	{
+		return false;
+	}
+
+	return bIsMatching;
+}
+
+//基础条件是否匹配
+bool CAlertWebObj::IsMatching(CAlertEventObj * eventObj)
+{		
+	bool bIsMatching = false;
+	try
+	{
+		//
+		//if(strAlertState == "禁止")
+		if( (strcmp(strAlertState.c_str(), CAlertMain::strDisable.c_str()) == 0) || 
+			(strcmp(strAlertState.c_str(), CAlertMain::strENDisable.c_str()) == 0) )
+			return false;
+
+		//停止条件匹配
+		if((nStopValue <= eventObj->nEventCount && nStopValue != -1) && nStopValue != 0)
+		{			
+			//printf(strAlertStopValue.c_str());
+			return false;
+		}
+
+		nStopStatCount++;
+		bIsMatching = CAlertBaseObj::IsMatching(eventObj);
+		if(bIsMatching)
+		{
+
+		}
+	}
+	catch(...)
+	{
+		return false;
+	}
+
+	return bIsMatching;
+}
+
+//
+string CAlertWebObj::GetDebugInfo()
+{
+	return CAlertBaseObj::GetDebugInfo();
+}
+
+
+/*
+//下面是工单报警对象
+CAlertItsmObj::CAlertItsmObj()
+{
+}
+
+bool CAlertItsmObj::IsMatching(CAlertEventObj *eventObj)
+{
+	return CAlertBaseObj::IsMatching(eventObj);
+}
+
+string CAlertItsmObj::GetDebugInfo()
+{
+	return CAlertBaseObj::GetDebugInfo();
+}
+
+CAlertSendObj * CAlertItsmObj::MakeSendObj()
+{
+	nSendId ++;
+	CAlertItsmSendObj * alertsendobj = new CAlertItsmSendObj();
+
+	////
+	alertsendobj->strAlertMonitorId = curEventObj->strMonitorId;		
+	//
+	alertsendobj->strAlertName = strAlertName;	
+	//send事件id
+	alertsendobj->nSendId = nSendId;
+	//
+	alertsendobj->strEventDes = curEventObj->strEventDes;
+	//
+	alertsendobj->strAlertIndex = strIndex;
+	//事件id
+	//
+	alertsendobj->strTime = curEventObj->strTime;
+	
+
+	alertsendobj->nEventCount = curEventObj->nEventCount;
+	alertsendobj->nEventType = curEventObj->nEventType;
+
+
+	alertsendobj->strIdcId = strIdcId;
+
+	return alertsendobj;
+}
+*/

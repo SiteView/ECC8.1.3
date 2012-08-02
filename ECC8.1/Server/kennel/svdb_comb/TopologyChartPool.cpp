@@ -66,10 +66,10 @@ bool TopologyChartPool::Load(void)
 }
 bool TopologyChartPool::Submit()
 {
-	ost::MutexLock lock(m_UpdateLock);
-
 	if(!m_changed)
 		return true;
+
+	ost::MutexLock lock(m_UpdateLock);
 	S_UINT len=this->GetRawDataSize();
 	try{
 		ost::MappedFile file(m_FilePath.getword(),ost::File::accessReadWrite,len);

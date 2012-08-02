@@ -1,0 +1,43 @@
+sitescope9.5的界面：http://192.168.6.39:8080/
+原siteview7.0的界面：http://192.168.6.39:6688/
+
+zk隐含对象，可以在zscript中直接使用
+http://zh.zkoss.org/doc/devguide/ch06s05.html
+
+以下三种最重要的Map，可以往里面放东西
+
+1.requestScope处理URL上面的参数
+
+2.sessionScope处理登录用户相关的信息，重新启动浏览器会产生不同sessionScope对象
+
+3.applicationScope处理所有用户共同的对象，应用服务器重新启动会产生新的applicationScope
+
+
+zul中特殊字符必须替换掉
+例如，你必须使用&lt;表示<。
+&gt;表示>
+&amp;表示&
+&quot;表示"
+&apos;表示'
+
+一个海量树结构的例子
+http://www.zkoss.org/smalltalks/zkTreeModel/
+
+http://www.testadempiere.com/webui/index.zul
+SuperUser/System 可以登陆
+
+在所有zscript加上标签,申明内容为纯文本
+   <zscript><![CDATA[
+   
+   ]]></zscript>
+   
+   
+ 等候图片  
+   <div id="zk_prog">
+	<div class="z-loading" id="zk_loading" style="LEFT: 0px; VISIBILITY: inherit; TOP: 0px" z.y="0" z.x="0">
+		<div class="z-loading-indicator">
+			<img class="z-loading-icon" alt="..." src="http://127.0.0.1:8181/ecc/zkau/web/img/spacer.gif"> 
+			处理中，请稍候…</div>
+	</div>
+</div>
+   

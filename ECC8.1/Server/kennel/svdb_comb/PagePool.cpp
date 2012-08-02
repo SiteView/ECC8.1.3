@@ -155,6 +155,9 @@ bool PagePool::FlushBuffer()
 
 bool PagePool::Put(Page *pt,bool isch,bool isdel)
 {
+	if(pt==NULL)
+		return false;
+
 	ost::MutexLock lock(m_Mutex);
 	pt->m_isuse=false;
 	if(!isch)
@@ -239,7 +242,7 @@ bool PagePool::LoadPage(const char *filepath)
 
 	memset(buf,0,m_Head.m_PageSize);
 
-	for(int i=0;i<m_Head.m_PageCount;i++)
+	for(LONG i=0;i<m_Head.m_PageCount;i++)
 	{
 		if(!::SetFilePointer(hd,i*m_Head.m_PageSize+sizeof(struct PagePoolHead),NULL,FILE_BEGIN))
 		{
@@ -278,7 +281,7 @@ bool PagePool::LoadPage(const char *filepath)
 	return true;
 
 }
-bool PagePool::LoadPageEx(const char *filetitle)
+int PagePool::LoadPageEx(const char *filetitle)
 {
 	ost::MutexLock lock(m_Mutex);
 
@@ -296,7 +299,7 @@ bool PagePool::LoadPageEx(const char *filetitle)
 	{
 		//puts("open error");
 		printf("Opening file errorid:%d\n   %s\n",::GetLastError(),filepath);
-		return false;
+		return -1;
 	}
 
 	DWORD rlen=0;
@@ -373,23 +376,53 @@ bool PagePool::LoadPageEx(const char *filetitle)
 			
 		}
 
-		for(int n=0;n<PCount;n++)
+		clock_t time1=clock(); 
+		DWORD bsize= 262144;
+		DWORD lowoffset= 0;
+		PVOID pvFile= NULL;
+		DWORD dwFileSize = GetFileSize(hd,NULL);
+		cout<<" DB file: "<<filepath<<"\n  Pcount: "<<PCount<<"  fsize:"<<dwFileSize<<"  bsize:"<<bsize<<endl;
+		HANDLE hFileMap = CreateFileMapping(hd,NULL,PAGE_READWRITE,0,dwFileSize,NULL);
+		if(hFileMap == NULL)
 		{
-			if(!::SetFilePointer(hd,n*m_Head.m_PageSize+sizeof(struct PagePoolHead),NULL,FILE_BEGIN))
+			cout<<" Faile to CreateFileMapping: "<<GetLastError()<<endl;
+			CloseHandle(hd);
+			return false;
+		}
+
+		for(LONG n=0;n<PCount;n++)
+		{
+			if(n%30000==0)
+				cout<<" "<<(int)(100*n/PCount)<<"%"; 
+
+			long tpos= n*m_Head.m_PageSize+sizeof(struct PagePoolHead);
+			if(n==0 || (tpos+ sizeof(PageHead)) > (lowoffset+bsize) )
 			{
-				printf("Load page -- move file pointer failed errorid:%d\n",::GetLastError());
+				if(n!=0)
+					lowoffset+= bsize;
+				if(pvFile!=NULL)
+					UnmapViewOfFile(pvFile);
+				if( (lowoffset+bsize)>dwFileSize )
+					pvFile = MapViewOfFile(hFileMap,FILE_MAP_WRITE,0,lowoffset,0);
+				else
+					pvFile = MapViewOfFile(hFileMap,FILE_MAP_WRITE,0,lowoffset,bsize);
+			}
+			if(pvFile == NULL)
+			{
+				cout<<" Failed to MapViewOfFile: "<<GetLastError()<<endl;
+				cout<<"        n:"<<n<<"  lowoffset:"<<lowoffset<<"  tpos:"<<tpos<<"  mhp size:"<<m_Head.m_PageSize<<"  ppoolhead size:"<<sizeof(struct PagePoolHead)<<"  phead size:"<<sizeof(PageHead)<<endl;
+				CloseHandle(hFileMap);
+				CloseHandle(hd);
 				return false;
 			}
-			if(!::ReadFile(hd,buf,sizeof(PageHead),&rlen,NULL))
+
+			char * tdata= (char *)pvFile + tpos - lowoffset;
+			PageHead* thead= (PageHead*)tdata;
+			if(thead->m_pos!=bindex+n)
 			{
-				printf("Read file failed errorid:%d\n",::GetLastError());
-				delete [] buf;
-				return false;
-			}
-			if(((PageHead*)buf)->m_pos!=bindex+n)
-			{
-				printf("Load page info failed\n");
-				delete [] buf;
+				printf("Load page info failed,  pos:%d,  bindex:%d,  n:%d,  PCount:%d\n",thead->m_pos,bindex,n,PCount);
+				UnmapViewOfFile(pvFile);
+				CloseHandle(hFileMap);
 				return false;
 			}
 
@@ -399,13 +432,15 @@ bool PagePool::LoadPageEx(const char *filetitle)
 				pg->m_pos=bindex+n;
 				pg->m_mpos.m_fileindex=i;
 				pg->m_mpos.m_pos=n;
-				if(((PageHead*)buf)->m_unused==1)
+				if(thead->m_unused==1)
 					m_FreePageList.push_back(pg);
 
 				m_PagePool[bindex+n]=pg;
 			}
-
 		}
+		UnmapViewOfFile(pvFile);
+		CloseHandle(hFileMap);
+		cout<<" 100%  "<<(double)(clock()-time1)/CLK_TCK<<"s"<<endl;
 
 	}
 	
@@ -433,7 +468,8 @@ bool PagePool::CreatePage(const char * filepath,bool overlay)
 		return false;
 	}
 
-	LONG size=m_Head.m_PageSize * m_Head.m_PageCount+sizeof(PagePoolHead);
+	LONG size= m_Head.m_PageSize;
+	size= size * m_Head.m_PageCount+sizeof(PagePoolHead);
 	if((size>MAXINT-2)||(size<1))
 	{
 		printf("Size too big");
@@ -529,7 +565,8 @@ bool PagePool::CreatePageEx(const char * filetitle,int fileindex,int pagecount,i
 
 	int PCount=pagecount;
 
-	LONG size=m_Head.m_PageSize * pagecount;
+	LONG size= m_Head.m_PageSize;
+	size= size * pagecount;
 	if((size>MAXINT-2)||(size<1))
 	{
 		printf("Size too big");
@@ -665,7 +702,8 @@ bool PagePool::AddNewPages(int count)
 		return false;
 	if(m_hd==NULL)
 		return false;
-	LONG size=m_Head.m_PageSize * (m_Head.m_PageCount+count)+sizeof(PagePoolHead);
+	LONG size=m_Head.m_PageSize;
+	size= size * (m_Head.m_PageCount+count)+sizeof(PagePoolHead);
 	if((size>MAXINT-2)||(size<1))
 	{
 		printf("Size too big");
@@ -695,7 +733,9 @@ bool PagePool::AddNewPages(int count)
 
 	}
 
-	if(newpos!=m_Head.m_PageSize * (m_Head.m_PageCount+count)+sizeof(PagePoolHead))
+	DWORD tpos= m_Head.m_PageSize;
+	tpos= tpos * (m_Head.m_PageCount+count)+sizeof(PagePoolHead);
+	if(newpos!=tpos)
 	{
 		printf("Create file sapce failed newpos:%d\n",newpos);
 		newpos=::SetFilePointer(m_hd,oldend,NULL,FILE_BEGIN);
@@ -780,8 +820,8 @@ bool PagePool::AddNewPagesEx(int count)
 	if(m_fhd[m_Head.m_FileCount]==NULL)
 		return false;
 
-
-	LONG size=m_Head.m_PageSize * (m_fhd[m_Head.m_FileCount]->m_phead.m_PageCount+count)+sizeof(PagePoolHead);
+	LONG size= m_Head.m_PageSize ;
+	size= size * (m_fhd[m_Head.m_FileCount]->m_phead.m_PageCount+count)+sizeof(PagePoolHead);
 	if((size>MAXINT-2)||(size<1))
 	{
 		printf("Size too big");
@@ -811,9 +851,11 @@ bool PagePool::AddNewPagesEx(int count)
 
 		}
 
-		if(newpos!=m_Head.m_PageSize * (m_fhd[m_Head.m_FileCount]->m_phead.m_PageCount+count)+sizeof(PagePoolHead))
+		DWORD tpos= m_Head.m_PageSize;
+		tpos= tpos * (m_fhd[m_Head.m_FileCount]->m_phead.m_PageCount+count)+sizeof(PagePoolHead); 
+		if(newpos!=tpos)
 		{
-			printf("Create file sapce failed newpos:%d\n",newpos);
+			printf("Create file sapce failed newpos:%d, tpos:%d \n",newpos,tpos);
 			newpos=::SetFilePointer(m_hd,oldend,NULL,FILE_BEGIN);
 			::SetEndOfFile(m_hd);
 			return false;
@@ -895,7 +937,9 @@ bool PagePool::AddNewPagesEx(int count)
 
 	}else
 	{
-		int dlen=m_Head.m_PerFileSize-m_fhd[m_Head.m_FileCount]->m_phead.m_PageCount*m_Head.m_PageSize;
+		LONG tlen= m_Head.m_PageSize;
+		tlen= tlen * m_fhd[m_Head.m_FileCount]->m_phead.m_PageCount;
+		int dlen=m_Head.m_PerFileSize - tlen;
 		int pcount=dlen/m_Head.m_PageSize;
         
 		if(pcount>0)

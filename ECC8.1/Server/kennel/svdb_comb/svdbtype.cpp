@@ -52,37 +52,6 @@ std::string getProcessId()
 	sprintf(buf, "%d", pid);
 	return buf;
 }
-#include <sys/stat.h>
-void WriteLog( const char* str )
-{
-	//return; //dy
-	char timebuf[128],datebuf[128];
-
-	_tzset();
-	_strtime( timebuf );
-	_strdate( datebuf );
-
-	char szLogFile[] = "C:\\DySVDB.log";
-
-	struct _stat buf;
-	if( _stat( szLogFile, &buf ) == 0 )
-	{
-		if( buf.st_size > 5000*1024 )
-		{
-			FILE *log = fopen( szLogFile, "w" );
-			if( log != NULL )
-				fclose( log );
-		}
-	}
-
-	FILE *log = fopen( szLogFile,"a+");
-	if( log != NULL )
-	{
-		fprintf( log, "%s %s \t%s\n", datebuf, timebuf, str );
-		fclose( log );
-	}
-
-}
 
 std::string IdcUser::ProcessID(getProcessId());
 
@@ -99,7 +68,6 @@ void IdcUser::PutLocalSEId(std::string str)
 		{
 			tempkey=TrimSpace(tempkey);
 			set_LocalSEId.insert(atoi(tempkey.c_str()));
-			
 		}
 	}
 	catch(...)
@@ -110,17 +78,11 @@ void IdcUser::PutLocalSEId(std::string str)
 
 bool IdcUser::IsAnLocalSEId(int index)
 {
-	
 	std::set<int>::iterator it=set_LocalSEId.find(index);
-
 	if(it==set_LocalSEId.end())
-	{	
 		return false;
-	}
 	else
-	{	
 		return true;
-	}
 }
 
 bool IdcUser::IsAnLocalSEId(std::string str)

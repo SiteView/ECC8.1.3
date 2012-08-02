@@ -1,4 +1,6 @@
 #include "EntityPoolEx.h"
+#include "WorkThread.h"
+#include "Des.h"
 
 EntityPoolEx::EntityPoolEx(void)
 {
@@ -66,10 +68,10 @@ bool EntityPoolEx::Load(void)
 }
 bool EntityPoolEx::Submit()
 {
-	ost::MutexLock lock(m_UpdateLock);
-
 	if(!m_changed)
 		return true;
+
+	ost::MutexLock lock(m_UpdateLock);
 	S_UINT len=this->GetRawDataSize();
 	try{
 		ost::MappedFile file(m_FilePath.getword(),ost::File::accessReadWrite,len);
@@ -194,6 +196,13 @@ BOOL	EntityPoolEx::CreateObjectByRawData(const char *lpbuf,S_UINT bufsize)
 			word id=ptc->GetIdentifier();
 			m_entityexs[id]=ptc;
 
+			string ecceid= ptc->GetEccEntityID();
+			std::map<string,string>::iterator it= EidToExid.find(ecceid);
+			if(it!=EidToExid.end())
+				it->second= id.getword();
+			else
+				EidToExid.insert(std::make_pair(ecceid,id.getword()));
+
 		}
 
 	}catch(...)
@@ -206,7 +215,78 @@ BOOL	EntityPoolEx::CreateObjectByRawData(const char *lpbuf,S_UINT bufsize)
 
 }
 
-bool EntityPoolEx::push(EntityEx *pm)
+bool EntityPoolEx::CreateNnmEntityParentGroup(SvdbMain *pMain)
+{		
+	try{
+		std::map<string,string> HadId, tempHadId;
+
+		StringMap smap(577);
+		pMain->m_pGroup->GetInfo(IdcUser::nnmEntityParentKey,"default",smap);
+
+		StringMap::iterator sit;
+		while(smap.findnext(sit))
+		{
+			for(std::map<string,string>::iterator mit= IdcUser::nnmEntityParentValue.begin(); mit!=IdcUser::nnmEntityParentValue.end(); ++mit)
+			{
+				if( (mit->second).compare((*sit).getvalue().getword())==0 )
+					HadId.insert(std::make_pair(mit->first,mit->second));
+			}
+		}
+
+		for(int time=0; time<=1; ++time)
+		{
+			int count(0);
+			for(std::map<string,string>::iterator mit= IdcUser::nnmEntityParentValue.begin(); mit!=IdcUser::nnmEntityParentValue.end(); ++mit)
+			{
+				++count;
+				if(time==0 && count==1)
+					continue;
+				if(time==1 && count==2)
+					continue;
+
+				std::map<string,string>::iterator mit2= HadId.find(mit->first);
+				if(mit2==HadId.end())
+				{
+					string nnmEntityParentSvname= mit->second;
+
+					Group *pg=new Group();
+					if(pg==NULL)
+						return false;
+					if(pMain==NULL)
+					{
+						cout<<" pMain==NULL in Create "<<nnmEntityParentSvname.c_str()<<endl;
+						return false;
+					}
+					pg->GetProperty()[IdcUser::nnmEntityParentKey.c_str()]= nnmEntityParentSvname;
+					pg->GetProperty()["sv_name"]= nnmEntityParentSvname;
+					pg->GetProperty()["sv_description"]= nnmEntityParentSvname;
+
+					WorkThread wt;
+					wt.SetSvdbMain(pMain);
+					string newid;
+					if(!wt.AddNewGroup(pg, newid, IdcUser::GetFirstSEId()))
+					{
+						delete pg;
+						cout<<" Failed to AddNewGroup when Create "<<nnmEntityParentSvname.c_str()<<endl;
+						return false;
+					}
+					cout<<"  Auto-created: "<<nnmEntityParentSvname.c_str()<<"="<<newid.c_str()<<endl;
+				}
+				if(time==0 && count==2)
+					break;
+			}
+		}
+		pMain->m_pGroup->UpdateNnmEntityParentGid();
+	}
+	catch(...)
+	{
+		cout<<" Exception in EntityPoolEx::CreateNnmEntityParentGroup() "<<endl;
+		return false;
+	}
+	return true;
+}
+
+bool EntityPoolEx::push(EntityEx *pm,string & exid,SvdbMain *pMain)
 {
 	ost::MutexLock lock(m_UpdateLock);
 
@@ -215,17 +295,38 @@ bool EntityPoolEx::push(EntityEx *pm)
 	word id=pm->GetIdentifier();
 	if(id.empty())
 		return false;
+	exid= id.getword();
 
 	EntityEx **p=m_entityexs.find(id);
+	if(p!=NULL && *p!=NULL)
+	{
+		string oldecceid= (*p)->GetEccEntityID().getword();
+		std::map<string,string>::iterator oldit= EidToExid.find(oldecceid);
+		if(oldit!=EidToExid.end())
+			EidToExid.erase(oldit);
+	}
+	if(p!=NULL)
+		UndoInvalidUpdateOfEccEntityId(*p,pm,pMain);
+
 	if(p!=NULL)
 		delete (*p);
 	m_entityexs[id]=pm;
-
 	m_changed=true;
+
+	string ecceid= pm->GetEccEntityID();
+	std::map<string,string>::iterator it= EidToExid.find(ecceid);
+	if(it!=EidToExid.end())
+		it->second= exid;
+	else
+		EidToExid.insert(std::make_pair(ecceid,exid));
+
+	if(!IdcUser::nnmEntityParentOk)
+		CreateNnmEntityParentGroup(pMain);
+
 	return true;
 
 }
-bool EntityPoolEx::PushData(const char *buf,S_UINT len)
+bool EntityPoolEx::PushData(const char *buf,S_UINT len,string & exid,SvdbMain *pMain)
 {
 	ost::MutexLock lock(m_UpdateLock);
 	EntityEx *pm=new EntityEx();
@@ -233,7 +334,7 @@ bool EntityPoolEx::PushData(const char *buf,S_UINT len)
 		return false;
 	if(!pm->CreateObjectByRawData(buf,len))
 		return false;
-	return push(pm);
+	return push(pm,exid,pMain);
 
 }
 bool EntityPoolEx::GetEntityExData(word id,char *buf,S_UINT &len)
@@ -258,17 +359,116 @@ bool EntityPoolEx::DeleteEntityEx(word id)
 {
 	ost::MutexLock lock(m_UpdateLock);
 	EntityEx **pm=m_entityexs.find(id);
-	if(pm==NULL)
+	if(pm==NULL||(*pm)==NULL)
 		return false;
+	
+	string ecceid= (*pm)->GetEccEntityID();
 	delete (*pm);
+
    if(m_entityexs.erase(id))
    {
-	   	m_changed=true;
-		return true;
+	   m_changed=true;
+
+	   std::map<string,string>::iterator it= EidToExid.find(ecceid);
+	   if(it!=EidToExid.end())
+		   EidToExid.erase(it);
+
+	   return true;
    }
    return false;
 
 }
 
+bool EntityPoolEx::SaveDataFromEccEntity(string id, StringMap & smap)
+{
+	ost::MutexLock lock(m_UpdateLock);
+	EntityEx ** ex= m_entityexs.find(id.c_str());
+	if(ex==NULL||*ex==NULL)
+		return false;
+	m_changed=true;
 
+	string Community;
+	bool hasIt(false);
+	StringMap::iterator sit;
+	while(smap.findnext(sit))
+	{
+		string key= (*sit).getkey().getword();
+		if(key.compare("_Community")!=0)
+			(*ex)->GetProperty()[(*sit).getkey()]=(*sit).getvalue();
+		else
+		{
+			hasIt= true;
+			Community= (*sit).getvalue().getword();
+		}
+	}
+
+	if(!Community.empty())
+	{
+		Des mydes;
+		char out[1024]={0};
+		try{
+			if( mydes.Decrypt(Community.c_str(), out) )
+				Community= out;	
+		}catch(...)
+		{
+		}
+	}
+	if(hasIt)
+		(*ex)->GetProperty()["_Community"]= Community.c_str();
+
+	cout<<"\""<<id.c_str()<<"\" nnm entity updated by ecc entity"<<endl;
+	return true;
+}
+
+bool EntityPoolEx::SaveEccEntityId(string exid, string ecceid)
+{
+	ost::MutexLock lock(m_UpdateLock);
+	EntityEx ** ex= m_entityexs.find(exid.c_str());
+	if(ex==NULL||*ex==NULL)
+		return false;
+	m_changed=true;
+
+	string oldecceid= (*ex)->GetEccEntityID().getword();
+	std::map<string,string>::iterator oldit= EidToExid.find(oldecceid);
+	if(oldit!=EidToExid.end())
+		EidToExid.erase(oldit);
+
+	(*ex)->PutEccEntityID(ecceid.c_str());
+
+	std::map<string,string>::iterator it= EidToExid.find(ecceid);
+	if(it!=EidToExid.end())
+		it->second= exid;
+	else
+		EidToExid.insert(std::make_pair(ecceid,exid));
+
+	return true;
+}
+
+bool EntityPoolEx::UndoInvalidUpdateOfEccEntityId(EntityEx * pOld, EntityEx * pNew, SvdbMain *pMain)
+{
+	if(pOld==NULL || pNew==NULL || pMain==NULL)
+		return false;
+
+	string oldeid= pOld->GetEccEntityID();
+	string neweid= pNew->GetEccEntityID();
+
+	Entity * olden= pMain->m_pEntity->GetEntity(oldeid.c_str());
+	Entity * newen= pMain->m_pEntity->GetEntity(neweid.c_str());
+
+	if(olden!=NULL && newen==NULL)
+	{
+		m_changed=true;
+		pNew->PutEccEntityID(oldeid.c_str());
+	}
+	return true;
+}
+
+string EntityPoolEx::GetNnmEidByEccEid(string ecceid)
+{
+	std::map<string,string>::iterator it= EidToExid.find(ecceid);
+	if(it==EidToExid.end())
+		return "";
+	
+	return it->second;
+}
 

@@ -185,6 +185,12 @@
 				RelativePath=".\CiscoLog.cpp">
 			</File>
 			<File
+				RelativePath=".\CiscoTelPing.cpp">
+			</File>
+			<File
+				RelativePath=".\CiscoTelPing.h">
+			</File>
+			<File
 				RelativePath=".\Cluster.cpp">
 			</File>
 			<File

@@ -10,7 +10,7 @@
 typedef svutil::hashtable<word,Entity *> ENTITYMAP;
 
 class EntityPool :
-	public PoolBase2,public SerialBase
+	public PoolBase2,public SerialBase2
 {
 public:
 	EntityPool(void);
@@ -36,9 +36,12 @@ public:
 	bool LoadFile(string fileName);
 	bool SubmitToFile(string fileName, EntityPool * dataPool );
 
-	S_UINT	GetRawDataSize(void);
-	char*	GetRawData(char *lpbuf,S_UINT bufsize);
+	bool	GetBackupData(std::list<SingelRecord> & listrcd);
+	S_UINT	GetRawDataSize(bool onlyLocked= false);
+	char*	GetRawData(char *lpbuf,S_UINT bufsize, bool onlyLocked= false);
 	BOOL	CreateObjectByRawData(const char *lpbuf,S_UINT bufsize);
+	bool	UpdateConfig(string sestr, const char *data, S_UINT datalen);
+
 
 	bool push(Entity *pm);
 	bool PushData(const char *buf,S_UINT len);
@@ -48,12 +51,13 @@ public:
 		Entity **pm=m_entitys.find(id);
 		if(pm==NULL)
 			return NULL;
-		m_changed=true;
+		//m_changed=true;
 		return *pm;
 	}
 	int QueryMassEntity(string pid, const char *data,S_UINT datalen, std::list<SingelRecord> & listrcd );
 
 	bool GetEntityData(word id,char *buf,S_UINT &len);
+	bool SaveDataFromNnmEntity(string id, string exid, StringMap & smap);
 
 	word GetNextSubID(word entityid)
 	{
@@ -102,8 +106,9 @@ public:
 		}
 	}
 
-	bool GetInfo(word infoname,string pid,StringMap &map)
+	bool GetInfo(word infoname,string pid,StringMap &map,bool onlyson=false)
 	{
+		ost::MutexLock lock(m_UpdateLock);
 		bool getver(false);
 		string infomation(infoname.getword());
 		if(infomation.compare("ObjectVersion")==0)
@@ -119,9 +124,15 @@ public:
 		ENTITYMAP::iterator it;
 		while(m_entitys.findnext(it))
 		{
+			if((*it).getkey().empty())
+				continue;
+
 			const char * key = (*it).getkey().getword();
 			mid=key;
 			if( !isdefault && mid.find(pid)!=0)
+				continue;
+
+			if(onlyson && mid.find(".",pid.size())!=std::string::npos )
 				continue;
 
 			if(getver)
@@ -157,10 +168,15 @@ public:
 		return true;
 	}
 
-
+	ENTITYMAP & GetMemberData()
+	{
+		return m_entitys;
+	}
 
 protected:
 	ENTITYMAP m_entitys;
+	ENTITYMAP m_hide_entitys;
+
 	S_UINT	m_hashtablesize;
 	bool needToDel;
 

@@ -572,6 +572,29 @@ int Table::AppendRecord(const char *rawdata,S_UINT datalen)
 	else
     	rht.prercord=ppagehead->m_currentdatapos-ppagehead->m_currentdatalen;
 		*/
+	try{
+		const char * tbuf2(NULL);
+		S_UINT tbuflen2(0);
+		RecordHead *prht=(RecordHead *)(rawdata);
+		if((prht->state==Record::STATUS_BAD)||(prht->state==Record::STATUS_NULL)||(prht->state==Record::STATUS_DISABLE))
+		{
+			tbuf2= NULL;
+			tbuflen2= 0;
+		}
+		else
+		{
+			tbuf2= rawdata+sizeof(RecordHead);
+			tbuflen2= len;
+		}
+		SetLatestRCD(tbuf2, tbuflen2);
+	}
+	catch(...)
+	{
+		printf("Exception to SetLatestRCD in AppendRecord\n");
+		SetLatestRCD(NULL, 0);
+	}
+
+
 	int dlen=sizeof(RecordHead)+len;
 	m_displaystr=rawdata+dlen;
 
@@ -919,21 +942,28 @@ int Table::QueryRecordByCount(S_UINT count,svutil::buffer &buf,int headlen,int &
 
 
 bool Table::QueryRecordCount(string monitorid, int & count)
-{
+{	
 	cout<<"Query record count of \""<<monitorid.c_str()<<"\":  ";
 	Page *pt=this->m_pagepool->Get(this->m_currentpage);
 	if(pt==NULL)
 		return false;
 
 	if(pt->m_data==NULL)
+	{
+		m_pagepool->Put(pt,false,true);
 		return false;
+	}
 
 	PageHead *ppagehead=pt->GetPageHead();
 	if(ppagehead == NULL)
+	{
+		m_pagepool->Put(pt,false,true);
 		return false;
+	}
 	
 	if((m_currentpage==m_firstpage)&&(ppagehead->m_lastrecordpos<0))
 	{
+		m_pagepool->Put(pt,false,false);
 		count=0;
 		cout<<"0"<<endl;
 		return true;
@@ -948,6 +978,7 @@ bool Table::QueryRecordCount(string monitorid, int & count)
 		cout<<"0"<<endl;
 		return true;
 	}
+
 	while(true)
 	{
 		int rlen=0,prep=0;
@@ -1595,6 +1626,39 @@ bool Table::BuildRecordType(char *buf,S_UINT &buflen)
 	buflen=len+sizeof(S_UINT);
 	return m_type.GetRawData(pt,buflen-sizeof(S_UINT));
 	
+}
+
+bool Table::SetLatestRCD(const char *buf,int buflen)
+{
+	if(m_latestRCD.data!=NULL)
+		delete [] m_latestRCD.data;
+
+	m_latestRCD.data= NULL;
+	m_latestRCD.datalen= 0;
+	m_latestRCD.monitorid="done";
+
+	if(buflen<=0 || buf==NULL)
+		return true;
+
+	char * tbuf= new char[buflen];
+	if(tbuf==NULL)
+		return false;
+	memmove(tbuf,buf,buflen);
+
+	m_latestRCD.data= tbuf;
+	m_latestRCD.datalen= buflen;
+	return true;
+}
+
+
+bool Table::GetLatestRCD(char * & buf,S_UINT &buflen)
+{
+	buf= (char *) m_latestRCD.data;
+	buflen= m_latestRCD.datalen;
+	if(m_latestRCD.monitorid.compare("done")==0)
+		return true;
+	else
+		return false;
 }
 
 

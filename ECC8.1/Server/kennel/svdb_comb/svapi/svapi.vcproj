@@ -23,7 +23,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\ ; ../../../include; ../../../include/w32;"
+				AdditionalIncludeDirectories="../; ../include;../include/w32"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;SVAPI_EXPORTS"
 				MinimalRebuild="TRUE"
 				BasicRuntimeChecks="3"
@@ -37,13 +37,13 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="libutil.lib ccgnu2.lib ccext2.lib ws2_32.lib"
-				OutputFile="../../../bin/svapi.dll"
+				OutputFile="../debugbin/svapi_d.dll"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="../../../lib"
+				AdditionalLibraryDirectories="../debuglib"
 				GenerateDebugInformation="TRUE"
 				ProgramDatabaseFile="$(OutDir)/svapi.pdb"
 				SubSystem="2"
-				ImportLibrary="../../../lib/svapi.lib"
+				ImportLibrary="../debuglib/svapi_d.lib"
 				TargetMachine="1"/>
 			<Tool
 				Name="VCMIDLTool"/>
@@ -97,7 +97,7 @@
 				SubSystem="2"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
-				ImportLibrary="../../lib/svapi.lib"
+				ImportLibrary="../../../lib/svapi.lib"
 				TargetMachine="1"/>
 			<Tool
 				Name="VCMIDLTool"/>
@@ -292,9 +292,6 @@ copy .\sv*.h ..\..\..\bin\kennel
 			</File>
 			<File
 				RelativePath=".\QueryData.h">
-			</File>
-			<File
-				RelativePath="..\libutil\resource.h">
 			</File>
 			<File
 				RelativePath=".\ShareMemFile.h">

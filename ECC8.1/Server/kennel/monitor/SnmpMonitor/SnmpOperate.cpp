@@ -12,7 +12,7 @@
 
 #include "Time.h"
 
-#include <scsvapi/svapi.h>
+#include <scsvapi\svapi.h>
 #include "Base\stlini.h"
 
 using namespace SV_ECC_SNMP_LIB;
@@ -597,12 +597,13 @@ bool CSnmpOperate::GetResult(char* chReturn, int & nSize)
 			cout <<"*******************************" <<endl;
 			cout << "chOID:"<<chOID<<endl;
 			cout <<"*******************************" <<endl;
-
+            cout <<"*******************************" <<endl;
+			cout << "chSelValue:"<<chSelValue<<endl;
+			cout <<"*******************************" <<endl;
 			char szTemp[1024] = {0};
 			sprintf( szTemp, "oidHasHistory=%d,hisValue=%s,hisTime=%ld,curTime=%ld", 
 				     pOidList[i].nHasHistory, pOidList[i].chHisValue, pOidList[i].lHisTime, curTime.GetTime() );
 			WriteTxt( szTemp, chMonitorID );
-			
 
             resultList.clear();
 
@@ -674,6 +675,22 @@ bool CSnmpOperate::GetResult(char* chReturn, int & nSize)
 					sprintf(strTemp,"snmp return value:%s:%s,%s\n", resultIt->second.m_szOID.c_str(),
 											resultIt->second.m_szValue.c_str(),
 											resultIt->second.m_szIndex.c_str());
+					///----------------------国基监测器---------------------
+					///支持负值，支持string 返回一个值
+				 if( strstr( chOID, "1.3.6.1.4.1.4458.1000.1.5.3" ) != NULL )
+				
+					{
+	    				sprintf(chReturn, "ssid=%s", resultIt->second.m_szValue.c_str());
+       					return true;
+					}
+					if( strstr( chOID, "1.3.6.1.4.1.4458.1000.1.5.9.1" ) != NULL )
+				
+					{
+	    				sprintf(chReturn, "rss=%s", resultIt->second.m_szValue.c_str());
+       					return true;
+					}
+                   //( strstr( chOID, "1.3.6.1.4.1.4458.1000.1.5.9.1" ) != NULL ) )
+					///----------------------国基监测器---------------------
 
 					WriteTxt( strTemp, chMonitorID );
 					
@@ -758,11 +775,13 @@ bool CSnmpOperate::GetResult(char* chReturn, int & nSize)
 								//GetResult(chReturn, nSize);
 								
 
-								// 重新调用snmp获取一次数据
-								strcpy(pOidList[i].chHisValue, resultIt->second.m_szValue.c_str());
+								// 重新调用snmp获取一次数据 old 处理方法
+								/*strcpy(pOidList[i].chHisValue, resultIt->second.m_szValue.c_str());
 								pOidList[i].lHisTime = curTime.GetTime();
 								bReturn = RetrieveData( objOID, i, expression );
-								continue;
+								continue;*/
+								//bin.liu when it wraps around and starts increasing again from zero
+                                uSubValue = ulValue+4294967295-ulHisValue;
 							}
 							else
 							{

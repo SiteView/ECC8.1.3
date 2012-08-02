@@ -28,6 +28,8 @@ class CAlertBaseObj
 		
 		//基础参数
 		string strIndex, strAlertName, strAlertType, strAlertCategory, strAlertState, strAlertTargerList, strNewAlertTargerList;
+
+		string strIdcId;
 		
 		//依靠对象		
 		std::list<string> pAlertTargetList;	
@@ -36,14 +38,14 @@ class CAlertBaseObj
 		//
 		int nCond, nAlertType;
 		
+		//bin.liu
+		int nGoodAlert; // 故障恢复告警 0 未告警 1 已告警
 		//报警条件
 		string strAlwaysTimesValue, strOnlyTimesValue,strSelTimes1Value,strSelTimes2Value;
 		int nAlwaysTimes,nOnlyTimes ,nSelTimes1 ,nSelTimes2;
-
-		int nStateChanged; //是否交替报警，苏合 2008-02-13
 		
 		//
-		CAlertEventObj * curEventObj;
+		//CAlertEventObj * curEventObj;
 
 	public :
 		void WriteAlertTargerById(string strId);
@@ -52,7 +54,7 @@ class CAlertBaseObj
 		//
 		virtual bool IsMatching(CAlertEventObj * eventObj);
 		virtual bool IsUpgradeMatching(CAlertEventObj * eventObj);
-		virtual CAlertSendObj * MakeSendObj();
+		virtual CAlertSendObj * MakeSendObj(CAlertEventObj * eventObj);
 		virtual string GetDebugInfo();
 		virtual void RefreshData();
 };
@@ -71,7 +73,7 @@ class CAlertEmailObj: public CAlertBaseObj
 	public :		
 		virtual bool IsMatching(CAlertEventObj * eventObj);
 		virtual bool IsUpgradeMatching(CAlertEventObj * eventObj);
-		virtual CAlertSendObj * MakeSendObj();
+		virtual CAlertSendObj * MakeSendObj(CAlertEventObj * eventObj);
 		virtual string GetDebugInfo();	
 		virtual void RefreshData();
 
@@ -95,7 +97,7 @@ class CAlertSmsObj: public CAlertBaseObj
 	public :
 		virtual bool IsMatching(CAlertEventObj * eventObj);
 		virtual bool IsUpgradeMatching(CAlertEventObj * eventObj);
-		virtual CAlertSendObj * MakeSendObj();
+		virtual CAlertSendObj * MakeSendObj(CAlertEventObj * eventObj);
 		virtual string GetDebugInfo();	
 		virtual void RefreshData();
 	private	: 
@@ -113,7 +115,7 @@ class CAlertScriptObj: public CAlertBaseObj
 		string strServerTextValue, strScriptServerId, strScriptFileValue, strScriptParamValue;
 	public :
 		virtual bool IsMatching(CAlertEventObj * eventObj);
-		virtual CAlertSendObj * MakeSendObj();
+		virtual CAlertSendObj * MakeSendObj(CAlertEventObj * eventObj);
 		virtual string GetDebugInfo();	
 };
 
@@ -128,7 +130,59 @@ class CAlertSoundObj: public CAlertBaseObj
 
 	public :
 		virtual bool IsMatching(CAlertEventObj * eventObj);
-		virtual CAlertSendObj * MakeSendObj();
+		virtual CAlertSendObj * MakeSendObj(CAlertEventObj * eventObj);
 		virtual string GetDebugInfo();	
 };
+
+//
+class CAlertPythonObj: public CAlertBaseObj
+{
+	public :
+		CAlertPythonObj();
+	
+	public :		
+		string strReceive, strLevel, strContent;
+
+	public :
+		virtual bool IsMatching(CAlertEventObj * eventObj);
+		virtual CAlertSendObj * MakeSendObj(CAlertEventObj * eventObj);
+		virtual string GetDebugInfo();	
+};
+
+//添加网页报警方式
+class CAlertWebObj: public CAlertBaseObj
+{
+public :
+	CAlertWebObj();
+
+public :		
+	string strEmailAdressValue, strOtherAdressValue, strEmailTemplateValue;
+	string strAlertUpgradeValue, strAlertUpgradeToValue, strAlertStopValue;
+	int nStopValue, nUpgradeValue;
+
+public :		
+	virtual bool IsMatching(CAlertEventObj * eventObj);
+	virtual bool IsUpgradeMatching(CAlertEventObj * eventObj);
+	virtual CAlertSendObj * MakeSendObj(CAlertEventObj * eventObj);
+	virtual string GetDebugInfo();	
+	virtual void RefreshData();
+
+private	: 
+	int nUpgradeStatCount;
+	int nStopStatCount;
+
+};
+/*
+//添加Itsm创建工单对象
+class CAlertItsmObj: public CAlertBaseObj
+{
+public:
+	CAlertItsmObj();
+public :
+	virtual bool IsMatching(CAlertEventObj * eventObj);
+	virtual CAlertSendObj * MakeSendObj();
+	virtual string GetDebugInfo();	
+};
+*/
+
 #endif

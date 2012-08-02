@@ -6,11 +6,10 @@
 #include "RloginMonitor.h"
 #include "Utils.h"
 
-#include <Base\funcGeneral.h>
-#include <scsvapi\svapi.h>
-#include <scsvapi\svdbapi.h>
-//#include "webcgi/base/basetype.h"
-#include "basetype.h"
+#include "base/funcGeneral.h"
+#include <scsvapi/svapi.h>
+#include <scsvapi/svdbapi.h>
+#include <basetype.h>
 
 #define WANGGANG
 

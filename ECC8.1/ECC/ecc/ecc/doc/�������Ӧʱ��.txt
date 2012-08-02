@@ -1,0 +1,26 @@
+
+14:19 2009-7-24
+ 默认是关闭的, 打开此功能
+
+
+1  打开 WEB-INF\zk.xml 中 
+
+  <!-- 时间日志 -->
+	 <!--richlet>
+       <richlet-name>ZKMonitor</richlet-name>
+       <richlet-class>cz.datalite.zkspring.monitor.ZKMonitorRichlet</richlet-class>
+   </richlet>
+   <richlet-mapping>
+       <richlet-name>ZKMonitor</richlet-name>
+       <url-pattern>/ZKMonitor</url-pattern>
+   </richlet-mapping-->
+
+
+
+  <!-- 时间日志 -->
+   <!-- listener>
+       <description>ZK performance monitor</description>
+        <listener-class>cz.datalite.zkspring.monitor.ZKPerformanceMeter</listener-class>
+   </listener-->
+
+2 访问地址如：http://http://localhost:8080/ecc/zkmonitor.zul

@@ -21,6 +21,10 @@ extern std::string g_RefreshQueueName;
 extern std::string g_QueueAddr;
 extern string g_ServerHost;
 
+extern int gnTotal;
+void WriteLog( const char* str );
+
+
 //sxf 2008-12-8
 void String2Array(std::vector<std::string> &vOut,string strIn,string strDiv)
 {
@@ -70,12 +74,14 @@ void MonitorThread::run()
 	InitData();
 
 #ifdef WIN32
+
 	if(FAILED(::CoInitialize(NULL)))
 	{
 		strError.Format("CoInitialize failed when create thread:%s",m_ThreadName);
-		putil->ErrorLog((LPCSTR)strError);
+		//putil->ErrorLog((LPCSTR)strError);
 		return;
 	}
+	
 
 #endif
 
@@ -103,8 +109,10 @@ void MonitorThread::run()
 				continue;
 			}
 
+			/*
 			if(!InitSocket())
 				throw MSException("Init socket failed");
+			*/
 
 
 			/*		BOOL ist=FALSE;
@@ -125,16 +133,18 @@ void MonitorThread::run()
 				char errlog[2048]={0};
 				sprintf(errlog,"%s,%s,MonitorID:%s, SkipCount: %d. ",this->m_ThreadName,e.GetDescription(),m_Monitor->GetMonitorID(),pMonitor->GetSkipCount());
 				//strError.Format("%s,%s,MonitorID:%s",this->m_ThreadName,e.GetDescription(),m_Monitor->GetMonitorID());
-			//	putil->ErrorLog(strError);
-				putil->ErrorLog(errlog);
+			//	//putil->ErrorLog(strError);
+				//putil->ErrorLog(errlog);
+				WriteLog( errlog );
 			}catch(...)
 			{
 				pMonitor->SetSkipCount(pMonitor->GetSkipCount()+1);
 				char errlog[2048]={0};
 				sprintf(errlog,"Executent monitor exception,MonitorID:%s, will set skipcount +1. ",m_Monitor->GetMonitorID());
 				//strError.Format("Executent monitor exception,MonitorID:%s",m_Monitor->GetMonitorID());
-				//putil->ErrorLog(strError);
-				putil->ErrorLog(errlog);
+				////putil->ErrorLog(strError);
+				//putil->ErrorLog(errlog);
+				WriteLog( errlog );
 			}
 			int oldstate=m_Monitor->GetLastState();
 			if(oldstate!=m_MonitorState)
@@ -161,24 +171,35 @@ void MonitorThread::run()
 
 			m_pThreadContrl->CheckTaskQueueByMonitor(pMonitor);
 
+			/*
+			gnTotal++;
+			char szTemp[1024] = {0};
+			sprintf( szTemp, "线程：%d, 监测器ID：%s, 次数：%d\n ", this->m_ThreadName, m_Monitor->GetMonitorID(), gnTotal );
+			WriteLog( szTemp );
+			cout << szTemp << endl;
+			*/
+
 
 		}
 	}catch(...)
 	{
 		char errlog[2048]={0};
-		sprintf(errlog,"Thread  exit by exception, thread:%s",m_ThreadName);
+		sprintf(errlog,"Thread  exit by exception, thread:%s, MonitorID:%s",m_ThreadName, m_Monitor->GetMonitorID() );
 
 	//	strError.Format("Thread  exit by exception, thread:%s",m_ThreadName);
-	//	putil->ErrorLog((LPCSTR)strError);
-		putil->ErrorLog(errlog);
+	//	//putil->ErrorLog((LPCSTR)strError);
+		//putil->ErrorLog(errlog);
+		WriteLog( errlog );
 		return;
 
 	}
+
 
 #ifdef WIN32
 
 	::CoUninitialize();
 #endif
+
 
 
 }
@@ -311,16 +332,44 @@ void MonitorThread::RunMonitor()
 		try{
 			if(m_pThreadContrl->m_pOption->m_isDemo)
 			{
-				MutexLock lock(m_pThreadContrl->m_pSchMain->m_DemoDllMutex);
+				WriteLog( "demo!" );
+				//MutexLock lock(m_pThreadContrl->m_pSchMain->m_DemoDllMutex);
 				(*pfunc)(m_InBuf,m_RetBuf,buflen);
 			}
 			else
+			{
 				(*pfunc)(m_InBuf,m_RetBuf,buflen);
+				/*
+				int nType = m_Monitor->GetMonitorType();
+				if( nType == 41)
+                    //sprintf( m_RetBuf, "ProcessCount=1\0ThreadCount=38\0PercentProcessorTime=0.00\0WorkingSet=23516.00\0MemUtilization=1.12\0PrivateBytes=21016.00\0VirUtilization=1.00\0" );
+					memmove( m_RetBuf, "ProcessCount=1\0ThreadCount=46\0PercentProcessorTime=3.13\0WorkingSet=25596.00\0MemUtilization=1.22\0PrivateBytes=22204.00\0VirUtilization=1.06\0",
+							 strlen( "ProcessCount=1$ThreadCount=46$PercentProcessorTime=3.13$WorkingSet=25596.00$MemUtilization=1.22$PrivateBytes=22204.00$VirUtilization=1.06$" ) );
+				else if( nType == 14 )
+                    //sprintf( m_RetBuf, "Started=1\0State=38\0Status=0.00\0Processes=2\0" );
+					memmove( m_RetBuf, "Processes=0\0Started=False\0ProcessName=NA\0State=Stopped\0Status=OK\0", 
+							 strlen( "Processes=0$Started=False$ProcessName=NA$State=Stopped$Status=OK$" ) );
+				else if( nType == 10 )
+                    //sprintf( m_RetBuf, "utilization=1\0detailutilization=38\0" );
+					memmove( m_RetBuf, "detailutilization=CPU0:49,CPU1:69\0utilization=59\0", strlen( "etailutilization=CPU0:49,CPU1:69$utilization=59$" ) );
+				else if( nType == 12 )
+                   //sprintf( m_RetBuf, "percentUsed=1\0Mbfree=38\0TotalMemory=0.00\0PhyMemUsage=23516.00\0FreePhyMem=1.12\0TotalPhyMem=21016.00\0pagesPerSec=1.00\0" );
+					memmove( m_RetBuf, "TotalPhyMem=511.45\0TotalMemory=1254.03\0FreePhyMem=148.99\0Mbfree=760.45\0PhyMemUsage=70.87\0percentUsed=39.36\0pagesPerSec=0.00\0", 
+							 strlen( "TotalPhyMem=511.45$TotalMemory=1254.03$FreePhyMem=148.99$Mbfree=760.45$PhyMemUsage=70.87$percentUsed=39.36$pagesPerSec=0.00$" ) );
+				else if( nType == 11 )
+                   //sprintf( m_RetBuf, "percentFull=1\0Mbfree=38\0TotalSize=0.00\0" );
+				   memmove( m_RetBuf, "percentFull=27.40\0Mbfree=7426.61\0TotalSize=10228.86\0", 
+							strlen( "percentFull=27.40$Mbfree=7426.61$TotalSize=10228.86$" ) );
+				else
+					sprintf( m_RetBuf, "error=no data!\0" );
+				*/
+
+			}
 			//Run_Dll(pfunc,buflen);
 
 		}catch(MSException &e)
 		{
-		//	putil->ErrorLog(strError);
+		//	//putil->ErrorLog(strError);
 			::FreeLibrary(hm);
 			throw MSException(e.GetDescription());
 		}catch(...)
@@ -336,6 +385,25 @@ void MonitorThread::RunMonitor()
 #endif
 
 	::FreeLibrary(hm);
+
+	char szTemp[1024] = {0};
+	char* pszTemp = szTemp;
+
+	sprintf( szTemp, "monitorID:%s,returnBuffer:", m_Monitor->GetMonitorID() );
+	pszTemp = m_RetBuf;
+	while( *pszTemp != '\0' )
+	{
+		strcat( szTemp, pszTemp );
+		strcat( szTemp, "$" );
+
+		pszTemp += strlen( pszTemp ) + 1;
+	}
+
+	OutputDebugString( szTemp );
+	OutputDebugString( "\n" );
+
+	WriteLog( szTemp );
+
 #else
    void *dp;
    char *error;
@@ -481,11 +549,12 @@ void MonitorThread::InitData()
 	m_Monitor=NULL;
 	memset(m_RetBuf,0,RETBUFCOUNT);
 	m_InBuf.zerobuf();
+	m_RVmap.clear();
 	m_RetValueCount=0;
 	m_MonitorState=Monitor::STATUS_NULL;
 	m_nRunCount=0;
 	m_strDisplay.clear();
-	m_strDisplay.clear();
+
 	CReturnValueList::iterator it;
 	for(it=m_RetValueList.begin();it!=m_RetValueList.end();it++)
 		delete *it;
@@ -538,6 +607,9 @@ BOOL MonitorThread::PaserResultV70(void)
 	{
 		m_MonitorState=Monitor::STATUS_BAD;
 		m_strDisplay=pv->getword();
+
+		m_RVmap.clear();
+
 		return true;
 
 	}
@@ -548,6 +620,8 @@ BOOL MonitorThread::PaserResultV70(void)
 	ReturnValue*prv=NULL;
 	BOOL bv=m_RetValueCount>retcount;
 	CString strDisplay="";
+
+	char szDisplay[5*1024] = {0};
 
 
 	int n=0;
@@ -569,6 +643,9 @@ BOOL MonitorThread::PaserResultV70(void)
 		if(pvalue==NULL)
 		{
 			printf("name :%s\n",(LPCSTR)prd->m_Name);
+
+			m_RVmap.clear();
+
 			throw MSException("ParserResult return value is bad, it's name: "+prd->m_Name);
 		}
 
@@ -576,24 +653,30 @@ BOOL MonitorThread::PaserResultV70(void)
 		{
 			prv->m_value.nVal=atoi(pvalue->getword());
 
-			strDisplay.Format("%s=%d, ",(char *)prd->m_Label,prv->m_value.nVal);
+			//strDisplay.Format("%s=%d, ",(char *)prd->m_Label,prv->m_value.nVal);
+			sprintf( szDisplay, "%s=%d, ", (char *)prd->m_Label,prv->m_value.nVal );
 //			printf("label===%s\n",prd->m_Label);
 		}else if(stricmp(prd->m_Type,"Float")==0)
 		{
 			prv->m_value.fVal=atof(pvalue->getword());
-			strDisplay.Format("%s=%0.2f, ",(char *)prd->m_Label,prv->m_value.fVal);
+			//strDisplay.Format("%s=%0.2f, ",(char *)prd->m_Label,prv->m_value.fVal);
+			sprintf( szDisplay, "%s=%0.2f, ",(char *)prd->m_Label,prv->m_value.fVal);
 //			printf("label===%s\n",prd->m_Label);
 		}else if(stricmp(prd->m_Type,"String")==0)
 		{
 			if(strlen(pvalue->getword())>RETVALUEMAXCOUNT-1)
 				throw MSException("Return string value too big");
 			strcpy(prv->m_value.szVal,pvalue->getword());
-			strDisplay.Format("%s=%s, ",(char *)prd->m_Label,prv->m_value.szVal);
+			//strDisplay.Format("%s=%s, ",(char *)prd->m_Label,prv->m_value.szVal);
+			sprintf( szDisplay, "%s=%s, ",(char *)prd->m_Label,prv->m_value.szVal);
 //			printf("label===%s\n",prd->m_Label);
 		}else
 		{
 			if(bv)
 				delete prv;
+
+			m_RVmap.clear();
+
 			throw MSException("ParserResult error, unknown type name");
 		}
 		if(bv)
@@ -601,10 +684,13 @@ BOOL MonitorThread::PaserResultV70(void)
 
 		n++;
 
-		m_strDisplay+=strDisplay;
+		//m_strDisplay+=strDisplay;
+
+		m_strDisplay += szDisplay;
 
 	}
 
+	m_RVmap.clear();
 
 	return TRUE;
 
@@ -1236,8 +1322,10 @@ BOOL MonitorThread::CheckSingleItemState(/*int Type*/StateCondition *pSt , int I
 void MonitorThread::ClearResult()
 {
 	m_MonitorState=Monitor::STATUS_NULL;
+	m_RVmap.clear();
 	memset(m_RetBuf,0,RETBUFCOUNT);
 	m_strDisplay.clear();
+
 
 /*	while(!m_RetValueList.IsEmpty())
 	{
@@ -1439,6 +1527,8 @@ void MonitorThread::ProcessResultV70(void)
 	strcpy(pt,(char *)m_strDisplay);
 	dlen+=strlen((char *)m_strDisplay)+1;
 
+	printf("MonitorId:%s,MonitorType:%d,state:%d,dstr:%s\n",m_Monitor->GetMonitorID(),m_Monitor->GetMonitorType(),m_MonitorState,(char *)m_strDisplay);
+	
 	CString strResult="";
 
 	strResult.Format(2048,"MonitorId:%s,MonitorType:%d,state:%d,dstr:%s\n",m_Monitor->GetMonitorID(),m_Monitor->GetMonitorType(),m_MonitorState,(char *)m_strDisplay);
@@ -1453,7 +1543,7 @@ void MonitorThread::ProcessResultV70(void)
 	if(m_Monitor->isDelete)
 		return ;
 
-
+	
 	if(m_Monitor->m_isRefresh)
 		putil->InsertSvdb(m_Monitor->GetMonitorID(),buf,dlen,g_ServerHost);
 	else
@@ -1466,9 +1556,9 @@ void MonitorThread::ProcessResultV70(void)
 		string text="Refresh ,PushMessage f: \"";
 		text+=g_RefreshQueueName + "\"";
 		if(!::PushMessage(g_RefreshQueueName,"Refresh_OK",buf,strlen(buf)+1,"default",g_QueueAddr))
-			putil->ErrorLog(text.c_str());
+			//putil->ErrorLog(text.c_str());
+			WriteLog( text.c_str() );
 	}
-	
 
 	putil->SendMsgToWsServer(m_Monitor->GetMonitorID(), strResult.GetBuffer(0));
 }
@@ -1496,11 +1586,10 @@ void MonitorThread::ProcessResult()
 		m_RetBuf,
 		(char *)m_strDisplay);
 
+		
 	puts(strResult);
 	puts(m_strDisplay);
-
 	putil->SendMsgToWsServer(m_Monitor->GetMonitorID(), strResult.GetBuffer(0));
-
 /*	puts("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
 	puts(strResult);
 	puts("+++++++++++++++++++++++++++++++++++++end++++++++++++++++++++++++++++++++++++");

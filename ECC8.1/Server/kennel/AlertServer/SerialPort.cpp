@@ -4,11 +4,18 @@
 
 #include "stdafx.h"
 #include "SerialPort.h"
+#include <string>
+using namespace std;
 
 /////////////////////////////////////////////////////////////////////////////////
 // Construction/Destruction
 /////////////////////////////////////////////////////////////////////////////////
 extern void WriteLogFile(CString strMsg);
+void DebugePrint(string strDebugInfo);
+
+void WriteErr(const char * str);
+int WriteLog(const char * str);
+
 /////////////////////////////////////////////////////////////////////////////////
 CSerialPort::CSerialPort()
 {
@@ -62,7 +69,7 @@ void CSerialPort::SetSerialPortName(CString strPortName)
 //      strMsgContent，短信内容                                                //
 //      strPortName，串行端口的名称                                            //
 /////////////////////////////////////////////////////////////////////////////////
-int CSerialPort::SendMsg(CString strRecvPhone , CString strMsgContent)
+int CSerialPort::SendMsg( CString strRecvPhone , CString strMsgContent, int nSMSMaxLength )
 {
     m_strRecvPhone = strRecvPhone;
     m_strMsgContent = strMsgContent;
@@ -75,12 +82,17 @@ int CSerialPort::SendMsg(CString strRecvPhone , CString strMsgContent)
 //    char TP_UD[161];    // 原始用户信息(编码前或解码后的TP-UD)
     char  cmd[20];
     MsgList *msglist = new MsgList;
-	int iPage = page(strMsgContent.GetBuffer(strMsgContent.GetLength()),msglist);
+	int iPage = page( strMsgContent.GetBuffer(strMsgContent.GetLength()), msglist, nSMSMaxLength );
+
+	WriteErr( "报警内容：" );
+	WriteErr( strMsgContent.GetBuffer() );
+
     
     t= m_strRecvPhone.GetLength()+2;
 	for(i=2;i<t;i++)
     {
 	   TPA[i]=m_strRecvPhone.GetAt(i-2);
+
     }
     TPA[0]='8';
     TPA[1]='6';
@@ -88,29 +100,36 @@ int CSerialPort::SendMsg(CString strRecvPhone , CString strMsgContent)
 
 	for(int iIndex=0 ;iIndex < iPage;iIndex++)
 	{
+		//printf( "Content:%s,Msg:%s\n", strMsgContent.GetBuffer(), msglist->chMsg );
+		WriteLog( "短信内容1：" );
+		WriteLog(  strMsgContent.GetBuffer(strMsgContent.GetLength()) );
+		WriteLog( "短信内容2：" );
+		WriteLog( msglist->chMsg );
+
         sprintf(cmd , "AT\r");
-        WritePort(cmd, strlen(cmd));
+        WritePort(cmd, (int)strlen(cmd));
 	    Sleep(ShortSleepTime);
         int nLength = ReadPort(ans, 128);
         ans[nLength] = '\0';
 
         sprintf(cmd, "ATE0\r"); 
-        WritePort(cmd, strlen(cmd));
+        WritePort(cmd, (int)strlen(cmd));
 	    Sleep(ShortSleepTime);
         nLength = ReadPort(ans, 128);
         ans[nLength] = '\0';
 
 	    sprintf(cmd, "AT+CSMS=0\r");      
-        WritePort(cmd, strlen(cmd));  
+        WritePort(cmd, (int)strlen(cmd));  
  	    Sleep(ShortSleepTime);
         nLength = ReadPort(ans, 128);
         ans[nLength] = '\0';
  
 	    sprintf(cmd, "AT+CMGF=0\r");      
-        WritePort(cmd, strlen(cmd));  
+        WritePort(cmd, (int)strlen(cmd));  
 	    Sleep(ShortSleepTime);
         nLength = ReadPort(ans, 128);
         ans[nLength] = '\0';
+
           sm_param_temp= new SM_PARAM;
         strcpy(sm_param_temp->SCA,m_SmsCenterNum);
 
@@ -125,6 +144,7 @@ int CSerialPort::SendMsg(CString strRecvPhone , CString strMsgContent)
         if(!gsmSendMessage(sm_param_temp))//发送短信
         {
             printf("Send SMS Failed\n");
+			WriteLog("Send SMS Failed");
             return -1;
         }
         Sleep(5000);
@@ -231,8 +251,16 @@ BOOL CSerialPort::WritePort(void* pData, int nLength)
 // 返回值：                                                                //
 //    返回短消息页数。                                                     //
 /////////////////////////////////////////////////////////////////////////////
-int CSerialPort::page(char *SrcMsg, MsgList *DestMsg)
+int CSerialPort::page(char *SrcMsg, MsgList *DestMsg, int nSMSMaxLength )
 {
+	int nMax(0);
+	if( nSMSMaxLength > 0 )
+		nMax = nSMSMaxLength;
+	else
+		nMax = MaxSMSLen;
+
+	//printf( "Max=%d,SMSMaxLenth=%d,MaxSMSLen=%d\n", nMax, nSMSMaxLength, MaxSMSLen );
+		
 	MsgList *msgTemp = DestMsg;
     //当前页中字符的个数
     int num = 0;
@@ -241,11 +269,11 @@ int CSerialPort::page(char *SrcMsg, MsgList *DestMsg)
     //总页数
     int nPage = 1;
     //短消息的长度
-    int nMsgLen = strlen(SrcMsg);
+    int nMsgLen = (int)strlen(SrcMsg);
 	int flag=0;
 
     //分页后的页数
-    nPage = nMsgLen / MaxSMSLen + 1;
+    nPage = nMsgLen / nMax + 1;
     //分页
 	if(nPage==1) //页数为1
     {
@@ -255,10 +283,10 @@ int CSerialPort::page(char *SrcMsg, MsgList *DestMsg)
 	else
 	{
         //判断短信的长度是否超过最大短信长度
-		while(strlen(SrcMsg)>=MaxSMSLen)
+		while(static_cast<int>(strlen(SrcMsg)) >= nMax)
 		{
 			flag=0;
-			for(int i=0;i<MaxSMSLen;i++)
+			for(int i=0;i<nMax;i++)
 			{
                 //当前字符是否是数字或者英文字母
 				if((unsigned char)SrcMsg[i]<(unsigned char)0x80) 
@@ -269,17 +297,17 @@ int CSerialPort::page(char *SrcMsg, MsgList *DestMsg)
 			if(flag%2==1)//如果英文字母是单数
 			{
                 //拷贝最大短信长度-1
-				strncpy(msgTemp->chMsg,SrcMsg,100-1);
+				strncpy(msgTemp->chMsg,SrcMsg,nMax-1);
                 //添加结束符号
-				msgTemp->chMsg[100-1]='\0';
+				msgTemp->chMsg[nMax-1]='\0';
                 //原始字符串为从0开始减去最大短信长度-1剩余的字符串
-				strcpy(SrcMsg , SrcMsg+100-1);
+				strcpy(SrcMsg , SrcMsg+nMax-1);
 			}
 			else
 			{
-				strncpy(msgTemp->chMsg,SrcMsg,100-2);
-				msgTemp->chMsg[100-2]='\0';	
-				strcpy(SrcMsg , SrcMsg+100-2);
+				strncpy(msgTemp->chMsg,SrcMsg,nMax-2);
+				msgTemp->chMsg[nMax-2]='\0';	
+				strcpy(SrcMsg , SrcMsg+nMax-2);
 			}
 			msgTemp->pNext = new MsgList;//增加列表
 			msgTemp = msgTemp->pNext;//当前下移
@@ -289,6 +317,7 @@ int CSerialPort::page(char *SrcMsg, MsgList *DestMsg)
 		msgTemp->chMsg[strlen(SrcMsg)]='\0';
 	}
 	//返回页数
+
     return nPage;
 }
 
@@ -307,7 +336,7 @@ bool CSerialPort::gsmDeleteMessage(const int index)
     sprintf(cmd, "AT+CMGD=%d\r", index);    // 生成命令
     
     // 输出命令串
-    WritePort(cmd, strlen(cmd));
+    WritePort(cmd, static_cast<int>(strlen(cmd)));
     
     // 读应答数据
     nLength = ReadPort(ans, 128);
@@ -331,41 +360,86 @@ bool CSerialPort::gsmSendMessage(const SM_PARAM* pSrc)
     int nPduLength;        // PDU串长度
     unsigned char nSmscLength;    // SMSC串长度
     int nLength;           // 串口收到的数据长度
-    char cmd[16];          // 命令串
-    char pdu[512];         // PDU串
-    char ans[128];         // 应答串
-    
-    nPduLength = gsmEncodePdu(pSrc, pdu);    // 根据PDU参数，编码PDU串
+	char cmd[16] = {0};          // 命令串
+	char pdu[512] = {0};         // PDU串
+	char ans[128] = {0};         // 应答串
+ 
+
+	nPduLength = gsmEncodePdu(pSrc, pdu);    // 根据PDU参数，编码PDU串
     strcat(pdu, "\x01a");        // 以Ctrl-Z结束
     
     gsmString2Bytes(pdu, &nSmscLength, 2);    // 取PDU串中的SMSC信息长度
     nSmscLength++;        // 加上长度字节本身
     // 命令中的长度，不包括SMSC信息长度，以数据字节计
-    sprintf(cmd, "AT+CMGS=%d\r", nPduLength / 2 - nSmscLength);    // 生成命令
-    printf(cmd);
-    WritePort(cmd, strlen(cmd));    // 先输出命令串
 
-    Sleep(ShortSleepTime);
+    sprintf(cmd, "AT+CMGS=%d\r", nPduLength / 2 - nSmscLength);    // 生成命令
+
+
+	/*
+	char szTemp[1024] = {0};
+	sprintf( szTemp, "发送信息命令：%s, 信息内容：%s\n\0", cmd, pdu );
+	WriteLog( szTemp );
+
+	// 先输出命令串
+    WritePort(cmd, strlen(cmd));    // 先输出命令串
+	Sleep(ShortSleepTime);
+
+	// 输出信息   	
 	WritePort(pdu, strlen(pdu));
     WritePort("\x1A", 1);
-    nLength = ReadPort(ans, 128);   // 读应答数据
-	Sleep(ShortSleepTime);
     
-    // 根据能否找到"\r\n> "决定成功与否
-/*    if(nLength == 4 && strncmp(ans, "\r\n> ", 4) == 0)
-    {
-        WritePort(pdu, strlen(pdu)); 
-		Sleep(ShortSleepTime);// 得到肯定回答，继续输出PDU串    
-        nLength = ReadPort(ans, 128);       // 读应答数据    
-        // 根据能否找到"+CMS ERROR"决定成功与否
-        if(nLength > 0 && strncmp(ans, "+CMS ERROR", 10) != 0)
-        {
-            nLength = ReadPort(ans, 128);       // 读应答数据 
-            return FALSE;
-        }
-    }*/
+	// 读应答数据
+	nLength = ReadPort(ans, 128);   
+	ans[nLength] = '\0';
+	sprintf( szTemp, "发送的应答：%s\n\0", ans );
+	WriteLog( szTemp );
 
-    return TRUE;
+	Sleep(ShortSleepTime);
+
+	return TRUE;
+
+	*/
+
+
+
+    nPduLength = gsmEncodePdu(pSrc, pdu);    // 根据PDU参数，编码PDU串
+        
+    gsmString2Bytes(pdu, &nSmscLength, 2);    // 取PDU串中的SMSC信息长度
+    nSmscLength++;        // 加上长度字节本身
+
+	strcat(pdu, "\x01A\0");        // 以Ctrl-Z结束
+
+    // 命令中的长度，不包括SMSC信息长度，以数据字节计
+    sprintf(cmd, "AT+CMGS=%d\r", nPduLength / 2 - nSmscLength);    // 生成命令
+
+	//strcpy( pdu, "0891683108200105F011000D91683181076159F6000800064F60597D0021\0" );
+	//strcpy( cmd, "AT+CMGS=21\r" );
+
+	char szTemp[1024] = {0};
+	sprintf( szTemp, "发送信息命令：%s, 信息内容：%s\n\0", cmd, pdu );
+	WriteLog( szTemp );
+
+	//for( int i = 0; i != 6; i++ )
+	{
+		// 先输出命令串
+        WritePort(cmd, static_cast<int>(strlen(cmd)));
+		Sleep(100);
+
+		// 输出信息
+		WritePort(pdu, static_cast<int>(strlen(pdu)));
+		//WritePort("\x1A", 1);
+		Sleep(2000);
+
+		// 读发送应答数据
+		nLength = ReadPort(ans, 128);
+		ans[nLength] = '\0';
+		sprintf( szTemp, "发送的应答：%s\n\0", ans );
+		WriteLog( szTemp );
+	}
+
+	 return true;
+    
+
 }
 
 /////////////////////////////////////////////////////////////////////////////////
@@ -389,7 +463,7 @@ int CSerialPort::gsmReadMessage(SM_PARAM* pMsg)
 
 	sprintf(cmd, "AT+CMGR=1\r");    // 生成命令
     
-    WritePort(cmd, strlen(cmd));    // 输出命令串
+    WritePort(cmd, static_cast<int>(strlen(cmd)));    // 输出命令串
 	Sleep(ShortSleepTime);
     nLength = ReadPort(ans, 1024);    // 读应答数据
     // 根据能否找到"+CMS ERROR"决定成功与否
@@ -417,7 +491,7 @@ int CSerialPort::gsmReadMessage(SM_PARAM* pMsg)
 
     sprintf(cmd, "AT+CMGD=1,4\r");    // 生成命令
     
-    WritePort(cmd, strlen(cmd));    // 输出命令串
+    WritePort(cmd, static_cast<int>(strlen(cmd)));    // 输出命令串
 	Sleep(ShortSleepTime);
     return nMsg;
 }
@@ -425,18 +499,27 @@ int CSerialPort::gsmReadMessage(SM_PARAM* pMsg)
 
 int CSerialPort::InitPort(CString strComName)
 {
-    hSerialPort = OpenPort(strComName, CBR_9600,NOPARITY,8, ONESTOPBIT);   
+	m_strPort = strComName;	 //yi.duan 2011-08-08 long Message 
+
+	char strBuffer[128] = {0};
+    hSerialPort = OpenPort(strComName, CBR_9600,NOPARITY,8, ONESTOPBIT);  
+	 //hSerialPort = OpenPort(strComName, CBR_19200,NOPARITY,8, ONESTOPBIT);  
     if(hSerialPort==NULL)
     {
 		//MessageBox(NULL, "打开指定串口失败，请重新选择串口。","失败", MB_OK|MB_ICONWARNING);
+		sprintf(strBuffer, "打开指定串口%s失败，请重新选择串口。" , strComName.GetBuffer(1));
+		WriteLog(strBuffer);
         return -1;
     }
+	WriteLog("打开端口");
 	CString cmd = "AT+CSCA?\r";
 	char ans[128] ;
-	WritePort(cmd.GetBuffer(0),strlen(cmd));
+	WritePort(cmd.GetBuffer(0),static_cast<int>(strlen(cmd)));
 	Sleep(ShortSleepTime);
 	ReadPort(ans,128);
 	CString ansStr = ans;
+	WriteLog("ansStr=");
+	WriteLog(ansStr.GetBuffer(ansStr.GetLength()));
 	int cou;
 	if((cou=ansStr.Find("+86")) != -1)
 	{
@@ -456,3 +539,44 @@ void CSerialPort::CloseCom()
 		ClosePort(hSerialPort);//关闭端口
 	}
 }
+
+//yi.duan 2011-08-08 long Message 
+int CSerialPort::SendLongMsg(CString portName, CString strRecvPhone, CString strMsgContent)
+{
+   //CloseCom();//关闭端口 sendLongMsg.dll 会重新打开 bin.liu
+   typedef BOOL (*lpNetTraffic)(char* portName, char* strRecvPhone , char* content);
+
+   HINSTANCE        hInstance = NULL;
+   lpNetTraffic     pNetTraffic = NULL;
+
+   hInstance = ::LoadLibrary("sendLongMsg.dll");
+
+   if (hInstance == NULL)
+   {
+	   WriteLog("LoadLibrary sendLongMsg.dll error");
+
+	   FreeLibrary(hInstance);
+	   return 1;
+   }
+
+   pNetTraffic = (lpNetTraffic)GetProcAddress(hInstance,"sendLongMessage"); 
+
+   BOOL ret = pNetTraffic(portName.GetBuffer(portName.GetLength()),
+	   strRecvPhone.GetBuffer(strRecvPhone.GetLength()),strMsgContent.GetBuffer(strMsgContent.GetLength()));
+
+   if (ret==false)
+   {
+	   WriteLog("sendLongMsg error");
+	   return 1;
+   }
+
+   if (::FreeLibrary(hInstance)==0)
+   {	
+	   WriteLog("FreeLibrary sendLongMsg.dll error");
+	   return 1;
+   }
+
+  // InitPort(portName); //bin.liu调用完dll 再次启动端口
+   return 0; //ok
+}
+

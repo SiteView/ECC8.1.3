@@ -61,7 +61,7 @@ public:
 	bool Quit();
 
 	bool Load();
-	bool LoadEx();
+	int  LoadEx();
 	bool CreateNew(string dbheadfile,string dbfilename,int pagesize,int pagecount);
 	bool CreateNewEx(string dbheadfile,string dbfiletitle,int pagesize=PAGESIZE,int pagecount=1000,int perfilesize=PERFILESIZE);
 	int QueryRecordByTime(string monitorid,svutil::TTime begin,svutil::TTime end,char *buf,int &buflen);
@@ -74,6 +74,7 @@ public:
 	bool DeleteRecordsByTime(string monitorid,svutil::TTime before);
 	bool QueryRecordCount(string monitorid, int & count);
 
+	int QueryDynWithLatestRCD(string monitorid,char *buf,S_UINT & buflen,char * & buf2,S_UINT & buflen2,string & monitorTplId, svutil::TTime intime);
 	bool GetAllTableNames(std::list<string> &namelist);
 
 	int AppendRecord(string monitorid,const char *data,S_UINT datalen);

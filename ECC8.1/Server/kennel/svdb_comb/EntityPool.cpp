@@ -1,9 +1,11 @@
 #include "entitypool.h"
+#include "Des.h"
 
 EntityPool::EntityPool(void)
 {
 	m_hashtablesize=hashtablesize;
 	m_entitys.resetsize(m_hashtablesize);
+	m_hide_entitys.resetsize(m_hashtablesize);
 	m_changed=false;
 	needToDel=true;
 }
@@ -12,6 +14,7 @@ EntityPool::EntityPool(word filepath):PoolBase2(filepath)
 {
 	m_hashtablesize=hashtablesize;
 	m_entitys.resetsize(m_hashtablesize);
+	m_hide_entitys.resetsize(m_hashtablesize);
 	m_changed=false;
 	needToDel=true;
 }
@@ -36,6 +39,13 @@ EntityPool::~EntityPool(void)
 			delete pe;
 	}
 
+	ENTITYMAP::iterator hit;
+	while(m_hide_entitys.findnext(hit))
+	{
+		Entity *pe=(*hit).getvalue();
+		if(pe)
+			delete pe;
+	}
 }
 
 
@@ -70,6 +80,7 @@ int EntityPool::QueryMassEntity(string pid, const char *data,S_UINT datalen, std
 		if( (pv=smap.find(key))!=NULL )
 		{
 			S_UINT ver= atoi( (*pv).getword() );
+			smap.erase(key);
 			if( ver== sver )
 				continue;
 		}
@@ -103,6 +114,15 @@ int EntityPool::QueryMassEntity(string pid, const char *data,S_UINT datalen, std
 		}
 		listrcd.push_back(rcd);
 	}
+	StringMap::iterator mit;
+	while(smap.findnext(mit))
+	{
+		SingelRecord rcd;
+		rcd.monitorid= (*mit).getkey().getword();
+		rcd.data= NULL;
+		rcd.datalen= 0;
+		listrcd.push_back(rcd);
+	}
 	return listrcd.size();
 }
 
@@ -132,9 +152,10 @@ bool EntityPool::SubmitToFile(string fileName, EntityPool * dataPool )
 bool EntityPool::Submit(std::string modifyid)
 {
 	ost::MutexLock lock(m_UpdateLock); 
-
 	if(!m_changed)
 		return true;
+	if(m_FilePath.empty())
+		return false;
 
 	if( !IdcUser::EnableIdc )
 	{  //for non-idc
@@ -265,7 +286,43 @@ bool EntityPool::Load(void)
 }
 
 
-S_UINT	EntityPool::GetRawDataSize(void)
+bool	EntityPool::GetBackupData(std::list<SingelRecord> & listrcd)
+{
+	ost::MutexLock lock(m_UpdateLock);
+
+	int datalen= GetRawDataSize(true);
+	char * tdata(NULL);
+	char * pdata(NULL);
+	try{
+		pdata=new char[datalen];
+		if(datalen==0 || pdata==NULL)
+			return false;
+		tdata= GetRawData(pdata, datalen, true);
+		if(tdata==NULL)
+		{
+			delete [] pdata;
+			return false;
+		}
+	}
+	catch(...)
+	{
+		delete [] pdata;
+		return false;
+	}
+	SingelRecord rcd;
+	rcd.monitorid= "entity_"+IdcUser::GetLocalSEIdStr();
+	rcd.data= tdata;
+	rcd.datalen= datalen;
+
+	EntityPool mp;
+	if(!mp.CreateObjectByRawData(tdata, datalen))
+		return false;
+
+	listrcd.push_back(rcd);
+	return true;
+}
+
+S_UINT	EntityPool::GetRawDataSize(bool onlyLocked)
 {
 	S_UINT len=0,tlen=sizeof(S_UINT);
 
@@ -275,19 +332,30 @@ S_UINT	EntityPool::GetRawDataSize(void)
 	ENTITYMAP::iterator it;
 	while(m_entitys.findnext(it))
 	{
+		if(onlyLocked && !IdcUser::WillTeleBackup((*it).getvalue()->GetID().getword()))
+			continue;
 		len+=tlen;			//len size;
-		len+=(*it).getvalue()->GetRawDataSize();
+		len+=(*it).getvalue()->GetRawDataSize(onlyLocked);
 
 	}
+	if(onlyLocked)
+		return len;
 
+	ENTITYMAP::iterator hit;
+	while(m_hide_entitys.findnext(hit))
+	{
+		len+=tlen;
+		len+=(*hit).getvalue()->GetRawDataSize();
+
+	}
 	return len;
 }
-char*	EntityPool::GetRawData(char *lpbuf,S_UINT bufsize)
+char*	EntityPool::GetRawData(char *lpbuf,S_UINT bufsize, bool onlyLocked)
 {
 	if(lpbuf==NULL)
 		return NULL;
 
-	if(bufsize<GetRawDataSize())
+	if(bufsize<GetRawDataSize(onlyLocked))
 		return NULL;
 
 	S_UINT len=0,tlen=sizeof(S_UINT);
@@ -297,23 +365,52 @@ char*	EntityPool::GetRawData(char *lpbuf,S_UINT bufsize)
 	pt+=tlen;
 
 	len=m_entitys.size();
+	if(onlyLocked)
+	{
+		S_UINT tempcount=0;
+		ENTITYMAP::iterator tempit;
+		while(m_entitys.findnext(tempit))
+		{
+			if(IdcUser::WillTeleBackup((*tempit).getvalue()->GetID().getword()))
+				++tempcount;
+		}
+		len= tempcount;
+	}
+
+	if(!onlyLocked)
+		len+= m_hide_entitys.size();
 	memmove(pt,&len,tlen);
 	pt+=tlen;
 
 	ENTITYMAP::iterator it;
 	while(m_entitys.findnext(it))
 	{
-		len=(*it).getvalue()->GetRawDataSize();
+		if(onlyLocked && !IdcUser::WillTeleBackup((*it).getvalue()->GetID().getword()))
+			continue;
+		len=(*it).getvalue()->GetRawDataSize(onlyLocked);
 		memmove(pt,&len,tlen);
 		pt+=tlen;
 
-		if((*it).getvalue()->GetRawData(pt,len)==NULL)
+		if((*it).getvalue()->GetRawData(pt,len,onlyLocked)==NULL)
 			return NULL;
 
 		pt+=len;
 	}
+	if(onlyLocked)
+		return lpbuf;
 
+	ENTITYMAP::iterator hit;
+	while(m_hide_entitys.findnext(hit))
+	{
+		len=(*hit).getvalue()->GetRawDataSize();
+		memmove(pt,&len,tlen);
+		pt+=tlen;
 
+		if((*hit).getvalue()->GetRawData(pt,len)==NULL)
+			return NULL;
+
+		pt+=len;
+	}
 
 	return lpbuf;
 
@@ -333,7 +430,7 @@ BOOL EntityPool::CreateObjectByRawData(const char *lpbuf,S_UINT bufsize)
 		pt+=tlen;
 
 		m_entitys.resetsize(m_hashtablesize);
-
+		m_hide_entitys.resetsize(m_hashtablesize);
 
 		S_UINT count=0;
 		memmove(&count,pt,tlen);
@@ -353,9 +450,15 @@ BOOL EntityPool::CreateObjectByRawData(const char *lpbuf,S_UINT bufsize)
 				return false;
 			pt+=len;
 			id=pm->GetID();
-			m_entitys.insert(id,pm);
-			NewVersion(id);
 
+			NewVersion(id);
+			if(IdcUser::SELocked && !IdcUser::IsAnLocalSEId(id.getword()))
+			{
+				m_hide_entitys.insert(id,pm);
+				continue;
+			}
+			m_entitys.insert(id,pm);
+			
 		}
 	}catch(...)
 	{
@@ -365,6 +468,75 @@ BOOL EntityPool::CreateObjectByRawData(const char *lpbuf,S_UINT bufsize)
 	return true;
 }
 
+
+bool	EntityPool::UpdateConfig(string sestr, const char *data,S_UINT datalen)
+{
+	try{
+		if(!IdcUser::AcceptConfigIncoming || sestr.empty())
+			return false;
+
+		ost::MutexLock lock(m_UpdateLock);
+		sestr= ","+sestr+",";
+		EntityPool mp;
+		if(!mp.CreateObjectByRawData(data, datalen))
+			return false;
+
+		ENTITYMAP mDel;
+		mDel.resetsize(m_hashtablesize);
+		ENTITYMAP::iterator git;
+		while(m_entitys.findnext(git))
+		{
+			string id= (*git).getkey().getword();
+			string seid= GetTopID(id).getword();
+			if(sestr.find(","+seid+",")==std::string::npos)
+				continue;
+			if(!IdcUser::IsAnLocalSEId(id))
+				continue;
+
+			Entity *pIncome= mp.GetEntity(id.c_str());
+			if(pIncome==NULL)
+				mDel.insert(id,NULL);
+		}
+			
+		ENTITYMAP & ingroups= mp.GetMemberData();
+		ENTITYMAP::iterator git3;
+		while(ingroups.findnext(git3))
+		{
+			string id= (*git3).getkey().getword();
+			if(!IdcUser::IsAnLocalSEId(id))
+				continue;
+
+			Entity **p= m_entitys.find(id);
+			if(p!=NULL)
+				delete (*p);
+			m_entitys[id]= (*git3).getvalue();
+			NewVersion(id);
+
+			(*git3).setvalue(NULL);
+		}
+
+		ENTITYMAP::iterator git2;
+		while(mDel.findnext(git2))
+		{
+			string id= (*git2).getkey().getword();
+			Entity **pm=m_entitys.find(id);
+			if(pm!=NULL)
+				delete (*pm);
+
+			if(m_entitys.erase(id))
+				m_mversion.erase(id);
+		}
+
+		m_changed=true;
+		return Submit();
+	}
+	catch(...)
+	{
+		return false;
+	}
+}
+
+
 bool EntityPool::push(Entity *pm)
 {
 	ost::MutexLock lock(m_UpdateLock);
@@ -372,6 +544,9 @@ bool EntityPool::push(Entity *pm)
 	if(!pm)
 		return false;
 	word id=pm->GetID();
+
+	if(IdcUser::SELocked && !IdcUser::IsAnLocalSEId(id.getword()))
+		return false;
 
 	Entity **p=m_entitys.find(id);
 	if(p!=NULL)
@@ -417,9 +592,8 @@ bool EntityPool::DeleteEntity(word id)
 {
 	ost::MutexLock lock(m_UpdateLock);
 	Entity **pm=m_entitys.find(id);
-	if(pm==NULL)
-		return false;
-	delete (*pm);
+	if(pm!=NULL)
+		delete (*pm);
    if(m_entitys.erase(id))
    {
 	   m_mversion.erase(id.getword());
@@ -430,6 +604,47 @@ bool EntityPool::DeleteEntity(word id)
 
 }
 
+bool EntityPool::SaveDataFromNnmEntity(string id, string exid, StringMap & smap)
+{
+	ost::MutexLock lock(m_UpdateLock);
+	Entity ** pm= m_entitys.find(id.c_str());
+	if(pm==NULL||*pm==NULL)
+		return false;
+	m_changed=true;
+
+	string Community;
+	bool hasIt(false);
+	StringMap::iterator sit;
+	while(smap.findnext(sit))
+	{
+		string key= (*sit).getkey().getword();
+		if(key.compare("_Community")!=0)
+			(*pm)->GetProperty()[(*sit).getkey()]=(*sit).getvalue();
+		else
+		{
+			hasIt= true;
+			Community= (*sit).getvalue().getword();
+		}
+	}
+
+	if(!Community.empty())
+	{
+		Des mydes;
+		char out[1024]={0};
+		try{
+			if( mydes.Encrypt(Community.c_str(), out) )
+				Community= out;	
+		}catch(...)
+		{
+		}
+	}
+	if(hasIt)
+		(*pm)->GetProperty()["_Community"]= Community.c_str();
+
+	NewVersion(id);
+	cout<<"Ecc entity updated by nnm entity, id/version/nnm entity: "<<id.c_str()<<" / "<<GetVersion(id)<<" / "<<exid.c_str()<<endl;
+	return true;
+}
 
 
 

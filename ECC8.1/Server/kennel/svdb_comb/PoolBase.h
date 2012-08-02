@@ -63,7 +63,7 @@ public:
 		std::map<string,S_UINT>::iterator it=m_mversion.find( id.getword() );
 		if( it==m_mversion.end() )
 		{
-			m_mversion.insert(std::make_pair(id.getword(),11));
+			m_mversion.insert(std::make_pair(id.getword(),IdcUser::initial_time));
 			return true;
 		}
 
@@ -93,7 +93,7 @@ public:
 		std::map<S_UINT,S_UINT>::iterator it=m_mversion_int.find( id );
 		if( it==m_mversion_int.end() )
 		{
-			m_mversion_int.insert(std::make_pair(id,11));
+			m_mversion_int.insert(std::make_pair(id,IdcUser::initial_time));
 			return true;
 		}
 

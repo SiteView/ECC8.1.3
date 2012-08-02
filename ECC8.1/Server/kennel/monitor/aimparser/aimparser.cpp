@@ -8,7 +8,7 @@
 
 using namespace std;
 
-#include "base/funcgeneral.h"
+#include <base/funcgeneral.h>
 
 #ifdef _DEBUG
 #define new DEBUG_NEW

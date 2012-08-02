@@ -36,7 +36,7 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLibrarianTool"
-				OutputFile="../../../lib/libutil.lib"/>
+				OutputFile="../../../bin/kennel/libutil_d.lib"/>
 			<Tool
 				Name="VCMIDLTool"/>
 			<Tool

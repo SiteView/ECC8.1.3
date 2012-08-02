@@ -53,6 +53,7 @@ public:
 	int Peek(svutil::buffer &buf,S_UINT &datalen,bool block=false,S_UINT timer=0);
 	bool QueryAllRecord(svutil::buffer &buf,int &datalen);
 	bool GetQueueAllMessageLabels(std::list<string> & retlist);
+	int  GetMessageData(std::list<string> & retlist, int & page, int & pos);
 	bool GetLabelData(std::list<string> & retlist, const char * pt,S_UINT len);
 
 	S_UINT GetCount(void)

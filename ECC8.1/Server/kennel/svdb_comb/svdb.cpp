@@ -5,6 +5,7 @@ initialize the environment and acting as the svdb server
 to-do-list: seperate the test to another file
 **********************************************************************/
 
+
 #include <stdio.h>
 #include <iostream>
 
@@ -1247,7 +1248,7 @@ void testutil()
 }
 void testrootpath(void)
 {
-	string strroot=::GetRootPath();
+	string strroot=::GetRootPathFromKeyCore();
 	printf("root path is:%s\n",strroot.c_str());
 }
 void testfind(void)
@@ -3935,7 +3936,9 @@ void test_EntityExPool()
 		return ;
 	}
 
-	if(!epe.PushData(buf,len))
+	string exid;
+	SvdbMain *pMain= new SvdbMain();
+	if(!epe.PushData(buf,len,exid,pMain))
 	{
 		puts("Push data failed");
 		return ;
@@ -3951,7 +3954,7 @@ void test_EntityExPool()
 		return;
 	}
 
-	if(!epe.PushData(buf,len))
+	if(!epe.PushData(buf,len,exid,pMain))
 	{
 		puts("Push data failed");
 		return ;
@@ -4019,6 +4022,154 @@ void testmassrecord2(void)
 
 }
 
+void testNodeData(void)
+{
+	NodeData ndata;
+	ndata.insert(std::make_pair("1中国","11中国HIO (*YU(HNBKJOOU)IU)YYHK"));
+	ndata.insert(std::make_pair("2中国","22中国Y*Y*&B  yIy*(  HIY( "));
+	ndata.insert(std::make_pair("3中国","33中国R^RC^%$UITUBUB  b j   jgt&&^*&"));
+	ndata.insert(std::make_pair("4中国","44中国#%￥*%GHFH FHF FHf"));
+
+	cout<<"size1: "<<ndata.size()<<endl;
+	S_UINT dsize= GetNodeDataRawDataSize(ndata);
+	cout<<"dsize: "<<dsize<<endl;
+	char buf[2048];
+	char * tempp= GetNodeDataRawData(ndata,buf,dsize); 
+
+	cout<<"CreateNode :"<<CreateNodeDataByRawData(ndata,tempp,dsize)<<endl;
+	int i(0);
+	for(NodeData::iterator it=ndata.begin(); it!=ndata.end(); ++it)
+	{
+		cout<<"\n number: "<<++i<<endl;
+		cout<<it->first.c_str()<<" = "<<it->second.c_str()<<endl;
+	}
+}
+
+
+void testForestMap(void)
+{
+	NodeData ndata;
+	ndata.insert(std::make_pair("1中国","11中国HIO (*YU(HNBKJOOU)IU)YYHK"));
+	ndata.insert(std::make_pair("2中国","22中国Y*Y*&B  yIy*(  HIY( "));
+	ndata.insert(std::make_pair("3中国","33中国R^RC^%$UITUBUB  b j   jgt&&^*&"));
+	ndata.insert(std::make_pair("4中国","44中国#%￥*%GHFH FHF FHf"));
+	ndata.insert(std::make_pair("5中国",""));
+	ndata.insert(std::make_pair("",""));
+
+	ForestMap fmap,fmap2;
+	fmap.insert(std::make_pair("node1",ndata));
+	fmap.insert(std::make_pair("node2",ndata));
+	fmap.insert(std::make_pair("node3",ndata));
+
+	cout<<"size1: "<<fmap.size()<<endl;
+	S_UINT dsize= GetForestMapRawDataSize(fmap);
+	cout<<"dsize: "<<dsize<<endl;
+	char buf[2048];
+	char * tempp= GetForestMapRawData(fmap,buf,dsize); 
+
+
+	cout<<"CreateForestMap :"<<CreateForestMapByRawData(fmap2,tempp,dsize)<<endl;
+	//OutputForestMap(fmap2);
+}
+
+#include "serverbase.h"
+#include "somefunc.h"
+void testCWholeConfig(void)
+{
+	IdcUser::RootPath= "C:/SiteView/Core";
+
+	string cdbpath=		IdcUser::RootPath + "/data/configdb";
+	string historypath=	IdcUser::RootPath + "/data/configdb_history";
+	IdcUser::CreatDirNonThreadSafe(cdbpath);
+	IdcUser::CreatDirNonThreadSafe(historypath);
+
+	CWholeConfig cwc(IdcUser::RootPath + "/data/configdbIndex.data" , cdbpath+"/", historypath+"/" );
+	string estr;
+	cout<<"\n\n\nLoadData: "<< cwc.LoadData(estr);
+	cout<<"  "<<estr.c_str()<<endl;
+
+	//estr.clear();
+	//cout<<"CreateNewDataBase: "<< cwc.CreateNewDataBase("testdb5","test",estr);
+	//cout<<"  "<<estr.c_str()<<endl;
+
+
+	//estr.clear();
+	//cout<<"DeleteDataBase: "<< cwc.DeleteDataBase("testdb5",estr);
+	//cout<<"  "<<estr.c_str()<<endl;
+
+}
+
+void testCConfig(void)
+{
+	IdcUser::RootPath= "C:/SiteView/Core";
+
+	string cdbpath=		IdcUser::RootPath + "/data/configdb";
+	string historypath=	IdcUser::RootPath + "/data/configdb_history";
+	IdcUser::CreatDirNonThreadSafe(cdbpath);
+	IdcUser::CreatDirNonThreadSafe(historypath);
+
+	CWholeConfig cwc(IdcUser::RootPath + "/data/configdbIndex.data" , cdbpath+"/", historypath+"/" );
+
+	string estr;
+	cout<<"\n\n\nLoadData: "<< cwc.LoadData(estr);
+	cout<<"  "<<estr.c_str()<<endl;
+
+	//cwc.DisplayDataMembers();
+
+	estr.clear();
+	bool bget(true);
+	CConfigFile * cfp= cwc.GetDataBase("testdb",estr);
+	if(cfp==NULL)
+		bget= false;
+	cout<<"\n\n\nGetDataBase: "<<bget;
+	cout<<"  "<<estr.c_str()<<endl;
+
+	if(!bget)
+		return ;
+
+	cfp->DisplayDataMembers();
+	return ;
+
+	estr.clear();
+	CTableName ctname("testdb","table2");
+	//cout<<"CreateNewTable: "<<cfp->CreateNewTable(ctname,estr);
+	//cout<<"  "<<estr.c_str()<<endl;
+	
+	//estr.clear();
+	//string ver= cfp->SetNewVersionAndBackupOld(estr);
+	//cout<<"  "<<estr.c_str()<<endl;
+	//cout<<"  testdb's new version: "<<ver.c_str()<<endl;
+
+	//estr.clear();
+	//cwc.PushVersion("testdb",ver,"BySiteViewTOOL",estr);
+	//cout<<"  "<<estr.c_str()<<endl;
+
+	estr.clear();
+	CConfig * ctable= cfp->GetTable(ctname,estr);
+
+	bget= true;
+	if(ctable==NULL)
+		bget= false;
+
+	cout<<"GetTable: "<<bget;
+	cout<<"  "<<estr.c_str()<<endl;
+
+	if(!bget)
+		return ;
+
+	//for(int i=1000; i<=1370; ++i)
+	//{
+	//	char tchar[128]={0};
+	//	sprintf(tchar,"%d",i);
+	//	ctable->PushVersion(tchar);
+	//}
+	ctable->DisplayDataMembers();
+
+	estr.clear();
+	cfp->SaveData(estr);
+	cout<<"  "<<estr.c_str()<<endl;
+}
+
 void testmassrecord1(void)
 {
 	string temp;
@@ -4026,11 +4177,12 @@ void testmassrecord1(void)
 	{
 
 		try{
-			testmassrecord2();
+			//testCWholeConfig();
+			testCConfig();
 		}
 		catch(...)
 		{
-			cout<<"\nexception"<<endl;
+			cout<<"\n exception"<<endl;
 		}
 		getline(cin,temp);
 	}
@@ -4098,7 +4250,7 @@ bool haltSvdb(void)
 	string fname=IdcUser::RootPath + "\\data\\svdbclose.txt";
 	std::ofstream output(fname.c_str(),ios::app );
 	if( output )
-		output<<"svdb closed at "<<svutil::TTime::GetCurrentTimeEx().Format().c_str()<<endl;
+		output<<IdcUser::ProcessID<<" svdb closed at "<<svutil::TTime::GetCurrentTimeEx().Format().c_str()<<endl;
 	cout<<"\n\n----------------------------------------------"<<endl;
 	cout<<"-----    Stopping svdb, please wait...   -----"<<endl;
 	cout<<"----------------------------------------------\n"<<endl;
@@ -4127,7 +4279,7 @@ BOOL WINAPI ConsoleHandler(DWORD CEvent)
 #endif
 
 unsigned short g_port=8600;
-#include <QueryData.h>
+#include "QueryData.h"
 bool tryGetAllResourceInfo(void)
 {
 	SVDBQUERY querybuf={0};

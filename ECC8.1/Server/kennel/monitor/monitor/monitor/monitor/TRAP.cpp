@@ -3,7 +3,7 @@
 
 #include "base\funcGeneral.h"
 
-BOOL TRAP_MONITOR(char *mstr, int altype, char *custpath, char *szReturn)
+BOOL TRAP_MONITOR(char *mstr, int altype, char *custpath, char *szReturn, int& nSize)
 {
 	FILE *fp = NULL;
 	int	 lines = 0, matchCount = 0;
@@ -11,7 +11,7 @@ BOOL TRAP_MONITOR(char *mstr, int altype, char *custpath, char *szReturn)
 	char szBuffer[8192] = {0};
 	char std_log[256] = {0};
 
-	sprintf(std_log, "%s\\logs\\traps.log", FuncGetInstallRootPath());
+	sprintf(std_log, "%s\\logs\\snmptraps.log", FuncGetInstallRootPath());
 	printf("std_log = %s\n",std_log);
 	if((fp = fopen(std_log, "r")) == NULL)
 	{
@@ -25,32 +25,32 @@ BOOL TRAP_MONITOR(char *mstr, int altype, char *custpath, char *szReturn)
 
 		fgets(szBuffer, sizeof(szBuffer), fp);
 
-		if(!strncmp(szBuffer, "+++SNMP-TRAP-PDU: ", 18))
+		if(!strncmp(szBuffer, "hahahatrap:", 11))
 		{
 			lines ++;
 
 			if(*mstr)
 			{
 				ca = szBuffer;
-				while(cb = strstr(ca, "[Message]:="))
+				cb = strstr(ca, "Message=");
+				char szMess[4096] = {0};
+				sscanf(cb ,"%[^ ]", szMess);
+				if(strstr(szMess, mstr)) 
 				{
-					char szMess[4096] = {0};
-					sscanf(cb + 11, "%[^$$$]$$$", szMess);
-					if(strstr(szMess, mstr)) 
-					{
-						matchCount ++;
-						break;
-					}
-
-					ca = cb + 11;
+					matchCount ++;
+					//break;
 				}
+				
 			}
 		}
 	}
 
 	fclose(fp);
-
+ 
 	sprintf(szReturn, "lines=%d$matchCount=%d$", lines, matchCount);
+	CString strInput ;
+	strInput =szReturn;
+	MakeCharByString(szReturn,nSize,strInput);
 
 	return TRUE;
 }

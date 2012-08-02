@@ -49,6 +49,7 @@
 				AdditionalLibraryDirectories="../../../../lib"
 				GenerateDebugInformation="TRUE"
 				SubSystem="2"
+				ImportLibrary="../../../../lib/$(TargetName).lib"
 				TargetMachine="1"/>
 			<Tool
 				Name="VCMIDLTool"

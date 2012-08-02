@@ -8,7 +8,7 @@
 
 
 class Group :
-	public SerialBase
+	public SerialBase2
 {
 public:
 	Group(void);
@@ -38,8 +38,8 @@ public:
 		*/
 	}
 
-	S_UINT	GetRawDataSize(void);
-	char*	GetRawData(char *lpbuf,S_UINT bufsize);
+	S_UINT	GetRawDataSize( bool onlyLocked= false);
+	char*	GetRawData(char *lpbuf,S_UINT bufsize, bool onlyLocked= false);
 	BOOL	CreateObjectByRawData(const char *lpbuf,S_UINT bufsize);
 
 

@@ -10,7 +10,7 @@ Entity::~Entity(void)
 {
 }
 
-S_UINT	Entity::GetRawDataSize(void)
+S_UINT	Entity::GetRawDataSize(bool onlyLocked)
 {
 	S_UINT len=0,tlen=sizeof(S_UINT);
 	len+=tlen;		//m_CurrentID;
@@ -23,16 +23,21 @@ S_UINT	Entity::GetRawDataSize(void)
 	len+=tlen;				//m_Monitors count;
 	WORDLIST::iterator it;
 	for(it=m_Monitors.begin();it!=m_Monitors.end();it++)
+	{
+		if(onlyLocked && !IdcUser::WillTeleBackup( (*it).getword()) )
+			continue;
 		len+=strlen(*it)+1;
+	}
 
 	return len;
-}
 
-char*	Entity::GetRawData(char *lpbuf,S_UINT bufsize)
+
+}
+char*	Entity::GetRawData(char *lpbuf,S_UINT bufsize, bool onlyLocked)
 {
 	if(lpbuf==NULL)
 		return NULL;
-	if(bufsize<GetRawDataSize())
+	if(bufsize<GetRawDataSize(onlyLocked))
 		return NULL;
 
 	S_UINT len=0,tlen=sizeof(S_UINT);
@@ -55,12 +60,25 @@ char*	Entity::GetRawData(char *lpbuf,S_UINT bufsize)
 
 
 	len=m_Monitors.size();
+	if(onlyLocked)
+	{
+		S_UINT tempcount=0;
+		WORDLIST::iterator tempit;
+		for(tempit=m_Monitors.begin();tempit!=m_Monitors.end();tempit++)
+		{
+			if(IdcUser::WillTeleBackup( (*tempit).getword()) )
+				++tempcount;
+		}
+		len= tempcount;
+	}
 	memmove(pt,&len,tlen);
 	pt+=tlen;
 
 	WORDLIST::iterator it;
 	for(it=m_Monitors.begin();it!=m_Monitors.end();it++)
 	{
+		if(onlyLocked && !IdcUser::WillTeleBackup( (*it).getword()) )
+			continue;
 		strcpy(pt,(*it).getword());
 		pt+=strlen((*it).getword());
 		pt[0]='\0';

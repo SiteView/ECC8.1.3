@@ -113,6 +113,7 @@ int CMonitorApp::ExitInstance()
 #include "GTJA.h"			// Special For GTJA (foolish)
 #include "MAPIProto.h"		// MAPI Monitor
 #include "CiscoLog.h"		// Cisco Router Logging Monitor
+#include "CiscoTelPing.h"		// Cisco Router Logging Monitor
 #include "CiscoCPU.h"		// Cisco Router CPU Percentage Monitor
 #include "F5.h"				// F5 Big-IP Monitor
 #include "DHCP.h"			// DHCP Server Monitor
@@ -6930,7 +6931,7 @@ printf("strCustomerPath = %s\r\n",strCustomerPath.GetBuffer(strCustomerPath.GetL
 	return TRAP_MONITOR(strMatchContent.GetBuffer(strMatchContent.GetLength()), 
 						nAlertType, 
 						strCustomerPath.GetBuffer(strCustomerPath.GetLength()), 
-						szReturn);
+						szReturn,nSize);
 }
 
 /****************************************************************************
@@ -14507,6 +14508,174 @@ BOOL GTJA(CStringList &paramList, char *szReturn)
 	//BOOL bResult = GTJA_MONITOR(strURL, strPostData, nTimeout, strMatchContent, nID, szReturn);
 
 	//return bResult;
+}
+
+/****************************************************************************
+	Cisco3ProxyPing
+****************************************************************************/
+extern "C" __declspec(dllexport) 
+BOOL Cisco3ProxyPing(const char *strParas,  char *szReturn,int & nSize)
+//(CStringList &paramList, char *szReturn)
+{
+	AFX_MANAGE_STATE(AfxGetStaticModuleState());
+
+	CString	strServer = _T(""), 
+			strPassword = _T(""), 
+			strenPassword = _T("cisco"), 
+			strpwdPrompt = _T("assword:"), 
+			strPrompt = _T(">"), 
+			strenpwdPrompt = _T("assword:"), 
+			strenPrompt = _T("#"), 
+			strMonitorID=_T(""),
+			strRunningConfig = _T("show running-config");
+	int		nPort = 23, 
+			nGID = 0, 
+			nMID = 0;
+
+	CString strProxyServer = _T(""), 
+			strProxyUsername = _T(""), 
+			strProxyPassword = _T("");
+	int		nProxyPort = 0;
+
+	CString		strCustomerPath = _T("");
+	strCustomerPath.Format("%s\\temp", FuncGetInstallRootPath());
+	CStringList paramList;
+	MakeStringListByChar(paramList,strParas);
+
+	POSITION pos = paramList.FindIndex(0);
+	while(pos)
+	{
+		CString strTemp = paramList.GetNext(pos);
+		if(strTemp.Find(__MACHINENAME__, 0) == 0)
+		{
+			strServer = strTemp.Right(strTemp.GetLength() - strlen(__MACHINENAME__));
+		}
+		else if(strTemp.Find(__CONNPORT__, 0) == 0)
+		{
+			nPort = atoi(strTemp.Right(strTemp.GetLength() - strlen(__CONNPORT__)));
+		}
+		else if(strTemp.Find(__PASSWORD__, 0) == 0)
+		{
+			strPassword = strTemp.Right(strTemp.GetLength() - strlen(__PASSWORD__));
+		}
+		else if(strTemp.Find(__ENABLEPASSWORD__, 0) == 0)
+		{
+			strenPassword = strTemp.Right(strTemp.GetLength() - strlen(__ENABLEPASSWORD__));
+		}
+		else if(strTemp.Find(__PASSWORDPROMPT__, 0) == 0)
+		{
+			strpwdPrompt = strTemp.Right(strTemp.GetLength() - strlen(__PASSWORDPROMPT__));
+		}
+		else if(strTemp.Find(__PROMPT__, 0) == 0)
+		{
+			strPrompt = strTemp.Right(strTemp.GetLength() - strlen(__PROMPT__));
+		}
+		else if(strTemp.Find(__ENABLEPASSWORDPROMPT__, 0) == 0)
+		{
+			strenpwdPrompt = strTemp.Right(strTemp.GetLength() - strlen(__ENABLEPASSWORDPROMPT__));
+		}
+		else if(strTemp.Find(__ENABLEPROMPT__, 0) == 0)
+		{
+			strenPrompt = strTemp.Right(strTemp.GetLength() - strlen(__ENABLEPROMPT__));
+		}
+		else if(strTemp.Find(__RUNNING_CONFIG__, 0) == 0)
+		{
+			strRunningConfig = strTemp.Right(strTemp.GetLength() - strlen(__RUNNING_CONFIG__));
+		}
+		else if(strTemp.Find(__GROUPID__, 0) == 0)
+		{
+			nGID = atoi(strTemp.Right(strTemp.GetLength() - strlen(__GROUPID__)));
+		}
+/*		else if(strTemp.Find(__MONITORID__, 0) == 0)
+		{
+			nMID = atoi(strTemp.Right(strTemp.GetLength() - strlen(__MONITORID__)));
+		}*/
+		else if(strTemp.Find(__MONITORID__, 0) == 0)
+		{
+			strMonitorID = strTemp.Right(strTemp.GetLength() - strlen(__MONITORID__));
+		}
+
+		else if(strTemp.Find(__PROXYSERVERPORT__, 0) == 0)
+		{
+			strTemp = strTemp.Right(strTemp.GetLength() - strlen(__PROXYSERVERPORT__));
+			int index = strTemp.Find(':', 0);
+			if(index >= 0)
+			{
+				strProxyServer = strTemp.Left(index);
+				strTemp.Delete(0, index + 1);
+				nProxyPort = atoi(strTemp);
+			}
+			else
+			{
+				strProxyServer = strTemp;
+			}
+		}
+		else if(strTemp.Find(__PROXYUSERNAME__, 0) == 0)
+		{
+			strProxyUsername = strTemp.Right(strTemp.GetLength() - strlen(__PROXYUSERNAME__));
+		}
+		else if(strTemp.Find(__PROXYPASSWORD__, 0) == 0)
+		{
+			strProxyPassword = strTemp.Right(strTemp.GetLength() - strlen(__PROXYPASSWORD__));
+		}
+		else if(strTemp.Find(__CUSTOMERPATH__, 0) == 0)
+		{
+			strCustomerPath.Format("%s\\%s\\temp", FuncGetInstallRootPath(), strTemp.Right(strTemp.GetLength() - strlen(__CUSTOMERPATH__)));
+		}
+	}
+    printf("Parser parameter ok\n");
+	if(strServer.IsEmpty())
+	{
+		sprintf(szReturn, "error=%s", FuncGetStringFromIDS("<%IDS_Monitor_194%>"));//<%IDS_Monitor_194%>"缺少服务器"
+		return FALSE;
+	}
+
+	if(nPort <= 0)
+	{
+		sprintf(szReturn, "error=%s", FuncGetStringFromIDS("<%IDS_Monitor_195%>"));//<%IDS_Monitor_195%>"端口错误"
+		return FALSE;
+	}
+
+	if(WSA_Init())
+	{
+		sprintf(szReturn, "error=%s", FuncGetStringFromIDS("<%IDS_Monitor_196%>"));//<%IDS_Monitor_196%>"通信初始化失败"
+		return FALSE;
+	}
+
+	if(strRunningConfig.IsEmpty())
+	{
+		strRunningConfig = _T("show running-config");
+	}
+
+    printf("Monitor config\n");
+		BOOL bResult = CISCOTELNETPING_MONITOR(strServer.GetBuffer(strServer.GetLength()), 
+									nPort, 
+									strPassword.GetBuffer(strPassword.GetLength()), 
+									strenPassword.GetBuffer(strenPassword.GetLength()), 
+									strpwdPrompt.GetBuffer(strpwdPrompt.GetLength()), 
+									strPrompt.GetBuffer(strPrompt.GetLength()), 
+									strenpwdPrompt.GetBuffer(strenpwdPrompt.GetLength()), 
+									strenPrompt.GetBuffer(strenPrompt.GetLength()), 
+									strRunningConfig.GetBuffer(strRunningConfig.GetLength()), 
+									strMonitorID.GetBuffer(strMonitorID.GetLength()),
+									strProxyServer.GetBuffer(strServer.GetLength()), 
+									nProxyPort, 
+									strProxyUsername.GetBuffer(strProxyUsername.GetLength()), 
+									strProxyPassword.GetBuffer(strProxyPassword.GetLength()), 
+									strCustomerPath.GetBuffer(strCustomerPath.GetLength()), 
+									szReturn);
+     char * strEnd = szReturn;
+		while(*strEnd)
+	   {
+		if(*strEnd == '$')
+			*strEnd = '\0';
+		strEnd++;
+	   }
+
+
+	WSA_Free();
+
+	return bResult;
 }
 
 /****************************************************************************

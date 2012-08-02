@@ -4555,13 +4555,28 @@ int CAlertMain::SendSmsFromComm( CString strSmsTo, CString strContent, int nSMSM
 	string testResult;
 	int bRet=false;
 
+	//bin.liu  nSMSMaxLength 如果是1 就是合并短信 其他值不合并短信
+	if (nSMSMaxLength==1)
+	{
+		if(bInitSerialPort)
+		{
+			CloseSerialPort();
+	    	bRet=m_smsPort.SendLongMsg(m_smsPort.m_strPort,strSmsTo,strContent);
+		}
+	}else
+	{
+		if(bInitSerialPort)
+		{
+			bRet=m_smsPort.SendMsg( strSmsTo, strContent, nSMSMaxLength );
+		}
+	}
 //yi.duan 2011-08-08 send long message 
 	//if(bInitSerialPort)
 	//{
 	//	bRet=m_smsPort.SendMsg( strSmsTo, strContent, nSMSMaxLength );
 	//}
 
-	bRet=m_smsPort.SendLongMsg(m_smsPort.m_strPort,strSmsTo,strContent);
+	//bRet=m_smsPort.SendLongMsg(m_smsPort.m_strPort,strSmsTo,strContent);
 	return bRet;
 }
 
@@ -4569,6 +4584,8 @@ int CAlertMain::SendSmsFromComm( CString strSmsTo, CString strContent, int nSMSM
 int CAlertMain::TestSmsFromComm(CString strSmsTo, CString strContent)
 {
 	string testResult;
+	CAlertMain::CloseSerialPort();
+	bInitSerialPort = CAlertMain::InitSerialPort();
 	if(bInitSerialPort)
 	{
 		string strSMSMaxLength = GetIniFileString( "SMSCommConfig", "length", "70", "smsconfig.ini" );
@@ -4579,8 +4596,16 @@ int CAlertMain::TestSmsFromComm(CString strSmsTo, CString strContent)
 		}
 
 		int bRet;
-		bRet=m_smsPort.SendMsg(strSmsTo, strContent, nSMSMaxLength );
-		bRet=m_smsPort.SendLongMsg(m_smsPort.m_strPort,strSmsTo,strContent);
+		if(nSMSMaxLength==1)
+		{
+			CloseSerialPort();
+			bRet=m_smsPort.SendLongMsg(m_smsPort.m_strPort,strSmsTo,strContent);
+		}else
+		{
+			bRet=m_smsPort.SendMsg(strSmsTo, strContent, nSMSMaxLength );
+		}
+		
+		
 		
 
 		//往文件中写入返回结果

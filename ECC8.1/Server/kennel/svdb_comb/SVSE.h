@@ -9,7 +9,7 @@
 
 
 class SVSE :
-	public SerialBase
+	public SerialBase2
 {
 public:
 	SVSE(void);
@@ -20,6 +20,13 @@ public:
 		char buf[100]={0};
 		sprintf(buf,"%d",m_ID);
 		return ::MakeIDByIndex(buf,++m_CurrentID);
+	}
+
+	word GetIDWord()
+	{
+		char buf[100]={0};
+		sprintf(buf,"%d",m_ID);
+		return buf;
 	}
 
 	S_UINT GetID()
@@ -41,8 +48,8 @@ public:
 		return m_SubEntitys;
 	}
 
-	S_UINT	GetRawDataSize(void);
-	char*	GetRawData(char *lpbuf,S_UINT bufsize);
+	S_UINT	GetRawDataSize(bool onlyLocked= false);
+	char*	GetRawData(char *lpbuf,S_UINT bufsize,bool onlyLocked= false);
 	BOOL	CreateObjectByRawData(const char *lpbuf,S_UINT bufsize);
 
 	void DisplayAllData()

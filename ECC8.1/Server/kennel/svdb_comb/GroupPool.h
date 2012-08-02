@@ -10,7 +10,7 @@
 typedef svutil::hashtable<word,Group *> GROUPMAP;
 
 class GroupPool :
-	public PoolBase2,public SerialBase
+	public PoolBase2,public SerialBase2
 {
 public:
 	GroupPool(void);
@@ -36,9 +36,12 @@ public:
 	bool LoadFile(string fileName);
 	bool SubmitToFile(string fileName, GroupPool * dataPool );
 
-    S_UINT	GetRawDataSize(void);
-	char*	GetRawData(char *lpbuf,S_UINT bufsize);
+	bool	GetBackupData(std::list<SingelRecord> & listrcd);
+	S_UINT	GetRawDataSize(bool onlyLocked= false);
+	char*	GetRawData(char *lpbuf,S_UINT bufsize, bool onlyLocked= false);
 	BOOL	CreateObjectByRawData(const char *lpbuf,S_UINT bufsize);
+	bool	UpdateConfig(string sestr, const char *data, S_UINT datalen);
+
 
 	bool push(Group *pm);
 	bool PushData(const char *buf,S_UINT len);
@@ -48,7 +51,7 @@ public:
 		Group **pm=m_groups.find(id);
 		if(pm==NULL)
 			return NULL;
-		m_changed=true;
+		//m_changed=true;
 		return *pm;
 	}
 
@@ -112,8 +115,9 @@ public:
 
 	bool DeleteGroup(word id);
 
-	bool GetInfo(word infoname,string pid,StringMap &map)
+	bool GetInfo(word infoname,string pid,StringMap &map,bool onlyson=false)
 	{
+		ost::MutexLock lock(m_UpdateLock);
 		bool getver(false);
 		string infomation(infoname.getword());
 		if(infomation.compare("ObjectVersion")==0)
@@ -129,9 +133,15 @@ public:
 		GROUPMAP::iterator it;
 		while(m_groups.findnext(it))
 		{
+			if((*it).getkey().empty())
+				continue;
+
 			const char * key = (*it).getkey().getword();
 			mid=key;
 			if( !isdefault && mid.find(pid)!=0)
+				continue;
+
+			if(onlyson && mid.find(".",pid.size())!=std::string::npos )
 				continue;
 
 			if(getver)
@@ -197,9 +207,21 @@ public:
 		}
 	}
 
+	bool UpdateNnmEntityParentGid();
+	string GetNnmEntityParentGid(string type);
+	bool CheckIdIsNnmEntityParent(string id);
+
+	GROUPMAP & GetMemberData()
+	{
+		return m_groups;
+	}
 
 protected:
+	Mutex	m_NnmEntityParentGid_Lock;
+
 	GROUPMAP m_groups;
+	GROUPMAP m_hide_groups;
+
 	S_UINT	m_hashtablesize;
 	bool needToDel;
 

@@ -10,7 +10,7 @@
 
 
 class SVSEPool :
-	public PoolBase2,public SerialBase
+	public PoolBase2,public SerialBase2
 {
 public:
 	SVSEPool(void);
@@ -19,6 +19,8 @@ public:
 	SVSEPool(word filepath):PoolBase2(filepath)
 	{
 		m_data.resize(initsize);
+		m_hide_data.resize(maxsize);
+
 		m_count=initsize;
 		m_loaded=false;
 		m_changed=false;
@@ -26,6 +28,9 @@ public:
 
 		for(int i=0;i<initsize;i++)
 			m_data[i]=NULL;
+
+		for(int i=0;i<maxsize;i++)
+			m_hide_data[i]=NULL;
 	}
 
 	enum{ initsize=30, maxsize=100};
@@ -75,6 +80,10 @@ public:
 		int n=psvse->GetID();
 		if((n<=0)||(n>maxsize))
 			return false;
+
+		if(IdcUser::SELocked && !IdcUser::IsAnLocalSEId(n))
+			return false;
+
 		if(n>=m_count)
 		{
 			m_count=(m_count==n) ? m_count+1 : n;
@@ -109,6 +118,10 @@ public:
 
 	bool DeleteSVSED(S_UINT id)
 	{
+		if(IdcUser::SELocked)
+			return false;
+
+		MutexLock lock(m_UpdateLock);
 		if(!Find(id))
 			return false;
 		if(m_data[id]!=NULL)
@@ -153,6 +166,30 @@ public:
 		return false;
 	}
     
+	bool InitLockedSVSEPool()
+	{
+		if(!IdcUser::SELocked)
+			return false;
+
+		for(S_UINT seId= 1; seId<=maxsize; seId++) 
+		{
+			if(IdcUser::SELocked && !IdcUser::IsAnLocalSEId(seId))
+				continue;
+
+			if(m_data[seId]!=NULL)
+				continue;
+			SVSE *pse=new SVSE();
+			if(!pse)
+				continue;
+			pse->PutID(seId);
+			pse->PutLabel("localhost");
+			m_data[seId]=pse;
+		}
+		m_changed=true;
+		Submit();
+		return true;
+	}
+
 	bool InitSVSEPool()
 	{
 		if(m_data[1]!=NULL)
@@ -172,12 +209,16 @@ public:
 	bool Load(void);
 	bool Submit(std::string modifyid="");
 
-	S_UINT	GetRawDataSize(void);
-	char*	GetRawData(char *lpbuf,S_UINT bufsize);
+	bool	GetBackupData(std::list<SingelRecord> & listrcd);
+	S_UINT	GetRawDataSize(bool onlyLocked= false);
+	char*	GetRawData(char *lpbuf,S_UINT bufsize, bool onlyLocked= false);
 	BOOL	CreateObjectByRawData(const char *lpbuf,S_UINT bufsize);
+	bool	UpdateConfig(const char *data, S_UINT datalen);
+
 
 	bool GetInfo(word infoname,StringMap &map)
 	{
+		MutexLock lock(m_UpdateLock);
 		bool getver(false);
 		string infomation(infoname.getword());
 		if(infomation.compare("ObjectVersion")==0)
@@ -251,11 +292,16 @@ public:
 		return m_CurrentID;
 	}
 
-
+	std::vector<SVSE *> & GetMemberData()
+	{
+		return m_data;
+	}
 
 
 protected:
 	std::vector<SVSE *> m_data;
+	std::vector<SVSE *> m_hide_data;
+
 	S_UINT	m_count;
 	S_UINT	m_CurrentID;
 

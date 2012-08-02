@@ -15,14 +15,24 @@
 #include "EntityPoolEx.h"
 #include "TopologyChartPool.h"
 #include "VirtualGroupPool.h"
+#include "NnmSaveThread.h"
+#include "backuprecord.h"
+#include "backuprecordDamon.h"
+#include "backupconfig.h"
 
 #include "Option.h"
-
+#include "serverbase.h"
 
 class ThreadContrl;
 class DB;
 class WatchThread;
 class SocketWatchThread;
+class NnmSaveThread;
+class EntityPoolEx;
+class CBackupRecord;
+class CBackupRecordDamon;
+class CBackupConfig;
+
 
 typedef svutil::hashtable<svutil::word,GeneralPool * >	INIFILEPOOL;
 
@@ -65,6 +75,12 @@ public:
 
 	INIFILEPOOL			m_IniPool;
 
+	NnmSaveThread       *m_pNnmSave;
+
+	CBackupRecord		*m_pBackupRecordThread;
+	CBackupRecordDamon  *m_pBackupRecordDamonThread;
+	CBackupConfig		*m_pBackupConfigThread;
+
 	DB	*m_pDB;
 	std::map<string,DB *> m_pDB_map;//读取是线程安全的,写入是未定义的
 	void InsertIntoStdMap(string id, DB * tempDB)//写入要用该函数
@@ -72,8 +88,12 @@ public:
 		ost::MutexLock lock(m_UpdateLockStdMap);
 		m_pDB_map.insert(make_pair(id.c_str(), tempDB));
 	}
+	void initialBackupConfigIni(void);
+
 
 	Option				*m_pOption;
+
+	CWholeConfig		*m_pWholeConfig;
 
 protected:
 	svutil::word	m_RootPath;

@@ -50,7 +50,7 @@ using namespace std;
 using namespace ost;
 static const basic_string <char>::size_type npos = -1;
 extern void DebugePrint(string strDebugInfo);
-#define XieCheng
+//#define XieCheng
 #include "afxinet.h"
 #include "windows.h"
 #define  MAX_SMS_LENGTH 50
@@ -1454,6 +1454,7 @@ string CAlertEmailSendObj::GetDebugInfo()
 //modify by jiewen.zhang on 08-11-06
 void CAlertEmailSendObj::MakeAlertTitle()
 {
+#ifndef XieCheng
 	string strTmp;
 
 	string strDeviceId = FindParentID(strAlertMonitorId);
@@ -1627,7 +1628,71 @@ void CAlertEmailSendObj::MakeAlertTitle()
 	OutputDebugString(strAlertTitle.c_str());
 	OutputDebugString("\n");
 //	cout<<endl<<"邮件头"<<strAlertTitle<<endl;
+	#else
+    //携程报警改造 为适应 ITSM ...
+	//!SV-200804021235!设备名.监测器名称 + ＂＂ +  warnning( error ..)  + ＂＂ +  procName( ServerName )　 + ＂＂ +  Down( OK ..)
+	char chTime[50] = {0};
+   	SYSTEMTIME time;
 	
+	//取系统当前时间
+	GetLocalTime(&time);
+    sprintf(chTime ,"SV-%04d%02d%02d%02d%02d",
+				time.wYear,
+				time.wMonth,
+				time.wDay,
+				time.wHour,
+				time.wMinute);
+				//time.wSecond);
+	strAlertTitle = chTime;
+	strAlertTitle += "!";
+	strAlertTitle += CAlertMain::GetDeviceTitle(strAlertMonitorId);
+	//strAlertTitle += "_";
+	//strAlertTitle += CAlertMain::GetDeviceTitle(strAlertMonitorId);
+	strAlertTitle += ".";
+	//strAlertTitle += CAlertMain::GetMonitorTitle(strAlertMonitorId);
+	string strMonitorName = CAlertMain::GetMonitorTitle(strAlertMonitorId);
+	basic_string <char>::size_type index = strMonitorName.find( "：" );
+
+	if( index != basic_string<char>::npos )
+	{
+        strMonitorName.replace( index, 1, ":" );
+		basic_string <char>::iterator it = strMonitorName.begin() + index + 1;
+		strMonitorName.erase( it );
+	}
+
+	strAlertTitle += strMonitorName;
+
+	//资源状态
+	strAlertTitle += " ";	
+	//1、正常。2、危险。3、错误。4、禁止。5、错误。 warnning( error ..) 
+	if(nEventType == 1)
+	{
+		strAlertTitle += "Ok";
+	}
+	else if(nEventType == 2)
+	{
+		strAlertTitle += "Warning";
+	}
+	else if(nEventType == 3)
+	{
+		strAlertTitle += "Error";
+	}
+	else if(nEventType == 4)
+	{
+		strAlertTitle += "Disable";
+	}
+	/*
+	else if(nEventType == 5)
+	{
+		strAlertTitle += "Disable";
+	}
+	*/
+	else
+	{
+		strAlertTitle += "Error";
+	}
+
+#endif
 
 
 }
@@ -1671,6 +1736,8 @@ bool CAlertEmailSendObj::ToChinese(string& strDes,const string strSour)
 //生成报警内容
 void CAlertEmailSendObj::MakeAlertContent()
 {
+
+	#ifndef XieCheng
 	string strTmp;
 
 	string strDeviceId = FindParentID(strAlertMonitorId);
@@ -2031,6 +2098,223 @@ void CAlertEmailSendObj::MakeAlertContent()
 	}	
 	strTmp = CAlertMain::ReplaceStdString(strAlertContent, "@Warning@", strWarning);	
 	strAlertContent = strTmp;
+#else
+	string strTmp;
+	strAlertContent = GetIniFileString("Email", strEmailTemplateValue, "", "TxtTemplate.Ini");
+	//strAlertContent = GetTemplateContent("Email", strEmailTemplateValue);
+
+	int nLength = strAlertContent.length();
+	
+	strTmp = CAlertMain::ReplaceStdString(strAlertContent, "@Group@", CAlertMain::GetDeviceTitle(strAlertMonitorId));
+	strAlertContent = strTmp;
+
+	string strMonitorName = CAlertMain::GetMonitorTitle( strAlertMonitorId );
+
+	string strMonitorType = CAlertMain::GetMonitorPropValue(strAlertMonitorId, "sv_monitortype");	
+	if(strMonitorType == "14" || strMonitorType == "33" || strMonitorType == "41"
+		|| strMonitorType == "111" || strMonitorType == "174"  || strMonitorType == "175")
+	{
+		// 14 Service  33 Nt4.0Process  41 Process  111 UnixProcess  174 SNMP_Process  175 SNMP_Service
+		strMonitorName += ":";		
+
+		string strProcName = "";
+		OBJECT hMon = GetMonitor(strAlertMonitorId);
+		MAPNODE paramNode = GetMonitorParameter(hMon);		
+		if(strMonitorType == "14")
+		{
+			FindNodeValue(paramNode, "_Service", strProcName);
+		}
+		else if(strMonitorType == "33")
+		{
+			FindNodeValue(paramNode, "_monitorProcessList", strProcName);
+		}
+		else if(strMonitorType == "41")
+		{
+			FindNodeValue(paramNode, "_monitorProcessList", strProcName);
+		}
+		else if(strMonitorType == "111")
+		{
+			FindNodeValue(paramNode, "_Service", strProcName);
+		}
+		else if(strMonitorType == "174")
+		{
+			FindNodeValue(paramNode, "_SelValue", strProcName);
+		}
+		else if(strMonitorType == "175")
+		{
+			FindNodeValue(paramNode, "_InterfaceIndex", strProcName);
+		}
+		else
+		{
+			
+		}
+		strMonitorName += strProcName;
+	}
+	
+	//strTmp = CAlertMain::ReplaceStdString(strAlertContent, "@monitor@", CAlertMain::GetMonitorTitle(strAlertMonitorId));
+	strTmp = CAlertMain::ReplaceStdString(strAlertContent, "@monitor@", strMonitorName );
+	strAlertContent = strTmp;
+
+	string strDeviceId = FindParentID(strAlertMonitorId);
+	//string strGrouptId = FindParentID(strDeviceId);
+	strTmp = CAlertMain::ReplaceStdString(strAlertContent, "@AllGroup@", CAlertMain::GetAllGroupTitle(strDeviceId));
+	strAlertContent = strTmp;
+
+	//strTmp = CAlertMain::ReplaceStdString(strAlertContent, "@Status@", CAlertMain::GetMonitorPropValue(strAlertMonitorId, "_stateString"));
+	strTmp = CAlertMain::ReplaceStdString(strAlertContent, "@Status@", strEventDes);	
+	strAlertContent = strTmp;
+
+	int nUnit = 0;
+	sscanf(CAlertMain::GetMonitorPropValue(strAlertMonitorId, "_frequencyUnit").c_str(), "%d", &nUnit);
+	string strFreq;
+	if(nUnit==60)
+	{
+		//strFreq = "监测频率:";
+		//strFreq += CAlertMain::GetMonitorPropValue(strAlertMonitorId, "_frequency");
+		//strFreq += "分钟";
+		strFreq = CAlertMain::strMontorFreq.c_str();
+		strFreq += ":";
+		strFreq += CAlertMain::GetMonitorPropValue(strAlertMonitorId, "_frequency");
+		strFreq += CAlertMain::strMinute.c_str();
+
+	}
+	else
+	{
+		//strFreq = "监测频率:";
+		//strFreq += CAlertMain::GetMonitorPropValue(strAlertMonitorId, "_frequency");
+		//strFreq += "小时";
+
+		strFreq = CAlertMain::strMontorFreq.c_str();
+		strFreq += ":";
+		strFreq += CAlertMain::GetMonitorPropValue(strAlertMonitorId, "_frequency");
+		strFreq += CAlertMain::strHour.c_str();
+	}
+
+	strTmp = CAlertMain::ReplaceStdString(strAlertContent, "@frequency@", strFreq);
+	strAlertContent = strTmp;
+
+
+	//strTmp = CAlertMain::ReplaceStdString(strAlertContent, "@Time@",  CAlertMain::GetMonitorPropValue(strAlertMonitorId, "_lastMeasurementTime"));
+	strTmp = CAlertMain::ReplaceStdString(strAlertContent, "@Time@",  strTime);	
+	strAlertContent = strTmp;
+
+	//2006-10-23 jiang 
+	OBJECT hTemplet;
+	OBJECT hMon = GetMonitor(strAlertMonitorId);
+	/*
+	std::string getvalue;
+	MAPNODE ma=GetMonitorMainAttribNode(hMon);
+	std::string szErrorValue;
+	//monitortemplet ID
+	if ( FindNodeValue( ma,"sv_monitortype",getvalue) )
+	{			
+		//monitortemplet 句柄
+		hTemplet = GetMonitorTemplet(atoi(getvalue.c_str()));
+		MAPNODE node = GetMTMainAttribNode(hTemplet);
+		//monitortemplet 标签
+		
+		//报告设置是否显示阀值
+		MAPNODE errorNode = GetMTErrorAlertCondition(hTemplet);
+		FindNodeValue(errorNode, "sv_value", szErrorValue);			
+
+	}
+	*/
+
+	//--------------------------------------------------------------------
+	//_zouxiao_2008.7.18
+	//读实际存在的监测器信息，而不是监测器模板的信息
+	string strErrorValue;
+	
+	MAPNODE map;
+	
+	if(nEventType == 1)
+	{
+		map=GetMonitorGoodAlertCondition(hMon);
+	}
+	else if(nEventType == 2)
+	{
+		map=GetMonitorWarningAlertCondition(hMon);
+	}
+	else if(nEventType == 3)
+	{
+		map=GetMonitorErrorAlertCondition(hMon);
+	}
+	else if(nEventType == 4)
+	{
+		map=GetMonitorErrorAlertCondition(hMon);
+	}
+	else if(nEventType == 5)
+	{
+		map=GetMonitorErrorAlertCondition(hMon);
+	}
+	else
+	{
+		map=GetMonitorErrorAlertCondition(hMon);
+	}
+
+	string strCondCount;
+	FindNodeValue(map,"sv_conditioncount",strCondCount);
+	int nCondCount=atoi(strCondCount.c_str());
+
+	for(int i=0;i!=nCondCount;i++)
+	{
+		char chtemp[256];
+		string strtemp;
+
+		if(i!=0)
+		{
+			strErrorValue+=" ";
+			
+			FindNodeValue(map,"sv_expression",strtemp);
+
+			sprintf(chtemp,"%d#",i);
+
+			int pos1=strtemp.find(chtemp);
+			
+			int j=i+1;
+			memset(chtemp,0,256);
+
+			sprintf(chtemp,"#%d",j);
+
+			int pos2=strtemp.find(chtemp);
+
+			
+
+			int count=pos2-pos1-2;
+			strErrorValue+=strtemp.substr(pos1+2,count);
+			
+			strErrorValue+=" ";
+		}
+		
+		sprintf(chtemp,"sv_paramname%d",i+1);
+        FindNodeValue(map,chtemp,strtemp);
+		string strchinesetemp;
+		ToChinese(strchinesetemp,strtemp);
+		strErrorValue+=strchinesetemp;
+		//strErrorValue+=strtemp;
+
+		sprintf(chtemp,"sv_operate%d",i+1);
+        FindNodeValue(map,chtemp,strtemp);
+		strErrorValue+=strtemp;
+
+		sprintf(chtemp,"sv_paramvalue%d",i+1);
+        FindNodeValue(map,chtemp,strtemp);
+		strErrorValue+=strtemp;
+	}
+
+	if( hMon != INVALID_VALUE )
+	{
+		CloseMonitor(hMon);
+	}
+	//--------------------------------------------------------------------
+	
+	//strAlertContent += "\n阀值:     ";
+	strAlertContent += "\n";
+	strAlertContent += CAlertMain::strMonitorFazhi.c_str();
+	strAlertContent += "       ";
+	strAlertContent += strErrorValue;
+	strAlertContent += "\n";
+#endif
 	//End
 	//printf("Log End");
 }
@@ -3018,11 +3302,11 @@ void CAlertSmsSendObj::MakeWebAlertContent()
 //	GetIniFileValueType("WebSmsConfige" , strSmsTemplateValue , "TxtTemplate.Ini");
 	
 //	strAlertContent.clear();
-	strAlertContent = GetIniFileString("WebSmsConfige", strSmsTemplateValue, "", "TxtTemplate.Ini");
+	strAlertContent = GetIniFileString("WebSmsConfige", strSmsTemplateValue, "", "TXTTemplate.ini");
 	
 	memset(strTempInfo , '\0' , sizeof(strTempInfo)/sizeof(char));
 	sprintf(strTempInfo , "参数%s从短信模板中获得的模板参数:%s", strSmsTemplateValue.c_str() , strAlertContent.c_str());
-	WriteLog(strTempInfo);
+	//WriteLog(strTempInfo);
 	
 	size_t nLength = strAlertContent.length();
  	size_t nPos=strAlertContent.find("\\;");
@@ -3035,9 +3319,15 @@ void CAlertSmsSendObj::MakeWebAlertContent()
 
 	strTmp = CAlertMain::ReplaceStdString(strAlertContent, "@Group@", CAlertMain::GetDeviceTitle(strAlertMonitorId));
 	strAlertContent = strTmp;
+	/*WriteLog("Group:");
+	WriteLog(strAlertContent.c_str());
+	WriteLog("Group:");*/
 
 	strTmp = CAlertMain::ReplaceStdString(strAlertContent, "@monitor@", CAlertMain::GetMonitorTitle(strAlertMonitorId));
 	strAlertContent = strTmp;
+   /* WriteLog("monitor:");
+	WriteLog(strAlertContent.c_str());
+	WriteLog("monitor:");*/
 
 	string strDeviceId = FindParentID(strAlertMonitorId);	
 	//string strGrouptId = FindParentID(strDeviceId);
@@ -3048,8 +3338,9 @@ void CAlertSmsSendObj::MakeWebAlertContent()
 	strTmp = CAlertMain::ReplaceStdString(strAlertContent , "@AllGroup@" , strTempTo);
 //	strTmp = CAlertMain::ReplaceStdString(strAlertContent, "@AllGroup@", CAlertMain::GetAllGroupTitle(strDeviceId));
 	strAlertContent = strTmp;
+	/*WriteLog("AllGroup:");
 	WriteLog(strAlertContent.c_str());
-
+    WriteLog("AllGroup:");*/
 	//strTmp = CAlertMain::ReplaceStdString(strAlertContent, "@Status@", CAlertMain::GetMonitorPropValue(strAlertMonitorId, "_stateString"));
 //	strTmp = CAlertMain::ReplaceStdString(strAlertContent, "@Status@", strEventDes);
 	strTmp = CAlertMain::ReplaceStdString(strAlertContent, "@Status@", CAlertMain::GetMonitorRecordState(strAlertMonitorId));
@@ -3771,7 +4062,7 @@ bool CAlertSmsSendObj::SendSmsFromWeb()
 
 	string strWebHead;
 	//从短信模板中读出短信头的模板
-	strWebHead = GetIniFileString("WebSmsConfige", strSmsTemplateValue, "", "TxtTemplate.Ini");
+	strWebHead = GetIniFileString("WebSmsConfige", strSmsTemplateValue, "", "TXTTemplate.ini");
 	
 	WriteLog(strWebHead.c_str());
 
@@ -3838,75 +4129,96 @@ bool CAlertSmsSendObj::SendSmsFromWeb()
 	}
 	strAlertContent.erase(0, strAlertContent.find_first_not_of(strTrim));
 	strAlertContent.erase(strAlertContent.find_last_not_of(strTrim) + 1);
-
-	std::list<string> listSms;
-	std::list<string>::iterator listSmsItem;
+    //bin.liu
 	string strSend;
-	//将短信截断
-	CAnalyzer4_bstr_t Analyzer;
-	_bstr_t strMsgs = strAlertContent.c_str();
-	OutputDebugString(strAlertContent.c_str());
-	//	int nMaxSMSLen = MAX_SMS_LENGTH;
-	//修改为用户设定的值
-
-	// 对原始短信正文进行宽字符分段
-	int nPage = Analyzer.Analyzer( strMsgs, nSMSMaxLength );
-//	sprintf(dechar, "npage = %d; len=%d", nPage, strAlertContent.length());
-//	OutputDebugString(dechar);
-
-	for (int i = 0; i < nPage; i++)
-	{
-		char buf[300] = {0};
-		_bstr_t strMsg = Analyzer.GetResult(i);
-		strcpy(buf, strMsg);
-		listSms.push_back(buf);
-	}
 	string url;
-	for(listSmsItem = listSms.begin(); listSmsItem!=listSms.end(); listSmsItem++)
+	url = urlEncoding(strAlertContent);
+    strTmp = CAlertMain::ReplaceStdString(strWebHead, "@Content@", url );
+	strSend = strTmp;
+    WriteLog(strSend.c_str());
+	char buf[1024] = {0};	
+	if(GetSourceHtml(strSend.c_str(), buf))
 	{
-		char buf[1024] = {0};		
-		//替换内容
-//		url.clear();
-		url = urlEncoding(*listSmsItem);
-//		strTmp.clear();
-		strTmp = CAlertMain::ReplaceStdString(strWebHead, "@Content@", url );
-//		strSend.clear();
-		strSend = strTmp;
-
-//判断是否发送正常
-		if(GetSourceHtml(strSend.c_str(), buf))
-		{
-			WriteLog("短信发送成功！");
-			WriteLog(buf);
-		}
-		else
-		{
-			WriteLog("短信发送失败！");
-			WriteLog(buf);
-		}
-		string sRet = buf;
-		string::size_type indexBeg,indexEnd;
-		static const string::size_type npos = -1;
-		indexBeg = sRet.find("smstotal=");
-		if (indexBeg != npos)
-		{
-			indexEnd = sRet.find("&");
-			string strNum = sRet.substr(indexBeg+strlen("smstotal="), indexEnd-(indexBeg+strlen("smstotal=")));
-			OutputDebugString("sxc");
-			OutputDebugString(strNum.c_str());
-			OutputDebugString("sxc");
-			int num = 0;
-			num = atoi(strNum.c_str());
-			if (!num)
-			{
-				bRet = false;
-			}
-		}
-		else
-		{
-			bRet = false;
-		}
+		WriteLog("短信发送成功！");
+		WriteLog(buf);
+		return true;
 	}
+	else
+	{
+		WriteLog("短信发送失败！");
+		WriteLog(buf);
+		return false;
+	}
+
+//	std::list<string> listSms;
+//	std::list<string>::iterator listSmsItem;
+//	string strSend;
+//	//将短信截断
+//	CAnalyzer4_bstr_t Analyzer;
+//	_bstr_t strMsgs = strAlertContent.c_str();
+//	OutputDebugString(strAlertContent.c_str());
+//	//	int nMaxSMSLen = MAX_SMS_LENGTH;
+//	//修改为用户设定的值
+//
+//	// 对原始短信正文进行宽字符分段
+//	int nPage = Analyzer.Analyzer( strMsgs, nSMSMaxLength );
+////	sprintf(dechar, "npage = %d; len=%d", nPage, strAlertContent.length());
+////	OutputDebugString(dechar);
+//
+//	for (int i = 0; i < nPage; i++)
+//	{
+//		char buf[300] = {0};
+//		_bstr_t strMsg = Analyzer.GetResult(i);
+//		strcpy(buf, strMsg);
+//		listSms.push_back(buf);
+//	}
+//	string url;
+//	for(listSmsItem = listSms.begin(); listSmsItem!=listSms.end(); listSmsItem++)
+//	{
+//		char buf[1024] = {0};		
+//		//替换内容
+////		url.clear();
+//		url = urlEncoding(*listSmsItem);
+////		strTmp.clear();
+//		strTmp = CAlertMain::ReplaceStdString(strWebHead, "@Content@", url );
+////		strSend.clear();
+//		strSend = strTmp;
+//
+////判断是否发送正常
+//		WriteLog(strSend.c_str());
+//		if(GetSourceHtml(strSend.c_str(), buf))
+//		{
+//			WriteLog("短信发送成功！");
+//			WriteLog(buf);
+//		}
+//		else
+//		{
+//			WriteLog("短信发送失败！");
+//			WriteLog(buf);
+//		}
+//		string sRet = buf;
+//		string::size_type indexBeg,indexEnd;
+//		static const string::size_type npos = -1;
+//		indexBeg = sRet.find("smstotal=");
+//		if (indexBeg != npos)
+//		{
+//			indexEnd = sRet.find("&");
+//			string strNum = sRet.substr(indexBeg+strlen("smstotal="), indexEnd-(indexBeg+strlen("smstotal=")));
+//			OutputDebugString("sxc");
+//			OutputDebugString(strNum.c_str());
+//			OutputDebugString("sxc");
+//			int num = 0;
+//			num = atoi(strNum.c_str());
+//			if (!num)
+//			{
+//				bRet = false;
+//			}
+//		}
+//		else
+//		{
+//			bRet = false;
+//		}
+//	}
 
 	return bRet;
 

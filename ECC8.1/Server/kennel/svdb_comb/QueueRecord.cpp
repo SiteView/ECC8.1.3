@@ -121,12 +121,12 @@ BOOL QueueRecord::CreateObjectByRawData(const char *lpbuf,S_UINT bufsize)
 		if(pt>pend)
 			return false;
 
-		if(dlen!=bufsize)
+		if(dlen>bufsize)
 		{
 			puts("Raw data error");
 			return false;
 		}
-
+		
 		memmove(&m_createtime,pt,sizeof(svutil::TTime));
 		pt+=sizeof(svutil::TTime);
 		if(pt>pend)

@@ -344,7 +344,7 @@ bool RunProcess(PROCESS_INFORMATION*pi,string ProcessName)
 
     STARTUPINFO si;
   //  PROCESS_INFORMATION pi;
-	string strDir=GetRootPath();
+	string strDir=GetRootPathFromKeyCore();
 	strDir+="\\fcgi-bin\\";
 
 	DWORD dcid=::GetCurrentProcessId();
@@ -354,7 +354,7 @@ bool RunProcess(PROCESS_INFORMATION*pi,string ProcessName)
     ZeroMemory( pi, sizeof(PROCESS_INFORMATION) );
 
 
-//	strCommandLine.Format("%s\\fcgi-bin\\%s",GetRootPath(),(LPCSTR)ProcessName);
+//	strCommandLine.Format("%s\\fcgi-bin\\%s",GetRootPathFromKeyCore(),(LPCSTR)ProcessName);
 
 
 	int n=0;

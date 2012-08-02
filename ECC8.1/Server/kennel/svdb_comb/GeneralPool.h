@@ -36,13 +36,14 @@ public:
 	bool WriteData(word section,word key,void *data,S_UINT len);
     bool GetData(word section,word key,void *data,S_UINT &len);
     
+	bool WriteManyString(word section, const char *data,S_UINT datalen);
 	bool WriteString(word section, word key, word str);
 	word GetString(word section, word key,word defaultret="");
 
 	bool WriteInt(word section,word key,int value);
 	int GetInt(word section,word key, int defaultret=0);
 
-	bool GetSectionsName(std::list<string> &sections);
+	bool GetSectionsName(std::list<string> &sections, std::string inifilename="");
 	bool GetKeysName(word section,std::list<string> &keylist);
 
 	int  GetValueTypeBySectionAndKey(word section,word key);

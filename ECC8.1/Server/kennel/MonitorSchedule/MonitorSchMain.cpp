@@ -8,6 +8,8 @@ extern Util *putil;
 extern CString g_strRootPath;
 extern string	g_ServerHost;
 
+int gnTotal(0);
+void WriteLog( const char* str );
 
 MonitorSchMain::MonitorSchMain()
 {
@@ -122,6 +124,7 @@ BOOL MonitorSchMain::Init()
 		}
 	}
 
+
 	if((m_pOption->m_UseLocalBuffer)&&!flag)
 		SerialMonitorData(true);
 
@@ -137,14 +140,75 @@ BOOL MonitorSchMain::Init()
 	if(m_pCommThread==NULL)
 		throw MSException("Create communication thread failed");
 	m_pCommThread->Start();
-
+	
 	if( Univ::enablemass )
 	{
 		m_pAppendThread=new CAppendMassRecord();
-		if(m_pCommThread==NULL)
+		if(m_pAppendThread==NULL)
 			throw MSException("Create append mass records thread failed");
 		m_pAppendThread->Start();
 	}
+	
+
+	/*
+	ThreadContrl* m_pThreadContrl=new ThreadContrl(this);
+	if(!m_pThreadContrl->Init())
+		throw MSException("Error : initialize threads contrl failed");
+
+	CMonitorList &MonitorList=GetMonitorList();
+	CMonitorList::iterator it,tempit;
+	Monitor *pMonitor=NULL;
+
+	int i(0);
+	int num(0);
+
+	::Sleep(8000);
+
+	unsigned long nBeginTime(0), nEndTime(0);
+	nBeginTime = ::GetTickCount();
+	nEndTime = ::GetTickCount();
+
+	while(true)
+	{
+		it=MonitorList.begin();
+		while(it!=MonitorList.end())
+		{
+			i++;
+
+			/*
+			if( kkk >= 1)
+			{
+				OutputDebugString("Stop work!\n");
+
+				kkk = 0;
+
+				::Sleep(10000);
+
+				char szTemp[100] = {0};
+				sprintf( szTemp, "begin work:%d\n", kkk );
+				OutputDebugString(szTemp);
+				
+			}
+			*/
+			/*
+	
+			pMonitor=*it++;
+			m_pThreadContrl->StartMonitor(pMonitor);
+			m_pThreadContrl->PrintTaskQueueInfo();
+
+			if( gnTotal > 100 )
+			{
+				nEndTime = ::GetTickCount();
+
+				char szTemp[1024] = {0};
+				sprintf( szTemp, "执行线程用时：%d\n", (nEndTime-nBeginTime) );
+				WriteLog( szTemp );
+			}
+		}
+	}
+	
+	*/
+
 	return TRUE;
 }
 
@@ -193,7 +257,7 @@ BOOL MonitorSchMain::CheckGroupDependState(Monitor *pMonitor,CString &strDependI
 		nstate = (nstate==Monitor::STATUS_BAD) ? Monitor::STATUS_ERROR : nstate;
 
 		//sprintf(mes,"In depend yes Monitor id:%s,depend monitorid:%s,last state:%d,DependCondition:%d",pMonitor->GetMonitorID(),pGM->GetMonitorID(),nstate,pMonitor->GetGroupDependCondition());
-		//putil->ErrorLog(mes);
+		////putil->ErrorLog(mes);
 
 		if(nstate!=pMonitor->GetGroupDependCondition())
 		{
@@ -234,7 +298,7 @@ BOOL MonitorSchMain::CheckGroupDependState(Monitor *pMonitor,CString &strDependI
 	if(strlen(DependMonitorID)>0)
 	{
 //		sprintf(mes,"In entity Monitor id:%s,DependCondition:%d",pMonitor->GetMonitorID(),pMonitor->GetGroupDependCondition());
-//		putil->ErrorLog(mes);
+//		//putil->ErrorLog(mes);
 
 	
 		nCondition=pEntity->GetDependsCondition();
@@ -262,7 +326,7 @@ BOOL MonitorSchMain::CheckGroupDependState(Monitor *pMonitor,CString &strDependI
 		nstate = (nstate==Monitor::STATUS_BAD) ? Monitor::STATUS_ERROR : nstate;
 
 		//sprintf(mes,"In depend yes Monitor id:%s,depend monitorid:%s,last state:%d,DependCondition:%d",pMonitor->GetMonitorID(),pGM->GetMonitorID(),nstate,nCondition);
-		//putil->ErrorLog(mes);
+		////putil->ErrorLog(mes);
 
 		if(nCondition!=nstate)
 		{
@@ -288,7 +352,7 @@ BOOL MonitorSchMain::CheckGroupDependState(Monitor *pMonitor,CString &strDependI
 		if(strlen(DependMonitorID)>0)
 		{
 		//sprintf(mes,"In group Monitor id:%s,DependCondition:%d",pMonitor->GetMonitorID(),nstate,pMonitor->GetGroupDependCondition());
-		//putil->ErrorLog(mes);
+		////putil->ErrorLog(mes);
 
 			nCondition=pGroup->GetDependsCondition();
 			if(nCondition<1||nCondition>4)
@@ -313,7 +377,7 @@ BOOL MonitorSchMain::CheckGroupDependState(Monitor *pMonitor,CString &strDependI
 			nstate=pGM->GetLastState();
 			nstate = (nstate==Monitor::STATUS_BAD) ? Monitor::STATUS_ERROR : nstate;
 		//	sprintf(mes,"In group yes Monitor id:%s,depend monitorid:%s,last state:%d,DependCondition :%d",pMonitor->GetMonitorID(),pGM->GetMonitorID(),nstate,nCondition);
-		//putil->ErrorLog(mes);
+		////putil->ErrorLog(mes);
 
 
 			if(nCondition!=nstate)
@@ -336,10 +400,12 @@ BOOL MonitorSchMain::CheckGroupDependState(Monitor *pMonitor,CString &strDependI
 
 }
 
-bool MonitorSchMain::CheckTask(Monitor *pMonitor,CTime ct,bool &isabs)
+//bool MonitorSchMain::CheckTask(Monitor *pMonitor,CTime ct,bool &isabs) //检查任务计划
+bool MonitorSchMain::CheckTask(Monitor *pMonitor,CTime ct,int &isabs)
 {
 	ost::MutexLock lock(m_TaskMutex);
-	isabs=false;
+	//isabs=false;
+	isabs=0; //modify by LiMing 09.8.27
 
 	string task=pMonitor->GetTaskName();
 	if(task.empty())
@@ -348,22 +414,24 @@ bool MonitorSchMain::CheckTask(Monitor *pMonitor,CTime ct,bool &isabs)
 	if(pt==NULL)
 		return true;
 
-	int wd=ct.GetWeekDay();
+	int wd=ct.GetWeekDay(); //一周的天数,0代表周日
 	if((wd<0)||(wd>6))
 		return true;
 
-	int hour=ct.GetHour();
+	int hour=ct.GetHour(); //当前时间
 	int minute=ct.GetMinute();
 
-	int n=(*pt)->m_week[wd].m_task.size();
+	int n=(*pt)->m_week[wd].m_task.size(); //n=7,一周的天数
 
-	if((*pt)->m_type==Task::TASK_ABSOLUTE)
+	if((*pt)->m_type==Task::TASK_ABSOLUTE) //绝对任务计划
 	{
-		isabs=true;
-		for(int i=0;i<n;i++)
+		//isabs=true;
+		isabs=1; //modify by LiMing 09.9.27
+		for(int i=0;i<n;i++) //判断当前时间是否与任务计划时间匹配
 		{
 			if(hour==(*pt)->m_week[wd].m_task[i].m_beginhour)
-				if(minute==(*pt)->m_week[wd].m_task[i].m_beginminute)
+				//if(minute==(*pt)->m_week[wd].m_task[i].m_beginminute)
+				if(minute>=(*pt)->m_week[wd].m_task[i].m_beginminute) //modify by LiMing 09.8.27
 				{
 					if((*pt)->m_week[wd].m_enable)
 				    	return true;
@@ -372,14 +440,18 @@ bool MonitorSchMain::CheckTask(Monitor *pMonitor,CTime ct,bool &isabs)
 				}
 		}
 
-		if((*pt)->m_week[wd].m_enable)
+		//if((*pt)->m_week[wd].m_enable)
+		if ((*pt)->m_week[wd].m_enable || hour!=(*pt)->m_week[wd].m_task[i].m_beginhour || 
+			                              minute<(*pt)->m_week[wd].m_task[i].m_beginminute) //modify by LiMing 09.8.27
 	    	return false;
 		else
 			return true;
 
-	}else if((*pt)->m_type==Task::TASK_RELATIVE)
+	}
+	else if((*pt)->m_type==Task::TASK_PERIOD) //时间段任务计划
 	{
-		isabs=false;
+		//isabs=false;
+		isabs=2; //modify by LiMing 09.9.27
 
 		CTime btm;
 		CTime etm;
@@ -398,12 +470,33 @@ bool MonitorSchMain::CheckTask(Monitor *pMonitor,CTime ct,bool &isabs)
 			
 		}
 
-		if((*pt)->m_week[wd].m_enable)
+		//if((*pt)->m_week[wd].m_enable)
+		if((*pt)->m_week[wd].m_enable || (ct<btm || ct>etm)) //modify by LiMing 09.8.27
 	    	return false;
 		else
 			return true;
 
 	}
+	else if ((*pt)->m_type==Task::TASK_RELATIVE) //相对任务计划 add by LiMing 09.8.27
+	{
+		isabs=3;
+	
+		for (int i=0;i<24;i++)
+		{
+			if (hour==(*pt)->m_week[wd].m_task[i].m_beginhour)
+			{
+				if ((*pt)->m_week[wd].m_enable)
+					return true;
+				else
+					return false;
+			}
+		}
+		if (hour != (*pt)->m_week[wd].m_task[i].m_beginhour || (*pt)->m_week[wd].m_enable)
+			return false;
+		else
+			return true;
+
+	}   //end add
 
 	return true;
 }
@@ -1249,7 +1342,6 @@ bool MonitorSchMain::AddMonitorV70(string monitorid,bool isEdit)
 
 	if(!isEdit)
 	{
-
 		CTime ct=CTime::GetCurrentTimeEx();
 		CTimeSpan ts=CTimeSpan(0,0,0,60-ct.GetSecond());
 		ct+=ts;
@@ -1261,7 +1353,6 @@ bool MonitorSchMain::AddMonitorV70(string monitorid,bool isEdit)
 	}
 	else
 	{
-
 		CMonitorList::iterator it;
 		it=m_MonitorList.begin();
 		while(it!=m_MonitorList.end())
@@ -1537,6 +1628,7 @@ bool MonitorSchMain::ProcessConfigChange(string opt,string id)
 	m_lc.ClearBuffer();
 
 
+	Sleep(50);
 	if(name.compare("MONITOR")==0)
 	{
 		if(type.compare("ADDNEW")==0)
@@ -1624,7 +1716,7 @@ bool MonitorSchMain::SerialMonitorData(bool out)
 		
 	}catch(...)
 	{
-		putil->ErrorLog("SerialData exception");
+		//putil->ErrorLog("SerialData exception");
 	}
 	return true;
 }

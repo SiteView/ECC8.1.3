@@ -45,6 +45,7 @@ public:
 
 	bool GetInfo(word infoname,StringMap &map)
 	{
+		ost::MutexLock lock(m_UpdateLock);
 		TOPOLOGYCHARTMAP::iterator it;
 		while(m_data.findnext(it))
 		{
@@ -65,6 +66,7 @@ public:
 
 	bool GetInfoByKey(string key,string value,std::list<string> &idlist)
 	{
+		ost::MutexLock lock(m_UpdateLock);
 		TOPOLOGYCHARTMAP::iterator it;
 		bool flag=false;
 		while(m_data.findnext(it))
@@ -96,6 +98,7 @@ public:
 
 	bool GetInfoByProperty(string key,string value,std::list<string> &idlist)
 	{
+		ost::MutexLock lock(m_UpdateLock);
 		TOPOLOGYCHARTMAP::iterator it;
 		bool flag=false;
 		while(m_data.findnext(it))

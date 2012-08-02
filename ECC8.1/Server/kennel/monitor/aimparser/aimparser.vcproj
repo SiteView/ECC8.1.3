@@ -81,7 +81,7 @@
 			CharacterSet="2">
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="D:\SiteView\Ecc_Common"
+				AdditionalIncludeDirectories="../../../include"
 				PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG;_USRDLL"
 				RuntimeLibrary="2"
 				TreatWChar_tAsBuiltInType="TRUE"
@@ -149,13 +149,13 @@
 				RelativePath=".\AimParser.def">
 			</File>
 			<File
-				RelativePath="..\..\..\SiteView\Ecc_Common\Base\funcGeneral.cpp">
+				RelativePath="..\..\..\include\Base\funcGeneral.cpp">
 			</File>
 			<File
 				RelativePath=".\stdafx.cpp">
 			</File>
 			<File
-				RelativePath="..\..\..\SiteView\Ecc_Common\Base\stlini.cpp">
+				RelativePath="..\..\..\include\Base\stlini.cpp">
 			</File>
 		</Filter>
 		<Filter
@@ -166,7 +166,7 @@
 				RelativePath=".\aimparser.h">
 			</File>
 			<File
-				RelativePath="..\..\..\SiteView\Ecc_Common\Base\funcGeneral.h">
+				RelativePath="..\..\..\include\Base\funcGeneral.h">
 			</File>
 			<File
 				RelativePath=".\Resource.h">
@@ -175,7 +175,7 @@
 				RelativePath=".\stdafx.h">
 			</File>
 			<File
-				RelativePath="..\..\..\SiteView\Ecc_Common\Base\stlini.h">
+				RelativePath="..\..\..\include\Base\stlini.h">
 			</File>
 		</Filter>
 		<Filter

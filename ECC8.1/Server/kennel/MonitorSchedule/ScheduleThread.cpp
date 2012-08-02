@@ -1,6 +1,7 @@
 #include "ScheduleThread.h"
 #include "MakeRecord.h"
 
+
 extern Util *putil;
 extern CString g_strRootPath;
 extern string g_ServerHost;
@@ -9,7 +10,7 @@ extern CTime g_LastSchTime;
 const char *str_disable="监测器被禁止";
 const char *str_gddisable="监测器被组依靠禁止所依靠监测器ID:%s";
 const char *str_taskplandisable="监测器被任务计划禁止,任务计划名称:%s";
-const char *str_tempdisable="监测器被监时禁止,起始时间:%s,终止时间:%s";
+const char *str_tempdisable="监测器被临时禁止,起始时间:%s,终止时间:%s";
 
 
 string s_str_disable=str_disable;
@@ -17,6 +18,7 @@ string s_str_gddisable=str_gddisable;
 string s_str_taskplandisable=str_taskplandisable;
 string s_str_tempdisable=str_tempdisable;
 
+void WriteLog( const char* str );
 
 ScheduleThread::ScheduleThread():ThreadEx()
 {
@@ -27,6 +29,23 @@ ScheduleThread::ScheduleThread():ThreadEx()
 ScheduleThread::~ScheduleThread()
 {
 
+}
+
+
+void myPrintLog(char *LogMes)
+{
+	FILE *fp = NULL;
+	if ((fp=fopen("dyMonitorSchedule.log", "a"))==NULL)
+	{
+		printf("open error \r\n");
+		return ;
+	}
+
+
+	fwrite(LogMes, 1, strlen(LogMes), fp);
+	fwrite("\r\n", 1, sizeof("\r\n")-1, fp);
+
+	fclose(fp);
 }
 
 void ScheduleThread::run()
@@ -45,7 +64,8 @@ void ScheduleThread::run()
 
 	int n=0;
 	int TaskType=0;
-	bool isABS=false;
+	//bool isABS=false;
+	int isABS=0; //modify by LiMing 09.8.27
 
 	curTime=CTime::GetCurrentTimeEx();                   //锟斤拷锟?
 	//::Sleep((61-curTime.GetSecond())*1000);
@@ -66,8 +86,18 @@ void ScheduleThread::run()
 
 		while(TRUE)
 		{
-
 			curTime=CTime::GetCurrentTimeEx();
+//dy----------------------------------------------------
+			CString   m_strNowTime;  
+			m_strNowTime   =   ("当前时间：") + curTime.Format(); 
+			char *str = m_strNowTime.GetBuffer(m_strNowTime.GetLength()); 
+			myPrintLog(str);
+//dy----------------------------------------------------
+
+			char szTemp[1024] = {0};
+			sprintf( szTemp, "\n调度时间：%s", curTime.Format().c_str() );
+			WriteLog(szTemp);
+
 		//	printf(">>>>>>>>>>>>>>>>>>>>>>>>>>Begin List :%s<<<<<<<<<<<<<<<<<<<<<<<<<<<\n",curTime.Format().c_str());
 			m_pThreadContrl->PrintTaskQueueInfo();
 			printf("Current time is :%s\n",curTime.Format().c_str());
@@ -100,8 +130,14 @@ void ScheduleThread::run()
 							continue;
 						}
 
-						TaskType=pMonitor->GetTaskType();
-						if(TaskType==Task::TASK_NULL)
+						TaskType=pMonitor->GetTaskType();  
+//dy----------------------------------------------------
+						char temp[50];
+						sprintf(temp, "TaskType = %d", TaskType);
+						myPrintLog(temp);
+//dy----------------------------------------------------
+						/*
+						if(TaskType==Task::TASK_NULL) //修改前的
 						{
 							m_pSchMain->CheckTask(pMonitor,curTime,isABS);
 							if(isABS)
@@ -111,17 +147,39 @@ void ScheduleThread::run()
 
 							pMonitor->SetTaskType(TaskType);
 						}
+						*/
 
+						if(TaskType==Task::TASK_NULL) //modify by LiMing 09.8.27
+						{
+							m_pSchMain->CheckTask(pMonitor,curTime,isABS);
+							if(1==isABS)
+								TaskType=Task::TASK_ABSOLUTE;
+							else if(2==isABS)
+								TaskType=Task::TASK_PERIOD;
+							else if(3==isABS)
+								TaskType=Task::TASK_RELATIVE;
 
-						if((pMonitor->GetNextRunTime()<=curTime)||(TaskType==Task::TASK_ABSOLUTE))
+							pMonitor->SetTaskType(TaskType);
+						}                           //end modify
+//dy--------------------------------------------
+					    CString   m_strNowTime2;
+						m_strNowTime2   =   ("pMonitor->GetNextRunTime()：") + pMonitor->GetNextRunTime().Format(); 
+						char *str2 = m_strNowTime2.GetBuffer(m_strNowTime2.GetLength()); 
+						myPrintLog(str2);
+		 
+
+						if((pMonitor->GetNextRunTime()<=curTime)||(TaskType==Task::TASK_ABSOLUTE)) 
 						{
 							//						if(stricmp(pMonitor->GetMonitorID(),"4ebe425d-eedf-4d84-b4f6-b1a4b844d1df")!=0)
 							//							continue;
+//dy--------------------------------------------
+							myPrintLog("in TASK_ABSOLUTE");
 
-							if(pMonitor->GetDisable())
+							if(pMonitor->GetDisable()) //判断是否为禁用
 							{
 								printf("==========monitorid:%s-----disable==================\n",pMonitor->GetMonitorID());
-
+//dy--------------------------------------------
+								myPrintLog("in 判断是否为禁用");
 								MakeRecord mr(ebuf,1024,Monitor::STATUS_DISABLE);
 								mr.MakeError(Monitor::STATUS_DISABLE,s_str_disable);
 								char *pt=ebuf;
@@ -136,10 +194,11 @@ void ScheduleThread::run()
 
 								continue;
 							}
-							if(pMonitor->GetTempDisableStateByTime(curTime))
+							if(pMonitor->GetTempDisableStateByTime(curTime)) //判断是否暂时禁用
 							{
 								printf("==========monitorid:%s-----temp disable==================\n",pMonitor->GetMonitorID());
-
+//dy--------------------------------------------
+								myPrintLog("in 判断是否暂时禁用");
 								MakeRecord mr(ebuf,1024,Monitor::STATUS_DISABLE);
 								char mes[256]={0};
 								sprintf(mes,(const char *)s_str_tempdisable.c_str(),pMonitor->GetBeginTDTime().Format().c_str(),
@@ -158,13 +217,16 @@ void ScheduleThread::run()
 								continue;
 
 							}
-							if(!m_pSchMain->CheckTask(pMonitor,curTime,isABS))
+							if(!m_pSchMain->CheckTask(pMonitor,curTime,isABS)) //检查任务计划
 							{
-								puts("------------------Disable by task plan------------------------");
-
+								printf("------------------Disable by task plan------------------------");
+//dy--------------------------------------------
+								myPrintLog("in 检查任务计划");
 								if(pMonitor->GetNextRunTime()<=curTime)
 								{
-									MakeRecord mr(ebuf,1024,Monitor::STATUS_DISABLE);
+
+//dy--------------------------------------------
+									myPrintLog("in 检查成功");									MakeRecord mr(ebuf,1024,Monitor::STATUS_DISABLE);
 									char mes[256]={0};
 									sprintf(mes,(const char *)s_str_taskplandisable.c_str(),pMonitor->GetTaskName().c_str());
 									mr.MakeError(Monitor::STATUS_DISABLE,mes);
@@ -185,10 +247,11 @@ void ScheduleThread::run()
 								continue;
 							}
 
-							if(m_pSchMain->CheckGroupDependState(pMonitor,strDependID))
+							if(m_pSchMain->CheckGroupDependState(pMonitor,strDependID)) //检查组依赖状态
 							{
 								puts("-----------------------Disable by group depend---------------------");
-
+//dy--------------------------------------------
+								myPrintLog("in 检查组依赖状态");
 								MakeRecord mr(ebuf,1024,Monitor::STATUS_DISABLE);
 								char mes[256]={0};
 								sprintf(mes,(const char *)s_str_gddisable.c_str(),(char *)strDependID);
@@ -221,7 +284,9 @@ void ScheduleThread::run()
 			}
 			endTime=CTime::GetCurrentTimeEx();
 
-			printf(">>>>>>>>>>>>>>>>>>>Total count is %d,time:%s<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n",n,endTime.Format().c_str());
+			sprintf( szTemp, ">>>>>>>>>>>>>>>>>>>Total count is %d,time:%s<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n",n,endTime.Format().c_str());
+			WriteLog(szTemp);
+
 
 			if(endTime.GetMinute()==curTime.GetMinute())
 				//ThreadEx::sleep((61-endTime.GetSecond())*1000);
@@ -233,7 +298,9 @@ void ScheduleThread::run()
 	{
 		CString strError="";
 		strError.Format("************Schedule thread error,Message:%s************",e.GetDescription());
-		putil->ErrorLog(strError);
+		//putil->ErrorLog(strError);
+		string strTemp = strError.getText();
+		WriteLog( strTemp.c_str() );
 
 		ExitProcess(2);
 		//::exit(1);
@@ -258,7 +325,10 @@ void ScheduleThread::run()
 	}catch(...)
 	{
 		CString strError="************Schedule thread exception*****************";
-		putil->ErrorLog(strError);
+		//putil->ErrorLog(strError);
+		string strTemp = strError.getText();
+		WriteLog( strTemp.c_str() );
+
 		ExitProcess(2);
 
 	}
@@ -336,6 +406,8 @@ BOOL ScheduleThread::InitMonitorTime()
 	it=MonitorList.begin();
 	it2=it;
 
+	char szTemp[1024] = {0};
+
 	//	while(pos)
 	while(it!=MonitorList.end())
 	{
@@ -355,6 +427,10 @@ BOOL ScheduleThread::InitMonitorTime()
 			FreSpan=CTimeSpan(0,0,nFrequency,0);
 			temtime-=FreSpan;
 			pMonitor->CalculateNextRunTime(temtime);
+
+			sprintf( szTemp, "第一个监测器的ID：%s,刷新时间：%s", pMonitor->GetMonitorID(), pMonitor->GetNextRunTime().Format().c_str() );
+			WriteLog( szTemp );
+
 			//pos2=pos;
 			it2=it;
 			n=0;
@@ -371,11 +447,15 @@ BOOL ScheduleThread::InitMonitorTime()
 					++n;
 					++sec;
 					temtime=time;
-					ts=CTimeSpan(0,0,n%nFrequency+1,sec%60);
+					//ts=CTimeSpan(0,0,n%nFrequency+1,sec%60);
+					ts=CTimeSpan( 0, 0, (sec/60)%(nFrequency), sec%60 );
 					temtime+=ts;
 					temtime-=FreSpan;
 					//					printf("Freq:%d,temtime:%s,MonitorID:%s\n",nFrequency,temtime.Format("%y-%m-%d %H:%M:%S"),pMonitor->GetMonitorID());
 					pMonitor->CalculateNextRunTime(temtime);
+
+					sprintf( szTemp, "监测器的ID：%s,刷新时间：%s", pMonitor->GetMonitorID(), pMonitor->GetNextRunTime().Format().c_str() );
+					WriteLog( szTemp );
 				}
 			}
 		}

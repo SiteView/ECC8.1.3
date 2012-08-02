@@ -104,7 +104,8 @@ bool Page::swapin()
 		m_rawdata=new char[m_ppt->GetPagePoolHead().m_PageSize];
 	memset(m_rawdata,0,m_ppt->GetPagePoolHead().m_PageSize);
 
-	int pos=m_pos*m_ppt->GetPagePoolHead().m_PageSize+sizeof(struct PagePool::PagePoolHead);
+	long pos= m_ppt->GetPagePoolHead().m_PageSize;
+	pos=pos*m_pos+sizeof(struct PagePool::PagePoolHead);
 
 	if(!::SetFilePointer(m_ppt->m_hd,pos,NULL,FILE_BEGIN))
 	{
@@ -130,7 +131,8 @@ bool Page::swapout(bool isdel)
 	ost::MutexLock lock(m_ppt->m_IOMutex);
 	if(m_ischange)
 	{
-		int pos=m_pos*m_ppt->GetPagePoolHead().m_PageSize+sizeof(struct PagePool::PagePoolHead);
+		long pos= m_ppt->GetPagePoolHead().m_PageSize;
+		pos=pos*m_pos+sizeof(struct PagePool::PagePoolHead);
 		m_ischange=false;
 		if(!::SetFilePointer(m_ppt->m_hd,pos,NULL,FILE_BEGIN))
 			return false;
@@ -164,7 +166,9 @@ bool Page::swapinex()
 	if(m_rawdata==NULL)
 		m_rawdata=new char[m_ppt->GetPagePoolHead().m_PageSize];
 	memset(m_rawdata,0,m_ppt->GetPagePoolHead().m_PageSize);
-    int pos=m_mpos.m_pos*m_ppt->GetPagePoolHead().m_PageSize+sizeof(struct PagePool::PagePoolHead);
+
+	long pos= m_ppt->GetPagePoolHead().m_PageSize;
+    pos=pos*m_mpos.m_pos+sizeof(struct PagePool::PagePoolHead);
 
 	if(!::SetFilePointer(m_ppt->m_fhd[m_mpos.m_fileindex]->m_hd,pos,NULL,FILE_BEGIN))
 	{
@@ -190,7 +194,8 @@ bool Page::swapoutex(bool isdel)
 	ost::MutexLock lock(m_ppt->m_IOMutex);
 	if(m_ischange)
 	{
-		int pos=m_mpos.m_pos*m_ppt->GetPagePoolHead().m_PageSize+sizeof(struct PagePool::PagePoolHead);
+		long pos= m_ppt->GetPagePoolHead().m_PageSize;
+		pos= pos*m_mpos.m_pos+sizeof(struct PagePool::PagePoolHead);
 
 		m_ischange=false;
 		if(!::SetFilePointer(m_ppt->m_fhd[m_mpos.m_fileindex]->m_hd,pos,NULL,FILE_BEGIN))

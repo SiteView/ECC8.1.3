@@ -3,6 +3,7 @@
 
 #include "DB.h"
 #include "QueueRecord.h"
+#include "RecordSet.h"
 
 DB::DB(void)
 {
@@ -114,7 +115,7 @@ bool DB::Load()
 
 	return true;
 }
-bool DB::LoadEx()
+int DB::LoadEx()
 {
 	if(m_headpool!=NULL)
 		return false;
@@ -124,12 +125,12 @@ bool DB::LoadEx()
 	if(m_headpool==NULL)
 		return false;
 
-
-	if(!m_headpool->LoadPageEx(m_dbheadfile.c_str()))
+	int lint= m_headpool->LoadPageEx(m_dbheadfile.c_str());
+	if( lint!=1 )
 	{
 		delete m_headpool;
 		m_headpool=NULL;
-		return false;
+		return lint;
 	}
 
 
@@ -150,12 +151,15 @@ bool DB::LoadEx()
 	//if(!m_pagepool->LoadPageEx(m_dbh->m_dbfilename))
 	//	return false;
 	//this->m_dbfilename=m_dbh->m_dbfilename;
-	if(!m_pagepool->LoadPageEx(this->m_dbfilename.c_str()))
-		return false;
+	lint= m_pagepool->LoadPageEx(this->m_dbfilename.c_str());
+	if(lint!=1)
+		return lint;
 
 	m_headpool->Put(phead,false,false);
 
-	for(int i=1;i<m_headpool->GetPagePoolHead().m_TotalCount;i++)
+	int totalcount= m_headpool->GetPagePoolHead().m_TotalCount;
+	cout<<" Total tab count: "<<totalcount<<endl;
+	for(int i=1;i<totalcount;i++)
 	{
 		Page *pt=m_headpool->Get(i,false);
 		if(pt==NULL)
@@ -432,6 +436,11 @@ bool DB::InsertTable(string monitorid,int monitortype)
 				return false;
 			}
 		}
+		else
+		{
+			printf("Too many table, %d >= %d \n",m_headpool->GetPagePoolHead().m_TotalCount, MAXTABLE);
+			return false;
+		}
 	}
 	ptable->m_page->GetPageHead()->m_pagetype=PageHead::tableheadpagetype;
 	m_headpool->Put(ptable->m_page,false,false);
@@ -619,6 +628,11 @@ bool DB::InsertTableEx(string monitorid,int monitortype)
 				puts("Get page failed");
 				return false;
 			}
+		}
+		else
+		{
+			printf("Too many table, %d >= %d \n",m_headpool->GetPagePoolHead().m_TotalCount, MAXTABLE);
+			return false;
 		}
 	}
 	ptable->m_page->GetPageHead()->m_pagetype=PageHead::tableheadpagetype;
@@ -814,6 +828,84 @@ int DB::QueryRecordByTimeEx(string monitorid,svutil::TTime begin,svutil::TTime e
 
 }
 
+int DB::QueryDynWithLatestRCD(string monitorid,char *buf,S_UINT & buflen,char * & buf2,S_UINT & buflen2, string & monitorTplId, svutil::TTime intime)
+{
+	Table **ptable=NULL;
+	{
+		ost::MutexLock tablelock(m_tablemutex);
+		ptable=m_tables.find(monitorid);
+	}
+
+	if(ptable==NULL)
+	{
+		printf("Table no exist: %s\n",monitorid.c_str());
+		return TABLENOEXIST;
+	}
+
+	int ret=0;
+	{
+		ost::MutexLock((*ptable)->m_mutex);
+
+		ret=(*ptable)->QueryDyn(buf,buflen);
+		if(ret!=0||buflen==0)
+			return ret;
+		svutil::TTime time2;
+		memmove(&time2, buf, sizeof(svutil::TTime));
+		if(intime.GetTime()!=0)
+		{
+			if(time2.GetTime()==0 || intime >= time2 )
+				return -7;
+		}
+
+		int mid=(*ptable)->m_type.m_monitortype;
+		char tplid[128]={0};
+		sprintf(tplid,"%d",mid);
+		monitorTplId= tplid;
+
+		if( !(*ptable)->GetLatestRCD(buf2,buflen2) )
+		{
+			svutil::buffer tbuf;
+			if(!tbuf.checksize(QBUFFERLEN))
+				return -9;
+
+			int ret2(1);
+			char * tbuf2(NULL);
+			S_UINT tbuflen2(0);
+			int headlen(0);
+			int blen=0;
+
+			char *pbuf=tbuf;
+			S_UINT len=tbuf.size();
+			if(!(*ptable)->BuildRecordType(pbuf,len))
+				ret2=0;
+			else
+			{
+				headlen=len+sizeof(S_UINT);
+				ret2=(*ptable)->QueryRecordByCount(1,tbuf,headlen,blen);
+				RecordHead *prht=(RecordHead *)(tbuf+headlen);
+
+				if( ret2<1|| blen<=sizeof(RecordHead)||(prht->state==Record::STATUS_BAD)||(prht->state==Record::STATUS_NULL)||(prht->state==Record::STATUS_DISABLE))
+					ret2= 0;
+			}
+
+			if( ret2<1)
+			{
+				tbuf2= NULL;
+				tbuflen2= 0;
+			}
+			else
+			{
+				tbuf2= tbuf+headlen+sizeof(RecordHead);
+				tbuflen2= blen-sizeof(RecordHead);
+			}
+			(*ptable)->SetLatestRCD(tbuf2, tbuflen2);
+			(*ptable)->GetLatestRCD(buf2,buflen2);
+		}
+	}
+	return ret;
+}
+
+
 int DB::QueryDyn(string monitorid,char *buf,S_UINT&buflen)
 {
 	Table **ptable=NULL;
@@ -852,28 +944,49 @@ int DB::QueryMassDyn(string pid, std::map <string, svutil::TTime> & times, std::
 
 		svutil::buffer buf;
 		S_UINT size(0);
+
 		try{
 			if(QueryDyn(tableid,NULL,size)==0)
 			{
 				if(!buf.checksize(size))
 					continue;
-				if(QueryDyn(tableid, buf,size)==0)
-				{
-					svutil::TTime time2;
-					memmove(&time2, buf, sizeof(svutil::TTime));
 
-					mit= times.find(tableid);
-					if(mit!=times.end())
-					{
-						if( mit->second >= time2 )
-							continue;
-					}
+				char * buf2(NULL);
+				S_UINT size2(0);
+				string mtplid;
+								
+				svutil::TTime intime;
+				mit= times.find(tableid);
+				if(mit!=times.end())
+					intime= mit->second;
+
+				int get=QueryDynWithLatestRCD(tableid, buf,size, buf2,size2,mtplid,intime);
+				if(get==0)
+				{
+					std::list<SingelRecord> templistrcd;
+					SingelRecord r1;
+					r1.datalen= size;
+					r1.monitorid= tableid;
+					r1.data= buf;
+					templistrcd.push_back(r1);
+
+					SingelRecord r2;
+					r2.datalen= size2;
+					r2.monitorid= mtplid;
+					r2.data= buf2;
+					templistrcd.push_back(r2);
+
+					S_UINT templen= GetMassRecordListRawDataSize(templistrcd);
+					char * tempchar= new char[templen];
+					if(tempchar==NULL)
+						continue;
+					tempchar= GetMassRecordListRawData(templistrcd,tempchar,templen); 
+					if(tempchar==NULL)
+						continue;
 
 					SingelRecord rcd;
 					rcd.monitorid= tableid;
-					rcd.datalen= size;
-					char * tempchar= new char[size];
-					memmove(tempchar,buf,size);
+					rcd.datalen= templen;
 					rcd.data= tempchar;
 
 					listrcd.push_back(rcd);
@@ -1002,9 +1115,13 @@ bool DB::Init(string dbfilename,SvdbMain *pMain,int PerFileSize,int PageSize)
 
 	printf("DB name:%s\n",buf);
 
-	if(!LoadEx())
+	int lint= LoadEx();
+	if(lint!=1)
 	{
-		return CreateNewEx(m_dbheadfile,m_dbfilename,PageSize,1000);
+		if(lint==-1)
+			return CreateNewEx(m_dbheadfile,m_dbfilename,PageSize,1000);
+		else
+			return false;
 	}
 
 	return true;
@@ -1033,11 +1150,14 @@ bool DB::Init(string idcuser,string dbfilename,SvdbMain *pMain,int PerFileSize,i
 	//printf("DB name:%s\n",buf);
 	printf("DB of idc user: %s\n",idcuser.c_str());
 
-	if(!LoadEx())
+	int lint= LoadEx();
+	if(lint!=1)
 	{
-		return CreateNewEx(m_dbheadfile,m_dbfilename,PageSize,1000);
+		if(lint==-1)
+			return CreateNewEx(m_dbheadfile,m_dbfilename,PageSize,1000);
+		else
+			return false;
 	}
-
 	return true;
 }
 
@@ -1055,6 +1175,9 @@ int DB::AppendRecord(string monitorid,const char *data,S_UINT datalen)
 		return TABLENOEXIST;
 	}
     int nret=0;
+
+	if(IdcUser::RecordsAutoBackup && m_pMain->m_pBackupRecordThread)
+		m_pMain->m_pBackupRecordThread->AppendRecord((*ptable)->m_type.m_monitortype ,monitorid, data, datalen);
 
 	{
 		ost::MutexLock lock((*ptable)->m_mutex);

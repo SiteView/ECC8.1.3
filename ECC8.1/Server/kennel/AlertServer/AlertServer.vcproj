@@ -4,6 +4,7 @@
 	Version="7.10"
 	Name="AlertServer"
 	ProjectGUID="{8F5E209C-2832-419F-AD7B-29461B2479DD}"
+	RootNamespace="AlertServer"
 	SccProjectName=""
 	SccAuxPath=""
 	SccLocalPath=""
@@ -24,7 +25,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="../../include; ../../include/base;../../include/w32;../svdb_comb/svapi;../svdb_comb"
+				AdditionalIncludeDirectories="./w32;./include;&quot;./include/c++&quot;;c:\siteview\ecc_common\svdb\svapi;D:\Program"
 				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE"
 				MinimalRebuild="TRUE"
 				BasicRuntimeChecks="3"
@@ -37,10 +38,10 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
+				AdditionalOptions="/b/d"
 				AdditionalDependencies="ccgnu2.lib ccext2.lib svapi.lib svdes.lib"
-				OutputFile="../../bin/AlertServer.exe"
+				OutputFile="C:\SiteView\SiteView ECC\fcgi-bin\$(ProjectName).exe"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="../../lib"
 				GenerateDebugInformation="TRUE"
 				ProgramDatabaseFile="$(OutDir)/AlertServer.pdb"
 				SubSystem="1"
@@ -68,7 +69,7 @@
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory="Release"
+			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
 			IntermediateDirectory="Release"
 			ConfigurationType="1"
 			UseOfMFC="2"
@@ -77,26 +78,29 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalIncludeDirectories="../../include; ../../include/base;../../include/w32;../svdb_comb/svapi;../svdb_comb"
-				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE"
+				PreprocessorDefinitions="WIN32;DEBUG;_CONSOLE"
 				RuntimeLibrary="2"
 				RuntimeTypeInfo="FALSE"
 				UsePrecompiledHeader="0"
 				AssemblerOutput="2"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="TRUE"
-				DebugInformationFormat="0"/>
+				DebugInformationFormat="3"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
 				RegisterOutput="TRUE"
-				AdditionalDependencies="ccgnu2.lib ccext2.lib svapi.lib svdes.lib"
+				AdditionalOptions="/ignore:4089"
+				AdditionalDependencies="kernel32.lib  ccgnu2.lib ccext2.lib svapi.lib svdes.lib"
 				OutputFile="../../bin/AlertServer.exe"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="../../lib"
-				GenerateDebugInformation="FALSE"
-				GenerateMapFile="TRUE"
-				MapFileName="../../edition/alertserver.map"
+				IgnoreDefaultLibraryNames="LIBCD.lib"
+				GenerateDebugInformation="TRUE"
+				AssemblyDebug="1"
+				GenerateMapFile="FALSE"
+				MapFileName=""
 				MapLines="TRUE"
 				SubSystem="1"
 				OptimizeReferences="2"
@@ -147,6 +151,12 @@
 				RelativePath=".\AlertServer.cpp">
 			</File>
 			<File
+				RelativePath=".\AppOctetStream.cpp">
+			</File>
+			<File
+				RelativePath=".\Base64.cpp">
+			</File>
+			<File
 				RelativePath=".\Dragonflow.cpp">
 			</File>
 			<File
@@ -156,25 +166,40 @@
 				RelativePath=".\GsmOperate.cpp">
 			</File>
 			<File
+				RelativePath=".\json_spirit_reader.cpp">
+			</File>
+			<File
+				RelativePath=".\json_spirit_value.cpp">
+			</File>
+			<File
+				RelativePath=".\json_spirit_writer.cpp">
+			</File>
+			<File
+				RelativePath=".\MailMessage.cpp">
+			</File>
+			<File
+				RelativePath=".\MIMECode.cpp">
+			</File>
+			<File
+				RelativePath=".\MIMEContentAgent.cpp">
+			</File>
+			<File
+				RelativePath=".\MIMEMessage.cpp">
+			</File>
+			<File
 				RelativePath=".\SerialPort.cpp">
 			</File>
 			<File
+				RelativePath=".\SMTP.cpp">
+			</File>
+			<File
 				RelativePath=".\stdafx.cpp">
-				<FileConfiguration
-					Name="Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="1"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="1"/>
-				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\StringEx.cpp">
+			</File>
+			<File
+				RelativePath=".\TextPlain.cpp">
 			</File>
 		</Filter>
 		<Filter
@@ -197,16 +222,46 @@
 				RelativePath=".\AlertServer.h">
 			</File>
 			<File
-				RelativePath=".\Dragonflow.h">
+				RelativePath=".\AppOctetStream.h">
 			</File>
 			<File
-				RelativePath="..\Base\funcGeneral.h">
+				RelativePath=".\Base64.h">
+			</File>
+			<File
+				RelativePath=".\Dragonflow.h">
 			</File>
 			<File
 				RelativePath="..\..\include\Base\funcGeneral.h">
 			</File>
 			<File
-				RelativePath=".\GsmOperate.h">
+				RelativePath="C:\SiteView\Ecc_Common\webcgi\smstest\GsmOperate.h">
+			</File>
+			<File
+				RelativePath=".\json_spirit.h">
+			</File>
+			<File
+				RelativePath=".\json_spirit_reader.h">
+			</File>
+			<File
+				RelativePath=".\json_spirit_value.h">
+			</File>
+			<File
+				RelativePath=".\json_spirit_writer.h">
+			</File>
+			<File
+				RelativePath=".\Mail.h">
+			</File>
+			<File
+				RelativePath=".\MailMessage.h">
+			</File>
+			<File
+				RelativePath=".\MIMECode.h">
+			</File>
+			<File
+				RelativePath=".\MIMEContentAgent.h">
+			</File>
+			<File
+				RelativePath=".\MIMEMessage.h">
 			</File>
 			<File
 				RelativePath=".\Resource.h">
@@ -218,10 +273,16 @@
 				RelativePath=".\SerialPort.h">
 			</File>
 			<File
+				RelativePath=".\SMTP.h">
+			</File>
+			<File
 				RelativePath=".\stdafx.h">
 			</File>
 			<File
 				RelativePath=".\StringEx.h">
+			</File>
+			<File
+				RelativePath=".\TextPlain.h">
 			</File>
 		</Filter>
 		<Filter
