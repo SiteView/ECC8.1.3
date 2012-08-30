@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entitymodel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/entitymodel.xsd">
+  <!-- ========================================================= -->
+  <!-- ======================== Defaults ======================= -->
+  <!-- ========================================================= -->
+    <title>Entity of SPI Application</title>
+    <description>None</description>
+    <copyright></copyright>
+    <author>None</author>
+    <version>1.0</version>
+
+  <!-- ========================================================= -->
+  <!-- ======================== Data Model ===================== -->
+  <!-- The modules in this file are as follows:                  -->
+  <!--  - Entity of SPI Application -->
+  <!-- ========================================================= -->
+
+
+  <!-- ========================================================= -->
+  <!-- Entity of SPI Application -->
+  <!-- ========================================================= -->
+
+    <entity entity-name="ACSAlertInformation"
+            package-name="org.ofbiz"
+            title="ACSAlertInformation">
+      <field name="Id" type="id-long-ne"></field>
+      <field name="deviceIdManufacturer" type="long-varchar"></field>
+      <field name="deviceIdOUI" type="long-varchar"></field>
+      <field name="deviceIdProductClass" type="long-varchar"></field>
+      <field name="deviceIdSerialNumber" type="long-varchar"></field>
+      <field name="AlertStatus" type="long-varchar"></field>
+      <field name="Note" type="very-long"></field>
+      <field name="RealDeviceId" type="long-varchar"></field>
+      <field name="Event" type="long-varchar"></field>
+      <field name="Oui" type="long-varchar"></field>
+      <field name="Count" type="numeric"></field>
+      <field name="CreateDateTime" type="long-varchar"></field>
+      <field name="RevertDateTime" type="long-varchar"></field>
+      <prim-key field="Id"/>
+    </entity>
+</entitymodel>

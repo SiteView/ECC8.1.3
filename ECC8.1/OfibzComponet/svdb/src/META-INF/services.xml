@@ -1,0 +1,23 @@
+<serviceGroup>
+<service name="eccapi">
+	<description>
+		eccapi Web Service for AXIS2
+	</description>
+	<messageReceivers>
+		<messageReceiver mep="http://www.w3.org/2004/08/wsdl/in-only" class="org.apache.axis2.rpc.receivers.RPCInOnlyMessageReceiver" />
+		<messageReceiver mep="http://www.w3.org/2004/08/wsdl/in-out"  class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+	</messageReceivers>
+	<parameter name="ServiceClass">com.siteview.axis2.EccService</parameter>
+</service>
+<service name="cwmp">
+	<description>
+		cwmp Web Service for AXIS2
+	</description>
+	<messageReceivers>
+		<messageReceiver mep="http://www.w3.org/2004/08/wsdl/in-only" class="org.apache.axis2.rpc.receivers.RPCInOnlyMessageReceiver" />
+		<messageReceiver mep="http://www.w3.org/2004/08/wsdl/in-out"  class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+	</messageReceivers>
+	<parameter name="ServiceClass">cwmp_1_1.dslforum_org.CwmpImpl</parameter>
+</service>
+</serviceGroup>
+

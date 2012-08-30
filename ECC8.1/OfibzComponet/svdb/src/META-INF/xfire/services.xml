@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://xfire.codehaus.org/config/1.0">
+
+	<service>
+		<name>eccapi</name>
+		<namespace>http://eccservice.siteview.com
+		</namespace>
+		<serviceClass>
+			com.siteview.eccservice.InterfaceEccService
+       	</serviceClass>
+		<implementationClass>
+			com.siteview.eccservice.EccService
+       	</implementationClass>
+		<serviceFactory>
+			org.codehaus.xfire.annotations.AnnotationServiceFactory
+		</serviceFactory>
+	</service>
+
+<!-- 
+	<service>
+		<name>imxswitch</name>
+		<namespace>http://imxswitch.siteview.com
+		</namespace>
+		<serviceClass>
+			com.siteview.cwmp.IMXSwitch
+       	</serviceClass>
+		<implementationClass>
+			com.siteview.cwmp.IMXSwitchImpl
+       	</implementationClass>
+		<serviceFactory>
+			org.codehaus.xfire.annotations.AnnotationServiceFactory
+		</serviceFactory>
+	</service>
+-->
+</beans>

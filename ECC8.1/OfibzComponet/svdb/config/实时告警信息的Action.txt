@@ -1,0 +1,8 @@
+key : "action":
+	"clearAlertQueue"
+	"popupAlertQueueInfor"
+	"updateAlertQueueInfor"
+	"deleteAlertQueueInfor"
+	"pushAlertQueueInfor"
+	"proccessAlertQueueInfor.Revert"
+	"updateAlertQueueInfor.toHistory"

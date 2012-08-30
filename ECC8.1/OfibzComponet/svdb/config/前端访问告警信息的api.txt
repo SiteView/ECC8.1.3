@@ -1,0 +1,156 @@
+使用了SubmitUnivData的万用接口。
+
+全部参数都以设置在inwhat中的为准。返回值都设置在fmap中。
+
+
+AlertManager部分 -- 告警信息查询，操作部分。
+
+   告警信息的key：
+	"Event"
+	"Oui"
+	"deviceId.Manufacturer"
+	"deviceId.OUI"
+	"deviceId.ProductClass"
+	"deviceId.SerialNumber"
+
+	"Note" 备注
+	
+	"AlertStatus" 告警状态  NoProcess、Revert、Warning、Processed
+
+        "Id" : 保存在数据库中的id
+
+	"RealDeviceId" :真实的设备id
+
+	"CreateDateTime" 创建该记录的时间，格式为"yyyy-MM-dd HH:mm:ss.SSS"
+	"RevertDateTime" 状态恢复的时间，格式为"yyyy-MM-dd HH:mm:ss.SSS"
+
+	"Count" :数量（一般只在Reg_Fail的时候有效）
+
+
+ dowhat = AlertManager.getServerCurrentDate
+	取当前系统时间。
+
+ dowhat = AlertManager.clearAlertQueue
+	清除队列中的告警信息。
+
+ dowhat = AlertManager.stateAlertQueueInfors(name)
+	根据给定的名称来统计告警信息 name可以为 ： RealDeviceId  ， AlertStatus
+
+ 
+ dowhat = AlertManager.getAlertInfor(int index) 0开始的index
+	取得队列中index对应的告警信息
+
+ dowhat = AlertManager.getAlertInforById(id)
+	通过id取得队列中的告警信息
+
+ dowhat = AlertManager.getAllAlertInfor
+	取得队列中所有的告警信息
+	返回告警信息的列表，在fmap中
+
+ dowhat = AlertManager.getAlertQueueSize
+	得到当前的队列的大小。
+	返回在return中
+
+ dowhat = AlertManager.popupAlertInfor
+	弹出队列中最老的一个告警信息
+
+ dowhat = AlertManager.popupAlertInfors(int num)
+	弹出队列中指定数量的最老的告警信息
+	返回告警信息的列表，在fmap中
+
+ dowhat = AlertManager.updateAlertQueueInfor (告警信息参数)
+	删除队列中的相应告警信息，并保存到历史记录中
+	通过id
+
+ dowhat = AlertManager.deleteAlertQueueInfor (id)
+	删除队列中的相应告警信息
+	通过id
+
+ dowhat = AlertManager.deleteAlertQueueInfors (ids)
+	批量删除队列中的相应告警信息
+	其中ids为形如id1,id2,id3....的数据
+
+ dowhat = AlertManager.queryAlertQueueInfors(deviceids,alertStatus,begintime,endtime,pageNo,length)
+	根据组合条件查询队列中的告警信息。条件deviceids,alertStatus,begintime,endtime之间是and的关系。
+	如果没有输入其中一项，则省略该项。
+	begintime,endtime必须同时输入，或者同时不输入。查询的为CreateDateTime在其间的数据，包含begintime,endtime本身
+	返回值中，"AllSize"为不分页的时候的大小
+	其中deviceids为形如id1,id2,id3....的数据
+
+ dowhat = AlertManager.queryAlertQueueInforsSize(deviceids,alertStatus,begintime,endtime)
+	根据组合条件查询队列中的告警信息数量。条件deviceids,alertStatus,begintime,endtime之间是and的关系。
+	如果没有输入其中一项，则省略该项。
+	begintime,endtime必须同时输入，或者同时不输入。查询的为CreateDateTime在其间的数据，包含begintime,endtime本身
+	其中deviceids为形如id1,id2,id3....的数据
+	返回在return中
+
+ dowhat = AlertManager.saveAlertInforToDB (告警信息参数)
+	保存修改过的告警信息到历史记录中
+	如果id不设置，则创建新的记录，否则，覆盖id的记录
+
+ dowhat = AlertManager.getHistoryAlertInfor (id)
+	通过id取得历史记录中的告警信息
+
+ dowhat = AlertManager.getHistoryAlertInforIds(begin，end)
+	取得历史记录中的告警信息(id为begin<->end之间,包含begin和end)
+
+ dowhat = AlertManager.deleleHistoryAlertInforById(Id)
+	删除历史记录中的告警信息(通过Id)
+
+ dowhat = AlertManager.deleleHistoryAlertInfor(begin，end)
+	删除历史记录中的告警信息(CreateDateTime为begin<->end之间,包含begin和end)
+
+ dowhat = AlertManager.deleleHistoryAlertsInforByIds (ids)
+	批量删除历史记录中的相应告警信息
+	其中ids为形如id1,id2,id3....的数据
+
+
+ dowhat = AlertManager.getNewAlertInfors(beginId,deviceIds)
+	取得beginId开始的所有最新的告警信息记录(从队列中取)
+	其中deviceIds为形如id1,id2,id3....的数据--设备ID列表
+	
+ dowhat = AlertManager.getAlertLogHistrorySize
+	得到历史记录的大小。
+	返回在return中
+
+ dowhat = AlertManager.getAlertLogHistroryByCondition(pageNo，length)
+	取得历史记录中的告警信息,以最新的排前(pageNo的length条记录)
+
+ dowhat = AlertManager.getAlertLogHistrorySizeByDeviceId(realDeviceId)
+	得到历史记录的大小。通过设备ID (realDeviceId)
+	返回在return中
+
+ dowhat = AlertManager.getAlertLogHistroryByDeviceId(pageNo,length,realDeviceId)
+	取得历史记录中的告警信息,以最新的排前(pageNo的length条记录)通过设备ID (realDeviceId)
+
+ dowhat = AlertManager.getAlertQueueInforsByCondition(pageNo，length)
+	取得队列中的告警信息,以最新的排前(pageNo的length条记录)
+
+ dowhat = AlertManager.queryHistoryAlertInfors(deviceids,alertStatus,begintime,endtime,pageNo,length)
+	根据组合条件历史记录中的告警信息。条件deviceids,alertStatus,begintime,endtime之间是and的关系。
+	如果没有输入其中一项，则省略该项。
+	begintime,endtime必须同时输入，或者同时不输入。查询的为CreateDateTime在其间的数据，包含begintime,endtime本身
+	返回值中，"AllSize"为不分页的时候的大小
+	其中deviceids为形如id1,id2,id3....的数据
+
+ dowhat = AlertManager.deleteHistoryAlertInfors(deviceids,alertStatus,begintime,endtime)
+	根据组合条件删除历史记录中的告警信息。条件deviceid,alertStatus,begintime,endtime之间是and的关系。
+	begintime,endtime是必须填写项。
+	CreateDateTime为包含begintime,endtime本身的在其间的数据，
+	其中deviceids为形如id1,id2,id3....的数据
+	返回在return中,得到删除的历史记录的大小
+
+ dowhat = AlertManager.getConfigInformation
+	取得配置信息：
+	   RabbitMQ的信息：
+		RabbitServerHostName
+		RabbitServerPort
+		RabbitExchangeName
+		RabbitQueueName
+ dowhat = AlertManager.setConfigInformation
+	设置配置信息：
+	   RabbitMQ的信息：
+		RabbitServerHostName
+		RabbitServerPort
+		RabbitExchangeName
+		RabbitQueueName
